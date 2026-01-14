@@ -1,0 +1,27 @@
+---
+description: Adjust color, exposure, and other visual effects.
+title: Post Processing Editor
+image: /img/app_icons/postprocessing_editor.png
+---
+
+import DocCardList from '@theme/DocCardList';
+
+# Post Processing Editor
+
+<img src={require('@site/static/img/app_icons/postprocessing_editor.png').default} alt="Tool Icon" vertical-align="middle" width="128" height="128" />
+
+The **Post Processing Editor** lets you create and edit post processing presets. Post processing can enhance your map by adding effects like exposure, tone mapping, color grading, bloom, and blur. These presets are saved as **`.vpost`** resources and control the final look of what players see on screen.
+
+## Info
+
+Post processing applies full-screen (view-space) effects **after the scene is rendered**, which is where the name comes from — it’s processing done *post* (after) rendering. 
+
+It works by adjusting the already-generated image on screen, and **does not use map geometry or re-render the world**. Instead, it modifies what’s already been rendered to improve the look.
+
+Post processing is not applied automatically. You must create a **`.vpost`** preset in the editor (or use an existing preset) and then apply it in Hammer using a `post_processing_volume`. Using a master volume, post processing effects can be applied to the whole level.
+
+To edit an already existing **`.vpost`** preset you need to decompile it using the <Tool name="s2v" link="https://valveresourceformat.github.io/"/> and save it in your addon. The default **`.vpost`** files are stored in the `game/csgo/pak01_dir.vpk/lighting/postprocessing/`.
+
+This is explained in detail in the Post Processing Editor Guide.
+
+<DocCardList />
