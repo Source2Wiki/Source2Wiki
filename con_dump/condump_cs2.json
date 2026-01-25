@@ -12,6 +12,7 @@
     "DefaultValue": "cmd",
     "Description": "Record a demo incrementally.",
     "flags": [
+      "cheat",
       "norecord",
       "release"
     ]
@@ -1021,16 +1022,6 @@
     ]
   },
   {
-    "Name": "animgraph_force_tick_all_graphs",
-    "DefaultValue": "false",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cl",
-      "rep"
-    ]
-  },
-  {
     "Name": "animgraph_ik_debug",
     "DefaultValue": "false",
     "Description": "",
@@ -1047,6 +1038,14 @@
     ]
   },
   {
+    "Name": "animgraph_parallel_postdataupdate",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      "cl"
+    ]
+  },
+  {
     "Name": "animgraph_record_all",
     "DefaultValue": "false",
     "Description": "Automatically start recording AnimGraphs when they get created, and save them to disk when they are destroyed",
@@ -1054,60 +1053,6 @@
       "sv",
       "cl",
       "rep",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "animgraph_set_parameter_bool",
-    "DefaultValue": "cmd",
-    "Description": "Specified entities will have the specified bool parameter set to the value specified.  Useful for animators to test.  Arguments: \u0026lt;entity\u0026gt; \u0026lt;parameter name\u0026gt; \u0026lt;value you want to send to animgraph for the entity\u0026gt;",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "animgraph_set_parameter_enum",
-    "DefaultValue": "cmd",
-    "Description": "Specified entities will have the specified enum parameter set to the value specified.  Useful for animators to test.  Arguments: \u0026lt;entity\u0026gt; \u0026lt;parameter name\u0026gt; \u0026lt;value you want to send to animgraph for the entity\u0026gt;",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "animgraph_set_parameter_float",
-    "DefaultValue": "cmd",
-    "Description": "Specified entities will have the specified float parameter set to the value specified.  Useful for animators to test.  Arguments: \u0026lt;entity\u0026gt; \u0026lt;parameter name\u0026gt; \u0026lt;value you want to send to animgraph for the entity\u0026gt;",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "animgraph_set_parameter_int",
-    "DefaultValue": "cmd",
-    "Description": "Specified entities will have the specified int parameter set to the value specified.  Useful for animators to test.  Arguments: \u0026lt;entity\u0026gt; \u0026lt;parameter name\u0026gt; \u0026lt;value you want to send to animgraph for the entity\u0026gt;",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "animgraph_set_parameter_string",
-    "DefaultValue": "cmd",
-    "Description": "Specified entities will have the specified bool parameter set to the value specified.  Useful for animators to test.  Arguments: \u0026lt;entity\u0026gt; \u0026lt;parameter name\u0026gt; \u0026lt;value you want to send to animgraph for the entity\u0026gt;",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "animgraph_set_parameter_vector",
-    "DefaultValue": "cmd",
-    "Description": "Specified entities will have the specified vector parameter set to the value specified.  Useful for animators to test.  Arguments: \u0026lt;entity\u0026gt; \u0026lt;parameter name\u0026gt; \u0026lt;value you want to send to animgraph for the entity\u0026gt;",
-    "flags": [
-      "sv",
       "cheat"
     ]
   },
@@ -1542,14 +1487,6 @@
     "Description": "Blink specified convar value between two values at the specified duration.",
     "flags": [
       "norecord"
-    ]
-  },
-  {
-    "Name": "blink_duration",
-    "DefaultValue": "0.5",
-    "Description": "How many seconds an eye blink will last.",
-    "flags": [
-      "cl"
     ]
   },
   {
@@ -2375,7 +2312,7 @@
   },
   {
     "Name": "cam_collision",
-    "DefaultValue": "1",
+    "DefaultValue": "0",
     "Description": "When in thirdperson and cam_collision is set to 1, an attempt is made to keep the camera from passing though walls.",
     "flags": [
       "cl",
@@ -3864,14 +3801,6 @@
     ]
   },
   {
-    "Name": "cl_debug_client_gamestats",
-    "DefaultValue": "true",
-    "Description": "",
-    "flags": [
-      "cl"
-    ]
-  },
-  {
     "Name": "cl_debug_force_push_to_talk",
     "DefaultValue": "false",
     "Description": "",
@@ -4238,6 +4167,24 @@
     "Name": "cl_ent_actornames",
     "DefaultValue": "cmd",
     "Description": "Displays the entity name for all entities that have ShouldDisplayInActorNames true in code",
+    "flags": [
+      "cl",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "cl_ent_animgraph2_open_graph",
+    "DefaultValue": "cmd",
+    "Description": "Opens the graph and starts live debugging the AG2 graph for a given entity  Arguments: entityName  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
+    "flags": [
+      "cl",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "cl_ent_animgraph2_record",
+    "DefaultValue": "cmd",
+    "Description": "Starts live debugging \u0026 recording the AG2 graph for a given entity  Arguments: entityName  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
     "flags": [
       "cl",
       "cheat"
@@ -5024,7 +4971,7 @@
   {
     "Name": "cl_graphics_driver_warning_dont_show_again",
     "DefaultValue": "true",
-    "Description": "",
+    "Description": "Graphics driver recommendation (NVIDIA 581.80 / AMD 23.11.1)",
     "flags": [
       "cl",
       "a",
@@ -5512,7 +5459,7 @@
   },
   {
     "Name": "cl_inventory_saved_sort2",
-    "DefaultValue": "inv_sort_rarity",
+    "DefaultValue": "inv_sort_age",
     "Description": "",
     "flags": [
       "cl",
@@ -6122,7 +6069,7 @@
   },
   {
     "Name": "cl_player_ping_mute",
-    "DefaultValue": "0",
+    "DefaultValue": "1",
     "Description": "If 1, player pinging will make a sound, if 0, pings will be silent",
     "flags": [
       "cl",
@@ -6826,7 +6773,7 @@
   },
   {
     "Name": "cl_redemption_reset_timestamp",
-    "DefaultValue": "1760561552",
+    "DefaultValue": "1769210640",
     "Description": "",
     "flags": [
       "cl",
@@ -7367,6 +7314,15 @@
     ]
   },
   {
+    "Name": "cl_showframenumber",
+    "DefaultValue": "false",
+    "Description": "Show current framenumber",
+    "flags": [
+      "cl",
+      "release"
+    ]
+  },
+  {
     "Name": "cl_showloadout",
     "DefaultValue": "true",
     "Description": "Toggles display of current loadout.",
@@ -7888,6 +7844,15 @@
     "flags": [
       "cl",
       "cheat"
+    ]
+  },
+  {
+    "Name": "cl_trueview_show_doa_predictions",
+    "DefaultValue": "true",
+    "Description": "If true, trueview will recreate the original player experience, including commands that were predicted clientside but never executed on the server because the player was dead when they arrived.",
+    "flags": [
+      "cl",
+      "release"
     ]
   },
   {
@@ -9217,7 +9182,7 @@
   },
   {
     "Name": "d3d_max_feature_level",
-    "DefaultValue": "11_1",
+    "DefaultValue": "\u0026lt;Not set\u0026gt;",
     "Description": "Report the maximum D3D feature level available.",
     "flags": [
       ""
@@ -9885,16 +9850,6 @@
     ]
   },
   {
-    "Name": "dota_overhead_on_received_item",
-    "DefaultValue": "true",
-    "Description": "Emit an overhead particle effect on receiving an item from an ally.",
-    "flags": [
-      "sv",
-      "cl",
-      "rep"
-    ]
-  },
-  {
     "Name": "dota_spatial_audio_mix",
     "DefaultValue": "1",
     "Description": "Mix value to blend spatial and non-spatial audio in Dota 2.",
@@ -10355,15 +10310,31 @@
   },
   {
     "Name": "engine_rendersystem_init",
-    "DefaultValue": "-dx11",
+    "DefaultValue": "-vulkan",
     "Description": "Rendersystem option requested (changing this does not change the rendersystem).",
     "flags": [
       ""
     ]
   },
   {
+    "Name": "engine_rendersystem_meets_min_dx_110",
+    "DefaultValue": "Yes (120)",
+    "Description": "Rendersystem meets min DX110 feature level (changing this does not change the shader model).",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "engine_rendersystem_meets_min_dx_110_simple",
+    "DefaultValue": "Yes",
+    "Description": "Rendersystem meets min DX110 feature level (changing this does not change the shader model).",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "engine_rendersystem_shader_model",
-    "DefaultValue": "111",
+    "DefaultValue": "120",
     "Description": "Rendersystem shader model in use (changing this does not change the shader model).",
     "flags": [
       ""
@@ -10371,7 +10342,7 @@
   },
   {
     "Name": "engine_rendersystem_used",
-    "DefaultValue": "-dx11",
+    "DefaultValue": "-vulkan (from CL)",
     "Description": "Rendersystem option in use (changing this does not change the rendersystem).",
     "flags": [
       ""
@@ -10447,6 +10418,24 @@
       "sv",
       "cl",
       "rep",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "ent_animgraph2_open_graph",
+    "DefaultValue": "cmd",
+    "Description": "Opens the graph and starts live debugging the AG2 graph for a given entity  Arguments: entityName  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
+    "flags": [
+      "sv",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "ent_animgraph2_record",
+    "DefaultValue": "cmd",
+    "Description": "Starts live debugging \u0026 recording the AG2 graph for a given entity  Arguments: entityName  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
+    "flags": [
+      "sv",
       "cheat"
     ]
   },
@@ -11947,6 +11936,14 @@
     ]
   },
   {
+    "Name": "func_mover_debug_extra_text",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      "sv"
+    ]
+  },
+  {
     "Name": "func_mover_debug_follower",
     "DefaultValue": "false",
     "Description": "",
@@ -12190,6 +12187,14 @@
     ]
   },
   {
+    "Name": "gamma_to_linear",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "gc_secret_key",
     "DefaultValue": "0",
     "Description": "Secret key for authenticating with the GC",
@@ -12286,6 +12291,14 @@
     "Name": "gfx_generate_arhosek_solar_radiance_image",
     "DefaultValue": "cmd",
     "Description": "Generate solar radiance image",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "gfx_generate_color_temperature_table",
+    "DefaultValue": "cmd",
+    "Description": "Computes a table of color temperatures",
     "flags": [
       ""
     ]
@@ -12494,6 +12507,14 @@
     ]
   },
   {
+    "Name": "gizmo_rot_max_dist",
+    "DefaultValue": "8",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "gl_clear",
     "DefaultValue": "true",
     "Description": "",
@@ -12581,8 +12602,136 @@
     ]
   },
   {
+    "Name": "hammer_add_edge_fade_size",
+    "DefaultValue": "8 8 8",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_analytic_grid",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_analytic_grid_transparent",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_cubemap_debug_colors",
+    "DefaultValue": "cmd",
+    "Description": "Bakes all cubemaps with distinct solid colors, for debugging purposes",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_bake_cubemaps",
+    "DefaultValue": "true",
+    "Description": "Should we bake cubemaps?",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_bake_light_probe_volumes",
+    "DefaultValue": "true",
+    "Description": "Should we bake light probe volumes?",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_bake_vertex_lighting",
+    "DefaultValue": "true",
+    "Description": "Should we bake vertex lighting?",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_debug_path_trace_scene_info_from_build",
+    "DefaultValue": "false",
+    "Description": "Load debug_path_trace_scene_info.dat for RT baked lighting visualization instead of using the current map.",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_sample_smoothing",
+    "DefaultValue": "0",
+    "Description": "Smoothing amount, if != 0, smooths lighting at vertex.",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_samples_per_triangle_error",
+    "DefaultValue": "0.1",
+    "Description": "Error tolerance for adaptive sampling.",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_samples_per_triangle_max",
+    "DefaultValue": "128",
+    "Description": "Max number of samples per triangle. Higher is more quality/slower.",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_samples_per_triangle_min",
+    "DefaultValue": "64",
+    "Description": "Min number of samples per triangle. Higher is more quality/slower.",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bake_light_triangle_batch_size",
+    "DefaultValue": "65536",
+    "Description": "Triangle batch size.",
+    "flags": [
+      "release"
+    ]
+  },
+  {
     "Name": "hammer_bevel_leave_edges",
     "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_bridge_drag_pixels_per_step",
+    "DefaultValue": "16",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_diff_gridnav",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_dota_paint_flat_radius",
+    "DefaultValue": "10",
     "Description": "",
     "flags": [
       ""
@@ -12613,6 +12762,14 @@
     ]
   },
   {
+    "Name": "hammer_dota_path_preview",
+    "DefaultValue": "16",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "hammer_dota_path_sharpness",
     "DefaultValue": "0.5",
     "Description": "",
@@ -12631,6 +12788,22 @@
   {
     "Name": "hammer_dota_path_width",
     "DefaultValue": "150",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_dota_proxy_handle_spacing",
+    "DefaultValue": "10",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_dota_rebuild_paths",
+    "DefaultValue": "cmd",
     "Description": "",
     "flags": [
       ""
@@ -12677,8 +12850,96 @@
     ]
   },
   {
+    "Name": "hammer_edge_debug_info",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_enable_debug_overlays",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_entity_report_refresh",
+    "DefaultValue": "300",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_extended_box_gizmo_handles",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "hammer_face_debug_info",
     "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_force_autosave",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_gizmo_2dscale",
+    "DefaultValue": "3",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_gizmo_axis_length",
+    "DefaultValue": "80",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_gizmo_axis_scale",
+    "DefaultValue": "1.5",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_gizmo_compute_matrix",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_gizmo_line_thickness",
+    "DefaultValue": "3",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_gizmo_rot_inflate",
+    "DefaultValue": "6",
     "Description": "",
     "flags": [
       ""
@@ -12741,6 +13002,14 @@
     ]
   },
   {
+    "Name": "hammer_hud_enable",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "hammer_isosurface_merge_tolerance",
     "DefaultValue": "0",
     "Description": "",
@@ -12773,6 +13042,30 @@
     ]
   },
   {
+    "Name": "hammer_map_files",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_open_edge_hash_length",
+    "DefaultValue": "6",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_open_edge_hash_spacing",
+    "DefaultValue": "6",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "hammer_overlay_draw_projection_triangles",
     "DefaultValue": "false",
     "Description": "",
@@ -12789,6 +13082,14 @@
     ]
   },
   {
+    "Name": "hammer_prefab_tree",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "hammer_raytrace_debug_draw",
     "DefaultValue": "0",
     "Description": "Draw ray tracing environment debug visualization in Hammer",
@@ -12799,6 +13100,38 @@
   {
     "Name": "hammer_render_model_bounding_spheres",
     "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_rotate_up_dot",
+    "DefaultValue": "0.2",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_save_gridnav",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_show_face_uvs",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_show_input_debugger",
+    "DefaultValue": "cmd",
     "Description": "",
     "flags": [
       ""
@@ -12829,8 +13162,64 @@
     ]
   },
   {
+    "Name": "hammer_ssao_enable",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_stroke_steps",
+    "DefaultValue": "10",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_test_bake_preview_lighting",
+    "DefaultValue": "cmd",
+    "Description": "Test baking preview lighting",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_test_turn_on_gpu_preview_lighting",
+    "DefaultValue": "cmd",
+    "Description": "Turns on gpu preview lighting for a view",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_test_turn_on_gpu_raytracing",
+    "DefaultValue": "cmd",
+    "Description": "Turns on gpu ray tracing for a view",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "hammer_tile_border_size",
     "DefaultValue": "16",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_tileset_maps",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_translucent_enable",
+    "DefaultValue": "true",
     "Description": "",
     "flags": [
       ""
@@ -12845,8 +13234,72 @@
     ]
   },
   {
+    "Name": "hammer_vertex_normal_paint_brush_screensize",
+    "DefaultValue": "0.002",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_vertex_normal_paint_brush_size_max",
+    "DefaultValue": "100",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_vertex_normal_paint_cached_mesh_evict_distance",
+    "DefaultValue": "128",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_vertex_normal_paint_debug_triangulation",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_vertex_normal_paint_initial_brush_radius",
+    "DefaultValue": "32",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_vertex_normal_paint_initial_strength",
+    "DefaultValue": "0.03",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "hammer_vis_opacity",
     "DefaultValue": "32",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_worklight_brightness",
+    "DefaultValue": "1000",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "hammer_worklight_range",
+    "DefaultValue": "32000",
     "Description": "",
     "flags": [
       ""
@@ -14905,6 +15358,14 @@
     ]
   },
   {
+    "Name": "lightbinner_test_computespheresilhouette",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "lightbinner_test_computesumsilhouette",
     "DefaultValue": "cmd",
     "Description": "",
@@ -14932,6 +15393,14 @@
       "cl",
       "rep",
       "cheat"
+    ]
+  },
+  {
+    "Name": "linear_to_gamma",
+    "DefaultValue": "cmd",
+    "Description": "",
+    "flags": [
+      ""
     ]
   },
   {
@@ -15378,6 +15847,14 @@
     "Description": "",
     "flags": [
       "sv"
+    ]
+  },
+  {
+    "Name": "mat_async_shader_load",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      "release"
     ]
   },
   {
@@ -19033,33 +19510,6 @@
     ]
   },
   {
-    "Name": "nav_delete_all_hull",
-    "DefaultValue": "cmd",
-    "Description": "Deletes all areas with given hull category.",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_delete_marked",
-    "DefaultValue": "cmd",
-    "Description": "Deletes the currently marked Area (if any).",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_disconnect",
-    "DefaultValue": "cmd",
-    "Description": "Disconnects selected area from all neighbor areas.",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
     "Name": "nav_drag_selection_volume_zmax_offset",
     "DefaultValue": "32",
     "Description": "The offset of the nav drag volume top from center",
@@ -19330,78 +19780,6 @@
     ]
   },
   {
-    "Name": "nav_draw_space_boundary",
-    "DefaultValue": "false",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_draw_space_cells",
-    "DefaultValue": "false",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_draw_space_fly",
-    "DefaultValue": "false",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_draw_space_neighbors",
-    "DefaultValue": "0",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_draw_space_portals",
-    "DefaultValue": "false",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_draw_space_radius",
-    "DefaultValue": "0",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_draw_space_swim",
-    "DefaultValue": "false",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_draw_space_transitions",
-    "DefaultValue": "true",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
     "Name": "nav_edit",
     "DefaultValue": "0",
     "Description": "Set to one to interactively edit the Navigation Mesh. Set to zero to leave edit mode.",
@@ -19587,6 +19965,14 @@
     "Description": "Always false",
     "flags": [
       "sv",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "nav_gen_flow_map_all_pairs_mode",
+    "DefaultValue": "1",
+    "Description": "0=astar, 1=allpaths, -1=test mode (runs both and compares)",
+    "flags": [
       "cheat"
     ]
   },
@@ -19919,33 +20305,6 @@
     "DefaultValue": "64",
     "Description": "",
     "flags": [
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_navlink_enable_splits",
-    "DefaultValue": "true",
-    "Description": "Split wide nav links into narrower ones to increase lanes and alleviate \u0027crossing\u0027 effect.",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_navlink_split_max_width",
-    "DefaultValue": "144",
-    "Description": "The maximum desired width of a nav link split.",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_navlink_split_scale_with_length",
-    "DefaultValue": "true",
-    "Description": "Nav link splits\u0027 widths are proportional to the nav link\u0027s length.",
-    "flags": [
-      "sv",
       "cheat"
     ]
   },
@@ -20472,7 +20831,7 @@
   },
   {
     "Name": "nav_smooth_draw_calc",
-    "DefaultValue": "false",
+    "DefaultValue": "0",
     "Description": "",
     "flags": [
       "sv",
@@ -20662,15 +21021,6 @@
   {
     "Name": "nav_smooth_spring_yaw_threshold",
     "DefaultValue": "20",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cheat"
-    ]
-  },
-  {
-    "Name": "nav_smooth_use_opt",
-    "DefaultValue": "true",
     "Description": "",
     "flags": [
       "sv",
@@ -22854,8 +23204,8 @@
     ]
   },
   {
-    "Name": "player_competitive_maplist_2v2_10_0_BCB8668D",
-    "DefaultValue": "mg_de_inferno,mg_de_nuke,mg_de_vertigo,mg_de_rooftop,mg_de_overpass",
+    "Name": "player_competitive_maplist_2v2_10_0_630B8B7C",
+    "DefaultValue": "mg_de_inferno,mg_de_nuke,mg_de_vertigo,mg_de_poseidon,mg_de_sanctum,mg_de_overpass",
     "Description": "",
     "flags": [
       "cl",
@@ -22863,8 +23213,8 @@
     ]
   },
   {
-    "Name": "player_competitive_maplist_8_10_0_C951FF02",
-    "DefaultValue": "mg_de_dust2,mg_de_mirage,mg_de_inferno,mg_de_ancient,mg_de_nuke,mg_de_overpass,mg_de_anubis,mg_de_vertigo,mg_cs_office",
+    "Name": "player_competitive_maplist_8_10_0_C512DEBE",
+    "DefaultValue": "mg_de_anubis,mg_de_overpass,mg_de_inferno,mg_de_mirage,mg_de_dust2,mg_de_nuke,mg_de_ancient,mg_de_vertigo,mg_cs_office",
     "Description": "",
     "flags": [
       "cl",
@@ -22928,7 +23278,7 @@
   },
   {
     "Name": "player_teamplayedlast",
-    "DefaultValue": "3",
+    "DefaultValue": "2",
     "Description": "",
     "flags": [
       "cl",
@@ -23398,6 +23748,14 @@
     ]
   },
   {
+    "Name": "r_allow_low_gpu_memory_mode",
+    "DefaultValue": "true",
+    "Description": "Allow Low GPU Memory mode (i.e. when building maps).",
+    "flags": [
+      "release"
+    ]
+  },
+  {
     "Name": "r_allow_onesweep_gpusort",
     "DefaultValue": "true",
     "Description": "",
@@ -23558,6 +23916,33 @@
   {
     "Name": "r_csgo_depth_prepass_skybox_alpha_tested",
     "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      "cl",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "r_csgo_depth_prepass_skybox_large",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      "cl",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "r_csgo_depth_prepass_skybox_small",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      "cl",
+      "cheat"
+    ]
+  },
+  {
+    "Name": "r_csgo_depth_prepass_skybox_small_cull_threshold",
+    "DefaultValue": "5",
     "Description": "",
     "flags": [
       "cl",
@@ -24142,6 +24527,16 @@
     ]
   },
   {
+    "Name": "r_decals_max_on_deformables",
+    "DefaultValue": "512",
+    "Description": "",
+    "flags": [
+      "sv",
+      "cl",
+      "rep"
+    ]
+  },
+  {
     "Name": "r_decals_overide_fadestarttime_params",
     "DefaultValue": "-1",
     "Description": "",
@@ -24335,9 +24730,10 @@
   {
     "Name": "r_drawparticles",
     "DefaultValue": "true",
-    "Description": "Enable/disable particle rendering",
+    "Description": "SceneSystem/Particles/Draw Particles",
     "flags": [
-      "cheat"
+      "cheat",
+      "menubar_item"
     ]
   },
   {
@@ -24881,6 +25277,16 @@
     ]
   },
   {
+    "Name": "r_icon_image_cache_to_disk",
+    "DefaultValue": "true",
+    "Description": "1",
+    "flags": [
+      "cl",
+      "a",
+      "release"
+    ]
+  },
+  {
     "Name": "r_impact_ricochet_chance",
     "DefaultValue": "0.3",
     "Description": "",
@@ -25104,6 +25510,14 @@
     ]
   },
   {
+    "Name": "r_mipgen_compute_shader",
+    "DefaultValue": "true",
+    "Description": "Use compute shader for mipgen.",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "r_mixed_shadows_fade_in_time",
     "DefaultValue": "0.5",
     "Description": "",
@@ -25185,17 +25599,6 @@
     ]
   },
   {
-    "Name": "r_new_character_decals",
-    "DefaultValue": "false",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cl",
-      "rep",
-      "cheat"
-    ]
-  },
-  {
     "Name": "r_particle_cables_cast_shadows",
     "DefaultValue": "true",
     "Description": "",
@@ -25230,6 +25633,14 @@
   {
     "Name": "r_particle_cables_dynamic_roundness_threshold",
     "DefaultValue": "20",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "r_particle_cables_render",
+    "DefaultValue": "true",
     "Description": "",
     "flags": [
       ""
@@ -25468,6 +25879,14 @@
       "cl",
       "a",
       "release"
+    ]
+  },
+  {
+    "Name": "r_prefer_loop_unrolling",
+    "DefaultValue": "true",
+    "Description": "Prefer shader loop unrolling.",
+    "flags": [
+      ""
     ]
   },
   {
@@ -25861,7 +26280,7 @@
   },
   {
     "Name": "r_texture_pool_size",
-    "DefaultValue": "11091",
+    "DefaultValue": "10321",
     "Description": "Total size of the texture pool in MB",
     "flags": [
       ""
@@ -26065,6 +26484,22 @@
     "Description": "Slams viewport size to a specified value.",
     "flags": [
       ""
+    ]
+  },
+  {
+    "Name": "r_vma_defrag_threshold_mb",
+    "DefaultValue": "256",
+    "Description": "",
+    "flags": [
+      "release"
+    ]
+  },
+  {
+    "Name": "r_vulkan_sw_cmd_lists",
+    "DefaultValue": "true",
+    "Description": "Enable Software Command lists for Vulkan",
+    "flags": [
+      "release"
     ]
   },
   {
@@ -26550,6 +26985,7 @@
     "DefaultValue": "cmd",
     "Description": "Record a demo.",
     "flags": [
+      "cheat",
       "norecord",
       "release"
     ]
@@ -26642,7 +27078,7 @@
   {
     "Name": "replay_start",
     "DefaultValue": "cmd",
-    "Description": "Start Source2 TV replay: replay_start \u0026lt;delay\u0026gt; [\u0026lt;player name or index\u0026gt;]",
+    "Description": "Start Source2 TV replay: replay_start \u0026lt;delay\u0026gt;\\|stash [\u0026lt;player name or index\u0026gt;]",
     "flags": [
       "sv",
       "cheat"
@@ -26974,6 +27410,22 @@
     ]
   },
   {
+    "Name": "rtx_allow_blas_compact",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "rtx_allow_blas_create",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
     "Name": "rtx_dynamic_blas",
     "DefaultValue": "true",
     "Description": "Allow dynamic BLAS creation for geometry going through the compute shader skinning path.",
@@ -26993,6 +27445,22 @@
     "Name": "rtx_force_default_hitgroup",
     "DefaultValue": "false",
     "Description": "Forces all ray traced geometry to use default hit shaders instead of specialized ones.",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "rtx_perf_stats",
+    "DefaultValue": "-1",
+    "Description": "Report RTX perf stats at N bounces. -1 means no report",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "rtx_show_bounce",
+    "DefaultValue": "-1",
+    "Description": "Show only bounce N in path-tracing views. -1 means show all bounces",
     "flags": [
       ""
     ]
@@ -27102,7 +27570,7 @@
   },
   {
     "Name": "save_parallel",
-    "DefaultValue": "true",
+    "DefaultValue": "false",
     "Description": "",
     "flags": [
       "sv",
@@ -27148,7 +27616,7 @@
   {
     "Name": "save_version",
     "DefaultValue": "1",
-    "Description": "0: (V0) Legacy save format, 1: (V1) KeyValues3 save format",
+    "Description": "0: (V0) Legacy save format, 1: (V1) KeyValues3 save format, 2: (V2) KV3Transfer saves",
     "flags": [
       "sv",
       "cl",
@@ -27375,7 +27843,7 @@
   },
   {
     "Name": "sc_dump_lists",
-    "DefaultValue": "false",
+    "DefaultValue": "0",
     "Description": "",
     "flags": [
       "cheat"
@@ -27505,6 +27973,14 @@
     "Name": "sc_instanced_mesh_lod_bias_shadow",
     "DefaultValue": "1.75",
     "Description": "Bias for LOD selection of instanced meshes in shadowmaps",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "sc_instanced_mesh_mesh_shader",
+    "DefaultValue": "true",
+    "Description": "Toggles mesh shader rendering for instanced meshes",
     "flags": [
       ""
     ]
@@ -27736,9 +28212,9 @@
   {
     "Name": "sc_visualize_sceneobjects",
     "DefaultValue": "SCENEOBJECT_VIS_NONE",
-    "Description": "1 = visualize bounds, 2 = visualize sceneobject mesh materials, 3 = required texture size, 5 = LOD, 6 == LPV Binding, 7 == instancing",
+    "Description": "SceneSystem/Visualize SceneObject Mode",
     "flags": [
-      ""
+      "menubar_item"
     ]
   },
   {
@@ -27752,9 +28228,9 @@
     ]
   },
   {
-    "Name": "scene_flush",
+    "Name": "scene_coordinator_add_request",
     "DefaultValue": "cmd",
-    "Description": "Flush all .vcds from the cache and reload from disk.",
+    "Description": "Add a request to the scene coordinator",
     "flags": [
       "sv"
     ]
@@ -28686,30 +29162,6 @@
     ]
   },
   {
-    "Name": "smoke_grenade_ct_color",
-    "DefaultValue": "75.000000 127.000000 155.000000",
-    "Description": "",
-    "flags": [
-      "sv"
-    ]
-  },
-  {
-    "Name": "smoke_grenade_custom_color",
-    "DefaultValue": "-1",
-    "Description": "0 = Gray (classic), 1 = Red, 2 = Orange, 3 = Skyblue, 4 = Yellow, 5 = Green, , 6 = Blue, 7 = Purple, 8 = pink",
-    "flags": [
-      "sv"
-    ]
-  },
-  {
-    "Name": "smoke_grenade_t_color",
-    "DefaultValue": "180.000000 129.000000 50.000000",
-    "Description": "",
-    "flags": [
-      "sv"
-    ]
-  },
-  {
     "Name": "smoke_param1",
     "DefaultValue": "6.26",
     "Description": "",
@@ -29405,6 +29857,16 @@
     ]
   },
   {
+    "Name": "snd_opvar_set_point_update_interval_fast",
+    "DefaultValue": "0.0333",
+    "Description": "",
+    "flags": [
+      "sv",
+      "cl",
+      "rep"
+    ]
+  },
+  {
     "Name": "snd_print_activetracks",
     "DefaultValue": "cmd",
     "Description": "List all active tracks",
@@ -30054,6 +30516,14 @@
     ]
   },
   {
+    "Name": "snd_sos_show_opfield_cache_updates",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      "cheat"
+    ]
+  },
+  {
     "Name": "snd_sos_show_opvar_updates",
     "DefaultValue": "false",
     "Description": "",
@@ -30454,14 +30924,6 @@
     ]
   },
   {
-    "Name": "snd_steamaudio_export_scene",
-    "DefaultValue": "cmd",
-    "Description": "Exports scene currently used by Steam Audio as a phononscene file.",
-    "flags": [
-      "cheat"
-    ]
-  },
-  {
     "Name": "snd_steamaudio_halton_sequence",
     "DefaultValue": "cmd",
     "Description": "Generate Halton Sequence for a given order and number of samples.",
@@ -30507,6 +30969,14 @@
     "Description": "The time delay between a sound being emitted and the last audible reflection in Steam Audio.",
     "flags": [
       "cheat"
+    ]
+  },
+  {
+    "Name": "snd_steamaudio_irradiancemindistance_reverb",
+    "DefaultValue": "1",
+    "Description": "Minimum distance (in meters) of a source from a surface for the purposes of energy calculations.",
+    "flags": [
+      ""
     ]
   },
   {
@@ -31834,9 +32304,9 @@
     ]
   },
   {
-    "Name": "sv_allow_annotations",
-    "DefaultValue": "false",
-    "Description": "Allow clients to use the annotation system on the server.",
+    "Name": "sv_allow_annotations_access_level",
+    "DefaultValue": "0",
+    "Description": "0:off \\| 1: view-only \\| 2: edit.",
     "flags": [
       "sv",
       "cl",
@@ -31999,6 +32469,17 @@
     "DefaultValue": "true",
     "Description": "Whether server supports banid command",
     "flags": [
+      "release"
+    ]
+  },
+  {
+    "Name": "sv_bhop_time_window",
+    "DefaultValue": "0.007812",
+    "Description": "sv_legacy_jump disabled only: The time window (in seconds) around landing where a jump press is considered a bhop attempt.",
+    "flags": [
+      "sv",
+      "cl",
+      "rep",
       "release"
     ]
   },
@@ -32537,7 +33018,7 @@
   {
     "Name": "sv_enablebunnyhopping",
     "DefaultValue": "false",
-    "Description": "Allow player speed to exceed maximum running speed",
+    "Description": "Allow jump speed to exceed 1.1x max speed",
     "flags": [
       "sv",
       "cl",
@@ -32984,7 +33465,7 @@
   {
     "Name": "sv_jump_spam_penalty_time",
     "DefaultValue": "0.015625",
-    "Description": "For subtick jumps, if this much time has elapsed since the last time the user has pressed the jump key, pretend they hadn\u0027t. Lowering this makes bunnyhopping easier.",
+    "Description": "For subtick jumps, if this much time or less has elapsed since the last time the user has pressed the jump key, pretend they hadn\u0027t. Lowering this makes bunnyhopping easier.",
     "flags": [
       "sv",
       "cl",
@@ -33097,6 +33578,17 @@
     "Description": "Allow N late commands to run at 0 timescale prior to running an on-time command. Negative values for network round trip based calculation with a hard cap of the of absolute value",
     "flags": [
       "sv",
+      "release"
+    ]
+  },
+  {
+    "Name": "sv_legacy_jump",
+    "DefaultValue": "false",
+    "Description": "Whether or not to use the pre-2026 jump code.",
+    "flags": [
+      "sv",
+      "cl",
+      "rep",
       "release"
     ]
   },
@@ -33234,7 +33726,7 @@
   },
   {
     "Name": "sv_mapvetopickvote_maps",
-    "DefaultValue": "de_inferno,de_mirage,de_train,de_dust2,de_nuke,de_ancient,de_overpass",
+    "DefaultValue": "de_anubis,de_overpass,de_inferno,de_mirage,de_dust2,de_nuke,de_ancient",
     "Description": "Which maps are used for map veto pick sequence",
     "flags": [
       "sv",
@@ -34449,7 +34941,7 @@
   {
     "Name": "sv_staminajumpcost",
     "DefaultValue": "0.08",
-    "Description": "Stamina penalty for jumping",
+    "Description": "sv_legacy_jump only: Stamina penalty for jumping",
     "flags": [
       "sv",
       "cl",
@@ -34460,7 +34952,7 @@
   {
     "Name": "sv_staminalandcost",
     "DefaultValue": "0.05",
-    "Description": "Stamina penalty for landing",
+    "Description": "sv_legacy_jump only: Stamina penalty for landing",
     "flags": [
       "sv",
       "cl",
@@ -35476,16 +35968,6 @@
     ]
   },
   {
-    "Name": "test_restoreonnewmodel",
-    "DefaultValue": "0",
-    "Description": "",
-    "flags": [
-      "sv",
-      "cl",
-      "rep"
-    ]
-  },
-  {
     "Name": "test_shipping_assert",
     "DefaultValue": "cmd",
     "Description": "Generate an assert to test shipping assertion code",
@@ -35683,6 +36165,14 @@
   {
     "Name": "tools_renderscenes",
     "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "toolscene_gizmo_algorithm",
+    "DefaultValue": "1",
     "Description": "",
     "flags": [
       ""
@@ -36474,7 +36964,7 @@
   },
   {
     "Name": "ui_inspect_bkgnd_map_539CD0B9",
-    "DefaultValue": "de_train",
+    "DefaultValue": "de_nuke",
     "Description": "Inspect background map",
     "flags": [
       "cl",
@@ -36523,7 +37013,7 @@
   },
   {
     "Name": "ui_news_last_read_link",
-    "DefaultValue": "https://www.counter-strike.net/newsentry/578276333072682038",
+    "DefaultValue": "https://www.counter-strike.net/newsentry/511855214544814488",
     "Description": "",
     "flags": [
       "cl",
@@ -36552,7 +37042,7 @@
   },
   {
     "Name": "ui_playsettings_custom_preset",
-    "DefaultValue": "mg_casualalpha",
+    "DefaultValue": "mg_de_anubis,mg_de_overpass,mg_de_inferno,mg_de_mirage,mg_de_dust2,mg_de_nuke,mg_de_ancient,mg_de_vertigo,mg_cs_office",
     "Description": "",
     "flags": [
       "cl",
@@ -36782,7 +37272,7 @@
   },
   {
     "Name": "ui_playsettings_maps_listen_competitive",
-    "DefaultValue": "mg_de_inferno",
+    "DefaultValue": "mg_de_anubis",
     "Description": "",
     "flags": [
       "cl",
@@ -36872,7 +37362,7 @@
   },
   {
     "Name": "ui_playsettings_maps_workshop",
-    "DefaultValue": "@workshop/3240880604/de_dust2_benchmark",
+    "DefaultValue": "@workshop/3124567099/de_inferno_night",
     "Description": "",
     "flags": [
       "cl",
@@ -36892,7 +37382,7 @@
   },
   {
     "Name": "ui_playsettings_mode_official_v20",
-    "DefaultValue": "deathmatch",
+    "DefaultValue": "competitive",
     "Description": "",
     "flags": [
       "cl",
@@ -37035,7 +37525,7 @@
   },
   {
     "Name": "ui_vanitysetting_loadoutslot_ct",
-    "DefaultValue": "smg4",
+    "DefaultValue": "rifle1",
     "Description": "",
     "flags": [
       "cl",
@@ -37909,6 +38399,110 @@
     "Name": "vtune",
     "DefaultValue": "cmd",
     "Description": "Controls VTune\u0027s sampling.",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_batch_size",
+    "DefaultValue": "500",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_batch_submits",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_dedicated_allocation_threshold",
+    "DefaultValue": "512",
+    "Description": "Size (in KBs) above which textures should be allocated in dedicated memory (NV-only).",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_framebuffermgr_print",
+    "DefaultValue": "cmd",
+    "Description": "Prints out stats for the Vulkan Framebuffer manager",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_link_time_optimize_libraries",
+    "DefaultValue": "true",
+    "Description": "",
+    "flags": [
+      "release"
+    ]
+  },
+  {
+    "Name": "vulkan_memgr_fragmentation_print",
+    "DefaultValue": "cmd",
+    "Description": "Prints out detailed memory fragmentation stats for the Vulkan memory manager",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_memgr_print",
+    "DefaultValue": "cmd",
+    "Description": "Prints out stats for the Vulkan memory manager",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_pipeline_compile_spew",
+    "DefaultValue": "false",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_pipeline_compile_throttle_ms",
+    "DefaultValue": "0",
+    "Description": "",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_pipelinemgr_print",
+    "DefaultValue": "cmd",
+    "Description": "Prints out stats for the Vulkan Pipeline manager",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_shader_table_print",
+    "DefaultValue": "cmd",
+    "Description": "Prints out stats for the Vulkan shader table",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_vma_defrag",
+    "DefaultValue": "cmd",
+    "Description": "Force defragmenting memory with VMA",
+    "flags": [
+      ""
+    ]
+  },
+  {
+    "Name": "vulkan_vma_gpu_mem_dump",
+    "DefaultValue": "cmd",
+    "Description": "Dump .json file for use by GpuMemDumpVis.py",
     "flags": [
       ""
     ]
