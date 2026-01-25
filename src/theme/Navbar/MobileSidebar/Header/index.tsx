@@ -31,7 +31,7 @@ export default function NavbarMobileSidebarHeader(): ReactNode {
 
       {/* Discord Link */}
       <a
-        href="https://discord.gg/myserver"
+        href="https://discord.gg/W88PUtQKDY"
         className={clsx(styles.sidebarAction)}
         target="_blank"
         rel="noopener noreferrer"
