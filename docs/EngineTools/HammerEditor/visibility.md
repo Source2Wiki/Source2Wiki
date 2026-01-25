@@ -4,7 +4,7 @@ Also known as "VIS", visibility is a vital part of map optimization as it determ
 :::note
 Precomputed visibility costs map compile time. For rapid iteration and development, you can turn off VIS compilation by setting the "Precomputed Visibility" property in "Map Properties" to "Disabled."
 :::
-In Source 2, the resource compiler uses an inside/outside algorithm to calculate VIS and determine what's "inside" the map. This means that anything inside will render, and anything outside won't.
+In Source 2, the resource compiler uses an inside/outside algorithm to calculate VIS and determine which areas are "inside" the map. This means that anything inside will render, and anything outside won't.
 
 
 ## Leaks
@@ -34,9 +34,27 @@ Use the Visibility contributors view to toggle geometry that doesn't contribute 
 ![visibility-contributors-view](./img/vis_contrib_view.png "Visibility Contributors View")
 
 
+## Best practices & Common Mistakes
+* As noted before, VIS can "leak". To avoid this, seal all level geometry
+  * Try not to have any VIS contributors poke out of your map, as this can have similar behavior to leaks.
+  * Don't place VIS contributors outside of your map. If you want it to be part of your skybox, consider using a 3D Skybox instead.
+* Do not use SkyVisBlocker as it's deprecated. Using toolsskybox instead.
+* Be careful with Solid Blocklight, as it is a VIS contributor. Any outward-facing Solid Blocklight could create VIS clusters on the outside of your map.
+* If developing for a game that uses VIS2, try to keep as many VIS contributors aligned to grid as possible (aligning things to grid is a good practice in general, too). To see the differences between VIS2 and VIS3, see further down.
+
+
+## Helpful VIS entities
+### visibility_hint
+Visibility hint is an entity that lets you control the resolution of the VIS clusters generated within its volume. This can be very beneficial for large open maps that don't have many objects that could block line of sight. Fewer VIS clusters in these areas could allow more to be generated where they're needed more.
+### info_cull_triangles
+info_cull_triangles will remove any triangles that are within its bounds and pass its filters during compile time, which can be especially useful for culling parts of props or geometry that extend outside of level bounds. You may remember that objects poking through your map can cause VIS to misbehave; logic_cull_triangles can potentially help by removing the offending triangles extending outside of your map bounds.
+
+
+## VIS2 vs. VIS3
+Older versions of Source 2, like <Game name="hla"/> and <Game name="steamvr"/> use VIS2, whereas newer versions like <Game name="cs2"/> use VIS3.
+A notable difference between them is that VIS3 handles VIS contributors that are not aligned to grid much better than VIS2.
+
 :::todo
-* Best practices/common mistakes
-* note any disparity between VIS2 and VIS3
-* add accompanying pictures.
-* VIS entities like visibility_hint and info_cull_triangles
+* note any further disparity between VIS2 and VIS3
+* add more accompanying pictures
 :::
