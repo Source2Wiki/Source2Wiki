@@ -106,7 +106,7 @@ input:focus {
 
 .filterIcon
 {
-  color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
   margin-right: 0.25rem;
 }
 
