@@ -146,14 +146,6 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "Enable Collision",
-          "InternalName": "enablecollision",
-          "VariableType": "Bool",
-          "Description": "Constraints disable collision between the attached entities. In some rare cases we want to enable this collision.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
           "FriendlyName": "",
           "InternalName": "spawnflags",
           "VariableType": "Flags",

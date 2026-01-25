@@ -867,7 +867,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {

@@ -164,6 +164,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Use Fast Refresh",
+          "InternalName": "entityUseFastRefreshRate",
+          "VariableType": "Bool",
+          "Description": "Entity will run at a faster refresh rate when enabled.  Use sparingly.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Minimum Distance",
           "InternalName": "distanceMin",
           "VariableType": "Float",
@@ -200,6 +208,14 @@
           "InternalName": "pathCornerEntityName",
           "VariableType": "TargetDestination",
           "Description": "The name of the entity that is at the start of the path",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Enable Path Corner Parenting",
+          "InternalName": "useParentedPath",
+          "VariableType": "Bool",
+          "Description": "Enables the path corner entities to be parented to another entity and update their position accordingly",
           "Options": [],
           "Annotations": []
         }

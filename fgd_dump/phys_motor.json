@@ -232,13 +232,13 @@
         {
           "Name": "SetSpinUpTime",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "SetSpinDownTime",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -250,7 +250,7 @@
         {
           "Name": "SetSystemInertiaScale",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -710,13 +710,13 @@
         {
           "Name": "SetSpinUpTime",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "SetSpinDownTime",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -728,7 +728,7 @@
         {
           "Name": "SetSystemInertiaScale",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

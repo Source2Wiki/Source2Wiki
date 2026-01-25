@@ -164,6 +164,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Use Fast Refresh",
+          "InternalName": "entityUseFastRefreshRate",
+          "VariableType": "Bool",
+          "Description": "Entity will run at a faster refresh rate when enabled.  Use sparingly.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Minimum Distance",
           "InternalName": "distanceMin",
           "VariableType": "Float",

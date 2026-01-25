@@ -386,6 +386,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "AnimGraph2 Identifier",
+          "InternalName": "animgraph2_identifier",
+          "VariableType": "animgraph2identifier",
+          "Description": "Which animgraph should we use when spawning the entity? Animgraph identifiers are authored in modeldoc, see the AnimGraph2 reference node.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Create Client-Only Entity",
           "InternalName": "clientSideEntity",
           "VariableType": "Choices",
@@ -916,7 +924,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {
@@ -2770,6 +2778,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "AnimGraph2 Identifier",
+          "InternalName": "animgraph2_identifier",
+          "VariableType": "animgraph2identifier",
+          "Description": "Which animgraph should we use when spawning the entity? Animgraph identifiers are authored in modeldoc, see the AnimGraph2 reference node.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Create Client-Only Entity",
           "InternalName": "clientSideEntity",
           "VariableType": "Choices",
@@ -3300,7 +3316,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {

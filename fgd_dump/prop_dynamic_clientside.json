@@ -766,6 +766,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "AnimGraph2 Identifier",
+          "InternalName": "animgraph2_identifier",
+          "VariableType": "animgraph2identifier",
+          "Description": "Which animgraph should we use when spawning the entity? Animgraph identifiers are authored in modeldoc, see the AnimGraph2 reference node.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Global Entity Name",
           "InternalName": "globalname",
           "VariableType": "String",
@@ -1321,7 +1329,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {
@@ -1430,18 +1438,6 @@
           "Name": "SetNavIgnore",
           "Description": "Enable and disable NAVIgnore on the prop.",
           "VariableType": "Bool",
-          "Type": "Input"
-        },
-        {
-          "Name": "SetAnimGraphParameter",
-          "Description": "Set an animation graph parameter Format: \u0026lt;name=value\u0026gt;",
-          "VariableType": "String",
-          "Type": "Input"
-        },
-        {
-          "Name": "SetRagdollProfile",
-          "Description": "Sets the active ragdoll profile.",
-          "VariableType": "String",
           "Type": "Input"
         },
         {

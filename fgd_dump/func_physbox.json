@@ -977,7 +977,15 @@
           "FriendlyName": "Buoyancy Scale",
           "InternalName": "buoyancyscale",
           "VariableType": "Float",
-          "Description": "Scale on the buoyancy / fluid forces applied to this object",
+          "Description": "Scale on the buoyancy forces applied to this object (not including fluid drag)",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Fluid Drag Scale",
+          "InternalName": "fluiddragscale",
+          "VariableType": "Float",
+          "Description": "Scale on fluid forces applied to this object (not including buoyancy)",
           "Options": [],
           "Annotations": []
         },

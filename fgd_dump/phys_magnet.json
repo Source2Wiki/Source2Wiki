@@ -275,7 +275,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {
@@ -1076,7 +1076,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {

@@ -127,7 +127,7 @@
           "FriendlyName": "Indirect Light Type",
           "InternalName": "bouncelight",
           "VariableType": "Choices",
-          "Description": "How Indirect (bounce) light should be represented.",
+          "Description": "How indirect (bounce) light should be represented",
           "Options": [
             {
               "Name": "None",

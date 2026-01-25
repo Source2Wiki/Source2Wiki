@@ -264,25 +264,25 @@
         {
           "Name": "Teleport",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "TeleportToCurrentPos",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "TeleportEntity",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "TeleportEntityToCurrentPos",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         }
       ]
@@ -810,25 +810,25 @@
         {
           "Name": "Teleport",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "TeleportToCurrentPos",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "TeleportEntity",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "TeleportEntityToCurrentPos",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         }
       ]

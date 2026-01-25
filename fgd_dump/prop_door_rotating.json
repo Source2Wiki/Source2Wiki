@@ -600,7 +600,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {
@@ -853,6 +853,18 @@
           "Name": "SetNoNPCs",
           "Description": "Set whether NPCs can use this door or not.",
           "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetUnbreakable",
+          "Description": "Disable breaking.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetBreakable",
+          "Description": "Reenable breaking.",
+          "VariableType": "Void",
           "Type": "Input"
         }
       ]

@@ -582,6 +582,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "AnimGraph2 Identifier",
+          "InternalName": "animgraph2_identifier",
+          "VariableType": "animgraph2identifier",
+          "Description": "Which animgraph should we use when spawning the entity? Animgraph identifiers are authored in modeldoc, see the AnimGraph2 reference node.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Create Client-Only Entity",
           "InternalName": "clientSideEntity",
           "VariableType": "Choices",
@@ -997,6 +1005,11 @@
               "Name": "Non-Solid, Server-side",
               "Description": "",
               "Key": "2"
+            },
+            {
+              "Name": "Non-Solid, Client-side",
+              "Description": "",
+              "Key": "3"
             }
           ],
           "Annotations": []
@@ -1201,7 +1214,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {
@@ -2100,6 +2113,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "AnimGraph2 Identifier",
+          "InternalName": "animgraph2_identifier",
+          "VariableType": "animgraph2identifier",
+          "Description": "Which animgraph should we use when spawning the entity? Animgraph identifiers are authored in modeldoc, see the AnimGraph2 reference node.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Create Client-Only Entity",
           "InternalName": "clientSideEntity",
           "VariableType": "Choices",
@@ -2515,6 +2536,11 @@
               "Name": "Non-Solid, Server-side",
               "Description": "",
               "Key": "2"
+            },
+            {
+              "Name": "Non-Solid, Client-side",
+              "Description": "",
+              "Key": "3"
             }
           ],
           "Annotations": []
@@ -2650,7 +2676,7 @@
         {
           "Name": "OnDestructibleHitGroupDamageLevelChanged",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {

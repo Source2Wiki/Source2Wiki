@@ -833,19 +833,19 @@
         {
           "Name": "ForceSpawn",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "DeleteCreatedSpawnGroups",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "OnEntitySpawned",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         }
       ]
@@ -2428,19 +2428,19 @@
         {
           "Name": "ForceSpawn",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "DeleteCreatedSpawnGroups",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "OnEntitySpawned",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         }
       ]

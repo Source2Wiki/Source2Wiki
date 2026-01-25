@@ -182,31 +182,31 @@
         {
           "Name": "Trigger",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "Toggle",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "CancelPending",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "OnSpawn",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {
           "Name": "OnTrigger",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         }
       ]
@@ -596,31 +596,31 @@
         {
           "Name": "Trigger",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "Toggle",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "CancelPending",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
           "Name": "OnSpawn",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         },
         {
           "Name": "OnTrigger",
           "Description": "",
-          "VariableType": "Cpp",
+          "VariableType": "api",
           "Type": "Output"
         }
       ]
