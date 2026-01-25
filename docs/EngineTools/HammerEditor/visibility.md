@@ -24,7 +24,7 @@ Some tools materials contribute to your map's VIS. These include:
 ## Debugging VIS
 There are a few console commands that can help debug the compiled VIS in your map.
 * `vis_enable` 0/1		|		Toggle the visibility system.
-* `sc_no_vis` 0/1 | Similar behavior to vis_enable; toggles VIS
+* `sc_no_vis` 0/1     | Similar behavior to vis_enable; toggles VIS
 * `sc_aggregate_gpu_culling` 0/1 | In <Game name="cs2"/>, toggles GPU culling
 * `vis_debug_show`		|		This will show the compiled VIS clusters in your map; it's an in-game representation of "Load Compiled Vis Data" in Hammer
 * `vis_debug_lock`		|		Locks the VIS to the current state when you sent the command.
