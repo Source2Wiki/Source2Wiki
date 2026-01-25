@@ -54,7 +54,7 @@ info_cull_triangles will remove any triangles that are within its bounds and pas
 Older versions of Source 2, like <Game name="hla"/> and <Game name="steamvr"/> use VIS2, whereas newer versions like <Game name="cs2"/> use VIS3.
 Notable differences between them are:
 * VIS3 handles VIS contributors that are not aligned to grid much better than VIS2
-* Meshlets, which are meshes split into 128 triangle chunks that get culled on the GPU
+* VIS3 compiles meshlets, which are meshes split into 128 triangle chunks that get culled on the GPU
 
 :::todo
 * note any further disparity between VIS2 and VIS3
