@@ -29,7 +29,6 @@ const config: Config = {
   trailingSlash: false,
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -108,6 +107,12 @@ const config: Config = {
       }),
     },
   ],
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownImages: 'throw',
+    },
+  },
   themeConfig: {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
