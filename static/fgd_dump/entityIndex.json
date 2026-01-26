@@ -5923,6 +5923,15 @@
     ]
   },
   {
+    "Classname": "snd_event_cone",
+    "Description": "",
+    "Icon": "/fgd_dump/img/dota2/snd_event_cone.png",
+    "Games": [
+      "cs2",
+      "dota2"
+    ]
+  },
+  {
     "Classname": "snd_event_orientedbox",
     "Description": "Plays a sound event from a point closest to the player on the box.",
     "Icon": "/fgd_dump/img/dota2/snd_event_orientedbox.png",
