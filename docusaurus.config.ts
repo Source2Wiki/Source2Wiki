@@ -207,6 +207,10 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    future: {
+      v4: true, // opt-in for Docusaurus v4 planned changes
+      experimental_faster: true, // turns Docusaurus Faster on globally
+    },
     metadata: [
       { name: 'description', content: 'A community driven documentation for everything Source2.' },
       { name: 'keywords', content: 'source2, wiki, source2wiki' },
