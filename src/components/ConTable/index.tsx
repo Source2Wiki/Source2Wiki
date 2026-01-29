@@ -5,9 +5,14 @@ import steamvr_data from '@site/con_dump/condump_steamvr.json'
 import dota2_data from '@site/con_dump/condump_dota2.json'
 import styles from './styles.module.css';
 import clsx from "clsx";
+import DateRender from "@site/src/components/DateRenderer";
 
 interface ConTableProps {
   game?: string;
+}
+interface ConDump{
+  Timestamp: number,
+  Entries: ConEntry[]
 }
 
 interface ConEntry {
@@ -48,11 +53,14 @@ const ConTable: React.FC<ConTableProps> = ({ game }) => {
     return returnString;
   }
   
-  const conData: ConEntry[] = useMemo(() => getConDataForGame(game), [game]);;
+  const conData = useMemo(() => getConDataForGame(game), [game]) as ConDump;
   const [searchTerm, setSearchTerm] = useState('');
   
   const filteredConData = useMemo(() => {
-    let filtered = conData;
+    
+    if (!conData || !conData.Entries) return [];
+
+    let filtered = conData.Entries;
     
     // Filter by search term
     if (searchTerm.trim()) {
@@ -80,8 +88,13 @@ const ConTable: React.FC<ConTableProps> = ({ game }) => {
         </div>
       ) : (
         <>
-          <div className={styles.resultsCount}>
-            Showing {filteredConData.length} of {conData.length} console variables/commands
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'nowrap'}}>
+            <div className={styles.resultsCount}>
+              Showing {filteredConData.length} of {conData.Entries.length} console variables/commands
+            </div>
+            <div style = {{textAlign: 'right',}}>
+              Last updated: <DateRender unix={conData.Timestamp} />
+            </div>
           </div>
           
           <table className={styles.table}>
