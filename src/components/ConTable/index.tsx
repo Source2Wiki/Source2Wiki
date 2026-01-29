@@ -92,7 +92,7 @@ const ConTable: React.FC<ConTableProps> = ({ game }) => {
             <div className={styles.resultsCount}>
               Showing {filteredConData.length} of {conData.Entries.length} console variables/commands
             </div>
-            <div style = {{textAlign: 'right',}}>
+            <div className={styles.resultsCount} style = {{textAlign: 'right',}}>
               Last updated: <DateRender unix={conData.Timestamp} />
             </div>
           </div>

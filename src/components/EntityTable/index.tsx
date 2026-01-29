@@ -1,10 +1,12 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import entityData from '/fgd_dump/entityIndex.json';
+import timestampData from '@site/fgd_dump/timestamp.json';
 import { Games } from '@site/src/constants/software';
 import styles from './styles.module.css';
 import clsx from "clsx";
 import Link from '@docusaurus/Link';
 import { useLocation } from '@docusaurus/router';
+import DateRender from "@site/src/components/DateRenderer";
 
 interface Entity {
   Classname: string;
@@ -187,9 +189,14 @@ const EntityTable: React.FC = () => {
         </div>
       ) : (
         <>
-          <div className={styles.resultsCount}>
-            Showing {filteredEntities.length} of {entities.length} entities
-          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'nowrap'}}>
+            <div className={styles.resultsCount}>
+              Showing {filteredEntities.length} of {entities.length} entities
+            </div>
+            <div className={styles.resultsCount} style = {{textAlign: 'right'}}>
+              Last updated: <DateRender unix={timestampData} />
+            </div>
+           </div>
           
           <table className={styles.table}>
             <thead>
