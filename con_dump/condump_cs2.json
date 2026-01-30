@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1769723929,
+  "Timestamp": 1769733769,
   "Entries": [
     {
       "Name": "_fov",
@@ -13073,6 +13073,16 @@
       ]
     },
     {
+      "Name": "host_writeconfig_with_prompt",
+      "DefaultValue": "cmd",
+      "Description": "Write settings if user agrees",
+      "flags": [
+        "cl",
+        "release",
+        "server_can_execute"
+      ]
+    },
+    {
       "Name": "hostage_debug",
       "DefaultValue": "0",
       "Description": "Show hostage AI debug information",
@@ -22760,7 +22770,7 @@
     },
     {
       "Name": "player_competitive_maplist_8_10_0_C512DEBE",
-      "DefaultValue": "mg_de_anubis,mg_de_overpass,mg_de_inferno,mg_de_mirage,mg_de_dust2,mg_de_nuke,mg_de_ancient,mg_de_vertigo,mg_cs_office",
+      "DefaultValue": "mg_de_mirage,mg_de_overpass,mg_de_vertigo,mg_de_ancient,mg_de_inferno,mg_de_nuke,mg_de_anubis,mg_de_dust2,mg_cs_office",
       "Description": "",
       "flags": [
         "cl",
