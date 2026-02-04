@@ -20,6 +20,7 @@ interface ConEntry {
   DefaultValue: string
   Description: string;
   flags: string[];
+  Cs2WorkshopWhitelisted: boolean
 }
 const ConTable: React.FC<ConTableProps> = ({ game }) => {
   const getConDataForGame = (gameKey?: string) => {
@@ -55,6 +56,7 @@ const ConTable: React.FC<ConTableProps> = ({ game }) => {
   
   const conData = useMemo(() => getConDataForGame(game), [game]) as ConDump;
   const [searchTerm, setSearchTerm] = useState('');
+  const [showWorkshopWhitelistedOnly, setShowWorkshopWhitelistedOnly] = useState(false);
   
   const filteredConData = useMemo(() => {
     
@@ -69,8 +71,13 @@ const ConTable: React.FC<ConTableProps> = ({ game }) => {
       );
     }
     
+    // Filter by workshop whitelisted (CS2 only)
+    if (game === 'cs2' && showWorkshopWhitelistedOnly) {
+      filtered = filtered.filter(conData => conData.Cs2WorkshopWhitelisted === true);
+    }
+    
     return filtered;
-  }, [conData, searchTerm]);
+  }, [conData, searchTerm, showWorkshopWhitelistedOnly, game]);
 
   return (
     <div className={styles.table}>
@@ -81,6 +88,17 @@ const ConTable: React.FC<ConTableProps> = ({ game }) => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+        {game === 'cs2' && (
+          <label style={{ marginLeft: '15px', display: 'inline-flex', alignItems: 'center', cursor: 'pointer' }}>
+            <input
+              type="checkbox"
+              checked={showWorkshopWhitelistedOnly}
+              onChange={(e) => setShowWorkshopWhitelistedOnly(e.target.checked)}
+              style={{ marginRight: '5px', cursor: 'pointer' }}
+            />
+            Workshop Whitelisted Only
+          </label>
+        )}
       </div>
       {filteredConData.length === 0 ? (
         <div className={styles.noResults}>
