@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1770290320,
+  "Timestamp": 1770293514,
   "ToolMaterials": [
     {
       "Name": "materials/tools_postprocess_volume.vmat",
@@ -17,14 +17,10 @@
       ]
     },
     {
-      "Name": "materials/tools/climb.vmat",
+      "Name": "materials/tools/climb_versus.vmat",
       "TexturePath": "static/tooltex_dump/img\\steamvr\\climb_color_tga_b223a265.png",
       "Description": "",
       "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
         {
           "Name": "mapbuilder.passbullets",
           "Value": 1
@@ -44,10 +40,14 @@
       ]
     },
     {
-      "Name": "materials/tools/climb_versus.vmat",
+      "Name": "materials/tools/climb.vmat",
       "TexturePath": "static/tooltex_dump/img\\steamvr\\climb_color_tga_b223a265.png",
       "Description": "",
       "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
         {
           "Name": "mapbuilder.passbullets",
           "Value": 1
@@ -405,25 +405,6 @@
       ]
     },
     {
-      "Name": "materials/tools/toolsnodraw.vmat",
-      "TexturePath": "static/tooltex_dump/img\\steamvr\\toolsnodraw_color_tga_e2430b46.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.acceptvis",
-          "Value": 1
-        },
-        {
-          "Name": "tools.tilebase",
-          "Value": 1
-        }
-      ]
-    },
-    {
       "Name": "materials/tools/toolsnodraw_bounce.vmat",
       "TexturePath": "static/tooltex_dump/img\\steamvr\\toolsnodraw_color_tga_e2430b46.png",
       "Description": "",
@@ -464,6 +445,25 @@
       "Attributes": [
         {
           "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw.vmat",
+      "TexturePath": "static/tooltex_dump/img\\steamvr\\toolsnodraw_color_tga_e2430b46.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        },
+        {
+          "Name": "tools.tilebase",
           "Value": 1
         }
       ]

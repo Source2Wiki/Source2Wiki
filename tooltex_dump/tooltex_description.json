@@ -20,7 +20,7 @@
     "materials/tools/toolswhite.vmat": "Max white texture, ignores fog or other effects",
     "materials/tools/toolsinvisible.vmat": "Same as a clip, but solid to bullets",
     "materials/tools/toolsinvisibleladder.vmat": "A climbable ladder",
-    "materials/tools/toolsinvisibleladder_wood.vmat": "A climbable ladder, with wooded climbing sounds",
+    "materials/tools/toolsinvisibleladder_wood.vmat": "A climbable ladder, with wooden climbing sounds",
     "materials/tools/toolsblocklight.vmat": "Blocks static and dynamic light",
     "materials/tools/toolssolidblocklight.vmat": "Blocks static and dynamic light and also compiles into the physics mesh, will affect VIS",
     "materials/tools/toolstrigger.vmat": "Used for all trigger meshes, usually applied automatically by Hammer",

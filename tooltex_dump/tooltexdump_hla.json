@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1770290311,
+  "Timestamp": 1770293505,
   "ToolMaterials": [
     {
       "Name": "materials/tools_postprocess_volume.vmat",
@@ -32,14 +32,10 @@
       ]
     },
     {
-      "Name": "materials/tools/climb.vmat",
+      "Name": "materials/tools/climb_versus.vmat",
       "TexturePath": "static/tooltex_dump/img\\hla\\climb_color_tga_b223a265.png",
       "Description": "",
       "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
         {
           "Name": "mapbuilder.passbullets",
           "Value": 1
@@ -59,10 +55,14 @@
       ]
     },
     {
-      "Name": "materials/tools/climb_versus.vmat",
+      "Name": "materials/tools/climb.vmat",
       "TexturePath": "static/tooltex_dump/img\\hla\\climb_color_tga_b223a265.png",
       "Description": "",
       "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
         {
           "Name": "mapbuilder.passbullets",
           "Value": 1
@@ -420,25 +420,6 @@
       ]
     },
     {
-      "Name": "materials/tools/toolsnodraw.vmat",
-      "TexturePath": "static/tooltex_dump/img\\hla\\toolsnodraw_color_tga_e2430b46.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.acceptvis",
-          "Value": 1
-        },
-        {
-          "Name": "tools.tilebase",
-          "Value": 1
-        }
-      ]
-    },
-    {
       "Name": "materials/tools/toolsnodraw_bounce.vmat",
       "TexturePath": "static/tooltex_dump/img\\hla\\toolsnodraw_color_tga_e2430b46.png",
       "Description": "",
@@ -485,6 +466,25 @@
     },
     {
       "Name": "materials/tools/toolsnodraw_wood.vmat",
+      "TexturePath": "static/tooltex_dump/img\\hla\\toolsnodraw_color_tga_e2430b46.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        },
+        {
+          "Name": "tools.tilebase",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw.vmat",
       "TexturePath": "static/tooltex_dump/img\\hla\\toolsnodraw_color_tga_e2430b46.png",
       "Description": "",
       "Attributes": [

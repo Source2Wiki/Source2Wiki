@@ -1,21 +1,6 @@
 {
-  "Timestamp": 1770290306,
+  "Timestamp": 1770293499,
   "ToolMaterials": [
-    {
-      "Name": "materials/tools_postprocess_volume.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\postprocessingvolume_color_tga_8a321f49.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.nonsolid",
-          "Value": 1
-        }
-      ]
-    },
     {
       "Name": "materials/effects/metalfence007a.vmat",
       "TexturePath": "static/tooltex_dump/img\\cs2\\metalfence007a_color_tga_e88ff756.png",
@@ -32,51 +17,8 @@
       ]
     },
     {
-      "Name": "materials/tools/toolsblockbomb.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblockbomb_color_psd_faa829d9.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        }
-      ]
-    },
-    {
-      "Name": "materials/tools/toolsblockbullets_cs.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblockbullets_color_tga_ffba2183.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        }
-      ]
-    },
-    {
-      "Name": "materials/tools/toolsgrenadeclip.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsgrenadeclip_color_psd_e0b4a5f0.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
-        {
-          "Name": "physics.nodefaultsimplification",
-          "Value": 1
-        }
-      ]
-    },
-    {
-      "Name": "materials/tools/wrongway_timer.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\wrongway_timer_color_psd_9d22eb85.png",
-      "Description": "",
-      "Attributes": []
-    },
-    {
-      "Name": "materials/tools/tools_cs_place.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\tools_cs_place_color_psd_f72a1cdf.png",
+      "Name": "materials/tools_postprocess_volume.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\postprocessingvolume_color_tga_8a321f49.png",
       "Description": "",
       "Attributes": [
         {
@@ -85,25 +27,6 @@
         },
         {
           "Name": "mapbuilder.nonsolid",
-          "Value": 1
-        }
-      ]
-    },
-    {
-      "Name": "materials/tools/toolsinvisibleladder_wood.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsinvisibleladder_color_tga_fb679ea2.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.ladder",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.passbullets",
           "Value": 1
         }
       ]
@@ -154,6 +77,29 @@
       ]
     },
     {
+      "Name": "materials/tools/climb_versus.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\climb_color_tga_b223a265.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.infectedladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.ladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.team",
+          "Value": 2
+        }
+      ]
+    },
+    {
       "Name": "materials/tools/climb.vmat",
       "TexturePath": "static/tooltex_dump/img\\cs2\\climb_color_tga_b223a265.png",
       "Description": "",
@@ -168,29 +114,6 @@
         },
         {
           "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.passbullets",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.team",
-          "Value": 2
-        }
-      ]
-    },
-    {
-      "Name": "materials/tools/climb_versus.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\climb_color_tga_b223a265.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.infectedladder",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.ladder",
           "Value": 1
         },
         {
@@ -289,6 +212,21 @@
       ]
     },
     {
+      "Name": "materials/tools/tools_cs_place.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\tools_cs_place_color_psd_f72a1cdf.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
       "Name": "materials/tools/tools_func_occluder.vmat",
       "TexturePath": "static/tooltex_dump/img\\cs2\\func_occluder_color_tga_8e9baedf.png",
       "Description": "",
@@ -346,6 +284,28 @@
           "Name": "mapbuilder.blocklos",
           "Value": 1
         },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblockbomb.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblockbomb_color_psd_faa829d9.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblockbullets_cs.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblockbullets_color_tga_ffba2183.png",
+      "Description": "",
+      "Attributes": [
         {
           "Name": "mapbuilder.nodraw",
           "Value": 1
@@ -451,6 +411,21 @@
       ]
     },
     {
+      "Name": "materials/tools/toolsgrenadeclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsgrenadeclip_color_psd_e0b4a5f0.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "physics.nodefaultsimplification",
+          "Value": 1
+        }
+      ]
+    },
+    {
       "Name": "materials/tools/toolsignorecharacter.vmat",
       "TexturePath": "static/tooltex_dump/img\\cs2\\toolsignorecharacter_color_tga_c5ab65e5.png",
       "Description": "",
@@ -483,6 +458,25 @@
         },
         {
           "Name": "mapbuilder.npcclip",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsinvisibleladder_wood.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsinvisibleladder_color_tga_fb679ea2.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.ladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
           "Value": 1
         },
         {
@@ -620,25 +614,6 @@
       ]
     },
     {
-      "Name": "materials/tools/toolsnodraw.vmat",
-      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.acceptvis",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        },
-        {
-          "Name": "tools.tilebase",
-          "Value": 1
-        }
-      ]
-    },
-    {
       "Name": "materials/tools/toolsnodraw_bounce.vmat",
       "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
       "Description": "",
@@ -704,6 +679,25 @@
     },
     {
       "Name": "materials/tools/toolsnodraw_wood.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "tools.tilebase",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw.vmat",
       "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
       "Description": "",
       "Attributes": [
@@ -899,6 +893,12 @@
           "Value": 1
         }
       ]
+    },
+    {
+      "Name": "materials/tools/wrongway_timer.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\wrongway_timer_color_psd_9d22eb85.png",
+      "Description": "",
+      "Attributes": []
     },
     {
       "Name": "materials/tools/wrongway.vmat",
