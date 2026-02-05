@@ -2,8 +2,8 @@
     "explanation": "Enter the name of the tool texture, followed by its description, this file will set that description globally",
 
     "materials/tools_postprocess_volume.vmat": "Used for Post Processing Volume entities, usually applied automatically by Hammer",
-    "materials/tools/toolsclip.vmat": "Will only block NPCs",
-    "materials/tools/toolsnpcclip.vmat": "General purpose clip, blocks players, physics objects, and NPCs, compiles into the physics mesh only",
+    "materials/tools/toolsnpcclip.vmat": "Will only block NPCs",
+    "materials/tools/toolsclip.vmat": "General purpose clip, blocks players, physics objects, and NPCs, compiles into the physics mesh only",
     "materials/tools/toolsgrenadeclip.vmat": "Blocks grenades, use it to smooth out surfaces players might try to bounce grenades off of in order to make the bounce more predictable, will not block the explosion of the grenade",
     "materials/tools/toolsplayerclip.vmat": "Same as clip, but only blocks players",
     "materials/tools/toolsnavclip.vmat": "Blocks NAV mesh from generating",
