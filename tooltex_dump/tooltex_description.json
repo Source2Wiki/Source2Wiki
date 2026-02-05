@@ -26,7 +26,7 @@
     "materials/tools/toolstrigger.vmat": "Used for all trigger meshes, usually applied automatically by Hammer",
     "materials/tools/toolslightmapres.vmat": "Used to denote which parts of the map should have higher lightmap resolution, for a guide go here: <a href='/EngineTools/HammerEditor/Lighting/lightmapPlayerSpace'>Using Lightmap Player Space</a>",
     "materials/tools/visblocker.vmat": "Blocks VIS, will not be compiled into the finished map, it will only interact with VIS",
-    "materials/tools/toolsskybox.vmat": "Used for sealing the level, sunlight casts from this, and VIS clusters will have reduced resolution near it",
+    "materials/tools/toolsskybox.vmat": "Used for sealing the level, blocks VIS, the VIS clusters near it will have reduced resolution",
     "materials/tools/wrongway.vmat": "Used to denote a blocked path, previously used in Counter-Strike Wingman",
     "materials/tools/toolsblockbullets.vmat": "Bullet blocker"
 }
