@@ -1,0 +1,8 @@
+{
+  "explanation": "Enter the name of the tool texture, followed by its description, this file will set that description for the specific game, overriding the global one if it exists",
+  "materials/example.vmat": "example description",
+
+  "materials/tools/toolsblockbullets_cs.vmat": "Counter-Strike specific bullet blocker",
+  "materials/tools/toolsclip.vmat": "General purpose clip, blocks players, physics objects, and NPCs, compiles into the physics mesh only, in CS2 it will take on the footstep sounds of the mesh below it",
+  "materials/tools/toolsblockbomb.vmat": "Legacy tool material, do not use, use normal clip and trigger_bomb_reset to block the C4 item instead"
+}

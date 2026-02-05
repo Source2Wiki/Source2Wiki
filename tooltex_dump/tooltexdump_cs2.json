@@ -1,0 +1,910 @@
+{
+  "Timestamp": 1770290306,
+  "ToolMaterials": [
+    {
+      "Name": "materials/tools_postprocess_volume.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\postprocessingvolume_color_tga_8a321f49.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/effects/metalfence007a.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\metalfence007a_color_tga_e88ff756.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblockbomb.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblockbomb_color_psd_faa829d9.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblockbullets_cs.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblockbullets_color_tga_ffba2183.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsgrenadeclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsgrenadeclip_color_psd_e0b4a5f0.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "physics.nodefaultsimplification",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/wrongway_timer.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\wrongway_timer_color_psd_9d22eb85.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/tools_cs_place.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\tools_cs_place_color_psd_f72a1cdf.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsinvisibleladder_wood.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsinvisibleladder_color_tga_fb679ea2.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.ladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools_postprocess_volume.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\postprocessingvolume_color_tga_20b3d223.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/audioblocker.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\audioblocker_color_psd_2d0add33.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.detail",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/audiomodifier.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\audiomodifier_color_tga_15a1e827.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/climb.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\climb_color_tga_b223a265.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.infectedladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.ladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.team",
+          "Value": 2
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/climb_versus.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\climb_color_tga_b223a265.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.infectedladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.ladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.team",
+          "Value": 2
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/fogvolume.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\fogvolume_color_tga_15afa615.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/grid_overlay.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\grid_overlay_color_tga_3a7ac567.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/hlmv_ground.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\hlmv_ground_color_tga_49be2e09.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/modeldoc_default_mesh.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\modeldoc_default_mesh_vmat_g_tcolor_8cdd07fd.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/preview_plane_mat.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\preview_plane_tex_color_tga_b449c8a8.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/skyvisblocker.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\skyvisblocker_color_tga_f8bb59d0.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.sky",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.visblocker",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/static_overlay_base.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\static_overlay_base_vmat_g_tcolor_792c1a15.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/static_overlay_helper.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\static_overlay_trans_psd_3f7bfa44.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/tools_conveyor.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\tools_conveyor_color_psd_7f1c95ca.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/tools_func_occluder.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\func_occluder_color_tga_8e9baedf.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.donotcollapse",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.occluder",
+          "Value": 1
+        },
+        {
+          "Name": "nocollision",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/tools_spawn_volume.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\tools_spawn_volume_color_psd_cf616ff3.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblack.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblack_color_tga_a77947cd.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblock_los.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblock_los_color_tga_86f40585.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.blocklos",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblockbullets.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblockbullets_color_tga_f5ea4b54.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblocklight.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblocklight_color_tga_8b58e5dd.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.blocklight",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.detail",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsblocksound.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsblocksound_color_png_3d4f675a.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.blocksound",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsclip_color_tga_45a33376.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.npcclip",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.playerclip",
+          "Value": 1
+        },
+        {
+          "Name": "physics.nodefaultsimplification",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolscontrolclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolscontrolclip_color_tga_104e6095.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.playercontrolclip",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsfog.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsfog_color_tga_7b8dd86d.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.fog",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsignorecharacter.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsignorecharacter_color_tga_c5ab65e5.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsignorenpc.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsignorenpc_color_tga_719bfdd6.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsinvisible.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsinvisible_color_tga_dc3f6c04.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.npcclip",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsinvisibleladder.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsinvisibleladder_color_tga_dd58c82d.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.ladder",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.npcclip",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.playerclip",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolslightmapres.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolslightmapres_color_tga_3915f391.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "tools.lightmapres",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolslightprobevolume.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolslightprobevolume_color_png_fb40b780.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolslightvolumeboundary.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolslightvolumeboundary_color_tga_c91e9308.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "tools.light_volume_boundary",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsmarkupvolumeai.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsmarkupvolumeai_color_tga_af9fd5a2.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnavattribute.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\nav_attribute_color_psd_b7968921.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnavclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnavclip_color_tga_f410a87c.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.navclip",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnavspaceclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\nav_space_clip_color_psd_95365729.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.navspaceclip",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "tools.tilebase",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw_bounce.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw_grate.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_grate_color_tga_5d625ff0.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.passbullets",
+          "Value": 1
+        },
+        {
+          "Name": "tools.tilebase",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw_metal.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_metal_color_tga_f516a536.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw_plastic.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "tools.tilebase",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnodraw_wood.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnodraw_color_tga_e2430b46.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.acceptvis",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "tools.tilebase",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsnpcclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsnpcclip_color_tga_5bd18b4b.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.npcclip",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsoccluder.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\occluder_color_tga_a26e7ef1.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.donotcollapse",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.occluder",
+          "Value": 1
+        },
+        {
+          "Name": "nocollision",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsotherclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsotherclip_color_tga_4ed212ab.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.otherclip",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsplayerclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsplayerclip_color_tga_4e6839a6.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.playerclip",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsprecipitation.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsprecipitation_color_tga_2d4e6ae7.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsskip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsskip_color_tga_e3aac8ce.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsskybox.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsskybox_color_tga_e746091d.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.sky",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolssolidblocklight.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\tools_solid_block_light_psd_d308939f.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.blocklight",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolsteleportclip.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolsteleportclip_color_tga_f3f3a4d8.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.teleportclip",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolstrigger.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\toolstrigger_color_tga_b18dbc82.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolswhite.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\primary_white_color_tga_f7b257f6.png",
+      "Description": "",
+      "Attributes": []
+    },
+    {
+      "Name": "materials/tools/visblocker.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\visblocker_color_tga_a54e9912.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.visblocker",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/wrongway.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\wrongway_color_tga_e92fd774.png",
+      "Description": "",
+      "Attributes": []
+    }
+  ]
+}

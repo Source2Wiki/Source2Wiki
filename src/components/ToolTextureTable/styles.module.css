@@ -1,0 +1,60 @@
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  vertical-align: top;
+  padding: 8px;
+  max-width: 0;
+}
+
+/* need to set specific widths for each column otherwise its shit */
+.table th:nth-child(1), /* texture */
+.table td:nth-child(1) {
+  width: 5%;
+  min-width: 145px;
+}
+
+.table th:nth-child(2), /* description */
+.table td:nth-child(2) {
+  width: 30%;
+  min-width: 200px;
+}
+
+.table th:nth-child(3), /* defaultValue */
+.table td:nth-child(3) {
+  width: 40%;
+  min-width: 200px;
+}
+
+.table th:nth-child(4), /* flags */
+.table td:nth-child(4) {
+  width: 25%;
+  min-width: 100px;
+}
+
+.resultsCount {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  margin-bottom: 16px;
+  padding-top: 16px;
+  flex-wrap: wrap;
+  background-color: var(--ifm-background-color);
+}
+
+.attributeList {
+  padding-left: 1rem !important; /* Force remove any inherited padding */
+}

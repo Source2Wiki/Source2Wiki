@@ -1,0 +1,5 @@
+{
+  "explanation": "Enter the name of the tool texture, followed by its description, this file will set that description for the specific game, overriding the global one if it exists",
+
+  "materials/example.vmat": "example description"
+}
