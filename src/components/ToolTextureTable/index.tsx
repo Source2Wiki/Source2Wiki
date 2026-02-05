@@ -121,7 +121,7 @@ const ToolTexTable: React.FC<ToolTexTableProps> = ({ game }) =>{
         A searchable list of every tool texture in every Source2 game.
       </div>
       <div>
-        All tool textures containt the <code className={styles.code}>tools.toolsmaterial</code> material attribute, as such it has been omitted from the attribute list.
+        All tool textures contain the <code className={styles.code}>tools.toolsmaterial</code> material attribute, as such it has been omitted from the attribute list.
       </div>
       <div className={styles.searchBox}>
         <input 
