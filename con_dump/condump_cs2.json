@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1770212086,
+  "Timestamp": 1770272317,
   "Entries": [
     {
       "Name": "_fov",
@@ -2331,7 +2331,7 @@
         "nf",
         "cheat"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "buddha_ignore_bots",
@@ -2353,7 +2353,7 @@
         "nf",
         "cheat"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "bug_submitter_override",
@@ -2565,7 +2565,7 @@
       "flags": [
         "sv"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "cam_collision",
@@ -5347,7 +5347,7 @@
         "cl",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "cl_fullupdate",
@@ -5781,7 +5781,7 @@
         "a",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "cl_hud_telemetry_net_detailed",
@@ -13041,7 +13041,7 @@
         "a",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "fps_max_tools",
@@ -16757,7 +16757,7 @@
         "norecord",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "log_dumpchannels",
@@ -18883,7 +18883,7 @@
         "sv",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "mp_endmatch_votenextmap",
@@ -18895,7 +18895,7 @@
         "rep",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "mp_endmatch_votenextmap_keepcurrent",
@@ -18907,7 +18907,7 @@
         "rep",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "mp_endmatch_votenextmap_wargames_modes",
@@ -24253,7 +24253,7 @@
         "sv",
         "cheat"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "noclip_fixup",
@@ -35274,7 +35274,7 @@
         "cheat",
         "vconsole_fuzzy"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "surf_speed_fast",
