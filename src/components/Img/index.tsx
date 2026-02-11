@@ -24,7 +24,6 @@ export default function Img({ src, alt, ...props }: ImgProps) {
     <div style={{ 
       display: 'flex', 
       justifyContent: 'left',
-      margin: '1rem 0'
     }}>
       <img 
         {...props}
@@ -32,9 +31,8 @@ export default function Img({ src, alt, ...props }: ImgProps) {
         alt={displayAlt}
         style={{ 
           maxWidth,
-          width: '100%',
+          width: 'auto',
           height: 'auto',
-          borderRadius: '8px',
         }} 
       />
     </div>
