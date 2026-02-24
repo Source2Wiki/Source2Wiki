@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1770272317,
+  "Timestamp": 1771972362,
   "Entries": [
     {
       "Name": "_fov",
@@ -1874,6 +1874,16 @@
       "Name": "bot_debug_target",
       "DefaultValue": "0",
       "Description": "For internal testing purposes.",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "bot_defense_rush_chance",
+      "DefaultValue": "33",
+      "Description": "Are the defense bots going to rush.",
       "flags": [
         "sv",
         "cheat"
@@ -13553,6 +13563,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "gamma_to_linear",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "gc_secret_key",
       "DefaultValue": "0",
       "Description": "Secret key for authenticating with the GC",
@@ -13903,6 +13922,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "gizmo_rot_max_dist",
+      "DefaultValue": "8",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "gl_clear",
       "DefaultValue": "true",
       "Description": "",
@@ -14000,8 +14028,152 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_add_edge_fade_size",
+      "DefaultValue": "8 8 8",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_analytic_grid",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_analytic_grid_transparent",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_cubemap_debug_colors",
+      "DefaultValue": "cmd",
+      "Description": "Bakes all cubemaps with distinct solid colors, for debugging purposes",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_bake_cubemaps",
+      "DefaultValue": "true",
+      "Description": "Should we bake cubemaps?",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_bake_light_probe_volumes",
+      "DefaultValue": "true",
+      "Description": "Should we bake light probe volumes?",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_bake_vertex_lighting",
+      "DefaultValue": "true",
+      "Description": "Should we bake vertex lighting?",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_debug_path_trace_scene_info_from_build",
+      "DefaultValue": "false",
+      "Description": "Load debug_path_trace_scene_info.dat for RT baked lighting visualization instead of using the current map.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_sample_smoothing",
+      "DefaultValue": "0",
+      "Description": "Smoothing amount, if != 0, smooths lighting at vertex.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_samples_per_triangle_error",
+      "DefaultValue": "0.1",
+      "Description": "Error tolerance for adaptive sampling.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_samples_per_triangle_max",
+      "DefaultValue": "128",
+      "Description": "Max number of samples per triangle. Higher is more quality/slower.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_samples_per_triangle_min",
+      "DefaultValue": "64",
+      "Description": "Min number of samples per triangle. Higher is more quality/slower.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bake_light_triangle_batch_size",
+      "DefaultValue": "65536",
+      "Description": "Triangle batch size.",
+      "flags": [
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_bevel_leave_edges",
       "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_bridge_drag_pixels_per_step",
+      "DefaultValue": "16",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_diff_gridnav",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_dota_paint_flat_radius",
+      "DefaultValue": "10",
       "Description": "",
       "flags": [
         ""
@@ -14036,6 +14208,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_dota_path_preview",
+      "DefaultValue": "16",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_dota_path_sharpness",
       "DefaultValue": "0.5",
       "Description": "",
@@ -14056,6 +14237,24 @@
     {
       "Name": "hammer_dota_path_width",
       "DefaultValue": "150",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_dota_proxy_handle_spacing",
+      "DefaultValue": "10",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_dota_rebuild_paths",
+      "DefaultValue": "cmd",
       "Description": "",
       "flags": [
         ""
@@ -14108,8 +14307,107 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_edge_debug_info",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_enable_debug_overlays",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_entity_report_refresh",
+      "DefaultValue": "300",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_extended_box_gizmo_handles",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_face_debug_info",
       "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_force_autosave",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_gizmo_2dscale",
+      "DefaultValue": "3",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_gizmo_axis_length",
+      "DefaultValue": "80",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_gizmo_axis_scale",
+      "DefaultValue": "1.5",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_gizmo_compute_matrix",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_gizmo_line_thickness",
+      "DefaultValue": "3",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_gizmo_rot_inflate",
+      "DefaultValue": "6",
       "Description": "",
       "flags": [
         ""
@@ -14180,6 +14478,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_hud_enable",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_isosurface_merge_tolerance",
       "DefaultValue": "0",
       "Description": "",
@@ -14216,6 +14523,33 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_map_files",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_open_edge_hash_length",
+      "DefaultValue": "6",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_open_edge_hash_spacing",
+      "DefaultValue": "6",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_overlay_draw_projection_triangles",
       "DefaultValue": "false",
       "Description": "",
@@ -14234,6 +14568,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_prefab_tree",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_raytrace_debug_draw",
       "DefaultValue": "0",
       "Description": "Draw ray tracing environment debug visualization in Hammer",
@@ -14245,6 +14588,42 @@
     {
       "Name": "hammer_render_model_bounding_spheres",
       "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_rotate_up_dot",
+      "DefaultValue": "0.2",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_save_gridnav",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_show_face_uvs",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_show_input_debugger",
+      "DefaultValue": "cmd",
       "Description": "",
       "flags": [
         ""
@@ -14279,8 +14658,71 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_ssao_enable",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_stroke_steps",
+      "DefaultValue": "10",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_test_bake_preview_lighting",
+      "DefaultValue": "cmd",
+      "Description": "Test baking preview lighting",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_test_turn_on_gpu_preview_lighting",
+      "DefaultValue": "cmd",
+      "Description": "Turns on gpu preview lighting for a view",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_test_turn_on_gpu_raytracing",
+      "DefaultValue": "cmd",
+      "Description": "Turns on gpu ray tracing for a view",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_tile_border_size",
       "DefaultValue": "16",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_tileset_maps",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_translucent_enable",
+      "DefaultValue": "true",
       "Description": "",
       "flags": [
         ""
@@ -14297,8 +14739,80 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_vertex_normal_paint_brush_screensize",
+      "DefaultValue": "0.002",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_vertex_normal_paint_brush_size_max",
+      "DefaultValue": "100",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_vertex_normal_paint_cached_mesh_evict_distance",
+      "DefaultValue": "128",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_vertex_normal_paint_debug_triangulation",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_vertex_normal_paint_initial_brush_radius",
+      "DefaultValue": "32",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_vertex_normal_paint_initial_strength",
+      "DefaultValue": "0.03",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_vis_opacity",
       "DefaultValue": "32",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_worklight_brightness",
+      "DefaultValue": "1000",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "hammer_worklight_range",
+      "DefaultValue": "32000",
       "Description": "",
       "flags": [
         ""
@@ -16642,6 +17156,15 @@
         "cl",
         "rep",
         "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "linear_to_gamma",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -20310,7 +20833,7 @@
         "sv",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "mp_teamlogo_2",
@@ -20320,7 +20843,7 @@
         "sv",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "mp_teammatchstat_1",
@@ -24263,7 +24786,7 @@
         "sv",
         "cheat"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "notarget",
@@ -25292,7 +25815,7 @@
     },
     {
       "Name": "player_competitive_maplist_2v2_10_0_630B8B7C",
-      "DefaultValue": "mg_de_inferno,mg_de_nuke,mg_de_vertigo,mg_de_poseidon,mg_de_sanctum,mg_de_overpass",
+      "DefaultValue": "mg_de_inferno",
       "Description": "",
       "flags": [
         "cl",
@@ -25302,7 +25825,7 @@
     },
     {
       "Name": "player_competitive_maplist_8_10_0_C512DEBE",
-      "DefaultValue": "mg_de_mirage,mg_de_overpass,mg_de_vertigo,mg_de_ancient,mg_de_inferno,mg_de_nuke,mg_de_anubis,mg_de_dust2,mg_cs_office",
+      "DefaultValue": "mg_de_anubis,mg_de_overpass,mg_de_inferno,mg_de_mirage,mg_de_dust2,mg_de_nuke,mg_de_ancient,mg_de_vertigo,mg_cs_office",
       "Description": "",
       "flags": [
         "cl",
@@ -25348,7 +25871,7 @@
       "flags": [
         "sv"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "player_ping_token_cooldown",
@@ -29136,7 +29659,7 @@
         "cl",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "radio1",
@@ -30026,6 +30549,24 @@
       "Name": "rtx_force_default_hitgroup",
       "DefaultValue": "false",
       "Description": "Forces all ray traced geometry to use default hit shaders instead of specialized ones.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "rtx_perf_stats",
+      "DefaultValue": "-1",
+      "Description": "Report RTX perf stats at N bounces. -1 means no report",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "rtx_show_bounce",
+      "DefaultValue": "-1",
+      "Description": "Show only bounce N in path-tracing views. -1 means show all bounces",
       "flags": [
         ""
       ],
@@ -31274,7 +31815,7 @@
     },
     {
       "Name": "sensitivity",
-      "DefaultValue": "2.5",
+      "DefaultValue": "1",
       "Description": "Mouse sensitivity.",
       "flags": [
         "cl",
@@ -36857,7 +37398,7 @@
         "rep",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "sv_lightquery_debug",
@@ -38081,7 +38622,7 @@
         "sv",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "sv_show_voip_indicator_for_enemies",
@@ -38409,7 +38950,7 @@
         "cheat",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "sv_stats",
@@ -39183,7 +39724,7 @@
         "cheat",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "sv_warmup_to_freezetime_delay",
@@ -39708,6 +40249,15 @@
     {
       "Name": "tools_renderscenes",
       "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "toolscene_gizmo_algorithm",
+      "DefaultValue": "1",
       "Description": "",
       "flags": [
         ""
@@ -42590,6 +43140,17 @@
       "Description": "Saves current key bindings to disk.",
       "flags": [
         "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "zoom_sensitivity_ratio",
+      "DefaultValue": "1",
+      "Description": "Additional mouse sensitivity scale factor applied when FOV is zoomed in.",
+      "flags": [
+        "cl",
+        "a",
+        "per_user"
       ],
       "Cs2WorkshopWhitelisted": false
     }
