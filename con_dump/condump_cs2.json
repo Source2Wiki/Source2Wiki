@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1771972362,
+  "Timestamp": 1772744300,
   "Entries": [
     {
       "Name": "_fov",
@@ -6024,6 +6024,16 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "cl_inv_volatile_limits",
+      "DefaultValue": "0:0",
+      "Description": "",
+      "flags": [
+        "cl",
+        "a"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "cl_inventory_debug_tooltip",
       "DefaultValue": "false",
       "Description": "",
@@ -7101,9 +7111,31 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "cl_radar_show_all_players_when_spectating",
+      "DefaultValue": "true",
+      "Description": "Set all players visible on radar when spectating, regardless of whether they have been spotted.",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "cl_radar_square_always",
       "DefaultValue": "false",
       "Description": "If set, the radar will always be square.",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "cl_radar_square_when_spectating",
+      "DefaultValue": "true",
+      "Description": "If set, the radar will be square when spectating.",
       "flags": [
         "cl",
         "a",
@@ -13021,7 +13053,7 @@
         "cl",
         "cheat"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "fov_desired",
@@ -29669,7 +29701,7 @@
         "cl",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "radio2",
@@ -29679,7 +29711,7 @@
         "cl",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "radio3",
@@ -29689,7 +29721,7 @@
         "cl",
         "release"
       ],
-      "Cs2WorkshopWhitelisted": false
+      "Cs2WorkshopWhitelisted": true
     },
     {
       "Name": "ragdoll_cleanup_all",
@@ -38486,6 +38518,18 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "sv_sellback_enabled",
+      "DefaultValue": "true",
+      "Description": "Determines whether players can undo purchases in the buy menu",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "sv_sequence_debug",
       "DefaultValue": "-1",
       "Description": "",
@@ -39812,6 +39856,16 @@
       "Name": "sv_workshop_allow_other_maps",
       "DefaultValue": "true",
       "Description": "When hosting a workshop collection, users can play other workshop map on this server when it is empty and then mapcycle into this server collection.",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sv_workshop_map_save_data_max_filesize_mb",
+      "DefaultValue": "1",
+      "Description": "",
       "flags": [
         "sv",
         "release"
