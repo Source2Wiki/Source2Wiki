@@ -131,6 +131,10 @@ const config: Config = {
       },
       items: [
         {
+          type: 'custom-schema-explorer-link',
+          position: 'right',
+        },
+        {
           title: 'Discord',
           position: 'right',
           html: `
