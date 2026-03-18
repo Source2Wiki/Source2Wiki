@@ -4,7 +4,7 @@ import React from 'react';
 export default function CustomSchemaExplorerLinkNavbarItem(): React.JSX.Element {
   const { gameParam } = useGameParam();
 
-  const href = `https://s2v.app/SchemaExplorer/#/${gameParam}/`;
+  const href = `https://s2v.app/SchemaExplorer/${gameParam}/`;
 
   return React.createElement(
     'a',
