@@ -17,7 +17,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://source2wiki.github.io',
+  url: 'https://source2.wiki',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
