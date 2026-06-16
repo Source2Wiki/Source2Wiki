@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1770293499,
+  "Timestamp": 1781635689,
   "ToolMaterials": [
     {
       "Name": "materials/effects/metalfence007a.vmat",
@@ -42,6 +42,51 @@
         },
         {
           "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/audioblocker_inner.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\audioblocker_color_psd_2d0add33.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.detail",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/audioblocker_mid.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\audioblocker_color_psd_2d0add33.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.detail",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/audioblocker_outer.vmat",
+      "TexturePath": "static/tooltex_dump/img\\cs2\\audioblocker_color_psd_2d0add33.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.detail",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
           "Value": 1
         }
       ]
