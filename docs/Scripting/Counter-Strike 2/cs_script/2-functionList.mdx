@@ -68,6 +68,7 @@ Access these functions by importing Instance from "cs_script/point_script".
 |---|---|---|
 |OnScriptReload\<T\>|OnScriptReload\<T\>(config: \{ before?: () =\> T, after?: (memory: T) =\> void \}): void|Called in Tools mode when the script is reloaded due to changes.<br /><br />The before callback will be invoked before pre-load teardown.<br /><br />The after callback will be invoked after the new script is evaluated and will be passed the return value of the before callback.|
 |SetThink|SetThink(callback: () =\> void): void|Called at a specified time. Control when this is run using SetNextThink.|
+|QueueAfterThinks|QueueAfterThinks( callback: () =\> void ): void|Queue up a callback to be invoked once, after all entities have executed their think functions this tick (eg. player input has been handled, projectiles have moved).<br /><br />This can be useful for delaying until a clean moment when an entity isn't mid-computation and might ignore or misinterpret.<br /><br />This can be useful for delaying until the world is in a consistent state.<br /><br />Callbacks queued up during a post entity think callback will be invoked in the same tick.<br /><br />@experimental This method is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
 |OnActivate|OnActivate(callback: () =\> void): void|Called when the point_script entity is activated|
 |OnScriptInput|OnScriptInput(name: string, callback: (inputData: \{ caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> void): void|Called when input RunScriptInput is triggered on the point_script entity with a parameter value that matches name.|
 |OnPlayerConnect|OnPlayerConnect(callback: (event: \{ player: [CSPlayerController](#csplayercontroller) \}) =\> void): void|Called when a client finishes the initial connection handshake with the server.|
@@ -88,6 +89,7 @@ Access these functions by importing Instance from "cs_script/point_script".
 |OnGunReload|OnGunReload(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun is reloaded.|
 |OnGunFire|OnGunFire(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun emits bullets. A shotgun will only trigger this once when emitting multiple bullets at once.|
 |OnBulletImpact|OnBulletImpact(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), position: [Vector](#vector), hitEntity: [Entity](#entity) \}) =\> void): void|Called when a bullet hits a surface.<br /><br />Penetrations can cause a single bullet to trigger multiple impacts.<br /><br />This will be called for all impacts of a bullet before any player damage events are called.|
+|OnWeaponDrop|OnWeaponDrop(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a weapon is dropped.|
 |OnGrenadeThrow|OnGrenadeThrow(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), projectile: [Entity](#entity) \}) =\> void): void|Called when a grenade is thrown. `projectile` is the newly created grenade projectile.|
 |OnGrenadeBounce|OnGrenadeBounce(callback: (event: \{ projectile: [Entity](#entity), bounces: number \}) =\> void): void|Called when a grenade bounces off a surface. `bounces` is the number of bounces so far.|
 |OnKnifeAttack|OnKnifeAttack(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), attackType: [CSWeaponAttackType](#csweaponattacktype) \}) =\> void): void|Called when a knife attacks, even if it misses.|
@@ -161,6 +163,7 @@ The base class for all entities
 |---|---|---|
 |GetData|GetData(): [CSWeaponData](#csweapondata)||
 |GetOwner|GetOwner(): [CSPlayerPawn](#csplayerpawn) \| undefined||
+|GetOriginalOwner|GetOriginalOwner(): [CSPlayerPawn](#csplayerpawn) \| undefined||
 |GetClipAmmo|GetClipAmmo(): number||
 |SetClipAmmo|SetClipAmmo(ammo: number): void||
 |GetReserveAmmo|GetReserveAmmo(): number||
