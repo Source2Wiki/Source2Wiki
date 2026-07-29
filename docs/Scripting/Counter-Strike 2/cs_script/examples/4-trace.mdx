@@ -27,17 +27,12 @@ Instance.OnScriptReload({
     },
 });
 
-Instance.OnPlayerChat(({ player, text }) => {
-    tracePawn = player?.GetPlayerPawn();
-    if (text === "!traceline") {
-        traceType = "line";
-    } else if (text === "!tracesphere") {
-        traceType = "sphere";
-    } else if (text === "!tracebox") {
-        traceType = "box";
-    } else if (text === "!tracebullet") {
-        traceType = "bullet";
+Instance.RegisterCheatCommand("script_zoo_trace", (args) => {
+    tracePawn = Instance.GetAllPlayerControllers()[0].GetPlayerPawn();
+    if (args === "line" || args === "sphere" || args === "box" || args === "bullet") {
+        traceType = args;
     } else {
+        Instance.Msg("Usage: script_zoo_trace <type> - type can be line, sphere, box, or bullet.")
         traceType = null;
     }
 });
