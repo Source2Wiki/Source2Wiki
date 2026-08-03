@@ -42,6 +42,7 @@ Access these functions by importing Instance from "cs_script/point_script".
 |TraceLine|TraceLine(trace: [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace a point along a line and detect collisions|
 |TraceSphere|TraceSphere(trace: \{ radius: number \} \& [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace a sphere along a line and detect collisions|
 |TraceBox|TraceBox(trace: \{ mins: [Vector](#vector), maxs: [Vector](#vector) \} \& [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace an axis aligned bounding box along a line and detect collisions|
+|TracePlayer|TracePlayer(trace: [PlayerTrace](#playertrace)): [PlayerTraceResult](#playertraceresult)|Trace as a player would collide|
 |TraceBullet|TraceBullet(trace: [BulletTrace](#bullettrace)): [BulletTraceResult](#bullettraceresult)[]|Trace as a bullet and detect hits and damage|
 |GetGameTime|GetGameTime(): number|Get the game time in seconds.|
 |IsWarmupPeriod|IsWarmupPeriod(): boolean|Get if the game is currently in a Warmup period.|
@@ -52,6 +53,7 @@ Access these functions by importing Instance from "cs_script/point_script".
 |GetRoundsPlayed|GetRoundsPlayed(): number|Get the number of rounds played in the current game.|
 |GetRoundRemainingTime|GetRoundRemainingTime(): number|Get the time remaining in the current round in seconds.|
 |SetRoundRemainingTime|SetRoundRemainingTime(time: number): void|Set the time remaining in the current round in seconds.|
+|SpawnGrenadeProjectile|SpawnGrenadeProjectile(config: [SpawnGrenadeProjectileConfig](#spawngrenadeprojectileconfig)): [CSGrenadeProjectileBase](#csgrenadeprojectilebase)|Spawns a live grenade projectile.|
 |ClientCommand|ClientCommand(playerSlot: number, command: string): void|Issue the specified command to the specified client.|
 |ServerCommand|ServerCommand(command: string): void|Issue a command.|
 |DebugScreenText|DebugScreenText(text: any, x: number, y: number, duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
@@ -77,8 +79,9 @@ Access these functions by importing Instance from "cs_script/point_script".
 |OnRoundStart|OnRoundStart(callback: () =\> void): void|Called when a new round begins|
 |OnRoundEnd|OnRoundEnd(callback: (event: \{ winningTeam: number, reason: [CSRoundEndReason](#csroundendreason) \}) =\> void): void|Called when a team wins a round|
 |OnBeginRoundRestart|OnBeginRoundRestart(callback: () =\> void): void|Called at the start of cleanup for a round restart<br /><br />@experimental This method is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
-|OnBombPlant|OnBombPlant(callback: (event: \{ plantedC4: [Entity](#entity), planter: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player plants the c4|
-|OnBombDefuse|OnBombDefuse(callback: (event: \{ plantedC4: [Entity](#entity), defuser: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player defuses the c4|
+|OnBombPlant|OnBombPlant(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4), planter: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player plants the c4|
+|OnBombDefuse|OnBombDefuse(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4), defuser: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player defuses the c4|
+|OnBombExplode|OnBombExplode(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4) \}) =\> void): void|Called when a c4 explodes|
 |OnModifyPlayerDamage|OnModifyPlayerDamage(callback: (event: [ModifyPlayerDamageEvent](#modifyplayerdamageevent)) =\> [ModfiyPlayerDamageResult](#modfiyplayerdamageresult) \| void): void|Called immediately before a [CSPlayerPawn](#csplayerpawn) takes damage to armor and health.<br /><br />Called after hitgroup modifications are applied such as headshot multiplier.<br /><br />This won't be called if the player would take no damage. Such as if they're frozen or invulnerable or if friendly fire would disable the damage.<br /><br />Return `{ damage: N }` to modify the amount of damage.<br /><br />Return `{ damageFlags: event.damageFlags \| [CSDamageFlags](#csdamageflags).IGNORE_ARMOR }` to have the damage pierce armor.<br /><br />Return `{ abort: true }` to cancel the damage event.|
 |OnPlayerDamage|OnPlayerDamage(callback: (event: [PlayerDamageEvent](#playerdamageevent)) =\> void): void|Called when a player has taken damage.|
 |OnPlayerKill|OnPlayerKill(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn), inflictor?: [Entity](#entity), attacker?: [Entity](#entity), weapon?: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a player dies. `inflictor`, `attacker` and `weapon` will match the damage event that caused the kill.|
@@ -89,12 +92,13 @@ Access these functions by importing Instance from "cs_script/point_script".
 |OnGunReload|OnGunReload(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun is reloaded.|
 |OnGunFire|OnGunFire(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun emits bullets. A shotgun will only trigger this once when emitting multiple bullets at once.|
 |OnBulletImpact|OnBulletImpact(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), position: [Vector](#vector), hitEntity: [Entity](#entity) \}) =\> void): void|Called when a bullet hits a surface.<br /><br />Penetrations can cause a single bullet to trigger multiple impacts.<br /><br />This will be called for all impacts of a bullet before any player damage events are called.|
-|OnWeaponDrop|OnWeaponDrop(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a weapon is dropped.|
-|OnGrenadeThrow|OnGrenadeThrow(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), projectile: [Entity](#entity) \}) =\> void): void|Called when a grenade is thrown. `projectile` is the newly created grenade projectile.|
-|OnGrenadeBounce|OnGrenadeBounce(callback: (event: \{ projectile: [Entity](#entity), bounces: number \}) =\> void): void|Called when a grenade bounces off a surface. `bounces` is the number of bounces so far.|
+|OnWeaponDrop|OnWeaponDrop(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), dropper: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a weapon is dropped.|
+|OnWeaponPickup|OnWeaponPickup(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a weapon is picked up.|
+|OnGrenadeThrow|OnGrenadeThrow(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), projectile: [CSGrenadeProjectileBase](#csgrenadeprojectilebase) \}) =\> void): void|Called when a grenade is thrown. `projectile` is the newly created grenade projectile.|
+|OnGrenadeBounce|OnGrenadeBounce(callback: (event: [GrenadeBounceEvent](#grenadebounceevent)) =\> void): void|Called when a grenade bounces.|
 |OnKnifeAttack|OnKnifeAttack(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), attackType: [CSWeaponAttackType](#csweaponattacktype) \}) =\> void): void|Called when a knife attacks, even if it misses.|
 |ConnectOutput|ConnectOutput(target: [Entity](#entity), output: string, callback: (inputData: \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> any): number \| undefined|Connect the output of an entity to a callback. The return value is a connection id that can be used in `DisconnectOutput`|
-|RegisterCheatCommand|RegisterCheatCommand(name: string, callback: (args: string) =\> void): void|Creates a console command that will run the specified callback. The command will only work when sv_cheats is true.<br /><br />@experimental This method is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
+|RegisterCheatCommand|RegisterCheatCommand(name: string, callback: (args: string) =\> void): void|Creates a console command that will run the specified callback. The command will only work when sv_cheats is true.|
 |OnBeforePlayerDamage|OnBeforePlayerDamage(callback: () =\> any): void|@deprecated This method will be removed in a future update|
 |OnBeforeReload|OnBeforeReload(callback: () =\> any): void|@deprecated This method will be removed in a future update|
 |OnReload|OnReload(callback: (memory: any) =\> void): void|@deprecated This method will be removed in a future update|
@@ -187,6 +191,31 @@ The base class for all entities
 |GetRangeModifier|GetRangeModifier(): number|Exponential damage drop off from traveling through air. nextDamage = currentDamage * rangeModifier ^ (distance / 500).|
 |GetPenetration|GetPenetration(): number|Power to maintain damage during penetration|
 
+### CSGrenadeProjectileBase
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|GetThrower|GetThrower(): [CSPlayerPawn](#csplayerpawn)||
+|GetGrenadeType|GetGrenadeType(): [CSGrenadeType](#csgrenadetype)||
+|Detonate|Detonate(): void||
+
+### CSPlantedC4
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|IsBombsiteA|IsBombsiteA(): boolean||
+|IsBombsiteB|IsBombsiteB(): boolean||
+|GetPlanter|GetPlanter(): [CSPlayerPawn](#csplayerpawn) \| undefined||
+|GetDefuser|GetDefuser(): [CSPlayerPawn](#csplayerpawn) \| undefined||
+|IsActive|IsActive(): boolean||
+|IsExploded|IsExploded(): boolean||
+|IsDefused|IsDefused(): boolean||
+|GetPlantTime|GetPlantTime(): number||
+
 ### CSPlayerController
 
 #### Functions
@@ -243,6 +272,8 @@ The base class for all entities
 |SetArmor|SetArmor(value: number): void||
 |HasHelmet|HasHelmet(): boolean||
 |SetHasHelmet|SetHasHelmet(hasHelmet: boolean): void||
+|HasDefuser|HasDefuser(): boolean||
+|SetHasDefuser|SetHasDefuser(hasDefuser: boolean): void||
 |IsDucking|IsDucking(): boolean||
 |IsDucked|IsDucked(): boolean||
 |IsScoped|IsScoped(): boolean||
@@ -294,6 +325,12 @@ type Color = { r: number, g: number, b: number, a: number };
 
 ```ts
 type InputValue = boolean | number | string | Vector | Color | undefined;
+```
+
+### SpawnGrenadeProjectileConfig
+
+```ts
+type SpawnGrenadeProjectileConfig = SpawnGrenadeProjectileConfigWithOwner | SpawnGrenadeProjectileConfigWithoutOwner;
 ```
 
 ## Interfaces
@@ -356,6 +393,35 @@ interface BulletTraceResult {
 }
 ```
 
+### PlayerTrace
+Configuration object for `Instance.TracePlayer`
+
+```ts
+interface PlayerTrace {
+    start: Vector;
+    /** Leave undefined to just test if `start` is a valid position for the player. */
+    end?: Vector;
+    /** The player moving. Effects hull size and player collision. */
+    player: CSPlayerPawn;
+    /** Configure tracing as a ducked player, effecting the size of the traced Box. Defaults to the player's IsDucked() value. */
+    isDucked?: boolean;
+}
+```
+
+### PlayerTraceResult
+Result entry for `Instance.TracePlayer`
+
+```ts
+interface PlayerTraceResult {
+    fraction: number;
+    end: Vector;
+    didHit: boolean;
+    startedInSolid: boolean;
+    normal: Vector;
+    hitEntity?: Entity;
+}
+```
+
 ### ModifyPlayerDamageEvent
 ```ts
 interface ModifyPlayerDamageEvent {
@@ -414,6 +480,50 @@ interface PlayerDamageEvent {
 }
 ```
 
+### GrenadeBounceEvent
+```ts
+interface GrenadeBounceEvent {
+    projectile: CSGrenadeProjectileBase;
+    hitEntity: Entity;
+    normal: Vector;
+    /** @deprecated this field will be removed in a future update */
+    bounces: number
+}
+```
+
+### SpawnGrenadeProjectileConfigWithOwner
+```ts
+interface SpawnGrenadeProjectileConfigWithOwner {
+    type: CSGrenadeType;
+    thrower: CSPlayerPawn;
+    /* defaults to 1, full strength. */
+    throwStrength?: number;
+    /* defaults to thrower's throw position */
+    position?: Vector;
+    /* defaults to {0,0,0} */
+    angles?: QAngle;
+    /* defaults to thrower's throw velocity */
+    velocity?: Vector;
+    /* defaults to a {600,rand(-1200,1200),0} */
+    angularVelocity?: RotationVector;
+}
+```
+
+### SpawnGrenadeProjectileConfigWithoutOwner
+```ts
+interface SpawnGrenadeProjectileConfigWithoutOwner {
+    type: CSGrenadeType;
+    /* position is required if no thrower is specified */
+    position: Vector;
+    /* defaults to {0,0,0} */
+    angles?: QAngle;
+    /* defaults to {0,0,0} */
+    velocity?: Vector;
+    /* defaults to {0,0,0} */
+    angularVelocity?: RotationVector;
+}
+```
+
 ### EntityDamage
 ```ts
 interface EntityDamage {
@@ -463,6 +573,14 @@ interface EntityDamage {
 - EQUIPMENT
 - STACKABLEITEM, // Healthshot
 - UNKNOWN
+
+### CSGrenadeType
+- HE
+- FLASHBANG
+- MOLOTOV
+- INCENDIARY
+- DECOY
+- SMOKE
 
 ### CSWeaponAttackType
 - INVALID = -1
