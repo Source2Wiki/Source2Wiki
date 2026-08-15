@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "ai_goal_injured_follow",
       "Description": "AI Goal Injured Follow",
-      "IconPath": "static/fgd_dump/img/hla/ai_goal_injured_follow.png",
+      "IconPath": "static/fgd_dump/img/hla/ai_goal_follow.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -131,7 +131,7 @@
       "EntityType": "Point",
       "Name": "ai_goal_injured_follow",
       "Description": "AI Goal Injured Follow",
-      "IconPath": "static/fgd_dump/img/steamvr/ai_goal_injured_follow.png",
+      "IconPath": "static/fgd_dump/img/steamvr/ai_goal_follow.png",
       "PageAnnotation": null,
       "Properties": [
         {

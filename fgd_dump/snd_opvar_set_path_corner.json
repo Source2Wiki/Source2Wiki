@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_path_corner",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/cs2/snd_opvar_set_path_corner.png",
+      "IconPath": "static/fgd_dump/img/cs2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -408,7 +408,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_path_corner",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/dota2/snd_opvar_set_path_corner.png",
+      "IconPath": "static/fgd_dump/img/dota2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {

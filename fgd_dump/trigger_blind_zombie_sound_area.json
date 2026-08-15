@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_blind_zombie_sound_area",
       "Description": "Blind Zombie Sound Area",
-      "IconPath": "static/fgd_dump/img/hla/trigger_blind_zombie_sound_area.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

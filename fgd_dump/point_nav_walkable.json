@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_nav_walkable",
       "Description": "Causes nav mesh to be generated here and at all points that are reachable via ground movement from here.",
-      "IconPath": "static/fgd_dump/img/cs2/point_nav_walkable.png",
+      "IconPath": "static/fgd_dump/img/cs2/nav_walkable.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -142,7 +142,7 @@
       "EntityType": "Point",
       "Name": "point_nav_walkable",
       "Description": "Causes nav mesh to be generated here and at all points that are reachable via ground movement from here.",
-      "IconPath": "static/fgd_dump/img/dota2/point_nav_walkable.png",
+      "IconPath": "static/fgd_dump/img/dota2/nav_walkable.png",
       "PageAnnotation": null,
       "Properties": [
         {

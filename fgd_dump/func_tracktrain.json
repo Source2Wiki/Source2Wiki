@@ -419,6 +419,11 @@
               "Name": "Is unblockable by player",
               "Description": "",
               "Key": "512"
+            },
+            {
+              "Name": "Exclude from PVS (Always networked, use sparingly)",
+              "Description": "",
+              "Key": "1024"
             }
           ],
           "Annotations": []
@@ -640,8 +645,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -2240,6 +2257,11 @@
               "Name": "Is unblockable by player",
               "Description": "",
               "Key": "512"
+            },
+            {
+              "Name": "Exclude from PVS (Always networked, use sparingly)",
+              "Description": "",
+              "Key": "1024"
             }
           ],
           "Annotations": []
@@ -2461,8 +2483,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

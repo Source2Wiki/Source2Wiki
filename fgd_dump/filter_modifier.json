@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_modifier",
       "Description": "A filter that filters entities by active modifiers applied to them",
-      "IconPath": "static/fgd_dump/img/cs2/filter_modifier.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -206,7 +206,7 @@
       "EntityType": "Point",
       "Name": "filter_modifier",
       "Description": "A filter that filters entities by active modifiers applied to them",
-      "IconPath": "static/fgd_dump/img/dota2/filter_modifier.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {

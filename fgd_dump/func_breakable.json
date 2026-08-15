@@ -470,6 +470,11 @@
               "Name": "Don\u0027t allow hand physics damage",
               "Description": "",
               "Key": "4096"
+            },
+            {
+              "Name": "Force nav-ignore",
+              "Description": "",
+              "Key": "16777216"
             }
           ],
           "Annotations": []
@@ -939,8 +944,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1097,6 +1114,18 @@
           "Name": "Break",
           "Description": "Breaks the breakable.",
           "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableBreaking",
+          "Description": "Sets whether or not the breakable can break.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableCollisions",
+          "Description": "Sets whether or not the breakable has collision at all.",
+          "VariableType": "Bool",
           "Type": "Input"
         },
         {
@@ -2907,6 +2936,11 @@
               "Name": "Don\u0027t allow hand physics damage",
               "Description": "",
               "Key": "4096"
+            },
+            {
+              "Name": "Force nav-ignore",
+              "Description": "",
+              "Key": "16777216"
             }
           ],
           "Annotations": []
@@ -3376,8 +3410,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -3534,6 +3580,18 @@
           "Name": "Break",
           "Description": "Breaks the breakable.",
           "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableBreaking",
+          "Description": "Sets whether or not the breakable can break.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableCollisions",
+          "Description": "Sets whether or not the breakable has collision at all.",
+          "VariableType": "Bool",
           "Type": "Input"
         },
         {

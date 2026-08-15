@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollmagnet",
       "Description": "An entity that acts like a magnet for ragdolls. Useful for crafting exaggerated ragdoll behavior (i.e. guys falling over rails on death). If the Bar Magnet spawnflag is set, the magnet works like it was a cylindrical magnet i.e. it attracts ragdolls to the nearest point on a line.",
-      "IconPath": "static/fgd_dump/img/cs2/phys_ragdollmagnet.png",
+      "IconPath": "static/fgd_dump/img/cs2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -131,8 +131,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -286,7 +298,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollmagnet",
       "Description": "An entity that acts like a magnet for ragdolls. Useful for crafting exaggerated ragdoll behavior (i.e. guys falling over rails on death). If the Bar Magnet spawnflag is set, the magnet works like it was a cylindrical magnet i.e. it attracts ragdolls to the nearest point on a line.",
-      "IconPath": "static/fgd_dump/img/hla/phys_ragdollmagnet.png",
+      "IconPath": "static/fgd_dump/img/hla/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -554,7 +566,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollmagnet",
       "Description": "An entity that acts like a magnet for ragdolls. Useful for crafting exaggerated ragdoll behavior (i.e. guys falling over rails on death). If the Bar Magnet spawnflag is set, the magnet works like it was a cylindrical magnet i.e. it attracts ragdolls to the nearest point on a line.",
-      "IconPath": "static/fgd_dump/img/dota2/phys_ragdollmagnet.png",
+      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -679,8 +691,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -834,7 +858,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollmagnet",
       "Description": "An entity that acts like a magnet for ragdolls. Useful for crafting exaggerated ragdoll behavior (i.e. guys falling over rails on death). If the Bar Magnet spawnflag is set, the magnet works like it was a cylindrical magnet i.e. it attracts ragdolls to the nearest point on a line.",
-      "IconPath": "static/fgd_dump/img/steamvr/phys_ragdollmagnet.png",
+      "IconPath": "static/fgd_dump/img/steamvr/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "postprocess_controller",
       "Description": "An entity that controls the postprocess settings in the map.",
-      "IconPath": "editor/postprocess_controller.vmat",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -282,7 +282,7 @@
       "EntityType": "Point",
       "Name": "postprocess_controller",
       "Description": "An entity that controls the postprocess settings in the map.",
-      "IconPath": "editor/postprocess_controller.vmat",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {

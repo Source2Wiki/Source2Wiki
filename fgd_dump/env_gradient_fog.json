@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_gradient_fog",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/cs2/env_gradient_fog.png",
+      "IconPath": "static/fgd_dump/img/cs2/env_fog_controller.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -318,7 +318,7 @@
       "EntityType": "Point",
       "Name": "env_gradient_fog",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/hla/env_gradient_fog.png",
+      "IconPath": "static/fgd_dump/img/hla/env_fog_controller.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -602,7 +602,7 @@
       "EntityType": "Point",
       "Name": "env_gradient_fog",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/steamvr/env_gradient_fog.png",
+      "IconPath": "static/fgd_dump/img/steamvr/env_fog_controller.png",
       "PageAnnotation": null,
       "Properties": [
         {

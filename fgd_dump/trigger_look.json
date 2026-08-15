@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_look",
       "Description": "An entity used to trigger something when the player looks at something. It fires \u0027OnTrigger\u0027 when the player looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves the trigger or looks away from the target entity the clock resets. If the \u0027Use Velocity instead of facing\u0027 spawnflag is checked, the trigger uses the player\u0027s velocity instead of the player\u0027s view, so it determines whenever the player is moving toward the target entity. Useful for triggering when players are driving a vehicle at something.NOTE: Only designed for single-player game. ",
-      "IconPath": "static/fgd_dump/img/cs2/trigger_look.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -269,8 +269,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -454,7 +466,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_look",
       "Description": "An entity used to trigger something when the player looks at something. It fires \u0027OnTrigger\u0027 when the player looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves the trigger or looks away from the target entity the clock resets. If the \u0027Use Velocity instead of facing\u0027 spawnflag is checked, the trigger uses the player\u0027s velocity instead of the player\u0027s view, so it determines whenever the player is moving toward the target entity. Useful for triggering when players are driving a vehicle at something.NOTE: Only designed for single-player game. ",
-      "IconPath": "static/fgd_dump/img/hla/trigger_look.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -882,7 +894,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_look",
       "Description": "An entity used to trigger something when the player looks at something. It fires \u0027OnTrigger\u0027 when the player looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves the trigger or looks away from the target entity the clock resets. If the \u0027Use Velocity instead of facing\u0027 spawnflag is checked, the trigger uses the player\u0027s velocity instead of the player\u0027s view, so it determines whenever the player is moving toward the target entity. Useful for triggering when players are driving a vehicle at something.NOTE: Only designed for single-player game. ",
-      "IconPath": "static/fgd_dump/img/dota2/trigger_look.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1145,8 +1157,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1330,7 +1354,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_look",
       "Description": "An entity used to trigger something when the player looks at something. It fires \u0027OnTrigger\u0027 when the player looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves the trigger or looks away from the target entity the clock resets. If the \u0027Use Velocity instead of facing\u0027 spawnflag is checked, the trigger uses the player\u0027s velocity instead of the player\u0027s view, so it determines whenever the player is moving toward the target entity. Useful for triggering when players are driving a vehicle at something.NOTE: Only designed for single-player game. ",
-      "IconPath": "static/fgd_dump/img/steamvr/trigger_look.png",
+      "IconPath": "static/fgd_dump/img/steamvr/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

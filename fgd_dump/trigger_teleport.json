@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_teleport",
       "Description": "A trigger volume that teleports entities that touch it. Entities are teleported to the Remote Destination, and have their angles set to that of the Remote Destination\u0027s. If a Local Destination Landmark is specified, teleported entities are offset from the target by their initial offset from the landmark, and their angles are left alone.",
-      "IconPath": "static/fgd_dump/img/cs2/trigger_teleport.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -234,8 +234,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -395,7 +407,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_teleport",
       "Description": "A trigger volume that teleports entities that touch it. Entities are teleported to the Remote Destination, and have their angles set to that of the Remote Destination\u0027s. If a Local Destination Landmark is specified, teleported entities are offset from the target by their initial offset from the landmark, and their angles are left alone.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_teleport.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -764,7 +776,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_teleport",
       "Description": "A trigger volume that teleports entities that touch it. Entities are teleported to the Remote Destination, and have their angles set to that of the Remote Destination\u0027s. If a Local Destination Landmark is specified, teleported entities are offset from the target by their initial offset from the landmark, and their angles are left alone.",
-      "IconPath": "static/fgd_dump/img/dota2/trigger_teleport.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -992,8 +1004,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1153,7 +1177,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_teleport",
       "Description": "A trigger volume that teleports entities that touch it. Entities are teleported to the Remote Destination, and have their angles set to that of the Remote Destination\u0027s. If a Local Destination Landmark is specified, teleported entities are offset from the target by their initial offset from the landmark, and their angles are left alone.",
-      "IconPath": "static/fgd_dump/img/steamvr/trigger_teleport.png",
+      "IconPath": "static/fgd_dump/img/steamvr/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

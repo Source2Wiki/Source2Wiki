@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_event_orientedbox",
       "Description": "Plays a sound event from a point closest to the player on the box.",
-      "IconPath": "static/fgd_dump/img/cs2/snd_event_orientedbox.png",
+      "IconPath": "static/fgd_dump/img/cs2/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -168,8 +168,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -359,7 +371,7 @@
       "EntityType": "Point",
       "Name": "snd_event_orientedbox",
       "Description": "Plays a sound event from a point closest to the player on the box.",
-      "IconPath": "static/fgd_dump/img/dota2/snd_event_orientedbox.png",
+      "IconPath": "static/fgd_dump/img/dota2/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -521,8 +533,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

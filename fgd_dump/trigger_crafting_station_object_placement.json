@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_crafting_station_object_placement",
       "Description": "Crafting Station Object Placement Trigger",
-      "IconPath": "static/fgd_dump/img/hla/trigger_crafting_station_object_placement.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

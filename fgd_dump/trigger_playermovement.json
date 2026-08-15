@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_playermovement",
       "Description": "An entity that can be used to disable player\u0027s automatic ducking/unducking when jumping.",
-      "IconPath": "static/fgd_dump/img/steamvr/trigger_playermovement.png",
+      "IconPath": "static/fgd_dump/img/steamvr/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

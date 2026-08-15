@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_wind_clientside",
       "Description": "An entity to control wind in the map, client only. Partially functional.",
-      "IconPath": "static/fgd_dump/img/steamvr/env_wind_clientside.png",
+      "IconPath": "static/fgd_dump/img/steamvr/env_wind.png",
       "PageAnnotation": null,
       "Properties": [
         {

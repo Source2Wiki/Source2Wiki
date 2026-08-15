@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "markup_volume_with_ref",
       "Description": "Tagged markup volume entity with a target reference point.  Points are only in volume if behind the reference point relative to a given query position.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/toolsmarkupvolumeai.png",
       "PageAnnotation": null,
       "Properties": [
         {

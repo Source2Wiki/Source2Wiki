@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_blind_zombie_crash",
       "Description": "Blind Zombie Crash Trigger",
-      "IconPath": "static/fgd_dump/img/hla/trigger_blind_zombie_crash.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

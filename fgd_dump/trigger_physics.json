@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_physics",
       "Description": "A volumetric trigger that affects the motion of vphysics objects that touch it.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_physics.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

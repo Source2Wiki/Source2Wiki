@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_lerp_object",
       "Description": "Object Lerp Trigger",
-      "IconPath": "static/fgd_dump/img/hla/trigger_lerp_object.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

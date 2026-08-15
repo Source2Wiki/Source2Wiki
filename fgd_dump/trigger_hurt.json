@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_hurt",
       "Description": "A trigger volume that damages entities that touch it.",
-      "IconPath": "static/fgd_dump/img/cs2/trigger_hurt.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -388,8 +388,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -567,7 +579,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_hurt",
       "Description": "A trigger volume that damages entities that touch it.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_hurt.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1116,7 +1128,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_hurt",
       "Description": "A trigger volume that damages entities that touch it.",
-      "IconPath": "static/fgd_dump/img/dota2/trigger_hurt.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1367,54 +1379,34 @@
               "Key": "1024"
             },
             {
+              "Name": "DISSOLVE",
+              "Description": "",
+              "Key": "8192"
+            },
+            {
               "Name": "DROWN",
               "Description": "",
               "Key": "16384"
             },
             {
-              "Name": "PARALYSE",
+              "Name": "POISON",
               "Description": "",
               "Key": "32768"
             },
             {
-              "Name": "NERVEGAS",
+              "Name": "RADIATION",
               "Description": "",
               "Key": "65536"
             },
             {
-              "Name": "POISON",
+              "Name": "DROWNRECOVER",
               "Description": "",
               "Key": "131072"
             },
             {
-              "Name": "RADIATION",
+              "Name": "ACID",
               "Description": "",
               "Key": "262144"
-            },
-            {
-              "Name": "DROWNRECOVER",
-              "Description": "",
-              "Key": "524288"
-            },
-            {
-              "Name": "CHEMICAL",
-              "Description": "",
-              "Key": "1048576"
-            },
-            {
-              "Name": "SLOWBURN",
-              "Description": "",
-              "Key": "2097152"
-            },
-            {
-              "Name": "DISSOLVE",
-              "Description": "",
-              "Key": "67108864"
-            },
-            {
-              "Name": "SPORE",
-              "Description": "",
-              "Key": "1114112"
             }
           ],
           "Annotations": []
@@ -1498,8 +1490,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1677,7 +1681,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_hurt",
       "Description": "A trigger volume that damages entities that touch it.",
-      "IconPath": "static/fgd_dump/img/steamvr/trigger_hurt.png",
+      "IconPath": "static/fgd_dump/img/steamvr/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

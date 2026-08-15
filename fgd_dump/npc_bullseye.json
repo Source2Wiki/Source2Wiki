@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_bullseye",
       "Description": "Bullseye",
-      "IconPath": "static/fgd_dump/img/hla/npc_bullseye.png",
+      "IconPath": "static/fgd_dump/img/hla/bullseye.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -101,7 +101,7 @@
       "EntityType": "Point",
       "Name": "npc_bullseye",
       "Description": "Bullseye",
-      "IconPath": "static/fgd_dump/img/steamvr/npc_bullseye.png",
+      "IconPath": "static/fgd_dump/img/steamvr/bullseye.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_antlion_template_maker",
       "Description": "Antlion Template Maker",
-      "IconPath": "static/fgd_dump/img/hla/npc_antlion_template_maker.png",
+      "IconPath": "static/fgd_dump/img/hla/npc_maker.png",
       "PageAnnotation": null,
       "Properties": [
         {

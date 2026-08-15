@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_event_path_corner",
       "Description": "Plays some number of soundevents (up to max) along segments of a path corner network",
-      "IconPath": "static/fgd_dump/img/cs2/snd_event_path_corner.png",
+      "IconPath": "static/fgd_dump/img/cs2/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -125,8 +125,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -280,7 +292,7 @@
       "EntityType": "Point",
       "Name": "snd_event_path_corner",
       "Description": "Plays some number of soundevents (up to max) along segments of a path corner network",
-      "IconPath": "static/fgd_dump/img/dota2/snd_event_path_corner.png",
+      "IconPath": "static/fgd_dump/img/dota2/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -364,6 +376,49 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "To Local Player",
+          "InternalName": "toLocalPlayer",
+          "VariableType": "Bool",
+          "Description": "Play the sound directly to the local player",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Re-trigger Stops Last",
+          "InternalName": "stopOnNew",
+          "VariableType": "Bool",
+          "Description": "Stop a previously playing event when a new one is started",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Save/Restore",
+          "InternalName": "saveAndRestore",
+          "VariableType": "Bool",
+          "Description": "This soundevent should be saved and restored.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Entity Index Selection",
+          "InternalName": "entityIndexSelection",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Use World Index",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Use Entity Index",
+              "Description": "",
+              "Key": "1"
+            }
+          ],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Path Corner Entity Name",
           "InternalName": "pathCornerEntity",
           "VariableType": "TargetDestination",
@@ -399,8 +454,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

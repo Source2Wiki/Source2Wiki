@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_instructor_event",
       "Description": "An entity that fires simple game events from map logic for game instructor",
-      "IconPath": "static/fgd_dump/img/cs2/point_instructor_event.png",
+      "IconPath": "static/fgd_dump/img/cs2/env_instructor_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -176,7 +176,7 @@
       "EntityType": "Point",
       "Name": "point_instructor_event",
       "Description": "An entity that fires simple game events from map logic for game instructor",
-      "IconPath": "static/fgd_dump/img/hla/point_instructor_event.png",
+      "IconPath": "static/fgd_dump/img/hla/env_instructor_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -340,7 +340,7 @@
       "EntityType": "Point",
       "Name": "point_instructor_event",
       "Description": "An entity that fires simple game events from map logic for game instructor",
-      "IconPath": "static/fgd_dump/img/dota2/point_instructor_event.png",
+      "IconPath": "static/fgd_dump/img/dota2/env_instructor_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -510,7 +510,7 @@
       "EntityType": "Point",
       "Name": "point_instructor_event",
       "Description": "An entity that fires simple game events from map logic for game instructor",
-      "IconPath": "static/fgd_dump/img/steamvr/point_instructor_event.png",
+      "IconPath": "static/fgd_dump/img/steamvr/env_instructor_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_traversal_invalid_spot",
       "Description": "A trigger that will keep players from ending there teleport inside or on top of this trigger, but will allow them to move past it.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_traversal_invalid_spot.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

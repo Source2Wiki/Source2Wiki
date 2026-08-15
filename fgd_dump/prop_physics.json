@@ -435,6 +435,11 @@
               "Key": "1024"
             },
             {
+              "Name": "Exclude from PVS (Always networked, use sparingly)",
+              "Description": "",
+              "Key": "2048"
+            },
+            {
               "Name": "Start Asleep",
               "Description": "",
               "Key": "1"
@@ -1073,6 +1078,18 @@
           "Type": "Input"
         },
         {
+          "Name": "SetEnableBreaking",
+          "Description": "Sets whether or not the breakable can break.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableCollisions",
+          "Description": "Sets whether or not the breakable has collision at all.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
           "Name": "SetHealth",
           "Description": "Sets a new value for the breakable\u0027s health. If the breakable\u0027s health reaches zero it will break.",
           "VariableType": "Integer",
@@ -1278,8 +1295,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -3383,6 +3412,11 @@
               "Key": "1024"
             },
             {
+              "Name": "Exclude from PVS (Always networked, use sparingly)",
+              "Description": "",
+              "Key": "2048"
+            },
+            {
               "Name": "Start Asleep",
               "Description": "",
               "Key": "1"
@@ -4021,6 +4055,18 @@
           "Type": "Input"
         },
         {
+          "Name": "SetEnableBreaking",
+          "Description": "Sets whether or not the breakable can break.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableCollisions",
+          "Description": "Sets whether or not the breakable has collision at all.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
           "Name": "SetHealth",
           "Description": "Sets a new value for the breakable\u0027s health. If the breakable\u0027s health reaches zero it will break.",
           "VariableType": "Integer",
@@ -4226,8 +4272,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

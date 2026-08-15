@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_proximity",
       "Description": "A filter that filters a potential entity by proximity from the origin of the filter.",
-      "IconPath": "static/fgd_dump/img/cs2/filter_proximity.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -206,7 +206,7 @@
       "EntityType": "Point",
       "Name": "filter_proximity",
       "Description": "A filter that filters a potential entity by proximity from the origin of the filter.",
-      "IconPath": "static/fgd_dump/img/dota2/filter_proximity.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -406,7 +406,7 @@
       "EntityType": "Point",
       "Name": "filter_proximity",
       "Description": "A filter that filters a potential entity by proximity from the origin of the filter.",
-      "IconPath": "static/fgd_dump/img/steamvr/filter_proximity.png",
+      "IconPath": "static/fgd_dump/img/steamvr/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {

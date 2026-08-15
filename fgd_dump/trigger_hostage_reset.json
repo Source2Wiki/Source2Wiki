@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_hostage_reset",
       "Description": "A trigger volume that resets the hostage by teleporting it back into the playable area.",
-      "IconPath": "static/fgd_dump/img/cs2/trigger_hostage_reset.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -194,8 +194,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

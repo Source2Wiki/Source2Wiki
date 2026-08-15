@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_traversal_modifier",
       "Description": "A trigger that modifies where the player should be teleported when their teleport attempt touches this trigger.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_traversal_modifier.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

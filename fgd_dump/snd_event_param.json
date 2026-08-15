@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_event_param",
       "Description": "Set a public parameter of a playing soundevent.",
-      "IconPath": "static/fgd_dump/img/cs2/snd_event_param.png",
+      "IconPath": "static/fgd_dump/img/cs2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -93,8 +93,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -254,7 +266,7 @@
       "EntityType": "Point",
       "Name": "snd_event_param",
       "Description": "Set a public parameter of a playing soundevent.",
-      "IconPath": "static/fgd_dump/img/hla/snd_event_param.png",
+      "IconPath": "static/fgd_dump/img/hla/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -490,7 +502,7 @@
       "EntityType": "Point",
       "Name": "snd_event_param",
       "Description": "Set a public parameter of a playing soundevent.",
-      "IconPath": "static/fgd_dump/img/dota2/snd_event_param.png",
+      "IconPath": "static/fgd_dump/img/dota2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -577,8 +589,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -738,7 +762,7 @@
       "EntityType": "Point",
       "Name": "snd_event_param",
       "Description": "Set a public parameter of a playing soundevent.",
-      "IconPath": "static/fgd_dump/img/steamvr/snd_event_param.png",
+      "IconPath": "static/fgd_dump/img/steamvr/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -498,6 +498,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Nav: Ignore if \u0027Always Solid\u0027",
+          "InternalName": "AlwaysSolidIgnoreNav",
+          "VariableType": "Bool",
+          "Description": "If set, nav generation will ignore this func_brush if \u0027Solidity\u0027 is set to \u0027Always Solid\u0027.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "interactAs",
           "InternalName": "interactAs",
           "VariableType": "String",
@@ -534,14 +542,6 @@
           "InternalName": "ScriptedMovement",
           "VariableType": "Bool",
           "Description": "Set this to allow vscript code to move the brush via SetVelocity() calls.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Shadows",
-          "InternalName": "vrad_brush_cast_shadows",
-          "VariableType": "Bool",
-          "Description": "Set this if this brush casts lightmap shadows.",
           "Options": [],
           "Annotations": []
         },
@@ -593,8 +593,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -2091,6 +2103,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Nav: Ignore if \u0027Always Solid\u0027",
+          "InternalName": "AlwaysSolidIgnoreNav",
+          "VariableType": "Bool",
+          "Description": "If set, nav generation will ignore this func_brush if \u0027Solidity\u0027 is set to \u0027Always Solid\u0027.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "interactAs",
           "InternalName": "interactAs",
           "VariableType": "String",
@@ -2127,14 +2147,6 @@
           "InternalName": "ScriptedMovement",
           "VariableType": "Bool",
           "Description": "Set this to allow vscript code to move the brush via SetVelocity() calls.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Shadows",
-          "InternalName": "vrad_brush_cast_shadows",
-          "VariableType": "Bool",
-          "Description": "Set this if this brush casts lightmap shadows.",
           "Options": [],
           "Annotations": []
         },
@@ -2186,8 +2198,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

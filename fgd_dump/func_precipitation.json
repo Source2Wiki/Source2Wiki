@@ -275,7 +275,7 @@
       "EntityType": "Mesh",
       "Name": "func_precipitation",
       "Description": "A brush entity that creates precipitation inside its volume.",
-      "IconPath": "static/fgd_dump/img/dota2/func_precipitation.png",
+      "IconPath": "static/fgd_dump/img/dota2/toolsprecipitation.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -548,8 +548,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "markup_group",
       "Description": "Markup group entity; add the group\u0027s targetname to the \u0027Markup Groups\u0027 field of a markup entity to add that entity to this group",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/toolsmarkupvolumeai.png",
       "PageAnnotation": null,
       "Properties": [
         {

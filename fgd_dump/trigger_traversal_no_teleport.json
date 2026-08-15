@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_traversal_no_teleport",
       "Description": "A trigger that will clip the teleport trace. You must texture this entity with the toolsteleportclip material to enable functionality.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_traversal_no_teleport.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_multi",
       "Description": "A filter that tests the activator against multiple filters. This allows you to build more complex filters, such as\u0027Allow anyone on Team 1 who is also class engineer\u0027, or \u0027Allow everyone except classes npc_zombie and npc_headcrab\u0027.",
-      "IconPath": "static/fgd_dump/img/cs2/filter_multi.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_multiple.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -328,7 +328,7 @@
       "EntityType": "Point",
       "Name": "filter_multi",
       "Description": "A filter that tests the activator against multiple filters. This allows you to build more complex filters, such as\u0027Allow anyone on Team 1 who is also class engineer\u0027, or \u0027Allow everyone except classes npc_zombie and npc_headcrab\u0027.",
-      "IconPath": "static/fgd_dump/img/hla/filter_multi.png",
+      "IconPath": "static/fgd_dump/img/hla/filter_multiple.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -613,7 +613,7 @@
       "EntityType": "Point",
       "Name": "filter_multi",
       "Description": "A filter that tests the activator against multiple filters. This allows you to build more complex filters, such as\u0027Allow anyone on Team 1 who is also class engineer\u0027, or \u0027Allow everyone except classes npc_zombie and npc_headcrab\u0027.",
-      "IconPath": "static/fgd_dump/img/dota2/filter_multi.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_multiple.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -935,7 +935,7 @@
       "EntityType": "Point",
       "Name": "filter_multi",
       "Description": "A filter that tests the activator against multiple filters. This allows you to build more complex filters, such as\u0027Allow anyone on Team 1 who is also class engineer\u0027, or \u0027Allow everyone except classes npc_zombie and npc_headcrab\u0027.",
-      "IconPath": "static/fgd_dump/img/steamvr/filter_multi.png",
+      "IconPath": "static/fgd_dump/img/steamvr/filter_multiple.png",
       "PageAnnotation": null,
       "Properties": [
         {

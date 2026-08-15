@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_landmark",
       "Description": "Used by info_spawngroup_load to specify a landmark between two spawngroups to load",
-      "IconPath": "static/fgd_dump/img/cs2/info_spawngroup_landmark.png",
+      "IconPath": "static/fgd_dump/img/cs2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -142,7 +142,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_landmark",
       "Description": "Used by info_spawngroup_load to specify a landmark between two spawngroups to load",
-      "IconPath": "static/fgd_dump/img/hla/info_spawngroup_landmark.png",
+      "IconPath": "static/fgd_dump/img/hla/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -272,7 +272,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_landmark",
       "Description": "Used by info_spawngroup_load to specify a landmark between two spawngroups to load",
-      "IconPath": "static/fgd_dump/img/dota2/info_spawngroup_landmark.png",
+      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -408,7 +408,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_landmark",
       "Description": "Used by info_spawngroup_load to specify a landmark between two spawngroups to load",
-      "IconPath": "static/fgd_dump/img/steamvr/info_spawngroup_landmark.png",
+      "IconPath": "static/fgd_dump/img/steamvr/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_snipertarget",
       "Description": "Sniper Target",
-      "IconPath": "static/fgd_dump/img/hla/info_snipertarget.png",
+      "IconPath": "static/fgd_dump/img/hla/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

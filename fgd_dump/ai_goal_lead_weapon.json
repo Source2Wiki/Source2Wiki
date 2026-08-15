@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "ai_goal_lead_weapon",
       "Description": "AI Goal Lead (Weapon). A version of the ai_goal_lead entity that requires the player to have the specified weapon before the Actor(s) will lead the player to their target.",
-      "IconPath": "static/fgd_dump/img/hla/ai_goal_lead_weapon.png",
+      "IconPath": "static/fgd_dump/img/hla/ai_goal_lead.png",
       "PageAnnotation": null,
       "Properties": [
         {

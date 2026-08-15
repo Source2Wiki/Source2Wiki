@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "env_cs_place",
       "Description": "An entity used to define a place on a CSGO map.",
-      "IconPath": "static/fgd_dump/img/cs2/env_cs_place.png",
+      "IconPath": "static/fgd_dump/img/cs2/tools_cs_place.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "markup_volume_tagged",
       "Description": "Tagged generic markup volume entity, can be queried in-game by tag/name/type/location",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/toolsmarkupvolumeai.png",
       "PageAnnotation": null,
       "Properties": [
         {

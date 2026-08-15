@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "logic_distance_autosave",
       "Description": "An autosave entity that saves the game once the player is far enough away from the given entity.",
-      "IconPath": "static/fgd_dump/img/hla/logic_distance_autosave.png",
+      "IconPath": "static/fgd_dump/img/hla/logic_autosave.png",
       "PageAnnotation": null,
       "Properties": [
         {

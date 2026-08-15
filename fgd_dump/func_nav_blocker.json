@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "func_nav_blocker",
       "Description": "A brush entity that can block nav areas touching its AABB.",
-      "IconPath": "static/fgd_dump/img/cs2/func_nav_blocker.png",
+      "IconPath": "static/fgd_dump/img/cs2/toolsnavattribute.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -162,7 +162,7 @@
       "EntityType": "Mesh",
       "Name": "func_nav_blocker",
       "Description": "A brush entity that can block nav areas touching its AABB.",
-      "IconPath": "static/fgd_dump/img/hla/func_nav_blocker.png",
+      "IconPath": "static/fgd_dump/img/hla/toolsnavattribute.png",
       "PageAnnotation": null,
       "Properties": [
         {

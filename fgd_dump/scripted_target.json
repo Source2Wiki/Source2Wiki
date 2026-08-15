@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "scripted_target",
       "Description": "Scripted Target",
-      "IconPath": "static/fgd_dump/img/hla/scripted_target.png",
+      "IconPath": "static/fgd_dump/img/hla/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -98,7 +98,7 @@
       "EntityType": "Point",
       "Name": "scripted_target",
       "Description": "Scripted Target",
-      "IconPath": "static/fgd_dump/img/steamvr/scripted_target.png",
+      "IconPath": "static/fgd_dump/img/steamvr/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

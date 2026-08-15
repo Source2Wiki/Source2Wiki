@@ -6,9 +6,17 @@
       "EntityType": "Mesh",
       "Name": "trigger_autosave",
       "Description": "A trigger volume that autosaves when the player touches it.",
-      "IconPath": "static/fgd_dump/img/cs2/trigger_autosave.png",
+      "IconPath": "static/fgd_dump/img/cs2/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
+        {
+          "FriendlyName": "Start Disabled",
+          "InternalName": "StartDisabled",
+          "VariableType": "Bool",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
         {
           "FriendlyName": "Entity Scripts",
           "InternalName": "vscripts",
@@ -56,9 +64,29 @@
           "Description": "Don\u0027t save dangerous when player has less than this many hitpoints.",
           "Options": [],
           "Annotations": []
+        },
+        {
+          "FriendlyName": "Multiple Retrigger Delay",
+          "InternalName": "RetriggerDelay",
+          "VariableType": "Float",
+          "Description": "If \u0026gt;0 allow re-triggering after the specified number of seconds passes",
+          "Options": [],
+          "Annotations": []
         }
       ],
       "InputOutputs": [
+        {
+          "Name": "Enable",
+          "Description": "Enable this entity.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "Disable",
+          "Description": "Disable this entity.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
         {
           "Name": "RunScriptFile",
           "Description": "Load and execute a script file",
@@ -174,7 +202,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_autosave",
       "Description": "A trigger volume that autosaves when the player touches it.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_autosave.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -336,9 +364,17 @@
       "EntityType": "Mesh",
       "Name": "trigger_autosave",
       "Description": "A trigger volume that autosaves when the player touches it.",
-      "IconPath": "static/fgd_dump/img/dota2/trigger_autosave.png",
+      "IconPath": "static/fgd_dump/img/dota2/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
+        {
+          "FriendlyName": "Start Disabled",
+          "InternalName": "StartDisabled",
+          "VariableType": "Bool",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
         {
           "FriendlyName": "Entity Scripts",
           "InternalName": "vscripts",
@@ -386,9 +422,29 @@
           "Description": "Don\u0027t save dangerous when player has less than this many hitpoints.",
           "Options": [],
           "Annotations": []
+        },
+        {
+          "FriendlyName": "Multiple Retrigger Delay",
+          "InternalName": "RetriggerDelay",
+          "VariableType": "Float",
+          "Description": "If \u0026gt;0 allow re-triggering after the specified number of seconds passes",
+          "Options": [],
+          "Annotations": []
         }
       ],
       "InputOutputs": [
+        {
+          "Name": "Enable",
+          "Description": "Enable this entity.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "Disable",
+          "Description": "Disable this entity.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
         {
           "Name": "RunScriptFile",
           "Description": "Load and execute a script file",
@@ -504,7 +560,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_autosave",
       "Description": "A trigger volume that autosaves when the player touches it.",
-      "IconPath": "static/fgd_dump/img/steamvr/trigger_autosave.png",
+      "IconPath": "static/fgd_dump/img/steamvr/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

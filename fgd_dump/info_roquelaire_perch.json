@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_roquelaire_perch",
       "Description": "(used in Dota2 PvP tutorial) A perch point for Roquelaire to sit on.",
-      "IconPath": "editor/info_target.vmt",
+      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -77,8 +77,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

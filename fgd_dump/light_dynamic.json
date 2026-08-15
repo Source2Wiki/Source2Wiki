@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "light_dynamic",
       "Description": "An invisible lightsource that changes in some way over time.",
-      "IconPath": "static/fgd_dump/img/dota2/light_dynamic.png",
+      "IconPath": "static/fgd_dump/img/dota2/light.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -231,8 +231,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -434,7 +446,7 @@
       "EntityType": "Point",
       "Name": "light_dynamic",
       "Description": "An invisible lightsource that changes in some way over time.",
-      "IconPath": "static/fgd_dump/img/steamvr/light_dynamic.png",
+      "IconPath": "static/fgd_dump/img/steamvr/light.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_turret_citizen_battery",
       "Description": "Turret Battery Placement Trigger",
-      "IconPath": "static/fgd_dump/img/hla/trigger_turret_citizen_battery.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

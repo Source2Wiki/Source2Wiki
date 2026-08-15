@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "assault_rallypoint",
       "Description": "(Assault) rally point",
-      "IconPath": "static/fgd_dump/img/hla/assault_rallypoint.png",
+      "IconPath": "static/fgd_dump/img/hla/assault_rally.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -80,7 +80,7 @@
       "EntityType": "Point",
       "Name": "assault_rallypoint",
       "Description": "(Assault) rally point",
-      "IconPath": "static/fgd_dump/img/steamvr/assault_rallypoint.png",
+      "IconPath": "static/fgd_dump/img/steamvr/assault_rally.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -10,6 +10,85 @@
       "PageAnnotation": null,
       "Properties": [
         {
+          "FriendlyName": "Team Number",
+          "InternalName": "teamnumber",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Unassigned",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Spectators",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Good Guys",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Bad Guys",
+              "Description": "",
+              "Key": "3"
+            },
+            {
+              "Name": "Neutrals",
+              "Description": "",
+              "Key": "4"
+            },
+            {
+              "Name": "No Team",
+              "Description": "",
+              "Key": "5"
+            },
+            {
+              "Name": "Custom 1",
+              "Description": "",
+              "Key": "6"
+            },
+            {
+              "Name": "Custom 2",
+              "Description": "",
+              "Key": "7"
+            },
+            {
+              "Name": "Custom 3",
+              "Description": "",
+              "Key": "8"
+            },
+            {
+              "Name": "Custom 4",
+              "Description": "",
+              "Key": "9"
+            },
+            {
+              "Name": "Custom 5",
+              "Description": "",
+              "Key": "10"
+            },
+            {
+              "Name": "Custom 6",
+              "Description": "",
+              "Key": "11"
+            },
+            {
+              "Name": "Custom 7",
+              "Description": "",
+              "Key": "12"
+            },
+            {
+              "Name": "Custom 8",
+              "Description": "",
+              "Key": "13"
+            }
+          ],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Entity Scripts",
           "InternalName": "vscripts",
           "VariableType": "ScriptList",

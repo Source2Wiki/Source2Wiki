@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_los",
       "Description": "A filter that filters a potential entity by line of sight from the origin of the filter.",
-      "IconPath": "static/fgd_dump/img/cs2/filter_los.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -198,7 +198,7 @@
       "EntityType": "Point",
       "Name": "filter_los",
       "Description": "A filter that filters a potential entity by line of sight from the origin of the filter.",
-      "IconPath": "static/fgd_dump/img/dota2/filter_los.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -390,7 +390,7 @@
       "EntityType": "Point",
       "Name": "filter_los",
       "Description": "A filter that filters a potential entity by line of sight from the origin of the filter.",
-      "IconPath": "static/fgd_dump/img/steamvr/filter_los.png",
+      "IconPath": "static/fgd_dump/img/steamvr/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {

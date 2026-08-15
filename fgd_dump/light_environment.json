@@ -10,14 +10,6 @@
       "PageAnnotation": null,
       "Properties": [
         {
-          "FriendlyName": "Indirect Light Multiplier",
-          "InternalName": "bouncescale",
-          "VariableType": "Float",
-          "Description": "",
-          "Options": [],
-          "Annotations": []
-        },
-        {
           "FriendlyName": "Enabled",
           "InternalName": "enabled",
           "VariableType": "Bool",
@@ -42,10 +34,18 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "Range",
-          "InternalName": "range",
+          "FriendlyName": "Render to Cubemaps",
+          "InternalName": "rendertocubemaps",
+          "VariableType": "Bool",
+          "Description": "If disabled, direct lighting will not render into cubemaps. Not that this only works when Direct Lighting Type is set to Stationary or Dynamic.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Indirect Light Multiplier",
+          "InternalName": "bouncescale",
           "VariableType": "Float",
-          "Description": "Distance range for light. 0=infinite",
+          "Description": "",
           "Options": [],
           "Annotations": []
         },
@@ -71,6 +71,14 @@
               "Key": "0"
             }
           ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Shadow Softness / Sun Spread Angle",
+          "InternalName": "angulardiameter",
+          "VariableType": "Float",
+          "Description": "Defines the shadow softness. Higher numbers produce more diffuse/softer shadows. 1 is a good starting value.",
+          "Options": [],
           "Annotations": []
         },
         {
@@ -108,10 +116,58 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "Render to Cubemaps",
-          "InternalName": "rendertocubemaps",
-          "VariableType": "Bool",
-          "Description": "If disabled, direct lighting will not render into cubemaps. Not that this only works when Direct Lighting Type is set to Stationary or Dynamic.",
+          "FriendlyName": "Simple Sky Color",
+          "InternalName": "skycolor",
+          "VariableType": "Color255",
+          "Description": "Uses a flat color for the sky lighting. Can be a good starting point but you can get much higher quality lighting by using an IBL/env_sky.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Simple Sky Intensity",
+          "InternalName": "skyintensity",
+          "VariableType": "Float",
+          "Description": "Scales the intensity of the Simple Sky Color.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "IBL Sky Source",
+          "InternalName": "skytexture",
+          "VariableType": "TargetDestination",
+          "Description": "Here you can assign any env_sky entity for sky lighting. env_sky supports HDR/EXR high dynamic range lat-long/h-cross/v-cross skybox images is recommended for sky lighting for the best quality results. If you want to use a custom env_sky that is explicitly for sky lighting, you can use an env_sky with \u0027Start Disabled\u0027.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "IBL Sky Scale",
+          "InternalName": "skytexturescale",
+          "VariableType": "Float",
+          "Description": "Scale value for IBL intensity fine-tuning",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Sky Indirect Light Multiplier",
+          "InternalName": "skybouncescale",
+          "VariableType": "Float",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Sky Ground Albedo",
+          "InternalName": "skyambientbounce",
+          "VariableType": "Color255Alpha",
+          "Description": "This is the color of the virtual ground plane used for skybox IBL / color ambient lighting",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Brightness Scale",
+          "InternalName": "brightnessscale",
+          "VariableType": "Float",
+          "Description": "Scale brightness by this amount, used for scripting direct light behaviour. NOTE: Only works on lights with Direct Lighting type set to Dynamic or Stationary.",
           "Options": [],
           "Annotations": []
         },
@@ -193,70 +249,6 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "Simple Sky Color",
-          "InternalName": "skycolor",
-          "VariableType": "Color255",
-          "Description": "Uses a flat color for the sky lighting. Can be a good starting point but you can get much higher quality lighting by using an IBL/env_sky.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Simple Sky Intensity",
-          "InternalName": "skyintensity",
-          "VariableType": "Float",
-          "Description": "Scales the intensity of the Simple Sky Color.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "IBL Sky Source",
-          "InternalName": "skytexture",
-          "VariableType": "TargetDestination",
-          "Description": "Here you can assign any env_sky entity for sky lighting. env_sky supports HDR/EXR high dynamic range lat-long/h-cross/v-cross skybox images is recommended for sky lighting for the best quality results. If you want to use a custom env_sky that is explicitly for sky lighting, you can use an env_sky with \u0027Start Disabled\u0027.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "IBL Sky Scale",
-          "InternalName": "skytexturescale",
-          "VariableType": "Float",
-          "Description": "Scale value for IBL intensity fine-tuning",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Sky Indirect Light Multiplier",
-          "InternalName": "skybouncescale",
-          "VariableType": "Float",
-          "Description": "",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Sky Ground Albedo",
-          "InternalName": "skyambientbounce",
-          "VariableType": "Color255Alpha",
-          "Description": "This is the color of the virtual ground plane used for skybox IBL / color ambient lighting",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Brightness Scale",
-          "InternalName": "brightnessscale",
-          "VariableType": "Float",
-          "Description": "Scale brightness by this amount, used for scripting direct light behaviour. NOTE: Only works on lights with Direct Lighting type set to Dynamic or Stationary.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Shadow Softness / Sun Spread Angle",
-          "InternalName": "angulardiameter",
-          "VariableType": "Float",
-          "Description": "Defines the shadow softness. Higher numbers produce more diffuse/softer shadows. 1 is a good starting value.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
           "FriendlyName": "Create Client-Only Entity",
           "InternalName": "clientSideEntity",
           "VariableType": "Choices",
@@ -307,14 +299,14 @@
               "Key": "1"
             },
             {
-              "Name": "Dynamic",
-              "Description": "",
-              "Key": "2"
-            },
-            {
               "Name": "Stationary",
               "Description": "",
               "Key": "3"
+            },
+            {
+              "Name": "Dynamic",
+              "Description": "",
+              "Key": "2"
             }
           ],
           "Annotations": []

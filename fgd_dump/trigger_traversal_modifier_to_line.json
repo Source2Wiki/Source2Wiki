@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_traversal_modifier_to_line",
       "Description": "A trigger that modifies where the player should be teleported when their teleport attempt touches this trigger. It moves the teleport point to the nearest point on the line between points A \u0026 B.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_traversal_modifier_to_line.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_target_gunshipcrash",
       "Description": "Gunship Crash Target",
-      "IconPath": "static/fgd_dump/img/hla/info_target_gunshipcrash.png",
+      "IconPath": "static/fgd_dump/img/hla/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_clock",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/steamvr/env_clock.png",
+      "IconPath": "static/fgd_dump/img/steamvr/logic_timer.png",
       "PageAnnotation": null,
       "Properties": [
         {

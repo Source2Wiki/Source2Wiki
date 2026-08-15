@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "func_nav_gen_proj",
       "Description": "Generate nav inside this volume and in the direction of the arrow",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/toolsmarkupvolumeai.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -65,7 +65,7 @@
             },
             {
               "Name": "No Nav",
-              "Description": "",
+              "Description": "test detailed description",
               "Key": "NONAV"
             },
             {

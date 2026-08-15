@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "assault_assaultpoint",
       "Description": "(Assault) assault point",
-      "IconPath": "static/fgd_dump/img/hla/assault_assaultpoint.png",
+      "IconPath": "static/fgd_dump/img/hla/assault_point.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -177,7 +177,7 @@
       "EntityType": "Point",
       "Name": "assault_assaultpoint",
       "Description": "(Assault) assault point",
-      "IconPath": "static/fgd_dump/img/steamvr/assault_assaultpoint.png",
+      "IconPath": "static/fgd_dump/img/steamvr/assault_point.png",
       "PageAnnotation": null,
       "Properties": [
         {

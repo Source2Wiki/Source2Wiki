@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_blind_zombie_wander_area",
       "Description": "Trigger Blind Zombie Wander",
-      "IconPath": "static/fgd_dump/img/hla/trigger_blind_zombie_wander_area.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

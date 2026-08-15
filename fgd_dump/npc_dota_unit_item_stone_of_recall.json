@@ -1,0 +1,1679 @@
+{
+  "Name": "npc_dota_unit_item_stone_of_recall",
+  "Pages": [
+    {
+      "Game": "dota2",
+      "EntityType": "Point",
+      "Name": "npc_dota_unit_item_stone_of_recall",
+      "Description": "A recall stone.",
+      "IconPath": "",
+      "PageAnnotation": null,
+      "Properties": [
+        {
+          "FriendlyName": "Team Number",
+          "InternalName": "teamnumber",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Unassigned",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Spectators",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Good Guys",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Bad Guys",
+              "Description": "",
+              "Key": "3"
+            },
+            {
+              "Name": "Neutrals",
+              "Description": "",
+              "Key": "4"
+            },
+            {
+              "Name": "No Team",
+              "Description": "",
+              "Key": "5"
+            },
+            {
+              "Name": "Custom 1",
+              "Description": "",
+              "Key": "6"
+            },
+            {
+              "Name": "Custom 2",
+              "Description": "",
+              "Key": "7"
+            },
+            {
+              "Name": "Custom 3",
+              "Description": "",
+              "Key": "8"
+            },
+            {
+              "Name": "Custom 4",
+              "Description": "",
+              "Key": "9"
+            },
+            {
+              "Name": "Custom 5",
+              "Description": "",
+              "Key": "10"
+            },
+            {
+              "Name": "Custom 6",
+              "Description": "",
+              "Key": "11"
+            },
+            {
+              "Name": "Custom 7",
+              "Description": "",
+              "Key": "12"
+            },
+            {
+              "Name": "Custom 8",
+              "Description": "",
+              "Key": "13"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Vulnerable On Creep Spawn",
+          "InternalName": "vulnerableoncreepspawn",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "No",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Yes",
+              "Description": "",
+              "Key": "1"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Dire Side",
+          "InternalName": "direside",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "No",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Yes",
+              "Description": "",
+              "Key": "1"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Invulnerability Link Count",
+          "InternalName": "invuln_count",
+          "VariableType": "Integer",
+          "Description": "The number of entities linked to this to trigger to remove invulnerability.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Player Owner",
+          "InternalName": "playerowner",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "None",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Player 1",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Player 2",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Player 3",
+              "Description": "",
+              "Key": "3"
+            },
+            {
+              "Name": "Player 4",
+              "Description": "",
+              "Key": "4"
+            },
+            {
+              "Name": "Player 5",
+              "Description": "",
+              "Key": "5"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Damage lvl 1 model",
+          "InternalName": "destruction_lvl1",
+          "VariableType": "Studio",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "lvl 1 hurt percentage",
+          "InternalName": "destdmgamnt_lvl1",
+          "VariableType": "Float",
+          "Description": "The health percentage at which first level of damage happens. This is the percentage of health left.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Damage lvl 1 Effect",
+          "InternalName": "damagefx_lvl1",
+          "VariableType": "ParticleSystem",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Damage lvl 2 model",
+          "InternalName": "destruction_lvl2",
+          "VariableType": "Studio",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "lvl 2 hurt percentage",
+          "InternalName": "destdmgamnt_lvl2",
+          "VariableType": "Float",
+          "Description": "The health percentage at which second level damage happens. This is the percentage of health left.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Damage lvl 2 Effect",
+          "InternalName": "damagefx_lvl2",
+          "VariableType": "ParticleSystem",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Ambient Effect",
+          "InternalName": "ambientfx",
+          "VariableType": "ParticleSystem",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Destruction Effect",
+          "InternalName": "destroyfx",
+          "VariableType": "ParticleSystem",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Particle Tint Color",
+          "InternalName": "particle_tint_color",
+          "VariableType": "Color255",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Destruction Sound Effect",
+          "InternalName": "destroysound",
+          "VariableType": "Sound",
+          "Description": "When the building is destroyed, this sound effect will be played, originating from this entity.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Damage lvl 1 Sound Effect",
+          "InternalName": "dmglvl1sound",
+          "VariableType": "Sound",
+          "Description": "When the building is damaged to the first level, this sound effect will be played, originating from this entity.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Damage lvl 2 Sound Effect",
+          "InternalName": "dmglvl2sound",
+          "VariableType": "Sound",
+          "Description": "When the building is damaged to the second level, this sound effect will be played, originating from this entity.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Unit Name",
+          "InternalName": "MapUnitName",
+          "VariableType": "String",
+          "Description": "Unit Name to look up in npc txt files to set this entity\u0027s data.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Animation Loop Mode",
+          "InternalName": "AnimationLoopMode",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Do Not Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_NOT_LOOPING"
+            },
+            {
+              "Name": "Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_LOOPING"
+            },
+            {
+              "Name": "Use Sequence Settings",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_USE_SEQUENCE_SETTINGS"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Randomly Animate",
+          "InternalName": "RandomAnimation",
+          "VariableType": "Bool",
+          "Description": "If set, this prop will randomly choose and play animations, based upon the times specified in \u0027Min/Max Random Anim Time\u0027. Inbetween the random animations, it will revert to playing the \u0027Default Animation\u0027.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Min Random Anim Time",
+          "InternalName": "MinAnimTime",
+          "VariableType": "Float",
+          "Description": "Minimum time between random animations.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Max Random Anim Time",
+          "InternalName": "MaxAnimTime",
+          "VariableType": "Float",
+          "Description": "Maximum time between random animations.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Glow State",
+          "InternalName": "glowstate",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "OFF",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "\u002Buse",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "look-at",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "ON",
+              "Description": "",
+              "Key": "3"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Glow Range",
+          "InternalName": "glowrange",
+          "VariableType": "Integer",
+          "Description": "Range at which the glow becomes visible. (0 = always visible)",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Glow Range Min",
+          "InternalName": "glowrangemin",
+          "VariableType": "Integer",
+          "Description": "Range at which the glow stops being visible. (0 = always visible)",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Glow Color Override (R G B)",
+          "InternalName": "glowcolor",
+          "VariableType": "Color255",
+          "Description": "Change the render color of the glow.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Glow Team",
+          "InternalName": "glowteam",
+          "VariableType": "Integer",
+          "Description": "Change the team we glow for.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Render Mode",
+          "InternalName": "rendermode",
+          "VariableType": "Choices",
+          "Description": "Used to set a non-standard rendering mode on this entity. See also \u0027FX Amount\u0027 and \u0027FX Color\u0027.",
+          "Options": [
+            {
+              "Name": "Normal",
+              "Description": "",
+              "Key": "kRenderNormal"
+            },
+            {
+              "Name": "Color",
+              "Description": "",
+              "Key": "kRenderTransColor"
+            },
+            {
+              "Name": "Texture",
+              "Description": "",
+              "Key": "kRenderTransTexture"
+            },
+            {
+              "Name": "Glow",
+              "Description": "",
+              "Key": "kRenderGlow"
+            },
+            {
+              "Name": "Solid",
+              "Description": "",
+              "Key": "kRenderTransAlpha"
+            },
+            {
+              "Name": "Additive",
+              "Description": "",
+              "Key": "kRenderTransAdd"
+            },
+            {
+              "Name": "Additive Fractional Frame",
+              "Description": "",
+              "Key": "kRenderTransAddFrameBlend"
+            },
+            {
+              "Name": "World Space Glow",
+              "Description": "",
+              "Key": "kRenderWorldGlow"
+            },
+            {
+              "Name": "Dont Render",
+              "Description": "",
+              "Key": "kRenderNone"
+            },
+            {
+              "Name": "Dev Visualizer",
+              "Description": "",
+              "Key": "kRenderDevVisualizer"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Render FX",
+          "InternalName": "renderfx",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Normal",
+              "Description": "",
+              "Key": "kRenderFxNone"
+            },
+            {
+              "Name": "Slow Pulse",
+              "Description": "",
+              "Key": "kRenderFxPulseSlow"
+            },
+            {
+              "Name": "Fast Pulse",
+              "Description": "",
+              "Key": "kRenderFxPulseFast"
+            },
+            {
+              "Name": "Slow Wide Pulse",
+              "Description": "",
+              "Key": "kRenderFxPulseSlowWide"
+            },
+            {
+              "Name": "Fast Wide Pulse",
+              "Description": "",
+              "Key": "kRenderFxPulseFastWide"
+            },
+            {
+              "Name": "Slow Strobe",
+              "Description": "",
+              "Key": "kRenderFxStrobeSlow"
+            },
+            {
+              "Name": "Fast Strobe",
+              "Description": "",
+              "Key": "kRenderFxStrobeFast"
+            },
+            {
+              "Name": "Faster Strobe",
+              "Description": "",
+              "Key": "kRenderFxStrobeFaster"
+            },
+            {
+              "Name": "Slow Flicker",
+              "Description": "",
+              "Key": "kRenderFxFlickerSlow"
+            },
+            {
+              "Name": "Fast Flicker",
+              "Description": "",
+              "Key": "kRenderFxFlickerFast"
+            },
+            {
+              "Name": "Slow Fade Away",
+              "Description": "",
+              "Key": "kRenderFxFadeSlow"
+            },
+            {
+              "Name": "Fast Fade Away",
+              "Description": "",
+              "Key": "kRenderFxFadeFast"
+            },
+            {
+              "Name": "Slow Become Solid",
+              "Description": "",
+              "Key": "kRenderFxSolidSlow"
+            },
+            {
+              "Name": "Fast Become Solid",
+              "Description": "",
+              "Key": "kRenderFxSolidFast"
+            },
+            {
+              "Name": "Constant Glow",
+              "Description": "",
+              "Key": "kRenderFxNoDissipation"
+            },
+            {
+              "Name": "Distort",
+              "Description": "",
+              "Key": "15"
+            },
+            {
+              "Name": "Hologram (Distort \u002B fade)",
+              "Description": "",
+              "Key": "16"
+            },
+            {
+              "Name": "Cull By Distance (TEST)",
+              "Description": "",
+              "Key": "23"
+            },
+            {
+              "Name": "Spotlight FX",
+              "Description": "",
+              "Key": "24"
+            },
+            {
+              "Name": "Fade Near",
+              "Description": "",
+              "Key": "26"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "FX Amount (0 - 255)",
+          "InternalName": "renderamt",
+          "VariableType": "Integer",
+          "Description": "The FX amount is used by the selected Render Mode.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "FX Color (R G B)",
+          "InternalName": "rendercolor",
+          "VariableType": "Color255",
+          "Description": "The FX color is used by the selected Render Mode.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Disable Receiving Shadows",
+          "InternalName": "disablereceiveshadows",
+          "VariableType": "Bool",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Start Fade Dist",
+          "InternalName": "fademindist",
+          "VariableType": "Float",
+          "Description": "Distance at which the overlay starts to fade (-1 = subtract from fademaxdist).",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "End Fade Dist",
+          "InternalName": "fademaxdist",
+          "VariableType": "Float",
+          "Description": "Maximum distance at which the overlay is visible (0 = don\u0027t fade out).",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Culling Behaviour",
+          "InternalName": "object_culling",
+          "VariableType": "Choices",
+          "Description": "Modifies culling behaviour when the object is small / distant",
+          "Options": [
+            {
+              "Name": "Default",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Smaller than default",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Much smaller than default",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "When extremely small",
+              "Description": "",
+              "Key": "3"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Render to Cubemaps",
+          "InternalName": "rendertocubemaps",
+          "VariableType": "Bool",
+          "Description": "If true, this geometry renders into baked cube maps",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Lightmap Static",
+          "InternalName": "lightmapstatic",
+          "VariableType": "Choices",
+          "Description": "Determines if this geometry be considered static \u0026 cast shadows/bounce light when baking lightmaps?",
+          "Options": [
+            {
+              "Name": "No",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Yes",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Bounce Only",
+              "Description": "",
+              "Key": "2"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Damage Filter",
+          "InternalName": "damagefilter",
+          "VariableType": "TargetDestination",
+          "Description": "Name of the filter entity that controls which entities can damage us.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Entity Scripts",
+          "InternalName": "vscripts",
+          "VariableType": "ScriptList",
+          "Description": "Name(s) of script files that are executed after all entities have spawned.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Name",
+          "InternalName": "targetname",
+          "VariableType": "TargetSource",
+          "Description": "The name that other entities refer to this entity by.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Explosion Damage",
+          "InternalName": "ExplodeDamage",
+          "VariableType": "Float",
+          "Description": "If non-zero, when this entity breaks it will create an explosion that causes the specified amount of damage. See also \u0027Explosion Radius\u0027.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Explosion Radius",
+          "InternalName": "ExplodeRadius",
+          "VariableType": "Float",
+          "Description": "If non-zero, when this entity breaks it will create an explosion with a radius of the specified amount. See also \u0027Explosion Damage\u0027.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Performance Mode",
+          "InternalName": "PerformanceMode",
+          "VariableType": "Choices",
+          "Description": "Used to limit the amount of gibs produced when this entity breaks, for performance reasons.",
+          "Options": [
+            {
+              "Name": "Normal",
+              "Description": "",
+              "Key": "PM_NORMAL"
+            },
+            {
+              "Name": "No Gibs",
+              "Description": "",
+              "Key": "PM_NO_GIBS"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Disable Client-Side Interpolation",
+          "InternalName": "NoInterpolate",
+          "VariableType": "Bool",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "",
+          "InternalName": "spawnflags",
+          "VariableType": "Flags",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Break on Touch",
+              "Description": "",
+              "Key": "16"
+            },
+            {
+              "Name": "Break on Pressure",
+              "Description": "",
+              "Key": "32"
+            },
+            {
+              "Name": "Use Hitboxes for Renderbox",
+              "Description": "",
+              "Key": "64"
+            },
+            {
+              "Name": "Start with collision disabled",
+              "Description": "",
+              "Key": "256"
+            },
+            {
+              "Name": "Set to Nav Ignore",
+              "Description": "",
+              "Key": "512"
+            },
+            {
+              "Name": "Set to Local-Nav Ignore (NPC will not try to avoid this entity)",
+              "Description": "",
+              "Key": "1024"
+            },
+            {
+              "Name": "Exclude from PVS (Always networked, use sparingly)",
+              "Description": "",
+              "Key": "2048"
+            },
+            {
+              "Name": "Start Asleep",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Don\u0027t take physics damage",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Debris - Don\u0027t collide with the player or other debris",
+              "Description": "",
+              "Key": "4"
+            },
+            {
+              "Name": "Motion Disabled",
+              "Description": "",
+              "Key": "8"
+            },
+            {
+              "Name": "Prevent motion enable on player bump",
+              "Description": "",
+              "Key": "1024"
+            },
+            {
+              "Name": "Debris with trigger interaction",
+              "Description": "",
+              "Key": "4096"
+            },
+            {
+              "Name": "Force non-solid to players",
+              "Description": "",
+              "Key": "8192"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Pressure Delay",
+          "InternalName": "pressuredelay",
+          "VariableType": "Float",
+          "Description": "Delay, in seconds, after \u0027broken\u0027 by pressure before breaking apart (allows for sound to play before breaking apart).",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Burst Force Scale",
+          "InternalName": "burstscale",
+          "VariableType": "Float",
+          "Description": "Radial force applied to our pieces when we break.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Burst Force Location",
+          "InternalName": "burstlocation",
+          "VariableType": "LocalPoint",
+          "Description": "Location in local space where the burst force is applied.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Contents Type",
+          "InternalName": "BreakableContentsType",
+          "VariableType": "Choices",
+          "Description": "Set the type of contents inside this breakable.",
+          "Options": [
+            {
+              "Name": "Default",
+              "Description": "",
+              "Key": "BC_DEFAULT"
+            },
+            {
+              "Name": "Empty",
+              "Description": "",
+              "Key": "BC_EMPTY"
+            },
+            {
+              "Name": "Prop Group Override",
+              "Description": "",
+              "Key": "BC_PROP_GROUP_OVERRIDE"
+            },
+            {
+              "Name": "Particle System Override",
+              "Description": "",
+              "Key": "BC_PARTICLE_SYSTEM_OVERRIDE"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Breakable Contents Prop Group Override",
+          "InternalName": "BreakableContentsPropGroupOverride",
+          "VariableType": "VDataChoice",
+          "Description": "Prop Group to use when the prop is broken",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Breakable Contents Particle Override",
+          "InternalName": "BreakableContentsParticleOverride",
+          "VariableType": "ParticleSystem",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "World Model",
+          "InternalName": "model",
+          "VariableType": "Studio",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Skin",
+          "InternalName": "skin",
+          "VariableType": "MaterialGroup",
+          "Description": "Some models have multiple versions of their textures, called skins.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Body Groups",
+          "InternalName": "bodygroups",
+          "VariableType": "BodyGroupChoices",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Cast Shadows",
+          "InternalName": "disableshadows",
+          "VariableType": "Choices",
+          "Description": "Used to disable shadow casting from this entity.",
+          "Options": [
+            {
+              "Name": "Enabled",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "No Shadows",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Only Realtime Shadows",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Only Baked Shadows",
+              "Description": "",
+              "Key": "3"
+            },
+            {
+              "Name": "Enabled",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "No Shadows",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Only Realtime Shadows",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Only Baked Shadows",
+              "Description": "",
+              "Key": "3"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Add Attribute",
+          "InternalName": "add_attribute",
+          "VariableType": "String",
+          "Description": "Will add an additional attribute that AI/player entities can query when checking props for information (ex: \u0027DogToy\u0027 or \u0027GrabbableResource\u0027)",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Add Modifier",
+          "InternalName": "add_modifier",
+          "VariableType": "String",
+          "Description": "Will add this modifier when the entity spawns.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "AnimGraph2 Identifier",
+          "InternalName": "animgraph2_identifier",
+          "VariableType": "animgraph2identifier",
+          "Description": "Which animgraph should we use when spawning the entity? Animgraph identifiers are authored in modeldoc, see the AnimGraph2 reference node.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Global Entity Name",
+          "InternalName": "globalname",
+          "VariableType": "String",
+          "Description": "Name by which this entity is linked to another entity in a different map. When the player transitions to a new map, entities in the new map with globalnames matching entities in the previous map will have the previous map\u0027s state copied over their state.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Create Client-Only Entity",
+          "InternalName": "clientSideEntity",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "No",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Yes",
+              "Description": "",
+              "Key": "1"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Parent",
+          "InternalName": "parentname",
+          "VariableType": "TargetDestination",
+          "Description": "The name of this entity\u0027s parent in the movement hierarchy. Entities with parents move with their parent.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Parent Bone/Attachment Name",
+          "InternalName": "parentAttachmentName",
+          "VariableType": "ParentAttachment",
+          "Description": "The name of the bone or attachment to attach to on the entity\u0027s parent in the movement hierarchy. Use !bonemerge to use bone-merge style attachment. NOTE: If this is specified the Hammer transform will be disregarded, even if \u0027Use Local Transform\u0027 is NOT specified (in that case local transform will be identity)",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Use Local Transform",
+          "InternalName": "useLocalOffset",
+          "VariableType": "Bool",
+          "Description": "Whether to respect the specified local offset when doing the initial hierarchical attachment to its parent.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Local Origin",
+          "InternalName": "local.origin",
+          "VariableType": "Vector",
+          "Description": "Offset in the local space of the parent model\u0027s attachment/bone to use in hierarchy. Not used if you are not using parent attachment.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Local Angles",
+          "InternalName": "local.angles",
+          "VariableType": "Angle",
+          "Description": "Angular offset in the local space of the parent model\u0027s attachment/bone to use in hierarchy. Not used if you are not using parent attachment.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Local Scale",
+          "InternalName": "local.scales",
+          "VariableType": "Vector",
+          "Description": "Scale in the local space of the parent model\u0027s attachment/bone to use in hierarchy. Not used if you are not using parent attachment.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Collisions",
+          "InternalName": "solid",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Not Solid",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Use axis-aligned box",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Use oriented Box",
+              "Description": "",
+              "Key": "3"
+            },
+            {
+              "Name": "Use VPhysics",
+              "Description": "",
+              "Key": "6"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Turn Off in Low-Violence",
+          "InternalName": "disablelowviolence",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "No",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Yes",
+              "Description": "",
+              "Key": "1"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Use Animgraph",
+          "InternalName": "use_animgraph",
+          "VariableType": "Bool",
+          "Description": "Allow the model to use its animgraph it has one. If the model has no animgraph this setting has no effect and is disabled",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Starting Animation",
+          "InternalName": "StartingAnim",
+          "VariableType": "Sequence",
+          "Description": "The name of a starting animation that this prop will start with when it spawns. After completion, it will switch to the Idle sequence, if it is specified. This setting is ignored for models with an animgraph when Use Animgraph is enabled.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Start Animation Loop Mode",
+          "InternalName": "StartingAnimationLoopMode",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Do Not Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_NOT_LOOPING"
+            },
+            {
+              "Name": "Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_LOOPING"
+            },
+            {
+              "Name": "Do Not Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_NOT_LOOPING"
+            },
+            {
+              "Name": "Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_LOOPING"
+            },
+            {
+              "Name": "Use Sequence Settings",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_USE_SEQUENCE_SETTINGS"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Idle Animation",
+          "InternalName": "IdleAnim",
+          "VariableType": "Sequence",
+          "Description": "The name of the idle animation that this prop will revert to whenever it finishes a random or forced animation. This setting is ignored for models with an animgraph when Use Animgraph is enabled.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Idle Animation Loop Mode",
+          "InternalName": "IdleAnimationLoopMode",
+          "VariableType": "Choices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Do Not Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_NOT_LOOPING"
+            },
+            {
+              "Name": "Loop",
+              "Description": "",
+              "Key": "ANIM_LOOP_MODE_LOOPING"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Randomize cycle",
+          "InternalName": "randomizecycle",
+          "VariableType": "Bool",
+          "Description": "If set, this prop will randomize its cycle when it begins animating. Use this to desynchronize animating props that use the same model.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Lag Compensation",
+          "InternalName": "LagCompensate",
+          "VariableType": "Bool",
+          "Description": "Enable to lag compensate this prop, should be use very sparingly!",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Animate on server in multiplayer",
+          "InternalName": "AnimateOnServer",
+          "VariableType": "Bool",
+          "Description": "Enable this to animate on the server in multiplayer games, such as for props with triggers parented to attachment points. Use sparingly as there is a performance cost.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "interactAs",
+          "InternalName": "interactAs",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers to interact as",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "interactWith",
+          "InternalName": "interactWith",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers to interact with",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "interactExclude",
+          "InternalName": "interactExclude",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers to not collide with",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Lighting Origin",
+          "InternalName": "lightingorigin",
+          "VariableType": "TargetDestination",
+          "Description": "Select an entity to specify a location to sample lighting from, instead of using this entity\u0027s origin.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Create Nav Obstacle",
+          "InternalName": "CreateNavObstacle",
+          "VariableType": "Bool",
+          "Description": "Create a navigation obstacle to assist NPC pathfinding",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Force NPC Exclude",
+          "InternalName": "forcenpcexclude",
+          "VariableType": "Bool",
+          "Description": "If set, NPC movement will ignore this prop",
+          "Options": [],
+          "Annotations": []
+        }
+      ],
+      "InputOutputs": [
+        {
+          "Name": "SetInvulnCount",
+          "Description": "Sets the invulnerable count on this building.",
+          "VariableType": "Integer",
+          "Type": "Input"
+        },
+        {
+          "Name": "ReduceInvulnCount",
+          "Description": "Reduces the invulnerable count by one on this build. When the count goes to 0 or lower, backdoor protection is disabled.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetAnimation",
+          "Description": "[OBSOLETE] Force the prop to play an animation. The parameter should be the name of the animation.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetAnimationNoReset",
+          "Description": "[OBSOLETE] Force the prop to play an animation unless the prop is already playing the animation. The parameter should be the name of the animation.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetDefaultAnimation",
+          "Description": "[OBSOLETE] Set the Default Animation to the one specified in the parameter.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "StartGlowing",
+          "Description": "Turn on a permanent glow effect for this prop.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "StopGlowing",
+          "Description": "Turn off this prop\u0027s glow effect.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "Alpha",
+          "Description": "Set the sprite\u0027s alpha (0 - 255).",
+          "VariableType": "Integer",
+          "Type": "Input"
+        },
+        {
+          "Name": "Color",
+          "Description": "Set the sprite\u0027s color (R G B).",
+          "VariableType": "Color255",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetDamageFilter",
+          "Description": "Sets the entity to use as damage filter. Pass in an empty string to clear the damage filter.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "RunScriptFile",
+          "Description": "Load and execute a script file",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "RunScriptCode",
+          "Description": "Execute a fragment of script code",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "CallScriptFunction",
+          "Description": "Call a script function",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "CallPrivateScriptFunction",
+          "Description": "Calls a script function from this entity\u0027s private script scope.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "CallGlobalScriptFunction",
+          "Description": "Calls a script function in the global script scope.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "Kill",
+          "Description": "Removes this entity from the world.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "KillHierarchy",
+          "Description": "Removes this entity and all its children from the world.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "KillConstrained",
+          "Description": "Removes this entity, all its children, and anything constrained to it, from the world.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "AddOutput",
+          "Description": "Adds an entity I/O connection to this entity. Parameter format: outputname\u0026gt;targetname\u003Einputname\u0026gt;parameter\u0026gt;delay\u0026gt;max times to fire (-1 == infinite). Very dangerous, use with care.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "FireUser1",
+          "Description": "Causes this entity\u0027s OnUser1 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "FireUser2",
+          "Description": "Causes this entity\u0027s OnUser2 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "FireUser3",
+          "Description": "Causes this entity\u0027s OnUser3 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "FireUser4",
+          "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "OnUser1",
+          "Description": "Fired in response to FireUser1 input.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnUser2",
+          "Description": "Fired in response to FireUser2 input.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnUser3",
+          "Description": "Fired in response to FireUser3 input.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnUser4",
+          "Description": "Fired in response to FireUser4 input.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnKilled",
+          "Description": "Fired when the entity is killed and removed from the game. Parameter is the inflictor.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "Break",
+          "Description": "Breaks the breakable.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableBreaking",
+          "Description": "Sets whether or not the breakable can break.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableCollisions",
+          "Description": "Sets whether or not the breakable has collision at all.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetHealth",
+          "Description": "Sets a new value for the breakable\u0027s health. If the breakable\u0027s health reaches zero it will break.",
+          "VariableType": "Integer",
+          "Type": "Input"
+        },
+        {
+          "Name": "AddHealth",
+          "Description": "Adds health to the breakable. If the breakable\u0027s health reaches zero it will break.",
+          "VariableType": "Integer",
+          "Type": "Input"
+        },
+        {
+          "Name": "RemoveHealth",
+          "Description": "Removes health from the breakable. If the breakable\u0027s health reaches zero it will break.",
+          "VariableType": "Integer",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetMass",
+          "Description": "Set mass of this object.",
+          "VariableType": "Float",
+          "Type": "Input"
+        },
+        {
+          "Name": "OnStartDeath",
+          "Description": "Fired when this prop has begun dying (breaking) before other death-related callbacks.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnBreak",
+          "Description": "Fired when this breakable breaks.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnHealthChanged",
+          "Description": "Fired when the health of this breakable changes, passing the new value of health as a percentage of max health, from [0..1].",
+          "VariableType": "Float",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnTakeDamage",
+          "Description": "Fired each time this breakable takes any damage.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "Skin",
+          "Description": "Changes the model skin to the specified number.",
+          "VariableType": "Integer",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableShadow",
+          "Description": "Turn shadow off.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableShadow",
+          "Description": "Turn shadow on.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "AlternativeSorting",
+          "Description": "Used to attempt to fix sorting problems when rendering. True activates, false deactivates",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetRenderAttribute",
+          "Description": "Set the value of a render attribute used in material dynamic expressions. Examples: $myfloat=0.25 $myfloat4=1.0,0.0,1.0,1.0",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "ClearRenderAttribute",
+          "Description": "Remove a render attribute previously set by SetRenderAttribute, restoring it to its previous value.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "OnIgnite",
+          "Description": "Fired when this object catches fire.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnDestructibleHitGroupDamageLevelChanged",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Output"
+        },
+        {
+          "Name": "SetParent",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentAttachment",
+          "Description": "Change this entity to attach to a specific attachment point on its parent. Entities must be parented before being sent this input. The parameter passed in should be the name of the attachment.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentAttachmentMaintainOffset",
+          "Description": "Change this entity to attach to a specific attachment point on it\u0027s parent. Entities must be parented before being sent this input. The parameter passed in should be the name of the attachment. The entity will maintain it\u0027s position relative to the parent at the time it is attached.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "ClearParent",
+          "Description": "Removes this entity from the the movement hierarchy, leaving it free to move independently.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "FollowEntity",
+          "Description": "Bone merges this entity to a parent entity. Call again passing nothing to end the bone merge.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetAnimationLooping",
+          "Description": "Force the prop to play an animation and force it to loop. The parameter should be the name of the animation.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetAnimationNoResetLooping",
+          "Description": "Force the prop to play an animation and force it to loop unless the prop is already playing the animation. The parameter should be the name of the animation.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetIdleAnimationLooping",
+          "Description": "Changes the Idle Animation to the one specified in the parameter and force it to loop.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetAnimationNotLooping",
+          "Description": "Force the prop to play an animation and force it to not loop. The parameter should be the name of the animation.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetAnimationNoResetNotLooping",
+          "Description": "Force the prop to play an animation and force it to not loop unless the prop is already playing the animation. The parameter should be the name of the animation.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetIdleAnimationNotLooping",
+          "Description": "Changes the Idle Animation to the one specified in the parameter and force it to not loop.",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetPlaybackRate",
+          "Description": "Set the playback rate for the animation.",
+          "VariableType": "Float",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetBodyGroup",
+          "Description": "Sets bodygroup. Format is \u0026lt;BodygroupName,index\u0026gt; ",
+          "VariableType": "String",
+          "Type": "Input"
+        },
+        {
+          "Name": "TurnOn",
+          "Description": "Make the prop visible.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "TurnOff",
+          "Description": "Make the prop invisible.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableCollision",
+          "Description": "Enable collision on the prop.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableCollision",
+          "Description": "Disable collision on the prop.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetNavIgnore",
+          "Description": "Enable and disable NAVIgnore on the prop.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "OnAnimationBegun",
+          "Description": "Fired whenever a new animation has begun playing.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnAnimationDone",
+          "Description": "Fired whenever an animation is complete.",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnAnimationReachedEnd",
+          "Description": "Fired whenever a non-looping animation playing forward hits the end (cycle=1).",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnAnimationReachedStart",
+          "Description": "Fired whenever a non-looping animation playing backward hits the beginning (cycle=0).",
+          "VariableType": "Void",
+          "Type": "Output"
+        },
+        {
+          "Name": "OnAnimationLoopCycleDone",
+          "Description": "Fires off an event when the current cycle of a looped animation is complete.",
+          "VariableType": "Void",
+          "Type": "Output"
+        }
+      ]
+    }
+  ]
+}

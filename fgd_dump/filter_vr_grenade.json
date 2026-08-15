@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_vr_grenade",
       "Description": "A filter that filters for VR Grenades",
-      "IconPath": "static/fgd_dump/img/hla/filter_vr_grenade.png",
+      "IconPath": "static/fgd_dump/img/hla/filter_name.png",
       "PageAnnotation": null,
       "Properties": [
         {

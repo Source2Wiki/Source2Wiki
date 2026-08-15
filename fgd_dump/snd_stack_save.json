@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_stack_save",
       "Description": "Save/Load the fields of a specific operator stack.",
-      "IconPath": "static/fgd_dump/img/cs2/snd_stack_save.png",
+      "IconPath": "static/fgd_dump/img/cs2/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -150,7 +150,7 @@
       "EntityType": "Point",
       "Name": "snd_stack_save",
       "Description": "Save/Load the fields of a specific operator stack.",
-      "IconPath": "static/fgd_dump/img/hla/snd_stack_save.png",
+      "IconPath": "static/fgd_dump/img/hla/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -288,7 +288,7 @@
       "EntityType": "Point",
       "Name": "snd_stack_save",
       "Description": "Save/Load the fields of a specific operator stack.",
-      "IconPath": "static/fgd_dump/img/dota2/snd_stack_save.png",
+      "IconPath": "static/fgd_dump/img/dota2/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -432,7 +432,7 @@
       "EntityType": "Point",
       "Name": "snd_stack_save",
       "Description": "Save/Load the fields of a specific operator stack.",
-      "IconPath": "static/fgd_dump/img/steamvr/snd_stack_save.png",
+      "IconPath": "static/fgd_dump/img/steamvr/snd_event.png",
       "PageAnnotation": null,
       "Properties": [
         {

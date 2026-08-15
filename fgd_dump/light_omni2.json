@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "light_omni2",
       "Description": "A sphere or tube shaped light",
-      "IconPath": "static/fgd_dump/img/cs2/light_omni2.png",
+      "IconPath": "static/fgd_dump/img/cs2/light_omni.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -127,15 +127,20 @@
           "FriendlyName": "Indirect Light Type",
           "InternalName": "bouncelight",
           "VariableType": "Choices",
-          "Description": "How indirect (bounce) light should be represented",
+          "Description": "How indirect (bounce) light should be computed",
           "Options": [
             {
-              "Name": "None",
+              "Name": "Default",
+              "Description": "",
+              "Key": "-1"
+            },
+            {
+              "Name": "Disabled",
               "Description": "",
               "Key": "0"
             },
             {
-              "Name": "Static",
+              "Name": "Baked",
               "Description": "",
               "Key": "1"
             }
@@ -187,6 +192,14 @@
           "InternalName": "bakespeculartocubemaps",
           "VariableType": "Bool",
           "Description": "Bake specular into cubemaps. Only works when Direct Lighting Type is set to Baked.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Bake Specular to Cubemaps Scale",
+          "InternalName": "bakespeculartocubemaps_scale",
+          "VariableType": "Float",
+          "Description": "",
           "Options": [],
           "Annotations": []
         },
@@ -347,6 +360,14 @@
           "InternalName": "fade_size_end",
           "VariableType": "Float",
           "Description": "Screen size where the light will be fully faded out",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Always Transmit to Clients",
+          "InternalName": "transmit_always",
+          "VariableType": "Bool",
+          "Description": "Allows large lights to transmit to clients as a workaround for going out of PVS due to sv_pvs_max_distance being set too close.",
           "Options": [],
           "Annotations": []
         },

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "func_hostage_rescue",
       "Description": "Hostage Rescue Zone. When a hostage is led into this zone, it is marked as rescued.",
-      "IconPath": "static/fgd_dump/img/cs2/func_hostage_rescue.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -194,8 +194,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

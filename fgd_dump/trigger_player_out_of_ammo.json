@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_player_out_of_ammo",
       "Description": "Player Out of Ammo Trigger",
-      "IconPath": "static/fgd_dump/img/hla/trigger_player_out_of_ammo.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -189,13 +189,33 @@
           "Description": "If true, also push entities that do not take damage (like func_physbox)",
           "Options": [],
           "Annotations": []
+        },
+        {
+          "FriendlyName": "Disable Push Clamp",
+          "InternalName": "DisablePushClamp",
+          "VariableType": "Bool",
+          "Description": "Disable clamping of push impulses (by default limits impulses that would move 75kg object more than 400 units-per-second)",
+          "Options": [],
+          "Annotations": []
         }
       ],
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -847,13 +867,33 @@
           "Description": "If true, also push entities that do not take damage (like func_physbox)",
           "Options": [],
           "Annotations": []
+        },
+        {
+          "FriendlyName": "Disable Push Clamp",
+          "InternalName": "DisablePushClamp",
+          "VariableType": "Bool",
+          "Description": "Disable clamping of push impulses (by default limits impulses that would move 75kg object more than 400 units-per-second)",
+          "Options": [],
+          "Annotations": []
         }
       ],
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

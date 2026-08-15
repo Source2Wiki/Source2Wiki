@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_no_wards",
       "Description": "Wards disallowed here.",
-      "IconPath": "static/fgd_dump/img/dota2/trigger_no_wards.png",
+      "IconPath": "static/fgd_dump/img/dota2/tools_no_wards.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -194,8 +194,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

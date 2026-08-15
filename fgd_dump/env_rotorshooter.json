@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_rotorshooter",
       "Description": "An entity that creates gibs when it\u0027s within the influence of a helicopter\u0027s rotor wash.",
-      "IconPath": "static/fgd_dump/img/dota2/env_rotorshooter.png",
+      "IconPath": "static/fgd_dump/img/dota2/env_shooter.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -553,8 +553,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -702,7 +714,7 @@
       "EntityType": "Point",
       "Name": "env_rotorshooter",
       "Description": "An entity that creates gibs when it\u0027s within the influence of a helicopter\u0027s rotor wash.",
-      "IconPath": "static/fgd_dump/img/steamvr/env_rotorshooter.png",
+      "IconPath": "static/fgd_dump/img/steamvr/env_shooter.png",
       "PageAnnotation": null,
       "Properties": [
         {

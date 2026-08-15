@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_traversal_tp_interrupt",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/hla/trigger_traversal_tp_interrupt.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

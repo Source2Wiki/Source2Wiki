@@ -170,6 +170,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Place Anchors At Constraint Transform",
+          "InternalName": "place_anchors_at_constraint_transform",
+          "VariableType": "Bool",
+          "Description": "If true, the joint anchors on each entity will be set to match the transform of the constraint entity. If false, the anchors will be set to the specified attachment points, or the physics body origins if no attachments are specified.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Linear Motion X",
           "InternalName": "linear_motion_x",
           "VariableType": "Choices",
@@ -527,8 +535,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1587,6 +1607,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Place Anchors At Constraint Transform",
+          "InternalName": "place_anchors_at_constraint_transform",
+          "VariableType": "Bool",
+          "Description": "If true, the joint anchors on each entity will be set to match the transform of the constraint entity. If false, the anchors will be set to the specified attachment points, or the physics body origins if no attachments are specified.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Linear Motion X",
           "InternalName": "linear_motion_x",
           "VariableType": "Choices",
@@ -1944,8 +1972,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

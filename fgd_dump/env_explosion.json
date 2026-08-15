@@ -195,90 +195,9 @@
         {
           "FriendlyName": "Explosion Type",
           "InternalName": "explosion_type",
-          "VariableType": "Choices",
+          "VariableType": "VDataChoice",
           "Description": "",
-          "Options": [
-            {
-              "Name": "Default",
-              "Description": "",
-              "Key": ""
-            },
-            {
-              "Name": "Grenade",
-              "Description": "",
-              "Key": "grenade"
-            },
-            {
-              "Name": "Molotov",
-              "Description": "",
-              "Key": "molotov"
-            },
-            {
-              "Name": "Fireworks",
-              "Description": "",
-              "Key": "fireworks"
-            },
-            {
-              "Name": "Gasoline Can",
-              "Description": "",
-              "Key": "gascan"
-            },
-            {
-              "Name": "Pressurized Gas Cylinder",
-              "Description": "",
-              "Key": "gascylinder"
-            },
-            {
-              "Name": "Explosive Barrel",
-              "Description": "",
-              "Key": "explosivebarrel"
-            },
-            {
-              "Name": "Electrical",
-              "Description": "",
-              "Key": "electrical"
-            },
-            {
-              "Name": "EMP",
-              "Description": "",
-              "Key": "emp"
-            },
-            {
-              "Name": "Shrapnel",
-              "Description": "",
-              "Key": "shrapnel"
-            },
-            {
-              "Name": "Smoke Grenade",
-              "Description": "",
-              "Key": "smoke"
-            },
-            {
-              "Name": "Flashbang",
-              "Description": "",
-              "Key": "flashbang"
-            },
-            {
-              "Name": "Tripmine",
-              "Description": "",
-              "Key": "tripmine"
-            },
-            {
-              "Name": "Ice",
-              "Description": "",
-              "Key": "ice"
-            },
-            {
-              "Name": "None",
-              "Description": "",
-              "Key": "none"
-            },
-            {
-              "Name": "Custom",
-              "Description": "",
-              "Key": "custom"
-            }
-          ],
+          "Options": [],
           "Annotations": []
         },
         {
@@ -317,8 +236,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1098,90 +1029,9 @@
         {
           "FriendlyName": "Explosion Type",
           "InternalName": "explosion_type",
-          "VariableType": "Choices",
+          "VariableType": "VDataChoice",
           "Description": "",
-          "Options": [
-            {
-              "Name": "Default",
-              "Description": "",
-              "Key": ""
-            },
-            {
-              "Name": "Grenade",
-              "Description": "",
-              "Key": "grenade"
-            },
-            {
-              "Name": "Molotov",
-              "Description": "",
-              "Key": "molotov"
-            },
-            {
-              "Name": "Fireworks",
-              "Description": "",
-              "Key": "fireworks"
-            },
-            {
-              "Name": "Gasoline Can",
-              "Description": "",
-              "Key": "gascan"
-            },
-            {
-              "Name": "Pressurized Gas Cylinder",
-              "Description": "",
-              "Key": "gascylinder"
-            },
-            {
-              "Name": "Explosive Barrel",
-              "Description": "",
-              "Key": "explosivebarrel"
-            },
-            {
-              "Name": "Electrical",
-              "Description": "",
-              "Key": "electrical"
-            },
-            {
-              "Name": "EMP",
-              "Description": "",
-              "Key": "emp"
-            },
-            {
-              "Name": "Shrapnel",
-              "Description": "",
-              "Key": "shrapnel"
-            },
-            {
-              "Name": "Smoke Grenade",
-              "Description": "",
-              "Key": "smoke"
-            },
-            {
-              "Name": "Flashbang",
-              "Description": "",
-              "Key": "flashbang"
-            },
-            {
-              "Name": "Tripmine",
-              "Description": "",
-              "Key": "tripmine"
-            },
-            {
-              "Name": "Ice",
-              "Description": "",
-              "Key": "ice"
-            },
-            {
-              "Name": "None",
-              "Description": "",
-              "Key": "none"
-            },
-            {
-              "Name": "Custom",
-              "Description": "",
-              "Key": "custom"
-            }
-          ],
+          "Options": [],
           "Annotations": []
         },
         {
@@ -1220,8 +1070,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

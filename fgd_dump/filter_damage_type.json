@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_damage_type",
       "Description": "A damage filter that filters by the type of damage inflicted. This can only be used as a damage filter, not as an activator filter.",
-      "IconPath": "static/fgd_dump/img/cs2/filter_damage_type.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_type.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -307,7 +307,7 @@
       "EntityType": "Point",
       "Name": "filter_damage_type",
       "Description": "A damage filter that filters by the type of damage inflicted. This can only be used as a damage filter, not as an activator filter.",
-      "IconPath": "static/fgd_dump/img/hla/filter_damage_type.png",
+      "IconPath": "static/fgd_dump/img/hla/filter_type.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -583,7 +583,7 @@
       "EntityType": "Point",
       "Name": "filter_damage_type",
       "Description": "A damage filter that filters by the type of damage inflicted. This can only be used as a damage filter, not as an activator filter.",
-      "IconPath": "static/fgd_dump/img/dota2/filter_damage_type.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_type.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -884,7 +884,7 @@
       "EntityType": "Point",
       "Name": "filter_damage_type",
       "Description": "A damage filter that filters by the type of damage inflicted. This can only be used as a damage filter, not as an activator filter.",
-      "IconPath": "static/fgd_dump/img/steamvr/filter_damage_type.png",
+      "IconPath": "static/fgd_dump/img/steamvr/filter_type.png",
       "PageAnnotation": null,
       "Properties": [
         {

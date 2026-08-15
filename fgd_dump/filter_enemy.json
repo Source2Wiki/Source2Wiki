@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_enemy",
       "Description": "A filter that filters a potential enemy entity by a set of criteria.",
-      "IconPath": "static/fgd_dump/img/cs2/filter_enemy.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -244,7 +244,7 @@
       "EntityType": "Point",
       "Name": "filter_enemy",
       "Description": "A filter that filters a potential enemy entity by a set of criteria.",
-      "IconPath": "static/fgd_dump/img/hla/filter_enemy.png",
+      "IconPath": "static/fgd_dump/img/hla/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -457,7 +457,7 @@
       "EntityType": "Point",
       "Name": "filter_enemy",
       "Description": "A filter that filters a potential enemy entity by a set of criteria.",
-      "IconPath": "static/fgd_dump/img/dota2/filter_enemy.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -695,7 +695,7 @@
       "EntityType": "Point",
       "Name": "filter_enemy",
       "Description": "A filter that filters a potential enemy entity by a set of criteria.",
-      "IconPath": "static/fgd_dump/img/steamvr/filter_enemy.png",
+      "IconPath": "static/fgd_dump/img/steamvr/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {

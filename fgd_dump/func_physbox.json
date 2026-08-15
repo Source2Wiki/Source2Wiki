@@ -478,6 +478,11 @@
               "Name": "Don\u0027t allow hand physics damage",
               "Description": "",
               "Key": "4096"
+            },
+            {
+              "Name": "Force nav-ignore",
+              "Description": "",
+              "Key": "16777216"
             }
           ],
           "Annotations": []
@@ -990,6 +995,38 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Collision Group",
+          "InternalName": "collisionGroup",
+          "VariableType": "String",
+          "Description": "Override the default collision group",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Interacts As",
+          "InternalName": "interactsAs",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Interacts With",
+          "InternalName": "interactsWith",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers to interact with",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Interacts Exclude",
+          "InternalName": "interactsExclude",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers to not collide with",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Health Level to Override Motion",
           "InternalName": "damagetoenablemotion",
           "VariableType": "Integer",
@@ -1099,8 +1136,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1257,6 +1306,18 @@
           "Name": "Break",
           "Description": "Breaks the breakable.",
           "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableBreaking",
+          "Description": "Sets whether or not the breakable can break.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableCollisions",
+          "Description": "Sets whether or not the breakable has collision at all.",
+          "VariableType": "Bool",
           "Type": "Input"
         },
         {
@@ -3319,6 +3380,11 @@
               "Name": "Don\u0027t allow hand physics damage",
               "Description": "",
               "Key": "4096"
+            },
+            {
+              "Name": "Force nav-ignore",
+              "Description": "",
+              "Key": "16777216"
             }
           ],
           "Annotations": []
@@ -3831,6 +3897,38 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Collision Group",
+          "InternalName": "collisionGroup",
+          "VariableType": "String",
+          "Description": "Override the default collision group",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Interacts As",
+          "InternalName": "interactsAs",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Interacts With",
+          "InternalName": "interactsWith",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers to interact with",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Interacts Exclude",
+          "InternalName": "interactsExclude",
+          "VariableType": "String",
+          "Description": "comma-separated list of interaction layers to not collide with",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Health Level to Override Motion",
           "InternalName": "damagetoenablemotion",
           "VariableType": "Integer",
@@ -3940,8 +4038,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -4098,6 +4208,18 @@
           "Name": "Break",
           "Description": "Breaks the breakable.",
           "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableBreaking",
+          "Description": "Sets whether or not the breakable can break.",
+          "VariableType": "Bool",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetEnableCollisions",
+          "Description": "Sets whether or not the breakable has collision at all.",
+          "VariableType": "Bool",
           "Type": "Input"
         },
         {

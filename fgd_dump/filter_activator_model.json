@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_model",
       "Description": "A filter that filters by the model of the activator.",
-      "IconPath": "static/fgd_dump/img/cs2/filter_activator_model.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_model.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -206,7 +206,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_model",
       "Description": "A filter that filters by the model of the activator.",
-      "IconPath": "static/fgd_dump/img/hla/filter_activator_model.png",
+      "IconPath": "static/fgd_dump/img/hla/filter_name.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -381,7 +381,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_model",
       "Description": "A filter that filters by the model of the activator.",
-      "IconPath": "static/fgd_dump/img/dota2/filter_activator_model.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_model.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -581,7 +581,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_model",
       "Description": "A filter that filters by the model of the activator.",
-      "IconPath": "static/fgd_dump/img/steamvr/filter_activator_model.png",
+      "IconPath": "static/fgd_dump/img/steamvr/filter_name.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_player_peephole",
       "Description": "Player peephole (hands/head can enter but only legally exit from where they came in)",
-      "IconPath": "static/fgd_dump/img/hla/trigger_player_peephole.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

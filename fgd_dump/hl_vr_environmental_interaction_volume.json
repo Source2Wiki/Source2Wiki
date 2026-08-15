@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "hl_vr_environmental_interaction_volume",
       "Description": "Entity that designates a volume within which NPC/Explosion existence should be mapped into the interactive foliage texture.",
-      "IconPath": "static/fgd_dump/img/hla/hl_vr_environmental_interaction_volume.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

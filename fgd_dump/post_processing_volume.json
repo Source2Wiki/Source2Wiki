@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "post_processing_volume",
       "Description": "Set postprocessing params while a player is inside the volume.",
-      "IconPath": "static/fgd_dump/img/cs2/post_processing_volume.png",
+      "IconPath": "static/fgd_dump/img/cs2/tools_postprocess_volume.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -97,7 +97,7 @@
       "EntityType": "Mesh",
       "Name": "post_processing_volume",
       "Description": "Set postprocessing params while a player is inside the volume.",
-      "IconPath": "static/fgd_dump/img/hla/post_processing_volume.png",
+      "IconPath": "static/fgd_dump/img/hla/tools_postprocess_volume.png",
       "PageAnnotation": null,
       "Properties": [
         {

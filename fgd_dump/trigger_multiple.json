@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_multiple",
       "Description": "A trigger volume that can be triggered multiple times.",
-      "IconPath": "static/fgd_dump/img/cs2/trigger_multiple.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -202,8 +202,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -393,7 +405,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_multiple",
       "Description": "A trigger volume that can be triggered multiple times.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_multiple.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -762,7 +774,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_multiple",
       "Description": "A trigger volume that can be triggered multiple times.",
-      "IconPath": "static/fgd_dump/img/dota2/trigger_multiple.png",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -958,8 +970,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1149,7 +1173,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_multiple",
       "Description": "A trigger volume that can be triggered multiple times.",
-      "IconPath": "static/fgd_dump/img/steamvr/trigger_multiple.png",
+      "IconPath": "static/fgd_dump/img/steamvr/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_enemyfinder",
       "Description": "EnemyFinder",
-      "IconPath": "static/fgd_dump/img/hla/npc_enemyfinder.png",
+      "IconPath": "static/fgd_dump/img/hla/enemyfinder.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -143,7 +143,7 @@
       "EntityType": "Point",
       "Name": "npc_enemyfinder",
       "Description": "EnemyFinder",
-      "IconPath": "static/fgd_dump/img/steamvr/npc_enemyfinder.png",
+      "IconPath": "static/fgd_dump/img/steamvr/enemyfinder.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_soundscape",
       "Description": "An entity to control sound in an area. The active soundscape at any time is the last one that had line-of-sight to the player, and was within the radius.",
-      "IconPath": "static/fgd_dump/img/cs2/snd_soundscape.png",
+      "IconPath": "static/fgd_dump/img/cs2/env_soundscape.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -193,8 +193,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -348,7 +360,7 @@
       "EntityType": "Point",
       "Name": "snd_soundscape",
       "Description": "An entity to control sound in an area. The active soundscape at any time is the last one that had line-of-sight to the player, and was within the radius.",
-      "IconPath": "static/fgd_dump/img/hla/snd_soundscape.png",
+      "IconPath": "static/fgd_dump/img/hla/env_soundscape.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -668,7 +680,7 @@
       "EntityType": "Point",
       "Name": "snd_soundscape",
       "Description": "An entity to control sound in an area. The active soundscape at any time is the last one that had line-of-sight to the player, and was within the radius.",
-      "IconPath": "static/fgd_dump/img/dota2/snd_soundscape.png",
+      "IconPath": "static/fgd_dump/img/dota2/env_soundscape.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -855,8 +867,20 @@
         },
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -1010,7 +1034,7 @@
       "EntityType": "Point",
       "Name": "snd_soundscape",
       "Description": "An entity to control sound in an area. The active soundscape at any time is the last one that had line-of-sight to the player, and was within the radius.",
-      "IconPath": "static/fgd_dump/img/steamvr/snd_soundscape.png",
+      "IconPath": "static/fgd_dump/img/steamvr/env_soundscape.png",
       "PageAnnotation": null,
       "Properties": [
         {

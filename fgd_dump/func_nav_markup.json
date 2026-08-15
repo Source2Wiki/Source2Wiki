@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "func_nav_markup",
       "Description": "Tagged NAV markup volume entity, used during export and can be queried in-game by tag/name/type/location",
-      "IconPath": "static/fgd_dump/img/cs2/func_nav_markup.png",
+      "IconPath": "static/fgd_dump/img/cs2/toolsnavattribute.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -65,7 +65,7 @@
             },
             {
               "Name": "No Nav",
-              "Description": "",
+              "Description": "test detailed description",
               "Key": "NONAV"
             },
             {
@@ -108,7 +108,7 @@
       "EntityType": "Mesh",
       "Name": "func_nav_markup",
       "Description": "Tagged NAV markup volume entity, used during export and can be queried in-game by tag/name/type/location",
-      "IconPath": "static/fgd_dump/img/hla/func_nav_markup.png",
+      "IconPath": "static/fgd_dump/img/hla/toolsnavattribute.png",
       "PageAnnotation": null,
       "Properties": [
         {

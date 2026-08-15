@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_wind_obb",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/cs2/snd_opvar_set_wind_obb.png",
+      "IconPath": "static/fgd_dump/img/cs2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -165,8 +165,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -338,7 +350,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_wind_obb",
       "Description": "",
-      "IconPath": "static/fgd_dump/img/dota2/snd_opvar_set_wind_obb.png",
+      "IconPath": "static/fgd_dump/img/dota2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -497,8 +509,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {

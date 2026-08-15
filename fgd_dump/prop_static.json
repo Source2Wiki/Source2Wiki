@@ -85,30 +85,30 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "Shadow Type",
+          "FriendlyName": "Cast Shadows",
           "InternalName": "disableshadows",
           "VariableType": "Choices",
           "Description": "Selects the type of shadows that should be cast from this prop_static.",
           "Options": [
             {
-              "Name": "Baked \u0026 Dynamic",
-              "Description": "",
+              "Name": "Enabled",
+              "Description": "Prop will cast static shadows, unless something forces dynamic shadows (eg Render With Dynamic)",
               "Key": "0"
             },
             {
+              "Name": "Disabled",
+              "Description": "Prop will cast no shadows",
+              "Key": "1"
+            },
+            {
               "Name": "Only Baked",
-              "Description": "",
+              "Description": "Prop will only cast shadows into the lightmap, it will not cast dynamic shadows",
               "Key": "3"
             },
             {
               "Name": "Only Dynamic",
-              "Description": "",
+              "Description": "Prop will only cast dynamic shadows, it will not cast shadows into the lightmap",
               "Key": "2"
-            },
-            {
-              "Name": "None",
-              "Description": "",
-              "Key": "1"
             }
           ],
           "Annotations": []
@@ -642,30 +642,30 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "Shadow Type",
+          "FriendlyName": "Cast Shadows",
           "InternalName": "disableshadows",
           "VariableType": "Choices",
           "Description": "Selects the type of shadows that should be cast from this prop_static.",
           "Options": [
             {
-              "Name": "Baked \u0026 Dynamic",
-              "Description": "",
+              "Name": "Enabled",
+              "Description": "Prop will cast static shadows, unless something forces dynamic shadows (eg Render With Dynamic)",
               "Key": "0"
             },
             {
+              "Name": "Disabled",
+              "Description": "Prop will cast no shadows",
+              "Key": "1"
+            },
+            {
               "Name": "Only Baked",
-              "Description": "",
+              "Description": "Prop will only cast shadows into the lightmap, it will not cast dynamic shadows",
               "Key": "3"
             },
             {
               "Name": "Only Dynamic",
-              "Description": "",
+              "Description": "Prop will only cast dynamic shadows, it will not cast shadows into the lightmap",
               "Key": "2"
-            },
-            {
-              "Name": "None",
-              "Description": "",
-              "Key": "1"
             }
           ],
           "Annotations": []

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_changelevel",
       "Description": "An entity that triggers a level change.\u003Cbr\u003E\u003Cbr\u003EPlace an info_landmark in both maps in the PVS of the transition region that marks the \u0027same\u0027 location in each map.\u003Cbr\u003E\u003Cbr\u003E\u003Cb\u003ETIPS \u0026 TRICKS:\u003C/b\u003E\u003Cbr\u003ETo fire events in the next level, use the OnLevelChange output to turn on an env_global in the current level.  Create a logic_auto in the next level that checks for the state set by the env_global.\u003Cbr\u003E\u003Cbr\u003ETo control which entities go through the level transition, create one or more trigger_transitions and give them the same name as the landmark. Any entities within the trigger_transition(s) will go to the next map.",
-      "IconPath": "static/fgd_dump/img/cs2/trigger_changelevel.png",
+      "IconPath": "static/fgd_dump/img/cs2/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -93,7 +93,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_changelevel",
       "Description": "An entity that triggers a level change.\u003Cbr\u003E\u003Cbr\u003EPlace an info_landmark in both maps in the PVS of the transition region that marks the \u0027same\u0027 location in each map.\u003Cbr\u003E\u003Cbr\u003E\u003Cb\u003ETIPS \u0026 TRICKS:\u003C/b\u003E\u003Cbr\u003ETo fire events in the next level, use the OnLevelChange output to turn on an env_global in the current level.  Create a logic_auto in the next level that checks for the state set by the env_global.\u003Cbr\u003E\u003Cbr\u003ETo control which entities go through the level transition, create one or more trigger_transitions and give them the same name as the landmark. Any entities within the trigger_transition(s) will go to the next map.",
-      "IconPath": "static/fgd_dump/img/hla/trigger_changelevel.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -180,7 +180,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_changelevel",
       "Description": "An entity that triggers a level change.\u003Cbr\u003E\u003Cbr\u003EPlace an info_landmark in both maps in the PVS of the transition region that marks the \u0027same\u0027 location in each map.\u003Cbr\u003E\u003Cbr\u003E\u003Cb\u003ETIPS \u0026 TRICKS:\u003C/b\u003E\u003Cbr\u003ETo fire events in the next level, use the OnLevelChange output to turn on an env_global in the current level.  Create a logic_auto in the next level that checks for the state set by the env_global.\u003Cbr\u003E\u003Cbr\u003ETo control which entities go through the level transition, create one or more trigger_transitions and give them the same name as the landmark. Any entities within the trigger_transition(s) will go to the next map.",
-      "IconPath": "static/fgd_dump/img/dota2/trigger_changelevel.png",
+      "IconPath": "static/fgd_dump/img/dota2/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -267,7 +267,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_changelevel",
       "Description": "An entity that triggers a level change.\u003Cbr\u003E\u003Cbr\u003EPlace an info_landmark in both maps in the PVS of the transition region that marks the \u0027same\u0027 location in each map.\u003Cbr\u003E\u003Cbr\u003E\u003Cb\u003ETIPS \u0026 TRICKS:\u003C/b\u003E\u003Cbr\u003ETo fire events in the next level, use the OnLevelChange output to turn on an env_global in the current level.  Create a logic_auto in the next level that checks for the state set by the env_global.\u003Cbr\u003E\u003Cbr\u003ETo control which entities go through the level transition, create one or more trigger_transitions and give them the same name as the landmark. Any entities within the trigger_transition(s) will go to the next map.",
-      "IconPath": "static/fgd_dump/img/steamvr/trigger_changelevel.png",
+      "IconPath": "static/fgd_dump/img/steamvr/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

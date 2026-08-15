@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "tutorial_npc_blocker",
       "Description": "The start or endpoint of an NPC blocking line.",
-      "IconPath": "editor/info_target.vmt",
+      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

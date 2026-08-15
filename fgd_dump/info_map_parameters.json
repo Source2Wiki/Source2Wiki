@@ -103,6 +103,14 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "GPU Cull Skybox",
+          "InternalName": "gpucullskybox",
+          "VariableType": "Bool",
+          "Description": "Enable or disable GPU Culling of the Skybox (required for clutter in skybox).",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Rain trace-to-sky enabled",
           "InternalName": "raintracetoskyenabled",
           "VariableType": "Bool",

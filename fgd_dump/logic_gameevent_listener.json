@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "logic_gameevent_listener",
       "Description": "An entity that listens to game events and fires off an output when the named event it fired",
-      "IconPath": "static/fgd_dump/img/hla/logic_gameevent_listener.png",
+      "IconPath": "static/fgd_dump/img/hla/game_event_listener.png",
       "PageAnnotation": null,
       "Properties": [
         {

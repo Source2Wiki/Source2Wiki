@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_physimpact",
       "Description": "An entity that will cause a physics impact on another entity.",
-      "IconPath": "static/fgd_dump/img/cs2/env_physimpact.png",
+      "IconPath": "static/fgd_dump/img/cs2/env_physexplosion.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -138,8 +138,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -287,7 +299,7 @@
       "EntityType": "Point",
       "Name": "env_physimpact",
       "Description": "An entity that will cause a physics impact on another entity.",
-      "IconPath": "static/fgd_dump/img/hla/env_physimpact.png",
+      "IconPath": "static/fgd_dump/img/hla/env_physexplosion.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -556,7 +568,7 @@
       "EntityType": "Point",
       "Name": "env_physimpact",
       "Description": "An entity that will cause a physics impact on another entity.",
-      "IconPath": "static/fgd_dump/img/dota2/env_physimpact.png",
+      "IconPath": "static/fgd_dump/img/dota2/env_physexplosion.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -688,8 +700,20 @@
       "InputOutputs": [
         {
           "Name": "SetParent",
-          "Description": "Changes the entity\u0027s parent in the movement hierarchy.",
-          "VariableType": "TargetDestination",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentWithOffset",
+          "Description": "",
+          "VariableType": "api",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetParentMaintainOffset",
+          "Description": "",
+          "VariableType": "api",
           "Type": "Input"
         },
         {
@@ -837,7 +861,7 @@
       "EntityType": "Point",
       "Name": "env_physimpact",
       "Description": "An entity that will cause a physics impact on another entity.",
-      "IconPath": "static/fgd_dump/img/steamvr/env_physimpact.png",
+      "IconPath": "static/fgd_dump/img/steamvr/env_physexplosion.png",
       "PageAnnotation": null,
       "Properties": [
         {

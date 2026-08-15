@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "logic_scene_list_manager",
       "Description": "Manages a list of logic_choreographed_scene entities. Store choreo scenes in them in order that they will be played by other inputs. Whenever a scene plays, the manager will remove all scenes before that one in the list. The name of another logic_scene_list_manager can be entered in a slot instead of an invididual scene, which will cause all scenes in that manager to be removed when a later scene in this list is played.",
-      "IconPath": "static/fgd_dump/img/steamvr/logic_scene_list_manager.png",
+      "IconPath": "static/fgd_dump/img/steamvr/choreo_manager.png",
       "PageAnnotation": null,
       "Properties": [
         {

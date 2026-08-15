@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "dota_color_correction",
       "Description": "An entity to control the color correction in the map.",
-      "IconPath": "editor/color_correction.vmt",
+      "IconPath": "static/fgd_dump/img/dota2/color_correction.png",
       "PageAnnotation": null,
       "Properties": [
         {

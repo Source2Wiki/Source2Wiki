@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "water_lod_control",
       "Description": "An entity used to control the LOD behavior of any water in the map. If your map has water, this entity is required.",
-      "IconPath": "static/fgd_dump/img/cs2/water_lod_control.png",
+      "IconPath": "static/fgd_dump/img/cs2/waterlodcontrol.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -170,7 +170,7 @@
       "EntityType": "Point",
       "Name": "water_lod_control",
       "Description": "An entity used to control the LOD behavior of any water in the map. If your map has water, this entity is required.",
-      "IconPath": "static/fgd_dump/img/dota2/water_lod_control.png",
+      "IconPath": "static/fgd_dump/img/dota2/waterlodcontrol.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -334,7 +334,7 @@
       "EntityType": "Point",
       "Name": "water_lod_control",
       "Description": "An entity used to control the LOD behavior of any water in the map. If your map has water, this entity is required.",
-      "IconPath": "static/fgd_dump/img/steamvr/water_lod_control.png",
+      "IconPath": "static/fgd_dump/img/steamvr/waterlodcontrol.png",
       "PageAnnotation": null,
       "Properties": [
         {

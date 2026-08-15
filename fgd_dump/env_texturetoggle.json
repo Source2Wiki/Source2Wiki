@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_texturetoggle",
       "Description": "An entity that allows you to change the textures on other brush-built entities.",
-      "IconPath": "editor/env_texturetoggle.vmat",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -162,7 +162,7 @@
       "EntityType": "Point",
       "Name": "env_texturetoggle",
       "Description": "An entity that allows you to change the textures on other brush-built entities.",
-      "IconPath": "editor/env_texturetoggle.vmat",
+      "IconPath": "",
       "PageAnnotation": null,
       "Properties": [
         {

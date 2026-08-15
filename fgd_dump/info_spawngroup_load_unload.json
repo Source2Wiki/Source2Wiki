@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_load_unload",
       "Description": "Logical entity that starts async loading or unloading a level.",
-      "IconPath": "static/fgd_dump/img/cs2/info_spawngroup_load_unload.png",
+      "IconPath": "static/fgd_dump/img/cs2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -232,7 +232,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_load_unload",
       "Description": "Logical entity that starts async loading or unloading a level.",
-      "IconPath": "static/fgd_dump/img/hla/info_spawngroup_load_unload.png",
+      "IconPath": "static/fgd_dump/img/hla/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -444,7 +444,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_load_unload",
       "Description": "Logical entity that starts async loading or unloading a level.",
-      "IconPath": "static/fgd_dump/img/dota2/info_spawngroup_load_unload.png",
+      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -670,7 +670,7 @@
       "EntityType": "Point",
       "Name": "info_spawngroup_load_unload",
       "Description": "Logical entity that starts async loading or unloading a level.",
-      "IconPath": "static/fgd_dump/img/steamvr/info_spawngroup_load_unload.png",
+      "IconPath": "static/fgd_dump/img/steamvr/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

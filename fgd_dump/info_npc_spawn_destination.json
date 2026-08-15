@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_npc_spawn_destination",
       "Description": "NPC Spawn Destination. (Consult npc_template_maker help for more info)",
-      "IconPath": "static/fgd_dump/img/hla/info_npc_spawn_destination.png",
+      "IconPath": "static/fgd_dump/img/hla/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -230,7 +230,7 @@
       "EntityType": "Point",
       "Name": "info_npc_spawn_destination",
       "Description": "NPC Spawn Destination. (Consult npc_template_maker help for more info)",
-      "IconPath": "static/fgd_dump/img/steamvr/info_npc_spawn_destination.png",
+      "IconPath": "static/fgd_dump/img/steamvr/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

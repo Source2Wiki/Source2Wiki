@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_aabb",
       "Description": "Sets an opvar value on a library stack",
-      "IconPath": "static/fgd_dump/img/cs2/snd_opvar_set_aabb.png",
+      "IconPath": "static/fgd_dump/img/cs2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -442,7 +442,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_aabb",
       "Description": "Sets an opvar value on a library stack",
-      "IconPath": "static/fgd_dump/img/hla/snd_opvar_set_aabb.png",
+      "IconPath": "static/fgd_dump/img/hla/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -844,7 +844,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_aabb",
       "Description": "Sets an opvar value on a library stack",
-      "IconPath": "static/fgd_dump/img/dota2/snd_opvar_set_aabb.png",
+      "IconPath": "static/fgd_dump/img/dota2/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1280,7 +1280,7 @@
       "EntityType": "Point",
       "Name": "snd_opvar_set_aabb",
       "Description": "Sets an opvar value on a library stack",
-      "IconPath": "static/fgd_dump/img/steamvr/snd_opvar_set_aabb.png",
+      "IconPath": "static/fgd_dump/img/steamvr/snd_opvar_set.png",
       "PageAnnotation": null,
       "Properties": [
         {

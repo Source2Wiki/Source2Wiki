@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "logic_choreographed_scene",
       "Description": "Manages a choreographed scene of one or more actors.",
-      "IconPath": "static/fgd_dump/img/hla/logic_choreographed_scene.png",
+      "IconPath": "static/fgd_dump/img/hla/choreo_scene.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -330,7 +330,7 @@
       "EntityType": "Point",
       "Name": "logic_choreographed_scene",
       "Description": "Manages a choreographed scene of one or more actors.",
-      "IconPath": "static/fgd_dump/img/steamvr/logic_choreographed_scene.png",
+      "IconPath": "static/fgd_dump/img/steamvr/choreo_scene.png",
       "PageAnnotation": null,
       "Properties": [
         {

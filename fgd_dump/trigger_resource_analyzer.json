@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_resource_analyzer",
       "Description": "Resource Analyzer Player Trigger",
-      "IconPath": "static/fgd_dump/img/hla/trigger_resource_analyzer.png",
+      "IconPath": "static/fgd_dump/img/hla/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {

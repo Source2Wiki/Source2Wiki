@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_class",
       "Description": "A filter that filters by the class name of the activator.",
-      "IconPath": "static/fgd_dump/img/cs2/filter_activator_class.png",
+      "IconPath": "static/fgd_dump/img/cs2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -206,7 +206,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_class",
       "Description": "A filter that filters by the class name of the activator.",
-      "IconPath": "static/fgd_dump/img/hla/filter_activator_class.png",
+      "IconPath": "static/fgd_dump/img/hla/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -381,7 +381,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_class",
       "Description": "A filter that filters by the class name of the activator.",
-      "IconPath": "static/fgd_dump/img/dota2/filter_activator_class.png",
+      "IconPath": "static/fgd_dump/img/dota2/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -581,7 +581,7 @@
       "EntityType": "Point",
       "Name": "filter_activator_class",
       "Description": "A filter that filters by the class name of the activator.",
-      "IconPath": "static/fgd_dump/img/steamvr/filter_activator_class.png",
+      "IconPath": "static/fgd_dump/img/steamvr/filter_class.png",
       "PageAnnotation": null,
       "Properties": [
         {
