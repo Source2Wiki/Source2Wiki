@@ -9,31 +9,24 @@
 
 import fs from "node:fs";
 
+import { admonitionKeywords } from "../../src/admonitions";
 import { Game, getGameByFileSystemName } from "./games";
 import * as wiki from "./wiki-paths";
 
 export type EntityType = (typeof EntityTypes)[number];
-export type AnnotationType = (typeof AnnotationTypes)[number];
 export type InputOutputType = (typeof InputOutputTypes)[number];
 
 export const EntityTypes = ["Default", "Point", "Mesh"] as const;
 
-export const AnnotationTypes = [
-  "Default",
-  "note",
-  "tip",
-  "info",
-  "warning",
-  "danger",
-  "legacy",
-  "nonFGD",
-] as const;
-
 export const InputOutputTypes = ["Input", "Output"] as const;
+
+// "Default" is our marker for an override that did not ask for a particular admonition, the
+// rest is whatever the site is configured to render
+const AnnotationTypes = ["Default", ...admonitionKeywords];
 
 export interface Annotation {
   Message: string;
-  Type: AnnotationType;
+  Type: string;
   InternalName: string;
 }
 

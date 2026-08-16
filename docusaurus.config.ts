@@ -2,6 +2,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { PluginOptions } from '@easyops-cn/docusaurus-search-local';
+import { admonitions } from './src/admonitions';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -77,10 +78,7 @@ const config: Config = {
           editUrl: ({ locale, docPath }) => {
             return `https://github.com/Source2Wiki/Source2Wiki/blob/master/docs/${docPath}?plain=1`;
           },
-          admonitions: {
-            keywords: ['note', 'tip', 'info', 'warning', 'danger', 'legacy', 'nonFGD', 'todo', 'bug'],
-            extendDefaults: true
-          }
+          admonitions,
         },
         blog: false,
         theme: {
