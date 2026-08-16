@@ -69,11 +69,16 @@ export function generateMdxFromJsonDump(): void {
   let skippedPages = 0;
   let wrotePages = 0;
 
+  // everything this run is responsible for, anything else in those folders is left over
+  const generatedDocs = new Set<string>();
+  const generatedPages = new Set<string>();
+
   // write index for search
   const entityIndex: EntityIndexEntry[] = [];
 
   for (const [docName, doc] of docsDictionary) {
     const docPath = path.join(wiki.toDisk(wiki.DocsFolder), `${doc.Name}.mdx`);
+    generatedDocs.add(docPath);
 
     if (writeFileIfContentsChanged(docPath, documentMdx(doc))) {
       wroteDocs++;
@@ -111,6 +116,7 @@ export function generateMdxFromJsonDump(): void {
       }
 
       const pagePath = path.join(wiki.toDisk(wiki.PagesFolder), getPageRelativePath(page));
+      generatedPages.add(pagePath);
       fs.mkdirSync(path.dirname(pagePath), { recursive: true });
 
       if (writeFileIfContentsChanged(pagePath, pageMdx(page))) {
@@ -125,6 +131,9 @@ export function generateMdxFromJsonDump(): void {
     }
   }
 
+  const removedDocs = removeStaleMdx(wiki.toDisk(wiki.DocsFolder), generatedDocs);
+  const removedPages = removeStaleMdx(wiki.toDisk(wiki.PagesFolder), generatedPages);
+
   const entityIndexPath = wiki.toDisk(wiki.combine("static", wiki.DumpFolder, "entityIndex.json"));
 
   fs.mkdirSync(path.dirname(entityIndexPath), { recursive: true });
@@ -132,6 +141,35 @@ export function generateMdxFromJsonDump(): void {
 
   console.log(`\nWrote '${wroteDocs}' document(s), skipped '${skippedDocs}' document(s) with contents that did not change`);
   console.log(`Wrote '${wrotePages}' page(s), skipped '${skippedPages}' page(s) with contents that did not change`);
+  console.log(`Removed '${removedDocs}' stale document(s) and '${removedPages}' stale page(s)`);
+}
+
+/**
+ * Deletes the mdx of entities that are no longer generated. An entity that gets renamed or
+ * dropped upstream would otherwise leave its old page behind for good, and it would keep
+ * building as a real route.
+ *
+ * Only .mdx is considered, so the readme and _category_.json that live in these folders by hand
+ * are never at risk.
+ */
+function removeStaleMdx(folder: string, generated: Set<string>): number {
+  if (!fs.existsSync(folder)) {
+    return 0;
+  }
+
+  let removed = 0;
+
+  for (const file of getFiles(folder)) {
+    if (path.extname(file) !== ".mdx" || generated.has(file)) {
+      continue;
+    }
+
+    fs.rmSync(file);
+    removed++;
+    console.log(`Removed '${file}', nothing generates it any more`);
+  }
+
+  return removed;
 }
 
 function getFiles(folder: string): string[] {
