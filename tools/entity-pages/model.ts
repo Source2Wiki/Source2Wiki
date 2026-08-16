@@ -1,11 +1,10 @@
 /**
- * The entity page model, mirroring EntityPage.cs / EntityDocument.cs and the JSON they
- * serialise to in \fgd_dump and \fgd_dump_overrides.
+ * The shape of the JSON in \fgd_dump and \fgd_dump_overrides.
  *
- * The dumps are written by System.Text.Json with a string enum converter, so every enum
- * arrives as its C# name. Reading is deliberately as forgiving as the C# side: missing keys
- * fall back to the field default and enum names match case insensitively, but an enum name
- * that does not exist is an error rather than something that quietly reaches a page.
+ * Reading is forgiving about missing keys, an override file only sets what it wants to change.
+ * The few fields the wiki gives meaning to (entity type, annotation type) are checked against
+ * what it can render, so a typo in a hand written override is an error rather than something
+ * that quietly reaches a page.
  */
 
 import fs from "node:fs";
@@ -16,7 +15,6 @@ import * as wiki from "./wiki-paths";
 export type EntityType = (typeof EntityTypes)[number];
 export type AnnotationType = (typeof AnnotationTypes)[number];
 export type InputOutputType = (typeof InputOutputTypes)[number];
-export type VariableType = (typeof VariableTypes)[number];
 
 export const EntityTypes = ["Default", "Point", "Mesh"] as const;
 
@@ -33,27 +31,6 @@ export const AnnotationTypes = [
 
 export const InputOutputTypes = ["Input", "Output"] as const;
 
-// Sledge.Formats.GameData.Objects.VariableType. `Bool` is missing on purpose: it is an alias
-// of `Boolean` in the C# enum, and the shared value serialises back out as `Boolean`.
-export const VariableTypes = [
-  "Axis", "Angle", "AngleNegativePitch", "Array", "BodyGroupChoices", "Boolean", "Choices",
-  "Color255", "Color1", "Curve", "Decal", "FilterClass", "Flags", "Float", "GameItemClass",
-  "GameUnitClass", "InstanceFile", "InstanceVariable", "InstanceParm", "Int", "Integer",
-  "LocalAxis", "LocalPoint", "LodLevel", "Material", "MaterialGroup", "ModelStateChoices",
-  "ModelAttachment", "ModelBreakPiece", "NodeDest", "NodeId", "NodeIdList", "NPCClass",
-  "Origin", "Other", "ParentAttachment", "ParticleSystem", "PointEntityClass", "RemoveKey",
-  "Resource", "ResourceChoices", "Scale", "Scene", "Script", "ScriptList", "Sequence",
-  "SideList", "Sky", "Sound", "Sprite", "String", "Studio", "SurfaceProperties", "TagList",
-  "TagListDynamic", "TargetDestination", "TargetNameOrClass", "TargetSource", "TextBlock",
-  "Vecline", "Vector", "Void", "WorldPoint", "PropDataName", "ModelBodyGroup",
-  "ModelClothEffect", "ModelBone", "ModelMorphChannel", "VDataChoice", "SubclassChoice",
-  "NPCAbilityName", "PathNodeClass", "Color255Alpha", "ParticleCfg", "ModelClothVertexMap",
-  "Kv3", "Vector2d", "PanoramaImage", "Struct", "AnimGraph", "AnimGraphEnum", "api",
-  "animgraph2identifier", "Cpp", "CollisionProperty",
-] as const;
-
-const VariableTypeAliases = new Map<string, VariableType>([["bool", "Boolean"]]);
-
 export interface Annotation {
   Message: string;
   Type: AnnotationType;
@@ -69,7 +46,7 @@ export interface Option {
 export interface Property {
   FriendlyName: string;
   InternalName: string;
-  VariableType: VariableType | null;
+  VariableType: string | null;
   Description: string;
   Options: Option[];
   Annotations: Annotation[];
@@ -78,7 +55,7 @@ export interface Property {
 export interface InputOutput {
   Name: string;
   Description: string;
-  VariableType: VariableType | null;
+  VariableType: string | null;
   Type: InputOutputType | null;
 }
 
@@ -155,7 +132,7 @@ function toProperty(value: unknown, filePath: string): Property {
   return {
     FriendlyName: readString(property, "FriendlyName", filePath),
     InternalName: readString(property, "InternalName", filePath),
-    VariableType: readVariableType(property, filePath),
+    VariableType: readOptionalString(property, "VariableType", filePath),
     Description: readString(property, "Description", filePath),
     Options: readArray(property, "Options", filePath).map((o) => toOption(o, filePath)),
     Annotations: readArray(property, "Annotations", filePath).map((a) => toAnnotation(a, filePath)),
@@ -178,7 +155,7 @@ function toInputOutput(value: unknown, filePath: string): InputOutput {
   return {
     Name: readString(inputOutput, "Name", filePath),
     Description: readString(inputOutput, "Description", filePath),
-    VariableType: readVariableType(inputOutput, filePath),
+    VariableType: readOptionalString(inputOutput, "VariableType", filePath),
     Type: readEnum(inputOutput, "Type", InputOutputTypes, filePath),
   };
 }
@@ -283,16 +260,4 @@ function readEnum<T extends string>(
   }
 
   return match;
-}
-
-function readVariableType(value: JsonObject, filePath: string): VariableType | null {
-  const name = readOptionalString(value, "VariableType", filePath);
-
-  if (name === null) {
-    return null;
-  }
-
-  const alias = VariableTypeAliases.get(name.toLowerCase());
-
-  return alias ?? readEnum(value, "VariableType", VariableTypes, filePath);
 }
