@@ -84,172 +84,89 @@ export function getIconUrl(page: EntityPage): string | null {
 }
 
 export function parseEntityDocumentFile(filePath: string): EntityDocument {
-  const value = readJsonObject(filePath);
-
-  return {
-    Name: readString(value, "Name", filePath),
-    Pages: readArray(value, "Pages", filePath).map((page) => toEntityPage(page, filePath)),
-  };
+  return parseFile(filePath, (doc) => ({
+    Name: doc.Name ?? "",
+    Pages: (doc.Pages ?? []).map(toEntityPage),
+  }));
 }
 
 export function parseEntityPageFile(filePath: string): EntityPage {
-  const text = fs.readFileSync(filePath, "utf8");
+  return parseFile(filePath, toEntityPage);
+}
 
-  if (text.length === 0) {
-    throw new Error(`JSON file has empty content! ${filePath}`);
+/** Anything read out of a dump or an override file, before we have looked at it. */
+type RawJson = Record<string, any>;
+
+/** Parses a file, naming it in whatever goes wrong while reading it. */
+function parseFile<T>(filePath: string, parse: (value: RawJson) => T): T {
+  try {
+    return parse(JSON.parse(fs.readFileSync(filePath, "utf8")));
+  } catch (error) {
+    throw new Error(`${filePath}: ${error instanceof Error ? error.message : String(error)}`);
   }
-
-  return toEntityPage(JSON.parse(text), filePath);
 }
 
-function toEntityPage(value: unknown, filePath: string): EntityPage {
-  const page = asObject(value, filePath);
-
+function toEntityPage(page: RawJson): EntityPage {
   return {
-    Game: getGameByFileSystemName(readOptionalString(page, "Game", filePath)),
-    EntityType: readEnum(page, "EntityType", EntityTypes, filePath) ?? "Default",
-    Name: readString(page, "Name", filePath),
-    Description: readString(page, "Description", filePath),
-    IconPath: readString(page, "IconPath", filePath),
-    NonFGD: readBoolean(page, "NonFGD", filePath),
-    Legacy: readBoolean(page, "Legacy", filePath),
-    PageAnnotation: readOptionalObject(page, "PageAnnotation", filePath, toAnnotation),
-    Properties: readArray(page, "Properties", filePath).map((p) => toProperty(p, filePath)),
-    InputOutputs: readArray(page, "InputOutputs", filePath).map((io) => toInputOutput(io, filePath)),
+    Game: getGameByFileSystemName(page.Game),
+    EntityType: readEnum(page.EntityType, EntityTypes, "EntityType") ?? "Default",
+    Name: page.Name ?? "",
+    Description: page.Description ?? "",
+    IconPath: page.IconPath ?? "",
+    NonFGD: page.NonFGD ?? false,
+    Legacy: page.Legacy ?? false,
+    PageAnnotation: page.PageAnnotation ? toAnnotation(page.PageAnnotation) : null,
+    Properties: (page.Properties ?? []).map(toProperty),
+    InputOutputs: (page.InputOutputs ?? []).map(toInputOutput),
   };
 }
 
-function toProperty(value: unknown, filePath: string): Property {
-  const property = asObject(value, filePath);
-
+function toProperty(property: RawJson): Property {
   return {
-    FriendlyName: readString(property, "FriendlyName", filePath),
-    InternalName: readString(property, "InternalName", filePath),
-    VariableType: readOptionalString(property, "VariableType", filePath),
-    Description: readString(property, "Description", filePath),
-    Options: readArray(property, "Options", filePath).map((o) => toOption(o, filePath)),
-    Annotations: readArray(property, "Annotations", filePath).map((a) => toAnnotation(a, filePath)),
+    FriendlyName: property.FriendlyName ?? "",
+    InternalName: property.InternalName ?? "",
+    VariableType: property.VariableType ?? null,
+    Description: property.Description ?? "",
+    Options: (property.Options ?? []).map(toOption),
+    Annotations: (property.Annotations ?? []).map(toAnnotation),
   };
 }
 
-function toOption(value: unknown, filePath: string): Option {
-  const option = asObject(value, filePath);
-
+function toOption(option: RawJson): Option {
   return {
-    Name: readString(option, "Name", filePath),
-    Description: readString(option, "Description", filePath),
-    Key: readOptionalString(option, "Key", filePath),
+    Name: option.Name ?? "",
+    Description: option.Description ?? "",
+    Key: option.Key ?? null,
   };
 }
 
-function toInputOutput(value: unknown, filePath: string): InputOutput {
-  const inputOutput = asObject(value, filePath);
-
+function toInputOutput(inputOutput: RawJson): InputOutput {
   return {
-    Name: readString(inputOutput, "Name", filePath),
-    Description: readString(inputOutput, "Description", filePath),
-    VariableType: readOptionalString(inputOutput, "VariableType", filePath),
-    Type: readEnum(inputOutput, "Type", InputOutputTypes, filePath),
+    Name: inputOutput.Name ?? "",
+    Description: inputOutput.Description ?? "",
+    VariableType: inputOutput.VariableType ?? null,
+    Type: readEnum(inputOutput.Type, InputOutputTypes, "Type"),
   };
 }
 
-function toAnnotation(value: unknown, filePath: string): Annotation {
-  const annotation = asObject(value, filePath);
-
+function toAnnotation(annotation: RawJson): Annotation {
   return {
-    Message: readString(annotation, "Message", filePath),
-    Type: readEnum(annotation, "Type", AnnotationTypes, filePath) ?? "Default",
-    InternalName: readString(annotation, "InternalName", filePath),
+    Message: annotation.Message ?? "",
+    Type: readEnum(annotation.Type, AnnotationTypes, "Type") ?? "Default",
+    InternalName: annotation.InternalName ?? "",
   };
 }
 
-type JsonObject = Record<string, unknown>;
-
-function readJsonObject(filePath: string): JsonObject {
-  return asObject(JSON.parse(fs.readFileSync(filePath, "utf8")), filePath);
-}
-
-function asObject(value: unknown, filePath: string): JsonObject {
-  if (typeof value !== "object" || value === null || Array.isArray(value)) {
-    throw new Error(`Expected a JSON object in '${filePath}', got '${JSON.stringify(value)}'`);
-  }
-
-  return value as JsonObject;
-}
-
-function readString(value: JsonObject, key: string, filePath: string): string {
-  return readOptionalString(value, key, filePath) ?? "";
-}
-
-function readOptionalString(value: JsonObject, key: string, filePath: string): string | null {
-  const field = value[key];
-
-  if (field === undefined || field === null) {
+/** Matches how the dumps spell their enums, case insensitively, and rejects anything else. */
+function readEnum<T extends string>(value: unknown, names: readonly T[], field: string): T | null {
+  if (value === undefined || value === null) {
     return null;
   }
 
-  if (typeof field !== "string") {
-    throw new Error(`Expected '${key}' to be a string in '${filePath}'`);
-  }
-
-  return field;
-}
-
-function readBoolean(value: JsonObject, key: string, filePath: string): boolean {
-  const field = value[key];
-
-  if (field === undefined || field === null) {
-    return false;
-  }
-
-  if (typeof field !== "boolean") {
-    throw new Error(`Expected '${key}' to be a boolean in '${filePath}'`);
-  }
-
-  return field;
-}
-
-function readArray(value: JsonObject, key: string, filePath: string): unknown[] {
-  const field = value[key];
-
-  if (field === undefined || field === null) {
-    return [];
-  }
-
-  if (!Array.isArray(field)) {
-    throw new Error(`Expected '${key}' to be an array in '${filePath}'`);
-  }
-
-  return field;
-}
-
-function readOptionalObject<T>(
-  value: JsonObject,
-  key: string,
-  filePath: string,
-  parse: (value: unknown, filePath: string) => T,
-): T | null {
-  const field = value[key];
-
-  return field === undefined || field === null ? null : parse(field, filePath);
-}
-
-function readEnum<T extends string>(
-  value: JsonObject,
-  key: string,
-  names: readonly T[],
-  filePath: string,
-): T | null {
-  const name = readOptionalString(value, key, filePath);
-
-  if (name === null) {
-    return null;
-  }
-
-  const match = names.find((candidate) => candidate.toLowerCase() === name.toLowerCase());
+  const match = names.find((name) => name.toLowerCase() === String(value).toLowerCase());
 
   if (match === undefined) {
-    throw new Error(`'${name}' is not a valid ${key} in '${filePath}', expected one of: ${names.join(", ")}`);
+    throw new Error(`'${value}' is not a valid ${field}, expected one of: ${names.join(", ")}`);
   }
 
   return match;
