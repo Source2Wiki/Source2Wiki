@@ -10,7 +10,7 @@
 import fs from "node:fs";
 
 import { admonitionKeywords } from "../../src/admonitions";
-import { Game, getGameByFileSystemName } from "./games";
+import { getGameByFileSystemName } from "./games";
 import * as wiki from "./wiki-paths";
 
 export type EntityType = (typeof EntityTypes)[number];
@@ -49,7 +49,7 @@ export interface InputOutput {
 }
 
 export interface EntityPage {
-  Game: Game | null;
+  Game: string | null;
   EntityType: EntityType | null;
   Name: string | null;
   Description: string | null;
@@ -68,7 +68,7 @@ export interface EntityDocument {
 
 /** Name and game are what identify a page, anything that reached a document has both. */
 export function getPageRelativePath(page: EntityPage): string {
-  return `${page.Name!}-${page.Game!.fileSystemName}.mdx`;
+  return `${page.Name!}-${page.Game!}.mdx`;
 }
 
 /**

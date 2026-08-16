@@ -1,27 +1,17 @@
 /**
- * The games the wiki documents.
+ * The games the wiki documents, taken from the same list the site renders tabs and icons from.
+ * A game the site has no entry for could not be shown anyway, so that list decides.
  *
- * Kept in step by hand with GameFinder.GameList in WikiPageTools. Only the two fields page
- * generation needs live here: locating an install and reading its VPKs is the dumper's job,
- * everything this side needs is already in \fgd_dump.
+ * WikiPageTools keeps its own list, because finding an install and reading its FGDs needs an
+ * app id and content paths that are no business of the wiki. The two only have to agree on
+ * these names.
  */
 
-export interface Game {
-  readonly name: string;
-  readonly fileSystemName: string;
-}
+import { Games } from "../../src/constants/software";
 
-export const gameList: readonly Game[] = [
-  { name: "Counter-Strike 2", fileSystemName: "cs2" },
-  { name: "Half-Life: Alyx", fileSystemName: "hla" },
-  { name: "Dota 2", fileSystemName: "dota2" },
-  { name: "SteamVR Home", fileSystemName: "steamvr" },
-];
+/** "any" is a filter option in the UI, not a game. */
+export const gameList = Object.keys(Games).filter((game) => game !== "any");
 
-export function getGameByFileSystemName(name: string | null | undefined): Game | null {
-  if (!name) {
-    return null;
-  }
-
-  return gameList.find((game) => game.fileSystemName === name) ?? null;
+export function getGameByFileSystemName(name: string | null | undefined): string | null {
+  return name && gameList.includes(name) ? name : null;
 }

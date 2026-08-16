@@ -102,7 +102,7 @@ export function generateMdxFromJsonDump(): void {
       }
 
       if (page.Game !== null) {
-        entityIndexEntry.Games.push(page.Game.fileSystemName);
+        entityIndexEntry.Games.push(page.Game);
       }
 
       const iconUrl = getIconUrl(page);

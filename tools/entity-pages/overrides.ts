@@ -8,7 +8,7 @@
 
 import path from "node:path";
 
-import { Game, gameList, getGameByFileSystemName } from "./games";
+import { gameList, getGameByFileSystemName } from "./games";
 import {
   Annotation,
   EntityDocument,
@@ -31,7 +31,7 @@ export function handleOverrides(files: string[], docsDictionary: Map<string, Ent
     const splitFilename = path.parse(file).name.split("-");
 
     const entityClass = splitFilename[0];
-    const entityGames: Game[] = [];
+    const entityGames: string[] = [];
 
     const docToOverride = docsDictionary.get(entityClass);
 
@@ -41,7 +41,7 @@ export function handleOverrides(files: string[], docsDictionary: Map<string, Ent
       if (game === null) {
         throw new Error(
           `Invalid override entity game '${gameString}'! valid game names are: \n\n` +
-            `${gameList.map((listed) => listed.fileSystemName).join("\n")}\n` +
+            `${gameList.join("\n")}\n` +
             "\nIn case you meant to make this a global override for all games, simply remove the - at the end, and make the filename be {entityClassname}.json\n",
         );
       }
@@ -87,7 +87,7 @@ export function handleOverrides(files: string[], docsDictionary: Map<string, Ent
   console.log(`\nLoaded '${globalPageOverrides.length}' global page override(s).`);
   for (const [globalOverrideClassname, globalOverride] of globalPageOverrides) {
     for (const page of docsDictionary.get(globalOverrideClassname)!.Pages) {
-      console.log(`Overriding page '${page.Name}' from game '${page.Game!.fileSystemName}'`);
+      console.log(`Overriding page '${page.Name}' from game '${page.Game}'`);
       overridePageFrom(page, globalOverride);
     }
   }
@@ -96,7 +96,7 @@ export function handleOverrides(files: string[], docsDictionary: Map<string, Ent
   for (const [gameSpecificOverrideClassname, gameSpecificOverride] of gameSpecificPageOverrides) {
     for (const page of docsDictionary.get(gameSpecificOverrideClassname)!.Pages) {
       if (page.Game === gameSpecificOverride.Game) {
-        console.log(`Overriding page '${page.Name}' from game '${page.Game!.fileSystemName}'`);
+        console.log(`Overriding page '${page.Name}' from game '${page.Game}'`);
         overridePageFrom(page, gameSpecificOverride);
       }
     }
