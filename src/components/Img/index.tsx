@@ -20,21 +20,23 @@ export default function Img({ src, alt, ...props }: ImgProps) {
     }
   }
 
+  // a span rather than a div: markdown puts a standalone image inside a paragraph, and a div
+  // there closes the paragraph early and leaves a stray </p> behind
   return (
-    <div style={{ 
-      display: 'flex', 
+    <span style={{
+      display: 'flex',
       justifyContent: 'left',
     }}>
-      <img 
+      <img
         {...props}
-        src={src} 
+        src={src}
         alt={displayAlt}
-        style={{ 
+        style={{
           maxWidth,
           width: 'auto',
           height: 'auto',
-        }} 
+        }}
       />
-    </div>
+    </span>
   );
 }
