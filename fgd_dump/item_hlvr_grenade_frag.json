@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_grenade_frag",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/grenade_unarmed.png",
       "PageAnnotation": null,
       "Properties": [
         {

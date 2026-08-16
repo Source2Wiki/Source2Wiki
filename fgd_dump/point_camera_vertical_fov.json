@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_camera_vertical_fov",
       "Description": "Camera Vertical FOV",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {

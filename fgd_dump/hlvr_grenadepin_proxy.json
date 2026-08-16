@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "hlvr_grenadepin_proxy",
       "Description": "Grenade Pin",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/vr_grenade_01_pin.png",
       "PageAnnotation": null,
       "Properties": [
         {

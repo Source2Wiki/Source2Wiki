@@ -260,7 +260,7 @@
   {
     "Classname": "beam_spotlight",
     "Description": "An entity to draw a spotlight. Will draw a beam when the player views it side on, and a halo when it's facing towards the player. Unless the 'No Dynamic Light' spawnflag is checked, it will also create a dynamic light wherever the end of the spotlight rests.This spotlight is entirely client side, it is not sync'd across clients.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/cone_helper.png",
     "Games": [
       "dota2",
       "steamvr"
@@ -289,7 +289,7 @@
   {
     "Classname": "chicken",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/chicken.png",
     "Games": [
       "cs2"
     ]
@@ -316,7 +316,7 @@
   {
     "Classname": "combine_attached_armor_prop",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_hand_shield.png",
     "Games": [
       "hla"
     ]
@@ -342,7 +342,7 @@
   {
     "Classname": "counterterrorist_team_intro",
     "Description": "In-map counter-terrorist team intro variant #1.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/counterterrorist_team_intro.png",
     "Games": [
       "cs2"
     ]
@@ -350,7 +350,7 @@
   {
     "Classname": "counterterrorist_team_intro_variant2",
     "Description": "In-map counter-terrorist team intro variant #2.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/counterterrorist_team_intro_variant2.png",
     "Games": [
       "cs2"
     ]
@@ -358,7 +358,7 @@
   {
     "Classname": "counterterrorist_wingman_intro",
     "Description": "In-map counter-terrorist wingman intro.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/counterterrorist_wingman_intro.png",
     "Games": [
       "cs2"
     ]
@@ -374,7 +374,7 @@
   {
     "Classname": "csm_fov_override",
     "Description": "This entity indicates the FOV override for cascading shadow maps.   .",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/camera.png",
     "Games": [
       "cs2"
     ]
@@ -559,7 +559,7 @@
   {
     "Classname": "dota_world_particle_system",
     "Description": "[TOOLTIP NEEDS IMPROVEMENT] Dota world particle system.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/cone_helper.png",
     "Games": [
       "dota2"
     ]
@@ -575,7 +575,7 @@
   {
     "Classname": "end_of_match",
     "Description": "In-map end-of-match position.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/end_of_match.png",
     "Games": [
       "cs2"
     ]
@@ -716,7 +716,7 @@
   {
     "Classname": "env_combined_light_probe_volume",
     "Description": "Combination of an env_cubemap_box and an env_light_probe_volume",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/env_cubemap.png",
     "Games": [
       "cs2",
       "hla",
@@ -744,7 +744,7 @@
   {
     "Classname": "env_cubemap",
     "Description": "Cubemap for sampling indirect specular reflection.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/env_cubemap.png",
     "Games": [
       "hla",
       "steamvr"
@@ -753,7 +753,7 @@
   {
     "Classname": "env_cubemap_box",
     "Description": "An env_cubemap with box projection.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/env_cubemap.png",
     "Games": [
       "cs2",
       "hla",
@@ -773,7 +773,7 @@
   {
     "Classname": "env_decal",
     "Description": "Simple projected decal entity",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/axis_helper_thick.png",
     "Games": [
       "cs2",
       "dota2"
@@ -798,7 +798,7 @@
   {
     "Classname": "env_deferred_spot_light",
     "Description": "[TOOLTIP NEEDS IMPROVEMENT] Deferred spot light.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/spot.png",
     "Games": [
       "dota2"
     ]
@@ -806,7 +806,7 @@
   {
     "Classname": "env_deferred_spot_light_client_only",
     "Description": "Deferred spot light entity whose state is not networked.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/spot.png",
     "Games": [
       "dota2"
     ]
@@ -939,7 +939,7 @@
   {
     "Classname": "env_global_light",
     "Description": "Control the global light that casts shadows in a Dota map.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/spot.png",
     "Games": [
       "dota2"
     ]
@@ -1012,7 +1012,7 @@
   {
     "Classname": "env_lightglow",
     "Description": "An entity that puts an additive glow in the world, mostly used over light sources.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "steamvr"
     ]
@@ -1020,7 +1020,7 @@
   {
     "Classname": "env_light_probe_volume",
     "Description": "A grid of precomputed light probes.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/iv_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -1084,7 +1084,7 @@
   {
     "Classname": "env_particle_glow",
     "Description": "An entity to create light glows built via the particle editor",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/cone_helper_xyz.png",
     "Games": [
       "cs2"
     ]
@@ -1138,7 +1138,7 @@
   {
     "Classname": "env_projectedtexture",
     "Description": "Projected texture entity, used for things like flashlights.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/spot.png",
     "Games": [
       "steamvr"
     ]
@@ -1328,7 +1328,7 @@
   {
     "Classname": "env_tilt",
     "Description": "An entity to control screen tilt on players.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "dota2",
@@ -1338,7 +1338,7 @@
   {
     "Classname": "env_time_of_day",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/sky_helper.png",
     "Games": [
       "steamvr"
     ]
@@ -1864,7 +1864,7 @@
   {
     "Classname": "func_nav_gen_proj",
     "Description": "Generate nav inside this volume and in the direction of the arrow",
-    "Icon": "/fgd_dump/img/cs2/toolsmarkupvolumeai.png",
+    "Icon": "/fgd_dump/img/cs2/arrow.png",
     "Games": [
       "cs2"
     ]
@@ -2307,7 +2307,7 @@
   {
     "Classname": "hlvr_grenadepin_proxy",
     "Description": "Grenade Pin",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_grenade_01_pin.png",
     "Games": [
       "hla"
     ]
@@ -2315,7 +2315,7 @@
   {
     "Classname": "hlvr_piano",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/piano_001.png",
     "Games": [
       "hla"
     ]
@@ -2339,7 +2339,7 @@
   {
     "Classname": "hlvr_weapon_energygun",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_alyxgun.png",
     "Games": [
       "hla"
     ]
@@ -2379,7 +2379,7 @@
   {
     "Classname": "hostage_entity",
     "Description": "Hostage. A hostage NPC will spawn at this point.<br/><br/>There are usually four hostages placed in each hostage rescue map. The model for each Hostage is randomly chosen.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/hostage.png",
     "Games": [
       "cs2"
     ]
@@ -2387,7 +2387,7 @@
   {
     "Classname": "infodecal",
     "Description": "An entity that places a decal on the world. If the decal has no target name, it will immediately apply itself when the level is loaded. If it has a name specified, it won't apply until it receives the 'Activate' input.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "steamvr"
     ]
@@ -2395,7 +2395,7 @@
   {
     "Classname": "info_armsrace_counterterrorist",
     "Description": "This entity marks the start point for counter-terrorists in Arms Race. Should be placed at least 128 units away from each other and surrounding walls",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/ctm_st6_variantl.png",
     "Games": [
       "cs2"
     ]
@@ -2403,7 +2403,7 @@
   {
     "Classname": "info_armsrace_terrorist",
     "Description": "This entity marks the start point for terrorists in Arms Race. Should be placed at least 128 units away from each other and surrounding walls.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/tm_leet_varianta.png",
     "Games": [
       "cs2"
     ]
@@ -2465,7 +2465,7 @@
   {
     "Classname": "info_deathmatch_spawn",
     "Description": "This entity marks a deathmatch spawn point. This is the entity that populates the map when mp_random_spawn is used.Manually adding them to the map will guarantee that these spawn points are included in the set",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/tm_professional_varh.png",
     "Games": [
       "cs2"
     ]
@@ -2489,7 +2489,7 @@
   {
     "Classname": "info_enemy_terrorist_spawn",
     "Description": "This entity marks the start point for enemy terrorists in a coop game. Should be placed at least 80 units away from each other and surrounding walls.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/tm_phoenix.png",
     "Games": [
       "cs2"
     ]
@@ -2497,7 +2497,7 @@
   {
     "Classname": "info_hint",
     "Description": "A hint that is not used for navigation. They don't go into the nodegraph, nor do they fall to the ground. Use these to provide some spatial context for NPCs, such as 'look here if you can't find the player' or 'throw rocks at this spot'.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/node_hint.png",
     "Games": [
       "hla",
       "steamvr"
@@ -2514,7 +2514,7 @@
   {
     "Classname": "info_hlvr_holo_hacking_plug",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_hacking_interact_point.png",
     "Games": [
       "hla"
     ]
@@ -2562,7 +2562,7 @@
   {
     "Classname": "info_hlvr_toner_port",
     "Description": "Toner Port",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/power_stake_a.png",
     "Games": [
       "hla"
     ]
@@ -2570,7 +2570,7 @@
   {
     "Classname": "info_hostage_spawn",
     "Description": "Hostage. A hostage NPC will spawn at this point.<br/><br/>There are usually four hostages placed in each hostage rescue map. The model for each Hostage is randomly chosen.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/hostage.png",
     "Games": [
       "cs2"
     ]
@@ -2641,7 +2641,7 @@
   {
     "Classname": "info_node",
     "Description": "A navigation node for ground moving NPCs. Navigation nodes are baked into the nodegraph so that NPCs can move to them. Ground nodes fall to the ground when they spawn.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/ground_node.png",
     "Games": [
       "hla",
       "steamvr"
@@ -2650,7 +2650,7 @@
   {
     "Classname": "info_node_air",
     "Description": "A navigation node for flying NPCs. Air navigation nodes are baked into the nodegraph so that NPCs can move to them. Air nodes do not fall to the ground when they spawn.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/air_node.png",
     "Games": [
       "hla",
       "steamvr"
@@ -2659,7 +2659,7 @@
   {
     "Classname": "info_node_air_hint",
     "Description": "A navigation node for flying NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked into, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it's helpful to use naming conventions like 'Crow: Fly to point' in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/air_node_hint.png",
     "Games": [
       "hla",
       "steamvr"
@@ -2668,7 +2668,7 @@
   {
     "Classname": "info_node_climb",
     "Description": "A climb-node for AI navigation. Only usable by NPCs that can climb.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/climb_node.png",
     "Games": [
       "hla",
       "steamvr"
@@ -2677,7 +2677,7 @@
   {
     "Classname": "info_node_hint",
     "Description": "A navigation node for ground moving NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked out of, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it's helpful to use naming conventions like 'Crow: Fly to point' in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.<br/><br/>It's important to understand the distinction between scripts, such as scripted_sequence and scripted_schedule, and info_hint entities. Scripts summon NPCs to specific cue points to play their parts, while hints provide context information to the AI that they use to perform their behaviors. Hints require code support in the NPC, while scripts are generic and may require only animations to play. Use a hint if the behavior is driven by the AI, use a script if the behavior is driven by the map.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/ground_node_hint.png",
     "Games": [
       "hla",
       "steamvr"
@@ -2765,7 +2765,7 @@
   {
     "Classname": "info_overlay",
     "Description": "An entity that places an overlay on the world.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/overlay_helper.png",
     "Games": [
       "hla",
       "steamvr"
@@ -2790,7 +2790,7 @@
   {
     "Classname": "info_particle_system",
     "Description": "An entity that spawns a particle system built using the particle editor.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/cone_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -2801,7 +2801,7 @@
   {
     "Classname": "info_particle_target",
     "Description": "An entity that is a target for particle system control points",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/cone_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -2812,7 +2812,7 @@
   {
     "Classname": "info_player_counterterrorist",
     "Description": "This entity marks the start point for counter-terrorists. One of these needs to be placed for each team member. 20 start points is typical. Should be placed at least 128 units away from each other and surrounding walls",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/ctm_spawnpoint.png",
     "Games": [
       "cs2"
     ]
@@ -2820,7 +2820,7 @@
   {
     "Classname": "info_player_start",
     "Description": "This entity indicates the position and facing direction at which the player will spawn. Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. When multiple info_player_start entities are present in a map, set the 'Master' spawnflag on one of them to indicate which one should be used when running the entire map.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/playerstart.png",
     "Games": [
       "cs2",
       "hla",
@@ -2831,7 +2831,7 @@
   {
     "Classname": "info_player_start_badguys",
     "Description": "Spawn point for Dire heroes.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/axe.png",
     "Games": [
       "dota2"
     ]
@@ -2839,7 +2839,7 @@
   {
     "Classname": "info_player_start_dota",
     "Description": "Spawn point for heroes of any team.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/axe.png",
     "Games": [
       "dota2"
     ]
@@ -2847,7 +2847,7 @@
   {
     "Classname": "info_player_start_goodguys",
     "Description": "Spawn point for Radiant heroes.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/axe.png",
     "Games": [
       "dota2"
     ]
@@ -2855,7 +2855,7 @@
   {
     "Classname": "info_player_terrorist",
     "Description": "This entity marks the start point for terrorists. One of these needs to be placed for each team member. 20 start points is typical. Should be placed at least 128 units away from each other and surrounding walls.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/tm_spawnpoint.png",
     "Games": [
       "cs2"
     ]
@@ -2863,7 +2863,7 @@
   {
     "Classname": "info_projecteddecal",
     "Description": "An entity that projects a decal onto the world (or props). If the decal has no target name, it will immediately apply itself when the level is loaded. If it has a name specified, it won't apply until it receives the 'Activate' input.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "steamvr"
     ]
@@ -2879,7 +2879,7 @@
   {
     "Classname": "info_roquelaire_perch",
     "Description": "(used in Dota2 PvP tutorial) A perch point for Roquelaire to sit on.",
-    "Icon": "/fgd_dump/img/dota2/info_target.png",
+    "Icon": "/fgd_dump/img/dota2/axis_helper.png",
     "Games": [
       "dota2"
     ]
@@ -2963,7 +2963,7 @@
   {
     "Classname": "info_target_server_only",
     "Description": "An entity that does nothing. Not networked.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/info_target.png",
     "Games": [
       "cs2",
       "dota2"
@@ -2972,7 +2972,7 @@
   {
     "Classname": "info_teleport_destination",
     "Description": "An entity that does nothing itself, but can be used to specify the destination for a trigger_teleport entity. An info_target can be used instead.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/playerstart.png",
     "Games": [
       "cs2",
       "dota2",
@@ -3035,7 +3035,7 @@
   {
     "Classname": "item_ammo_ar2_altfire",
     "Description": "AR2 Alt-fire Round",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_rifle_ammo01.png",
     "Games": [
       "hla"
     ]
@@ -3107,7 +3107,7 @@
   {
     "Classname": "item_battery",
     "Description": "HEV battery",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/battery.png",
     "Games": [
       "hla"
     ]
@@ -3123,7 +3123,7 @@
   {
     "Classname": "item_combine_console",
     "Description": "Combine Console",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_combine_interface_01.png",
     "Games": [
       "hla"
     ]
@@ -3147,7 +3147,7 @@
   {
     "Classname": "item_healthcharger",
     "Description": "Health Station",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/health_charger_entity_mesh.png",
     "Games": [
       "hla"
     ]
@@ -3163,7 +3163,7 @@
   {
     "Classname": "item_healthkit",
     "Description": "Small Health Kit",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/healthkit.png",
     "Games": [
       "hla"
     ]
@@ -3171,7 +3171,7 @@
   {
     "Classname": "item_healthvial",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_health_pen.png",
     "Games": [
       "hla"
     ]
@@ -3179,7 +3179,7 @@
   {
     "Classname": "item_healthvial_DEPRECATED",
     "Description": "Personal Health Kit",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/healthvial.png",
     "Games": [
       "hla"
     ]
@@ -3187,7 +3187,7 @@
   {
     "Classname": "item_hlvr_clip_energygun",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_alyxgun_clip.png",
     "Games": [
       "hla"
     ]
@@ -3195,7 +3195,7 @@
   {
     "Classname": "item_hlvr_clip_energygun_multiple",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/pistol_clip_holder.png",
     "Games": [
       "hla"
     ]
@@ -3203,7 +3203,7 @@
   {
     "Classname": "item_hlvr_clip_generic_pistol",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_alyxgun_clip.png",
     "Games": [
       "hla"
     ]
@@ -3211,7 +3211,7 @@
   {
     "Classname": "item_hlvr_clip_generic_pistol_multiple",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/pistol_clip_holder.png",
     "Games": [
       "hla"
     ]
@@ -3219,7 +3219,7 @@
   {
     "Classname": "item_hlvr_clip_rapidfire",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/capsule_power_cell.png",
     "Games": [
       "hla"
     ]
@@ -3227,7 +3227,7 @@
   {
     "Classname": "item_hlvr_clip_shotgun_multiple",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/shotgun_shell_ammo_box.png",
     "Games": [
       "hla"
     ]
@@ -3235,7 +3235,7 @@
   {
     "Classname": "item_hlvr_clip_shotgun_single",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/shell_hand.png",
     "Games": [
       "hla"
     ]
@@ -3243,7 +3243,7 @@
   {
     "Classname": "item_hlvr_combine_console_tank",
     "Description": "Combine Console Tank",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/glass_tank_01.png",
     "Games": [
       "hla"
     ]
@@ -3251,7 +3251,7 @@
   {
     "Classname": "item_hlvr_crafting_currency_large",
     "Description": "Crafting Currency (Large)",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/crafting_resin_lrg5.png",
     "Games": [
       "hla"
     ]
@@ -3259,7 +3259,7 @@
   {
     "Classname": "item_hlvr_crafting_currency_small",
     "Description": "Crafting Currency (Small)",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/resin_puck01.png",
     "Games": [
       "hla"
     ]
@@ -3267,7 +3267,7 @@
   {
     "Classname": "item_hlvr_grenade_bomb",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_truck_gun_projectile.png",
     "Games": [
       "hla"
     ]
@@ -3275,7 +3275,7 @@
   {
     "Classname": "item_hlvr_grenade_frag",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/grenade_unarmed.png",
     "Games": [
       "hla"
     ]
@@ -3283,7 +3283,7 @@
   {
     "Classname": "item_hlvr_grenade_remote_sticky",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/helicopter_bomb01.png",
     "Games": [
       "hla"
     ]
@@ -3291,7 +3291,7 @@
   {
     "Classname": "item_hlvr_grenade_xen",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_xen_grenade.png",
     "Games": [
       "hla"
     ]
@@ -3299,7 +3299,7 @@
   {
     "Classname": "item_hlvr_headcrab_gland",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/headcrab_gland.png",
     "Games": [
       "hla"
     ]
@@ -3307,7 +3307,7 @@
   {
     "Classname": "item_hlvr_health_station_vial",
     "Description": "Health Vial",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/health_vial.png",
     "Games": [
       "hla"
     ]
@@ -3323,7 +3323,7 @@
   {
     "Classname": "item_hlvr_prop_ammobag",
     "Description": "Ammobag",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_rifle_ammo01.png",
     "Games": [
       "hla"
     ]
@@ -3331,7 +3331,7 @@
   {
     "Classname": "item_hlvr_prop_battery",
     "Description": "Battery",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_battery.png",
     "Games": [
       "hla"
     ]
@@ -3371,7 +3371,7 @@
   {
     "Classname": "item_hlvr_weaponmodule_physcannon",
     "Description": "WeaponModule PhysCannon",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/module_ricochet.png",
     "Games": [
       "hla"
     ]
@@ -3379,7 +3379,7 @@
   {
     "Classname": "item_hlvr_weaponmodule_rapidfire",
     "Description": "WeaponModule Rapidfire",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/module_rapidfire.png",
     "Games": [
       "hla"
     ]
@@ -3387,7 +3387,7 @@
   {
     "Classname": "item_hlvr_weaponmodule_ricochet",
     "Description": "WeaponModule Ricochet",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/module_ricochet.png",
     "Games": [
       "hla"
     ]
@@ -3395,7 +3395,7 @@
   {
     "Classname": "item_hlvr_weaponmodule_snark",
     "Description": "WeaponModule Snark",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/snark.png",
     "Games": [
       "hla"
     ]
@@ -3403,7 +3403,7 @@
   {
     "Classname": "item_hlvr_weaponmodule_zapper",
     "Description": "WeaponModule Zapper",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_alyxgun_attach_zap.png",
     "Games": [
       "hla"
     ]
@@ -3411,7 +3411,7 @@
   {
     "Classname": "item_hlvr_weapon_energygun",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_alyxgun.png",
     "Games": [
       "hla"
     ]
@@ -3419,7 +3419,7 @@
   {
     "Classname": "item_hlvr_weapon_generic_pistol",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_alyxgun.png",
     "Games": [
       "hla"
     ]
@@ -3451,7 +3451,7 @@
   {
     "Classname": "item_hlvr_weapon_rapidfire",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_ipistol.png",
     "Games": [
       "hla"
     ]
@@ -3459,7 +3459,7 @@
   {
     "Classname": "item_hlvr_weapon_shotgun",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_shotgun_b.png",
     "Games": [
       "hla"
     ]
@@ -3467,7 +3467,7 @@
   {
     "Classname": "item_hlvr_weapon_tripmine",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/tripmine.png",
     "Games": [
       "hla"
     ]
@@ -3475,7 +3475,7 @@
   {
     "Classname": "item_item_crate",
     "Description": "Item Crate",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/supplycrate_01.png",
     "Games": [
       "hla"
     ]
@@ -3483,7 +3483,7 @@
   {
     "Classname": "item_rpg_round",
     "Description": "RPG Round",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_missile_closed.png",
     "Games": [
       "hla"
     ]
@@ -3507,7 +3507,7 @@
   {
     "Classname": "keyframe_rope",
     "Description": "A node entity that marks a point in a rope. The first node in the rope should be a move_rope, followed by 1 or more keyframe_ropes.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "hla",
@@ -3528,7 +3528,7 @@
   {
     "Classname": "light_barn",
     "Description": "A cinematic barn door style light",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/spot.png",
     "Games": [
       "cs2"
     ]
@@ -3545,7 +3545,7 @@
   {
     "Classname": "light_environment",
     "Description": "Sets the color and angle of the light from the sun and sky.<br/><br/>Typical setup:<br/>1. Create an <b>env_sky</b> entity to use as your skybox<br/>2. Create a <b>light_environment</b> entity and set <b>Sky IBL Source</b> to the name of the <b>env_sky</b> entity<br/>3. Right-click on your <b>light_environment</b> entity and select 'Selected environment light -&gt; Estimate lighting from HDR skybox'<br/>4. Adjust angle and brightness of the sunlight as you see fit",
-    "Icon": "/fgd_dump/img/cs2/light_environment.png",
+    "Icon": "/fgd_dump/img/steamvr/sun.png",
     "Games": [
       "cs2",
       "hla",
@@ -3564,7 +3564,7 @@
   {
     "Classname": "light_irradvolume",
     "Description": "An entity that places an irradiance volume in the world.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/iv_helper.png",
     "Games": [
       "steamvr"
     ]
@@ -3572,7 +3572,7 @@
   {
     "Classname": "light_omni",
     "Description": "A point light source.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/spot.png",
     "Games": [
       "hla",
       "steamvr"
@@ -3589,7 +3589,7 @@
   {
     "Classname": "light_ortho",
     "Description": "An orthographic spot light source.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/spot.png",
     "Games": [
       "hla",
       "steamvr"
@@ -3598,7 +3598,7 @@
   {
     "Classname": "light_rect",
     "Description": "A rectangular or disk shaped light",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/spot.png",
     "Games": [
       "cs2"
     ]
@@ -3606,7 +3606,7 @@
   {
     "Classname": "light_spot",
     "Description": "A spot light source.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/spot.png",
     "Games": [
       "hla",
       "steamvr"
@@ -3937,7 +3937,7 @@
   {
     "Classname": "map_preview_camera_path_node",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/camera.png",
     "Games": [
       "cs2"
     ]
@@ -4051,7 +4051,7 @@
   {
     "Classname": "move_rope",
     "Description": "The first node in set of nodes that are used to place ropes in the world. It should connect to 1 or more keyframe_rope entities.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -4088,7 +4088,7 @@
   {
     "Classname": "npc_antlion",
     "Description": "Antlions will run away from ai_sound, type: Thumper.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/antlion.png",
     "Games": [
       "hla"
     ]
@@ -4128,7 +4128,7 @@
   {
     "Classname": "npc_barnacle",
     "Description": "Barnacle",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/barnacle.png",
     "Games": [
       "hla"
     ]
@@ -4225,7 +4225,7 @@
   {
     "Classname": "npc_crow",
     "Description": "Crow",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/crow.png",
     "Games": [
       "hla",
       "steamvr"
@@ -4266,7 +4266,7 @@
   {
     "Classname": "npc_dota_base_blocker",
     "Description": "A blocker which only one team can go past.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/gate_entrance002.png",
     "Games": [
       "dota2"
     ]
@@ -4346,7 +4346,7 @@
   {
     "Classname": "npc_dota_miniboss_spawner",
     "Description": "Spawns Tormentor, the small side lane boss in the standard Dota2 PvP map.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/divine_sentinel_cube.png",
     "Games": [
       "dota2"
     ]
@@ -4362,7 +4362,7 @@
   {
     "Classname": "npc_dota_roshan_spawner",
     "Description": "Spawns Roshan, the big boss in the standard Dota2 PvP map.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/roshan.png",
     "Games": [
       "dota2"
     ]
@@ -4540,7 +4540,7 @@
   {
     "Classname": "npc_grenade_frag",
     "Description": "Hand Grenade",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_grenade.png",
     "Games": [
       "hla"
     ]
@@ -4548,7 +4548,7 @@
   {
     "Classname": "npc_headcrab",
     "Description": "Headcrab",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/headcrab_classic.png",
     "Games": [
       "hla"
     ]
@@ -4556,7 +4556,7 @@
   {
     "Classname": "npc_headcrab_armored",
     "Description": "Armored headcrab",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/headcrab_armored.png",
     "Games": [
       "hla"
     ]
@@ -4564,7 +4564,7 @@
   {
     "Classname": "npc_headcrab_black",
     "Description": "Black Headcrab",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/headcrab_black.png",
     "Games": [
       "hla"
     ]
@@ -4572,7 +4572,7 @@
   {
     "Classname": "npc_headcrab_fast",
     "Description": "Fast Headcrab",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/headcrab.png",
     "Games": [
       "hla"
     ]
@@ -4580,7 +4580,7 @@
   {
     "Classname": "npc_headcrab_runner",
     "Description": "Runner Headcrab",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/headcrab_reviver.png",
     "Games": [
       "hla"
     ]
@@ -4588,7 +4588,7 @@
   {
     "Classname": "npc_helicopter",
     "Description": "Helicopter",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_helicopter.png",
     "Games": [
       "hla"
     ]
@@ -4613,7 +4613,7 @@
   {
     "Classname": "npc_manhack",
     "Description": "Manhack",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/manhack.png",
     "Games": [
       "hla"
     ]
@@ -4629,7 +4629,7 @@
   {
     "Classname": "npc_pigeon",
     "Description": "Pigeon",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/pigeon.png",
     "Games": [
       "hla",
       "steamvr"
@@ -4654,7 +4654,7 @@
   {
     "Classname": "npc_seagull",
     "Description": "Seagull",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/seagull.png",
     "Games": [
       "steamvr"
     ]
@@ -4670,7 +4670,7 @@
   {
     "Classname": "npc_strider",
     "Description": "Strider",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_strider.png",
     "Games": [
       "hla"
     ]
@@ -4695,7 +4695,7 @@
   {
     "Classname": "npc_turret_citizen",
     "Description": "Citizen Turret",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/citizen_battery_turret.png",
     "Games": [
       "hla"
     ]
@@ -4703,7 +4703,7 @@
   {
     "Classname": "npc_turret_floor",
     "Description": "Combine Floor Turret",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/floor_turret.png",
     "Games": [
       "hla"
     ]
@@ -4728,7 +4728,7 @@
   {
     "Classname": "npc_vr_citizen_female",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/citizens_female.png",
     "Games": [
       "hla"
     ]
@@ -4736,7 +4736,7 @@
   {
     "Classname": "npc_vr_citizen_male",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/citizens_male.png",
     "Games": [
       "hla"
     ]
@@ -4744,7 +4744,7 @@
   {
     "Classname": "npc_zombie",
     "Description": "Zombie",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/zombie_classic.png",
     "Games": [
       "hla"
     ]
@@ -4752,7 +4752,7 @@
   {
     "Classname": "npc_zombie_blind",
     "Description": "Blind Zombie",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/zombie_blind.png",
     "Games": [
       "hla"
     ]
@@ -4881,7 +4881,7 @@
   {
     "Classname": "phys_constraint",
     "Description": "Constrain an entity to the world or another entity at a fixed relative position.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "hla",
@@ -4901,7 +4901,7 @@
   {
     "Classname": "phys_genericconstraint",
     "Description": "A configurable constraint between two objects.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -4912,7 +4912,7 @@
   {
     "Classname": "phys_hinge",
     "Description": "A physically simulated hinge. Use the helper to define the axis of rotation.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -4923,7 +4923,7 @@
   {
     "Classname": "phys_hinge_local",
     "Description": "A physically simulated hinge. Use the helper to define the axis of rotation.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -4945,7 +4945,7 @@
   {
     "Classname": "phys_lengthconstraint",
     "Description": "A constraint that preserves the distance between two entities. If the 'Keep Rigid' flag is set, think of it as a rod. If not, think off it as a virtual rope.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -4978,7 +4978,7 @@
   {
     "Classname": "phys_pulleyconstraint",
     "Description": "A constraint that is essentially two length constraints and two points. Imagine it as a virtual rope connected to two objects, each suspended from a pulley above them.The constraint keeps the sum of the distances between the pulley points and their suspended objects constant.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -4989,7 +4989,7 @@
   {
     "Classname": "phys_ragdollconstraint",
     "Description": "A constraint that fixes the position of two entities, relative to this constraint's origin. Also allows for limits on the rotation around each axis, in the space of this constraint.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -5011,7 +5011,7 @@
   {
     "Classname": "phys_slideconstraint",
     "Description": "A constraint that constrains an entity along a line segment.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -5022,7 +5022,7 @@
   {
     "Classname": "phys_splineconstraint",
     "Description": "Constrain an entity to a spline.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/axis_helper_thick.png",
     "Games": [
       "cs2",
       "dota2"
@@ -5031,7 +5031,7 @@
   {
     "Classname": "phys_spring",
     "Description": "A physically simulated spring. 'Length' is what's known as the 'natural spring length'. This is how long the spring would be if it was at rest (nothing hanging on it or attached). When you attach something to the spring, it will stretch longer than its 'natural length'. The amount of stretch is determined by the 'Sprint Frequency'. The larger the spring frequency the less stretch the spring.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper.png",
     "Games": [
       "cs2",
       "hla",
@@ -5042,7 +5042,7 @@
   {
     "Classname": "phys_thruster",
     "Description": "An entity used to apply constant acceleration to a physics object. The force and torque is calculated using the position and direction of the thruster as an impulse. So moving those off the object's center will cause torque as well. Torque can be removed by unchecking the 'apply torque' flag. The position of the thruster can be forced to be at the object's center by checking to 'ignore pos' flag.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/axis_helper_thick.png",
     "Games": [
       "cs2",
       "hla",
@@ -5064,7 +5064,7 @@
   {
     "Classname": "point_aimat",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/point_aimat.png",
     "Games": [
       "hla"
     ]
@@ -5121,7 +5121,7 @@
   {
     "Classname": "point_camera",
     "Description": "Camera",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/camera.png",
     "Games": [
       "cs2",
       "hla",
@@ -5132,7 +5132,7 @@
   {
     "Classname": "point_camera_vertical_fov",
     "Description": "Camera Vertical FOV",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/camera.png",
     "Games": [
       "cs2",
       "dota2"
@@ -5210,7 +5210,7 @@
   {
     "Classname": "point_devshot_camera",
     "Description": "An entity used by the -makedevshots system, which automatically takes screenshots at the position of every devshot camera in the level.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/camera.png",
     "Games": [
       "cs2",
       "dota2",
@@ -5367,7 +5367,7 @@
   {
     "Classname": "point_orient",
     "Description": "Orient Towards",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/dota2/axis_helper_thick.png",
     "Games": [
       "cs2",
       "dota2"
@@ -5429,7 +5429,7 @@
   {
     "Classname": "point_scale_reference_human",
     "Description": "Scale Reference (Human)",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/ctm_spawnpoint.png",
     "Games": [
       "cs2"
     ]
@@ -5475,7 +5475,7 @@
   {
     "Classname": "point_spotlight",
     "Description": "An entity to draw a spotlight. Will draw a beam when the player views it side on, and a halo when it's facing towards the player. Unless the 'No Dynamic Light' spawnflag is checked, it will also create a dynamic light wherever the end of the spotlight rests.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/cone_helper.png",
     "Games": [
       "steamvr"
     ]
@@ -5483,7 +5483,7 @@
   {
     "Classname": "point_teleport",
     "Description": "An entity that teleports a target entity to this position and angles. If 'Teleport Home' spawn flag is set, teleports the target entity to its spawn position instead.If object is physically simulated, simulation is turned off when teleported.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "hla",
@@ -5521,7 +5521,7 @@
   {
     "Classname": "point_value_remapper",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "hla",
@@ -5543,7 +5543,7 @@
   {
     "Classname": "point_viewcontrol",
     "Description": "A camera entity that controls the player's view. While it's active, the player will see out of the camera.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/camera.png",
     "Games": [
       "hla",
       "steamvr"
@@ -5560,7 +5560,7 @@
   {
     "Classname": "point_workplane",
     "Description": "A dummy entity used to bookmark a frequently used workplane origin and angles. Not compiled into the map.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "hla",
@@ -5571,7 +5571,7 @@
   {
     "Classname": "point_worldtext",
     "Description": "3D text in the world",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "hla",
@@ -5772,7 +5772,7 @@
   {
     "Classname": "prop_hlvr_crafting_station",
     "Description": "Crafting Station",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/combine_crafting_station.png",
     "Games": [
       "hla"
     ]
@@ -5849,7 +5849,7 @@
   {
     "Classname": "prop_reviver_heart",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/reviver_heart.png",
     "Games": [
       "hla"
     ]
@@ -5925,7 +5925,7 @@
   {
     "Classname": "scripted_sequence",
     "Description": "Grabs an NPC and makes them play a specified set of animations. The NPC can be told to move to the scripted sequence position or can be told to play the script wherever they currently are. Multiple scripted sequences of the same name (or sync group, if specified) will frame-synchronize in the action animation once all the actors have moved to position. This allows tight interaction between actors (one actor grabbing another, hitting them, etc.) The flow is as follows:<br/><br/>1) Move to position using the specified movement animation. If 'Move to Position' is set to NONE, skip to step 2.<br/>2) If forced to wait for another actor to move to position, play the pre-action idle animation, otherwise skip to step 3. If there is no pre-action idle specified, ACT_IDLE is used.<br/>3) Fire the OnBeginSequence output.<br/>4) Play the action animation. If no action animation is specified, skip to step 5.<br/>5) Play the post-action idle animation. If none is specified, skip to step 6. If the 'Loop in Post Idle' spawnflag is set, keep playing the post-action idle until the script is cancelled. If no post-action idle animation is specified, ACT_IDLE is used.<br/>6) Fire the OnEndSequence output.<br/>7) If a next script to play is specified, hand the NPC to the next script and repeat this process for that script.<br/><br/>The MoveToPosition input runs steps 1 and 2, then waits while playing the pre-action idle animation until the BeginSequence input is received.<br/><br/>If the sequence has motion extraction in it, set the 'Don't Teleport NPC On End' spawnflag.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/scripted_sequence.png",
     "Games": [
       "hla",
       "steamvr"
@@ -5991,7 +5991,7 @@
   {
     "Classname": "snd_event_cone",
     "Description": "",
-    "Icon": "/fgd_dump/img/dota2/snd_event.png",
+    "Icon": "/fgd_dump/img/dota2/cone_helper.png",
     "Games": [
       "cs2",
       "dota2"
@@ -6212,7 +6212,7 @@
   {
     "Classname": "team_select",
     "Description": "In-map team select position.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/team_select.png",
     "Games": [
       "cs2"
     ]
@@ -6220,7 +6220,7 @@
   {
     "Classname": "terrorist_team_intro",
     "Description": "In-map terrorist team intro variant #1.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/terrorist_team_intro.png",
     "Games": [
       "cs2"
     ]
@@ -6228,7 +6228,7 @@
   {
     "Classname": "terrorist_team_intro_variant2",
     "Description": "In-map terrorist team intro variant #2.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/terrorist_team_intro_variant2.png",
     "Games": [
       "cs2"
     ]
@@ -6236,7 +6236,7 @@
   {
     "Classname": "terrorist_wingman_intro",
     "Description": "In-map terrorist wingman intro.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/terrorist_wingman_intro.png",
     "Games": [
       "cs2"
     ]
@@ -6724,7 +6724,7 @@
   {
     "Classname": "vgui_movie_display",
     "Description": "Movie Display",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "dota2",
@@ -6742,7 +6742,7 @@
   {
     "Classname": "vgui_slideshow_display",
     "Description": "Slideshow Display",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/axis_helper_thick.png",
     "Games": [
       "cs2",
       "dota2",
@@ -6771,7 +6771,7 @@
   {
     "Classname": "vr_teleport_marker",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/steamvr/teleport_marker.png",
     "Games": [
       "steamvr"
     ]
@@ -6789,7 +6789,7 @@
   {
     "Classname": "weapon_357",
     "Description": "357",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_357.png",
     "Games": [
       "hla"
     ]
@@ -6797,7 +6797,7 @@
   {
     "Classname": "weapon_ak47",
     "Description": "AK-47",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_rif_ak47.png",
     "Games": [
       "cs2"
     ]
@@ -6805,7 +6805,7 @@
   {
     "Classname": "weapon_ar2",
     "Description": "Assault Rifle 2",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_irifle.png",
     "Games": [
       "hla"
     ]
@@ -6813,7 +6813,7 @@
   {
     "Classname": "weapon_aug",
     "Description": "AUG",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_rif_aug.png",
     "Games": [
       "cs2"
     ]
@@ -6821,7 +6821,7 @@
   {
     "Classname": "weapon_awp",
     "Description": "AWP",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_snip_awp.png",
     "Games": [
       "cs2"
     ]
@@ -6829,7 +6829,7 @@
   {
     "Classname": "weapon_bizon",
     "Description": "PP-Bizon",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smg_bizon.png",
     "Games": [
       "cs2"
     ]
@@ -6845,7 +6845,7 @@
   {
     "Classname": "weapon_c4",
     "Description": "C4 Bomb",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_c4.png",
     "Games": [
       "cs2"
     ]
@@ -6853,7 +6853,7 @@
   {
     "Classname": "weapon_crossbow",
     "Description": "Crossbow",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_crossbow.png",
     "Games": [
       "hla"
     ]
@@ -6861,7 +6861,7 @@
   {
     "Classname": "weapon_crowbar",
     "Description": "Crowbar",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_crowbar.png",
     "Games": [
       "hla"
     ]
@@ -6869,7 +6869,7 @@
   {
     "Classname": "weapon_cz75a",
     "Description": "CZ75a",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_cz75a.png",
     "Games": [
       "cs2"
     ]
@@ -6877,7 +6877,7 @@
   {
     "Classname": "weapon_deagle",
     "Description": "Desert Eagle",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_deagle.png",
     "Games": [
       "cs2"
     ]
@@ -6885,7 +6885,7 @@
   {
     "Classname": "weapon_decoy",
     "Description": "Decoy Grenade",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_decoy.png",
     "Games": [
       "cs2"
     ]
@@ -6893,7 +6893,7 @@
   {
     "Classname": "weapon_elite",
     "Description": "Dual Berettas",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_elite.png",
     "Games": [
       "cs2"
     ]
@@ -6901,7 +6901,7 @@
   {
     "Classname": "weapon_famas",
     "Description": "FAMAS",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_rif_famas.png",
     "Games": [
       "cs2"
     ]
@@ -6909,7 +6909,7 @@
   {
     "Classname": "weapon_fiveseven",
     "Description": "Five-SeveN",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_fiveseven.png",
     "Games": [
       "cs2"
     ]
@@ -6917,7 +6917,7 @@
   {
     "Classname": "weapon_flashbang",
     "Description": "Flashbang",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_flashbang.png",
     "Games": [
       "cs2"
     ]
@@ -6925,7 +6925,7 @@
   {
     "Classname": "weapon_frag",
     "Description": "Frag Grenade",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_grenade.png",
     "Games": [
       "hla"
     ]
@@ -6933,7 +6933,7 @@
   {
     "Classname": "weapon_g3sg1",
     "Description": "G3SG1 Sniper",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_snip_g3sg1.png",
     "Games": [
       "cs2"
     ]
@@ -6941,7 +6941,7 @@
   {
     "Classname": "weapon_galilar",
     "Description": "Galil AR",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_rif_galilar.png",
     "Games": [
       "cs2"
     ]
@@ -6949,7 +6949,7 @@
   {
     "Classname": "weapon_glock",
     "Description": "Glock-18",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_glock18.png",
     "Games": [
       "cs2"
     ]
@@ -6957,7 +6957,7 @@
   {
     "Classname": "weapon_healthshot",
     "Description": "Medi-Shot",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_healthshot.png",
     "Games": [
       "cs2"
     ]
@@ -6965,7 +6965,7 @@
   {
     "Classname": "weapon_hegrenade",
     "Description": "HE Grenade",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_hegrenade.png",
     "Games": [
       "cs2"
     ]
@@ -6973,7 +6973,7 @@
   {
     "Classname": "weapon_hkp2000",
     "Description": "P2000",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_hkp2000.png",
     "Games": [
       "cs2"
     ]
@@ -6981,7 +6981,7 @@
   {
     "Classname": "weapon_incgrenade",
     "Description": "Incendiary Grenade",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_incendiarygrenade.png",
     "Games": [
       "cs2"
     ]
@@ -6997,7 +6997,7 @@
   {
     "Classname": "weapon_m249",
     "Description": "M249 Para",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_mach_m249.png",
     "Games": [
       "cs2"
     ]
@@ -7005,7 +7005,7 @@
   {
     "Classname": "weapon_m4a1",
     "Description": "M4A4",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_rif_m4a4.png",
     "Games": [
       "cs2"
     ]
@@ -7013,7 +7013,7 @@
   {
     "Classname": "weapon_m4a1_silencer",
     "Description": "M4A1 Silenced",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_rif_m4a1_silencer.png",
     "Games": [
       "cs2"
     ]
@@ -7021,7 +7021,7 @@
   {
     "Classname": "weapon_mac10",
     "Description": "MAC-10",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smg_mac10.png",
     "Games": [
       "cs2"
     ]
@@ -7029,7 +7029,7 @@
   {
     "Classname": "weapon_mag7",
     "Description": "MAG-7",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_shot_mag7.png",
     "Games": [
       "cs2"
     ]
@@ -7037,7 +7037,7 @@
   {
     "Classname": "weapon_molotov",
     "Description": "Molotov",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_molotov.png",
     "Games": [
       "cs2"
     ]
@@ -7045,7 +7045,7 @@
   {
     "Classname": "weapon_mp5sd",
     "Description": "MP5-SD",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smg_mp5sd.png",
     "Games": [
       "cs2"
     ]
@@ -7053,7 +7053,7 @@
   {
     "Classname": "weapon_mp7",
     "Description": "MP7",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smg_mp7.png",
     "Games": [
       "cs2"
     ]
@@ -7061,7 +7061,7 @@
   {
     "Classname": "weapon_mp9",
     "Description": "MP9",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smg_mp9.png",
     "Games": [
       "cs2"
     ]
@@ -7069,7 +7069,7 @@
   {
     "Classname": "weapon_negev",
     "Description": "Negev",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_mach_negev.png",
     "Games": [
       "cs2"
     ]
@@ -7077,7 +7077,7 @@
   {
     "Classname": "weapon_nova",
     "Description": "Nova",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_shot_nova.png",
     "Games": [
       "cs2"
     ]
@@ -7085,7 +7085,7 @@
   {
     "Classname": "weapon_p250",
     "Description": "P250",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_p250.png",
     "Games": [
       "cs2"
     ]
@@ -7093,7 +7093,7 @@
   {
     "Classname": "weapon_p90",
     "Description": "P90",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smg_p90.png",
     "Games": [
       "cs2"
     ]
@@ -7101,7 +7101,7 @@
   {
     "Classname": "weapon_physcannon",
     "Description": "Physics Cannon",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_physics.png",
     "Games": [
       "hla"
     ]
@@ -7109,7 +7109,7 @@
   {
     "Classname": "weapon_pistol",
     "Description": "Pistol",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_pistol.png",
     "Games": [
       "hla"
     ]
@@ -7117,7 +7117,7 @@
   {
     "Classname": "weapon_revolver",
     "Description": "Revolver ",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_revolver.png",
     "Games": [
       "cs2"
     ]
@@ -7125,7 +7125,7 @@
   {
     "Classname": "weapon_rpg",
     "Description": "Missile Launcher",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_rocket_launcher.png",
     "Games": [
       "hla"
     ]
@@ -7133,7 +7133,7 @@
   {
     "Classname": "weapon_sawedoff",
     "Description": "Sawed-Off",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_shot_sawedoff.png",
     "Games": [
       "cs2"
     ]
@@ -7141,7 +7141,7 @@
   {
     "Classname": "weapon_scar20",
     "Description": "Scar20",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_snip_scar20.png",
     "Games": [
       "cs2"
     ]
@@ -7149,7 +7149,7 @@
   {
     "Classname": "weapon_sg556",
     "Description": "SG 553",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_rif_sg556.png",
     "Games": [
       "cs2"
     ]
@@ -7157,7 +7157,7 @@
   {
     "Classname": "weapon_shotgun",
     "Description": "Shotgun",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/vr_shotgun.png",
     "Games": [
       "hla"
     ]
@@ -7173,7 +7173,7 @@
   {
     "Classname": "weapon_smokegrenade",
     "Description": "Smoke Grenade",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smokegrenade.png",
     "Games": [
       "cs2"
     ]
@@ -7181,7 +7181,7 @@
   {
     "Classname": "weapon_ssg08",
     "Description": "SSG 08",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_snip_ssg08.png",
     "Games": [
       "cs2"
     ]
@@ -7197,7 +7197,7 @@
   {
     "Classname": "weapon_taser",
     "Description": "weapon_taser",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_taser.png",
     "Games": [
       "cs2"
     ]
@@ -7205,7 +7205,7 @@
   {
     "Classname": "weapon_tec9",
     "Description": "Tec-9",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_tec9.png",
     "Games": [
       "cs2"
     ]
@@ -7213,7 +7213,7 @@
   {
     "Classname": "weapon_ump45",
     "Description": "UMP-45",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_smg_ump45.png",
     "Games": [
       "cs2"
     ]
@@ -7221,7 +7221,7 @@
   {
     "Classname": "weapon_usp_silencer",
     "Description": "USP Silenced",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_pist_usp_silencer.png",
     "Games": [
       "cs2"
     ]
@@ -7229,7 +7229,7 @@
   {
     "Classname": "weapon_xm1014",
     "Description": "XM1014",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/weapon_shot_xm1014.png",
     "Games": [
       "cs2"
     ]
@@ -7237,7 +7237,7 @@
   {
     "Classname": "weapon_zipline",
     "Description": "Zipline",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/w_crossbow.png",
     "Games": [
       "hla"
     ]
@@ -7264,7 +7264,7 @@
   {
     "Classname": "xen_flora_animatedmover",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/xen_v2_floater_jellybobber.png",
     "Games": [
       "hla"
     ]
@@ -7280,7 +7280,7 @@
   {
     "Classname": "xen_foliage_bloater",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/boomerplant_01.png",
     "Games": [
       "hla"
     ]
@@ -7288,7 +7288,7 @@
   {
     "Classname": "xen_foliage_grenade_spawner",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/xen_grenade_plant.png",
     "Games": [
       "hla"
     ]
@@ -7296,7 +7296,7 @@
   {
     "Classname": "xen_foliage_turret",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/xen_grenade_plant.png",
     "Games": [
       "hla"
     ]
@@ -7304,7 +7304,7 @@
   {
     "Classname": "xen_hearing_flower",
     "Description": "",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/hla/xen_coralear04.png",
     "Games": [
       "hla"
     ]

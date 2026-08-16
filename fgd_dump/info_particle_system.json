@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_particle_system",
       "Description": "An entity that spawns a particle system built using the particle editor.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/cone_helper_xyz.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -957,7 +957,7 @@
       "EntityType": "Point",
       "Name": "info_particle_system",
       "Description": "An entity that spawns a particle system built using the particle editor.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/cone_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1808,7 +1808,7 @@
       "EntityType": "Point",
       "Name": "info_particle_system",
       "Description": "An entity that spawns a particle system built using the particle editor.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/cone_helper_xyz.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -2759,7 +2759,7 @@
       "EntityType": "Point",
       "Name": "info_particle_system",
       "Description": "An entity that spawns a particle system built using the particle editor.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/cone_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

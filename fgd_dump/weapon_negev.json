@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_negev",
       "Description": "Negev",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_mach_negev.png",
       "PageAnnotation": null,
       "Properties": [
         {

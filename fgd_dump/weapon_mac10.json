@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_mac10",
       "Description": "MAC-10",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_smg_mac10.png",
       "PageAnnotation": null,
       "Properties": [
         {

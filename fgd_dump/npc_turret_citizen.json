@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_turret_citizen",
       "Description": "Citizen Turret",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/citizen_battery_turret.png",
       "PageAnnotation": null,
       "Properties": [
         {

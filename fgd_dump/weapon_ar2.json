@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_ar2",
       "Description": "Assault Rifle 2",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/vr_irifle.png",
       "PageAnnotation": null,
       "Properties": [
         {

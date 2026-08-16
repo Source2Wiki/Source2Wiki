@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_taser",
       "Description": "weapon_taser",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_taser.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "move_rope",
       "Description": "The first node in set of nodes that are used to place ropes in the world. It should connect to 1 or more keyframe_rope entities.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -408,7 +408,7 @@
       "EntityType": "Point",
       "Name": "move_rope",
       "Description": "The first node in set of nodes that are used to place ropes in the world. It should connect to 1 or more keyframe_rope entities.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -931,7 +931,7 @@
       "EntityType": "Point",
       "Name": "move_rope",
       "Description": "The first node in set of nodes that are used to place ropes in the world. It should connect to 1 or more keyframe_rope entities.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1333,7 +1333,7 @@
       "EntityType": "Point",
       "Name": "move_rope",
       "Description": "The first node in set of nodes that are used to place ropes in the world. It should connect to 1 or more keyframe_rope entities.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

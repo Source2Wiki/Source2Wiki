@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollconstraint",
       "Description": "A constraint that fixes the position of two entities, relative to this constraint\u0027s origin. Also allows for limits on the rotation around each axis, in the space of this constraint.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -353,7 +353,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollconstraint",
       "Description": "A constraint that fixes the position of two entities, relative to this constraint\u0027s origin. Also allows for limits on the rotation around each axis, in the space of this constraint.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -675,7 +675,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollconstraint",
       "Description": "A constraint that fixes the position of two entities, relative to this constraint\u0027s origin. Also allows for limits on the rotation around each axis, in the space of this constraint.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1022,7 +1022,7 @@
       "EntityType": "Point",
       "Name": "phys_ragdollconstraint",
       "Description": "A constraint that fixes the position of two entities, relative to this constraint\u0027s origin. Also allows for limits on the rotation around each axis, in the space of this constraint.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

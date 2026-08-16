@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_healthshot",
       "Description": "Medi-Shot",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_healthshot.png",
       "PageAnnotation": null,
       "Properties": [
         {

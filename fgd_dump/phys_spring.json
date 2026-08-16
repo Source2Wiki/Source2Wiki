@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_spring",
       "Description": "A physically simulated spring. \u0027Length\u0027 is what\u0027s known as the \u0027natural spring length\u0027. This is how long the spring would be if it was at rest (nothing hanging on it or attached). When you attach something to the spring, it will stretch longer than its \u0027natural length\u0027. The amount of stretch is determined by the \u0027Sprint Frequency\u0027. The larger the spring frequency the less stretch the spring.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -247,7 +247,7 @@
       "EntityType": "Point",
       "Name": "phys_spring",
       "Description": "A physically simulated spring. \u0027Length\u0027 is what\u0027s known as the \u0027natural spring length\u0027. This is how long the spring would be if it was at rest (nothing hanging on it or attached). When you attach something to the spring, it will stretch longer than its \u0027natural length\u0027. The amount of stretch is determined by the \u0027Sprint Frequency\u0027. The larger the spring frequency the less stretch the spring.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -457,7 +457,7 @@
       "EntityType": "Point",
       "Name": "phys_spring",
       "Description": "A physically simulated spring. \u0027Length\u0027 is what\u0027s known as the \u0027natural spring length\u0027. This is how long the spring would be if it was at rest (nothing hanging on it or attached). When you attach something to the spring, it will stretch longer than its \u0027natural length\u0027. The amount of stretch is determined by the \u0027Sprint Frequency\u0027. The larger the spring frequency the less stretch the spring.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -698,7 +698,7 @@
       "EntityType": "Point",
       "Name": "phys_spring",
       "Description": "A physically simulated spring. \u0027Length\u0027 is what\u0027s known as the \u0027natural spring length\u0027. This is how long the spring would be if it was at rest (nothing hanging on it or attached). When you attach something to the spring, it will stretch longer than its \u0027natural length\u0027. The amount of stretch is determined by the \u0027Sprint Frequency\u0027. The larger the spring frequency the less stretch the spring.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

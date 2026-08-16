@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_lightglow",
       "Description": "An entity that puts an additive glow in the world, mostly used over light sources.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

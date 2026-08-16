@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_weaponmodule_snark",
       "Description": "WeaponModule Snark",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/snark.png",
       "PageAnnotation": null,
       "Properties": [
         {

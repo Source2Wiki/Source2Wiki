@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "vgui_movie_display",
       "Description": "Movie Display",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -298,7 +298,7 @@
       "EntityType": "Point",
       "Name": "vgui_movie_display",
       "Description": "Movie Display",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -590,7 +590,7 @@
       "EntityType": "Point",
       "Name": "vgui_movie_display",
       "Description": "Movie Display",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_pigeon",
       "Description": "Pigeon",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/pigeon.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1290,7 +1290,7 @@
       "EntityType": "Point",
       "Name": "npc_pigeon",
       "Description": "Pigeon",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/pigeon.png",
       "PageAnnotation": null,
       "Properties": [
         {

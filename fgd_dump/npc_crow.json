@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_crow",
       "Description": "Crow",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/crow.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1290,7 +1290,7 @@
       "EntityType": "Point",
       "Name": "npc_crow",
       "Description": "Crow",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/crow.png",
       "PageAnnotation": null,
       "Properties": [
         {

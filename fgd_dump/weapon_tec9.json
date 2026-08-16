@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_tec9",
       "Description": "Tec-9",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_tec9.png",
       "PageAnnotation": null,
       "Properties": [
         {

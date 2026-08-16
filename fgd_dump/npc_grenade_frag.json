@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_grenade_frag",
       "Description": "Hand Grenade",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/w_grenade.png",
       "PageAnnotation": null,
       "Properties": [
         {

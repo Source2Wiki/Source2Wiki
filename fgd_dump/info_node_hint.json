@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_node_hint",
       "Description": "A navigation node for ground moving NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked out of, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it\u0027s helpful to use naming conventions like \u0027Crow: Fly to point\u0027 in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.\u003Cbr\u003E\u003Cbr\u003EIt\u0027s important to understand the distinction between scripts, such as scripted_sequence and scripted_schedule, and info_hint entities. Scripts summon NPCs to specific cue points to play their parts, while hints provide context information to the AI that they use to perform their behaviors. Hints require code support in the NPC, while scripts are generic and may require only animations to play. Use a hint if the behavior is driven by the AI, use a script if the behavior is driven by the map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/ground_node_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -558,7 +558,7 @@
       "EntityType": "Point",
       "Name": "info_node_hint",
       "Description": "A navigation node for ground moving NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked out of, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it\u0027s helpful to use naming conventions like \u0027Crow: Fly to point\u0027 in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.\u003Cbr\u003E\u003Cbr\u003EIt\u0027s important to understand the distinction between scripts, such as scripted_sequence and scripted_schedule, and info_hint entities. Scripts summon NPCs to specific cue points to play their parts, while hints provide context information to the AI that they use to perform their behaviors. Hints require code support in the NPC, while scripts are generic and may require only animations to play. Use a hint if the behavior is driven by the AI, use a script if the behavior is driven by the map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/ground_node_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "func_nav_gen_proj",
       "Description": "Generate nav inside this volume and in the direction of the arrow",
-      "IconPath": "static/fgd_dump/img/cs2/toolsmarkupvolumeai.png",
+      "IconPath": "static/fgd_dump/img/cs2/arrow.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_crowbar",
       "Description": "Crowbar",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/w_crowbar.png",
       "PageAnnotation": null,
       "Properties": [
         {

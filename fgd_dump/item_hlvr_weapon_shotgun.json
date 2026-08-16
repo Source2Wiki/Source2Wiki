@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_weapon_shotgun",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/vr_shotgun_b.png",
       "PageAnnotation": null,
       "Properties": [
         {

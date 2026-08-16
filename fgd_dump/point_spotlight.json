@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_spotlight",
       "Description": "An entity to draw a spotlight. Will draw a beam when the player views it side on, and a halo when it\u0027s facing towards the player. Unless the \u0027No Dynamic Light\u0027 spawnflag is checked, it will also create a dynamic light wherever the end of the spotlight rests.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/cone_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

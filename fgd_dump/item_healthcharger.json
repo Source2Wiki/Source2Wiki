@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_healthcharger",
       "Description": "Health Station",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/health_charger_entity_mesh.png",
       "PageAnnotation": null,
       "Properties": [
         {

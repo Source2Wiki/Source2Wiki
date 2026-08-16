@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_ballsocket",
       "Description": "A constraint that keeps the position of two objects fixed, relative to the constraint\u0027s origin. You can optionally specify limits for the relative twist and swing rotation.",
-      "IconPath": "static/fgd_dump/img/cs2/phys_ballsocket.png",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -565,7 +565,7 @@
       "EntityType": "Point",
       "Name": "phys_ballsocket",
       "Description": "A constraint that keeps the position of two objects fixed, relative to the constraint\u0027s origin. You can optionally specify limits for the relative twist and swing rotation.",
-      "IconPath": "static/fgd_dump/img/dota2/phys_ballsocket.png",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

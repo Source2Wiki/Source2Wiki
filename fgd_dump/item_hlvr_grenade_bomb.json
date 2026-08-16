@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_grenade_bomb",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/combine_truck_gun_projectile.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_rpg",
       "Description": "Missile Launcher",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/w_rocket_launcher.png",
       "PageAnnotation": null,
       "Properties": [
         {

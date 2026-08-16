@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_headcrab_armored",
       "Description": "Armored headcrab",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/headcrab_armored.png",
       "PageAnnotation": null,
       "Properties": [
         {

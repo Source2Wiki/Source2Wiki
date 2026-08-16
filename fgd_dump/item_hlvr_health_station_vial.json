@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_health_station_vial",
       "Description": "Health Vial",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/health_vial.png",
       "PageAnnotation": null,
       "Properties": [
         {

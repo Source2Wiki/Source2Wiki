@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_player_start_badguys",
       "Description": "Spawn point for Dire heroes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axe.png",
       "PageAnnotation": null,
       "Properties": [
         {

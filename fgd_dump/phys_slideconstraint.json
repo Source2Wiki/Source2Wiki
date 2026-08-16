@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_slideconstraint",
       "Description": "A constraint that constrains an entity along a line segment.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -459,7 +459,7 @@
       "EntityType": "Point",
       "Name": "phys_slideconstraint",
       "Description": "A constraint that constrains an entity along a line segment.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -887,7 +887,7 @@
       "EntityType": "Point",
       "Name": "phys_slideconstraint",
       "Description": "A constraint that constrains an entity along a line segment.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1340,7 +1340,7 @@
       "EntityType": "Point",
       "Name": "phys_slideconstraint",
       "Description": "A constraint that constrains an entity along a line segment.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_ssg08",
       "Description": "SSG 08",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_snip_ssg08.png",
       "PageAnnotation": null,
       "Properties": [
         {

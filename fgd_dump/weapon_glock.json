@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_glock",
       "Description": "Glock-18",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_glock18.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "csm_fov_override",
       "Description": "This entity indicates the FOV override for cascading shadow maps.   .",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_manhack",
       "Description": "Manhack",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/manhack.png",
       "PageAnnotation": null,
       "Properties": [
         {

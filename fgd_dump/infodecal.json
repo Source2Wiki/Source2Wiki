@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "infodecal",
       "Description": "An entity that places a decal on the world. If the decal has no target name, it will immediately apply itself when the level is loaded. If it has a name specified, it won\u0027t apply until it receives the \u0027Activate\u0027 input.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

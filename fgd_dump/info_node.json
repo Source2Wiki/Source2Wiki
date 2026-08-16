@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_node",
       "Description": "A navigation node for ground moving NPCs. Navigation nodes are baked into the nodegraph so that NPCs can move to them. Ground nodes fall to the ground when they spawn.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/ground_node.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -105,7 +105,7 @@
       "EntityType": "Point",
       "Name": "info_node",
       "Description": "A navigation node for ground moving NPCs. Navigation nodes are baked into the nodegraph so that NPCs can move to them. Ground nodes fall to the ground when they spawn.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/ground_node.png",
       "PageAnnotation": null,
       "Properties": [
         {

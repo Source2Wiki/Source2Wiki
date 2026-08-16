@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_overlay",
       "Description": "An entity that places an overlay on the world.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/overlay_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -164,7 +164,7 @@
       "EntityType": "Point",
       "Name": "info_overlay",
       "Description": "An entity that places an overlay on the world.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/overlay_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

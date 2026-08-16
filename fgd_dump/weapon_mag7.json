@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_mag7",
       "Description": "MAG-7",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_shot_mag7.png",
       "PageAnnotation": null,
       "Properties": [
         {

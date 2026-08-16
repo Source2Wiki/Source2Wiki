@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_ammo_ar2_altfire",
       "Description": "AR2 Alt-fire Round",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/combine_rifle_ammo01.png",
       "PageAnnotation": null,
       "Properties": [
         {

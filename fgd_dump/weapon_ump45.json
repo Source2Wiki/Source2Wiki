@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_ump45",
       "Description": "UMP-45",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_smg_ump45.png",
       "PageAnnotation": null,
       "Properties": [
         {

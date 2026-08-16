@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_m4a1",
       "Description": "M4A4",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_rif_m4a4.png",
       "PageAnnotation": null,
       "Properties": [
         {

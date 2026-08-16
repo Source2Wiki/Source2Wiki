@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_decoy",
       "Description": "Decoy Grenade",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_decoy.png",
       "PageAnnotation": null,
       "Properties": [
         {

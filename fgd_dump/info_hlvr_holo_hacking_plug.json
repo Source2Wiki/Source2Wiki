@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_hlvr_holo_hacking_plug",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/combine_hacking_interact_point.png",
       "PageAnnotation": null,
       "Properties": [
         {

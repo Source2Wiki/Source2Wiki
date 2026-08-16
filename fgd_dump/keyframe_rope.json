@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "keyframe_rope",
       "Description": "A node entity that marks a point in a rope. The first node in the rope should be a move_rope, followed by 1 or more keyframe_ropes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -384,7 +384,7 @@
       "EntityType": "Point",
       "Name": "keyframe_rope",
       "Description": "A node entity that marks a point in a rope. The first node in the rope should be a move_rope, followed by 1 or more keyframe_ropes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -883,7 +883,7 @@
       "EntityType": "Point",
       "Name": "keyframe_rope",
       "Description": "A node entity that marks a point in a rope. The first node in the rope should be a move_rope, followed by 1 or more keyframe_ropes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1261,7 +1261,7 @@
       "EntityType": "Point",
       "Name": "keyframe_rope",
       "Description": "A node entity that marks a point in a rope. The first node in the rope should be a move_rope, followed by 1 or more keyframe_ropes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

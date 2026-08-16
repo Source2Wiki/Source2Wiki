@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_light_probe_volume",
       "Description": "A grid of precomputed light probes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/iv_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -160,7 +160,7 @@
       "EntityType": "Point",
       "Name": "env_light_probe_volume",
       "Description": "A grid of precomputed light probes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/iv_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -322,7 +322,7 @@
       "EntityType": "Point",
       "Name": "env_light_probe_volume",
       "Description": "A grid of precomputed light probes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/iv_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_player_start_dota",
       "Description": "Spawn point for heroes of any team.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axe.png",
       "PageAnnotation": null,
       "Properties": [
         {

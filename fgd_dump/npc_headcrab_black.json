@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_headcrab_black",
       "Description": "Black Headcrab",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/headcrab_black.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_target",
       "Description": "An entity that does nothing. Very useful as a positioning entity for other entities to refer to (i.e. the endpoint of an env_beam)",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -472,7 +472,7 @@
       "EntityType": "Point",
       "Name": "info_target",
       "Description": "An entity that does nothing. Very useful as a positioning entity for other entities to refer to (i.e. the endpoint of an env_beam)",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

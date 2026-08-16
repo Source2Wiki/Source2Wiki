@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_prop_ammobag",
       "Description": "Ammobag",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/combine_rifle_ammo01.png",
       "PageAnnotation": null,
       "Properties": [
         {

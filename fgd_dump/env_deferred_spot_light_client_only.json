@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_deferred_spot_light_client_only",
       "Description": "Deferred spot light entity whose state is not networked.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {

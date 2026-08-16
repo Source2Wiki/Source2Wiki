@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_seagull",
       "Description": "Seagull",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/seagull.png",
       "PageAnnotation": null,
       "Properties": [
         {

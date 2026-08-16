@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_constraint",
       "Description": "Constrain an entity to the world or another entity at a fixed relative position.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -326,7 +326,7 @@
       "EntityType": "Point",
       "Name": "phys_constraint",
       "Description": "Constrain an entity to the world or another entity at a fixed relative position.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -605,7 +605,7 @@
       "EntityType": "Point",
       "Name": "phys_constraint",
       "Description": "Constrain an entity to the world or another entity at a fixed relative position.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -925,7 +925,7 @@
       "EntityType": "Point",
       "Name": "phys_constraint",
       "Description": "Constrain an entity to the world or another entity at a fixed relative position.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

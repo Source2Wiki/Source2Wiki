@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_bizon",
       "Description": "PP-Bizon",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_smg_bizon.png",
       "PageAnnotation": null,
       "Properties": [
         {

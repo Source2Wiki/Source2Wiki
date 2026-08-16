@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_combine_console_tank",
       "Description": "Combine Console Tank",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/glass_tank_01.png",
       "PageAnnotation": null,
       "Properties": [
         {

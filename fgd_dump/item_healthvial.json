@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_healthvial",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/vr_health_pen.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "xen_flora_animatedmover",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/xen_v2_floater_jellybobber.png",
       "PageAnnotation": null,
       "Properties": [
         {

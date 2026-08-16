@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_flashbang",
       "Description": "Flashbang",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_flashbang.png",
       "PageAnnotation": null,
       "Properties": [
         {

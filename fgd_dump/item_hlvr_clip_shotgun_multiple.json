@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_clip_shotgun_multiple",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/shotgun_shell_ammo_box.png",
       "PageAnnotation": null,
       "Properties": [
         {

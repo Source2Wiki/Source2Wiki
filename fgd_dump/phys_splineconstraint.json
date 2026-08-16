@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_splineconstraint",
       "Description": "Constrain an entity to a spline.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -366,7 +366,7 @@
       "EntityType": "Point",
       "Name": "phys_splineconstraint",
       "Description": "Constrain an entity to a spline.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

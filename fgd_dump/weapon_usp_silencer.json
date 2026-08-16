@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_usp_silencer",
       "Description": "USP Silenced",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_usp_silencer.png",
       "PageAnnotation": null,
       "Properties": [
         {

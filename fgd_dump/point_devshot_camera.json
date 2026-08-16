@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_devshot_camera",
       "Description": "An entity used by the -makedevshots system, which automatically takes screenshots at the position of every devshot camera in the level.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -60,7 +60,7 @@
       "EntityType": "Point",
       "Name": "point_devshot_camera",
       "Description": "An entity used by the -makedevshots system, which automatically takes screenshots at the position of every devshot camera in the level.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {

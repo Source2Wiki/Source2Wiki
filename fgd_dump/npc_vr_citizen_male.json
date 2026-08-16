@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_vr_citizen_male",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/citizens_male.png",
       "PageAnnotation": null,
       "Properties": [
         {

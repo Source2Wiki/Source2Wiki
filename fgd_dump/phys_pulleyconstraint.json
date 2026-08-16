@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_pulleyconstraint",
       "Description": "A constraint that is essentially two length constraints and two points. Imagine it as a virtual rope connected to two objects, each suspended from a pulley above them.The constraint keeps the sum of the distances between the pulley points and their suspended objects constant.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -305,7 +305,7 @@
       "EntityType": "Point",
       "Name": "phys_pulleyconstraint",
       "Description": "A constraint that is essentially two length constraints and two points. Imagine it as a virtual rope connected to two objects, each suspended from a pulley above them.The constraint keeps the sum of the distances between the pulley points and their suspended objects constant.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -579,7 +579,7 @@
       "EntityType": "Point",
       "Name": "phys_pulleyconstraint",
       "Description": "A constraint that is essentially two length constraints and two points. Imagine it as a virtual rope connected to two objects, each suspended from a pulley above them.The constraint keeps the sum of the distances between the pulley points and their suspended objects constant.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -878,7 +878,7 @@
       "EntityType": "Point",
       "Name": "phys_pulleyconstraint",
       "Description": "A constraint that is essentially two length constraints and two points. Imagine it as a virtual rope connected to two objects, each suspended from a pulley above them.The constraint keeps the sum of the distances between the pulley points and their suspended objects constant.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

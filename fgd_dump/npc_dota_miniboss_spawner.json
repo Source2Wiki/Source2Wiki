@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_dota_miniboss_spawner",
       "Description": "Spawns Tormentor, the small side lane boss in the standard Dota2 PvP map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/divine_sentinel_cube.png",
       "PageAnnotation": null,
       "Properties": [
         {

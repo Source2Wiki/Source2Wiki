@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_teleport_destination",
       "Description": "An entity that does nothing itself, but can be used to specify the destination for a trigger_teleport entity. An info_target can be used instead.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/playerstart.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -232,7 +232,7 @@
       "EntityType": "Point",
       "Name": "info_teleport_destination",
       "Description": "An entity that does nothing itself, but can be used to specify the destination for a trigger_teleport entity. An info_target can be used instead.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/playerstart.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -458,7 +458,7 @@
       "EntityType": "Point",
       "Name": "info_teleport_destination",
       "Description": "An entity that does nothing itself, but can be used to specify the destination for a trigger_teleport entity. An info_target can be used instead.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/playerstart.png",
       "PageAnnotation": null,
       "Properties": [
         {

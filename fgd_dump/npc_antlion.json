@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_antlion",
       "Description": "Antlions will run away from ai_sound, type: Thumper.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/antlion.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_tilt",
       "Description": "An entity to control screen tilt on players.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -287,7 +287,7 @@
       "EntityType": "Point",
       "Name": "env_tilt",
       "Description": "An entity to control screen tilt on players.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -568,7 +568,7 @@
       "EntityType": "Point",
       "Name": "env_tilt",
       "Description": "An entity to control screen tilt on players.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_aimat",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/point_aimat.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "end_of_match",
       "Description": "In-map end-of-match position.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/end_of_match.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_mp5sd",
       "Description": "MP5-SD",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_smg_mp5sd.png",
       "PageAnnotation": null,
       "Properties": [
         {

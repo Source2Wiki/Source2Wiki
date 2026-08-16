@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_ak47",
       "Description": "AK-47",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_rif_ak47.png",
       "PageAnnotation": null,
       "Properties": [
         {

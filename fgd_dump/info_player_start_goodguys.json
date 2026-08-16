@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_player_start_goodguys",
       "Description": "Spawn point for Radiant heroes.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axe.png",
       "PageAnnotation": null,
       "Properties": [
         {

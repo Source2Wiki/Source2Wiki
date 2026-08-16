@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_value_remapper",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -520,7 +520,7 @@
       "EntityType": "Point",
       "Name": "point_value_remapper",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1028,7 +1028,7 @@
       "EntityType": "Point",
       "Name": "point_value_remapper",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1542,7 +1542,7 @@
       "EntityType": "Point",
       "Name": "point_value_remapper",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

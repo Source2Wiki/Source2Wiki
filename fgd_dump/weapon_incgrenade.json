@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_incgrenade",
       "Description": "Incendiary Grenade",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_incendiarygrenade.png",
       "PageAnnotation": null,
       "Properties": [
         {

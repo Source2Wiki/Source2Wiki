@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_time_of_day",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/sky_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

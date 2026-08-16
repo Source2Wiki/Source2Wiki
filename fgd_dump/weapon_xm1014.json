@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_xm1014",
       "Description": "XM1014",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_shot_xm1014.png",
       "PageAnnotation": null,
       "Properties": [
         {

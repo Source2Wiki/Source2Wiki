@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_deagle",
       "Description": "Desert Eagle",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_deagle.png",
       "PageAnnotation": null,
       "Properties": [
         {

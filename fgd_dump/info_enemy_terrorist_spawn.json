@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_enemy_terrorist_spawn",
       "Description": "This entity marks the start point for enemy terrorists in a coop game. Should be placed at least 80 units away from each other and surrounding walls.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/tm_phoenix.png",
       "PageAnnotation": null,
       "Properties": [
         {

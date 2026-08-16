@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "prop_reviver_heart",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/reviver_heart.png",
       "PageAnnotation": null,
       "Properties": [
         {

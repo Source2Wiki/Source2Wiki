@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_camera",
       "Description": "Camera",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -427,7 +427,7 @@
       "EntityType": "Point",
       "Name": "point_camera",
       "Description": "Camera",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1251,7 +1251,7 @@
       "EntityType": "Point",
       "Name": "point_camera",
       "Description": "Camera",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {

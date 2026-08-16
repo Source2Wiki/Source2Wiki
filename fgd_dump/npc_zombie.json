@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_zombie",
       "Description": "Zombie",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/zombie_classic.png",
       "PageAnnotation": null,
       "Properties": [
         {

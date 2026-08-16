@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_cz75a",
       "Description": "CZ75a",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_cz75a.png",
       "PageAnnotation": null,
       "Properties": [
         {

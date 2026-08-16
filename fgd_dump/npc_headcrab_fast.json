@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_headcrab_fast",
       "Description": "Fast Headcrab",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/headcrab.png",
       "PageAnnotation": null,
       "Properties": [
         {

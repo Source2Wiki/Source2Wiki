@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_cubemap_box",
       "Description": "An env_cubemap with box projection.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -126,7 +126,7 @@
       "EntityType": "Point",
       "Name": "env_cubemap_box",
       "Description": "An env_cubemap with box projection.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -227,7 +227,7 @@
       "EntityType": "Point",
       "Name": "env_cubemap_box",
       "Description": "An env_cubemap with box projection.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {

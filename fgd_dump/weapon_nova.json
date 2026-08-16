@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_nova",
       "Description": "Nova",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_shot_nova.png",
       "PageAnnotation": null,
       "Properties": [
         {

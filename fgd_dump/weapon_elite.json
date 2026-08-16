@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_elite",
       "Description": "Dual Berettas",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_elite.png",
       "PageAnnotation": null,
       "Properties": [
         {

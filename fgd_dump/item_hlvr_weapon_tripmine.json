@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_weapon_tripmine",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/tripmine.png",
       "PageAnnotation": null,
       "Properties": [
         {

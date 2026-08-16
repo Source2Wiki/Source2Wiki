@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_grenade_remote_sticky",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/helicopter_bomb01.png",
       "PageAnnotation": null,
       "Properties": [
         {

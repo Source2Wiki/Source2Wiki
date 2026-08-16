@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "vr_teleport_marker",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/teleport_marker.png",
       "PageAnnotation": null,
       "Properties": [
         {

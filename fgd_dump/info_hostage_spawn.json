@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_hostage_spawn",
       "Description": "Hostage. A hostage NPC will spawn at this point.\n\nThere are usually four hostages placed in each hostage rescue map. The model for each Hostage is randomly chosen.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/hostage.png",
       "PageAnnotation": null,
       "Properties": [
         {

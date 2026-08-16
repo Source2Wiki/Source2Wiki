@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_crafting_currency_large",
       "Description": "Crafting Currency (Large)",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/crafting_resin_lrg5.png",
       "PageAnnotation": null,
       "Properties": [
         {

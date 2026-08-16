@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "dota_world_particle_system",
       "Description": "[TOOLTIP NEEDS IMPROVEMENT] Dota world particle system.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/cone_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

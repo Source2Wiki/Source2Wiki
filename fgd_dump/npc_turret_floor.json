@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_turret_floor",
       "Description": "Combine Floor Turret",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/floor_turret.png",
       "PageAnnotation": null,
       "Properties": [
         {

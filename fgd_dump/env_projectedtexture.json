@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_projectedtexture",
       "Description": "Projected texture entity, used for things like flashlights.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {

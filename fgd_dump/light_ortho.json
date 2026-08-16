@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "light_ortho",
       "Description": "An orthographic spot light source.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -550,7 +550,7 @@
       "EntityType": "Point",
       "Name": "light_ortho",
       "Description": "An orthographic spot light source.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {

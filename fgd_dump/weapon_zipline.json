@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_zipline",
       "Description": "Zipline",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/w_crossbow.png",
       "PageAnnotation": null,
       "Properties": [
         {

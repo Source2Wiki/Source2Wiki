@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_grenade_xen",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/vr_xen_grenade.png",
       "PageAnnotation": null,
       "Properties": [
         {

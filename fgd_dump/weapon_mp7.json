@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_mp7",
       "Description": "MP7",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_smg_mp7.png",
       "PageAnnotation": null,
       "Properties": [
         {

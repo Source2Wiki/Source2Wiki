@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_cubemap",
       "Description": "Cubemap for sampling indirect specular reflection.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -99,7 +99,7 @@
       "EntityType": "Point",
       "Name": "env_cubemap",
       "Description": "Cubemap for sampling indirect specular reflection.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {

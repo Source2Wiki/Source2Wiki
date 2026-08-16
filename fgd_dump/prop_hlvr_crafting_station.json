@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "prop_hlvr_crafting_station",
       "Description": "Crafting Station",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/combine_crafting_station.png",
       "PageAnnotation": null,
       "Properties": [
         {

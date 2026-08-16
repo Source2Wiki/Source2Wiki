@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_clip_rapidfire",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/capsule_power_cell.png",
       "PageAnnotation": null,
       "Properties": [
         {

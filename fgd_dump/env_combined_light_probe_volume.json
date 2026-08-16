@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_combined_light_probe_volume",
       "Description": "Combination of an env_cubemap_box and an env_light_probe_volume",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -249,7 +249,7 @@
       "EntityType": "Point",
       "Name": "env_combined_light_probe_volume",
       "Description": "Combination of an env_cubemap_box and an env_light_probe_volume",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -486,7 +486,7 @@
       "EntityType": "Point",
       "Name": "env_combined_light_probe_volume",
       "Description": "Combination of an env_cubemap_box and an env_light_probe_volume",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/env_cubemap.png",
       "PageAnnotation": null,
       "Properties": [
         {

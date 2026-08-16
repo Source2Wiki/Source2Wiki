@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_p90",
       "Description": "P90",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_smg_p90.png",
       "PageAnnotation": null,
       "Properties": [
         {

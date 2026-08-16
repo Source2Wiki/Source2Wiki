@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "light_irradvolume",
       "Description": "An entity that places an irradiance volume in the world.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/iv_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

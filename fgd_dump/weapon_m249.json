@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_m249",
       "Description": "M249 Para",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_mach_m249.png",
       "PageAnnotation": null,
       "Properties": [
         {

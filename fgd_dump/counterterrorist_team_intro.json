@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "counterterrorist_team_intro",
       "Description": "In-map counter-terrorist team intro variant #1.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/counterterrorist_team_intro.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "map_preview_camera_path_node",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {

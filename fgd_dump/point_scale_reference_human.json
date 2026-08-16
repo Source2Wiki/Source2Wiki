@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_scale_reference_human",
       "Description": "Scale Reference (Human)",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/ctm_spawnpoint.png",
       "PageAnnotation": null,
       "Properties": [
         {

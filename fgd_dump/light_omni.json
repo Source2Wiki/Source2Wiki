@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "light_omni",
       "Description": "A point light source.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -564,7 +564,7 @@
       "EntityType": "Point",
       "Name": "light_omni",
       "Description": "A point light source.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {

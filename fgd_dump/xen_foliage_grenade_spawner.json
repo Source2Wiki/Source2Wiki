@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "xen_foliage_grenade_spawner",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/xen_grenade_plant.png",
       "PageAnnotation": null,
       "Properties": [
         {

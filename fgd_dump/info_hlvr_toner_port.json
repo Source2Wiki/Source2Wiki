@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_hlvr_toner_port",
       "Description": "Toner Port",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/power_stake_a.png",
       "PageAnnotation": null,
       "Properties": [
         {

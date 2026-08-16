@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "light_rect",
       "Description": "A rectangular or disk shaped light",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {

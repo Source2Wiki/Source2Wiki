@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_crafting_currency_small",
       "Description": "Crafting Currency (Small)",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/resin_puck01.png",
       "PageAnnotation": null,
       "Properties": [
         {

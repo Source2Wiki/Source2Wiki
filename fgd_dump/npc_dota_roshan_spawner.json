@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_dota_roshan_spawner",
       "Description": "Spawns Roshan, the big boss in the standard Dota2 PvP map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/roshan.png",
       "PageAnnotation": null,
       "Properties": [
         {

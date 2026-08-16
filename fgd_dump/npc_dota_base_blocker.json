@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_dota_base_blocker",
       "Description": "A blocker which only one team can go past.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/gate_entrance002.png",
       "PageAnnotation": null,
       "Properties": [
         {

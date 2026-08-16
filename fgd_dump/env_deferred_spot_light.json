@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_deferred_spot_light",
       "Description": "[TOOLTIP NEEDS IMPROVEMENT] Deferred spot light.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/spot.png",
       "PageAnnotation": null,
       "Properties": [
         {

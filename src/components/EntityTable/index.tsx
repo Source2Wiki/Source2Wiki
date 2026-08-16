@@ -219,7 +219,7 @@ const EntityTable: React.FC = () => {
                             <img 
                               src={entity.Icon}
                               alt={entity.Classname}
-                              style={{ width: '32px', height: '32px' }}
+                              style={{ width: '42px', height: '42px' }}
                             />
                           )}
                           <code className={styles.code}>{entity.Classname}</code>

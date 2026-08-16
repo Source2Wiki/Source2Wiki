@@ -600,7 +600,7 @@
       "EntityType": "Point",
       "Name": "light_environment",
       "Description": "Sets the color and angle of the light from the sun and sky.\u003Cbr\u003E\u003Cbr\u003ETypical setup:\u003Cbr\u003E1. Create an \u003Cb\u003Eenv_sky\u003C/b\u003E entity to use as your skybox\u003Cbr\u003E2. Create a \u003Cb\u003Elight_environment\u003C/b\u003E entity and set \u003Cb\u003ESky IBL Source\u003C/b\u003E to the name of the \u003Cb\u003Eenv_sky\u003C/b\u003E entity\u003Cbr\u003E3. Right-click on your \u003Cb\u003Elight_environment\u003C/b\u003E entity and select \u0027Selected environment light -\u003E Estimate lighting from HDR skybox\u0027\u003Cbr\u003E4. Adjust angle and brightness of the sunlight as you see fit",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/sun.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1264,7 +1264,7 @@
       "EntityType": "Point",
       "Name": "light_environment",
       "Description": "Sets the color and angle of the light from the sun and sky.\u003Cbr\u003E\u003Cbr\u003ETypical setup:\u003Cbr\u003E1. Create an \u003Cb\u003Eenv_sky\u003C/b\u003E entity to use as your skybox\u003Cbr\u003E2. Create a \u003Cb\u003Elight_environment\u003C/b\u003E entity and set \u003Cb\u003ESky IBL Source\u003C/b\u003E to the name of the \u003Cb\u003Eenv_sky\u003C/b\u003E entity\u003Cbr\u003E3. Right-click on your \u003Cb\u003Elight_environment\u003C/b\u003E entity and select \u0027Selected environment light -\u003E Estimate lighting from HDR skybox\u0027\u003Cbr\u003E4. Adjust angle and brightness of the sunlight as you see fit",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/sun.png",
       "PageAnnotation": null,
       "Properties": [
         {

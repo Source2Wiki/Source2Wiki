@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "team_select",
       "Description": "In-map team select position.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/team_select.png",
       "PageAnnotation": null,
       "Properties": [
         {

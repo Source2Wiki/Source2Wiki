@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_weaponmodule_zapper",
       "Description": "WeaponModule Zapper",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/vr_alyxgun_attach_zap.png",
       "PageAnnotation": null,
       "Properties": [
         {

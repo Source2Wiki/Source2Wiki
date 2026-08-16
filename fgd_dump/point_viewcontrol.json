@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "point_viewcontrol",
       "Description": "A camera entity that controls the player\u0027s view. While it\u0027s active, the player will see out of the camera.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -355,7 +355,7 @@
       "EntityType": "Point",
       "Name": "point_viewcontrol",
       "Description": "A camera entity that controls the player\u0027s view. While it\u0027s active, the player will see out of the camera.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/camera.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "xen_hearing_flower",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/xen_coralear04.png",
       "PageAnnotation": null,
       "Properties": [
         {

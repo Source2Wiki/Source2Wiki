@@ -2,6 +2,18 @@
   margin: 1rem 0;
 }
 
+/*
+  One base height for every row, 30% taller than the default. An entity without an icon then
+  carries the same weight as one with, and there is room for a bigger icon. The padding is
+  trimmed so the height is what decides, rather than whatever the row happens to contain.
+*/
+.table td {
+  height: 3.9rem;
+  padding-top: 0.35rem;
+  padding-bottom: 0.35rem;
+  vertical-align: middle;
+}
+
 .searchContainer {
   margin-bottom: 1rem;
   max-width: 500px;

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "counterterrorist_wingman_intro",
       "Description": "In-map counter-terrorist wingman intro.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/counterterrorist_wingman_intro.png",
       "PageAnnotation": null,
       "Properties": [
         {

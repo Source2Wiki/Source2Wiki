@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_helicopter",
       "Description": "Helicopter",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/combine_helicopter.png",
       "PageAnnotation": null,
       "Properties": [
         {

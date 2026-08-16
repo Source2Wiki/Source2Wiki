@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_weaponmodule_rapidfire",
       "Description": "WeaponModule Rapidfire",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/module_rapidfire.png",
       "PageAnnotation": null,
       "Properties": [
         {

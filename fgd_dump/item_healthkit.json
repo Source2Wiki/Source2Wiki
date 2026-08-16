@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_healthkit",
       "Description": "Small Health Kit",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/healthkit.png",
       "PageAnnotation": null,
       "Properties": [
         {

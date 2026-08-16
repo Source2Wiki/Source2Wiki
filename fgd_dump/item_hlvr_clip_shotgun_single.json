@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_hlvr_clip_shotgun_single",
       "Description": "",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/shell_hand.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "item_healthvial_DEPRECATED",
       "Description": "Personal Health Kit",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/healthvial.png",
       "PageAnnotation": null,
       "Properties": [
         {

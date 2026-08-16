@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_357",
       "Description": "357",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/w_357.png",
       "PageAnnotation": null,
       "Properties": [
         {

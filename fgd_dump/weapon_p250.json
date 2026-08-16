@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_p250",
       "Description": "P250",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_pist_p250.png",
       "PageAnnotation": null,
       "Properties": [
         {

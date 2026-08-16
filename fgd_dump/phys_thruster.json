@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_thruster",
       "Description": "An entity used to apply constant acceleration to a physics object. The force and torque is calculated using the position and direction of the thruster as an impulse. So moving those off the object\u0027s center will cause torque as well. Torque can be removed by unchecking the \u0027apply torque\u0027 flag. The position of the thruster can be forced to be at the object\u0027s center by checking to \u0027ignore pos\u0027 flag.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -452,7 +452,7 @@
       "EntityType": "Point",
       "Name": "phys_thruster",
       "Description": "An entity used to apply constant acceleration to a physics object. The force and torque is calculated using the position and direction of the thruster as an impulse. So moving those off the object\u0027s center will cause torque as well. Torque can be removed by unchecking the \u0027apply torque\u0027 flag. The position of the thruster can be forced to be at the object\u0027s center by checking to \u0027ignore pos\u0027 flag.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper_thick.png",
       "PageAnnotation": null,
       "Properties": [
         {

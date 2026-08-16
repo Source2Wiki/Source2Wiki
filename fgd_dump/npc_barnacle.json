@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "npc_barnacle",
       "Description": "Barnacle",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/barnacle.png",
       "PageAnnotation": null,
       "Properties": [
         {

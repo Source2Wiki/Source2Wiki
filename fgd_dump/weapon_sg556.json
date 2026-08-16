@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "weapon_sg556",
       "Description": "SG 553",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/weapon_rif_sg556.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_genericconstraint",
       "Description": "A configurable constraint between two objects.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -840,7 +840,7 @@
       "EntityType": "Point",
       "Name": "phys_genericconstraint",
       "Description": "A configurable constraint between two objects.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -1443,7 +1443,7 @@
       "EntityType": "Point",
       "Name": "phys_genericconstraint",
       "Description": "A configurable constraint between two objects.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -2277,7 +2277,7 @@
       "EntityType": "Point",
       "Name": "phys_genericconstraint",
       "Description": "A configurable constraint between two objects.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

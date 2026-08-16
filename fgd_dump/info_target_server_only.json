@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_target_server_only",
       "Description": "An entity that does nothing. Not networked.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -232,7 +232,7 @@
       "EntityType": "Point",
       "Name": "info_target_server_only",
       "Description": "An entity that does nothing. Not networked.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
       "PageAnnotation": null,
       "Properties": [
         {

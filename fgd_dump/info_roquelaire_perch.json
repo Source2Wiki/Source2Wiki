@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_roquelaire_perch",
       "Description": "(used in Dota2 PvP tutorial) A perch point for Roquelaire to sit on.",
-      "IconPath": "static/fgd_dump/img/dota2/info_target.png",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {

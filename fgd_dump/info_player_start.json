@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_player_start",
       "Description": "This entity indicates the position and facing direction at which the player will spawn. Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. When multiple info_player_start entities are present in a map, set the \u0027Master\u0027 spawnflag on one of them to indicate which one should be used when running the entire map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/playerstart.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -184,7 +184,7 @@
       "EntityType": "Point",
       "Name": "info_player_start",
       "Description": "This entity indicates the position and facing direction at which the player will spawn. Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. When multiple info_player_start entities are present in a map, set the \u0027Master\u0027 spawnflag on one of them to indicate which one should be used when running the entire map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/playerstart.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -359,7 +359,7 @@
       "EntityType": "Point",
       "Name": "info_player_start",
       "Description": "This entity indicates the position and facing direction at which the player will spawn. Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. When multiple info_player_start entities are present in a map, set the \u0027Master\u0027 spawnflag on one of them to indicate which one should be used when running the entire map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/playerstart.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -545,7 +545,7 @@
       "EntityType": "Point",
       "Name": "info_player_start",
       "Description": "This entity indicates the position and facing direction at which the player will spawn. Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. When multiple info_player_start entities are present in a map, set the \u0027Master\u0027 spawnflag on one of them to indicate which one should be used when running the entire map.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/playerstart.png",
       "PageAnnotation": null,
       "Properties": [
         {

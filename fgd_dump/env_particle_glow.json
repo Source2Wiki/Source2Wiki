@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "env_particle_glow",
       "Description": "An entity to create light glows built via the particle editor",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/cone_helper_xyz.png",
       "PageAnnotation": null,
       "Properties": [
         {

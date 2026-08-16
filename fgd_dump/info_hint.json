@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "info_hint",
       "Description": "A hint that is not used for navigation. They don\u0027t go into the nodegraph, nor do they fall to the ground. Use these to provide some spatial context for NPCs, such as \u0027look here if you can\u0027t find the player\u0027 or \u0027throw rocks at this spot\u0027.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/node_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -538,7 +538,7 @@
       "EntityType": "Point",
       "Name": "info_hint",
       "Description": "A hint that is not used for navigation. They don\u0027t go into the nodegraph, nor do they fall to the ground. Use these to provide some spatial context for NPCs, such as \u0027look here if you can\u0027t find the player\u0027 or \u0027throw rocks at this spot\u0027.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/node_hint.png",
       "PageAnnotation": null,
       "Properties": [
         {

@@ -6,7 +6,7 @@
       "EntityType": "Point",
       "Name": "phys_lengthconstraint",
       "Description": "A constraint that preserves the distance between two entities. If the \u0027Keep Rigid\u0027 flag is set, think of it as a rod. If not, think off it as a virtual rope.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -305,7 +305,7 @@
       "EntityType": "Point",
       "Name": "phys_lengthconstraint",
       "Description": "A constraint that preserves the distance between two entities. If the \u0027Keep Rigid\u0027 flag is set, think of it as a rod. If not, think off it as a virtual rope.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/hla/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -587,7 +587,7 @@
       "EntityType": "Point",
       "Name": "phys_lengthconstraint",
       "Description": "A constraint that preserves the distance between two entities. If the \u0027Keep Rigid\u0027 flag is set, think of it as a rod. If not, think off it as a virtual rope.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/dota2/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -886,7 +886,7 @@
       "EntityType": "Point",
       "Name": "phys_lengthconstraint",
       "Description": "A constraint that preserves the distance between two entities. If the \u0027Keep Rigid\u0027 flag is set, think of it as a rod. If not, think off it as a virtual rope.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/steamvr/axis_helper.png",
       "PageAnnotation": null,
       "Properties": [
         {
