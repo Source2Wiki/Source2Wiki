@@ -4,9 +4,13 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
+    "generate-entities": "tsx tools/generate-entity-pages.ts",
+    "watch-entities": "tsx tools/generate-entity-pages.ts --watch",
     "prestart": "npm install",
-    "start": "WikiPageTools.exe --root ./ --generate_mdx --no_listen && start /b WikiPageTools.exe --root ./ --generate_mdx & docusaurus start",
+    "start": "tsx tools/start.ts",
+    "prebuild": "npm run generate-entities",
     "build": "docusaurus build",
+    "predeploy": "npm run generate-entities",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -33,6 +37,7 @@
     "@docusaurus/module-type-aliases": "^3.10.2",
     "@docusaurus/tsconfig": "^3.10.2",
     "@docusaurus/types": "^3.10.2",
+    "tsx": "^4.23.12",
     "typescript": "~5.6.2"
   },
   "browserslist": {

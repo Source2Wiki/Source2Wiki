@@ -31,15 +31,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Clone WikiPageTools
-        run: git clone https://github.com/Source2Wiki/WikiPageTools
-      - name: Setup .NET 9
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
-      - name: Run WikiPageTools
-        run: dotnet run --configuration Release --project WikiPageTools/WikiPageTools -- --root . --generate_mdx --no_listen
-
       - name: Test build website
         run: npm run build
   deploy:
@@ -65,15 +56,6 @@ jobs:
 
       - name: Install dependencies
         run: npm ci
-
-      - name: Clone WikiPageTools
-        run: git clone https://github.com/Source2Wiki/WikiPageTools
-      - name: Setup .NET 9
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
-      - name: Run WikiPageTools
-        run: dotnet run --configuration Release --project WikiPageTools/WikiPageTools -- --root . --generate_mdx --no_listen
 
       - name: Deploy to GitHub Pages
         env:
