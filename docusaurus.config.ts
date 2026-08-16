@@ -192,7 +192,7 @@ const config: Config = {
                   </div>
 
                   <div style="text-align: right; gap: 4px;">
-                    <span>This project is not affiliated with Valve Software.</br>Source 2 is a trademark and/or registered trademark of Valve Corporation. </span>
+                    <span>This project is not affiliated with Valve Software.<br/>Source 2 is a trademark and/or registered trademark of Valve Corporation. </span>
                   </div>
                  
               </div>
