@@ -6,6 +6,7 @@
     "docusaurus": "docusaurus",
     "generate-entities": "tsx tools/generate-entity-pages.ts",
     "watch-entities": "tsx tools/generate-entity-pages.ts --watch",
+    "generate-cs-script-docs": "tsx tools/generate-cs-script-docs.ts",
     "prestart": "npm install",
     "start": "tsx tools/start.ts",
     "prebuild": "npm run generate-entities",
