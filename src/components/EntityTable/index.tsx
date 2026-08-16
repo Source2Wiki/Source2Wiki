@@ -216,9 +216,15 @@ const EntityTable: React.FC = () => {
                       <Link to={`/Entities/${entity.Classname}`} className={styles.entityLink}>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                           {entity.Icon && (
-                            <img 
+                            <img
                               src={entity.Icon}
                               alt={entity.Classname}
+                              // every row is in the DOM at once, so without this the browser fetches
+                              // all four hundred odd icons the moment the page opens
+                              loading="lazy"
+                              decoding="async"
+                              width={42}
+                              height={42}
                               style={{ width: '42px', height: '42px' }}
                             />
                           )}
