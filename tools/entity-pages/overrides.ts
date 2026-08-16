@@ -104,7 +104,7 @@ export function handleOverrides(files: string[], docsDictionary: Map<string, Ent
 }
 
 function overridePageFrom(page: EntityPage, overridePage: EntityPage): void {
-  if (overridePage.EntityType !== "Default") {
+  if (overridePage.EntityType !== null) {
     page.EntityType = overridePage.EntityType;
   }
 

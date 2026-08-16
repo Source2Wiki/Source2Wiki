@@ -16,7 +16,7 @@ import * as wiki from "./wiki-paths";
 export type EntityType = (typeof EntityTypes)[number];
 export type InputOutputType = (typeof InputOutputTypes)[number];
 
-export const EntityTypes = ["Default", "Point", "Mesh"] as const;
+export const EntityTypes = ["Point", "Mesh"] as const;
 
 export const InputOutputTypes = ["Input", "Output"] as const;
 
@@ -54,7 +54,7 @@ export interface InputOutput {
 
 export interface EntityPage {
   Game: Game | null;
-  EntityType: EntityType;
+  EntityType: EntityType | null;
   Name: string;
   Description: string;
   IconPath: string;
@@ -109,7 +109,7 @@ function parseFile<T>(filePath: string, parse: (value: RawJson) => T): T {
 function toEntityPage(page: RawJson): EntityPage {
   return {
     Game: getGameByFileSystemName(page.Game),
-    EntityType: readEnum(page.EntityType, EntityTypes, "EntityType") ?? "Default",
+    EntityType: readEnum(page.EntityType, EntityTypes, "EntityType"),
     Name: page.Name ?? "",
     Description: page.Description ?? "",
     IconPath: page.IconPath ?? "",
