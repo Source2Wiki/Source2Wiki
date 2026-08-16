@@ -196,7 +196,7 @@
   },
   {
     "Classname": "ai_sound",
-    "Description": "This entity makes sounds or smells that can be sensed by NPCs, but not by the player. This can be used to cause reactions in nearby NPCs.\u003Cbr/\u003E\u003Cbr/\u003E\u003Cb\u003ESound Types\u003C/b\u003E\u003Cbr/\u003E- Combat: Will cause most NPCs to become alert\u003Cbr/\u003E- World: Will cause most NPCs to become alert\u003Cbr/\u003E- Danger: Will cause most NPCs to move away from the position of the sound\u003Cbr/\u003E- Bullet Impact\u003Cbr/\u003E- Carcass\u003Cbr/\u003E- Meat\u003Cbr/\u003E- Garbage\u003Cbr/\u003E- Thumper: causes antlions to run away briefly\u003Cbr/\u003E- Readiness: (Low, Medium, High) Causes player companions that can hear this sound to change readiness",
+    "Description": "This entity makes sounds or smells that can be sensed by NPCs, but not by the player. This can be used to cause reactions in nearby NPCs.<br/><br/><b>Sound Types</b><br/>- Combat: Will cause most NPCs to become alert<br/>- World: Will cause most NPCs to become alert<br/>- Danger: Will cause most NPCs to move away from the position of the sound<br/>- Bullet Impact<br/>- Carcass<br/>- Meat<br/>- Garbage<br/>- Thumper: causes antlions to run away briefly<br/>- Readiness: (Low, Medium, High) Causes player companions that can hear this sound to change readiness",
     "Icon": "/fgd_dump/img/steamvr/ai_sound.png",
     "Games": [
       "hla",
@@ -259,7 +259,7 @@
   },
   {
     "Classname": "beam_spotlight",
-    "Description": "An entity to draw a spotlight. Will draw a beam when the player views it side on, and a halo when it\u0027s facing towards the player. Unless the \u0027No Dynamic Light\u0027 spawnflag is checked, it will also create a dynamic light wherever the end of the spotlight rests.This spotlight is entirely client side, it is not sync\u0027d across clients.",
+    "Description": "An entity to draw a spotlight. Will draw a beam when the player views it side on, and a halo when it's facing towards the player. Unless the 'No Dynamic Light' spawnflag is checked, it will also create a dynamic light wherever the end of the spotlight rests.This spotlight is entirely client side, it is not sync'd across clients.",
     "Icon": "",
     "Games": [
       "dota2",
@@ -397,7 +397,7 @@
   },
   {
     "Classname": "cycler",
-    "Description": "An entity used to display a model for testing purposes. Shooting it with cycle through the model\u0027s animations.",
+    "Description": "An entity used to display a model for testing purposes. Shooting it with cycle through the model's animations.",
     "Icon": "",
     "Games": [
       "hla",
@@ -638,7 +638,7 @@
   },
   {
     "Classname": "ent_dota_tree",
-    "Description": "Creates a Dota tree.  Trees have collision, block fog of war visibility, and can be destroyed.  Note: it\u0027s far faster to place trees via the Tile Editor tool.",
+    "Description": "Creates a Dota tree.  Trees have collision, block fog of war visibility, and can be destroyed.  Note: it's far faster to place trees via the Tile Editor tool.",
     "Icon": "",
     "Games": [
       "dota2"
@@ -848,7 +848,7 @@
   },
   {
     "Classname": "env_entity_maker",
-    "Description": "Spawns the specified entity template at its origin. If set to auto-spawn, it will spawn the template whenever there\u0027s room and the player is looking elsewhere.",
+    "Description": "Spawns the specified entity template at its origin. If set to auto-spawn, it will spawn the template whenever there's room and the player is looking elsewhere.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -881,7 +881,7 @@
   },
   {
     "Classname": "env_fire",
-    "Description": "An entity that handles a single flame at its origin. The flame causes heat \u0027damage\u0027 to other env_fire entities around it, and will eventually ignite non-flaming env_fire entities nearby, causing the fire to spread.",
+    "Description": "An entity that handles a single flame at its origin. The flame causes heat 'damage' to other env_fire entities around it, and will eventually ignite non-flaming env_fire entities nearby, causing the fire to spread.",
     "Icon": "/fgd_dump/img/steamvr/env_fire.png",
     "Games": [
       "cs2",
@@ -1037,7 +1037,7 @@
   },
   {
     "Classname": "env_message",
-    "Description": "An entity that draws a text message on player\u0027s HUDs.",
+    "Description": "An entity that draws a text message on player's HUDs.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -1048,7 +1048,7 @@
   },
   {
     "Classname": "env_microphone",
-    "Description": "An entity that acts as a microphone. It works in one of two modes. If it has a \u0027Speaker\u0027 set, it picks up all sounds within the specified sound range, and rebroadcasts them through the Speaker entity. In this Speaker mode, it ignores the Hears X spawnflags and does not fire the SoundLevel output. If it has no Speaker set, it measures the sound level at a point, and outputs the sound level as a value between 0 and 1. In Measuring mode, it only hears sounds that match the Hear X spawnflags.",
+    "Description": "An entity that acts as a microphone. It works in one of two modes. If it has a 'Speaker' set, it picks up all sounds within the specified sound range, and rebroadcasts them through the Speaker entity. In this Speaker mode, it ignores the Hears X spawnflags and does not fire the SoundLevel output. If it has no Speaker set, it measures the sound level at a point, and outputs the sound level as a value between 0 and 1. In Measuring mode, it only hears sounds that match the Hear X spawnflags.",
     "Icon": "/fgd_dump/img/steamvr/env_microphone.png",
     "Games": [
       "hla",
@@ -1099,7 +1099,7 @@
   },
   {
     "Classname": "env_physexplosion",
-    "Description": "An entity that creates an explosion at its origin. If the no-damage spawnflag is set, the explosion won\u0027t be visible, but will apply force to any physics objects within its radius.",
+    "Description": "An entity that creates an explosion at its origin. If the no-damage spawnflag is set, the explosion won't be visible, but will apply force to any physics objects within its radius.",
     "Icon": "/fgd_dump/img/steamvr/env_physexplosion.png",
     "Games": [
       "cs2",
@@ -1145,7 +1145,7 @@
   },
   {
     "Classname": "env_rotorshooter",
-    "Description": "An entity that creates gibs when it\u0027s within the influence of a helicopter\u0027s rotor wash.",
+    "Description": "An entity that creates gibs when it's within the influence of a helicopter's rotor wash.",
     "Icon": "/fgd_dump/img/steamvr/env_shooter.png",
     "Games": [
       "dota2",
@@ -1163,7 +1163,7 @@
   },
   {
     "Classname": "env_screeneffect",
-    "Description": "Allows screenspace effects to be played on the player\u0027s view.",
+    "Description": "Allows screenspace effects to be played on the player's view.",
     "Icon": "",
     "Games": [
       "hla",
@@ -1172,7 +1172,7 @@
   },
   {
     "Classname": "env_screenoverlay",
-    "Description": "An entity that can display and control a set of screen overlays, to be displayed over the player\u0027s view. Useful for view effects like drunkenness, or teleporter afterimages, etc.",
+    "Description": "An entity that can display and control a set of screen overlays, to be displayed over the player's view. Useful for view effects like drunkenness, or teleporter afterimages, etc.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -1282,7 +1282,7 @@
   },
   {
     "Classname": "env_splash",
-    "Description": "An entity that creates a splash effect at its origin. If the \u0027find water surface\u0027 spawnflag is set, it will instead trace down below itself to find the water surface on which to create splashes.",
+    "Description": "An entity that creates a splash effect at its origin. If the 'find water surface' spawnflag is set, it will instead trace down below itself to find the water surface on which to create splashes.",
     "Icon": "",
     "Games": [
       "dota2",
@@ -1310,7 +1310,7 @@
   },
   {
     "Classname": "env_sun",
-    "Description": "An entity to control \u0026 draw a sun effect in the sky.",
+    "Description": "An entity to control & draw a sun effect in the sky.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -1345,7 +1345,7 @@
   },
   {
     "Classname": "env_tonemap_controller",
-    "Description": "An entity that controls the HDR tonemapping for the player. Think of it as a method of controlling the exposure of the player\u0027s eyes.",
+    "Description": "An entity that controls the HDR tonemapping for the player. Think of it as a method of controlling the exposure of the player's eyes.",
     "Icon": "/fgd_dump/img/steamvr/env_tonemap_controller.png",
     "Games": [
       "hla",
@@ -1383,7 +1383,7 @@
   },
   {
     "Classname": "env_volumetric_fog_volume",
-    "Description": "Sets a user bounding volume for volumetric fog - if one of these are in the map then all fog will get clamped to it. More than one then fog gets rendered if it\u0027s inside any of them.",
+    "Description": "Sets a user bounding volume for volumetric fog - if one of these are in the map then all fog will get clamped to it. More than one then fog gets rendered if it's inside any of them.",
     "Icon": "/fgd_dump/img/steamvr/fog_volume.png",
     "Games": [
       "hla",
@@ -1412,7 +1412,7 @@
   },
   {
     "Classname": "env_zoom",
-    "Description": "An entity that can be used to control the player\u0027s FOV. Useful for scenes where the player\u0027s view is being controlled, or player-usable binoculars/telescopes, etc.",
+    "Description": "An entity that can be used to control the player's FOV. Useful for scenes where the player's view is being controlled, or player-usable binoculars/telescopes, etc.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -1539,7 +1539,7 @@
   },
   {
     "Classname": "filter_multi",
-    "Description": "A filter that tests the activator against multiple filters. This allows you to build more complex filters, such as\u0027Allow anyone on Team 1 who is also class engineer\u0027, or \u0027Allow everyone except classes npc_zombie and npc_headcrab\u0027.",
+    "Description": "A filter that tests the activator against multiple filters. This allows you to build more complex filters, such as'Allow anyone on Team 1 who is also class engineer', or 'Allow everyone except classes npc_zombie and npc_headcrab'.",
     "Icon": "/fgd_dump/img/steamvr/filter_multiple.png",
     "Games": [
       "cs2",
@@ -1601,7 +1601,7 @@
   },
   {
     "Classname": "func_areaportalwindow",
-    "Description": "An entity that can be used to optimize the visibility in a map. If you seal off an area with them, when the viewer moves the specified distance away from them, they will go opaque and the parts inside the area will not be drawn. The \u0027target\u0027 brush model should enclose the func_areaportal window so no parts of it are culled by the window. If you use the optional foreground brush model, then it should enclose the \u0027target\u0027 brush model.",
+    "Description": "An entity that can be used to optimize the visibility in a map. If you seal off an area with them, when the viewer moves the specified distance away from them, they will go opaque and the parts inside the area will not be drawn. The 'target' brush model should enclose the func_areaportal window so no parts of it are culled by the window. If you use the optional foreground brush model, then it should enclose the 'target' brush model.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -1609,7 +1609,7 @@
   },
   {
     "Classname": "func_bomb_target",
-    "Description": "Bomb Target. The terrorists can place C4 explosives while standing in this zone.\u003Cbr/\u003E\u003Cbr/\u003EWhen the bomb is planted and explodes inside this area, the BombExplode outputs are fired. The game handles all of the bomb planting and scoring logic \u2013 the BombExplode outputs are provided to add visual and damage effects.",
+    "Description": "Bomb Target. The terrorists can place C4 explosives while standing in this zone.<br/><br/>When the bomb is planted and explodes inside this area, the BombExplode outputs are fired. The game handles all of the bomb planting and scoring logic – the BombExplode outputs are provided to add visual and damage effects.",
     "Icon": "",
     "Games": [
       "cs2"
@@ -1639,7 +1639,7 @@
   },
   {
     "Classname": "func_button",
-    "Description": "A brush entity that\u0027s designed to be used for a player-useable button. When used by the player, it moves to a pressed position.",
+    "Description": "A brush entity that's designed to be used for a player-useable button. When used by the player, it moves to a pressed position.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -1669,7 +1669,7 @@
   },
   {
     "Classname": "func_clip_vphysics",
-    "Description": "A brush entity that\u0027s considered solid to vphysics.",
+    "Description": "A brush entity that's considered solid to vphysics.",
     "Icon": "",
     "Games": [
       "cs2"
@@ -1819,7 +1819,7 @@
   },
   {
     "Classname": "func_ladderendpoint",
-    "Description": "An entity used to specify the endpoints of a ladder. This entity is functional, but has been replaced by the easier-to-use func_useableladder entity. Left in only for backwards-compatibility!\u003Cbr/\u003E\u003Cbr/\u003ETo be valid, a full sized player hull traced between the start and end points must not be obstructed at level activation time. The angle determines in which direction the player leaves the ladder if the player presses the \u002Bjump button.\u003Cbr/\u003E\u003Cbr/\u003ENote: This entity is non-functional in Counter-Strike: Source. In CS:S, use func_ladder instead.",
+    "Description": "An entity used to specify the endpoints of a ladder. This entity is functional, but has been replaced by the easier-to-use func_useableladder entity. Left in only for backwards-compatibility!<br/><br/>To be valid, a full sized player hull traced between the start and end points must not be obstructed at level activation time. The angle determines in which direction the player leaves the ladder if the player presses the +jump button.<br/><br/>Note: This entity is non-functional in Counter-Strike: Source. In CS:S, use func_ladder instead.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -1827,7 +1827,7 @@
   },
   {
     "Classname": "func_lod",
-    "Description": "Brush-built model that fades out over a specified distance. Useful for creating world detail that doesn\u0027t need to be drawn far away, for performance reasons.",
+    "Description": "Brush-built model that fades out over a specified distance. Useful for creating world detail that doesn't need to be drawn far away, for performance reasons.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -1880,7 +1880,7 @@
   },
   {
     "Classname": "func_occluder",
-    "Description": "A func_occluder occludes objects behind it. It is used for rendering performance optimization. One use case is to put it into a doorway and toggle it based on whether the door is open or not. Note that geometry surrounding the doorway should have occluders as well, otherwise the benefit of the func_occluder is limited.\u003Cbr/\u003Efunc_occluders should be as large as possible for best occlusion.",
+    "Description": "A func_occluder occludes objects behind it. It is used for rendering performance optimization. One use case is to put it into a doorway and toggle it based on whether the door is open or not. Note that geometry surrounding the doorway should have occluders as well, otherwise the benefit of the func_occluder is limited.<br/>func_occluders should be as large as possible for best occlusion.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -1897,7 +1897,7 @@
   },
   {
     "Classname": "func_physbox",
-    "Description": "A brush entity that\u0027s physically simulated.",
+    "Description": "A brush entity that's physically simulated.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -1908,7 +1908,7 @@
   },
   {
     "Classname": "func_physical_button",
-    "Description": "A brush entity that\u0027s designed to be used for a rotating player-useable button. When used by the player, it rotates to a pressed position.",
+    "Description": "A brush entity that's designed to be used for a rotating player-useable button. When used by the player, it rotates to a pressed position.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -1948,7 +1948,7 @@
   },
   {
     "Classname": "func_reflective_glass",
-    "Description": "Used to produce perfectly reflective glass that renders world \u002B entities. Typically, you want your glass brush to have nodraw on all non-reflective surfaces and you want to use a shader like lightmappedreflective in your material applied to the non-nodraw surfaces. See hl2/materials/glass/reflectiveglass001.vmat for an example. NOTE: currently, you cannot use reflective glass in scenes with water, and you can only have 1 reflective glass in your view frustum ( \u002B pvs ) at a time.",
+    "Description": "Used to produce perfectly reflective glass that renders world + entities. Typically, you want your glass brush to have nodraw on all non-reflective surfaces and you want to use a shader like lightmappedreflective in your material applied to the non-nodraw surfaces. See hl2/materials/glass/reflectiveglass001.vmat for an example. NOTE: currently, you cannot use reflective glass in scenes with water, and you can only have 1 reflective glass in your view frustum ( + pvs ) at a time.",
     "Icon": "",
     "Games": [
       "dota2",
@@ -1968,7 +1968,7 @@
   },
   {
     "Classname": "func_rot_button",
-    "Description": "A brush entity that\u0027s designed to be used for a rotating player-useable button. When used by the player, it rotates to a pressed position.",
+    "Description": "A brush entity that's designed to be used for a rotating player-useable button. When used by the player, it rotates to a pressed position.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2013,7 +2013,7 @@
   },
   {
     "Classname": "func_tanktrain",
-    "Description": "A moving train that follows a path of path_track entities, shoots at the player, and can be killed.\u003Cbr/\u003ENOTE: Build your train so that the front of the train is facing down the X axis. When it spawns it will automatically rotate to face the next path_track on the path.",
+    "Description": "A moving train that follows a path of path_track entities, shoots at the player, and can be killed.<br/>NOTE: Build your train so that the front of the train is facing down the X axis. When it spawns it will automatically rotate to face the next path_track on the path.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2061,7 +2061,7 @@
   },
   {
     "Classname": "func_tracktrain",
-    "Description": "A moving platform that the player can ride. It follows a path of path_track entities.\u003Cbr/\u003ENOTE: Build your train so that the front of the train is facing down the X axis. When it spawns it will automatically rotate to face the next path_track on the path.",
+    "Description": "A moving platform that the player can ride. It follows a path of path_track entities.<br/>NOTE: Build your train so that the front of the train is facing down the X axis. When it spawns it will automatically rotate to face the next path_track on the path.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2072,7 +2072,7 @@
   },
   {
     "Classname": "func_traincontrols",
-    "Description": "When used by the player, this entity overrides the player\u0027s controls to let them drive a train.",
+    "Description": "When used by the player, this entity overrides the player's controls to let them drive a train.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2082,7 +2082,7 @@
   },
   {
     "Classname": "func_useableladder",
-    "Description": "A Half-Life 2 ladder. Handles player auto mount/unmount, as well as \u002Buse to get onto the ladder.\u003Cbr/\u003E\u003Cbr/\u003ESee also \u0027info_ladder_dismount\u0027, used to specify ladder auto-dismount points.\u003Cbr/\u003E\u003Cbr/\u003E\u003Cb\u003ENote:\u003C/b\u003E This entity is non-functional in Counter-Strike: Source. Use func_ladder instead.",
+    "Description": "A Half-Life 2 ladder. Handles player auto mount/unmount, as well as +use to get onto the ladder.<br/><br/>See also 'info_ladder_dismount', used to specify ladder auto-dismount points.<br/><br/><b>Note:</b> This entity is non-functional in Counter-Strike: Source. Use func_ladder instead.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2173,7 +2173,7 @@
   },
   {
     "Classname": "game_player_equip",
-    "Description": "An entity that gives equipment to the player who activates it. To use, add new keys to this entity, where each key is the classname of a weapon/item, and the corresponding value is the number of those weapons/items to give to the player who uses this entity. If the \u0027Use Only\u0027 spawnflag isn\u0027t set, then players can just touch this entity to get the equipment.",
+    "Description": "An entity that gives equipment to the player who activates it. To use, add new keys to this entity, where each key is the classname of a weapon/item, and the corresponding value is the number of those weapons/items to give to the player who uses this entity. If the 'Use Only' spawnflag isn't set, then players can just touch this entity to get the equipment.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2210,7 +2210,7 @@
   },
   {
     "Classname": "game_text",
-    "Description": "An entity that displays text on player\u0027s screens.",
+    "Description": "An entity that displays text on player's screens.",
     "Icon": "/fgd_dump/img/steamvr/game_text.png",
     "Games": [
       "cs2",
@@ -2268,7 +2268,7 @@
   },
   {
     "Classname": "ghost_speaker",
-    "Description": "A meshless model you can use as a speaker location for vcd\u0027s",
+    "Description": "A meshless model you can use as a speaker location for vcd's",
     "Icon": "/fgd_dump/img/hla/ghost_speaker.png",
     "Games": [
       "hla"
@@ -2378,7 +2378,7 @@
   },
   {
     "Classname": "hostage_entity",
-    "Description": "Hostage. A hostage NPC will spawn at this point.\u003Cbr/\u003E\u003Cbr/\u003EThere are usually four hostages placed in each hostage rescue map. The model for each Hostage is randomly chosen.",
+    "Description": "Hostage. A hostage NPC will spawn at this point.<br/><br/>There are usually four hostages placed in each hostage rescue map. The model for each Hostage is randomly chosen.",
     "Icon": "",
     "Games": [
       "cs2"
@@ -2386,7 +2386,7 @@
   },
   {
     "Classname": "infodecal",
-    "Description": "An entity that places a decal on the world. If the decal has no target name, it will immediately apply itself when the level is loaded. If it has a name specified, it won\u0027t apply until it receives the \u0027Activate\u0027 input.",
+    "Description": "An entity that places a decal on the world. If the decal has no target name, it will immediately apply itself when the level is loaded. If it has a name specified, it won't apply until it receives the 'Activate' input.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -2410,7 +2410,7 @@
   },
   {
     "Classname": "info_camera_link",
-    "Description": "An entity that can use point_cameras to render images for materials used by entities. To author the material, use the special identifier _rt_Camera for the $baseTexture (or whatever texture you want, like envmap, etc.) in the .vmat then connect the \u0027target\u0027 field to the entity which uses that material, and the \u0027PointCamera\u0027 field to the point_camera you want to have appear on that entity\u0027s material",
+    "Description": "An entity that can use point_cameras to render images for materials used by entities. To author the material, use the special identifier _rt_Camera for the $baseTexture (or whatever texture you want, like envmap, etc.) in the .vmat then connect the 'target' field to the entity which uses that material, and the 'PointCamera' field to the point_camera you want to have appear on that entity's material",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -2496,7 +2496,7 @@
   },
   {
     "Classname": "info_hint",
-    "Description": "A hint that is not used for navigation. They don\u0027t go into the nodegraph, nor do they fall to the ground. Use these to provide some spatial context for NPCs, such as \u0027look here if you can\u0027t find the player\u0027 or \u0027throw rocks at this spot\u0027.",
+    "Description": "A hint that is not used for navigation. They don't go into the nodegraph, nor do they fall to the ground. Use these to provide some spatial context for NPCs, such as 'look here if you can't find the player' or 'throw rocks at this spot'.",
     "Icon": "",
     "Games": [
       "hla",
@@ -2569,7 +2569,7 @@
   },
   {
     "Classname": "info_hostage_spawn",
-    "Description": "Hostage. A hostage NPC will spawn at this point.\u003Cbr/\u003E\u003Cbr/\u003EThere are usually four hostages placed in each hostage rescue map. The model for each Hostage is randomly chosen.",
+    "Description": "Hostage. A hostage NPC will spawn at this point.<br/><br/>There are usually four hostages placed in each hostage rescue map. The model for each Hostage is randomly chosen.",
     "Icon": "",
     "Games": [
       "cs2"
@@ -2597,7 +2597,7 @@
   },
   {
     "Classname": "info_landmark",
-    "Description": "An entity that acts as a local coordinate frame for transitions to another level. There should be a corresponding info_landmark entity in the next map. Entities will transition to the next level at the same relative offset from the info_landmark entity.\u003Cbr/\u003E\u003Cbr/\u003ENote that only entities in same the PVS as the info_landmark are considered for transitioning, so it should generally be placed inside the transition space.",
+    "Description": "An entity that acts as a local coordinate frame for transitions to another level. There should be a corresponding info_landmark entity in the next map. Entities will transition to the next level at the same relative offset from the info_landmark entity.<br/><br/>Note that only entities in same the PVS as the info_landmark are considered for transitioning, so it should generally be placed inside the transition space.",
     "Icon": "/fgd_dump/img/steamvr/info_landmark.png",
     "Games": [
       "hla",
@@ -2607,7 +2607,7 @@
   },
   {
     "Classname": "info_lighting",
-    "Description": "An entity that can be used to change the lighting origin of a prop_static. Set the prop_static\u0027s Lighting Origin to point at this entity to make the prop_static light as if it was at the info_lighting\u0027s origin. Good for prop_static entities that are embedded in world geometry (like rocks/windows/etc).",
+    "Description": "An entity that can be used to change the lighting origin of a prop_static. Set the prop_static's Lighting Origin to point at this entity to make the prop_static light as if it was at the info_lighting's origin. Good for prop_static entities that are embedded in world geometry (like rocks/windows/etc).",
     "Icon": "/fgd_dump/img/steamvr/info_lighting.png",
     "Games": [
       "dota2",
@@ -2632,7 +2632,7 @@
   },
   {
     "Classname": "info_mass_center",
-    "Description": "An entity that overrides the mass center of the target physics prop, or func_physbox, by moving it to the info_mass_center\u0027s location.",
+    "Description": "An entity that overrides the mass center of the target physics prop, or func_physbox, by moving it to the info_mass_center's location.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -2658,7 +2658,7 @@
   },
   {
     "Classname": "info_node_air_hint",
-    "Description": "A navigation node for flying NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked into, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it\u0027s helpful to use naming conventions like \u0027Crow: Fly to point\u0027 in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.",
+    "Description": "A navigation node for flying NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked into, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it's helpful to use naming conventions like 'Crow: Fly to point' in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.",
     "Icon": "",
     "Games": [
       "hla",
@@ -2676,7 +2676,7 @@
   },
   {
     "Classname": "info_node_hint",
-    "Description": "A navigation node for ground moving NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked out of, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it\u0027s helpful to use naming conventions like \u0027Crow: Fly to point\u0027 in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.\u003Cbr/\u003E\u003Cbr/\u003EIt\u0027s important to understand the distinction between scripts, such as scripted_sequence and scripted_schedule, and info_hint entities. Scripts summon NPCs to specific cue points to play their parts, while hints provide context information to the AI that they use to perform their behaviors. Hints require code support in the NPC, while scripts are generic and may require only animations to play. Use a hint if the behavior is driven by the AI, use a script if the behavior is driven by the map.",
+    "Description": "A navigation node for ground moving NPCs that includes some context information for NPCs that are interested in it. The hint might indicate a window that could be looked out of, or an item of interest that could be commented on. Many hint nodes are NPC-specific, so it's helpful to use naming conventions like 'Crow: Fly to point' in the hint choices list. The angles of a hint node indicate what direction the NPC should face to perform the hint behavior.<br/><br/>It's important to understand the distinction between scripts, such as scripted_sequence and scripted_schedule, and info_hint entities. Scripts summon NPCs to specific cue points to play their parts, while hints provide context information to the AI that they use to perform their behaviors. Hints require code support in the NPC, while scripts are generic and may require only animations to play. Use a hint if the behavior is driven by the AI, use a script if the behavior is driven by the map.",
     "Icon": "",
     "Games": [
       "hla",
@@ -2694,7 +2694,7 @@
   },
   {
     "Classname": "info_node_link_controller",
-    "Description": "An entity that controls all connections between nodes that intersect the controller\u0027s volume. This allows for mass enabling/disabling of all node connections through a volume.",
+    "Description": "An entity that controls all connections between nodes that intersect the controller's volume. This allows for mass enabling/disabling of all node connections through a volume.",
     "Icon": "",
     "Games": [
       "hla",
@@ -2711,7 +2711,7 @@
   },
   {
     "Classname": "info_no_dynamic_shadow",
-    "Description": "Use this entity to mark surfaces that shouldn\u0027t receive dynamic shadows. Useful to apply to walls and floors where shadows are drawn improperly, giving away the location of enemies.",
+    "Description": "Use this entity to mark surfaces that shouldn't receive dynamic shadows. Useful to apply to walls and floors where shadows are drawn improperly, giving away the location of enemies.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -2728,7 +2728,7 @@
   },
   {
     "Classname": "info_null",
-    "Description": "An entity that\u0027s immediately removed on spawning. Useful as a spotlight target.",
+    "Description": "An entity that's immediately removed on spawning. Useful as a spotlight target.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2819,7 +2819,7 @@
   },
   {
     "Classname": "info_player_start",
-    "Description": "This entity indicates the position and facing direction at which the player will spawn. Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. When multiple info_player_start entities are present in a map, set the \u0027Master\u0027 spawnflag on one of them to indicate which one should be used when running the entire map.",
+    "Description": "This entity indicates the position and facing direction at which the player will spawn. Any number of info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. When multiple info_player_start entities are present in a map, set the 'Master' spawnflag on one of them to indicate which one should be used when running the entire map.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -2862,7 +2862,7 @@
   },
   {
     "Classname": "info_projecteddecal",
-    "Description": "An entity that projects a decal onto the world (or props). If the decal has no target name, it will immediately apply itself when the level is loaded. If it has a name specified, it won\u0027t apply until it receives the \u0027Activate\u0027 input.",
+    "Description": "An entity that projects a decal onto the world (or props). If the decal has no target name, it will immediately apply itself when the level is loaded. If it has a name specified, it won't apply until it receives the 'Activate' input.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -3544,7 +3544,7 @@
   },
   {
     "Classname": "light_environment",
-    "Description": "Sets the color and angle of the light from the sun and sky.\u003Cbr/\u003E\u003Cbr/\u003ETypical setup:\u003Cbr/\u003E1. Create an \u003Cb\u003Eenv_sky\u003C/b\u003E entity to use as your skybox\u003Cbr/\u003E2. Create a \u003Cb\u003Elight_environment\u003C/b\u003E entity and set \u003Cb\u003ESky IBL Source\u003C/b\u003E to the name of the \u003Cb\u003Eenv_sky\u003C/b\u003E entity\u003Cbr/\u003E3. Right-click on your \u003Cb\u003Elight_environment\u003C/b\u003E entity and select \u0027Selected environment light -\u0026gt; Estimate lighting from HDR skybox\u0027\u003Cbr/\u003E4. Adjust angle and brightness of the sunlight as you see fit",
+    "Description": "Sets the color and angle of the light from the sun and sky.<br/><br/>Typical setup:<br/>1. Create an <b>env_sky</b> entity to use as your skybox<br/>2. Create a <b>light_environment</b> entity and set <b>Sky IBL Source</b> to the name of the <b>env_sky</b> entity<br/>3. Right-click on your <b>light_environment</b> entity and select 'Selected environment light -&gt; Estimate lighting from HDR skybox'<br/>4. Adjust angle and brightness of the sunlight as you see fit",
     "Icon": "/fgd_dump/img/cs2/light_environment.png",
     "Games": [
       "cs2",
@@ -3641,7 +3641,7 @@
   },
   {
     "Classname": "logic_auto",
-    "Description": "Fires outputs when a map spawns. If \u0027Remove on fire\u0027 flag is set the logic_auto is deleted after firing. It can be set to check a global state before firing. This allows you to only fire events based on what took place in a previous map.",
+    "Description": "Fires outputs when a map spawns. If 'Remove on fire' flag is set the logic_auto is deleted after firing. It can be set to check a global state before firing. This allows you to only fire events based on what took place in a previous map.",
     "Icon": "/fgd_dump/img/steamvr/logic_auto.png",
     "Games": [
       "cs2",
@@ -3674,7 +3674,7 @@
   },
   {
     "Classname": "logic_branch_listener",
-    "Description": "Contains a list of logic_branch entities and fires outputs when the state of any of the logic_branches changes.\u003Cbr/\u003E\u003Cbr/\u003EThis entity is used to fire an event when a set of conditions are all satisfied.",
+    "Description": "Contains a list of logic_branch entities and fires outputs when the state of any of the logic_branches changes.<br/><br/>This entity is used to fire an event when a set of conditions are all satisfied.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -3685,7 +3685,7 @@
   },
   {
     "Classname": "logic_case",
-    "Description": "Compares an input to up to 32 preset values. If the input value is the same as any of the preset values, an output corresponding to that value is fired.\u003Cbr/\u003E\u003Cbr/\u003EFor example: if Case01 is set to 2 and Case02 is set to 5, and the input value is 5, the OnCase02 output will be fired.\u003Cbr/\u003E\u003Cbr/\u003EThis entity can also be used to select from a number of random targets via the PickRandom input. One of the OnCase outputs that is connected to another entity will be picked at random and fired.",
+    "Description": "Compares an input to up to 32 preset values. If the input value is the same as any of the preset values, an output corresponding to that value is fired.<br/><br/>For example: if Case01 is set to 2 and Case02 is set to 5, and the input value is 5, the OnCase02 output will be fired.<br/><br/>This entity can also be used to select from a number of random targets via the PickRandom input. One of the OnCase outputs that is connected to another entity will be picked at random and fired.",
     "Icon": "/fgd_dump/img/steamvr/logic_case.png",
     "Games": [
       "cs2",
@@ -3887,7 +3887,7 @@
   },
   {
     "Classname": "logic_relay",
-    "Description": "A message forwarder. Fires an OnTrigger output when triggered, and can be disabled to prevent forwarding outputs.\u003Cbr/\u003E\u003Cbr/\u003EUseful as an intermediary between one entity and another for turning on or off an I/O connection, or as a container for holding a set of outputs that can be triggered from multiple places.",
+    "Description": "A message forwarder. Fires an OnTrigger output when triggered, and can be disabled to prevent forwarding outputs.<br/><br/>Useful as an intermediary between one entity and another for turning on or off an I/O connection, or as a container for holding a set of outputs that can be triggered from multiple places.",
     "Icon": "/fgd_dump/img/steamvr/logic_relay.png",
     "Games": [
       "cs2",
@@ -3944,7 +3944,7 @@
   },
   {
     "Classname": "markup_group",
-    "Description": "Markup group entity; add the group\u0027s targetname to the \u0027Markup Groups\u0027 field of a markup entity to add that entity to this group",
+    "Description": "Markup group entity; add the group's targetname to the 'Markup Groups' field of a markup entity to add that entity to this group",
     "Icon": "/fgd_dump/img/cs2/toolsmarkupvolumeai.png",
     "Games": [
       "cs2",
@@ -3980,7 +3980,7 @@
   },
   {
     "Classname": "material_modify_control",
-    "Description": "An entity that can be used to directly control material vars. To use it, you need to read the .vmat of the material you intend to change. Parent this entity to a brush model entity who\u0027s material you want to control.",
+    "Description": "An entity that can be used to directly control material vars. To use it, you need to read the .vmat of the material you intend to change. Parent this entity to a brush model entity who's material you want to control.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -4021,7 +4021,7 @@
   },
   {
     "Classname": "momentary_rot_button",
-    "Description": "A brush entity that\u0027s designed to be used for rotating wheels, where the player can rotate them to arbitrary positions before stopping.",
+    "Description": "A brush entity that's designed to be used for rotating wheels, where the player can rotate them to arbitrary positions before stopping.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -4289,7 +4289,7 @@
   },
   {
     "Classname": "npc_dota_fort",
-    "Description": "Creates an ancient. In standard Dota2 PvP, the win condition is to destroy the enemy team\u0027s ancient.",
+    "Description": "Creates an ancient. In standard Dota2 PvP, the win condition is to destroy the enemy team's ancient.",
     "Icon": "",
     "Games": [
       "dota2"
@@ -4677,7 +4677,7 @@
   },
   {
     "Classname": "npc_template_maker",
-    "Description": "An entity that creates NPCs. The NPCs it creates are clones of a template NPC. NPCs are spawned around this maker\u0027s origin, or at specified destination points.",
+    "Description": "An entity that creates NPCs. The NPCs it creates are clones of a template NPC. NPCs are spawned around this maker's origin, or at specified destination points.",
     "Icon": "/fgd_dump/img/steamvr/npc_maker.png",
     "Games": [
       "hla",
@@ -4869,7 +4869,7 @@
   },
   {
     "Classname": "phys_ballsocket",
-    "Description": "A constraint that keeps the position of two objects fixed, relative to the constraint\u0027s origin. You can optionally specify limits for the relative twist and swing rotation.",
+    "Description": "A constraint that keeps the position of two objects fixed, relative to the constraint's origin. You can optionally specify limits for the relative twist and swing rotation.",
     "Icon": "/fgd_dump/img/steamvr/phys_ballsocket.png",
     "Games": [
       "cs2",
@@ -4944,7 +4944,7 @@
   },
   {
     "Classname": "phys_lengthconstraint",
-    "Description": "A constraint that preserves the distance between two entities. If the \u0027Keep Rigid\u0027 flag is set, think of it as a rod. If not, think off it as a virtual rope.",
+    "Description": "A constraint that preserves the distance between two entities. If the 'Keep Rigid' flag is set, think of it as a rod. If not, think off it as a virtual rope.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -4988,7 +4988,7 @@
   },
   {
     "Classname": "phys_ragdollconstraint",
-    "Description": "A constraint that fixes the position of two entities, relative to this constraint\u0027s origin. Also allows for limits on the rotation around each axis, in the space of this constraint.",
+    "Description": "A constraint that fixes the position of two entities, relative to this constraint's origin. Also allows for limits on the rotation around each axis, in the space of this constraint.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5030,7 +5030,7 @@
   },
   {
     "Classname": "phys_spring",
-    "Description": "A physically simulated spring. \u0027Length\u0027 is what\u0027s known as the \u0027natural spring length\u0027. This is how long the spring would be if it was at rest (nothing hanging on it or attached). When you attach something to the spring, it will stretch longer than its \u0027natural length\u0027. The amount of stretch is determined by the \u0027Sprint Frequency\u0027. The larger the spring frequency the less stretch the spring.",
+    "Description": "A physically simulated spring. 'Length' is what's known as the 'natural spring length'. This is how long the spring would be if it was at rest (nothing hanging on it or attached). When you attach something to the spring, it will stretch longer than its 'natural length'. The amount of stretch is determined by the 'Sprint Frequency'. The larger the spring frequency the less stretch the spring.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5041,7 +5041,7 @@
   },
   {
     "Classname": "phys_thruster",
-    "Description": "An entity used to apply constant acceleration to a physics object. The force and torque is calculated using the position and direction of the thruster as an impulse. So moving those off the object\u0027s center will cause torque as well. Torque can be removed by unchecking the \u0027apply torque\u0027 flag. The position of the thruster can be forced to be at the object\u0027s center by checking to \u0027ignore pos\u0027 flag.",
+    "Description": "An entity used to apply constant acceleration to a physics object. The force and torque is calculated using the position and direction of the thruster as an impulse. So moving those off the object's center will cause torque as well. Torque can be removed by unchecking the 'apply torque' flag. The position of the thruster can be forced to be at the object's center by checking to 'ignore pos' flag.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5082,7 +5082,7 @@
   },
   {
     "Classname": "point_angularvelocitysensor",
-    "Description": "An entity that detects if another entity\u0027s angular velocity meets or exceeds a threshold value.",
+    "Description": "An entity that detects if another entity's angular velocity meets or exceeds a threshold value.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5101,7 +5101,7 @@
   },
   {
     "Classname": "point_broadcastclientcommand",
-    "Description": "An entity that issues commands to each valid client\u0027s console, as if it was typed in by that player locally.",
+    "Description": "An entity that issues commands to each valid client's console, as if it was typed in by that player locally.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5316,7 +5316,7 @@
   },
   {
     "Classname": "point_hurt",
-    "Description": "An entity that does damage to all entities in a radius around itself, with a specified delay.If \u0027Target Entity\u0027 is specified, the damage is only done to that entity.",
+    "Description": "An entity that does damage to all entities in a radius around itself, with a specified delay.If 'Target Entity' is specified, the damage is only done to that entity.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5401,7 +5401,7 @@
   },
   {
     "Classname": "point_proximity_sensor",
-    "Description": "An entity that detects another entity\u0027s proximity to a target position.",
+    "Description": "An entity that detects another entity's proximity to a target position.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5420,7 +5420,7 @@
   },
   {
     "Classname": "point_render_attr_curve",
-    "Description": "Drive a global render attribute (on the player view) by a curve over time when activated. Can optionally enable a dynamic combo while it\u0027s active.",
+    "Description": "Drive a global render attribute (on the player view) by a curve over time when activated. Can optionally enable a dynamic combo while it's active.",
     "Icon": "",
     "Games": [
       "hla"
@@ -5463,7 +5463,7 @@
   },
   {
     "Classname": "point_soundevent",
-    "Description": "Plays a sound event from a point. The point can be this entity or a specified entity\u0027s position.",
+    "Description": "Plays a sound event from a point. The point can be this entity or a specified entity's position.",
     "Icon": "/fgd_dump/img/steamvr/snd_event.png",
     "Games": [
       "cs2",
@@ -5474,7 +5474,7 @@
   },
   {
     "Classname": "point_spotlight",
-    "Description": "An entity to draw a spotlight. Will draw a beam when the player views it side on, and a halo when it\u0027s facing towards the player. Unless the \u0027No Dynamic Light\u0027 spawnflag is checked, it will also create a dynamic light wherever the end of the spotlight rests.",
+    "Description": "An entity to draw a spotlight. Will draw a beam when the player views it side on, and a halo when it's facing towards the player. Unless the 'No Dynamic Light' spawnflag is checked, it will also create a dynamic light wherever the end of the spotlight rests.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -5482,7 +5482,7 @@
   },
   {
     "Classname": "point_teleport",
-    "Description": "An entity that teleports a target entity to this position and angles. If \u0027Teleport Home\u0027 spawn flag is set, teleports the target entity to its spawn position instead.If object is physically simulated, simulation is turned off when teleported.",
+    "Description": "An entity that teleports a target entity to this position and angles. If 'Teleport Home' spawn flag is set, teleports the target entity to its spawn position instead.If object is physically simulated, simulation is turned off when teleported.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5493,7 +5493,7 @@
   },
   {
     "Classname": "point_template",
-    "Description": "Turns an entity, or set of entities, into a single template that can be instanced anywhere, and multiple times. If there are interdependencies (entity I/O, hierarchy, or other name references) between the entities in the template, the entities in the template will have their names changed and the interdependencies will be reconnected to the changes names. The name change format is as follows: \u0027\u00260000\u0027, where the 0000 will be replaced with the current global template instance, so wildcard searches for \u0027*\u0027 will still find them.\u003Cbr/\u003E\u003Cbr/\u003EIf you don\u0027t want the name fixup to happen because you\u0027re only spawning the template once, or you want inputs to trigger all instances of the template, check the \u0027Preserve entity names\u0027 spawnflag.\u003Cbr/\u003E\u003Cbr/\u003ETo spawn the template in other places, use an env_entity_maker.",
+    "Description": "Turns an entity, or set of entities, into a single template that can be instanced anywhere, and multiple times. If there are interdependencies (entity I/O, hierarchy, or other name references) between the entities in the template, the entities in the template will have their names changed and the interdependencies will be reconnected to the changes names. The name change format is as follows: '&0000', where the 0000 will be replaced with the current global template instance, so wildcard searches for '*' will still find them.<br/><br/>If you don't want the name fixup to happen because you're only spawning the template once, or you want inputs to trigger all instances of the template, check the 'Preserve entity names' spawnflag.<br/><br/>To spawn the template in other places, use an env_entity_maker.",
     "Icon": "/fgd_dump/img/steamvr/point_template.png",
     "Games": [
       "cs2",
@@ -5531,7 +5531,7 @@
   },
   {
     "Classname": "point_velocitysensor",
-    "Description": "An entity that detects and outputs an entity\u0027s velocity.",
+    "Description": "An entity that detects and outputs an entity's velocity.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5542,7 +5542,7 @@
   },
   {
     "Classname": "point_viewcontrol",
-    "Description": "A camera entity that controls the player\u0027s view. While it\u0027s active, the player will see out of the camera.",
+    "Description": "A camera entity that controls the player's view. While it's active, the player will see out of the camera.",
     "Icon": "",
     "Games": [
       "hla",
@@ -5655,7 +5655,7 @@
   },
   {
     "Classname": "prop_destinations_tool",
-    "Description": "A prop that when picked up, can attach to the player\u0027s hand and have additional functionality which is defined in the vscript.",
+    "Description": "A prop that when picked up, can attach to the player's hand and have additional functionality which is defined in the vscript.",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -5736,7 +5736,7 @@
   },
   {
     "Classname": "prop_dynamic_override",
-    "Description": "A prop that can be placed in hierarchy and can play animations. It can also be configured to break when it takes enough damage.\u003Cbr/\u003Eprop_dynamic_override is a prototyping entity only. It will allow the use of models designed to be used as prop_physics.",
+    "Description": "A prop that can be placed in hierarchy and can play animations. It can also be configured to break when it takes enough damage.<br/>prop_dynamic_override is a prototyping entity only. It will allow the use of models designed to be used as prop_physics.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5755,7 +5755,7 @@
   },
   {
     "Classname": "prop_hallucination",
-    "Description": "A prop that players can\u0027t get a good look at, hopefully making them unsure if it\u0027s there at all",
+    "Description": "A prop that players can't get a good look at, hopefully making them unsure if it's there at all",
     "Icon": "",
     "Games": [
       "steamvr"
@@ -5800,7 +5800,7 @@
   },
   {
     "Classname": "prop_physics_interactive",
-    "Description": "A physics prop that has a visual \u0027handle\u0027 in the model, and a hand pose attached to that handle.",
+    "Description": "A physics prop that has a visual 'handle' in the model, and a hand pose attached to that handle.",
     "Icon": "",
     "Games": [
       "hla"
@@ -5856,7 +5856,7 @@
   },
   {
     "Classname": "prop_russell_headset",
-    "Description": "Russell\u0027s headset that you pick up and put on",
+    "Description": "Russell's headset that you pick up and put on",
     "Icon": "",
     "Games": [
       "hla"
@@ -5924,7 +5924,7 @@
   },
   {
     "Classname": "scripted_sequence",
-    "Description": "Grabs an NPC and makes them play a specified set of animations. The NPC can be told to move to the scripted sequence position or can be told to play the script wherever they currently are. Multiple scripted sequences of the same name (or sync group, if specified) will frame-synchronize in the action animation once all the actors have moved to position. This allows tight interaction between actors (one actor grabbing another, hitting them, etc.) The flow is as follows:\u003Cbr/\u003E\u003Cbr/\u003E1) Move to position using the specified movement animation. If \u0027Move to Position\u0027 is set to NONE, skip to step 2.\u003Cbr/\u003E2) If forced to wait for another actor to move to position, play the pre-action idle animation, otherwise skip to step 3. If there is no pre-action idle specified, ACT_IDLE is used.\u003Cbr/\u003E3) Fire the OnBeginSequence output.\u003Cbr/\u003E4) Play the action animation. If no action animation is specified, skip to step 5.\u003Cbr/\u003E5) Play the post-action idle animation. If none is specified, skip to step 6. If the \u0027Loop in Post Idle\u0027 spawnflag is set, keep playing the post-action idle until the script is cancelled. If no post-action idle animation is specified, ACT_IDLE is used.\u003Cbr/\u003E6) Fire the OnEndSequence output.\u003Cbr/\u003E7) If a next script to play is specified, hand the NPC to the next script and repeat this process for that script.\u003Cbr/\u003E\u003Cbr/\u003EThe MoveToPosition input runs steps 1 and 2, then waits while playing the pre-action idle animation until the BeginSequence input is received.\u003Cbr/\u003E\u003Cbr/\u003EIf the sequence has motion extraction in it, set the \u0027Don\u0027t Teleport NPC On End\u0027 spawnflag.",
+    "Description": "Grabs an NPC and makes them play a specified set of animations. The NPC can be told to move to the scripted sequence position or can be told to play the script wherever they currently are. Multiple scripted sequences of the same name (or sync group, if specified) will frame-synchronize in the action animation once all the actors have moved to position. This allows tight interaction between actors (one actor grabbing another, hitting them, etc.) The flow is as follows:<br/><br/>1) Move to position using the specified movement animation. If 'Move to Position' is set to NONE, skip to step 2.<br/>2) If forced to wait for another actor to move to position, play the pre-action idle animation, otherwise skip to step 3. If there is no pre-action idle specified, ACT_IDLE is used.<br/>3) Fire the OnBeginSequence output.<br/>4) Play the action animation. If no action animation is specified, skip to step 5.<br/>5) Play the post-action idle animation. If none is specified, skip to step 6. If the 'Loop in Post Idle' spawnflag is set, keep playing the post-action idle until the script is cancelled. If no post-action idle animation is specified, ACT_IDLE is used.<br/>6) Fire the OnEndSequence output.<br/>7) If a next script to play is specified, hand the NPC to the next script and repeat this process for that script.<br/><br/>The MoveToPosition input runs steps 1 and 2, then waits while playing the pre-action idle animation until the BeginSequence input is received.<br/><br/>If the sequence has motion extraction in it, set the 'Don't Teleport NPC On End' spawnflag.",
     "Icon": "",
     "Games": [
       "hla",
@@ -5960,7 +5960,7 @@
   },
   {
     "Classname": "sky_camera",
-    "Description": "An entity used to control the 3D Skybox. Its origin is used to determine the 3D Skybox\u0027s position relative to the map. Place this entity, in the 3D Skybox, at the point where the origin of the map should be.",
+    "Description": "An entity used to control the 3D Skybox. Its origin is used to determine the 3D Skybox's position relative to the map. Place this entity, in the 3D Skybox, at the point where the origin of the map should be.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -5971,7 +5971,7 @@
   },
   {
     "Classname": "snd_event_alignedbox",
-    "Description": "Plays a sound event from a point, passes along the min and max positions of its AABB. The point can be this entity or a specified entity\u0027s position.",
+    "Description": "Plays a sound event from a point, passes along the min and max positions of its AABB. The point can be this entity or a specified entity's position.",
     "Icon": "/fgd_dump/img/steamvr/snd_event.png",
     "Games": [
       "cs2",
@@ -6036,7 +6036,7 @@
   },
   {
     "Classname": "snd_event_point",
-    "Description": "Plays a sound event from a point. The point can be this entity or a specified entity\u0027s position.",
+    "Description": "Plays a sound event from a point. The point can be this entity or a specified entity's position.",
     "Icon": "/fgd_dump/img/steamvr/snd_event.png",
     "Games": [
       "cs2",
@@ -6047,7 +6047,7 @@
   },
   {
     "Classname": "snd_event_sphere",
-    "Description": "Plays a sound event from the closest point on a sphere to the player. The origin can be this entity or a specified entity\u0027s position.",
+    "Description": "Plays a sound event from the closest point on a sphere to the player. The origin can be this entity or a specified entity's position.",
     "Icon": "/fgd_dump/img/dota2/snd_event.png",
     "Games": [
       "cs2",
@@ -6322,7 +6322,7 @@
   },
   {
     "Classname": "trigger_changelevel",
-    "Description": "An entity that triggers a level change.\u003Cbr/\u003E\u003Cbr/\u003EPlace an info_landmark in both maps in the PVS of the transition region that marks the \u0027same\u0027 location in each map.\u003Cbr/\u003E\u003Cbr/\u003E\u003Cb\u003ETIPS \u0026 TRICKS:\u003C/b\u003E\u003Cbr/\u003ETo fire events in the next level, use the OnLevelChange output to turn on an env_global in the current level.  Create a logic_auto in the next level that checks for the state set by the env_global.\u003Cbr/\u003E\u003Cbr/\u003ETo control which entities go through the level transition, create one or more trigger_transitions and give them the same name as the landmark. Any entities within the trigger_transition(s) will go to the next map.",
+    "Description": "An entity that triggers a level change.<br/><br/>Place an info_landmark in both maps in the PVS of the transition region that marks the 'same' location in each map.<br/><br/><b>TIPS & TRICKS:</b><br/>To fire events in the next level, use the OnLevelChange output to turn on an env_global in the current level.  Create a logic_auto in the next level that checks for the state set by the env_global.<br/><br/>To control which entities go through the level transition, create one or more trigger_transitions and give them the same name as the landmark. Any entities within the trigger_transition(s) will go to the next map.",
     "Icon": "/fgd_dump/img/steamvr/toolstrigger.png",
     "Games": [
       "cs2",
@@ -6384,7 +6384,7 @@
   },
   {
     "Classname": "trigger_hero",
-    "Description": "A trigger that\u0027s fired when a hero touches it.",
+    "Description": "A trigger that's fired when a hero touches it.",
     "Icon": "",
     "Games": [
       "dota2"
@@ -6411,7 +6411,7 @@
   },
   {
     "Classname": "trigger_impact",
-    "Description": "A trigger volume that can be told to push all physics objects that are inside of it in the direction specified by this trigger\u0027s angles.\u003Cbr/\u003EAlso outputs the force at the time of impact for anyone else that wants to use it.",
+    "Description": "A trigger volume that can be told to push all physics objects that are inside of it in the direction specified by this trigger's angles.<br/>Also outputs the force at the time of impact for anyone else that wants to use it.",
     "Icon": "",
     "Games": [
       "cs2",
@@ -6430,7 +6430,7 @@
   },
   {
     "Classname": "trigger_look",
-    "Description": "An entity used to trigger something when the player looks at something. It fires \u0027OnTrigger\u0027 when the player looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves the trigger or looks away from the target entity the clock resets. If the \u0027Use Velocity instead of facing\u0027 spawnflag is checked, the trigger uses the player\u0027s velocity instead of the player\u0027s view, so it determines whenever the player is moving toward the target entity. Useful for triggering when players are driving a vehicle at something.NOTE: Only designed for single-player game. ",
+    "Description": "An entity used to trigger something when the player looks at something. It fires 'OnTrigger' when the player looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves the trigger or looks away from the target entity the clock resets. If the 'Use Velocity instead of facing' spawnflag is checked, the trigger uses the player's velocity instead of the player's view, so it determines whenever the player is moving toward the target entity. Useful for triggering when players are driving a vehicle at something.NOTE: Only designed for single-player game. ",
     "Icon": "/fgd_dump/img/steamvr/toolstrigger.png",
     "Games": [
       "cs2",
@@ -6479,7 +6479,7 @@
   },
   {
     "Classname": "trigger_playermovement",
-    "Description": "An entity that can be used to disable player\u0027s automatic ducking/unducking when jumping.",
+    "Description": "An entity that can be used to disable player's automatic ducking/unducking when jumping.",
     "Icon": "/fgd_dump/img/steamvr/toolstrigger.png",
     "Games": [
       "steamvr"
@@ -6574,7 +6574,7 @@
   },
   {
     "Classname": "trigger_soundscape",
-    "Description": "Soundscape trigger. It is not necessary to create outputs for this trigger. It automatically will trigger the soundscape referred to by its \u0027Soundscape\u0027 property.",
+    "Description": "Soundscape trigger. It is not necessary to create outputs for this trigger. It automatically will trigger the soundscape referred to by its 'Soundscape' property.",
     "Icon": "/fgd_dump/img/steamvr/toolstrigger.png",
     "Games": [
       "cs2",
@@ -6593,7 +6593,7 @@
   },
   {
     "Classname": "trigger_teleport",
-    "Description": "A trigger volume that teleports entities that touch it. Entities are teleported to the Remote Destination, and have their angles set to that of the Remote Destination\u0027s. If a Local Destination Landmark is specified, teleported entities are offset from the target by their initial offset from the landmark, and their angles are left alone.",
+    "Description": "A trigger volume that teleports entities that touch it. Entities are teleported to the Remote Destination, and have their angles set to that of the Remote Destination's. If a Local Destination Landmark is specified, teleported entities are offset from the target by their initial offset from the landmark, and their angles are left alone.",
     "Icon": "/fgd_dump/img/steamvr/toolstrigger.png",
     "Games": [
       "cs2",
@@ -6613,7 +6613,7 @@
   },
   {
     "Classname": "trigger_transition",
-    "Description": "A volume that\u0027s used to control which entities go through the level transition. Create one or more trigger_transitions and give them the same name as the changelevel landmark. Any entities within the trigger_transition(s) will go to the next map.See trigger_changelevel for more info.",
+    "Description": "A volume that's used to control which entities go through the level transition. Create one or more trigger_transitions and give them the same name as the changelevel landmark. Any entities within the trigger_transition(s) will go to the next map.See trigger_changelevel for more info.",
     "Icon": "/fgd_dump/img/dota2/toolstrigger.png",
     "Games": [
       "cs2",
@@ -6640,7 +6640,7 @@
   },
   {
     "Classname": "trigger_traversal_modifier_to_line",
-    "Description": "A trigger that modifies where the player should be teleported when their teleport attempt touches this trigger. It moves the teleport point to the nearest point on the line between points A \u0026 B.",
+    "Description": "A trigger that modifies where the player should be teleported when their teleport attempt touches this trigger. It moves the teleport point to the nearest point on the line between points A & B.",
     "Icon": "/fgd_dump/img/hla/toolstrigger.png",
     "Games": [
       "hla"
@@ -7244,7 +7244,7 @@
   },
   {
     "Classname": "worldspawn",
-    "Description": "This is the world entity. Each map can only contain one, and it\u0027s automatically created for you.",
+    "Description": "This is the world entity. Each map can only contain one, and it's automatically created for you.",
     "Icon": "",
     "Games": [
       "cs2",

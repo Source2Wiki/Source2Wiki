@@ -8,7 +8,6 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { serializeIndented } from "./json-writer";
 import { bannerTitle, LogVerbose } from "./logging";
 import { documentMdx, pageMdx } from "./mdx";
 import { EntityDocument, getIconUrl, getPageRelativePath, parseEntityDocumentFile } from "./model";
@@ -16,13 +15,12 @@ import { handleOverrides } from "./overrides";
 import { sanitizeInputTable } from "./sanitize";
 import * as wiki from "./wiki-paths";
 
-// a type rather than an interface so it stays assignable to JsonValue
-type EntityIndexEntry = {
+interface EntityIndexEntry {
   Classname: string;
   Description: string;
   Icon: string;
   Games: string[];
-};
+}
 
 export function generateMdxFromJsonDump(): void {
   console.log();
@@ -128,7 +126,7 @@ export function generateMdxFromJsonDump(): void {
   const entityIndexPath = wiki.toDisk(wiki.combine("static", wiki.DumpFolder, "entityIndex.json"));
 
   fs.mkdirSync(path.dirname(entityIndexPath), { recursive: true });
-  fs.writeFileSync(entityIndexPath, serializeIndented(entityIndex), "utf8");
+  fs.writeFileSync(entityIndexPath, JSON.stringify(entityIndex, null, 2), "utf8");
 
   console.log(`\nWrote '${wroteDocs}' document(s), skipped '${skippedDocs}' document(s) with contents that did not change`);
   console.log(`Wrote '${wrotePages}' page(s), skipped '${skippedPages}' page(s) with contents that did not change`);
