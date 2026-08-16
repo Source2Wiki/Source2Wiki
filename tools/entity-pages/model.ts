@@ -20,34 +20,30 @@ export const EntityTypes = ["Point", "Mesh"] as const;
 
 export const InputOutputTypes = ["Input", "Output"] as const;
 
-// "Default" is our marker for an override that did not ask for a particular admonition, the
-// rest is whatever the site is configured to render
-const AnnotationTypes = ["Default", ...admonitionKeywords];
-
 export interface Annotation {
-  Message: string;
-  Type: string;
-  InternalName: string;
+  Message: string | null;
+  Type: string | null;
+  InternalName: string | null;
 }
 
 export interface Option {
-  Name: string;
-  Description: string;
+  Name: string | null;
+  Description: string | null;
   Key: string | null;
 }
 
 export interface Property {
-  FriendlyName: string;
-  InternalName: string;
+  FriendlyName: string | null;
+  InternalName: string | null;
   VariableType: string | null;
-  Description: string;
+  Description: string | null;
   Options: Option[];
   Annotations: Annotation[];
 }
 
 export interface InputOutput {
-  Name: string;
-  Description: string;
+  Name: string | null;
+  Description: string | null;
   VariableType: string | null;
   Type: InputOutputType | null;
 }
@@ -55,11 +51,11 @@ export interface InputOutput {
 export interface EntityPage {
   Game: Game | null;
   EntityType: EntityType | null;
-  Name: string;
-  Description: string;
-  IconPath: string;
-  NonFGD: boolean;
-  Legacy: boolean;
+  Name: string | null;
+  Description: string | null;
+  IconPath: string | null;
+  NonFGD: boolean | null;
+  Legacy: boolean | null;
   PageAnnotation: Annotation | null;
   Properties: Property[];
   InputOutputs: InputOutput[];
@@ -70,8 +66,9 @@ export interface EntityDocument {
   Pages: EntityPage[];
 }
 
+/** Name and game are what identify a page, anything that reached a document has both. */
 export function getPageRelativePath(page: EntityPage): string {
-  return `${page.Name}-${page.Game!.fileSystemName}.mdx`;
+  return `${page.Name!}-${page.Game!.fileSystemName}.mdx`;
 }
 
 /**
@@ -80,7 +77,9 @@ export function getPageRelativePath(page: EntityPage): string {
  * unresolved material reference from the FGD is of no use to the wiki.
  */
 export function getIconUrl(page: EntityPage): string | null {
-  return wiki.exists(page.IconPath) ? wiki.toUrl(page.IconPath) : null;
+  const iconPath = page.IconPath ?? "";
+
+  return wiki.exists(iconPath) ? wiki.toUrl(iconPath) : null;
 }
 
 export function parseEntityDocumentFile(filePath: string): EntityDocument {
@@ -110,11 +109,11 @@ function toEntityPage(page: RawJson): EntityPage {
   return {
     Game: getGameByFileSystemName(page.Game),
     EntityType: readEnum(page.EntityType, EntityTypes, "EntityType"),
-    Name: page.Name ?? "",
-    Description: page.Description ?? "",
-    IconPath: page.IconPath ?? "",
-    NonFGD: page.NonFGD ?? false,
-    Legacy: page.Legacy ?? false,
+    Name: page.Name ?? null,
+    Description: page.Description ?? null,
+    IconPath: page.IconPath ?? null,
+    NonFGD: page.NonFGD ?? null,
+    Legacy: page.Legacy ?? null,
     PageAnnotation: page.PageAnnotation ? toAnnotation(page.PageAnnotation) : null,
     Properties: (page.Properties ?? []).map(toProperty),
     InputOutputs: (page.InputOutputs ?? []).map(toInputOutput),
@@ -123,10 +122,10 @@ function toEntityPage(page: RawJson): EntityPage {
 
 function toProperty(property: RawJson): Property {
   return {
-    FriendlyName: property.FriendlyName ?? "",
-    InternalName: property.InternalName ?? "",
+    FriendlyName: property.FriendlyName ?? null,
+    InternalName: property.InternalName ?? null,
     VariableType: property.VariableType ?? null,
-    Description: property.Description ?? "",
+    Description: property.Description ?? null,
     Options: (property.Options ?? []).map(toOption),
     Annotations: (property.Annotations ?? []).map(toAnnotation),
   };
@@ -134,16 +133,16 @@ function toProperty(property: RawJson): Property {
 
 function toOption(option: RawJson): Option {
   return {
-    Name: option.Name ?? "",
-    Description: option.Description ?? "",
+    Name: option.Name ?? null,
+    Description: option.Description ?? null,
     Key: option.Key ?? null,
   };
 }
 
 function toInputOutput(inputOutput: RawJson): InputOutput {
   return {
-    Name: inputOutput.Name ?? "",
-    Description: inputOutput.Description ?? "",
+    Name: inputOutput.Name ?? null,
+    Description: inputOutput.Description ?? null,
     VariableType: inputOutput.VariableType ?? null,
     Type: readEnum(inputOutput.Type, InputOutputTypes, "Type"),
   };
@@ -151,9 +150,9 @@ function toInputOutput(inputOutput: RawJson): InputOutput {
 
 function toAnnotation(annotation: RawJson): Annotation {
   return {
-    Message: annotation.Message ?? "",
-    Type: readEnum(annotation.Type, AnnotationTypes, "Type") ?? "Default",
-    InternalName: annotation.InternalName ?? "",
+    Message: annotation.Message ?? null,
+    Type: readEnum(annotation.Type, admonitionKeywords, "Type"),
+    InternalName: annotation.InternalName ?? null,
   };
 }
 

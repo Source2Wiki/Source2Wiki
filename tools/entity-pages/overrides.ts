@@ -108,24 +108,24 @@ function overridePageFrom(page: EntityPage, overridePage: EntityPage): void {
     page.EntityType = overridePage.EntityType;
   }
 
-  if (overridePage.Name.length > 0) {
+  if (overridePage.Name !== null) {
     page.Name = overridePage.Name;
   }
 
-  if (overridePage.Description.length > 0) {
+  if (overridePage.Description !== null) {
     page.Description = overridePage.Description;
   }
 
-  if (overridePage.IconPath.length > 0) {
+  if (overridePage.IconPath !== null) {
     page.IconPath = overridePage.IconPath;
   }
 
-  if (overridePage.Legacy) {
-    page.Legacy = true;
+  if (overridePage.Legacy !== null) {
+    page.Legacy = overridePage.Legacy;
   }
 
-  if (overridePage.NonFGD) {
-    page.NonFGD = true;
+  if (overridePage.NonFGD !== null) {
+    page.NonFGD = overridePage.NonFGD;
   }
 
   if (overridePage.PageAnnotation !== null) {
@@ -163,7 +163,7 @@ function overridePageFrom(page: EntityPage, overridePage: EntityPage): void {
 }
 
 function overridePropertyFrom(property: Property, overrideProperty: Property): void {
-  if (overrideProperty.FriendlyName.length > 0) {
+  if (overrideProperty.FriendlyName !== null) {
     property.FriendlyName = overrideProperty.FriendlyName;
   }
 
@@ -171,7 +171,7 @@ function overridePropertyFrom(property: Property, overrideProperty: Property): v
     property.VariableType = overrideProperty.VariableType;
   }
 
-  if (overrideProperty.Description.length > 0) {
+  if (overrideProperty.Description !== null) {
     property.Description = overrideProperty.Description;
   }
 
@@ -203,7 +203,7 @@ function overridePropertyFrom(property: Property, overrideProperty: Property): v
 }
 
 function overrideOptionFrom(option: Option, overrideOption: Option): void {
-  if (overrideOption.Description.length > 0) {
+  if (overrideOption.Description !== null) {
     option.Description = overrideOption.Description;
   }
 
@@ -213,7 +213,7 @@ function overrideOptionFrom(option: Option, overrideOption: Option): void {
 }
 
 function overrideInputOutputFrom(inputOutput: InputOutput, overrideInputOutput: InputOutput): void {
-  if (overrideInputOutput.Description.length > 0) {
+  if (overrideInputOutput.Description !== null) {
     inputOutput.Description = overrideInputOutput.Description;
   }
 
@@ -227,11 +227,11 @@ function overrideInputOutputFrom(inputOutput: InputOutput, overrideInputOutput: 
 }
 
 function overrideAnnotationFrom(annotation: Annotation, overrideAnnotation: Annotation): void {
-  if (overrideAnnotation.Type !== "Default") {
+  if (overrideAnnotation.Type !== null) {
     annotation.Type = overrideAnnotation.Type;
   }
 
-  if (overrideAnnotation.Message.length > 0) {
+  if (overrideAnnotation.Message !== null) {
     annotation.Message = overrideAnnotation.Message;
   }
 }

@@ -95,8 +95,10 @@ export function generateMdxFromJsonDump(): void {
     entityIndex.push(entityIndexEntry);
 
     for (const page of doc.Pages) {
-      if (page.Description.length > entityIndexEntry.Description.length) {
-        entityIndexEntry.Description = sanitizeInputTable(page.Description).replaceAll("\n", "<br/>");
+      const description = page.Description ?? "";
+
+      if (description.length > entityIndexEntry.Description.length) {
+        entityIndexEntry.Description = sanitizeInputTable(description).replaceAll("\n", "<br/>");
       }
 
       if (page.Game !== null) {

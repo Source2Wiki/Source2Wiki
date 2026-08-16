@@ -74,7 +74,7 @@ export function pageMdx(page: EntityPage): string {
   let iconText = "";
   const iconUrl = getIconUrl(page);
   if (iconUrl !== null) {
-    iconText = `<img src={"${iconUrl}"} alt="${page.Name} icon" style={{height: '80px'}} />\n`;
+    iconText = `<img src={"${iconUrl}"} alt="${page.Name ?? ""} icon" style={{height: '80px'}} />\n`;
   }
 
   return [
@@ -87,7 +87,7 @@ export function pageMdx(page: EntityPage): string {
     iconText,
     page.EntityType !== null ? `${page.EntityType} Entity` : "",
     page.PageAnnotation !== null ? annotationMdx(page.PageAnnotation) : "",
-    sanitizeInput(page.Description),
+    sanitizeInput(page.Description ?? ""),
     "",
     propertiesString,
     inputsString,
@@ -128,8 +128,10 @@ export function documentMdx(document: EntityDocument): string {
       sidebarClass = "nonFGD_item";
     }
 
-    if (page.Description.length > bestDescription.length) {
-      bestDescription = page.Description;
+    const description = page.Description ?? "";
+
+    if (description.length > bestDescription.length) {
+      bestDescription = description;
     }
 
     // any game's icon will do, they are near always the same image
@@ -154,8 +156,8 @@ export function documentMdx(document: EntityDocument): string {
     "",
     `# ${document.Name}`,
     "",
-    isNonFGD ? annotationMdx({ Message: "", Type: "nonFGD", InternalName: "" }) : "",
-    isLegacy ? annotationMdx({ Message: "", Type: "legacy", InternalName: "" }) : "",
+    isNonFGD ? annotationMdx({ Message: null, Type: "nonFGD", InternalName: null }) : "",
+    isLegacy ? annotationMdx({ Message: null, Type: "legacy", InternalName: null }) : "",
     "",
     tabImports,
     "",
@@ -167,17 +169,18 @@ export function documentMdx(document: EntityDocument): string {
 }
 
 export function annotationMdx(annotation: Annotation): string {
-  return [`   :::${annotation.Type}`, `   ${annotation.Message}`, "   :::"].join(Newline);
+  // an annotation with no type still has something to say, note is the neutral admonition
+  return [`   :::${annotation.Type ?? "note"}`, `   ${annotation.Message ?? ""}`, "   :::"].join(Newline);
 }
 
 function propertyMdx(property: Property): string {
   // hack to get spawnflags to display properly, for some reason the friendly name is empty for these
   const friendlyName =
-    property.InternalName === "spawnflags" ? "Spawnflags" : property.FriendlyName;
+    property.InternalName === "spawnflags" ? "Spawnflags" : (property.FriendlyName ?? "");
 
-  let propertyString = `- **${friendlyName}** (\`${property.InternalName}\`) \\<\`${property.VariableType ?? ""}\`\\>`;
+  let propertyString = `- **${friendlyName}** (\`${property.InternalName ?? ""}\`) \\<\`${property.VariableType ?? ""}\`\\>`;
 
-  if (property.Description.length > 0) {
+  if (property.Description) {
     propertyString += `\\\n${property.Description}`;
   }
 
@@ -188,13 +191,13 @@ function propertyMdx(property: Property): string {
   let options = "";
 
   for (const option of property.Options) {
-    options += `  - ${option.Name}`;
+    options += `  - ${option.Name ?? ""}`;
 
     if (option.Key !== null) {
       options += ` (\`${option.Key}\`)`;
     }
 
-    options += option.Description.length > 0 ? `\\\n    ${option.Description}\n` : "\n";
+    options += option.Description ? `\\\n    ${option.Description}\n` : "\n";
   }
 
   if (options.length > 0) {
@@ -205,7 +208,7 @@ function propertyMdx(property: Property): string {
 }
 
 function inputOutputMdx(inputOutput: InputOutput): string {
-  return `- ${inputOutput.Name} \\<\`${inputOutput.VariableType ?? ""}\`\\>\\\n${inputOutput.Description}\n\n`;
+  return `- ${inputOutput.Name ?? ""} \\<\`${inputOutput.VariableType ?? ""}\`\\>\\\n${inputOutput.Description ?? ""}\n\n`;
 }
 
 function detailsHeader(title: string): string {
