@@ -3,13 +3,14 @@ export interface SoftwareInfo
     PrettyName: string,
     IconPath?: string,
     Color?: string,
-    Link?: string
+    Link?: string,
+    HasSchemaExplorer?: boolean
 }
 
 export const Games: Record<string, SoftwareInfo> = {
-  "cs2": {PrettyName: "Counter-Strike 2", IconPath: "/img/cs2_icon.png", Color: "#ff981aff"},
+  "cs2": {PrettyName: "Counter-Strike 2", IconPath: "/img/cs2_icon.png", Color: "#ff981aff", HasSchemaExplorer: true},
   "hla": {PrettyName: "Half-Life: Alyx", IconPath: "/img/hla_icon.png", Color: "#0fb4a3ff"},
-  "dota2": {PrettyName: "Dota 2", IconPath: "/img/dota2_icon.png", Color: "#941818ff"},
+  "dota2": {PrettyName: "Dota 2", IconPath: "/img/dota2_icon.png", Color: "#941818ff", HasSchemaExplorer: true},
   "steamvr": {PrettyName: "Steam VR", IconPath: "/img/steamvr_icon.png", Color: "#5735a6ff"},
   "any": {PrettyName: "Any game"}
 };

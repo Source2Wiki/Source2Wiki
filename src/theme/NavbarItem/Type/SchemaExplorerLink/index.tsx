@@ -1,10 +1,13 @@
 import { useGameParam } from '@site/src/contexts/GameParamContext';
+import { Games } from '@site/src/constants/software';
 import React from 'react';
 
 export default function CustomSchemaExplorerLinkNavbarItem(): React.JSX.Element {
   const { gameParam } = useGameParam();
 
-  const href = `https://s2v.app/SchemaExplorer/${gameParam}/`;
+  const href = Games[gameParam]?.HasSchemaExplorer
+    ? `https://s2v.app/SchemaExplorer/${gameParam}`
+    : 'https://s2v.app/SchemaExplorer';
 
   return React.createElement(
     'a',
