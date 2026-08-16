@@ -38,32 +38,14 @@ export function sanitizeInputTable(input: string): string {
   return sanitizeInput(input).replaceAll("|", "\\|");
 }
 
-export function htmlEncode(value: string): string {
-  let encoded = "";
+const HtmlEscapes: Record<string, string> = {
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;",
+  "'": "&#39;",
+  "&": "&amp;",
+};
 
-  for (const character of value) {
-    switch (character) {
-      case "<":
-        encoded += "&lt;";
-        continue;
-      case ">":
-        encoded += "&gt;";
-        continue;
-      case '"':
-        encoded += "&quot;";
-        continue;
-      case "'":
-        encoded += "&#39;";
-        continue;
-      case "&":
-        encoded += "&amp;";
-        continue;
-    }
-
-    const codePoint = character.codePointAt(0)!;
-    encoded +=
-      (codePoint >= 160 && codePoint < 256) || codePoint > 0xffff ? `&#${codePoint};` : character;
-  }
-
-  return encoded;
+function htmlEncode(value: string): string {
+  return value.replace(/[<>"'&]/g, (character) => HtmlEscapes[character]);
 }
