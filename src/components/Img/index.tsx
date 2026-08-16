@@ -28,6 +28,8 @@ export default function Img({ src, alt, ...props }: ImgProps) {
       justifyContent: 'left',
     }}>
       <img
+        loading="lazy"
+        decoding="async"
         {...props}
         src={src}
         alt={displayAlt}
