@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1772744300,
+  "Timestamp": 1787004150,
   "Entries": [
     {
       "Name": "_fov",
@@ -252,24 +252,6 @@
         "cl",
         "rep",
         "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "ai_expression_frametime",
-      "DefaultValue": "0.05",
-      "Description": "Maximum frametime to still play background expressions.",
-      "flags": [
-        "sv"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "ai_expression_optimization",
-      "DefaultValue": "false",
-      "Description": "Disable npc background expressions when you can\u0027t see them.",
-      "flags": [
-        "sv"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -779,17 +761,6 @@
       "Cs2WorkshopWhitelisted": true
     },
     {
-      "Name": "anim_disable",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "sv",
-        "cl",
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "anim_resource_validate_on_load",
       "DefaultValue": "true",
       "Description": "Validates the animation group channel list against the animations on load for every animation",
@@ -820,6 +791,17 @@
     },
     {
       "Name": "animgraph2_enable_parallel_update",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "animgraph2_serialize_pose_recipe_in_pre_pack_entities",
       "DefaultValue": "true",
       "Description": "",
       "flags": [
@@ -968,28 +950,6 @@
       "DefaultValue": "true",
       "Description": "",
       "flags": [
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "animgraph_enable_parallel_op_evaluation",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "sv",
-        "cl",
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "animgraph_enable_parallel_update",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        "sv",
-        "cl",
         "rep"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -1156,18 +1116,6 @@
       "Description": "",
       "flags": [
         "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "animgraph_record_all",
-      "DefaultValue": "false",
-      "Description": "Automatically start recording AnimGraphs when they get created, and save them to disk when they are destroyed",
-      "flags": [
-        "sv",
-        "cl",
-        "rep",
-        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -1390,6 +1338,24 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "assetsystem_dump_all_dirs",
+      "DefaultValue": "cmd",
+      "Description": "Print assetsystem dir tree.",
+      "flags": [
+        "linked"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "assetsystem_dump_one_dir",
+      "DefaultValue": "cmd",
+      "Description": "Print assets in the specified dir.",
+      "flags": [
+        "linked"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "assetsystem_dump_string_threshold",
       "DefaultValue": "2000",
       "Description": "Max length of strings to dump in assetsystem_dump_table",
@@ -1517,18 +1483,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "automatically_open_saved_animgraph_recording",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "sv",
-        "cl",
-        "a",
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "autosave",
       "DefaultValue": "cmd",
       "Description": "Autosave",
@@ -1570,6 +1524,16 @@
       "Description": "Draw an axis  Arguments:  x y z pitch yaw roll \u0026lt;lifetime = 10.0\u0026gt; \u0026lt;r g b a\u0026gt;",
       "flags": [
         "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "bake_bomb_damage_render_visualization",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -1991,6 +1955,16 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "bot_hurt",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "bot_ignore_enemies",
       "DefaultValue": "false",
       "Description": "If nonzero, bots will ignore enemies (for debugging).",
@@ -2143,6 +2117,16 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "bot_path",
+      "DefaultValue": "cmd",
+      "Description": "bot_path \u0026lt;all\u0026gt; \u0026lt;t\\|ct\u0026gt; \u0026lt;type\u0026gt; \u0026lt;difficulty\u0026gt; \u0026lt;name\u0026gt; - Tells a specific bot to follow a human path, matching the given criteria.",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "bot_pistols_only",
       "DefaultValue": "cmd",
       "Description": "Restricts the bots to only using pistols",
@@ -2251,6 +2235,16 @@
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": true
+    },
+    {
+      "Name": "bot_strafe",
+      "DefaultValue": "0",
+      "Description": "Strafe left and right (interval)",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
     },
     {
       "Name": "bot_traceview",
@@ -2371,6 +2365,16 @@
       "Description": "",
       "flags": [
         "a"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "bugbug",
+      "DefaultValue": "cmd",
+      "Description": "bugbug",
+      "flags": [
+        "cl",
+        "release"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -2598,28 +2602,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cam_head_constraint_distance",
-      "DefaultValue": "12",
-      "Description": "Distance to constrain first/thirdperson camera and head",
-      "flags": [
-        "sv",
-        "cl",
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cam_head_constraint_soft_transition",
-      "DefaultValue": "4",
-      "Description": "Constraint soft transition distance",
-      "flags": [
-        "sv",
-        "cl",
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "cam_idealdelta",
       "DefaultValue": "4",
       "Description": "Controls the speed when matching offset to ideal angles in thirdperson view",
@@ -2729,11 +2711,23 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "camera_path_demo",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        "cl",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "camera_path_edit_mode",
       "DefaultValue": "false",
       "Description": "",
       "flags": [
+        "sv",
         "cl",
+        "rep",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -3307,18 +3301,9 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cc_findsound",
-      "DefaultValue": "cmd",
-      "Description": "Searches for soundname which emits specified text.",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cc_flush",
-      "DefaultValue": "cmd",
-      "Description": "Flushes async\u0027d captions.",
+      "Name": "cc_force_combine_chatter",
+      "DefaultValue": "true",
+      "Description": "",
       "flags": [
         "cl"
       ],
@@ -3350,43 +3335,6 @@
       "Description": "Log caption names and contents (0 = off, 1 = found captions, 2 = unfound captions, 3 = all captions)",
       "flags": [
         "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cc_norepeat",
-      "DefaultValue": "5",
-      "Description": "In multiplayer games, don\u0027t repeat captions more often than this many seconds.",
-      "flags": [
-        "sv"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cc_random",
-      "DefaultValue": "cmd",
-      "Description": "Emits a random caption",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cc_showblocks",
-      "DefaultValue": "cmd",
-      "Description": "Toggles showing which blocks are pending/loaded async.",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cc_showmissing",
-      "DefaultValue": "false",
-      "Description": "Show missing closecaption entries.",
-      "flags": [
-        "sv",
-        "rep"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -3504,6 +3452,24 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "check_collision_saveload",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "check_collision_saveload_dir",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "check_nofilefd",
       "DefaultValue": "cmd",
       "Description": "Print the current number of FDs reported by getrlimit",
@@ -3556,15 +3522,6 @@
     {
       "Name": "cl_anglespeedkey",
       "DefaultValue": "0.67",
-      "Description": "",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_animgraph_history_force_temporal_consistency",
-      "DefaultValue": "true",
       "Description": "",
       "flags": [
         "cl"
@@ -3643,11 +3600,12 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cl_bone_cache_optimization",
-      "DefaultValue": "true",
+      "Name": "cl_bake_bomb_damage_debug",
+      "DefaultValue": "0",
       "Description": "",
       "flags": [
-        "cl"
+        "cl",
+        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -3939,7 +3897,7 @@
     },
     {
       "Name": "cl_crosshair_friendly_warning",
-      "DefaultValue": "1",
+      "DefaultValue": "0",
       "Description": "0: off, 1: on",
       "flags": [
         "cl",
@@ -4049,7 +4007,7 @@
     },
     {
       "Name": "cl_crosshairdot",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "",
       "flags": [
         "cl",
@@ -4060,7 +4018,7 @@
     },
     {
       "Name": "cl_crosshairgap",
-      "DefaultValue": "-1.41727",
+      "DefaultValue": "-1.10573",
       "Description": "",
       "flags": [
         "cl",
@@ -4071,7 +4029,7 @@
     },
     {
       "Name": "cl_crosshairgap_useweaponvalue",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "If set to 1, the gap will update dynamically based on which weapon is currently equipped",
       "flags": [
         "cl",
@@ -4082,7 +4040,7 @@
     },
     {
       "Name": "cl_crosshairsize",
-      "DefaultValue": "4.13366",
+      "DefaultValue": "1.74516",
       "Description": "",
       "flags": [
         "cl",
@@ -4093,7 +4051,7 @@
     },
     {
       "Name": "cl_crosshairstyle",
-      "DefaultValue": "5",
+      "DefaultValue": "4",
       "Description": "0 = DEFAULT (DISABLED), 1 = DEFAULT STATIC (DISABLED), 2 = DEFAULT (accurate recoil/spread feedback with a fixed inner part), 3 = ACCURATE DYNAMIC (DISABLED) (accurate recoil/spread feedback), 4 = DEFAULT STATIC, 5 = LEGACY (fake recoil - inaccurate feedback)",
       "flags": [
         "cl",
@@ -4104,7 +4062,7 @@
     },
     {
       "Name": "cl_crosshairthickness",
-      "DefaultValue": "0.339602",
+      "DefaultValue": "0.1",
       "Description": "",
       "flags": [
         "cl",
@@ -4115,7 +4073,7 @@
     },
     {
       "Name": "cl_crosshairusealpha",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "",
       "flags": [
         "cl",
@@ -4247,6 +4205,17 @@
       "Description": "Render debug overlays from server.",
       "flags": [
         "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "cl_debug_precipitation_surface_graph",
+      "DefaultValue": "false",
+      "Description": "When true, use the surface graph to pass in positions for rainfall.",
+      "flags": [
+        "cl",
+        "rep",
+        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -4599,15 +4568,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cl_enable_eye_occlusion",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "cl_enable_party_voice",
       "DefaultValue": "true",
       "Description": "",
@@ -4662,16 +4622,6 @@
       "Name": "cl_ent_animgraph_debug",
       "DefaultValue": "cmd",
       "Description": "Displays debug draws about the given entity(ies) animgraph  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_ent_animgraph_record",
-      "DefaultValue": "cmd",
-      "Description": "Toggles recording of animgraph replay of the given entity(s)  Arguments: entityName automaticallyOpenInAnimgraphEditor  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
       "flags": [
         "cl",
         "cheat"
@@ -4784,6 +4734,16 @@
       "Description": "",
       "flags": [
         "cl"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "cl_ent_joint_filter_name",
+      "DefaultValue": "0",
+      "Description": "If a joint\u0027s entire name matches (case insensitive), it will be displayed.",
+      "flags": [
+        "cl",
+        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -5252,43 +5212,6 @@
       "flags": [
         "cl",
         "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_eye_occlusion_debug",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_eye_sin_wave",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_eye_target_override",
-      "DefaultValue": "0.000000 0.000000 0.000000",
-      "Description": "",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_eye_yaw_multiplier",
-      "DefaultValue": "1",
-      "Description": "",
-      "flags": [
-        "cl"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -6025,7 +5948,7 @@
     },
     {
       "Name": "cl_inv_volatile_limits",
-      "DefaultValue": "0:0",
+      "DefaultValue": "1784138711:0",
       "Description": "",
       "flags": [
         "cl",
@@ -6152,16 +6075,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cl_join_advertise",
-      "DefaultValue": "1",
-      "Description": "Advertise joinable game in progress to Steam friends, otherwise need a Steam invite (2: all servers, 1: official servers, 0: none)",
-      "flags": [
-        "cl",
-        "a"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "cl_joystick_enabled",
       "DefaultValue": "false",
       "Description": "Enable joystick input",
@@ -6256,6 +6169,16 @@
         "cl",
         "a",
         "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "cl_major_store_watch_list",
+      "DefaultValue": "0",
+      "Description": "",
+      "flags": [
+        "cl",
+        "a"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -6640,15 +6563,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cl_phys_networked_start_sleep",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "cl_phys_sleep_enable",
       "DefaultValue": "true",
       "Description": "Enable sleeping for dynamic physics bodies.",
@@ -6768,17 +6682,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cl_player_proximity_debug",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cl",
-        "rep",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "cl_player_ragdolls_collide",
       "DefaultValue": "false",
       "Description": "",
@@ -6788,6 +6691,17 @@
         "release"
       ],
       "Cs2WorkshopWhitelisted": true
+    },
+    {
+      "Name": "cl_playerslot_in_names",
+      "DefaultValue": "false",
+      "Description": "prepend controller playerslot to names for debugging",
+      "flags": [
+        "cl",
+        "cheat",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
     },
     {
       "Name": "cl_poll_network_early",
@@ -6936,7 +6850,7 @@
     {
       "Name": "cl_predictioncopy_describe",
       "DefaultValue": "cmd",
-      "Description": "Describe datamap_t for entindex",
+      "Description": "Describe PredictionMap_t for entindex",
       "flags": [
         "cl"
       ],
@@ -7559,7 +7473,7 @@
     },
     {
       "Name": "cl_redemption_reset_timestamp",
-      "DefaultValue": "1769210640",
+      "DefaultValue": "1779395490",
       "Description": "",
       "flags": [
         "cl",
@@ -7654,16 +7568,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cl_rr_reloadresponsesystems",
-      "DefaultValue": "cmd",
-      "Description": "Reload all response system scripts.",
-      "flags": [
-        "cl",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "cl_sanitize_muted_players",
       "DefaultValue": "true",
       "Description": "Hide names and avatars of muted players.",
@@ -7680,16 +7584,6 @@
       "flags": [
         "cl",
         "a"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_save_animgraph_recording",
-      "DefaultValue": "cmd",
-      "Description": "Saves all active animgraph recordings to disk  Arguments: automaticallyOpenInAnimgraphEditor",
-      "flags": [
-        "cl",
-        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -8259,16 +8153,6 @@
       "Description": "",
       "flags": [
         "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_skel_constraints_enable",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        "rep",
-        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -8865,15 +8749,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "cl_viewtarget_clamp",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "cl_voiceenabled",
       "DefaultValue": "true",
       "Description": "",
@@ -8928,61 +8803,6 @@
         "cl",
         "cheat",
         "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_weapon_clip_thinwalls",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        "cl",
-        "rep",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_weapon_clip_thinwalls_debug",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cl",
-        "rep",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_weapon_clip_thinwalls_lock",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cl",
-        "rep",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_weapon_clip_thinwalls_pitchlimit_down",
-      "DefaultValue": "67",
-      "Description": "",
-      "flags": [
-        "cl",
-        "rep",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "cl_weapon_clip_thinwalls_pitchlimit_up",
-      "DefaultValue": "77",
-      "Description": "",
-      "flags": [
-        "cl",
-        "rep",
-        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -9708,16 +9528,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "CreatePredictionError",
-      "DefaultValue": "cmd",
-      "Description": "Create a prediction error",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "creditsdone",
       "DefaultValue": "cmd",
       "Description": "",
@@ -9912,6 +9722,7 @@
       "DefaultValue": "1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9921,6 +9732,7 @@
       "DefaultValue": "1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9930,6 +9742,7 @@
       "DefaultValue": "1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9939,6 +9752,7 @@
       "DefaultValue": "1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9948,6 +9762,7 @@
       "DefaultValue": "-1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9957,6 +9772,7 @@
       "DefaultValue": "-1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9966,6 +9782,7 @@
       "DefaultValue": "-1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9975,6 +9792,7 @@
       "DefaultValue": "-1",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9984,6 +9802,7 @@
       "DefaultValue": "2",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -9993,6 +9812,7 @@
       "DefaultValue": "15000",
       "Description": "default pushback",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10002,7 +9822,7 @@
       "DefaultValue": "3",
       "Description": "Number of cascades in sunlight shadow",
       "flags": [
-        ""
+        "cl"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -10011,7 +9831,7 @@
       "DefaultValue": "560",
       "Description": "",
       "flags": [
-        ""
+        "cl"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -10020,6 +9840,7 @@
       "DefaultValue": "7500",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10029,6 +9850,7 @@
       "DefaultValue": "0",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10038,6 +9860,7 @@
       "DefaultValue": "0",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10047,6 +9870,7 @@
       "DefaultValue": "0",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10056,6 +9880,7 @@
       "DefaultValue": "0",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10065,6 +9890,7 @@
       "DefaultValue": "false",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10074,15 +9900,7 @@
       "DefaultValue": "false",
       "Description": "",
       "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "csm_split_log_scalar",
-      "DefaultValue": "0.85",
-      "Description": "",
-      "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10092,6 +9910,7 @@
       "DefaultValue": "2000",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10101,24 +9920,37 @@
       "DefaultValue": "1500",
       "Description": "default pushback",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
     {
       "Name": "csm_sst_shadow_focus_region_maxz",
-      "DefaultValue": "2000",
+      "DefaultValue": "5500",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
     {
       "Name": "csm_sst_shadow_focus_region_minz",
-      "DefaultValue": "-2000",
+      "DefaultValue": "-1500",
       "Description": "",
       "flags": [
+        "cl",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "csm_sst_shadow_focus_region_thin_compensation",
+      "DefaultValue": "1500",
+      "Description": "",
+      "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10128,15 +9960,7 @@
       "DefaultValue": "0",
       "Description": "",
       "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "csm_viewmodel_farz",
-      "DefaultValue": "30",
-      "Description": "",
-      "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10146,6 +9970,7 @@
       "DefaultValue": "21",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10155,6 +9980,7 @@
       "DefaultValue": "1000",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10164,6 +9990,7 @@
       "DefaultValue": "0.5",
       "Description": "",
       "flags": [
+        "cl",
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10173,7 +10000,7 @@
       "DefaultValue": "true",
       "Description": "",
       "flags": [
-        ""
+        "cl"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -10238,15 +10065,6 @@
       "flags": [
         "norecord",
         "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "d3d_max_feature_level",
-      "DefaultValue": "\u0026lt;Not set\u0026gt;",
-      "Description": "Report the maximum D3D feature level available.",
-      "flags": [
-        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -10344,6 +10162,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "debug_font_name",
+      "DefaultValue": "Courier New",
+      "Description": "Debug font name",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "debug_font_size",
       "DefaultValue": "14",
       "Description": "Font size for the debug font",
@@ -10425,6 +10252,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "debugoverlay_circle_verts",
+      "DefaultValue": "24",
+      "Description": "",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "debugoverlay_cycle_domain",
       "DefaultValue": "cmd",
       "Description": "Toggles visibility of the debug overlay system.",
@@ -10450,6 +10286,15 @@
       "Description": "Makes the debug overlay dashboard visible.",
       "flags": [
         "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "debugoverlay_enable_dotted_dashed",
+      "DefaultValue": "true",
+      "Description": "Toggle the use of dotted/dashed debugoverlay lines to indicate source",
+      "flags": [
         "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -10485,7 +10330,7 @@
     {
       "Name": "debugoverlay_text_scale",
       "DefaultValue": "1",
-      "Description": "Scale of the text used for 3d display",
+      "Description": "Scale of the text used for 3d display, but see also debug_font_\\{size,name\\}",
       "flags": [
         "a",
         "cheat"
@@ -11513,24 +11358,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "engine_rendersystem_meets_min_dx_110",
-      "DefaultValue": "Yes (120)",
-      "Description": "Rendersystem meets min DX110 feature level (changing this does not change the shader model).",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "engine_rendersystem_meets_min_dx_110_simple",
-      "DefaultValue": "Yes",
-      "Description": "Rendersystem meets min DX110 feature level (changing this does not change the shader model).",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "engine_rendersystem_shader_model",
       "DefaultValue": "120",
       "Description": "Rendersystem shader model in use (changing this does not change the shader model).",
@@ -11653,26 +11480,6 @@
       "Name": "ent_animgraph_debug",
       "DefaultValue": "cmd",
       "Description": "Displays debug draws about the given entity(ies) animgraph  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "ent_animgraph_record",
-      "DefaultValue": "cmd",
-      "Description": "Toggles recording of animgraph replay of the given entity(s)  Arguments: entityName automaticallyOpenInAnimgraphEditor  Arguments:    \\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "ent_animgraph_setvar",
-      "DefaultValue": "cmd",
-      "Description": "Sets a variable on the animgraph of the given entity(s)  Arguments:   \u0026lt;varname\u0026gt;=\u0026lt;value\u0026gt; \u0026lt;\\{entity_name\\} / \\{class_name\\} / \\{entity_index\\} / \\{no argument = pick what player is looking at\\}\u0026gt;",
       "flags": [
         "sv",
         "cheat"
@@ -11905,6 +11712,16 @@
       "Description": "",
       "flags": [
         "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "ent_joint_filter_name",
+      "DefaultValue": "0",
+      "Description": "If a joint\u0027s entire name matches (case insensitive), it will be displayed.",
+      "flags": [
+        "sv",
+        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -12821,7 +12638,7 @@
     },
     {
       "Name": "fog_color",
-      "DefaultValue": "-1.000000 -1.000000 -1.000000",
+      "DefaultValue": "-1 -1 -1",
       "Description": "",
       "flags": [
         "cl",
@@ -12831,7 +12648,7 @@
     },
     {
       "Name": "fog_colorskybox",
-      "DefaultValue": "-1.000000 -1.000000 -1.000000",
+      "DefaultValue": "-1 -1 -1",
       "Description": "",
       "flags": [
         "cl",
@@ -13306,6 +13123,16 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "func_mover_count",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "func_mover_debug",
       "DefaultValue": "false",
       "Description": "",
@@ -13315,7 +13142,7 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "func_mover_debug_extra_text",
+      "Name": "func_mover_debug_all",
       "DefaultValue": "false",
       "Description": "",
       "flags": [
@@ -13333,6 +13160,52 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "func_mover_debug_parallel",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "func_mover_debug_showtext",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "func_mover_debug_verbose",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "func_mover_enable_debug_all",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "func_mover_force_transition_start_direction",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "func_mover_get_speed_override",
       "DefaultValue": "0",
       "Description": "",
@@ -13342,8 +13215,17 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "func_mover_verbose_log_count",
-      "DefaultValue": "15",
+      "Name": "func_mover_imgui_log_count",
+      "DefaultValue": "30",
+      "Description": "",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "func_mover_run_parallel",
+      "DefaultValue": "true",
       "Description": "",
       "flags": [
         "sv"
@@ -13353,6 +13235,15 @@
     {
       "Name": "func_rotator_debug",
       "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "func_rotator_run_parallel",
+      "DefaultValue": "true",
       "Description": "",
       "flags": [
         "sv"
@@ -14393,6 +14284,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "hammer_force_io_param_widget",
+      "DefaultValue": "0",
+      "Description": "0: detect, 1: single param, 2: multi param",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "hammer_gizmo_2dscale",
       "DefaultValue": "3",
       "Description": "",
@@ -15215,6 +15115,7 @@
       "Description": "Should we try to straighten two faces connected to this edge? (tangent)",
       "flags": [
         "sv",
+        "cl",
         "rep"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -15225,6 +15126,7 @@
       "Description": "Should we straighten face island if the displacement is this much? (inches)",
       "flags": [
         "sv",
+        "cl",
         "rep"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -15235,6 +15137,7 @@
       "Description": "Should we try to straighten an island of faces deviating from their average normal (tangent)?",
       "flags": [
         "sv",
+        "cl",
         "rep"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -15245,6 +15148,7 @@
       "Description": "",
       "flags": [
         "sv",
+        "cl",
         "rep"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -16049,15 +15953,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "instant_replay_history_limit_low",
-      "DefaultValue": "10",
-      "Description": "Maximum amount of minutes to save history on low memory (32 bit) systems (0 is unlimited).",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "instant_replay_live",
       "DefaultValue": "cmd",
       "Description": "If in replay, jumps back to live",
@@ -16826,15 +16721,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "lb_allow_time_sliced_shadow_map_rendering",
-      "DefaultValue": "true",
-      "Description": "Allow time-sliced shadow buffer rendering when enabled via gameinfo.gi",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "lb_barnlight_shadow_use_precomputed_vis",
       "DefaultValue": "true",
       "Description": "",
@@ -16953,7 +16839,7 @@
     },
     {
       "Name": "lb_csm_receiver_plane_depth_bias",
-      "DefaultValue": "0.000015",
+      "DefaultValue": "1.526e-05",
       "Description": "Shader depth bias applied to shadow receiver (Note this conflicts with renderstate depth bias, both now default to 0)",
       "flags": [
         ""
@@ -17007,7 +16893,7 @@
     },
     {
       "Name": "lb_dynamic_shadow_resolution_base",
-      "DefaultValue": "1536",
+      "DefaultValue": "2048",
       "Description": "Base resolution for dynamic shadowmap sizing.  Shadowmap size of a screen sized light",
       "flags": [
         ""
@@ -17126,6 +17012,33 @@
       "Name": "lb_tile_pixels",
       "DefaultValue": "8",
       "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "lb_time_sliced_shadow_map_reallocation_age",
+      "DefaultValue": "0.7",
+      "Description": "Age of cached allocation to be considered for re-allocation",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "lb_time_sliced_shadow_map_reallocation_pct",
+      "DefaultValue": "0.2",
+      "Description": "Likelyhood we\u0027ll re-allocate a timesliced shadowmap (to try to improve packing)",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "lb_time_sliced_shadow_map_rendering_enable",
+      "DefaultValue": "true",
+      "Description": "Allow time-sliced shadow buffer rendering when enabled via gameinfo.gi",
       "flags": [
         ""
       ],
@@ -17258,7 +17171,7 @@
     },
     {
       "Name": "lobby_default_privacy_bits2",
-      "DefaultValue": "0",
+      "DefaultValue": "1",
       "Description": "Lobby default permissions (0: private, 1: public)",
       "flags": [
         "cl",
@@ -17416,6 +17329,17 @@
       "flags": [
         "sv",
         "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "logic_entity_analyzer_debug",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv",
+        "rep",
+        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -17697,15 +17621,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "mat_async_shader_load",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "mat_clearshadercache",
       "DefaultValue": "cmd",
       "Description": "Clears the shader cache used for dynamic shader compile.",
@@ -17835,7 +17750,7 @@
     },
     {
       "Name": "mat_overdraw_color",
-      "DefaultValue": "0.075000 0.150000 0.300000",
+      "DefaultValue": "0.075 0.15 0.3",
       "Description": "",
       "flags": [
         "cheat"
@@ -18015,7 +17930,7 @@
     },
     {
       "Name": "mat_shading_complexity_color",
-      "DefaultValue": "1.000000 0.500000 0.250000",
+      "DefaultValue": "1 0.5 0.25",
       "Description": "",
       "flags": [
         "cheat"
@@ -18368,15 +18283,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "mm_datacenter_debugprint",
-      "DefaultValue": "cmd",
-      "Description": "Shows information retrieved from data center",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "mm_debugprint",
       "DefaultValue": "cmd",
       "Description": "Show debug information about current matchmaking session",
@@ -18428,16 +18334,6 @@
       "flags": [
         "cl",
         "clientcmd_can_execute"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "mm_server_search_lan_ports",
-      "DefaultValue": "27015,27016,27017,27018,27019,27020",
-      "Description": "Ports to scan during LAN games discovery. Also used to discover and correctly connect to dedicated LAN servers behind NATs.",
-      "flags": [
-        "a",
-        "release"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -18533,6 +18429,33 @@
         "sv",
         "cl",
         "linked"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "modeldoc_rotate_max",
+      "DefaultValue": "30",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "modeldoc_rotate_power",
+      "DefaultValue": "1.25",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "modeldoc_rotate_scale",
+      "DefaultValue": "0.075",
+      "Description": "",
+      "flags": [
+        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -19258,7 +19181,7 @@
     },
     {
       "Name": "mp_dm_kill_base_score",
-      "DefaultValue": "10",
+      "DefaultValue": "8",
       "Description": "Number of base points to award for a kill in deathmatch.  Cheaper weapons award 1 or 2 additional points.",
       "flags": [
         "sv",
@@ -20534,6 +20457,18 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "mp_shoot_dropped_grenades",
+      "DefaultValue": "false",
+      "Description": "Dropped grenades detonate when shot.",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "mp_shorthanded_cash_bonus_ignore_kicked",
       "DefaultValue": "true",
       "Description": "Determines whether kicked players are included in the assessment for short-handedness",
@@ -21613,7 +21548,7 @@
     },
     {
       "Name": "nav_create_indirect_connection_set_from",
-      "DefaultValue": "0.000000 0.000000 0.000000",
+      "DefaultValue": "0 0 0",
       "Description": "Set the \u0027from\u0027 location of an indirect connection.",
       "flags": [
         "sv",
@@ -21633,7 +21568,7 @@
     },
     {
       "Name": "nav_create_indirect_connection_set_to",
-      "DefaultValue": "0.000000 0.000000 0.000000",
+      "DefaultValue": "0 0 0",
       "Description": "Set the \u0027to\u0027 location of an indirect connection.",
       "flags": [
         "sv",
@@ -21932,6 +21867,16 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "nav_draw_flow_map",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "nav_draw_hidingspots",
       "DefaultValue": "false",
       "Description": "",
@@ -22035,6 +21980,16 @@
       "Name": "nav_edit",
       "DefaultValue": "0",
       "Description": "Set to one to interactively edit the Navigation Mesh. Set to zero to leave edit mode.",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "nav_edit_draw_navlinks",
+      "DefaultValue": "true",
+      "Description": "",
       "flags": [
         "sv",
         "cheat"
@@ -22242,15 +22197,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "nav_gen_flow_map_all_pairs_mode",
-      "DefaultValue": "1",
-      "Description": "0=astar, 1=allpaths, -1=test mode (runs both and compares)",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "nav_gen_island_removal",
       "DefaultValue": "false",
       "Description": "",
@@ -22432,7 +22378,7 @@
     },
     {
       "Name": "nav_gen_opt_to_quads_se_limit_start",
-      "DefaultValue": "0.000010",
+      "DefaultValue": "1e-05",
       "Description": "",
       "flags": [
         "sv",
@@ -23139,7 +23085,7 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "nav_smooth_constrain_results",
+      "Name": "nav_smooth_constrain_spline",
       "DefaultValue": "true",
       "Description": "",
       "flags": [
@@ -23149,7 +23095,7 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "nav_smooth_constrain_results_relax",
+      "Name": "nav_smooth_constrain_spline_relax",
       "DefaultValue": "0.006",
       "Description": "",
       "flags": [
@@ -23171,16 +23117,6 @@
     {
       "Name": "nav_smooth_constrain_spring_relax",
       "DefaultValue": "0.01",
-      "Description": "",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "nav_smooth_draw_accel",
-      "DefaultValue": "0",
       "Description": "",
       "flags": [
         "sv",
@@ -23240,7 +23176,7 @@
     },
     {
       "Name": "nav_smooth_enable",
-      "DefaultValue": "true",
+      "DefaultValue": "1",
       "Description": "",
       "flags": [
         "sv",
@@ -23888,16 +23824,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "nav_test_path_expansion_search",
-      "DefaultValue": "0",
-      "Description": "Extend nav_test_path by doing an expansion search on that path.  Convar value defines dist.",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "nav_test_path_lock_goal",
       "DefaultValue": "false",
       "Description": "Lock the pathfinding goal to the current intersection point.",
@@ -24019,6 +23945,46 @@
       "Name": "nav_test_rays",
       "DefaultValue": "false",
       "Description": "",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "nav_test_rays_use_npc_move",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "nav_test_search_on_path",
+      "DefaultValue": "false",
+      "Description": "Test the \u0027on path\u0027 search mode for tactical searches. Requires a selected NPC with a current path.",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "nav_test_search_on_path_boundary_edges_only",
+      "DefaultValue": "false",
+      "Description": "Activate the \u0027boundary edges only\u0027 constraint when testing the \u0027on path\u0027 search mode for tactical searches.",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "nav_test_search_on_path_setgoal",
+      "DefaultValue": "false",
+      "Description": "Test the \u0027on path\u0027 search mode for tactical searches using SetGoal w/ possible path clipping (flips between 2 searches). Requires a selected NPC.",
       "flags": [
         "sv",
         "cheat"
@@ -24325,16 +24291,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "net_allow_multicast",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        "a",
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "net_async_clientconnect",
       "DefaultValue": "true",
       "Description": "Enable async client connect optimization",
@@ -24570,6 +24526,16 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "net_permutation_info",
+      "DefaultValue": "cmd",
+      "Description": "show permutation information for serializer",
+      "flags": [
+        "cheat",
+        "vconsole_fuzzy"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "net_print_sdr_ping_times",
       "DefaultValue": "cmd",
       "Description": "Print current ping times to SDR points of presence, and selected route",
@@ -24728,15 +24694,6 @@
       "Description": "Shows current network status",
       "flags": [
         "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "net_use_delta_property_fastpath",
-      "DefaultValue": "1",
-      "Description": "",
-      "flags": [
-        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -25323,7 +25280,7 @@
     },
     {
       "Name": "password",
-      "DefaultValue": "map",
+      "DefaultValue": "y8905tu",
       "Description": "Current server access password",
       "flags": [
         "a",
@@ -25351,8 +25308,18 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "pet_disable_test_mode",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "a",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "pet_preview_gravity",
-      "DefaultValue": "0.000000 0.000000 -800.000000",
+      "DefaultValue": "0 0 -800",
       "Description": "",
       "flags": [
         ""
@@ -25362,6 +25329,15 @@
     {
       "Name": "pet_preview_underwater",
       "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "pet_preview_wind",
+      "DefaultValue": "0 0 0",
       "Description": "",
       "flags": [
         ""
@@ -25452,6 +25428,15 @@
       "flags": [
         "cl",
         "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "phys_get_model_materials",
+      "DefaultValue": "cmd",
+      "Description": "Get physics surface property of models.",
+      "flags": [
+        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -25610,6 +25595,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "phys_set_model_materials",
+      "DefaultValue": "cmd",
+      "Description": "Updates physics surface property of models from default to the ones associated in their material files.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "phys_shoot",
       "DefaultValue": "cmd",
       "Description": "Shoots a phys object.",
@@ -25750,18 +25744,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "phys_visualize_traces",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "sv",
-        "cl",
-        "rep",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "physics_debug_entity",
       "DefaultValue": "cmd",
       "Description": "Dumps debug info for an entity",
@@ -25846,8 +25828,8 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "player_competitive_maplist_2v2_10_0_630B8B7C",
-      "DefaultValue": "mg_de_inferno",
+      "Name": "player_competitive_maplist_2v2_10_0_D684D4E1",
+      "DefaultValue": "mg_de_inferno,mg_de_nuke,mg_de_vertigo,mg_de_debris,mg_de_poseidon,mg_de_eldorado,mg_de_overpass",
       "Description": "",
       "flags": [
         "cl",
@@ -25856,8 +25838,8 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "player_competitive_maplist_8_10_0_C512DEBE",
-      "DefaultValue": "mg_de_anubis,mg_de_overpass,mg_de_inferno,mg_de_mirage,mg_de_dust2,mg_de_nuke,mg_de_ancient,mg_de_vertigo,mg_cs_office",
+      "Name": "player_competitive_maplist_8_10_0_A062AC6A",
+      "DefaultValue": "mg_de_anubis,mg_de_inferno,mg_de_mirage,mg_de_dust2,mg_de_nuke,mg_de_ancient,mg_de_vertigo,mg_de_overpass,mg_cs_office",
       "Description": "",
       "flags": [
         "cl",
@@ -25928,7 +25910,7 @@
     },
     {
       "Name": "player_teamplayedlast",
-      "DefaultValue": "2",
+      "DefaultValue": "3",
       "Description": "",
       "flags": [
         "cl",
@@ -26057,6 +26039,15 @@
       "Name": "print_model_bind_pose",
       "DefaultValue": "cmd",
       "Description": "Prints the bind pose of the specified model. Optionally limits to a particular bone and its parent chain, otherwise prints the entire skeleton.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "print_video_card_config",
+      "DefaultValue": "cmd",
+      "Description": "",
       "flags": [
         ""
       ],
@@ -26408,7 +26399,7 @@
       "DefaultValue": "true",
       "Description": "",
       "flags": [
-        ""
+        "cl"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -26494,6 +26485,69 @@
       "flags": [
         "cl",
         "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_aoproxy_default_ambient_strength",
+      "DefaultValue": "0.2",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_aoproxy_default_light_cone_angles",
+      "DefaultValue": "0.3 0.3 0.3 0.3",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_aoproxy_default_light_cone_strengths",
+      "DefaultValue": "1 1 1 1",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_aoproxy_default_light_position_0",
+      "DefaultValue": "1 0 1.5",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_aoproxy_default_light_position_1",
+      "DefaultValue": "-1 0 1.5",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_aoproxy_default_light_position_2",
+      "DefaultValue": "0 1 1.5",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_aoproxy_default_light_position_3",
+      "DefaultValue": "0 -1 1.5",
+      "Description": "",
+      "flags": [
+        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -26845,7 +26899,7 @@
     },
     {
       "Name": "r_csgo_mboit_bias",
-      "DefaultValue": "0.000005",
+      "DefaultValue": "5e-06",
       "Description": "",
       "flags": [
         "cl",
@@ -27906,15 +27960,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "r_flush_on_pooled_ib_resize",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "r_force_engine_render_frame",
       "DefaultValue": "cmd",
       "Description": "Force a single render of the engine viewport.",
@@ -27927,15 +27972,6 @@
       "Name": "r_force_no_present",
       "DefaultValue": "false",
       "Description": "Force the render device to not present frames.",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "r_force_zprepass",
-      "DefaultValue": "-1",
-      "Description": "0: Force z prepass off. 1: Force on. -1: Don\u0027t force",
       "flags": [
         "cheat"
       ],
@@ -28635,7 +28671,7 @@
     },
     {
       "Name": "r_particle_max_draw_distance",
-      "DefaultValue": "1000000.000000",
+      "DefaultValue": "1000000",
       "Description": "The maximum distance that particles will render",
       "flags": [
         "cheat"
@@ -29055,36 +29091,9 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "r_showdebugrendertarget",
-      "DefaultValue": "false",
-      "Description": "Set the debug render target to show, 0 == disable",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "r_showsceneobjectbounds",
       "DefaultValue": "false",
       "Description": "Show scenesystem object bounding boxes",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "r_showsunshadowdebugrendertargets",
-      "DefaultValue": "false",
-      "Description": "Set to render sun shadow render targets",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "r_showsunshadowdebugsplitvis",
-      "DefaultValue": "false",
-      "Description": "Set to render sun shadow split visibility debugger",
       "flags": [
         "cheat"
       ],
@@ -29110,7 +29119,7 @@
     },
     {
       "Name": "r_skip_precache_validation_check",
-      "DefaultValue": "false",
+      "DefaultValue": "true",
       "Description": "",
       "flags": [
         ""
@@ -29123,6 +29132,16 @@
       "Description": "",
       "flags": [
         "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "r_spectator_flashbang_opacity",
+      "DefaultValue": "0.6",
+      "Description": "Spectator flash opacity",
+      "flags": [
+        "cl",
+        "a"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -29177,15 +29196,6 @@
       "Description": "",
       "flags": [
         "cl"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "r_suppress_redundant_state_changes",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -29302,15 +29312,6 @@
       "Name": "r_texture_stream_mip_bias",
       "DefaultValue": "0",
       "Description": "Biases the mip level the texture streaming system choses to stream for each texture.",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "r_texture_stream_resolution_bias",
-      "DefaultValue": "1",
-      "Description": "",
       "flags": [
         ""
       ],
@@ -29470,6 +29471,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "r_ui_update_parallel_with_server",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "r_update_particles_on_render_only_frames",
       "DefaultValue": "false",
       "Description": "",
@@ -29552,7 +29562,7 @@
     },
     {
       "Name": "r_world_wind_dir",
-      "DefaultValue": "0.707000 0.707000 0.000000",
+      "DefaultValue": "0.707 0.707 0",
       "Description": "",
       "flags": [
         ""
@@ -29579,7 +29589,7 @@
     },
     {
       "Name": "r_world_wind_offset_speed",
-      "DefaultValue": "0.250000 0.300000 0.200000",
+      "DefaultValue": "0.25 0.3 0.2",
       "Description": "",
       "flags": [
         ""
@@ -29601,15 +29611,6 @@
       "Description": "",
       "flags": [
         ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "r_zprepass_normals",
-      "DefaultValue": "false",
-      "Description": "0: Use normals reconstructed from depth. 1: Output correct normals in z prepass.",
-      "flags": [
-        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -30149,6 +30150,16 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "replant_bomb",
+      "DefaultValue": "cmd",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "replay_death",
       "DefaultValue": "cmd",
       "Description": "start hltv replay of last death",
@@ -30521,16 +30532,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "rr_reloadresponsesystems",
-      "DefaultValue": "cmd",
-      "Description": "Reload all response system scripts.",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "rr_thenany_score_slop",
       "DefaultValue": "0",
       "Description": "When computing respondents for a \u0027THEN ANY\u0027 rule, all rule-matching scores within this much of the best score will be considered.",
@@ -30654,16 +30655,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "save_animgraph_recording",
-      "DefaultValue": "cmd",
-      "Description": "Saves all active animgraph recordings to disk  Arguments: automaticallyOpenInAnimgraphEditor",
-      "flags": [
-        "sv",
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "save_async",
       "DefaultValue": "true",
       "Description": "",
@@ -30678,6 +30669,17 @@
       "Description": "",
       "flags": [
         "sv",
+        "rep"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "save_debug_snapshots",
+      "DefaultValue": "false",
+      "Description": "Save/Load debug snapshot data",
+      "flags": [
+        "sv",
+        "cl",
         "rep"
       ],
       "Cs2WorkshopWhitelisted": false
@@ -30721,7 +30723,7 @@
     },
     {
       "Name": "save_parallel",
-      "DefaultValue": "false",
+      "DefaultValue": "true",
       "Description": "",
       "flags": [
         "sv",
@@ -30762,17 +30764,6 @@
       "Name": "save_spew",
       "DefaultValue": "false",
       "Description": "",
-      "flags": [
-        "sv",
-        "cl",
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "save_version",
-      "DefaultValue": "1",
-      "Description": "0: (V0) Legacy save format, 1: (V1) KeyValues3 save format, 2: (V2) KV3Transfer saves",
       "flags": [
         "sv",
         "cl",
@@ -30838,15 +30829,6 @@
     },
     {
       "Name": "sc_aggregate_gpu_occlusion_culling",
-      "DefaultValue": "true",
-      "Description": "",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sc_aggregate_gpu_vis_culling",
       "DefaultValue": "true",
       "Description": "",
       "flags": [
@@ -31017,6 +30999,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "sc_distancefield_visualize_atlas",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "sc_dithered_lod_transition_amt",
       "DefaultValue": "0.075",
       "Description": "Percentage of the transition between two lods we will apply a dither",
@@ -31179,18 +31170,18 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "sc_instanced_mesh_mesh_shader",
+      "Name": "sc_instanced_mesh_motion_vectors",
       "DefaultValue": "true",
-      "Description": "Toggles mesh shader rendering for instanced meshes",
+      "Description": "Toggles motion vector support for instanced meshes",
       "flags": [
         ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "sc_instanced_mesh_motion_vectors",
+      "Name": "sc_instanced_mesh_opaque_fade",
       "DefaultValue": "true",
-      "Description": "Toggles motion vector support for instanced meshes",
+      "Description": "Toggles fade support for instanced meshes",
       "flags": [
         ""
       ],
@@ -31271,6 +31262,51 @@
     {
       "Name": "sc_mesh_backface_culling",
       "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sc_mesh_gpu_occlusion_culling",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sc_mesh_gpu_volume_culling",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sc_mesh_mesh_shaders",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sc_mesh_shadows_batch_across_materials",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sc_mesh_use_pmb",
+      "DefaultValue": "false",
       "Description": "",
       "flags": [
         ""
@@ -31456,24 +31492,6 @@
         "sv",
         "cl",
         "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "scene_coordinator_add_request",
-      "DefaultValue": "cmd",
-      "Description": "Add a request to the scene coordinator",
-      "flags": [
-        "sv"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "scene_maxcaptionradius",
-      "DefaultValue": "1200",
-      "Description": "Only show closed captions if recipient is within this many units of speaking actor (0==disabled).",
-      "flags": [
-        "sv"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -31881,7 +31899,17 @@
     {
       "Name": "server_snd_cast",
       "DefaultValue": "cmd",
-      "Description": "Casts a ray and starts a sound event where the ray hits. The sound event will retrigger periodically. Usage: snd_cast \u0026lt;eventname\u0026gt; [\u0026lt;retrigger time\u0026gt;] [\u0026lt;max distance\u0026gt;]. Arguments that are specified will become defaults for the remainder of the session.",
+      "Description": "Casts a ray and starts a sound event where the ray hits. The sound event will retrigger periodically. Usage: server_snd_cast \u0026lt;eventname\u0026gt; [\u0026lt;retrigger time\u0026gt;] [\u0026lt;max distance\u0026gt;]. Arguments that are specified will become defaults for the remainder of the session.",
+      "flags": [
+        "sv",
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "server_snd_pos",
+      "DefaultValue": "cmd",
+      "Description": "Starts a sound event at a given position. The sound event will retrigger periodically. Usage: server_snd_pos \u0026lt;eventname\u0026gt; \u0026lt;retrigger time\u0026gt; \u0026lt;x\u0026gt; \u0026lt;y\u0026gt; \u0026lt;z\u0026gt;.",
       "flags": [
         "sv",
         "cheat"
@@ -31991,6 +32019,231 @@
       "flags": [
         "sv",
         "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_bone_display_center_color",
+      "DefaultValue": "255 224 128",
+      "Description": "color for the center of the sfm skeleton display",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_bone_display_highlight_color",
+      "DefaultValue": "0 192 255",
+      "Description": "color for highlighting of the sfm skeleton display",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_bone_display_left_color",
+      "DefaultValue": "128 255 128",
+      "Description": "color for the left side of the sfm skeleton display",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_bone_display_misc_color",
+      "DefaultValue": "192 96 192",
+      "Description": "color for the misc bones of the sfm skeleton display",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_bone_display_radius",
+      "DefaultValue": "2",
+      "Description": "radius of the sfm skeleton display",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_bone_display_right_color",
+      "DefaultValue": "255 96 96",
+      "Description": "color for the right side of the sfm skeleton display",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_bone_display_selection_color",
+      "DefaultValue": "255 255 255",
+      "Description": "color for selection of the sfm skeleton display",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_create_every_character",
+      "DefaultValue": "cmd",
+      "Description": "Create an animationset for every character",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_debug_draw",
+      "DefaultValue": "false",
+      "Description": "draw debugging geometry",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_draw_model_bone_axes",
+      "DefaultValue": "false",
+      "Description": "draw bone axes for models",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_draw_model_bounds",
+      "DefaultValue": "false",
+      "Description": "draw bounding boxes for models",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_draw_model_wireframe",
+      "DefaultValue": "false",
+      "Description": "draw wireframe for models",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_draw_sound_waveform",
+      "DefaultValue": "true",
+      "Description": "draw sound waveforms in the SFM",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_ensurefilmcliponframe",
+      "DefaultValue": "true",
+      "Description": "Ensure that interactive film clip operations always stay on frame",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_flushsfmsoundsamplecache",
+      "DefaultValue": "cmd",
+      "Description": "Flushes sfm clip preview sample cache.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_memory",
+      "DefaultValue": "cmd",
+      "Description": "Display memory used by the SFM, add shots to break down on per-shot basis",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_only_opaque_objects_cast_shadows",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_orbitspeed",
+      "DefaultValue": "0.333",
+      "Description": "Camera orbit scale.",
+      "flags": [
+        "a"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_panspeed",
+      "DefaultValue": "0.1",
+      "Description": "Camera pan speed",
+      "flags": [
+        "a"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_print_sound_debug_messages",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_record_sound_events",
+      "DefaultValue": "true",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_render_half_float",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_show_ao_proxies",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_sound_event_picker_delay",
+      "DefaultValue": "200",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sfm_vis_mode",
+      "DefaultValue": "0",
+      "Description": "",
+      "flags": [
+        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -32305,17 +32558,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "slope_drop_debug",
-      "DefaultValue": "0",
-      "Description": "Toggles a test dropping the view offset based on the slope",
-      "flags": [
-        "sv",
-        "cl",
-        "rep"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "slope_drop_enable",
       "DefaultValue": "true",
       "Description": "Toggles a test dropping the view offset based on the slope",
@@ -32584,9 +32826,9 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "snd_arrangement_start",
+      "Name": "snd__beatpattern_stop_track",
       "DefaultValue": "cmd",
-      "Description": "Starts the specified arrangement.",
+      "Description": "Stops the specified track",
       "flags": [
         "cheat"
       ],
@@ -32643,6 +32885,96 @@
       "Description": "",
       "flags": [
         "a"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_flush",
+      "DefaultValue": "cmd",
+      "Description": "Purge and reload all beat pattern data and files.",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_print_activetracks",
+      "DefaultValue": "cmd",
+      "Description": "List all active tracks",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_print_patterns",
+      "DefaultValue": "cmd",
+      "Description": "List all available beat patterns",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_set_track_bpm",
+      "DefaultValue": "cmd",
+      "Description": "Sets the tempo of the specified track",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_set_track_transpose",
+      "DefaultValue": "cmd",
+      "Description": "Sets the transposition of the specified track",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_show_bpm",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_show_events",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_show_quantize_queue",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_stop_all_tracks",
+      "DefaultValue": "cmd",
+      "Description": "Stops all currently playing patterns",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_beatpattern_use_lookahead",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "cheat"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -33284,24 +33616,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "snd_print_activetracks",
-      "DefaultValue": "cmd",
-      "Description": "List all active tracks",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_print_arrangements",
-      "DefaultValue": "cmd",
-      "Description": "List all available sequence arrangments",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "snd_print_current_mixer_mixgroup",
       "DefaultValue": "cmd",
       "Description": "Get data related to mix group matching string",
@@ -33314,15 +33628,6 @@
       "Name": "snd_print_samplers",
       "DefaultValue": "cmd",
       "Description": "List all available samplers",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_print_sequences",
-      "DefaultValue": "cmd",
-      "Description": "List all available midi sequences",
       "flags": [
         "cheat"
       ],
@@ -33463,69 +33768,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "snd_sequence_set_track_bpm",
-      "DefaultValue": "cmd",
-      "Description": "Sets the tempo of the specified track",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_sequence_set_track_transpose",
-      "DefaultValue": "cmd",
-      "Description": "Sets the transposition of the specified track",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_sequence_stop_all_tracks",
-      "DefaultValue": "cmd",
-      "Description": "Stops all currently playing sequences",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_sequence_stop_track",
-      "DefaultValue": "cmd",
-      "Description": "Stops the specified track",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_sequencer_show_bpm",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_sequencer_show_events",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "snd_sequencer_show_quantize_queue",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "snd_set_physics_surface_properties",
       "DefaultValue": "cmd",
       "Description": "Set physics surface properties for materials. Usage: \u0026lt;heuristic #\u0026gt; \u0026lt;commit\u0026gt;",
@@ -33556,6 +33798,15 @@
       "Name": "snd_side_surround_speaker_position",
       "DefaultValue": "cmd",
       "Description": "Specifies the position (in degrees) of the virtual rear left/right speakers.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_sos_beatpattern_show_operator_updates",
+      "DefaultValue": "false",
+      "Description": "",
       "flags": [
         ""
       ],
@@ -33762,6 +34013,15 @@
     },
     {
       "Name": "snd_sos_print_fps",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_sos_print_frametime",
       "DefaultValue": "false",
       "Description": "",
       "flags": [
@@ -34211,6 +34471,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "snd_sos_stop_track",
+      "DefaultValue": "cmd",
+      "Description": "Stop the specified track and it\u0027s queue.",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "snd_sos_sv_soundevent_pause_last",
       "DefaultValue": "cmd",
       "Description": "Test",
@@ -34369,6 +34638,15 @@
       "Cs2WorkshopWhitelisted": true
     },
     {
+      "Name": "snd_steamaudio_ambisonics_correction_type",
+      "DefaultValue": "1",
+      "Description": "0: Use order-truncated Ambisonics HRTF without correction. 1: Use diffuse field equalization to correct order-truncated Ambisonics HRTFs.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "snd_steamaudio_baked_data_stats",
       "DefaultValue": "cmd",
       "Description": "Display baked data stats for the current mod.",
@@ -34379,10 +34657,55 @@
     },
     {
       "Name": "snd_steamaudio_baked_occlusion_mode",
-      "DefaultValue": "0",
+      "DefaultValue": "4",
       "Description": "0: distance ratio only. 1: deviation only (1/r). 2: deviation only (linear). 3: Mode 0 and Mode 1, 4: Mode 0 and Mode 2",
       "flags": [
         "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_baked_occlusion_pathing_exponent",
+      "DefaultValue": "0.2",
+      "Description": "Adjust scaling of pathing energy by exponentiall scaling with pathing delta.",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_baked_occlusion_reflection_factor",
+      "DefaultValue": "1",
+      "Description": "Adjust scaling for reflection energy when combining it to calculate occlusion value.",
+      "flags": [
+        "cheat"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_display_dimension_data_inside",
+      "DefaultValue": "true",
+      "Description": "When visualizing dimensions data at runtime, draw the inside direction.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_display_dimension_data_outside",
+      "DefaultValue": "true",
+      "Description": "When visualizing dimensions data at runtime, draw the outisde direction.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_display_dimension_data_size",
+      "DefaultValue": "true",
+      "Description": "When visualizing dimensions data at runtime, draw the size of the space.",
+      "flags": [
+        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -34410,6 +34733,24 @@
       "Name": "snd_steamaudio_enable_custom_hrtf",
       "DefaultValue": "false",
       "Description": "Enable custom HRTF loading.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_enable_occlusion_caching",
+      "DefaultValue": "true",
+      "Description": "Continue using previous occlusion if probe lookup for occlusion fails.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_enable_ordertruncated_ambisonics_hrtf",
+      "DefaultValue": "false",
+      "Description": "Enable order-truncated Ambisonics HRTF loading.",
       "flags": [
         ""
       ],
@@ -34453,9 +34794,9 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "snd_steamaudio_enable_reverb_probe_caching_for_missing_probes",
+      "Name": "snd_steamaudio_enable_reverb_caching",
       "DefaultValue": "true",
-      "Description": "Continue using previous prrobes if probe lookup for reverb fails.",
+      "Description": "Continue using previous reverb if probe lookup for reverb fails.",
       "flags": [
         ""
       ],
@@ -34535,7 +34876,7 @@
     },
     {
       "Name": "snd_steamaudio_load_dimensions_data",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "If set, baked dimensions data is loaded.",
       "flags": [
         ""
@@ -34544,7 +34885,7 @@
     },
     {
       "Name": "snd_steamaudio_load_materials_data",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "If set, baked materials data is loaded.",
       "flags": [
         ""
@@ -34553,7 +34894,7 @@
     },
     {
       "Name": "snd_steamaudio_load_occlusion_data",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "If set, baked occlusion data is loaded.",
       "flags": [
         ""
@@ -34562,7 +34903,7 @@
     },
     {
       "Name": "snd_steamaudio_load_pathing_data",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "If set, baked pathing data is loaded. Steam Audio Hammer entities can successfully use pathing in this case.",
       "flags": [
         ""
@@ -34571,8 +34912,17 @@
     },
     {
       "Name": "snd_steamaudio_load_reverb_data",
-      "DefaultValue": "true",
+      "DefaultValue": "false",
       "Description": "If set, baked reverb data is loaded. Reset it to zero during an format changes of baked data until all data is updated.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "snd_steamaudio_max_ambisonics_order",
+      "DefaultValue": "3",
+      "Description": "Maximum order for Ambisonics binaural rendering and Ambisonics panning.",
       "flags": [
         ""
       ],
@@ -34808,6 +35158,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "snd_steamaudio_use_soundblocking_shapes_only",
+      "DefaultValue": "false",
+      "Description": "If set, OBJ export and Hammer visualization only shows sound blocking geometry used for baking simulation and runtime queries.",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "snd_stereo_speaker_pan_exponent",
       "DefaultValue": "cmd",
       "Description": "Specifies the exponent for the pan xfade from speaker to speaker if the \u0027exp\u0027 pan law is being used.",
@@ -34908,15 +35267,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "snd_vmidi_flush",
-      "DefaultValue": "cmd",
-      "Description": "Purge and reload all vmidi data and files.",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "snd_vmix_override_mix_decay_time",
       "DefaultValue": "-1",
       "Description": "If set \u0026gt; 0, overrides how long the decay time is on all mix graphs (in seconds).",
@@ -34926,17 +35276,8 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "snd_vmix_show_input_updates",
-      "DefaultValue": "false",
-      "Description": "If set to 1, show all incoming updates to vmix inputs.",
-      "flags": [
-        "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "snd_voipvolume",
-      "DefaultValue": "1",
+      "DefaultValue": "2",
       "Description": "Voice volume",
       "flags": [
         "a"
@@ -34976,7 +35317,7 @@
     },
     {
       "Name": "sound_device_override",
-      "DefaultValue": "0",
+      "DefaultValue": "\\{0.0.0.00000000\\}.\\{0ce51328-cb9b-4552-83d8-8c01ec89493a\\}",
       "Description": "ID of the sound device to use",
       "flags": [
         "a",
@@ -35673,6 +36014,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "start_rec_mic",
+      "DefaultValue": "cmd",
+      "Description": "Start recording to a desired wav.",
+      "flags": [
+        "linked"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "startdemos",
       "DefaultValue": "cmd",
       "Description": "Play demos in demo sequence.",
@@ -35787,6 +36137,24 @@
       "Description": "Finish recording demo.",
       "flags": [
         "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "stop_rec_mic",
+      "DefaultValue": "cmd",
+      "Description": "Stop recording to a desired wav.",
+      "flags": [
+        "linked"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "stop_rec_mic_all",
+      "DefaultValue": "cmd",
+      "Description": "Stop recording all mic streams.",
+      "flags": [
+        "linked"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -35965,15 +36333,6 @@
       "Cs2WorkshopWhitelisted": true
     },
     {
-      "Name": "sv_ag2_low_skel_lod",
-      "DefaultValue": "false",
-      "Description": "",
-      "flags": [
-        "sv"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "sv_air_max_wishspeed",
       "DefaultValue": "30",
       "Description": "",
@@ -36011,7 +36370,7 @@
     },
     {
       "Name": "sv_allow_annotations_access_level",
-      "DefaultValue": "0",
+      "DefaultValue": "1",
       "Description": "0:off \\| 1: view-only \\| 2: edit.",
       "flags": [
         "sv",
@@ -36041,6 +36400,18 @@
         "release"
       ],
       "Cs2WorkshopWhitelisted": true
+    },
+    {
+      "Name": "sv_annotation_limits_max_rounds_per_half",
+      "DefaultValue": "5",
+      "Description": "Hard limit on maximum number of rounds (per half) that annotations can be seen in a live match",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
     },
     {
       "Name": "sv_auto_adjust_bot_difficulty",
@@ -36198,7 +36569,7 @@
     },
     {
       "Name": "sv_bhop_time_window",
-      "DefaultValue": "0.007812",
+      "DefaultValue": "0.0078125",
       "Description": "sv_legacy_jump disabled only: The time window (in seconds) around landing where a jump press is considered a bhop attempt.",
       "flags": [
         "sv",
@@ -36515,6 +36886,18 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "sv_csgo_gpu_culling_skybox",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "sv_damage_prediction_allowed",
       "DefaultValue": "true",
       "Description": "",
@@ -36714,75 +37097,9 @@
       "Cs2WorkshopWhitelisted": true
     },
     {
-      "Name": "sv_dz_cash_bundle_size",
-      "DefaultValue": "50",
-      "Description": "Size of a cash bundle",
-      "flags": [
-        "sv",
-        "rep",
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sv_dz_cash_mega_bundle_size",
-      "DefaultValue": "13",
-      "Description": "Size of a mega cash bundle",
-      "flags": [
-        "sv",
-        "rep",
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sv_dz_contractkill_reward",
-      "DefaultValue": "10",
-      "Description": "Cash bundles to award for a successful contract kill",
-      "flags": [
-        "sv",
-        "rep",
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sv_dz_hostage_rescue_reward",
-      "DefaultValue": "18",
-      "Description": "Number of cash bundles to award for rescuing a hostage",
-      "flags": [
-        "sv",
-        "cl",
-        "rep",
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sv_dz_squad_wipe_reward",
-      "DefaultValue": "2",
-      "Description": "Number of cash bundles to award for eliminating a squad",
-      "flags": [
-        "sv",
-        "cl",
-        "rep",
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "sv_enable_alternate_baselines",
       "DefaultValue": "1",
       "Description": "Allow alternate baseline system, set to 2 for debugging spew.",
-      "flags": [
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sv_enable_delta_packing",
-      "DefaultValue": "true",
-      "Description": "When enabled, this allows for entity packing to use the property changes for building up the data. This is many times faster, but can be disabled for error checking.",
       "flags": [
         "release"
       ],
@@ -36816,15 +37133,6 @@
       "flags": [
         "sv",
         "cheat"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sv_ents_write_alarm",
-      "DefaultValue": "0",
-      "Description": "Print callstack every time CNetworkGameServerBase::WriteEntityUpdate takes more than this amount of milliseconds",
-      "flags": [
-        "release"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -36917,6 +37225,54 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "sv_freeze_camera_angles",
+      "DefaultValue": "0 0 0",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sv_freeze_camera_enabled",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sv_freeze_camera_min_remaining",
+      "DefaultValue": "3",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sv_freeze_camera_position",
+      "DefaultValue": "0 0 0",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "sv_friction",
       "DefaultValue": "5.2",
       "Description": "World friction.",
@@ -37004,6 +37360,30 @@
         "release"
       ],
       "Cs2WorkshopWhitelisted": true
+    },
+    {
+      "Name": "sv_grenade_collision_sphere",
+      "DefaultValue": "false",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sv_grenade_collision_sphere_radius",
+      "DefaultValue": "2",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
     },
     {
       "Name": "sv_grenade_trajectory_prac_pipreview",
@@ -37581,7 +37961,7 @@
     },
     {
       "Name": "sv_mapvetopickvote_maps",
-      "DefaultValue": "de_anubis,de_overpass,de_inferno,de_mirage,de_dust2,de_nuke,de_ancient",
+      "DefaultValue": "de_cache,de_anubis,de_inferno,de_mirage,de_dust2,de_nuke,de_ancient",
       "Description": "Which maps are used for map veto pick sequence",
       "flags": [
         "sv",
@@ -37907,15 +38287,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "sv_networkvar_validate",
-      "DefaultValue": "false",
-      "Description": "Validate each StateChanged against known offsets.",
-      "flags": [
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "sv_noclipaccelerate",
       "DefaultValue": "5",
       "Description": "",
@@ -37967,6 +38338,19 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "sv_noclipspeedscaleonshift",
+      "DefaultValue": "0.5",
+      "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "a",
+        "nf",
+        "rep"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "sv_nomvp",
       "DefaultValue": "false",
       "Description": "Disable MVP awards.",
@@ -38004,6 +38388,16 @@
         "release"
       ],
       "Cs2WorkshopWhitelisted": true
+    },
+    {
+      "Name": "sv_override_max_health",
+      "DefaultValue": "0",
+      "Description": "",
+      "flags": [
+        "sv",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
     },
     {
       "Name": "sv_packstats",
@@ -38348,15 +38742,6 @@
       "Description": "Number of seconds to track failed rcon authentications",
       "flags": [
         ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "sv_recipients_check",
-      "DefaultValue": "true",
-      "Description": "When packing entities, check that recipient bits match for fast path packing.",
-      "flags": [
-        "release"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -38864,7 +39249,7 @@
     },
     {
       "Name": "sv_spec_hear",
-      "DefaultValue": "1",
+      "DefaultValue": "3",
       "Description": "Determines who spectators can hear: 0: only spectators; 1: all players; 2: spectated team; 3: self only; 4: nobody",
       "flags": [
         "sv",
@@ -39002,6 +39387,15 @@
       "Description": "Collect CPU usage stats",
       "flags": [
         ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "sv_steamauth_correct",
+      "DefaultValue": "false",
+      "Description": "Correct behavior",
+      "flags": [
+        "release"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -39783,16 +40177,6 @@
       "Cs2WorkshopWhitelisted": true
     },
     {
-      "Name": "sv_watchtransmit",
-      "DefaultValue": "-2",
-      "Description": "Watch NetworkStateChanged info for this entity index.",
-      "flags": [
-        "sv",
-        "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "sv_water_slow_amount",
       "DefaultValue": "0.9",
       "Description": "",
@@ -40201,7 +40585,7 @@
       "DefaultValue": "-1",
       "Description": "Ends timedemo on given tick.",
       "flags": [
-        ""
+        "release"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -40210,7 +40594,7 @@
       "DefaultValue": "-1",
       "Description": "Starts timedemo on given tick.",
       "flags": [
-        ""
+        "release"
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -41196,8 +41580,8 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "ui_inspect_bkgnd_map_539CD0B9",
-      "DefaultValue": "de_nuke",
+      "Name": "ui_inspect_bkgnd_map_C2AEBB5E",
+      "DefaultValue": "warehouse",
       "Description": "Inspect background map",
       "flags": [
         "cl",
@@ -41228,8 +41612,8 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "ui_mainmenu_bkgnd_movie_539CD0B9",
-      "DefaultValue": "de_inferno",
+      "Name": "ui_mainmenu_bkgnd_movie_C2AEBB5E",
+      "DefaultValue": "de_ancient_night",
       "Description": "Main menu background movie",
       "flags": [
         "cl",
@@ -41251,7 +41635,18 @@
     },
     {
       "Name": "ui_news_last_read_link",
-      "DefaultValue": "https://www.counter-strike.net/newsentry/511855214544814488",
+      "DefaultValue": "676253085555756223",
+      "Description": "",
+      "flags": [
+        "cl",
+        "a",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "ui_news_last_read_link2",
+      "DefaultValue": "0",
       "Description": "",
       "flags": [
         "cl",
@@ -41492,7 +41887,7 @@
     },
     {
       "Name": "ui_playsettings_listen_grenades",
-      "DefaultValue": "0",
+      "DefaultValue": "1",
       "Description": "",
       "flags": [
         "cl",
@@ -41536,7 +41931,7 @@
     },
     {
       "Name": "ui_playsettings_maps_listen_competitive",
-      "DefaultValue": "mg_de_anubis",
+      "DefaultValue": "mg_de_cache",
       "Description": "",
       "flags": [
         "cl",
@@ -41580,7 +41975,7 @@
     },
     {
       "Name": "ui_playsettings_maps_listen_scrimcomp2v2",
-      "DefaultValue": "mg_de_rooftop",
+      "DefaultValue": "mg_de_poseidon",
       "Description": "",
       "flags": [
         "cl",
@@ -41635,7 +42030,7 @@
     },
     {
       "Name": "ui_playsettings_maps_workshop",
-      "DefaultValue": "@workshop/3240880604/de_dust2_benchmark",
+      "DefaultValue": "@workshop/3568799777/pracc_training",
       "Description": "",
       "flags": [
         "cl",
@@ -41837,7 +42232,7 @@
     },
     {
       "Name": "ui_vanitysetting_team",
-      "DefaultValue": "ct",
+      "DefaultValue": "t",
       "Description": "",
       "flags": [
         "cl",
@@ -42414,15 +42809,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "voice_mute",
-      "DefaultValue": "cmd",
-      "Description": "Mute a specific Steam user",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "voice_noise_supression",
       "DefaultValue": "false",
       "Description": "",
@@ -42442,15 +42828,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "voice_reset_mutelist",
-      "DefaultValue": "cmd",
-      "Description": "Reset all mute information for all players who were ever muted.",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "voice_sequence_maximum_wait_time",
       "DefaultValue": "0.5",
       "Description": "When receiving packets out of sequence, wait this many seconds for missing sequences to arrive",
@@ -42465,15 +42842,6 @@
       "Description": "",
       "flags": [
         "sv"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "voice_show_mute",
-      "DefaultValue": "cmd",
-      "Description": "Show whether current players are muted.",
-      "flags": [
-        ""
       ],
       "Cs2WorkshopWhitelisted": false
     },
@@ -42516,15 +42884,6 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
-      "Name": "voice_unmute",
-      "DefaultValue": "cmd",
-      "Description": "Unmute a specific Steam user, or \u0060all\u0060 to unmute all connected players.",
-      "flags": [
-        ""
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
       "Name": "voice_vox",
       "DefaultValue": "0",
       "Description": "Voice chat uses a vox-style always on",
@@ -42546,7 +42905,7 @@
     },
     {
       "Name": "volume",
-      "DefaultValue": "0.2",
+      "DefaultValue": "0.3",
       "Description": "Sound volume",
       "flags": [
         "a"
@@ -42790,6 +43149,15 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "vt_sim_streaming_delay_ms",
+      "DefaultValue": "500",
+      "Description": "",
+      "flags": [
+        ""
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "vtune",
       "DefaultValue": "cmd",
       "Description": "Controls VTune\u0027s sampling.",
@@ -42956,6 +43324,18 @@
       "Name": "weapon_accuracy_shotgun_spread_patterns",
       "DefaultValue": "true",
       "Description": "",
+      "flags": [
+        "sv",
+        "cl",
+        "rep",
+        "release"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "weapon_accuracy_stack_boost_limit",
+      "DefaultValue": "2",
+      "Description": "Apply ladder inaccuracy to players boosted by a stack of this many (or more) players",
       "flags": [
         "sv",
         "cl",
@@ -43144,6 +43524,24 @@
       "Cs2WorkshopWhitelisted": false
     },
     {
+      "Name": "workshop_clear_cloud_save",
+      "DefaultValue": "cmd",
+      "Description": "Remove a workshop save from steam cloud. Pass the published file id to delete or 0 to delete the non-workshop addon save.",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
+      "Name": "workshop_dump_cloud_contents",
+      "DefaultValue": "cmd",
+      "Description": "Spew contents of steam cloud.",
+      "flags": [
+        "sv"
+      ],
+      "Cs2WorkshopWhitelisted": false
+    },
+    {
       "Name": "world_dump_loaded_worlds",
       "DefaultValue": "cmd",
       "Description": "Dump all of the worlds that we know about",
@@ -43194,17 +43592,6 @@
       "Description": "Saves current key bindings to disk.",
       "flags": [
         "release"
-      ],
-      "Cs2WorkshopWhitelisted": false
-    },
-    {
-      "Name": "zoom_sensitivity_ratio",
-      "DefaultValue": "1",
-      "Description": "Additional mouse sensitivity scale factor applied when FOV is zoomed in.",
-      "flags": [
-        "cl",
-        "a",
-        "per_user"
       ],
       "Cs2WorkshopWhitelisted": false
     }
