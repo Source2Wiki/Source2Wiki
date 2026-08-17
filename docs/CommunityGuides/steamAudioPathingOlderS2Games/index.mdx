@@ -1,0 +1,38 @@
+---
+description: Setting up (or disabling) Steam Audio pathing in older Source 2 games.
+title: Steam Audio pathing in older Source 2 games
+---
+
+This guide does *not* explain the intricacies or detail how to use various Steam Audio entities.
+Rather, this guide explains how, in older Source 2 games like <Game name="hla"/> and <Game name="steamvr"/>, Steam Audio pathing is non-functional by default and requires some extra work.
+
+
+# SteamVR
+Steam Audio pathing is not possible in <Game name="steamvr"/> without a lot of extra work. Namely, it doesn't have a voicegraph called `hlvr.pathing` or any equivalent. To get pathing to work in SteamVR, a custom voicegraph in a soundstack would need to be created, which is beyond the scope of this page.
+
+# Half-Life: Alyx
+Fortunately, Steam Audio pathing *does* work in <Game name="hla"/>, and it doesn't require anything very complicated to get working.
+All it takes to set up a soundevent to use pathing is a few parameters. Here's an example:
+```txt
+	Pathing.example = 
+	{
+		type = "hlvr_default_3d"
+		use_hrtf = 1
+		enable_spatial_blend = 1
+		voicegraph = "hlvr.pathing"
+		sa_enabled = 1
+		sa_pathing_enabled = 1
+		sa_pathing_mix_level = 1
+		vsnd_files = "your/sound/here.vsnd"
+	}
+```
+To make sure the pathing is actually used, set `snd_steamaudio_enable_pathing` to 1. By default, it's off.
+
+There are a couple of issues with pathing.
+* **The further you move from the sound source, and the more complex that the pathing gets, the more it impacts your GPU frametime** (for some reason)
+* **Sometimes, pathing can make a sound completely silent.** It's not a good idea to put pathing onto every soundevent you create. In some cases, the sound is weirdly offset. In the worst case, it becomes completely silent.
+
+Having said all of that, here are a couple of tips:
+Players - If you don't care about Steam Audio Pathing and want to save some loading time, you can add this to your autoexec.cfg or launch options:
+`snd_steamaudio_load_pathing_data 0`
+Developers - You can save some compile time by not compiling Steam Audio pathing. Nothing in base <Game name="hla"/> and <Game name="steamvr"/> uses it, and it's a wasted effort if you don't create any soundevents for it.
