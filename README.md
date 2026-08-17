@@ -32,6 +32,11 @@ Valve ships with CS2. A copy lives in `cs_script_dump`, so updating the page is:
 npm run generate-cs-script-docs
 ```
 
-The page imports the generated tables, so there is nothing to paste. To pick up
-API changes, copy the newer `point_script.d.ts` into `cs_script_dump` first, from
-`<steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo\maps\editor\zoo\scripts`.
+The page imports the generated tables, so there is nothing to paste.
+
+This updates itself: [GameTracking](https://github.com/SteamTracking/GameTracking) sends this repo
+an `app-update` event when CS2 changes, and `on-game-update.yml` fetches the new file, regenerates
+and commits if anything differs. To update by hand, copy the newer `point_script.d.ts` into
+`cs_script_dump` from
+`<steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo\maps\editor\zoo\scripts`
+and run the command above.

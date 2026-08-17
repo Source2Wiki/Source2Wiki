@@ -1,0 +1,139 @@
+# Runs when a Valve game we document ships an update, and regenerates whatever comes from it.
+#
+# The signal is a repository_dispatch from SteamDatabase's GameTracking pipeline.
+#
+# Every job compares its regenerated output with what is in the repo and commits only on a real
+# difference, so an update that changed nothing we care about does nothing at all.
+name: On Valve game update
+
+on:
+  repository_dispatch:
+    types: [app-update]
+  # a safety net for a missed dispatch, and a way to run everything by hand
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: GameTracking repository to treat as updated, e.g. GameTracking-CS2 (blank runs every job)
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+concurrency:
+  group: on-game-update
+  cancel-in-progress: false
+
+jobs:
+
+  # Decides which game this run is about, so the jobs below can each ask "is it mine".
+  #
+  # As an extra safery net it also checks who sent the event so only SteamTracking repo can trigger this, just in case.
+  which-game:
+    runs-on: ubuntu-latest
+    outputs:
+      repo: ${{ steps.pick.outputs.repo }}
+      ours: ${{ steps.pick.outputs.ours }}
+    steps:
+      - id: pick
+        env:
+          EVENT: ${{ github.event_name }}
+          OWNER: ${{ github.event.client_payload.owner || '' }}
+          REPO: ${{ github.event.client_payload.repo || inputs.repo || '' }}
+        run: |
+          echo "repo=$REPO" >> "$GITHUB_OUTPUT"
+
+          if [ "$EVENT" = "repository_dispatch" ]; then
+            if [ "$OWNER" != "SteamTracking" ]; then
+              echo "ours=false" >> "$GITHUB_OUTPUT"
+              echo "dispatch does not come from SteamTracking (owner '$OWNER'), ignoring"
+              exit 0
+            fi
+            case "$REPO" in
+              GameTracking-*) ;;
+              *)
+                echo "ours=false" >> "$GITHUB_OUTPUT"
+                echo "dispatch does not name a GameTracking repository ('$REPO'), ignoring"
+                exit 0 ;;
+            esac
+            echo "dispatch from $OWNER/$REPO"
+          fi
+
+          case "$REPO" in
+            # the games this wiki documents, see src/constants/software.tsx
+            GameTracking-CS2|GameTracking-HalfLifeAlyx|GameTracking-Dota2|GameTracking-SteamVR)
+                 echo "ours=true" >> "$GITHUB_OUTPUT"; echo "$REPO is a game we document" ;;
+            "")  echo "ours=true" >> "$GITHUB_OUTPUT"; echo "no game named, running everything" ;;
+            *)   echo "ours=false" >> "$GITHUB_OUTPUT"; echo "$REPO is not a game we document, nothing to do" ;;
+          esac
+
+  # cs_script is CS2's scripting api, its typescript definitions ship as a loose game file that
+  # GameTracking mirrors, so this needs no game install and can run entirely here
+  cs-script-docs:
+    needs: which-game
+    # for CS2, or for every game when nothing named one (schedule, blank manual run)
+    if: ${{ needs.which-game.outputs.ours == 'true' && (needs.which-game.outputs.repo == '' || needs.which-game.outputs.repo == 'GameTracking-CS2') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Pushes made with the workflow's own GITHUB_TOKEN do not start other workflows, by design,
+          # so a commit from here would never deploy the site. Checking out with a personal token
+          # means the push comes from that account and deploy.yml runs on it like any other push.
+          token: ${{ secrets.WIKI_COMMIT_TOKEN }}
+
+      - name: Fetch the current point_script.d.ts from GameTracking-CS2
+        run: |
+          curl --fail --silent --location \
+            https://raw.githubusercontent.com/SteamTracking/GameTracking-CS2/master/content/csgo/maps/editor/zoo/scripts/point_script.d.ts \
+            -o cs_script_dump/point_script.d.ts
+
+      - name: Did the file itself change
+        id: file
+        run: |
+          # cheap first gate: identical input means identical output, no need to install and build
+          if git diff --quiet --ignore-cr-at-eol -- cs_script_dump/point_script.d.ts; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "point_script.d.ts is unchanged, nothing to do"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "point_script.d.ts has changed, regenerating"
+          fi
+
+      - uses: actions/setup-node@v4
+        if: steps.file.outputs.changed == 'true'
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Regenerate the api tables
+        if: steps.file.outputs.changed == 'true'
+        run: |
+          npm ci
+          npm run generate-cs-script-docs
+
+      - name: Commit if the output differs
+        if: steps.file.outputs.changed == 'true'
+        run: |
+          git add cs_script_dump/point_script.d.ts "docs/Scripting/Counter-Strike 2/cs_script/_apiTables.mdx"
+
+          if git diff --cached --quiet; then
+            echo "nothing differs from the repo, no commit"
+            exit 0
+          fi
+
+          # the GameTracking commit that carried this version, so the history says which game
+          # update it was. The dispatch does not include it, so ask, best effort either way
+          upstream=$(curl --fail --silent \
+            "https://api.github.com/repos/SteamTracking/GameTracking-CS2/commits?path=content/csgo/maps/editor/zoo/scripts/point_script.d.ts&per_page=1" \
+            | grep -m1 -oE '"sha": *"[0-9a-f]+"' | grep -oE '[0-9a-f]{40}' || true)
+
+          # Committed as the wiki maintainer rather than github-actions[bot], to match the token the
+          # push goes out with, so the commit and the push agree on who made the change.
+          git config user.name "Angel"
+          git config user.email "angelcazacu8@gmail.com"
+          git commit -m "Update cs_script API docs" \
+            ${upstream:+-m "https://github.com/SteamTracking/GameTracking-CS2/commit/$upstream"}
+          git push
