@@ -1,0 +1,395 @@
+---
+description: Valve's strongly typed, generic object graph data structure.
+title: KV2/DMX
+---
+
+**Datamodel** is Valve's strongly typed, generic object graph data structure. **DMX** (Data Model eXchange... they tried) is the container file format it is stored in, it has both a binary and a text encoding.
+
+It was introduced late in the life span of Source 1 as the successor of KeyValues (KV1). The `.dmx` model/animation sources that replaced `.smd` in the model pipeline, `.pcf` particle systems and Source Filmmaker sessions. Source 2 mostly keeps it for editor side data.
+
+- [`.vmap`](./vmap/index.mdx): uncompiled [Hammer](../EngineTools/HammerEditor/index.mdx) maps.
+- `.dmx`: mesh, animation and morph sources that [ModelDoc](../EngineTools/ModelDoc/index.mdx) can import next to `.fbx`.
+- Source Filmmaker sessions in games that ship it (for example <Game name="dota2" />).
+
+:::info
+Compiled assets (`.vmap_c`, `.vmdl_c`, `.vpcf_c`) are **not** DMX, those are resource files, in source2 DMX is a legacy format and basically only used by tools for content formats.
+:::
+
+## Data model
+
+A DMX file has two independent parts: 
+
+- an **encoding** (how the bytes are laid out, `binary` or `keyvalues2 (text)` )
+- a **format** (the schema of the data inside, for example `vmap` or `model`). 
+
+Both are declared in the header, so a generic reader can load any DMX file without knowing the format, it just won't easily know what the data means. 
+
+Which encoding to use is a tradeoff: `keyvalues2` is human readable, diffable and hand editable, which makes it the right choice for small files and for anything you want to read or generate yourself, `binary` is much smaller (large arrays of floats and ints in particular), faster to load and has no delimiters or quoting to get wrong, which is why the tools save in it by default. The two are lossless in both directions and [dmxconvert](#dmxconvert) switches between them.
+
+:::info
+<Tool name="github" suffix="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> is an open source C# library that reads and writes every 
+known version of both encodings, it is what <Tool name="s2v"/> uses to write `.vmap` files when decompiling maps.
+
+Hammer can save a `.vmap` as text through `File -> Save Copy As Text`, which is the easiest way to get a readable `keyvalues2` example of a Source 2 DMX file.
+
+A complete list of libraries that handle DMX can be found in the [Libraries](#libraries) section.
+
+Everything in this document was verified against those two, against real <Game name="cs2" /> `.vmap` files, and against the Source 1 datamodel code.
+:::
+
+A DMX file is a set of **elements**, each element holds a list of **attributes**, 
+and an attribute of type `element` (or `element_array`) points at other elements, that is how they are linked together.
+
+### Elements
+
+An **element** is a named object with a **type** (its class name, for example `CMapRootElement` or `DmeModel`), 
+a **name** (free text, often empty), a globally unique **id** (a 16 byte [GUID](https://en.wikipedia.org/wiki/Universally_unique_identifier)) and an ordered list of **attributes**.
+
+DMX is a graph, every file has exactly one **root element**, other elements are reached through `element` and `element_array` attributes and since attributes store *references* 
+rather than owning their target the same element can be referenced from several places.
+
+References can even form cycles, and an element can also reference an element that does not exist in the file at all (an **external** or **stub** reference, 
+identified only by its GUID).
+
+### How elements are laid out
+
+Because an element can be referenced from more than one place, the file cannot simply nest elements inside each other, the two encodings solve this differently:
+
+- In the **text encoding** (KeyValues2) an element that is referenced exactly once is written inline, directly as the value of the attribute that references it. 
+An element that is referenced more than once is instead written as its own block at the top level of the file, next to the root, and every attribute that points at it only stores its GUID (`"element" "<guid>"`). 
+
+  ```
+  "CMapRootElement"              <- root, first block in the file
+  {
+      "world" "CMapWorld"        <- referenced once: inlined
+      {
+          "children" "element_array"
+          [
+              "element" "ede00a25-12fc-4da3-ac60-5e6f7d5fcdcf",    <- referenced from more than one place: GUID only
+              "CMapEntity" { ... }                                 <- referenced once: inlined
+          ]
+      }
+  }
+
+  "CMapMesh"    <- the shared element, written at the top level
+  {
+      "id" "elementid" "ede00a25-12fc-4da3-ac60-5e6f7d5fcdcf"
+      ...
+  }
+  ```
+
+- In the **binary encoding** nothing is inlined,  all elements are stored in one flat list (the root is entry 0) and every `element` attribute stores the index of its target in that list, no matter how many times it is referenced.
+
+A reader should therefore resolve references by GUID (text) or by index (binary) and not assume anything about where in the file an element physically appears.
+
+### Attributes
+
+An **attribute** is a `name`, a `type` and a `value`. The type is one of the fixed set below, either a single value or an array of a single value type.
+Attribute names are unique within an element.
+
+| Type         | Text name (KeyValues2) | Binary id | Binary array id | Value                                                                                   |
+| ------------ | ---------------------- | --------: | --------------: | --------------------------------------------------------------------------------------- |
+| Element      | `element`              |         1 |              33 | Reference to another element (or `null`)                                                |
+| Int          | `int`                  |         2 |              34 | 32 bit signed integer                                                                   |
+| Float        | `float`                |         3 |              35 | 32 bit float                                                                            |
+| Bool         | `bool`                 |         4 |              36 | 1 byte, `0` or `1`                                                                      |
+| String       | `string`               |         5 |              37 | UTF8 text                                                                              |
+| Binary       | `binary`               |         6 |              38 | Arbitrary bytes                                                                         |
+| Time         | `time`                 |         7 |              39 | A timestamp, stored as 32 bit integer in 1/10000 s in binary, seconds in text           |
+| Color        | `color`                |         8 |              40 | RGBA, 4 x 8 bit                                                                         |
+| Vector2      | `vector2`              |         9 |              41 | 2 x float                                                                               |
+| Vector3      | `vector3`              |        10 |              42 | 3 x float                                                                               |
+| Vector4      | `vector4`              |        11 |              43 | 4 x float                                                                               |
+| QAngle       | `qangle`               |        12 |              44 | pitch, yaw, roll as 3 x float                                                           |
+| Quaternion   | `quaternion`           |        13 |              45 | x, y, z, w as 4 x float                                                                 |
+| Matrix       | `matrix`               |        14 |              46 | 4x4 matrix, 16 x float, written row by row                                              |
+| UInt64       | `uint64`               |        15 |              47 | 64 bit unsigned integer. Source 2 only (binary 9 / keyvalues2 4)                        |
+| UInt8        | `uint8`                |        16 |              48 | 8 bit unsigned integer. Source 2 only (binary 9 / keyvalues2 4)                         |
+
+Array types are named `<type>_array` in text (`int_array`, `element_array`, `vector3_array`). 
+
+In binary the array id is `32 + value id` in Source 2's version 9, in older versions arrays directly follow the 14 value types (`14 + value id`, so `element_array` is 15 and `matrix_array` is 28), see [binary versions](#versions).
+
+:::note
+`binary` (id 6) and `uint8_array` (id 48) both describe a blob of bytes and Source 2 accepts both, `binary` is what the tools write.\
+In binary versions 1 and 2, id 7 was an `objectid` (a GUID value), it was removed and `time` took its slot in version 3.
+:::
+
+### Prefix element
+
+Source 2 files can carry a **prefix element**, it is a container of attributes that comes *before* the actual element data, it allows tools to read metadata without parsing the whole file. In a `.vmap` it holds the asset preview thumbnail and the list of assets the map references:
+
+```
+"$prefix_element$"
+{
+	"id" "elementid" "baec7cd3-e2e3-4c81-890c-b7271d646563"
+	"asset_preview_thumbnail" "binary" "FFD8FFE0..."
+	"asset_preview_thumbnail_format" "string" "jpg"
+	"map_asset_references" "string_array"
+	[
+		"models/de_something/some/thing.vmdl",
+	]
+}
+```
+
+It only exists in `binary` version 9 and `keyvalues2` version 4. 
+
+## Header
+
+Every DMX file starts with a single line of text, in the form of an XML comment.
+
+```
+<!-- dmx encoding <encoding name> <encoding version> format <format name> <format version> -->
+```
+
+For example:
+
+| Header                                               | Where                                                     |
+| ---------------------------------------------------- | --------------------------------------------------------- |
+| `<!-- dmx encoding binary 9 format vmap 35 -->`      | <Game name="cs2" /> `.vmap` saved by Hammer               |
+| `<!-- dmx encoding keyvalues2 4 format vmap 35 -->`  | the same map exported with `Save Copy As Text`            |
+| `<!-- dmx encoding binary 9 format model 22 -->`     | Source 2 `.dmx` animation/model source                    |
+| `<!-- dmx encoding binary 5 format model 18 -->`     | Source 1 (SFM / studiomdl era) model source               |
+
+- **encoding name** is `binary` or `keyvalues2`, or one of their variants: `binary_seqids`, `keyvalues2_flat`, `keyvalues2_noids` (described in their sections below).
+- **format name / version** identify the *schema* of the element tree (`vmap`, `model`, `sfm_session`) and are meaningful only to the tool that owns that format, the encoding does not change with them. The generic format name `dmx` is used when no schema applies.
+- In the binary encoding the header line is terminated by `\n` followed by a `NUL` byte (`00`), the binary data starts right after it. In text encodings it is just the first line.
+
+## KeyValues2 encoding
+
+KeyValues2 is the text encoding. It looks like Valve's classic KeyValues (KV1 or `.vdf`) with an extra type token on every line, every token is a double-quoted string, `"` inside a token is escaped as `\"`, whitespace between tokens is free-form and `{ } [ ]` are structural.
+
+An abridged <Game name="cs2" /> `.vmap` exported as text:
+
+```
+<!-- dmx encoding keyvalues2 4 format vmap 35 -->
+"CMapRootElement"
+{
+	"id" "elementid" "c73e29a3-b55d-40db-afdc-61203fabce54"
+	"isprefab" "bool" "0"
+	"editorbuild" "int" "9916"
+	"itemFile" "string" ""
+	"defaultcamera" "CStoredCamera"
+	{
+		"id" "elementid" "cd7c365b-3099-464f-87af-ca228daffe04"
+		"position" "vector3" "-270.1130371094 -233.075378418 562.0910644531"
+		"lookat" "vector3" "-269.3598937988 -233.6470489502 561.7655029297"
+	}
+	"world" "CMapWorld"
+	{
+		"id" "elementid" "c68a8842-922a-4a8a-ae05-268ea579658c"
+		"referenceID" "uint64" "0x0"
+		"children" "element_array"
+		[
+			"element" "ede00a25-12fc-4da3-ac60-5e6f7d5fcdcf",
+			"CMapEntity"
+			{
+				"id" "elementid" "7c2f9e0a-5a2c-4f0e-9a1e-2a6e1f6a2b3c"
+				"origin" "vector3" "83 -530 196"
+				"angles" "qangle" "0 0 0"
+			}
+		]
+		"variableNames" "string_array" [ ]
+	}
+}
+
+"CMapMesh"
+{
+	"id" "elementid" "ede00a25-12fc-4da3-ac60-5e6f7d5fcdcf"
+	"tintColor" "color" "255 255 255 255"
+	"vertexData" "binary" "
+		00010203 04050607
+	"
+}
+```
+
+### Structure
+
+- The file is a sequence of top-level element blocks: `"<type>" { ... }`. The first one (after the optional [`$prefix_element$`](#prefix-element)) is the **root**.
+- Inside a block, the first line is the element's id: `"id" "elementid" "<guid>"`. It is written as a pseudo-attribute but it is not one as `elementid` is not an attribute type. 
+- The element's name is written as a normal `"name" "string" "..."` attribute (omitted when empty).
+- Every other line is an attribute: `"<name>" "<type>" "<value>"`.
+- An **element attribute** is written in one of three ways:
+  - inline, if the element is referenced exactly once: `"<name>" "<type of child>" { ... }` (note the type token is the child's class name, not `element`),
+  - as a reference, if the element is referenced from more than one place: `"<name>" "element" "<guid>"`, the element itself is then written as its own top-level block after the root,
+  - `"<name>" "element" ""` for a `null` reference.
+- **Arrays** are `"<name>" "<type>_array" [ v1, v2, ... ]`, values are separated by commas, an empty array is `[ ]`. `element_array` entries are either inline `"<type>" { ... }` blocks or `"element" "<guid>"` references following the same rule as above.
+- An `element` reference whose GUID does not appear in the file is an external/stub reference.
+
+### Value formatting
+
+| Type                                   | Text                                                                                                      |
+| -------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `int`, `uint8`                         | Decimal                                                                                                   |
+| `uint64`                               | Hexadecimal with `0x` prefix: `"0xdf41645d6af564a"`                                                       |
+| `float`                                | Decimal, `.` as separator                                                                                 |
+| `bool`                                 | `"0"` or `"1"`                                                                                            |
+| `string`                               | The text, `"` escaped as `\"`                                                                             |
+| `binary`                               | Hex string, two characters per byte. Hammer wraps long values over multiple lines with tabs, readers skip whitespace |
+| `time`                                 | Seconds as a decimal number                                                                               |
+| `color`                                | `"r g b a"` as integers 0-255                                                                             |
+| `vector2`/`vector3`/`vector4`/`qangle`/`quaternion` | Components separated by spaces                                                               |
+| `matrix`                               | 16 floats separated by spaces, row by row.                                |
+
+### Versions and variants
+
+| Encoding            | Version | Notes                                                                                                          |
+| ------------------- | ------: | -------------------------------------------------------------------------------------------------------------- |
+| `keyvalues2`        |       1 | Source 1. Supports every type except `uint8` and `uint64`                                                      |
+| `keyvalues2`        |   2 - 3 | Same syntax, accepted by Datamodel.NET, no known differences                                                   |
+| `keyvalues2`        |       4 | Source 2 (Hammer `Save Copy As Text`). Adds `uint8`, `uint64` and the `$prefix_element$` block                 |
+| `keyvalues2_flat`   |   1 / 4 | Variant where **every** element is a top level block and all element attributes are `"element" "<guid>"` references, nothing is inlined. Same version numbering as `keyvalues2` |
+| `keyvalues2_noids`  |   1 / 4 | Variant that drops the `"id" "elementid"` line from inlined elements (they are never referenced, so the id is noise). Elements that are referenced more than once keep their id and are still written at the top level exactly like in plain `keyvalues2`. Datamodel.NET can write but not read it |
+
+:::tip
+When hand writing `keyvalues2` (useful for debugging), the ids of new elements just need to be unique GUIDs, any generator works.
+:::
+
+## Binary encoding
+
+The binary encoding is little endian, there is no padding or alignment. 
+
+A `string` below is a NUL terminated UTF-8 string, a `string ref` is an index into the string table (`int16` or `int32` depending on the version, see [versions](#versions)).
+
+```cpp
+struct DmxBinary
+{
+    char        header[];           // "<!-- dmx encoding binary 9 format vmap 35 -->\n", NUL terminated
+
+    // version 9 only
+    int32       prefixElementCount;
+    PrefixElement prefixElements[prefixElementCount];
+
+    // version 2+
+    int32       stringCount;        // int16 in version 2 and 3
+    string      stringTable[stringCount];
+
+    int32       elementCount;
+    ElementHeader elementHeaders[elementCount];  // the element index
+    ElementBody   elementBodies[elementCount];   // attributes, same order as the index
+};
+
+struct PrefixElement
+{
+    int32       attributeCount;
+    struct
+    {
+        string  name;               // always an inline string, the string table comes later
+        uint8   type;
+        Value   value;              // strings inside are inline too
+    } attributes[attributeCount];
+};
+
+struct ElementHeader
+{
+    string ref  type;               // class name (inline string in version 1)
+    string ref  name;               // inline string in versions 1-3
+    uint8       id[16];             // GUID
+};
+
+struct ElementBody
+{
+    int32       attributeCount;
+    struct
+    {
+        string ref  name;           // inline string in version 1
+        uint8       type;           // see the table above
+        Value       value;
+    } attributes[attributeCount];
+};
+```
+
+The order of the **element index** is the order everything else refers to: element attributes store the 0-based index of their target into that list. The root element is the one at index 0 (writers emit the root first and then its children depth-first).
+
+### Values
+
+| Type                  | Bytes                                                                                                                                                |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `element`             | `int32` index into the element index. `-1` is `null`. `-2` is an external/stub reference and is followed by the target's GUID as an inline text string (`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` + NUL, 37 bytes) |
+| `int`                 | `int32`                                                                                                                                             |
+| `float`               | `float32`                                                                                                                                           |
+| `bool`                | `uint8`                                                                                                                                             |
+| `string`              | `string ref` in version 4+, inline string in versions 1-3                                                                                            |
+| `binary`              | `int32` length followed by the bytes                                                                                                                |
+| `time`                | `int32`, in ten thousandths of a second (`seconds * 10000`)                                                                                         |
+| `color`               | 4 x `uint8`, RGBA                                                                                                                                   |
+| `vector2`/`vector3`/`vector4`/`qangle`/`quaternion` | 2/3/4 x `float32`                                                                                                                    |
+| `matrix`              | 16 x `float32`                                                                                                                                      |
+| `uint64`              | `uint64`                                                                                                                                            |
+| `uint8`               | `uint8`                                                                                                                                             |
+| any `*_array`         | `int32` count followed by that many values, encoded as above, **except** that strings inside arrays are always inline (never a `string ref`), in every version |
+
+### Versions
+
+| Version | Used by                                  | Differences                                                                                                                                                         |
+| ------: | ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|       1 | Early Source 1                           | No string table, every string is inline                                                                                                                            |
+|       2 | Source 1                                 | String table added (`int16` count, `int16` refs), used for element types and attribute names only. Type id 7 is `objectid`                                         |
+|       3 | Source 1                                 | Type id 7 becomes `time`, `objectid` attributes are dropped on load                                                                                                |
+|       4 | Source 1 (SFM, `.dmx` model sources)     | String table count is `int32`, element names and `string` attribute values now go through the table. Refs still `int16`                                            |
+|       5 | Source 1 (CS:GO era, default for `studiomdl` `.dmx`) | String refs are `int32`                                                                                                                               |
+|       9 | Source 2                                 | Prefix element block, `uint64` (15) and `uint8` (16) types, array ids move to `33`-`48`                                                                            |
+
+Versions 6 to 8 have not been seen in any shipped file. Source 1's own code reads only up to 5, Source 2 tools write 9. In versions 1-5 arrays are ids `15`-`28` (`element_array` = 15 ... `matrix_array` = 28), everything else about the layout is the same.
+
+#### binary_seqids
+
+`binary_seqids` is a Source 2 variant with the exact same layout as `binary` (same version number, `9`). 
+
+The only difference is that element ids are not random GUIDs: the 16 id bytes hold a sequential number instead (`01 00 00 00 00 ...` for the first element, `02 00 ...` for the second, and so on). 
+
+Writing the same data twice therefore produces identical bytes, which is what you want for diffs and version control, at the cost of the ids no longer being globally unique.
+
+### Example
+
+The first bytes of a <Game name="cs2" /> `.vmap` (`binary 9`):
+
+```
+3C 21 2D 2D 20 64 6D 78 20 65 6E 63 6F 64 69 6E   <!-- dmx encodin
+67 20 62 69 6E 61 72 79 20 39 20 66 6F 72 6D 61   g binary 9 forma
+74 20 76 6D 61 70 20 33 35 20 2D 2D 3E 0A 00      t vmap 35 -->.NUL   header
+01 00 00 00                                        1 prefix element
+03 00 00 00                                          with 3 attributes
+61 73 73 65 74 5F 70 72 65 76 69 65 77 5F 74 68      "asset_preview_thumbnail" NUL   attribute name (inline string)
+75 6D 62 6E 61 69 6C 00
+06                                                   type 6 = binary
+FA 8E 00 00                                          36602 bytes follow
+FF D8 FF E0 00 10 4A 46 49 46 ...                    the JPEG thumbnail
+...                                                  "asset_preview_thumbnail_format" string "jpg", "map_asset_references" string_array
+C4 00 00 00                                        196 strings in the string table
+43 4D 61 70 52 6F 6F 74 45 6C 65 6D 65 6E 74 00      "CMapRootElement" NUL, then 195 more strings
+2B 00 00 00                                        43 elements
+00 00 00 00  01 00 00 00  A3 29 3E C7 5D B5 DB 40 AF DC 61 20 3F AB CE 54
+                                                     element 0: type = string 0 "CMapRootElement", name = string 1 "", GUID c73e29a3-b55d-40db-afdc-61203fabce54
+...                                                  42 more element headers, then the attribute bodies
+```
+
+## Reading and writing DMX
+
+### dmxconvert
+
+Every Source 2 game with tools ships `dmxconvert.exe` in `game/bin/win64/`. It loads any DMX file, optionally upgrades its format version, and writes it back in the encoding you ask for, which makes it the quickest way to turn a binary file into readable text and back:
+
+```bash
+dmxconvert.exe -i my_map.vmap -o my_map_text.vmap -oe keyvalues2
+```
+
+```bash
+dmxconvert.exe -i my_map_text.vmap -o my_map.vmap -oe binary
+```
+
+| Argument              | Meaning                                                                                                   |
+| --------------------- | --------------------------------------------------------------------------------------------------------- |
+| `-i <file>`           | Input file, wildcards are allowed (with `-r` to recurse into subfolders)                                  |
+| `-o <file>`           | Output file. If omitted the input is overwritten                                                          |
+| `-oe <encoding>`      | Output encoding: `binary`, `binary_seqids`, `keyvalues2`, `keyvalues2_flat`, `keyvalues2_noids`           |
+| `-of <format>`        | Output format name, only needed when converting *between* formats, leave it out to keep the input's format |
+| `-ie <encoding>`      | Hint for the input encoding, only needed for files without a proper header (legacy `keyvalues` imports)    |
+| `-upconvert`          | Batch mode: upgrade files to the current format version in place                                          |
+
+### Libraries
+
+- <Tool name="github" suffix="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> (C#) - reads/writes `binary` 1-5 and 9, `keyvalues2` 1-4, typed element classes for the `vmap` format.
+- <Tool name="github" suffix="datamodel.py" link="https://github.com/Artfunkel/BlenderSourceTools/blob/master/io_scene_valvesource/datamodel.py"/> (Python) - the reader/writer inside Blender Source Tools, used for Source 1 and Source 2 `.dmx` model exports.
+- <Tool name="github" suffix="datamodel-rs" link="https://github.com/Jakobg1215/datamodel-rs"/> (Rust) - DMX reader/writer.
+- <Tool name="github" suffix="sourcepp" link="https://github.com/craftablescience/sourcepp"/> (C++, with Python bindings) - a collection of Source format parsers that includes DMX.

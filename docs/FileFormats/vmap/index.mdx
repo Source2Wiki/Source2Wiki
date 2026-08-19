@@ -5,11 +5,11 @@ title: VMAP
 
 .vmap is the file format for uncompiled Source2 maps when they are being edited in [Hammer](../../EngineTools/HammerEditor/index.mdx).
 
-It is a [DMX](../dmx.md) file under binary encoding version 4, [Hammer](../../EngineTools/HammerEditor/index.mdx) can export a plain text version if you go to `File -> Save Copy As Text`
+It is a [DMX](../dmx.mdx) file under binary encoding version 9, [Hammer](../../EngineTools/HammerEditor/index.mdx) can export a plain text version if you go to `File -> Save Copy As Text`
 
 :::info
 <Tool name="s2v"/> can decompile compiled maps (.vmap_c usually contained within a VPK) into a .vmap\
-<Tool name="github" suffix="Datamodel.NET" link="https://github.com/kristiker/Datamodel.NET"/> can be used to read and write kv2 files including vmaps, using C#.
+<Tool name="github" suffix="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> can be used to read and write kv2 files including vmaps, using C#.
 
 An implemented version of the vmap format as described here can be found in the source code of <Tool name="github" suffix="VRF (s2v)" link="https://github.com/ValveResourceFormat/ValveResourceFormat/blob/master/ValveResourceFormat/IO/ContentFormats/ValveMap.cs"/>, used for vmap_c decompilation.
 :::
