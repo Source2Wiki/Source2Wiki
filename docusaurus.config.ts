@@ -198,7 +198,7 @@ const config: Config = {
               <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap;">
 
                   <div style="text-align: left; gap: 4px;">
-                    <span>Created and maintained by <a href="https://angelcazacu.com">Angel</a>, <a href="https://github.com/DoctorGurke">DoctorGurke</a> and <a href="https://github.com/Source2Wiki/Source2Wiki/graphs/contributors">various contributors</a>.</span>
+                    <span>Created and maintained by <a href="https://angelcazacu.com">Angel</a>, <a href="https://github.com/DoctorGurke">DoctorGurke</a> and <a href="https://github.com/Source2Wiki/Source2Wiki/graphs/contributors?all=1">various contributors</a>.</span>
                   </div>
 
                   <div style="text-align: right; gap: 4px;">
