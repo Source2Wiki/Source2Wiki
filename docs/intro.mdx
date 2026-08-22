@@ -6,61 +6,17 @@ hide_table_of_contents: true
 title: Welcome
 description: Community driven documentation for the Source 2 engine.
 ---
-import React from 'react';
-import ThemedImage from '@theme/ThemedImage'
-import {useHistory, useLocation} from '@docusaurus/router';
+import ThemedImage from '@theme/ThemedImage';
+import { Hero, GameCards, StartHere } from '@site/src/components/Homepage';
 
-export const buttonStyle = {
-    padding:0,
-    border: "none",
-    background: "none",
-    cursor: "pointer"
-};
+<Hero />
 
-export const gameStyle = {
-    boxShadow: "0 4px 10px rgba(0,0,0,0.3)",
-    borderRadius: 7,
-    marginRight: 6,
-    marginBottom: 3
-};
+## Pick your game
 
-export function onGameClick(game) {
-    const url = new URL(window.location.origin);
-    url.pathname = '/CommunityGuides/installS2Sdk';
-    url.searchParams.set('game', game);
-    window.location.href = url.toString();
-}
+Each card takes you to the workshop tools setup for that game, and sets it as the game for the whole wiki.
 
-# Source2 Wiki
-### Community driven Documentation for everything Source2
+<GameCards />
 
-Click on the Game Cards below to get started with the workshop tools.
+## Where to start
 
-<div style={{display: 'flex', maxWidth: '70rem'}}>
-    <p>
-        <button style={buttonStyle} onClick={() => onGameClick("cs2")}>
-            <img className="no-zoom" style={gameStyle} src={require('@site/static/img/games/cs2_header.jpg').default} alt="Cs2 Header Image"/>
-        </button>
-        <button style={buttonStyle} onClick={() => onGameClick("hla")}>
-            <img className="no-zoom" style={gameStyle} src={require('@site/static/img/games/hla_header.jpg').default} alt="Half-Life: Alyx Header Image"/>
-        </button>
-        <button style={buttonStyle} onClick={() => onGameClick("dota2")}>
-            <img className="no-zoom" style={gameStyle} src={require('@site/static/img/games/dota2_header.jpg').default} alt="Dota2 Header Image"/>
-        </button>
-        <button style={buttonStyle} onClick={() => onGameClick("steamvr")}>
-            <img className="no-zoom" style={gameStyle} src={require('@site/static/img/games/steamvr_header.jpg').default} alt="SteamVR Header Image"/>
-        </button>
-    </p>
-</div>
-
-:::info
-Pages can be split by game and selected site-wide with the Game Selector at the top, or directly on the page if it contains multiple versions
-<ThemedImage
-    alt="In-Page Game Selector"
-    style={{borderRadius:7}}
-    sources={{
-        light: '/img/wiki/game-selector-light.png',
-        dark: '/img/wiki/game-selector-dark.png',
-    }}
-/>
-:::
+<StartHere />
