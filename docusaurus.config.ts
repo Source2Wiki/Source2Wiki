@@ -8,7 +8,7 @@ import { admonitions } from './src/admonitions';
 
 const config: Config = {
   title: 'Source2 Wiki',
-  tagline: 'A community driven documentation for everything Source2.',
+  tagline: 'Community driven documentation for the Source2 engine.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -18,7 +18,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://source2.wiki',
+  url: 'https://www.source2.wiki',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -73,6 +73,7 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          showLastUpdateTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl: ({ locale, docPath }) => {
@@ -81,6 +82,11 @@ const config: Config = {
           admonitions,
         },
         blog: false,
+        sitemap: {
+          // Uses git dates, requires `docs.showLastUpdateTime: true` and full git history at build time.
+          lastmod: 'date',
+          ignorePatterns: ['/search', '/markdown-page', '/unlisted'],
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -98,7 +104,10 @@ const config: Config = {
         '@context': 'https://schema.org/',
         '@type': 'WebSite',
         name: 'Source2 Wiki',
-        url: 'https://source2.wiki/',
+        alternateName: ['Source 2 Wiki', 'S2 Wiki', 'Source2Wiki', 'S2Wiki'],
+        url: 'https://www.source2.wiki/',
+        description: 'Community driven documentation for the Source2 engine.',
+        inLanguage: 'en',
         logo: 'https://www.source2.wiki/img/logo.svg',
         isAccessibleForFree: true,
         screenshot: "https://www.source2.wiki/img/docusaurus-social-card.jpg",
@@ -211,8 +220,8 @@ const config: Config = {
       respectPrefersColorScheme: true,
     },
     metadata: [
-      { name: 'description', content: 'A community driven documentation for everything Source2.' },
-      { name: 'keywords', content: 'source2, wiki, source2wiki' },
+      { name: 'description', content: 'Community driven documentation for the Source2 engine.' },
+      { name: 'keywords', content: 'source2, source 2, s2, s2wiki, s2 wiki, source2wiki, hammer, counter strike, cs2, dota 2, half-life alyx, hla, deadlock, dl, steamvr' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'og:site_name', content: 'Source2 Wiki' },
     ],
