@@ -1,0 +1,32 @@
+{
+  "Name": "custom_hud_layout",
+  "Pages": [
+    {
+      "Game": "cs2",
+      "EntityType": "Point",
+      "Name": "custom_hud_layout",
+      "Description": "Panorama UI that can be controlled by cs_script. See point_script.",
+      "IconPath": "static/fgd_dump/img/cs2/custom_hud_layout.png",
+      "PageAnnotation": null,
+      "Properties": [
+        {
+          "FriendlyName": "Name",
+          "InternalName": "targetname",
+          "VariableType": "TargetSource",
+          "Description": "The name that other entities refer to this entity by.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "A panorama layout file. A limited set of panel types and attributes are supported. Run command dev_report_info_hud_layout for more details.",
+          "InternalName": "layout",
+          "VariableType": "Resource",
+          "Description": "",
+          "Options": [],
+          "Annotations": []
+        }
+      ],
+      "InputOutputs": []
+    }
+  ]
+}
