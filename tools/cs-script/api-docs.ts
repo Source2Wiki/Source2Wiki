@@ -218,7 +218,7 @@ export function renderApi(api: Api): string {
 
     out.push(`### ${container.name}`);
     if (container.description.length > 0) {
-      out.push(container.description);
+      out.push(escapeProse(container.description));
     }
     out.push("");
 
@@ -242,7 +242,7 @@ export function renderApi(api: Api): string {
     for (const alias of api.typeAliases) {
       out.push(`### ${alias.name}`);
       if (alias.description.length > 0) {
-        out.push(alias.description);
+        out.push(escapeProse(alias.description));
       }
       out.push("", "```ts", `type ${alias.name} = ${alias.definition};`, "```", "");
     }
@@ -254,7 +254,7 @@ export function renderApi(api: Api): string {
     for (const entry of api.interfaces) {
       out.push(`### ${entry.name}`);
       if (entry.description.length > 0) {
-        out.push(entry.description, "");
+        out.push(escapeProse(entry.description), "");
       }
       out.push("```ts", `interface ${entry.name} {`);
       out.push(...entry.bodyLines.map((line) => `    ${line}`));
@@ -268,7 +268,7 @@ export function renderApi(api: Api): string {
     for (const entry of api.enums) {
       out.push(`### ${entry.name}`);
       if (entry.description.length > 0) {
-        out.push(entry.description, "");
+        out.push(escapeProse(entry.description), "");
       }
       out.push(
         ...entry.members.map((member) => {
@@ -285,14 +285,14 @@ export function renderApi(api: Api): string {
 }
 
 /**
- * Escapes a value so it survives a markdown table cell and MDX. Braces inside a backtick span
- * are left alone, that is code the reader is meant to see verbatim.
+ * Escapes a value so MDX takes it as text rather than JSX. Braces inside a backtick span are
+ * left alone, that is code the reader is meant to see verbatim.
  */
-function escapeCell(input: string): string {
+function escapeProse(input: string): string {
   let escaped = "";
   let inCode = false;
 
-  for (const character of input.replaceAll("&", "\\&").replaceAll("<", "\\<").replaceAll(">", "\\>").replaceAll("|", "\\|")) {
+  for (const character of input.replaceAll("&", "\\&").replaceAll("<", "\\<").replaceAll(">", "\\>")) {
     if (character === "`") {
       inCode = !inCode;
       escaped += character;
@@ -303,8 +303,13 @@ function escapeCell(input: string): string {
     }
   }
 
+  return escaped;
+}
+
+/** Escapes a value so it also survives a markdown table cell, which pipes and newlines would break. */
+function escapeCell(input: string): string {
   // last, so the tag itself is never caught by the < and > escaping above
-  return escaped.replaceAll("\r\n", "<br />").replaceAll("\r", "<br />").replaceAll("\n", "<br />");
+  return escapeProse(input.replaceAll("|", "\\|")).replaceAll("\r\n", "<br />").replaceAll("\r", "<br />").replaceAll("\n", "<br />");
 }
 
 function escapeRegex(value: string): string {
