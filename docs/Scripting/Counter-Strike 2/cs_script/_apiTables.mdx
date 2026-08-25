@@ -15,6 +15,7 @@ Access these functions by importing Instance from "cs_script/point_script".
 |SetSaveData|SetSaveData(data: string): void|Writes save data associated with this workshop addon.<br /><br />Will synchronously write to disk every time this is called.|
 |GetSaveData|GetSaveData(): string|Retrieves the save data associated with this workshop addon.<br /><br />Will synchronously read from disk the first time this is called.|
 |SetNextThink|SetNextThink(time: number): void|Set when the OnThink callback should next be run. The exact time will be on the tick nearest to the specified time, which may be earlier or later.|
+|Delay|Delay(delay: number): Promise\<void\>|Returns a promise that resolves after `delay` number of seconds. The exact time will be on the tick nearest to the specified delay, which may be earlier or later.|
 |EntFireAtName|EntFireAtName(config: \{ name: string, input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on all targets matching the specified names.|
 |EntFireAtTarget|EntFireAtTarget(config: \{ target: [Entity](#entity), input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on the specified target.|
 |DisconnectOutput|DisconnectOutput(connectionId: number): void|Find entities by name.|
@@ -29,6 +30,7 @@ Access these functions by importing Instance from "cs_script/point_script".
 |TraceBox|TraceBox(trace: \{ mins: [Vector](#vector), maxs: [Vector](#vector) \} \& [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace an axis aligned bounding box along a line and detect collisions|
 |TracePlayer|TracePlayer(trace: [PlayerTrace](#playertrace)): [PlayerTraceResult](#playertraceresult)|Trace as a player would collide|
 |TraceBullet|TraceBullet(trace: [BulletTrace](#bullettrace)): [BulletTraceResult](#bullettraceresult)[]|Trace as a bullet and detect hits and damage|
+|IsDedicatedServer|IsDedicatedServer(): boolean|Get if the server is a dedicated server.|
 |GetGameTime|GetGameTime(): number|Get the game time in seconds.|
 |IsWarmupPeriod|IsWarmupPeriod(): boolean|Get if the game is currently in a Warmup period.|
 |IsFreezePeriod|IsFreezePeriod(): boolean|Get if the game is currently in a Freeze period.|
@@ -65,24 +67,29 @@ Access these functions by importing Instance from "cs_script/point_script".
 |OnRoundStart|OnRoundStart(callback: () =\> void): void|Called when a new round begins|
 |OnRoundEnd|OnRoundEnd(callback: (event: \{ winningTeam: number, reason: [CSRoundEndReason](#csroundendreason) \}) =\> void): void|Called when a team wins a round|
 |OnBeginRoundRestart|OnBeginRoundRestart(callback: () =\> void): void|Called at the start of cleanup for a round restart<br /><br />@experimental This method is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
-|OnBombPlant|OnBombPlant(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4), planter: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player plants the c4|
-|OnBombDefuse|OnBombDefuse(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4), defuser: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player defuses the c4|
+|OnBombPlantStart|OnBombPlantStart(callback: (event: \{ planter: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player starts planting their c4|
+|OnBombPlantAbort|OnBombPlantAbort(callback: (event: \{ planter: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player aborts planting their c4|
+|OnBombPlant|OnBombPlant(callback: (event: [BombPlantEvent](#bombplantevent)) =\> void): void|Called when a player plants their c4|
+|OnBombDefuseStart|OnBombDefuseStart(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4) \}) =\> void): void|Called when a player starts defusing a c4|
+|OnBombDefuseAbort|OnBombDefuseAbort(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4) \}) =\> void): void|Called when a player aborts defusing a c4|
+|OnBombDefuse|OnBombDefuse(callback: (event: [BombDefuseEvent](#bombdefuseevent)) =\> void): void|Called when a player defuses a c4|
 |OnBombExplode|OnBombExplode(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4) \}) =\> void): void|Called when a c4 explodes|
 |OnModifyPlayerDamage|OnModifyPlayerDamage(callback: (event: [ModifyPlayerDamageEvent](#modifyplayerdamageevent)) =\> [ModfiyPlayerDamageResult](#modfiyplayerdamageresult) \| void): void|Called immediately before a [CSPlayerPawn](#csplayerpawn) takes damage to armor and health.<br /><br />Called after hitgroup modifications are applied such as headshot multiplier.<br /><br />This won't be called if the player would take no damage. Such as if they're frozen or invulnerable or if friendly fire would disable the damage.<br /><br />Return `{ damage: N }` to modify the amount of damage.<br /><br />Return `{ damageFlags: event.damageFlags \| [CSDamageFlags](#csdamageflags).IGNORE_ARMOR }` to have the damage pierce armor.<br /><br />Return `{ abort: true }` to cancel the damage event.|
 |OnPlayerDamage|OnPlayerDamage(callback: (event: [PlayerDamageEvent](#playerdamageevent)) =\> void): void|Called when a player has taken damage.|
 |OnPlayerKill|OnPlayerKill(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn), inflictor?: [Entity](#entity), attacker?: [Entity](#entity), weapon?: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a player dies. `inflictor`, `attacker` and `weapon` will match the damage event that caused the kill.|
 |OnPlayerJump|OnPlayerJump(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player jumps off the ground.|
 |OnPlayerLand|OnPlayerLand(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player hits the ground while falling.|
-|OnPlayerChat|OnPlayerChat(callback: (event: \{ player: [CSPlayerController](#csplayercontroller) \| undefined, text: string, team: number \}) =\> void): void|Called when a player sends a chat message. `team` will match they player's team if the message was sent to team chat.|
+|OnPlayerChat|OnPlayerChat(callback: (event: \{ player?: [CSPlayerController](#csplayercontroller), text: string, team: number \}) =\> void): void|Called when a player sends a chat message. `team` will match they player's team if the message was sent to team chat.|
 |OnPlayerPing|OnPlayerPing(callback: (event: \{ player: [CSPlayerController](#csplayercontroller), position: [Vector](#vector) \}) =\> void): void|Called when a player pings a location.|
 |OnGunReload|OnGunReload(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun is reloaded.|
 |OnGunFire|OnGunFire(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun emits bullets. A shotgun will only trigger this once when emitting multiple bullets at once.|
-|OnBulletImpact|OnBulletImpact(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), position: [Vector](#vector), hitEntity: [Entity](#entity) \}) =\> void): void|Called when a bullet hits a surface.<br /><br />Penetrations can cause a single bullet to trigger multiple impacts.<br /><br />This will be called for all impacts of a bullet before any player damage events are called.|
+|OnBulletImpact|OnBulletImpact(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), position: [Vector](#vector), hitEntity?: [Entity](#entity) \}) =\> void): void|Called when a bullet hits a surface.<br /><br />Penetrations can cause a single bullet to trigger multiple impacts.<br /><br />This will be called for all impacts of a bullet before any player damage events are called.|
 |OnWeaponDrop|OnWeaponDrop(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), dropper: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a weapon is dropped.|
 |OnWeaponPickup|OnWeaponPickup(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a weapon is picked up.|
 |OnGrenadeThrow|OnGrenadeThrow(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), projectile: [CSGrenadeProjectileBase](#csgrenadeprojectilebase) \}) =\> void): void|Called when a grenade is thrown. `projectile` is the newly created grenade projectile.|
 |OnGrenadeBounce|OnGrenadeBounce(callback: (event: [GrenadeBounceEvent](#grenadebounceevent)) =\> void): void|Called when a grenade bounces.|
 |OnKnifeAttack|OnKnifeAttack(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), attackType: [CSWeaponAttackType](#csweaponattacktype) \}) =\> void): void|Called when a knife attacks, even if it misses.|
+|OnCustomHudClicked|OnCustomHudClicked( callback: (event: \{player: [CSPlayerController](#csplayercontroller), layout: [CustomHudLayout](#customhudlayout), buttonId: string\}) =\> void ): void|Called when a button in a [CustomHudLayout](#customhudlayout) is clicked.|
 |ConnectOutput|ConnectOutput(target: [Entity](#entity), output: string, callback: (inputData: \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> any): number \| undefined|Connect the output of an entity to a callback. The return value is a connection id that can be used in `DisconnectOutput`|
 |RegisterCheatCommand|RegisterCheatCommand(name: string, callback: (args: string) =\> void): void|Creates a console command that will run the specified callback. The command will only work when sv_cheats is true.|
 |OnBeforePlayerDamage|OnBeforePlayerDamage(callback: () =\> any): void|@deprecated This method will be removed in a future update|
@@ -108,6 +115,9 @@ The base class for all entities
 |GetEyeAngles|GetEyeAngles(): [QAngle](#qangle)|The angles of the eyes of this entity relative to the world.|
 |GetEyePosition|GetEyePosition(): [Vector](#vector)|The position of the eyes of this entity relative to the world|
 |Teleport|Teleport(newValues: \{ position?: [Vector](#vector), angles?: [QAngle](#qangle), velocity?: [Vector](#vector), angularVelocity?: [RotationVector](#rotationvector) \}): void|Update the physics state of this entity.|
+|Move|Move(newValues: \{ position?: [Vector](#vector), angles?: [QAngle](#qangle), velocity?: [Vector](#vector), angularVelocity?: [RotationVector](#rotationvector) \}): void|Move this entity without resetting the client's interpolation history.|
+|GetMoveType|GetMoveType(): [CSMoveType](#csmovetype)||
+|SetMoveType|SetMoveType(moveType: [CSMoveType](#csmovetype)): void||
 |GetClassName|GetClassName(): string||
 |GetEntityName|GetEntityName(): string||
 |SetEntityName|SetEntityName(name: string): void||
@@ -159,6 +169,16 @@ The base class for all entities
 |GetReserveAmmo|GetReserveAmmo(): number||
 |SetReserveAmmo|SetReserveAmmo(ammo: number): void||
 |IsSilencerOn|IsSilencerOn(): boolean||
+
+### C4
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|GetPlantStartTime|GetPlantStartTime(): number \| undefined||
+|GetPlantFinishTime|GetPlantFinishTime(): number \| undefined||
+|AbortPlant|AbortPlant(): void||
 
 ### CSWeaponData
 
@@ -252,6 +272,7 @@ The base class for all entities
 |FindWeapon|FindWeapon(name: string): [CSWeaponBase](#csweaponbase) \| undefined||
 |FindWeaponBySlot|FindWeaponBySlot(slot: [CSGearSlot](#csgearslot)): [CSWeaponBase](#csweaponbase) \| undefined||
 |GetActiveWeapon|GetActiveWeapon(): [CSWeaponBase](#csweaponbase) \| undefined||
+|GetC4|GetC4(): [C4](#c4) \| undefined||
 |DestroyWeapon|DestroyWeapon(target: [CSWeaponBase](#csweaponbase)): void||
 |DestroyWeapons|DestroyWeapons(): void||
 |DropWeapon|DropWeapon(target: [CSWeaponBase](#csweaponbase)): void||
@@ -263,12 +284,47 @@ The base class for all entities
 |SetHasHelmet|SetHasHelmet(hasHelmet: boolean): void||
 |HasDefuser|HasDefuser(): boolean||
 |SetHasDefuser|SetHasDefuser(hasDefuser: boolean): void||
+|GetDefuseTarget|GetDefuseTarget(): [CSPlantedC4](#csplantedc4) \| undefined||
 |IsDucking|IsDucking(): boolean||
 |IsDucked|IsDucked(): boolean||
 |IsScoped|IsScoped(): boolean||
 |IsNoclipping|IsNoclipping(): boolean||
+|IsBuyMenuOpen|IsBuyMenuOpen(): boolean||
+|GetCamera|GetCamera(): [CSPlayerCamera](#csplayercamera)||
 |IsCrouching|IsCrouching(): boolean|@deprecated This method will be removed in a future update|
 |IsCrouched|IsCrouched(): boolean|@deprecated This method will be removed in a future update|
+
+### CustomHudLayout
+CustomHudLayouts (custom_hud_layout) are the entry point for scripted maps to provide custom UI.
+
+Supported panel types and attributes are:
+
+* <Panel> with attributes id, class and hittest
+
+* <Label> with attributes id, class, hittest, and text
+
+* <Image> with attributes id, class, hittest, src, texturewidth, and textureheight
+
+* <Button> with attributes id and class
+
+Styling with css is supported.
+
+Events and client side scripting are not supported.
+
+@experimental This feature is experimental and may experience breaking changes.
+
+Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|SetHasClass|SetHasClass(panelId: string, className: string, hasClass?: boolean): void|Set if a panel has a class. Applies to all players.<br /><br />Omit `hasClass` to revert to the original value.|
+|SetHasClassForPlayer|SetHasClassForPlayer(playerSlot: number, panelId: string, className: string, hasClass?: boolean): void|Set if a panel has a class for a single player. Will override the all player value.<br /><br />Omit `hasClass` to defer to the all player value.|
+|SetDialogVariableString|SetDialogVariableString(panelId: string, variableName: string, value: string): void|Set the value of a dialog variable. Applies to all players.|
+|SetDialogVariableStringForPlayer|SetDialogVariableStringForPlayer(playerSlot: number, panelId: string, variableName: string, value?: string): void|Set the value of a dialog variable for a single player. Will override the all player value.<br /><br />Omit `value` to defer to the all player value. If no all player value has been set, the value will be an empty string.|
+|SetInputCaptureEnabled|SetInputCaptureEnabled(playerSlot: number, enabled: boolean): void|Set to true to force a player into cursor mode and enable click detection on the panels of this layout.<br /><br />Set a callback with Instance.OnCustomHudClicked to listen for clicks.<br /><br />Multiple CustomHudLayouts can have input captured at a time.<br /><br />Players will get movement control back once all CustomHudLayouts have disabled input capture.|
+|IsInputCaptureEnabled|IsInputCaptureEnabled(playerSlot: number): boolean|Get if this [CustomHudLayout](#customhudlayout) is capturing input for a player|
 
 ### PointTemplate
 
@@ -277,6 +333,21 @@ The base class for all entities
 |Name|Signature|Description|
 |---|---|---|
 |ForceSpawn|ForceSpawn(origin?: [Vector](#vector), angle?: [QAngle](#qangle)): [Entity](#entity)[] \| undefined||
+
+### CSPlayerCamera
+Move this to control a player's view without moving their pawn.
+
+@experimental This feature is experimental and may experience breaking changes.
+
+Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|IsEnabled|IsEnabled(): boolean||
+|SetEnabled|SetEnabled(enabled: boolean): void||
+|SetIsControllingAngles|SetIsControllingAngles(controlling: boolean): void|Set to false let a player look around from the camera's position.|
 
 ## Types
 
@@ -411,6 +482,24 @@ interface PlayerTraceResult {
 }
 ```
 
+### BombPlantEvent
+```ts
+interface BombPlantEvent {
+    plantedC4: CSPlantedC4;
+    /** @deprecated this field will be removed in a future update */
+    planter?: CSPlayerPawn
+}
+```
+
+### BombDefuseEvent
+```ts
+interface BombDefuseEvent {
+    plantedC4: CSPlantedC4;
+    /** @deprecated this field will be removed in a future update */
+    defuser: CSPlayerPawn
+}
+```
+
 ### ModifyPlayerDamageEvent
 ```ts
 interface ModifyPlayerDamageEvent {
@@ -425,7 +514,7 @@ interface ModifyPlayerDamageEvent {
     /** The hit group where the damage occured. */
     hitGroup: CSHitGroup;
     /** The entity applying the damage. For bullets this is the owner of the gun. For grenades this is the exploding projectile. */
-    inflictor: Entity;
+    inflictor?: Entity;
     /** The entity credited with causing the damage. For bullets this is the shooter. For grenades this is the thrower. */
     attacker?: Entity;
     /** The weapon used. For grenades this will not be present because the weapon is often removed before the projectile explodes. */
@@ -461,7 +550,7 @@ interface PlayerDamageEvent {
     /** The hit group where the damage occured. */
     hitGroup: CSHitGroup;
     /** The entity applying the damage. For bullets this is the owner of the gun. For grenades this is the exploding projectile. */
-    inflictor: Entity;
+    inflictor?: Entity;
     /** The entity credited with causing the damage. For bullets this is the shooter. For grenades this is the thrower. */
     attacker?: Entity;
     /** The weapon used. For grenades this will not be present because the weapon is often removed before the projectile explodes. */
@@ -532,6 +621,19 @@ interface EntityDamage {
 ```
 
 ## Enums
+
+### CSMoveType
+- INVALID = -1
+- NONE
+- WALK
+- FLY
+- FLYGRAVITY
+- VPHYSICS
+- PUSH
+- NOCLIP
+- OBSERVER
+- LADDER
+- CUSTOM
 
 ### CSRoundEndReason
 - UNKNOWN = -1
