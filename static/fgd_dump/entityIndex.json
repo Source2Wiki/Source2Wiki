@@ -396,6 +396,14 @@
     ]
   },
   {
+    "Classname": "custom_hud_layout",
+    "Description": "Panorama UI that can be controlled by cs_script. See point_script.",
+    "Icon": "/fgd_dump/img/cs2/custom_hud_layout.png",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
     "Classname": "cycler",
     "Description": "An entity used to display a model for testing purposes. Shooting it with cycle through the model's animations.",
     "Icon": "",
