@@ -10,4 +10,6 @@ import DocCardList from '@theme/DocCardList';
 
 Manage your Steam Workshop uploads.
 
+It packs an addon's compiled side into a single VPK and uploads it. What ends up inside is not everything in the folder: the packer keeps only the directories the main mod's `gameinfo.gi` lists and silently drops the rest, so an asset that works locally can be missing from the published item. That list is editable, which is how items ship content Valve never listed. That list is in [Workshop packing](../../Basics/content-mounting.md#workshop-packing), and what the tool does with an addon is covered in [Publishing](../../Basics/working-on-content/addons/index.mdx#publishing).
+
 <DocCardList />
