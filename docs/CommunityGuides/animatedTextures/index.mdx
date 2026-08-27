@@ -15,10 +15,10 @@ We create a `.mks` file. This file must follow the format below:
 
 :::warning
 C-style comments are supported. Block comments are not!  
-`// This is a comment` ✅ Correct  
-`/* This is a comment */` ❌ Fails to compile
+`// This is a comment` compiles.  
+`/* This is a comment */` fails to compile.
 
-The `frame` KeyValue is a path to an image file, after always termine the line with and extra `1`, for example:
+The `frame` KeyValue is a path to an image file, after always terminate the line with an extra `1`, for example:
 
 `frame grain_frame_00_color.tga 1`
 
@@ -26,62 +26,64 @@ The images you use (so the compiler can generate an atlas) are highly recommende
 This way the generated atlas is more likely to be filled efficiently (less wasted space).  
 The number of frames should also be a power of two or divisible by two.
 
-The compiler by default will generate the best resolution for the altas, many times you will enconter an error saying that the compiler could not find what resolution suits the best for the altas,
+The compiler by default will generate the best resolution for the atlas, many times you will encounter an error saying that the compiler could not find what resolution suits the best for the atlas,
 in that case try:
 
 1. Use power of two textures or divisible by two.
 2. Use a lower resolution (Instead of 1024x1024 use 512x512).
-3. Lower the number of frames used in the animated texture (So the compiler can generate fit all the images inside the altas). 
+3. Lower the number of frames used in the animated texture (So the compiler can generate fit all the images inside the atlas). 
 :::
 ```
 sequence 0
 loop   // Remove this if your animated texture doesn’t need to loop. 
 
-frame "frame1" 1
-frame "frame2" 1
-frame "frame3" 1
+frame frame1.tga 1
+frame frame2.tga 1
+frame frame3.tga 1
     .
     .
     .
-frame "frameN" 1
+frame frameN.tga 1
 ```
 
 The `.mks` format also supports multiple sequences. For example:
 
 ```
 sequence 0
-frame "s1frame1" 1
-frame "s1frame2" 1
-frame "s1frame3" 1
+frame s1frame1.tga 1
+frame s1frame2.tga 1
+frame s1frame3.tga 1
     .
     .
     .
-frame "s1frameN" 1
+frame s1frameN.tga 1
 
 sequence 1
-frame "s2frame1" 1
-frame "s2frame2" 1
-frame "s2frame3" 1
+frame s2frame1.tga 1
+frame s2frame2.tga 1
+frame s2frame3.tga 1
     .
     .
     .
-frame "s2frameN" 1
+frame s2frameN.tga 1
 
 .
 .
 .
 
 sequence N
-frame "sNframe1" 1
-frame "sNframe2" 1
-frame "sNframe3" 1
+frame sNframe1.tga 1
+frame sNframe2.tga 1
+frame sNframe3.tga 1
     .
     .
     .
-frame "sNframeN" 1
+frame sNframeN.tga 1
 ```
 
 Once you have created your `.mks` file, it will tell the compiler how to create the [atlas](https://en.wikipedia.org/wiki/Texture_atlas) for your animated texture.  
+
+Frame paths are resolved relative to the folder the `.mks` file is in, and they are written bare: a quoted path is taken literally, quote characters included, and the compiler fails with `Sheetcompiler - Missing image file`.
 
 After defining the animated texture, we need to compile it so it can be used in particles or materials. There are different workflows depending on the case.  
 
@@ -180,7 +182,7 @@ The error shown in `vconsole2.exe` is often unclear. Run `resourcecompiler.exe` 
 
 ![ab_at](./assetbrowser_at.png "ab_at")
 
-Now your texture is ready to use for particles!
+Now your texture is ready to use for particles.
 
 ---
 
