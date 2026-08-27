@@ -1,10 +1,37 @@
 ---
-description: File formats that Source 2 uses.
+description: How Source 2 stores its content, from VPK archives down to the bytes, and which format is used where.
 title: File Formats
 ---
 
-File formats that Source 2 uses.
-
 import DocCardList from '@theme/DocCardList';
+
+Everything a Source 2 game loads is stored in a few layered formats. This page summarizes the chain; the rest of the section documents each layer in detail.
+
+## The storage chain
+
+A game's content ships in [VPK](./vpk.md) archives: `pak01_dir.vpk` plus its numbered chunk files in the game directory. Every compiled map is a VPK of its own, and workshop items are published as VPKs too.
+
+Inside those archives, every asset is a compiled resource: a file whose extension ends in `_c`, such as `.vmat_c`, `.vmdl_c` or `.vpcf_c`. Whatever the type, the file is the same container, a small header followed by named blocks, and the types only differ in which blocks they carry. The [Asset Types](./asset-types.md) table lists every type and what compiles it.
+
+The payload of a modern compiled resource is [binary KV3](./kv3.md). The oldest Source 2 games predate binary KV3 and pack their payloads as C structs instead, described by an introspection block in the same container.
+
+A `_c` file is never authored directly: assets are written as plain source files and compiled. How that pipeline works, the `content\` and `game\` split, and how compiled files are decompiled back are covered in Basics: [content/ and game/](../Basics/working-on-content/content-and-game.md) and [Decompiling assets](../Basics/working-on-content/decompiling-assets.md).
+
+## Which format is used where
+
+Four serialization formats cover nearly everything:
+
+| Format | Used for |
+| --- | --- |
+| [KV3](./kv3.md), text | most authored source assets: `.vmdl`, `.vmat`, `.vpcf`, `.vdata`, `.vsndevts`, `.vpost` |
+| [KV3](./kv3.md), binary | the payload of compiled `_c` resources in current games |
+| [DMX](./dmx.mdx) | Hammer's [`.vmap`](./vmap/index.mdx) map sources, and `.dmx` exchange files from Blender or Maya |
+| KeyValues, Source 1 style | configuration that predates KV3, such as `gameinfo.gi` and `items_game.txt` |
+
+KeyValues2 is DMX's text encoding rather than a fifth format: a binary `.vmap` and the copy Hammer saves as text are the same DMX document in two encodings.
+
+Not everything is compiled. Shipped paks also carry files the engine reads directly: KeyValues text scripts, Lua scripts in the games that use vscript, and DMX session data in Dota 2.
+
+## In this section
 
 <DocCardList />
