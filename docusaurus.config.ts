@@ -86,7 +86,7 @@ const config: Config = {
         sitemap: {
           // Uses git dates, requires `docs.showLastUpdateTime: true` and full git history at build time.
           lastmod: 'date',
-          ignorePatterns: ['/search', '/markdown-page', '/unlisted'],
+          ignorePatterns: ['/search', '/unlisted'],
         },
         theme: {
           customCss: './src/css/custom.css',
