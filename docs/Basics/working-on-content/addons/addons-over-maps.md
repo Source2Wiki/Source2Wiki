@@ -83,4 +83,6 @@ Because `maps` belongs to the addon rather than to a config, a gamemode covering
 
 ## Half-Life: Alyx
 
-(missing section)
+:::todo
+The `map_extensions` mechanism is not written up yet.
+:::

@@ -52,7 +52,7 @@ is the launch parameter. In tools mode the addon picked at launch is mounted aut
 
 The [Workshop Manager](../../../EngineTools/WorkshopManager/index.mdx) handles packaging and uploading. What gets published is the `game/` side, since that is the compiled content; the `content/` folder stays local. Which directories end up in the uploaded VPK is defined in `gameinfo.gi`; see [Workshop packing](../../content-mounting.md#workshop-packing).
 
-The Workshop Manager publishes the `game/` side as it finds it and filters nothing out. The game then loads whichever map in `maps/` comes first alphabetically, and two things follow from that.
+The Workshop Manager filters by directory and no further: whatever sits inside a directory `gameinfo.gi` lists is published as it finds it. `maps/` is one of those, the game loads whichever map in it comes first alphabetically, and two things follow from that.
 
 A map's 3D skybox is a second map sitting in the same folder, so it has to sort after the main one or it is what loads. Naming it after the main map with a `_skybox` suffix guarantees that, which is where the convention comes from:
 

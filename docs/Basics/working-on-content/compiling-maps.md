@@ -35,7 +35,7 @@ The important structural fact is in the notes column: **visibility and lighting 
 
 Every build begins by copying the previously compiled [`<map>.vpk`](../../FileFormats/vpk.md) to a temporary directory, and the compiler unzips that package into a staging tree before any stage runs. Stages write into that same tree, and at the end the whole tree is packed back into a new VPK.
 
-Everything the previous build produced is therefore still there, and only the stages you enabled overwrite their part of it. That is the entire mechanism. Visibility survives a build that leaves it out, not because it is cached, but because last build's `world_visibility.vvis_c` was unzipped into the staging tree and nothing replaced it. The same goes for physics, nav, the audio bakes and the lightmaps.
+Everything the previous build produced is therefore still there, and only the stages you enabled overwrite their part of it. That is the entire mechanism. Visibility survives a build that leaves it out, not because it is cached, but because last build's `world_visibility.vvis_c` was unzipped into the staging tree and nothing replaced it. The same goes for physics, nav and the audio bakes.
 
 :::warning
 Reused output is not checked against the map it came from. Build visibility once and then disable it, and the map keeps culling against the world as it was at that build, which shows up in game as geometry disappearing where it should not. Turning a stage off does not undo it: deleting the map's `.vpk` from the [`game/`](./content-and-game.md) side is the only way to get rid of what it produced.
@@ -43,7 +43,7 @@ Reused output is not checked against the map it came from. Build visibility once
 
 Nav is the same mechanism from the other side. Nothing is generated until a [`point_nav_walkable`](../../Entities/point_nav_walkable.mdx) exists in the map, so the build after you place the first one has to include the nav stage. After that it is inherited like everything else.
 
-However, lightmaps are unfortunately lost when compiling the world without ticking lightmaps.
+Lightmaps are the one exception. Compiling the world without ticking Baked Lighting loses them, so a geometry-only rebuild costs the bake.
 
 :::info
 The `Entities only` compile does not delete the lightmap information. So iterating on entities is cheap for exactly for this reason. If you only need to e.g. add more spawns (`info_player_terrorist` and `info_player_counterterrorist`) you do not have to compile the whole map again! `Entities only` is sufficient.
