@@ -1,0 +1,35 @@
+---
+title: Working on content
+description: Addons, the two directory trees they live in, and where every file belongs.
+---
+
+import DocCardList from '@theme/DocCardList';
+
+Custom content in Source 2 is made inside an **addon**: a named folder the game [mounts](../content-mounting.md) on request, holding the same directory structure a shipped game does.
+
+Everything in this section follows from one shape. An addon exists twice, once as the files you edit and once as the files the game loads:
+
+```
+Counter-Strike Global Offensive/
+├── content/csgo_addons/my_addon/     source files, what you edit
+│   ├── maps/my_map.vmap
+│   └── materials/wall.vmat
+└── game/csgo_addons/my_addon/        compiled output, what the game loads
+    ├── maps/my_map.vpk
+    └── materials/wall.vmat_c
+```
+
+:::tip
+Work on the `content/` side. Anything edited under `game/` is overwritten by the next compile. There are a few exceptions for that. Read the pages in this section for more information.
+:::
+
+## In this section
+
+- [Addons](./addons/index.mdx) is the unit itself: what one is, how to create it, how the game mounts it, and how it is published.
+- [content/ and game/](./content-and-game.md) is the split above, source files on one side and compiled output on the other.
+- [Directory layout](./directory-layout.md) walks through both trees folder by folder and says what belongs in each.
+- [Compiling maps](./compiling-maps.md) is what a map build actually redoes: why visibility and lighting survive one, and what forces everything to be built again.
+- [Decompiling assets](./decompiling-assets.md) goes the other way, recovering editable files from content that has already shipped.
+- [Addons over existing maps](./addons/addons-over-maps.md) covers the addon that ships no map of its own and layers its content onto one that already exists.
+
+<DocCardList />

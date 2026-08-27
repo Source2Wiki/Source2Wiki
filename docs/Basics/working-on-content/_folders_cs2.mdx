@@ -1,0 +1,27 @@
+| Folder | Holds | Source | Compiled | Packed |
+| --- | --- | --- | --- | --- |
+| `agents/` | player models, laid out the same way as `weapons/` | `.vmdl`, `.dmx`, `.vmat` | `.vmdl_c`, `.vmat_c` | no |
+| `animation/` | Animgraph 2 skeletons, clips and graphs | `.vnmskel`, `.vnmclip`, `.vnmgraph` | `_c` of each | no |
+| `cfg/maps/` | [per map console configs](./addons/addons-over-maps.md#why-a-config-file-runs), executed when that map loads | `.cfg` | not compiled | yes |
+| `items/` | economy items such as keychains and stickers, with their artwork | `.econitem`, `.tga` | `.econitem_c`, `.vtex_c` | no |
+| `lighting/postprocessing/` | the post processing a map's lighting uses | `.vpost` | `.vpost_c` | yes |
+| `maps/` | maps | `.vmap` | one `.vpk` per map | yes |
+| `materials/` | materials and the textures they reference | `.vmat`, `.vtex`, and the `.tga`, `.psd` or `.png` a `.vtex` reads | `.vmat_c`, `.vtex_c` | yes |
+| `models/` | models, with the materials and textures that belong only to them | `.vmdl`, and the `.dmx` or `.fbx` meshes it builds from | `.vmdl_c` | yes |
+| `panorama/` | the UI: layouts, styles, scripts and images | `.xml`, `.css`, `.js`, `.ts`, images | `.vxml_c`, `.vcss_c`, `.vjs_c`, `.vts_c`, `.vtex_c` | no |
+| `panorama/images/map_icons/`<br/>`panorama/images/overheadmaps/`<br/>`panorama/layout/custom_game/`<br/>`panorama/styles/custom_game/` | the map's icon and overhead image, and the UI an addon adds for a custom game | images, `.xml`, `.css` | `.vtex_c`, `.vxml_c`, `.vcss_c` | yes |
+| `particles/` | particle systems and the snapshots they sample | `.vpcf`, `.vsnap` | `.vpcf_c`, `.vsnap_c` | yes |
+| `postprocess/` | post processing settings | `.vpost` | `.vpost_c` | yes |
+| `pulse/` | Pulse graphs | `.vpulse` | `.vpulse_c` | no |
+| `resource/` | localisation, subtitles, fonts and UI data | `.txt`, `.res` | mostly not compiled | no |
+| `resource/overviews/` | a map's radar overview definition | `.txt` | not compiled | yes |
+| `scripts/` | data the game reads rather than renders: item and weapon definitions, response rules | `.kv3`, `.vdata`, `.vrr`, `.txt` | `.vdata_c`, `.vrr_c`, or nothing | yes |
+| `smartprops/` | SmartProps, the rule driven props Hammer places | `.vsmart` | `.vsmart_c` | no |
+| `soundevents/` | the soundevent scripts that name and configure playback | `.vsndevts` | `.vsndevts_c` | yes |
+| `sounds/` | the audio files themselves | `.wav`, `.mp3` | `.vsnd_c` | yes |
+| `soundstacks/` | mixing rules and operators applied to soundevents | `.vsndstck`, `.vmix` | `.vsndstck_c`, `.vmix_c` | no |
+| `weapons/` | weapon models with the materials and sounds that belong to them, one folder per weapon | `.vmdl`, and the `.dmx` or `.fbx` it builds from | `.vmdl_c` | no |
+
+**Packed** is whether the folder survives publishing to the workshop as the game ships. A folder marked no compiles and works locally, then is dropped from the uploaded item without a warning, unless the list that decides this is edited first. See [Workshop packing](../content-mounting.md#workshop-packing).
+
+Every extension in the table is listed with its compiler in [Asset Types](../../FileFormats/asset-types.md).
