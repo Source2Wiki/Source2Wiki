@@ -3,6 +3,9 @@
   align-items: center;
   gap: 1.25rem;
   margin: 0.5rem 0 2rem;
+  padding: 1.5rem 1.5rem 1.5rem 0.5rem;
+  border-radius: 0.75rem;
+  background: radial-gradient(50rem 16rem at 0% 0%, rgba(245, 120, 7, 0.09), transparent 70%);
 }
 
 .logo {
@@ -82,12 +85,13 @@
   border: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-background-surface-color);
   color: var(--ifm-font-color-base);
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .tile:hover {
   color: var(--ifm-font-color-base);
   text-decoration: none;
+  transform: translateY(-2px);
   border-color: var(--ifm-color-primary);
   box-shadow: var(--ifm-global-shadow-md);
 }

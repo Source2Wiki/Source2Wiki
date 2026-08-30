@@ -4,9 +4,15 @@
  * work well for content-centric websites.
  */
 
-/* 
-  You can override the default Infima variables here. 
-  Go to https://docusaurus.io/docs/styling-layout for a nice interactive editor 
+@import '@fontsource/manrope/500.css';
+@import '@fontsource/manrope/600.css';
+@import '@fontsource/manrope/700.css';
+@import '@fontsource/cascadia-mono/400.css';
+@import '@fontsource/cascadia-mono/600.css';
+
+/*
+  You can override the default Infima variables here.
+  Go to https://docusaurus.io/docs/styling-layout for a nice interactive editor
 */
 :root {
   --ifm-color-primary: #f57807;
@@ -16,8 +22,15 @@
   --ifm-color-primary-light: #f9851d;
   --ifm-color-primary-lighter: #f98c29;
   --ifm-color-primary-lightest: #fa9f4e;
-  --ifm-code-font-size: 95%;
+  --ifm-code-font-size: 90%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-heading-font-family: 'Manrope', var(--ifm-font-family-base);
+  --ifm-heading-font-weight: 600;
+  --ifm-font-family-monospace: 'Cascadia Mono', Consolas, SFMono-Regular, 'Liberation Mono', monospace;
+}
+
+.navbar__title {
+  font-family: var(--ifm-heading-font-family);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -32,7 +45,7 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
-/* make pages take up more of the screen */ 
+/* make pages take up more of the screen */
 .container {
   max-width: none !important;
   width: 95% !important;
@@ -40,6 +53,24 @@
 
 .main-wrapper {
   max-width: none !important;
+}
+
+.markdown table {
+  font-size: 0.9rem;
+  --ifm-table-cell-padding: 0.45rem 0.75rem;
+}
+
+.markdown table th {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 600;
+}
+
+.menu {
+  font-size: 0.9rem;
+}
+
+.theme-doc-sidebar-item-category-level-1:not(:first-child) {
+  margin-top: 0.375rem;
 }
 
 /* separate entities docs from the rest, the class definition for this in in docs/entities/_category_.json */ 
@@ -59,12 +90,15 @@ admonition.compact {
   font-size: 0.9rem !important;
 }
 
-/* for groups like keyvalues in entity page, without this the default styling is a bit over the top */
+/* for groups like keyvalues in entity page, without this the default styling is a bit over the top,
+   the hairline left border keeps a subtle visual anchor for collapsed groups */
 details {
   background: none !important;
   border: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  border-left: 2px solid var(--ifm-color-emphasis-300) !important;
+  border-radius: 0 !important;
+  padding: 0 0 0 0.75rem !important;
+  margin: 0.25rem 0 !important;
   box-shadow: none !important;
 }
 
@@ -87,7 +121,7 @@ details summary::before {
 }
 
 html[data-theme='dark'] .alert--legacy {
-  --ifm-alert-background-color: rgba(212, 52, 28, 0.446);
+  --ifm-alert-background-color: rgba(212, 52, 28, 0.18);
   --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
   --ifm-alert-foreground-color: rgb(255, 255, 255);
   --ifm-alert-border-color: #d4351c;
@@ -108,7 +142,7 @@ html[data-theme='dark'] .alert--legacy {
 }
 
 html[data-theme='dark'] .alert--nonFGD {
-  --ifm-alert-background-color: #5e427c;
+  --ifm-alert-background-color: rgba(172, 93, 199, 0.18);
   --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
   --ifm-alert-foreground-color: rgb(255, 255, 255);
   --ifm-alert-border-color: rgb(181, 121, 202);
@@ -129,7 +163,7 @@ html[data-theme='dark'] .alert--nonFGD {
 }
 
 html[data-theme='dark'] .alert--todo {
-  --ifm-alert-background-color: #1c601b;
+  --ifm-alert-background-color: rgba(63, 209, 61, 0.14);
   --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
   --ifm-alert-foreground-color: rgb(255, 255, 255);
   --ifm-alert-border-color: #3fd13d;
@@ -138,7 +172,7 @@ html[data-theme='dark'] .alert--todo {
 .todo_item a::before {
   color: var(--ifm-color-emphasis-300);
   padding-right: 0.5rem;
-  content: '[NON-FGD]';
+  content: '[TODO]';
 }
 
 /* bug annotation */
@@ -150,7 +184,7 @@ html[data-theme='dark'] .alert--todo {
 }
 
 html[data-theme='dark'] .alert--bug {
-  --ifm-alert-background-color: #601515;
+  --ifm-alert-background-color: rgba(209, 61, 61, 0.16);
   --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
   --ifm-alert-foreground-color: rgb(255, 255, 255);
   --ifm-alert-border-color: #d13d3d;
