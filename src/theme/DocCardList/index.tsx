@@ -10,6 +10,7 @@ import {
 import { extractLeadingEmoji } from '@docusaurus/theme-common/internal';
 import type { PropSidebarItem } from '@docusaurus/plugin-content-docs';
 import Heading from '@theme/Heading';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
 // replaces the default card grid with a plain "In this section" style list,
@@ -37,6 +38,12 @@ function DocListItem({ item }: { item: PropSidebarItem })
 {
   const doc = useDocById(item.type === 'link' ? item.docId : undefined);
 
+  // an image from the doc's front matter acts as the page/category icon,
+  // resolved here because hooks may not run after the early returns below
+  const rawIcon = (item as { customProps?: { icon?: unknown } }).customProps?.icon;
+  const iconImage = typeof rawIcon === 'string' ? rawIcon : undefined;
+  const iconSrc = useBaseUrl(iconImage ?? '');
+
   // raw html sidebar items carry no label/description, filterDocCardListItems
   // already drops them at runtime, this narrows the type for the accesses below
   if (item.type === 'html')
@@ -53,8 +60,9 @@ function DocListItem({ item }: { item: PropSidebarItem })
     return null;
   }
 
-  // card titles may carry a leading emoji icon, bullets don't want one
-  const label = extractLeadingEmoji(item.label).rest.trim() || item.label;
+  // a leading emoji in the label works as a fallback icon
+  const { emoji, rest } = extractLeadingEmoji(item.label);
+  const label = rest.trim() || item.label;
 
   const description = item.description
     ?? (item.type === 'category'
@@ -63,6 +71,9 @@ function DocListItem({ item }: { item: PropSidebarItem })
 
   return (
     <li className={styles.item}>
+      {iconImage
+        ? <img src={iconSrc} alt="" className={clsx(styles.iconImage, 'no-zoom')} />
+        : emoji && <span className={styles.icon}>{emoji}</span>}
       <Link to={href}>{label}</Link>
       {description && <> - {description}</>}
     </li>
