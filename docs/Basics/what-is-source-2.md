@@ -4,9 +4,11 @@ description: Valve's current engine, the games built on it and what it provides.
 sidebar_position: 1
 ---
 
-Source 2 is Valve's current engine and the successor to Source. It shipped for the first time publicly with the Dota 2 port in 2015 and has been the engine for every Valve title since.
+Source 2 is Valve's current engine and the successor to Source. It shipped for the first time publicly with the [Dota 2 port in 2015](https://www.dota2.com/reborn/part1/) and has been the engine for every Valve title since.
 
-There is no "Source 2 SDK". Each game ships its own build of the engine and its own tools. Those builds drift apart over time and are not guaranteed to be the same between engines. A feature that exists in Counter-Strike 2 may be missing, older, or different in Dota 2. 
+There is no "Source 2 SDK". Valve keeps one up-to-date Source 2 version and does not split it between games. However, only the multiplayer titles, Counter-Strike 2, Deadlock and Dota 2 are kept up to date with the engine. The single player games stay on the version they shipped with and are usually not updated. 
+
+Even with the same engine, each game ships its own shaders, entity classes, game code and tools, so a feature that exists in Counter-Strike 2 may be missing, older, or different in Dota 2.
 
 ## Games built on Source 2
 
@@ -25,9 +27,7 @@ There is no "Source 2 SDK". Each game ships its own build of the engine and its 
 
 Official tools means the game ships the Workshop Tools as a separate download; see [Installing the Workshop Tools](./installS2Sdk/index.mdx). 
 
-## Use outside Valve
-
-### s&box
+## s&box
 
 s&box, by Facepunch, is built on Source 2. Its game code and its editor are C#, and Source 2 stays native underneath. Facepunch published the C# side under the MIT license as [Facepunch/sbox-public](https://github.com/Facepunch/sbox-public), with the documentation in [Facepunch/sbox-docs](https://github.com/Facepunch/sbox-docs). 
 
@@ -35,29 +35,92 @@ It is the public half of the engine and not Source 2 itself: the native binaries
 
 The C# that meets those binaries is written against Valve's own API, and parts of it are transcribed from Valve's C++ headers (as `.def` files). Their `engine/Tools/InteropGen` compiles them into the managed bindings so the C# code can inter-operate with the native C++ engine.
 
-### Pak Files
-
-A `.vpk` file on its own is not a sign of Source 2. Valve Pak predates the engine, Source 1 has shipped VPKs since Left 4 Dead, and Source 1 forks still do. Respawn's Titanfall, Titanfall 2 and Apex Legends at launch ship `.vpk` archives that keep Valve's `0x55AA1234` magic number but carry a version stamp of `0x00030002` and a modified, compressed layout, which general Source tooling does not read. Apex Legends has since moved its content to Respawn's own RPAK format. See [VPK](../FileFormats/vpk.md).
-
 ## What Source 2 provides
 
-The engine is 64 bit only. Every game ships the same subsystems, each at the version its branch was cut with, so what follows describes the current titles and the older ones differ in places:
+The engine is 64 bit only. What follows describes the current titles; the older games ship older versions of the same subsystems.
 
-| Subsystem | What it provides | Read more |
-| --- | --- | --- |
-| **Materials and shaders** | A material is a shader plus the values it runs with: which textures to sample, how rough or transparent the surface is, etc. Choosing a different shader is what separates a plain wall from water or glass. All shaders themselves are compiled ahead of time from `.vfx` into `.vcs`. | [Material Editor](../EngineTools/MaterialEditor/index.mdx), [Tool Textures](../ToolTextures/index.mdx) |
-| **Particles** | Particles are an incredibly powerful system for anything visual that does not come from geometry: fire, smoke, blood, ability effects, grenade explosions and more. Particle effects are built out of definitions rather than animated by hand, and a single one can mix sprites, trails, models, ropes, lights and many other renderers. Particles have a randomness / noise system keeping particles from repeating exactly. | [Particle Editor](../EngineTools/ParticleEditor/index.mdx) |
-| **Animation** | Skeletal animation driven by a graph instead of the game explicitly telling a model which clip to play. The graph owns the states, transitions and blends, and gameplay feeds it parameters such as speed or aim direction. A character keeps moving sensibly whatever happens around it. Two systems exist: AnimGraph (`.vanmgrph`), with an editor of its own, and its successor AnimGraph2 (`.vnmgraph`), for now only available in Counter-Strike 2 and Deadlock. Animgraph2 is based on Esoterica. | [Animgraph Editor](../EngineTools/AnimgraphEditor/index.mdx), [ModelDoc](../EngineTools/ModelDoc/index.mdx), [Esoterica](https://github.com/BobbyAnguelov/Esoterica) |
-| **Entities** | Everything in a map that does something is an entity: a class name plus a set of keyvalues, wired to other entities through inputs and outputs. Lights, props, triggers, sound emitters and spawn points are entities; plain geometry is not, it compiles into the world itself, though a mesh can be bound to an entity to become a door or a trigger volume. The class is game code, so placing one in [Hammer](../EngineTools/HammerEditor/index.mdx) only records what to build, and which classes exist at all is per game. | [Entity List](../EntityList/index.mdx) |
-| **Logic entities** | A family of entities that exist only to run logic. Outputs fire inputs: a trigger being touched fires a relay, which after a delay opens a door, starts a choreographed scene and increments a counter. Between `logic_relay`, `logic_branch`, `logic_case`, `logic_timer` and `math_counter` you get gating, branching, repetition and stored state, which makes map logic closer to a visual programming language than to a list of triggers. Half-Life: Alyx is largely written this way: `logic_relay` is one of the most numerous entity classes in its maps, and its set pieces and cutscenes are wired together rather than coded. | [Entity List](../EntityList/index.mdx) |
-| **FGD** | Plain text files telling Hammer which entities exist and how to present them: labels, defaults, categories, editor models, inputs and outputs. They are editor metadata only and the game never reads them, so adding a class to an FGD does not create an entity, and a wrong one gives you a map that compiles and then behaves differently than the editor implied. | [FGD files](./fgd.md) |
-| **Schemas** | The engine keeps a description of its own C++ classes at runtime: every class, every field, with type and offset. Entity keyvalues bind to those fields, `.vdata` files declare which class they fill in, and compiled KV3 can drop field names because the schema already knows the layout. It is compiled into the binaries, so it is per game and per build: names are stable, offsets move with almost every patch. | [Schemas](./schemas.md) |
-| **File formats** | Source 2 uses its own formats end to end. Every asset is authored as a text source file and compiled into a `_c` resource, a container of named blocks, and the payload inside is KV3, Valve's typed key-value format, kept as text while authoring and as one of several binary encodings once compiled. Hammer's map sources are DMX instead, and configuration older than KV3 is still Source 1 KeyValues. | [File Formats](../FileFormats/index.mdx), [KV3](../FileFormats/kv3.md), [DMX](../FileFormats/dmx.mdx), [VMAP](../FileFormats/vmap/index.mdx) |
-| **Content pipeline** | Authoring and shipping live in separate trees. Sources are edited under `content\`, the resource compiler turns each one into its `_c` form under `game\`, and the result is packed into VPK archives. Nothing you edit is what the game reads, which is why getting an asset back out of a shipped game means decompiling it. | [Resource Compiler](../EngineTools/ResourceCompiler/index.mdx), [VPK](../FileFormats/vpk.md), [content/ and game/](./working-on-content/content-and-game.md), [Decompiling assets](./working-on-content/decompiling-assets.md), [Compiling maps](./working-on-content/compiling-maps.md) |
-| **Editors** | The tools are the game. Launching it with `-tools` starts the same executable in editor mode, so Hammer, ModelDoc and the rest run against the live engine and the game's real content, with no separate editor build to keep in step. | [Editor Tools](../EngineTools/index.mdx), [VConsole](../EngineTools/VConsole/index.mdx), [Convars](../Convars/index.mdx) |
-| **Rendering** | Draws the world through Direct3D 11 or Vulkan (`rendersystemdx11.dll`, `rendersystemvulkan.dll`). Lighting is split between what is baked when the map compiles, into lightmaps and probes, and what is computed live. A level can be lit richly without every light being computed every frame. D3D11 is the one backend every game has; titles older than the Vulkan backend fall back on D3D9 and OpenGL. | [Post Processing Editor](../EngineTools/PostProcessingEditor/index.mdx), [Visibility](../EngineTools/HammerEditor/visibility.md) |
-| **Physics** | Rubikon (`vphysics2.dll`) covers rigid bodies, ragdolls, cloth and softbody. What you collide with is (usually) not the visible mesh but a simplified shape authored beside it, on the model or in the map, so a prop can look detailed and still be cheap to collide against. | [Hammer physics meshes](../EngineTools/HammerEditor/hammerphysmeshes.md) |
-| **Audio** | Sounds are addressed as events rather than as files. Game code asks for a soundevent by name and its `.vsndevts` definition decides what actually plays, with what randomisation, volume and mixing, so a sound can be reworked without touching code. Steam Audio (`steamaudio.dll`, `phonon.dll`) then places the result in 3D against the geometry around the listener. |  |
-| **UI** | Panorama (`panorama.dll`) is a browser-like layer: layouts in XML, styling in CSS, behaviour in JavaScript, each compiled into a resource of its own. Menus, HUDs and in-world screens are all built this way, so UI work in Source 2 looks closer to web development than to engine work. |  |
-| **Scripting** | How much a game exposes to map makers varies. The newer titles ship Pulse, a node graph for logic that would otherwise need code; Counter-Strike 2 adds cs_script, a TypeScript API for server side gameplay; some games embed Lua instead. | [cs_script](../Scripting/Counter-Strike%202/cs_script/1-introduction.mdx) |
-| **Networking** | Entity state replicates by itself: fields marked in the schema are tracked, and the server sends each client a delta against what it last acknowledged rather than a full world state. Clients predict their own input and interpolate everything else, which is why lag shows up as other players sliding rather than as the world freezing. Transport goes through Steam's networking sockets, so connections can be relayed instead of exposing a server address. | [Schemas](./schemas.md), [Convars](../Convars/index.mdx) |
+### Rendering
+
+Direct3D 11 and Vulkan (`rendersystemdx11.dll`, `rendersystemvulkan.dll`). D3D11 is the one backend every game has; titles older than the Vulkan backend fall back on D3D9 and OpenGL. Lighting is part baked at map compile time, into lightmaps and probes, and part computed live.
+
+*See also: [Post Processing Editor](../EngineTools/PostProcessingEditor/index.mdx), [Visibility](../EngineTools/HammerEditor/visibility.md)*
+
+### Materials and shaders
+
+A material is a shader plus the values it runs with: which textures to sample, how rough or transparent the surface is. Shaders are compiled ahead of time from `.vfx` sources into `.vcs`, and each game ships its own set. The Workshop Tools ship no shader compiler and no `.vfx` sources, so shaders cannot be edited or added.
+
+*See also: [Material Editor](../EngineTools/MaterialEditor/index.mdx), [Tool Textures](../ToolTextures/index.mdx)*
+
+### Particles
+
+Particle effects cover anything visual that does not come from geometry: fire, smoke, blood, ability effects, explosions. An effect is a definition rather than a hand-animated sequence, and one effect can mix sprite, trail, model, rope and light renderers. A noise system varies each particle so repeats do not look identical.
+
+*See also: [Particle Editor](../EngineTools/ParticleEditor/index.mdx)*
+
+### Animation
+
+Animations are driven by a graph rather than by the game naming a clip to play. The graph owns the states, transitions and blends, and gameplay feeds it parameters such as speed or aim direction. Two systems exist: AnimGraph (`.vanmgrph`), with an editor of its own, and its successor AnimGraph2 (`.vnmgraph`), based on Esoterica. AnimGraph2 is so far only used in Counter-Strike 2 and Deadlock.
+
+*See also: [Animgraph Editor](../EngineTools/AnimgraphEditor/index.mdx), [ModelDoc](../EngineTools/ModelDoc/index.mdx), [Esoterica](https://github.com/BobbyAnguelov/Esoterica)*
+
+### Physics
+
+Rubikon (`vphysics2.dll`) covers rigid bodies, ragdolls, cloth and softbody. Collision runs against a simplified shape authored beside the visual mesh, on the model or in the map, not against the mesh itself.
+
+*See also: [Hammer physics meshes](../EngineTools/HammerEditor/hammerphysmeshes.md)*
+
+### Audio
+
+Sounds are addressed as events, not as files. Game code asks for a soundevent by name and its `.vsndevts` definition decides what plays, with what randomisation, volume and mixing. Steam Audio (`steamaudio.dll`, `phonon.dll`) places the result in 3D against the geometry around the listener.
+
+### UI
+
+Panorama (`panorama.dll`) is a browser-like layer: layouts in XML, styling in CSS, behaviour in JavaScript, each compiled into a resource of its own. Menus, HUDs and in-world screens are all built with it.
+
+### Entities
+
+Everything in a map that does something is an entity: a class name plus a set of keyvalues, wired to other entities through inputs and outputs. Lights, props, triggers, sound emitters and spawn points are entities; plain geometry is not, though a mesh can be bound to an entity to inherit a specific behaviour, such as becoming a door or a trigger volume.
+
+A subset of them exists only to run logic. Entities such as `logic_relay`, `logic_branch`, `logic_case`, `logic_timer` and `math_counter` provide gating, branching, repetition and stored state, driven by outputs firing inputs. Surprisingly, most of Half-Life: Alyx is built this way: its scenes are wired together by entities rather than being coded.
+
+Which entities an editor offers, and how it presents them, comes from FGD files.
+
+*See also: [Entity List](../EntityList/index.mdx), [FGD files](./fgd.md)*
+
+### Scripting
+
+How much a game exposes to map makers varies. The newer titles ship Pulse, a node graph for logic that would otherwise need code. Counter-Strike 2 adds cs_script, a TypeScript API for server side code execution. Some games embed Lua.
+
+*See also: [cs_script](../Scripting/Counter-Strike%202/cs_script/1-introduction.mdx)*
+
+### Networking
+
+Entity state replicates by itself: fields marked in the schema are tracked, and the server sends each client a delta against what it last acknowledged. Clients predict their own input and interpolate everything else. Transport goes through Steam's networking sockets, so a connection can be relayed instead of exposing a server address.
+
+*See also: [Schemas](./schemas.md), [Convars](../Convars/index.mdx)*
+
+### Schemas
+
+The engine carries a description of its own C++ classes at runtime: every class, every field, with type and offset. Entity keyvalues bind to those fields, `.vdata` files declare which class they fill in, and compiled KV3 can drop field names because the schema already knows the layout. It is compiled into the binaries, so it is per game and per build: names are stable, offsets move with almost every patch.
+
+*See also: [Schemas](./schemas.md)*
+
+### File formats
+
+Every asset is authored as a text source and compiled into a `_c` resource, a container of named blocks. The payload inside is usually KV3, Valve's typed key-value format, kept as text while authoring and as one of several binary encodings once compiled; Hammer's map sources are DMX, and configuration older than KV3 is still Source 1 KeyValues.
+
+*See also: [File Formats](../FileFormats/index.mdx), [KV3](../FileFormats/kv3.md), [DMX](../FileFormats/dmx.mdx), [VMAP](../FileFormats/vmap/index.mdx)*
+
+### Content pipeline
+
+Authoring and shipping live in separate trees. Sources are edited under `content\`, the resource compiler turns each one into its `_c` form under `game\`, and the result is packed into VPK archives.[^1] Recovering an asset from a shipped game means decompiling it.
+
+*See also: [Resource Compiler](../EngineTools/ResourceCompiler/index.mdx), [VPK](../FileFormats/vpk.md), [content/ and game/](./working-on-content/content-and-game.md), [Decompiling assets](./working-on-content/decompiling-assets.md), [Compiling maps](./working-on-content/compiling-maps.md)*
+
+### Editors
+
+Hammer, ModelDoc and the rest are the game running in editor mode: `-tools` starts the same executable against the live engine and the game's real content. There is no separate editor build.
+
+*See also: [Editor Tools](../EngineTools/index.mdx), [VConsole](../EngineTools/VConsole/index.mdx), [Convars](../Convars/index.mdx)*
+
+[^1]: A `.vpk` file is not by itself a sign of Source 2: the format predates the engine, Source 1 has shipped VPKs since Left 4 Dead, and Source 1 forks such as Respawn's Titanfall use variants of it that general Source tooling does not read. See [VPK](../FileFormats/vpk.md).

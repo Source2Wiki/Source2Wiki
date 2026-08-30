@@ -53,7 +53,7 @@ struct VPKHeader {
 };
 ```
 
-Version 1 stops after `treeSize`, giving a 12 byte header. Version 2 adds four section sizes for a 28 byte header.
+Version 1 stops after `treeSize`, giving a 12 byte header. Version 2 adds four section sizes for a 28 byte header.[^1]
 
 :::info
 The version is not a Source 1 versus Source 2 distinction. The Lab, a 2016 Source 2 title, ships version 1 paks, and Source 1 CS:GO shipped version 2. Every current Source 2 game writes version 2.
@@ -70,13 +70,9 @@ tree/hash/file MD5s       otherMD5SectionSize
 signature descriptor      signatureSectionSize
 ```
 
-:::warning
-Respawn's Titanfall and Apex Legends use a version stamp of `0x00030002` and a heavily modified layout that compresses its entries. It shares the magic number and nothing else, and general Source tooling will not read it.
-:::
-
 ## Directory tree
 
-The tree is three nested levels of nul terminated strings, each level ended by an empty string: extension, then directory, then file name. Every file name is followed by its entry:
+The tree is three nested levels of strings terminated by a null byte (`\0`), each level ended by an empty string: extension, then directory, then file name. Every file name is followed by its entry:
 
 ```cpp
 struct VPKDirectoryEntry {
@@ -211,7 +207,7 @@ A VPK entry can itself be another VPK, and workshop content relies on this. A pu
 
 Everything outside `maps/` in such a package is loose content at engine paths: `materials/`, `models/`, `sounds/`, `soundevents/`, `particles/`, `scripts/`, `panorama/`, `postprocess/`, `cfg/`. Which directories a workshop item carries by default is an include list in the main mod's `gameinfo.gi`; see [Workshop packing](../Basics/content-mounting.md#workshop-packing).
 
-## Writing one
+## Writing
 
 The resource compiler produces game VPKs, see [`-novpk` and `-vpkincr`](../EngineTools/ResourceCompiler/index.mdx) for the flags that control it. Half-Life: Alyx and SteamVR Home also ship Valve's own `vpk.exe` in `game\bin\win64`, a command line packer supporting response files, multi chunk output (`-M`), keypair signing and a SteamPipe friendly incremental mode; the other Source 2 games do not ship it.
 
@@ -239,8 +235,10 @@ Writer limits:
 
 ValvePak also refuses to write back a package that was opened from a `_dir.vpk`.
 
-## Reading one
+## Reading
 
 <Tool name="s2v"/> browses and extracts VPKs. Extracting gives compiled `_c` resources, not the original source assets. Turning those back into something editable is a separate step, and not always possible.
 
 <Tool name="github" suffix="VPKEdit" link="https://github.com/craftablescience/VPKEdit"/> is a standalone community editor that reads, creates and edits VPK files of both versions.
+
+[^1]: Respawn's Titanfall and Apex Legends use a version stamp of `0x00030002` and a heavily modified layout that compresses its entries. It shares the magic number and nothing else, and general Source tooling will not read it.
