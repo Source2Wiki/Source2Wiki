@@ -1,0 +1,97 @@
+---
+title: Software badges
+description: Inline badges for referencing games, tools and socials in wiki pages.
+---
+
+import {Game, Tool, Social} from '@site/src/components/Software';
+import {Games, Tools, Socials} from '@site/src/constants/software';
+
+# Software badges
+
+Software badges are useful for referencing games, tools and/or socials directly inline with text. Use them by adding a `<Game/>`, `<Tool/>` or `<Social/>` element with 
+a registered `name` to your doc.
+
+```md
+cs_script is a <Tool name="js"/> based scripting system for <Game name="cs2"/> maps.
+```
+
+cs_script is a <Tool name="js"/> based scripting system for <Game name="cs2"/> maps.
+
+The components are available in every page without imports. Registered names live in `src/constants/software.tsx`, add new entries there.
+
+## Games
+
+<table>
+  <thead>
+    <tr><th>name</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+    {Object.keys(Games).map(name => (
+      <tr key={name}>
+        <td><code>{`<Game name="${name}"/>`}</code></td>
+        <td><Game name={name}/></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Tools
+
+<table>
+  <thead>
+    <tr><th>name</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+    {Object.keys(Tools).map(name => (
+      <tr key={name}>
+        <td><code>{`<Tool name="${name}"/>`}</code></td>
+        <td><Tool name={name}/></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Socials
+
+<table>
+  <thead>
+    <tr><th>name</th><th>Result</th></tr>
+  </thead>
+  <tbody>
+    {Object.keys(Socials).map(name => (
+      <tr key={name}>
+        <td><code>{`<Social name="${name}"/>`}</code></td>
+        <td><Social name={name}/></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Options
+
+All three components accept the same optional attributes:
+
+| Attribute  | Description                                                                                     |
+| ---------- | ----------------------------------------------------------------------------------------------- |
+| `link`     | Makes the badge a link, overrides the default link if the entry has one (e.g. Source2 Viewer).  |
+| `label`    | Replaces the name entirely, useful for naming a specific thing hosted on the software, e.g. a repo on a github badge. |
+| `iconOnly` | Hides the name, only the icon is shown.                                                          |
+| `size`     | Icon size in pixels, defaults to matching the surrounding text size.                             |
+
+```md
+<Tool name="s2v" link="https://valveresourceformat.github.io/"/> decompiles compiled maps.
+
+<Tool name="github" label="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> reads and writes kv2 files.
+
+Contact us on our <Social name="discord" label="Discord server" link="https://discord.com/invite/6RwR6SYBW6"/>
+
+An icon only badge: <Game name="cs2" iconOnly/>
+```
+
+<Tool name="s2v" link="https://valveresourceformat.github.io/"/> decompiles compiled maps.
+
+<Tool name="github" label="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> reads and writes kv2 files.
+
+Contact us on our <Social name="discord" label="Discord server" link="https://discord.com/invite/6RwR6SYBW6"/>
+
+An icon only badge: <Game name="cs2" iconOnly/>
