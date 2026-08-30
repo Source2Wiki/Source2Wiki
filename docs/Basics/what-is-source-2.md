@@ -41,47 +41,73 @@ The engine is 64 bit only. What follows describes the current titles; the older 
 
 ### Rendering
 
-Direct3D 11 and Vulkan (`rendersystemdx11.dll`, `rendersystemvulkan.dll`). D3D11 is the one backend every game has; titles older than the Vulkan backend fall back on D3D9 and OpenGL. Lighting is part baked at map compile time, into lightmaps and probes, and part computed live.
+Source 2 offers a modern, [Physically Based Rendering](https://en.wikipedia.org/wiki/Physically_based_rendering) engine supporting forward+ and deferred rendering as well as extremely high quality, GPU path traced lightmapped global illumination for static geometry with an in-editor live preview, as well as light probe and cubemap based GI for dynamic geometry.
 
-*See also: [Post Processing Editor](../EngineTools/PostProcessingEditor/index.mdx), [Visibility](../EngineTools/HammerEditor/visibility.md)*
+Other features include: 
+
+- GPU driven rendering and culling using meshlets
+- Parallax corrected cubemaps with per axis blending
+- Powerful post processing editor
+- Advanced static/dynamic lighting, specialised light types such as barn and area lights, as well as CSM and ["stationary"](https://dev.epicgames.com/documentation/unreal-engine/stationary-lights?application_version=4.27) lights
+
+Rendering APIs include Direct3D 11 and Vulkan (`rendersystemdx11.dll`, `rendersystemvulkan.dll`). D3D11 is the one backend every game has; titles older than the Vulkan backend fall back on D3D9 and OpenGL.
+
+*See also: [Lightmap Player Volumes](../EngineTools/HammerEditor/Lighting/lightmapPlayerSpace), [Post Processing Editor](../EngineTools/PostProcessingEditor/index.mdx), [Visibility](../EngineTools/HammerEditor/visibility.md)*
 
 ### Materials and shaders
 
-A material is a shader plus the values it runs with: which textures to sample, how rough or transparent the surface is. Shaders are compiled ahead of time from `.vfx` sources into `.vcs`, and each game ships its own set. The Workshop Tools ship no shader compiler and no `.vfx` sources, so shaders cannot be edited or added.
+A material is made up of a shader and its referenced textures and properties; which textures to sample, how rough or transparent the surface is, etc... 
+
+In Source 2, shaders define material properties, static and dynamic combos, texture channel packing rules, and much more, most of the editable properties seen in the [Material 
+Editor](../EngineTools/MaterialEditor) are defined in the shader itself.
+
+:::info
+Shaders are compiled ahead of time from `.vfx` sources into `.vcs`, and each game ships its own set. The Workshop Tools ship no shader compiler and no `.vfx` sources, shaders cannot be edited or added.
+:::
 
 *See also: [Material Editor](../EngineTools/MaterialEditor/index.mdx), [Tool Textures](../ToolTextures/index.mdx)*
 
 ### Particles
 
-Particle effects cover anything visual that does not come from geometry: fire, smoke, blood, ability effects, explosions. An effect is a definition rather than a hand-animated sequence, and one effect can mix sprite, trail, model, rope and light renderers. A noise system varies each particle so repeats do not look identical.
+Source 2 has a powerful and versatile, if annoying to use particle system. Particle effects cover anything visual that does not come from geometry: fire, smoke, blood, ability effects, explosions. 
+
+Usually, an effect is a definition rather than a hand-animated sequence (tho both are supported), effects can mix sprite, trail, model, rope and light renderers. Procedural movement and animation can be applied to particles, such as simple movement, noise and physics.
 
 *See also: [Particle Editor](../EngineTools/ParticleEditor/index.mdx)*
 
 ### Animation
 
-Animations are driven by a graph rather than by the game naming a clip to play. The graph owns the states, transitions and blends, and gameplay feeds it parameters such as speed or aim direction. Two systems exist: AnimGraph (`.vanmgrph`), with an editor of its own, and its successor AnimGraph2 (`.vnmgraph`), based on Esoterica. AnimGraph2 is so far only used in Counter-Strike 2 and Deadlock.
+Animations are split into two systems (or 3 depending on how you count).
+
+- Basic animations can be defined in [Model Doc](../EngineTools/ModelDoc/) and played using entity inputs.
+
+- Depending on the version of Source 2, animations can also controlled by a procedural animation-graph system. Two systems exist: AnimGraph (`.vanmgrph`), with an editor of its own (seen in <Game name="hla"/>), and its successor AnimGraph2 (`.vnmgraph`), based on Esoterica. AnimGraph2 is so far only used in newer titles like <Game name="cs2"/>.
+
+in Animgraph systems the graph owns the states, transitions and blends, the engine feeds it parameters during gameplay such as speed or aim direction in order to procedurally drive animations.
 
 *See also: [Animgraph Editor](../EngineTools/AnimgraphEditor/index.mdx), [ModelDoc](../EngineTools/ModelDoc/index.mdx), [Esoterica](https://github.com/BobbyAnguelov/Esoterica)*
 
 ### Physics
 
-Rubikon (`vphysics2.dll`) covers rigid bodies, ragdolls, cloth and softbody. Collision runs against a simplified shape authored beside the visual mesh, on the model or in the map, not against the mesh itself.
+Rubikon (`vphysics2.dll`) handles rigid bodies, ragdolls, cloth and softbody physics. It supports static as well as dynamic geometry, however dynamic geometry is limited to capsules, spheres, and hulls, mesh colliders are only supported on static geometry.
 
 *See also: [Hammer physics meshes](../EngineTools/HammerEditor/hammerphysmeshes.md)*
 
 ### Audio
 
-Sounds are addressed as events, not as files. Game code asks for a soundevent by name and its `.vsndevts` definition decides what plays, with what randomisation, volume and mixing. Steam Audio (`steamaudio.dll`, `phonon.dll`) places the result in 3D against the geometry around the listener.
+Most audio is driven by the Sound Event system, code asks for a soundevent by name and its `.vsndevts` definition decides what sound file plays, with what randomisation, volume and mixing. Soundscapes build on top of this, defining entire ambiances using layered sound events with dynamic DSP.
+
+Source 2 also has support for [Steam Audio](https://valvesoftware.github.io/steam-audio/) (`steamaudio.dll`, `phonon.dll`), which can compute realistic audio probes for levels, and offers advanced HRTF functions, placing the result in 3D against the geometry around the listener.
 
 ### UI
 
-Panorama (`panorama.dll`) is a browser-like layer: layouts in XML, styling in CSS, behaviour in JavaScript, each compiled into a resource of its own. Menus, HUDs and in-world screens are all built with it.
+Panorama (`panorama.dll`) is a browser-like user interface system; layouts are built in XML and styled with CSS, behaviour is scripted in JavaScript, each compiled into a resource of its own. Menus, HUDs and in-world screens are all built with it.
 
 ### Entities
 
 Everything in a map that does something is an entity: a class name plus a set of keyvalues, wired to other entities through inputs and outputs. Lights, props, triggers, sound emitters and spawn points are entities; plain geometry is not, though a mesh can be bound to an entity to inherit a specific behaviour, such as becoming a door or a trigger volume.
 
-A subset of them exists only to run logic. Entities such as `logic_relay`, `logic_branch`, `logic_case`, `logic_timer` and `math_counter` provide gating, branching, repetition and stored state, driven by outputs firing inputs. Surprisingly, most of Half-Life: Alyx is built this way: its scenes are wired together by entities rather than being coded.
+A subset of them exists only to run logic. Entities such as `logic_relay`, `logic_branch`, `logic_case`, `logic_timer` and `math_counter` provide gating, branching, repetition and stored state, driven by outputs firing inputs. Most of Half-Life: Alyx is built this way: its scenes are wired together by entities rather than being coded.
 
 Which entities an editor offers, and how it presents them, comes from FGD files.
 
@@ -101,7 +127,9 @@ Entity state replicates by itself: fields marked in the schema are tracked, and 
 
 ### Schemas
 
-The engine carries a description of its own C++ classes at runtime: every class, every field, with type and offset. Entity keyvalues bind to those fields, `.vdata` files declare which class they fill in, and compiled KV3 can drop field names because the schema already knows the layout. It is compiled into the binaries, so it is per game and per build: names are stable, offsets move with almost every patch.
+Source 2's built in reflection system, the engine carries a description of its own C++ classes at runtime: every class, every field, with type and offset. 
+
+Entity keyvalues bind to those fields, `.vdata` files declare which class they fill in, and compiled KV3 can drop field names because the schema already knows the layout. It is compiled into the binaries, so it is per game and per build: names are stable, offsets move with almost every patch.
 
 *See also: [Schemas](./schemas.md)*
 
