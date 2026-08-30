@@ -27,7 +27,7 @@ Both are declared in the header, so a generic reader can load any DMX file witho
 Which encoding to use is a tradeoff: `keyvalues2` is human readable, diffable and hand editable, which makes it the right choice for small files and for anything you want to read or generate yourself, `binary` is much smaller (large arrays of floats and ints in particular), faster to load and has no delimiters or quoting to get wrong, which is why the tools save in it by default. The two are lossless in both directions and [dmxconvert](#dmxconvert) switches between them.
 
 :::info
-<Tool name="github" suffix="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> is an open source C# library that reads and writes every 
+<Tool name="github" label="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> is an open source C# library that reads and writes every 
 known version of both encodings, it is what <Tool name="s2v"/> uses to write `.vmap` files when decompiling maps.
 
 Hammer can save a `.vmap` as text through `File -> Save Copy As Text`, which is the easiest way to get a readable `keyvalues2` example of a Source 2 DMX file.
@@ -389,7 +389,7 @@ dmxconvert.exe -i my_map_text.vmap -o my_map.vmap -oe binary
 
 ### Libraries
 
-- <Tool name="github" suffix="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> (C#) - reads/writes `binary` 1-5 and 9, `keyvalues2` 1-4, typed element classes for the `vmap` format.
-- <Tool name="github" suffix="datamodel.py" link="https://github.com/Artfunkel/BlenderSourceTools/blob/master/io_scene_valvesource/datamodel.py"/> (Python) - the reader/writer inside Blender Source Tools, used for Source 1 and Source 2 `.dmx` model exports.
-- <Tool name="github" suffix="datamodel-rs" link="https://github.com/Jakobg1215/datamodel-rs"/> (Rust) - DMX reader/writer.
-- <Tool name="github" suffix="sourcepp" link="https://github.com/craftablescience/sourcepp"/> (C++, with Python bindings) - a collection of Source format parsers that includes DMX.
+- <Tool name="github" label="Datamodel.NET" link="https://github.com/ValveResourceFormat/Datamodel.NET"/> (C#) - reads/writes `binary` 1-5 and 9, `keyvalues2` 1-4, typed element classes for the `vmap` format.
+- <Tool name="github" label="datamodel.py" link="https://github.com/Artfunkel/BlenderSourceTools/blob/master/io_scene_valvesource/datamodel.py"/> (Python) - the reader/writer inside Blender Source Tools, used for Source 1 and Source 2 `.dmx` model exports.
+- <Tool name="github" label="datamodel-rs" link="https://github.com/Jakobg1215/datamodel-rs"/> (Rust) - DMX reader/writer.
+- <Tool name="github" label="sourcepp" link="https://github.com/craftablescience/sourcepp"/> (C++, with Python bindings) - a collection of Source format parsers that includes DMX.

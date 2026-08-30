@@ -8,10 +8,10 @@ import { useColorMode } from '@docusaurus/theme-common';
 
 interface SoftwareProps {
   name: string;
-  size?: number | string;
+  size?: number | string; // icon size; defaults to 1em so it matches the surrounding text
   link?: string;
   iconOnly?: boolean;
-  suffix?: string;
+  label?: string; // overrides the registered pretty name, e.g. a repo name on a github badge
 }
 
 export function Game(SoftwareProps: SoftwareProps)
@@ -67,10 +67,10 @@ export function Social(SoftwareProps: React.FC<SoftwareProps>)
 
 const GetSoftwareHtml = (softwateInfo: SoftwareInfo, {
   name,
-  size = 16,
+  size,
   link,
   iconOnly,
-  suffix
+  label
 }: SoftwareProps): React.JSX.Element =>
 {
   const { colorMode } = useColorMode(); // 'light' or 'dark'
@@ -81,50 +81,44 @@ const GetSoftwareHtml = (softwateInfo: SoftwareInfo, {
         ? 'rgba(255, 255, 255, 0.3)' // lighten in light mode
         : 'rgba(0, 0, 0, 0.4)';      // slightly darken in dark mode
 
+  // scales with the surrounding text unless an explicit size is given
+  const iconSize = size === undefined ? '1em' : typeof size === 'number' ? `${size}px` : size;
+
+  const showText = !iconOnly && Boolean(label || softwateInfo.PrettyName);
+
   const content = (
     <span
       style={{
         backgroundColor: softwateInfo.Color,
         borderRadius: '6px',
-        verticalAlign: 'middle',
-        alignItems: 'center', 
-        display: 'inline-flex', 
+        display: 'inline-flex',
+        verticalAlign: '-0.14em',
       }}
     >
-      <span 
-        style={{ 
+      <span
+        style={{
           backgroundColor: overlayColor,
-	  borderRadius: '6px',
-          paddingRight: '0.2rem',
-          paddingLeft: '0.2rem',
-          display: 'inline-flex', 
-          alignItems: 'center', 
-          gap: '4px',
-          verticalAlign: 'middle',
+          borderRadius: '6px',
+          padding: '0 0.3em',
+          display: 'inline-flex',
+          alignItems: 'center',
         }}
       >
         {softwateInfo.IconPath && (
-          <img 
-            src={softwateInfo.IconPath} 
+          <img
+            src={softwateInfo.IconPath}
             alt={`${softwateInfo.PrettyName} icon`}
-            style={{ 
-              width: `${size}px`, 
-              height: `${size}px`,
-              display: 'inline-block'
+            style={{
+              width: iconSize,
+              height: iconSize,
+              display: 'block',
             }}
           />
         )}
-        {!iconOnly && (
-          <span
-          style={{ 
-              textAlign: "center",
-              lineHeight: '1.5', // match image height better
-            }}
-          >
-            {softwateInfo.PrettyName}
-            {suffix && suffix}
-          </span>
-        )}
+        {/* a zero-width space keeps text-less badges at the same height as labeled ones */}
+        <span style={{ marginLeft: showText && softwateInfo.IconPath ? '0.25em' : undefined }}>
+          {showText ? label ?? softwateInfo.PrettyName : '\u200B'}
+        </span>
       </span>
     </span>
   );
