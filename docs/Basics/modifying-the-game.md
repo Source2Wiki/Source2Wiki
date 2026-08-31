@@ -10,11 +10,13 @@ An addon is the supported way to change what a game loads, and [Content mounting
 
 Mounting a file at a path the game already uses replaces it, and that is how most overrides work: a material, a texture or a model the game looks up by path at the moment it needs it comes from whichever search path answers first, so an addon wins.
 
-There are some exceptions, for example assets whose path is compiled into the game binaries.[^1] In Counter-Strike 2 that covers paths, such as agent models, grenade models or the C4, and the hardcoded gameplay entities such as the hostage or the chicken. However, generally these can still be replaced using [cs_script](../Scripting/Counter-Strike%202/cs_script/1-introduction.mdx) at runtime. Some hardcoded rules do still apply though, such as the game setting the smoke grenades MaterialGroup via game code, so a smoke grenade replacement model must have the proper MaterialGroups.
+There are some exceptions, for example assets whose path is compiled into the game binaries.[^1] In <Game name="cs2"/> for example that covers paths, such as agent models, grenade models or the C4, and the hardcoded gameplay entities such as the hostage or the chicken. 
+
+Generally these can still be replaced using [cs_script](../Scripting/Counter-Strike%202/cs_script/1-introduction.mdx) at runtime. Some hardcoded rules do still apply though, such as the game setting the smoke grenades MaterialGroup via game code, so a smoke grenade replacement model must have the proper MaterialGroups.
 
 ## Editing shipped files
 
-Shipped files, `gameinfo.gi` included, can be edited, but in Counter-Strike 2 three mechanisms limit what an edit can do:
+Shipped files, `gameinfo.gi` included, can be edited, but in <Game name="cs2"/> and likely other multiplayer titles three mechanisms limit what an edit can do:
 
 - **Signature validation at launch.** The client validates game file signatures when it starts; the shipped paks carry an [RSA signature](../FileFormats/vpk.md#signature) for this. A client with unsigned or altered files is blocked from VAC secure servers: "Some of your game files have been detected to have no signatures or invalid signatures. You will not be allowed to join VAC secure servers." Launching with `-insecure`, from outside Steam, or in tools mode puts the client in the same state.
 - **Pure server checks on connection.** Official servers additionally compare the client's loaded files against their own ("Pure server: client file does not match server", "client has loaded extra file(s)"), and a client that has loaded third party files is told to restart before playing on official servers again.
