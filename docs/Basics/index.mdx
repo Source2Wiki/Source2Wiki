@@ -5,12 +5,24 @@ description: Engine fundamentals that apply across every Source 2 game.
 
 import DocCardList from '@theme/DocCardList';
 
-This section explains Source 2 engine fundamentals, the concepts that apply across every game rather than to a single tool. The pages form a reading path:
+This section explains Source 2 engine fundamentals, concepts that apply across every game rather than to a single tool.
 
-[What is Source 2](./what-is-source-2.md) is the orientation: the games, what the engine provides, and what changed from Source 1. [Installing the Workshop Tools](./installS2Sdk/index.mdx) gets the tools onto disk. [Working on content](./working-on-content/index.mdx) is the section for making something: the [addon](./working-on-content/addons/index.mdx) custom content lives in, the [content/ and game/](./working-on-content/content-and-game.md) split it is built around, and the [Directory layout](./working-on-content/directory-layout.md) of every folder in it. [Decompiling assets](./working-on-content/decompiling-assets.md) is the other direction, getting editable files back out of a shipped game.
+## Contents
 
-The remaining pages are engine internals: [Content mounting](./content-mounting.md) (gameinfo.gi, search paths, what an addon can and cannot override), [Schemas](./schemas.md) (the type system behind entity properties and data files), [FGD files](./fgd.md) (the entity definitions Hammer reads), and [Modifying the game](./modifying-the-game.md) (what an addon can replace in the base game, and what editing shipped files costs).
+- [What is Source 2](./what-is-source-2.md) is the orientation: the games, what the engine provides, and what changed from Source 1. 
+
+- [Installing the Workshop Tools](./installS2Sdk/index.mdx) gets the tools onto disk. 
+
+- [Working on content](./working-on-content/index.mdx) is the section for making something: 
+    - the [addon](./working-on-content/addons/index.mdx) custom content lives in
+    - the [content/ and game/](./working-on-content/content-and-game.md) split it is built around
+    - the [Directory layout](./working-on-content/directory-layout.md) of every folder in it. [Decompiling assets](./working-on-content/decompiling-assets.md) is the other direction, getting editable files back out of a shipped game.
+
+The remaining pages are engine internals: 
+
+- [Content mounting](./content-mounting.md) (gameinfo.gi, search paths, what an addon can and cannot override), 
+- [Schemas](./schemas.md) (the type system behind entity properties and data files), 
+= [FGD files](./fgd.md) (the entity definitions Hammer reads)
+- [Modifying the game](./modifying-the-game.md) (what an addon can replace in the base game, and what editing shipped files costs).
 
 The binary formats themselves are documented under [File Formats](../FileFormats/index.mdx), and the individual editors under [Editor Tools](../EngineTools/index.mdx).
-
-<DocCardList />

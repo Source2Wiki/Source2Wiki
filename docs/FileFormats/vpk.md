@@ -9,9 +9,9 @@ A VPK (Valve Pak) is the uncompressed archive format Source and Source 2 package
 :::info
 <Tool name="s2v"/> browses and extracts VPKs. Extracting gives compiled `_c` resources, not the original source assets. Turning those back into something editable is a separate step, and not always possible.
 
-<Tool name="github" suffix="ValvePak" link="https://github.com/ValveResourceFormat/ValvePak"/> can write VPKs.
+<Tool name="github" label="ValvePak" link="https://github.com/ValveResourceFormat/ValvePak"/> can write VPKs.
 
-<Tool name="github" suffix="VPKEdit" link="https://github.com/craftablescience/VPKEdit"/> is a standalone community editor that reads, creates and edits VPK files of both versions.
+<Tool name="github" label="VPKEdit" link="https://github.com/craftablescience/VPKEdit"/> is a standalone community editor that reads, creates and edits VPK files of both versions.
 :::
 
 A VPK appears in three places:
@@ -219,7 +219,7 @@ Everything outside `maps/` in such a package is loose content at engine paths: `
 
 The resource compiler produces game VPKs, see [`-novpk` and `-vpkincr`](../EngineTools/ResourceCompiler/index.mdx) for the flags that control it. Half-Life: Alyx and SteamVR Home also ship Valve's own `vpk.exe` in `game\bin\win64`, a command line packer supporting response files, multi chunk output (`-M`), keypair signing and a SteamPipe friendly incremental mode; the other Source 2 games do not ship it.
 
-Writing one by hand, with <Tool name="github" suffix="ValvePak" link="https://github.com/ValveResourceFormat/ValvePak"/>:
+Writing one by hand, with <Tool name="github" label="ValvePak" link="https://github.com/ValveResourceFormat/ValvePak"/>:
 
 ```csharp
 using var package = new Package();

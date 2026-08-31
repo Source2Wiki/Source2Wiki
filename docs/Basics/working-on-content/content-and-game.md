@@ -37,7 +37,7 @@ The files you do edit by hand sit on the `game` side, because nothing compiles t
 :::warning
 There are rare cases where you need to manually edit compiled files, but it is not recommended if it can be avoided. 
 
-As an example, there are rarely things that ModelDoc has no way to author yet (something that Valve uses internally but has not publicly shipped). <Tool name="github" suffix="s2assetassembler" link="https://github.com/LionDoge/source2-asset-assembler"/> (`pip install s2assetassembler`) can swap individual blocks in a compiled file or build one from scratch.
+As an example, there are rarely things that ModelDoc has no way to author yet (something that Valve uses internally but has not publicly shipped). <Tool name="github" label="s2assetassembler" link="https://github.com/LionDoge/source2-asset-assembler"/> (`pip install s2assetassembler`) can swap individual blocks in a compiled file or build one from scratch.
 
 Note that if you still have the source asset in the `content` side it will override the manually edited asset in `game` once the resourcecompiler compiles it again. Therefore in that case the `content` side should be removed.
 :::

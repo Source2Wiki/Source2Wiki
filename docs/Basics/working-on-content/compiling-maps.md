@@ -59,6 +59,6 @@ The results live in the map .vpk as a single .vtex_c containing all the cubemaps
 
 Hammer runs the compile as a separate process but stays open with the map loaded the whole time, so the editor's memory and video memory are tied up for the duration. 
 
-Running the build on its own frees that. The [Resource Compiler](../../EngineTools/ResourceCompiler/index.mdx) does it from the command line, and <Tool name="github" suffix="CS2ResourceCompiler" link="https://github.com/dirtkiller23/CS2ResourceCompiler"/> is a community GUI around it offering the same options as the build dialog, that is simpler to use than calling the command line directly.
+Running the build on its own frees that. The [Resource Compiler](../../EngineTools/ResourceCompiler/index.mdx) does it from the command line, and <Tool name="github" label="CS2ResourceCompiler" link="https://github.com/dirtkiller23/CS2ResourceCompiler"/> is a community GUI around it offering the same options as the build dialog, that is simpler to use than calling the command line directly.
 
 The assets a map references follow a different rule entirely. They are not stages, and the compiler decides for itself whether each one is out of date by comparing checksums it recorded in the compiled file; see [Resource Compiler](../../EngineTools/ResourceCompiler/index.mdx).
