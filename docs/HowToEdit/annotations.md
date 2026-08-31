@@ -1,4 +1,7 @@
-# Annotations
+---
+title: Annotations
+description: The admonition blocks available for adding extra information to wiki pages.
+---
 
 An annotation, useful for adding extra information, use it by wrapping text with a set of 3 colons, followed by a label denoting its type:
 
@@ -48,4 +51,8 @@ This is a `danger` Admonition.
 
 :::todo
 Something to do.
+:::
+
+:::bug
+A known bug.
 :::
