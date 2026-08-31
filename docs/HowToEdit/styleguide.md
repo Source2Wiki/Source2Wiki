@@ -1,7 +1,7 @@
 ---
 title: Style guide
 description: Writing conventions for wiki pages; structure, wording, linking and media.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Conventions for writing wiki pages. Following them keeps pages consistent with each other and easy to understand.
@@ -84,7 +84,7 @@ External links go through badges, `<Tool name="github" label="..." link="..."/>`
 
 Screenshots belong in UI walkthroughs, one per step where the step needs it. Pages describing a mechanism or format usually need none.
 
-Alt text describes what the reader should look for, like `![Select Create New Addon, Name, Create]`, never the filename. Keep files small, crop to the relevant part of the screen and compress large captures. Never ship copyable text as a screenshot, use a code block. Delete images no page references.
+Alt text describes what the reader should look for, like `![Cs2 settings menu button](./imagepath/image.png "Settings Menu")`, never the filename. Keep files small, crop to the relevant part of the screen and compress large captures. Never ship copyable text as a screenshot, use a code block. Delete images no page references.
 
 ## Per-game content
 

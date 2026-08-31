@@ -12,12 +12,12 @@ const gameHeaders: Record<string, string> = {
 };
 
 const startHere = [
+  { title: 'Basics', to: '/Basics', text: 'The basics of Source 2, outlining the engine and how to use it.' },
+  { title: 'How to Edit', to: '/category/how-to-edit', text: 'Guide for new people on how to add or edit a page, annotate an entity, etc...' },
   { title: 'Editor Tools', to: '/EngineTools', text: 'Hammer, ModelDoc, Material Editor and other engine tools.' },
   { title: 'Community Guides', to: '/CommunityGuides', text: 'Various guides on different topics.' },
   { title: 'Entity List', to: '/EntityList', text: 'Searchable list of every entity in every Source 2 game.' },
   { title: 'Convars', to: '/Convars', text: 'A list of all console variables and commands in all Source 2 games.' },
-  { title: 'File Formats', to: '/FileFormats', text: 'Technical details on various Source 2 file formats.' },
-  { title: 'How to Edit', to: '/category/how-to-edit', text: 'Guide for new people on how to add or edit a page, annotate an entity, etc...' },
 ];
 
 export function Hero(): React.JSX.Element {
