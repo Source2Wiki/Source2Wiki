@@ -5,6 +5,8 @@ title: Creating env_cubemap_fog in older Source2 Games.
 
 This guide explains how to create a functional **env_cubemap_fog** in older Source 2 games. This applies to <Game name="hla"/> and <Game name="steamvr"/>.
 
+See also the [`env_cubemap_fog`](../../Entities/env_cubemap_fog.mdx) entity reference for its full keyvalue list.
+
 :::warning
 For <Game name="steamvr"/>, Method 1 is the way to go, since **resourcecompiler** has a bug where **.vtex** files, regardless of their settings, do not generate **mipmaps**, which are required for **env_cubemap_fog** to work properly.
 :::
@@ -91,7 +93,7 @@ Your ``"m_outputFormat" "string" "compression_format"`` should always be ``BC7``
 
 ## Which method is better?
 
-It depends on your case. If your skybox has no modifications in **MaterialEditor**—such as brightness or exposure—then **Method 2** is the better option, since it allows more control over the texture if you need to adjust lighting, resolution, etc.
+It depends on your case. If your skybox has no modifications in **MaterialEditor**, such as brightness or exposure, then **Method 2** is the better option, since it allows more control over the texture if you need to adjust lighting, resolution, etc.
 
 Usually, you won’t need such tweaks, so **Method 1** is recommended, and it is also more efficient since you only need one texture.
 

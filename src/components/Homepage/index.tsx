@@ -38,7 +38,7 @@ export function GameCards(): React.JSX.Element {
   return (
     <div className={styles.games}>
       {Object.entries(gameHeaders).map(([game, header]) => (
-        <Link key={game} className={styles.game} to={`/CommunityGuides/installS2Sdk?game=${game}`}>
+        <Link key={game} className={styles.game} to={`/Basics/installS2Sdk?game=${game}`}>
           <img className="no-zoom" src={header} alt="" width={460} height={215} loading="lazy" />
           <span className={styles.gameLabel}>
             <img className="no-zoom" src={withBaseUrl(Games[game].IconPath!)} alt="" width={20} height={20} />

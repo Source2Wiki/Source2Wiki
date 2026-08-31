@@ -1,0 +1,137 @@
+---
+title: Addons
+description: What an addon is, contant/ and game/ folders, and how the game loads one.
+sidebar_position: 1
+---
+
+import GameTabs from '@site/src/components/GameTabs'
+import SteamVR from './_steamvr.mdx'
+import Dota2 from './_dota2.mdx'
+import Alyx from './_hla.mdx'
+import CS2 from './_cs2.mdx'
+
+An addon is the unit of custom content in Source 2. It replaces the Source 1 habit of dropping loose compiled files into the game directory, custom content lives in a named folder and the game mounts that folder on request.
+
+Every addon is two directories with the same name:
+
+```
+content/csgo_addons/my_addon/  =>  source files being edited
+game/csgo_addons/my_addon/     =>  compiled output the game loads
+```
+
+The parent folder comes from the `AddonRoot` entry in `gameinfo.gi`, for exampe it is 
+
+- `csgo_addons` for <Game name = "cs2"/>
+- `dota_addons` for <Game name = "dota2"/>
+- `hlvr_addons` for <Game name = "hla"/>
+
+See [Content mounting](../../content-mounting.md).
+
+## Creating an addon
+
+The Addon Launcher, the [resource compiler](../../../EngineTools/ResourceCompiler/index.mdx) and the `content/` tree all arrive with the Workshop Tools which is a separate Steam download for each game, see [Installing the Workshop Tools](../../installS2Sdk/index.mdx).
+
+You should almost always create new addons from the launcher instead of doing it manually, the launcher will setup default content as well as the `game/` folder.
+
+<GameTabs
+
+    cs2 = {<CS2/>}
+    hla = {<Alyx/>}
+    dota2 = {<Dota2/>}
+    steamvr = {<SteamVR/>}
+
+/>
+
+What the launcher produces on each side, folder by folder, is in [Directory layout](../directory-layout.md#addons).
+
+`addoninfo.txt` is a small metadata file on the `game/` side. Depending on the game and its age it is either KeyValues or [KV3](../../../FileFormats/kv3.md), and it holds flags such as whether the addon is a playable map or a template.
+
+## Loading an addon
+
+You can simply relaunch the respective addon manager for you game, as explained above, otherwise for manually launching into an addon you can use the following command line argument on the game's executable:
+
+```
+-addon my_addon
+```
+
+Only content under a mounted addon is visible to the game, which is why a map that loads in Hammer can still fail to load in the game if the addon was not mounted. How the name resolves is covered in [Content mounting](../../content-mounting.md).
+
+:::warning
+When loading an addon, the game doesn't actually search for `content/` folders but rather `game/` folders!, if you just downloaded an addon and put it in your `AddonRoot`
+ folder but can't find it in the launcher, go to the `game/` folder and create a folder with the name of the addon.
+:::
+
+## Publishing
+
+The [Workshop Manager](../../../EngineTools/WorkshopManager/index.mdx) handles packaging and uploading. What gets published is ONLY the `game/` side, since that is the compiled content, the `content/` folder always stays local. 
+
+In some games like <Game name="cs2"/> which directories end up in the uploaded VPK is defined in `gameinfo.gi`: see [Workshop packing](../../content-mounting.md#workshop-packing).
+
+:::info
+Unless you defined a map for the addon to load in [`addoninfo.txt`](#addoninfo), the map that the game decides to load when loading into the addon is whichever one it comes across 
+first alphabetically, and two things follow from that:
+
+- A map's 3D skybox is a second map sitting in the same folder, so it has to sort after the main one or it is what loads. Naming it after the main map with a `_skybox` suffix guarantees that, which is where the convention comes from:
+
+    ```
+    game/csgo_addons/my_addon/maps/
+    ├── de_my_map.vpk           loads
+    └── de_my_map_skybox.vpk    the 3D skybox, sorts after it
+    ```
+
+- [Compiling never deletes anything](../compiling-maps.md). Rename a map and the old compiled `.vpk` stays behind in `game/`, gets packed into the upload, and is still a map as far as the game is concerned. If the stale name sorts before the new one it will still load in the workshop and your update won't be seen. If it sorts after, it is harmless but bloats the published items file size. Delete old compiled maps from the `game/`! The same applies to other file types!
+:::
+
+## Technical details
+
+### addoninfo
+
+The metadata file is small and its format has drifted. Older addons use KeyValues:
+
+```
+"AddonInfo"
+{
+    "IsTemplate"  "1"
+    "IsPlayable"  "0"
+}
+```
+
+while newer ones written by current tools use [KV3](../../../FileFormats/kv3.md), sometimes an empty document:
+
+```
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+}
+```
+
+The two forms are one key space, not two dialects: the loader detects KV3 and reads it directly, otherwise it converts the KeyValues text into the same KV3 document 
+and throws the `AddonInfo` root name away. An empty document is normal, and it is what most published addons carry.
+
+Valve ships the schema for this file as [FGD](../../fgd.md) files that the addon tools read, `game/core/tools/workshop_addoninfo_base.fgd` for the shared keys and 
+`game/<mod>/tools/workshop_addoninfo.fgd` for each game's own. Every key below comes from those.
+
+| Key | Type | Default | Meaning |
+| --- | --- | --- | --- |
+| `maps` | array of strings | | Maps the addon offers the player, named as the `map` command takes them, so `my_map` for `maps/my_map.vmap`. The engine reads this one, and falls back to scanning the addon's `maps/` directory if it is missing |
+| `IsPlayable` | bool | `1` | Whether the addon shows up as playable |
+| `IsTemplate` | bool | `0` | Marks the addon as a template rather than content |
+| `HideInTools` | bool | `0` | Hides the addon from the launcher's list |
+
+The three bools are marked hidden in the schema, so the tools do not show them, and outside Half-Life: Alyx and SteamVR Home they are read by the launcher and the 
+Workshop Manager rather than by the game.
+
+Each game adds its own keys:
+
+- <Game name="hla"/> has `map_extensions`, which overlays a map onto another map; see [Addons over existing maps](./addons-over-maps.md). 
+- <Game name="dota2"/> has by far the most, covering player counts, team counts, per-map overrides, the hero picker background and several rule toggles, because Dota custom games are configured here rather than in code. 
+- <Game name="cs2"/> adds `gamemodes` and `custom_cfg`.
+
+Both forms are read from the `game/` side of the addon. Source2Viewer looks for `addoninfo.txt` when it opens an addon VPK for the same reason the engine does: it identifies the directory as an addon.
+
+### What the compiler produces
+
+Compiling an addon does not produce one archive. Assets land as loose `_c` files at the mirrored path, and only maps are packed; see [content/ and game/](../content-and-game.md). The `-novpk` option of the resource compiler exists because that packing is a compile step, not a property of the file type.
+
+### Mounting
+
+`-addon my_addon` resolves against the `AddonRoot` directories from `gameinfo.gi` and mounts that one subdirectory ahead of the game's own content, which is what lets an addon override a shipped asset. The full mechanics, including official addon priority, the packed-addon requirement for retail clients and the tools-mode single-addon lock, are on [Content mounting](../../content-mounting.md).

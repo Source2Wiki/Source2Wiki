@@ -1,0 +1,26 @@
+---
+title: Working on content
+description: Addons, the two directory trees they live in, and where every file belongs.
+---
+
+import DocCardList from '@theme/DocCardList';
+
+Custom content in Source 2 is made inside an **addon**: a named folder the game [mounts](../content-mounting.md) on request, holding the same directory structure a shipped game does.
+
+Everything in this section follows from one shape. An addon exists twice, once as the files you edit and once as the files the game loads:
+
+```
+Counter-Strike Global Offensive/
+├── content/csgo_addons/my_addon/     source files, what you edit
+│   ├── maps/my_map.vmap
+│   └── materials/wall.vmat
+└── game/csgo_addons/my_addon/        compiled output, what the game loads
+    ├── maps/my_map.vpk
+    └── materials/wall.vmat_c
+```
+
+:::tip
+Work on the `content/` side. Anything edited under `game/` is overwritten by the next compile. There are a few exceptions for that. Read the pages in this section for more information.
+:::
+
+<DocCardList />

@@ -467,7 +467,11 @@ It’s similar to **Saturation / Vibrance**, but more selective. Saturation / Vi
 
 The selected **Channel** (e.g., Magentas) is treated as the original target range. The tool first finds pixels that are magenta-ish in the original image (with smooth blending into neighboring hues), and then applies the Hue/Saturation/Lightness changes to *those pixels*. When selecting a big Hue shift, those pixels may no longer *look* magenta - but they are still affected because they matched the original Magentas range. Hue wraps around the circle, so +180° and −180° are equivalent.
 
-The behavior of the **Lightness** slider *seems* closer to an HSL-style model (Hue/Saturation/Lightness) than HSV, but the exact internal math may differ (I’m not 100% sure).
+The behavior of the **Lightness** slider is closer to an HSL-style model (Hue/Saturation/Lightness) than HSV.
+
+:::todo
+Confirm the exact internal math against the shader source.
+:::
 
 **Example:**  
 If you select Magentas and set Hue = +90, a magenta pixel (roughly #FF00FF) rotates 90° forward on the hue wheel - from 300° --> 30° - becoming an orange-ish color (around #FF8000).  

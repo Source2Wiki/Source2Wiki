@@ -29,10 +29,8 @@ All it takes to set up a soundevent to use pathing is a few parameters. Here's a
 To make sure the pathing is actually used, set `snd_steamaudio_enable_pathing` to 1. By default, it's off.
 
 There are a couple of issues with pathing.
-* **The further you move from the sound source, and the more complex that the pathing gets, the more it impacts your GPU frametime** (for some reason)
+* **The further you move from the sound source, and the more complex that the pathing gets, the more it impacts your GPU frametime.**
 * **Sometimes, pathing can make a sound completely silent.** It's not a good idea to put pathing onto every soundevent you create. In some cases, the sound is weirdly offset. In the worst case, it becomes completely silent.
-
-Having said all of that, here are a couple of tips:
 
 - Players - If you don't care about Steam Audio Pathing and want to save some loading time, you can add this to your autoexec.cfg or launch options:
 `snd_steamaudio_load_pathing_data 0`

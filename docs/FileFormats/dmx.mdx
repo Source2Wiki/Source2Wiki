@@ -1,6 +1,7 @@
 ---
 description: Valve's strongly typed, generic object graph data structure.
 title: KV2/DMX
+sidebar_position: 5
 ---
 
 **Datamodel** is Valve's strongly typed, generic object graph data structure. **DMX** (Data Model eXchange... they tried) is the container file format it is stored in, it has both a binary and a text encoding.
@@ -153,7 +154,7 @@ For example:
 
 - **encoding name** is `binary` or `keyvalues2`, or one of their variants: `binary_seqids`, `keyvalues2_flat`, `keyvalues2_noids` (described in their sections below).
 - **format name / version** identify the *schema* of the element tree (`vmap`, `model`, `sfm_session`) and are meaningful only to the tool that owns that format, the encoding does not change with them. The generic format name `dmx` is used when no schema applies.
-- In the binary encoding the header line is terminated by `\n` followed by a `NUL` byte (`00`), the binary data starts right after it. In text encodings it is just the first line.
+- In the binary encoding the header line is terminated by `\n` followed by a null byte (`\0`), the binary data starts right after it. In text encodings it is just the first line.
 
 ## KeyValues2 encoding
 
@@ -249,12 +250,12 @@ When hand writing `keyvalues2` (useful for debugging), the ids of new elements j
 
 The binary encoding is little endian, there is no padding or alignment. 
 
-A `string` below is a NUL terminated UTF-8 string, a `string ref` is an index into the string table (`int16` or `int32` depending on the version, see [versions](#versions)).
+A `string` below is a null terminated UTF-8 string, a `string ref` is an index into the string table (`int16` or `int32` depending on the version, see [versions](#versions)).
 
 ```cpp
 struct DmxBinary
 {
-    char        header[];           // "<!-- dmx encoding binary 9 format vmap 35 -->\n", NUL terminated
+    char        header[];           // "<!-- dmx encoding binary 9 format vmap 35 -->\n", null terminated
 
     // version 9 only
     int32       prefixElementCount;
@@ -305,7 +306,7 @@ The order of the **element index** is the order everything else refers to: eleme
 
 | Type                  | Bytes                                                                                                                                                |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `element`             | `int32` index into the element index. `-1` is `null`. `-2` is an external/stub reference and is followed by the target's GUID as an inline text string (`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` + NUL, 37 bytes) |
+| `element`             | `int32` index into the element index. `-1` is `null`. `-2` is an external/stub reference and is followed by the target's GUID as an inline text string (`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` + null, 37 bytes) |
 | `int`                 | `int32`                                                                                                                                             |
 | `float`               | `float32`                                                                                                                                           |
 | `bool`                | `uint8`                                                                                                                                             |
@@ -347,17 +348,17 @@ The first bytes of a <Game name="cs2" /> `.vmap` (`binary 9`):
 ```
 3C 21 2D 2D 20 64 6D 78 20 65 6E 63 6F 64 69 6E   <!-- dmx encodin
 67 20 62 69 6E 61 72 79 20 39 20 66 6F 72 6D 61   g binary 9 forma
-74 20 76 6D 61 70 20 33 35 20 2D 2D 3E 0A 00      t vmap 35 -->.NUL   header
+74 20 76 6D 61 70 20 33 35 20 2D 2D 3E 0A 00      t vmap 35 -->.null  header
 01 00 00 00                                        1 prefix element
 03 00 00 00                                          with 3 attributes
-61 73 73 65 74 5F 70 72 65 76 69 65 77 5F 74 68      "asset_preview_thumbnail" NUL   attribute name (inline string)
+61 73 73 65 74 5F 70 72 65 76 69 65 77 5F 74 68      "asset_preview_thumbnail" null  attribute name (inline string)
 75 6D 62 6E 61 69 6C 00
 06                                                   type 6 = binary
 FA 8E 00 00                                          36602 bytes follow
 FF D8 FF E0 00 10 4A 46 49 46 ...                    the JPEG thumbnail
 ...                                                  "asset_preview_thumbnail_format" string "jpg", "map_asset_references" string_array
 C4 00 00 00                                        196 strings in the string table
-43 4D 61 70 52 6F 6F 74 45 6C 65 6D 65 6E 74 00      "CMapRootElement" NUL, then 195 more strings
+43 4D 61 70 52 6F 6F 74 45 6C 65 6D 65 6E 74 00      "CMapRootElement" null, then 195 more strings
 2B 00 00 00                                        43 elements
 00 00 00 00  01 00 00 00  A3 29 3E C7 5D B5 DB 40 AF DC 61 20 3F AB CE 54
                                                      element 0: type = string 0 "CMapRootElement", name = string 1 "", GUID c73e29a3-b55d-40db-afdc-61203fabce54

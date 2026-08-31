@@ -1,0 +1,20 @@
+.list {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.item {
+  margin: 0.4rem 0;
+}
+
+.icon {
+  margin-right: 0.35em;
+}
+
+.iconImage {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  vertical-align: center;
+  margin-right: 0.35em;
+}

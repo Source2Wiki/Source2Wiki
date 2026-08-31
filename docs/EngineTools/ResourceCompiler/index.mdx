@@ -18,7 +18,7 @@ The generated output usually retains the same extension as the source file, but 
 To use `resourcecompiler.exe`, run it from a console with the `-i` option followed by the absolute path to the source file(s).  
 
 :::warning
-Source asset files must be located inside the `content` directory.  If they are not, compilation will fail.
+`resourcecompiler.exe` must resolve which mod to build for. This is normally inferred from an input path inside `content/`; pass `-game <path to gameinfo.gi>` to compile files located elsewhere.
 :::
 
 Example:
@@ -62,8 +62,10 @@ Options:
   -f                  Force compile all encountered resources.
   -fshallow           Force compile top-level resources; children and associates only if needed.
   -fshallow2          Force compile top-level resources and their children; associates only if needed.
-  -pc                 Compile resources for Windows PC (default).
-  -novpk              Generate loose files instead of a VPK.
+  -dependency_check_only
+                      Only perform up-to-date check (automatically sets -v
+                      to get detailed status).
+  -novpk              Generate loose files for the map resource and its children instead of a VPK.
   -vpkincr            Incrementally update a VPK; existing files remain unless overwritten.
   -pauseiferror       Pause for keypress before quitting if errors occur.
   -pause              Pause for keypress before quitting.
@@ -74,9 +76,77 @@ Options:
   -crc <file>         Diagnostic: report CRC of the specified file and exit.
 ```
 
+`-vpkincr` is still listed but no longer does anything; see the note below.
+
 :::info
 `resourcecompiler.exe` also supports asset-specific options not documented here.  
 For example, compiling `.vmap` files may require additional arguments.  
 :::
 
 ---
+
+:::warning
+`-vpkincr` no longer does anything. The behaviour it advertises is now unconditional: a map compile always unzips the previous VPK into a staging tree first, so entries the build does not rewrite survive into the new package. The switch is still accepted and still listed in the help text, but nothing reads it.
+:::
+
+## What the force flags do
+
+A compile can pull in two kinds of extra resource. A **child** is one this compile generates: the `.vtex` a `.vmat` produces from a `.tga`, or the `.vmesh`, `.vphys` and `.vmorf` a `.vmdl` produces. An **associate** is a separate top-level asset compiled as a side effect, such as the assets an econ item names. Children are printed indented under their parent with a `+-` prefix.
+
+The three force flags differ only in how far the forcing reaches:
+
+| Flag | Top-level resource | Children | Associates |
+| --- | --- | --- | --- |
+| none | up-to-date check | check | check |
+| `-fshallow` | forced | check | check |
+| `-fshallow2` | forced | forced | check |
+| `-f` | forced | forced | forced |
+
+On one material with three child textures that gives:
+
+```
+(none)       OK: 0 compiled, 0 failed, 1 skipped
+-fshallow    OK: 1 compiled, 0 failed, 3 skipped
+-fshallow2   OK: 4 compiled, 0 failed, 0 skipped
+-f           OK: 4 compiled, 0 failed, 0 skipped
+```
+
+`-f` and `-fshallow2` are indistinguishable on an asset that has no associates.
+
+---
+
+## Reading the up-to-date check
+
+`-dependency_check_only` runs the check and reports the verdict without compiling anything. It implies `-v`, so the per item detail comes out on its own:
+
+```
+Checking existing compile file '...\materialscincr\incr_test.vmat_c'
+Special-dep matches old: 00000019 for 'Material Compiler Version'
+Special-dep matches old: 0000000B for 'Texture Compiler Version'
+Special-dep matches old: 00000001 for 'vpk:...\shaders_pc.vpk/csgo_simple.vfx'
+Argument dependency BinaryBlobArg '___OverrideInputData___' matches old fingerprint: 00000000
+Argument dependency FloatArg 'fast' not found, but fingerprint matches default: 00000000
+Input-dep matches old CRC: 7FD37A0C for '...\content\core\materials\default\default_ao.tga'
+Child resource is present: ...\materials\default\default_ao_tga_559f1ac6.vtex_c
+All inputs have identical CRCs, skipping...
+[SKIP]
+```
+
+When something has changed, the mismatching item is named and the verdict follows:
+
+```
+Input-dep CRC mismatch: disk A5061542 != 98663CF2 for '...\materialscincr\incr_test.vmat'
+Existing file invalid - Input dependency mismatch
+```
+
+Every verdict takes the form `Existing file invalid - <reason>`, where the reason names which of the recorded dependency lists failed: the header, the edit info, a special dependency, an argument dependency, an input dependency, an additional dependency, or a missing child resource.
+
+`-crc <file>` reports the same CRC32 the check compares against, which is the quickest way to confirm two copies of a source file are identical:
+
+```
+CRC of "...\incr_test.vmat" is 0x98663CF2 (60 bytes)
+```
+
+---
+
+How the compiler decides an asset is out of date in the first place, and what survives between map builds, is on [Compiling maps](../../Basics/working-on-content/compiling-maps.md).

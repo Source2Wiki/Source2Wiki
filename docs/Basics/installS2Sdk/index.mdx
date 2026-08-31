@@ -1,0 +1,31 @@
+---
+description: Installing and launching the Source 2 Workshop Tools.
+title: Installing the Workshop Tools
+---
+
+import GameTabs from '@site/src/components/GameTabs'
+import SteamVR from './_steamvr.mdx'
+import Dota2 from './_dota2.mdx'
+import Alyx from './_hla.mdx'
+import CS2 from './_cs2.mdx'
+
+Each [Source 2 game with public tools](../what-is-source-2.md#games-built-on-source-2) provides a DLC package that contains the tools required to create custom content. These tools are distributed separately from the main game, and the installation steps differ between games.
+
+<GameTabs
+
+        cs2 = {<CS2/>}
+        hla = {<Alyx/>}
+        dota2 = {<Dota2/>}
+        steamvr = {<SteamVR/>}
+
+/>
+
+## After installing
+
+The install adds three things to the game directory:
+
+- a `content/` tree next to `game/`, where source files live; see [content/ and game/](../working-on-content/content-and-game.md)
+- `resourcecompiler.exe` in `game/bin/win64/`, which turns source files into the [compiled resources](../../FileFormats/index.mdx) the game loads; see [Resource Compiler](../../EngineTools/ResourceCompiler/index.mdx)
+- the Addon Launcher and the ability to run the game in tools mode (`-tools`)
+
+The tools themselves are launched into an addon rather than on their own, so creating one is the next step: see [Addons](../working-on-content/addons/index.mdx).

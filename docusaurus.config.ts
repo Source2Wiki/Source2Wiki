@@ -73,6 +73,32 @@ const config: Config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.ts',
+          // carry each doc's front matter image into its sidebar item so
+          // DocCardList can show it as an icon in "In this section" lists
+          sidebarItemsGenerator: async function ({ defaultSidebarItemsGenerator, ...args }) {
+            const items = await defaultSidebarItemsGenerator(args);
+            const imageByDocId = new Map(
+              args.docs.filter(doc => doc.frontMatter.image).map(doc => [doc.id, doc.frontMatter.image])
+            );
+
+            const addIcons = (items: any[]): any[] => items.map(item => {
+              if (item.type === 'doc' && imageByDocId.has(item.id)) {
+                return { ...item, customProps: { ...item.customProps, icon: imageByDocId.get(item.id) } };
+              }
+              if (item.type === 'category') {
+                const result = { ...item, items: addIcons(item.items) };
+                // a category linked to an index doc inherits that doc's image
+                const linkedDocId = item.link?.type === 'doc' ? item.link.id : undefined;
+                if (linkedDocId && imageByDocId.has(linkedDocId)) {
+                  result.customProps = { ...item.customProps, icon: imageByDocId.get(linkedDocId) };
+                }
+                return result;
+              }
+              return item;
+            });
+
+            return addIcons(items);
+          },
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
           // Please change this to your repo.
@@ -86,7 +112,7 @@ const config: Config = {
         sitemap: {
           // Uses git dates, requires `docs.showLastUpdateTime: true` and full git history at build time.
           lastmod: 'date',
-          ignorePatterns: ['/search', '/markdown-page', '/unlisted'],
+          ignorePatterns: ['/search', '/unlisted'],
         },
         theme: {
           customCss: './src/css/custom.css',
