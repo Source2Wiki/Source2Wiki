@@ -9,7 +9,7 @@ A Source 2 install has two parallel trees:
 - **`content/`** holds authored source files. Nothing here is ever loaded by the game.
 - **`game/`** holds compiled output plus the files the engine reads directly. This is what ships.
 
-Every asset lives in both. The source file is edited under `content/`, a compiler writes the compiled result to the matching path under `game/`, and the game loads that.
+Almost every asset lives in both. The source file is edited under `content/`, a compiler writes the compiled result to the matching path under `game/`, and the game loads that.
 
 Which folders make up each tree, and what belongs in them, is covered in [Directory layout](./directory-layout.md).
 
@@ -35,10 +35,14 @@ Anything the editors own belongs there: a `.vmap`, `.vmat` or `.vtex` is edited 
 The files you do edit by hand sit on the `game` side, because nothing compiles them: `addoninfo.txt`, the configs under `cfg/`, and a map's radar overview `.txt`. For the overview, prefer generating it with <Tool name="radgen"/> over writing it yourself, see [RadGen](../../ExternalTools/radgen.mdx).
 
 :::warning
-There are rare cases where you need to manually edit compiled files, but it is not recommended if it can be avoided. As an example, there are rarely things that ModelDoc has no way to author yet (something that Valve uses internally but has not publicly shipped). <Tool name="github" suffix="s2assetassembler" link="https://github.com/LionDoge/source2-asset-assembler"/> (`pip install s2assetassembler`) can swap individual blocks in a compiled file or build one from scratch. Note that if you still have the source asset in the `content` side it will override the manually edited asset in `game` once the resourcecompiler compiles it again. Therefore in that case the `content` side should be removed.
+There are rare cases where you need to manually edit compiled files, but it is not recommended if it can be avoided. 
+
+As an example, there are rarely things that ModelDoc has no way to author yet (something that Valve uses internally but has not publicly shipped). <Tool name="github" suffix="s2assetassembler" link="https://github.com/LionDoge/source2-asset-assembler"/> (`pip install s2assetassembler`) can swap individual blocks in a compiled file or build one from scratch.
+
+Note that if you still have the source asset in the `content` side it will override the manually edited asset in `game` once the resourcecompiler compiles it again. Therefore in that case the `content` side should be removed.
 :::
 
-## How are files compiled?
+## How files are compiled
 
 `resourcecompiler.exe` in `game/bin/win64/` is the compiler. It dispatches to a per type compiler chosen by extension, `CompileMaterial` for a `.vmat`, `CompileModel` for a `.vmdl`, `CompileMap` for a `.vmap`; [Asset Types](../../FileFormats/asset-types.md) lists the compiler for every type.
 
@@ -52,16 +56,26 @@ It rarely has to be run by hand, because the tools run it:
 
 What a map build actually redoes, and what it keeps from the previous one, is on [Compiling maps](./compiling-maps.md).
 
-However, there are rare cases, where the game does not properly recompile an asset. In that case you can manually recompile the file by selecting it in the Asset Browser, right clicking and selecting the Recompile option.
+:::info
+When the game does not properly recompile an asset you can manually recompile the file by selecting it in the Asset Browser, right clicking and selecting the Recompile option.
+:::
 
-## Why it is split this way
+## Why content is split this way
 
 Source files are large, editable, and useless to the runtime. Compiled files are smaller, have a more fixed layout, and load without parsing text. Keeping them in separate trees means the shipping game never has to carry source maps or uncompressed textures, and the tools always know which copy is authoritative for editing. 
 
-Depending on the file type, the compile does more than change the encoding: it derives data that has no counterpart in the file you edited. A `.vmap` has its prefab instances flattened into plain entities, its mesh scaling baked into vertex positions and its geometry split into world nodes, so none of the structure you worked with survives as such. Cloth is an even more extreme case: the vertex weights painted in ModelDoc become a solver structure of nodes, rods and quads that was never written down anywhere in the source. This is the reason [decompiling](./decompiling-assets.md) recovers something workable rather than the original. Therefore, it is not possible to decompile all assets well. As an example, the prefab structure of meshes is simply lost during compiling and can not be recovered.
+Depending on the file type, the compile does more than change the encoding:
+
+It derives data that has no counterpart in the file you edited. A `.vmap` has its prefab instances flattened into plain entities, its mesh scaling baked into vertex positions and its geometry split into world nodes for optimisation, so none of the structure you worked with survives as such.
+
+Cloth is an even more extreme case: the vertex weights painted in ModelDoc become a solver structure of nodes, rods and quads that was never written down anywhere in the source. This is the reason [decompiling](./decompiling-assets.md) recovers something workable rather than the original. Therefore, it is not possible to decompile all assets well. As an example, the prefab structure of meshes is simply lost during compiling and can not be recovered.
 
 :::warning
-Deleting something from `content/` does not remove it from `game/`! Stale compiled files keep loading until they are deleted there too, which is a common cause of a change appearing to do nothing. Delete them by hand, or clear your addon's whole folder on the `game/` side and let a full compile rebuild it.
+Deleting something from `content/` does not remove it from `game/`! 
+
+Stale compiled files keep loading until they are deleted there too, which is a common cause of a change appearing to do nothing. 
+
+Delete them by hand, or clear your addon's whole folder on the `game/` side and let a full compile rebuild it.
 
 If you clear it, keep the files that only ever exist there and are never regenerated: `addoninfo.txt`, everything under `cfg/`, and the rest listed in [Which side to edit](#which-side-to-edit). Deleting those means writing them again from scratch.
 :::
