@@ -1,6 +1,6 @@
 ---
 title: Modifying the game
-description: What of a shipped game an addon can replace, what it cannot, and what editing game files costs.
+description: How to replace game files, what can and cannot be replaced, and limitations.
 sidebar_position: 9
 ---
 

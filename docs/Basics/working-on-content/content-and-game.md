@@ -1,6 +1,6 @@
 ---
 title: content/ and game/
-description: The two mirrored directory trees every Source 2 install is built around.
+description: The two mirrored directory trees that Source 2's asset system is built around.
 sidebar_position: 2
 ---
 

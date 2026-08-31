@@ -1,6 +1,6 @@
 ---
 title: Directory layout
-description: Where each kind of file belongs in a Source 2 install, and why the paths are fixed.
+description: Where each file type belongs in a Source 2 install.
 sidebar_position: 3
 ---
 

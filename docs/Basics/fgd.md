@@ -8,6 +8,8 @@ An FGD (Forge Game Data) file is a plain text file that tells [Hammer](../Engine
 
 :::info
 FGDs are **editor metadata only**. The game never reads them. An entity works because it exists in code, described by the [schema](./schemas.md); the FGD only describes it to the tools. Adding a class to an FGD does not create an entity, and a wrong FGD produces a map that compiles but behaves differently than the editor implied.
+
+<Tool name="github" suffix="sledge-formats" link="https://github.com/LogicAndTrick/sledge-formats"/> can be used to parse modern FGD files.
 :::
 
 ## Where they live
@@ -100,7 +102,9 @@ These are what populate Hammer's automatic visibility groups, either by the [too
 
 ### Parsing one
 
-An FGD is plain text, so a small parser is easy enough, but the syntax is surprisingly complex: base class inheritance, `remove_key`, inline `choices` and `flags` blocks, helpers with arbitrary arguments, and Source 2's own additions. <Tool name="github" suffix="sledge-formats" link="https://github.com/LogicAndTrick/sledge-formats"/> already handles it. Its `Sledge.Formats.GameData` package is an MIT licensed C# FGD reader and writer, published on NuGet, and the wider library covers the other Valve editor formats alongside it.
+An FGD is plain text, so a small parser is easy enough, but the syntax is surprisingly complex: base class inheritance, `remove_key`, inline `choices` and `flags` blocks, helpers with arbitrary arguments, and Source 2's own additions. 
+
+<Tool name="github" suffix="sledge-formats" link="https://github.com/LogicAndTrick/sledge-formats"/> already handles it. Its `Sledge.Formats.GameData` package is an MIT licensed C# FGD reader and writer, published on NuGet, and the wider library covers the other Valve editor formats alongside it.
 
 ### Property types
 

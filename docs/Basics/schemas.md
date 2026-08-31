@@ -1,10 +1,14 @@
 ---
 title: Schemas
-description: The engine's type system, and why entity properties and data files depend on it.
+description: Source 2' built in reflection system.
 sidebar_position: 10
 ---
 
 Source 2 keeps a description of its own C++ classes at runtime: every class, every field, the field's name, type and offset in memory. That registry is the **schema system**, and a lot of the engine's file handling is built on it.
+
+:::info
+The [Schema Explorer](https://s2v.app/SchemaExplorer) publishes the class and field tables per game. Source2Viewer links directly into it from its own enums, for example [`EntityIOTargetType_t`](https://s2v.app/SchemaExplorer/cs2/entity2/EntityIOTargetType_t).
+:::
 
 ## Why it matters to authors
 
@@ -94,7 +98,3 @@ Those sizes are the reason a compiled entity lump or vdata file can pack a trans
 Field offsets are byte offsets into a C++ class. Adding one member anywhere near the top shifts everything after it. Names are far more stable than offsets, so any tool that survives updates looks fields up by name and treats offsets as build specific.
 
 The same applies across games: two Source 2 titles share the engine classes and nothing else, so `CCitadelAbility` exists only in Deadlock and CS2's weapon classes exist only in CS2.
-
-### Browsing and using them
-
-The [Schema Explorer](https://s2v.app/SchemaExplorer) publishes the class and field tables per game. Source2Viewer links directly into it from its own enums, for example [`EntityIOTargetType_t`](https://s2v.app/SchemaExplorer/cs2/entity2/EntityIOTargetType_t).
