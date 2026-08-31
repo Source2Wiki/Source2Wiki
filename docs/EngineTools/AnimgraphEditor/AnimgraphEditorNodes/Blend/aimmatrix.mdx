@@ -3,7 +3,7 @@ description: Aim Matrix.
 title: Aim Matrix
 ---
 
-Treats each frame of a single animation as the pose for a direction, and will blend them to create a combined pose to \"aim\" the character in that given direction.
+Treats each frame of a single animation as the pose for a direction, and will blend them to create a combined pose to "aim" the character in that given direction.
 AIM matrix sequence can be created in ModelDoc with AnimSubtract and usually subtracting the 4th frame of the animation.
 
 ![aimmatrix in editor](./aimmatrix_image.png "Aim Matrix Node in Editor")
@@ -40,7 +40,7 @@ The input vector that is driving the blend. What location this node should aim a
 If <b>Target</b> is set to <em>Position Parameter</em>, this field is the anim parameter that is driving the blend.  Note that only Vector parameters are displayed as options.
 
 ## Aim Attachment
-The Aim Matrix needs to know not just what to aim <em>at</em>, but also where to aim <em>from</em>.  This field lets you pick an attachment that defines what this node considers \"forward\", and the blend of the aim frames will be made based on the direction to the target relative to this attachment.
+The Aim Matrix needs to know not just what to aim <em>at</em>, but also where to aim <em>from</em>.  This field lets you pick an attachment that defines what this node considers "forward", and the blend of the aim frames will be made based on the direction to the target relative to this attachment.
 
 ## Blend Mode
 Defines how the blend of the frames of the aim animation are applied to the pose from the child node:

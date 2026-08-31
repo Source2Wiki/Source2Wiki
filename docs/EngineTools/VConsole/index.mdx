@@ -4,11 +4,9 @@ title: VConsole
 image: /img/app_icons/vconsole.png
 ---
 
-import DocCardList from '@theme/DocCardList';
-
 <img src={require('@site/static/img/app_icons/vconsole.png').default} alt="Tool Icon" vertical-align="middle" width="128" height="128" />
 
-# Getting started with VConsole
+## Getting started with VConsole
 `vconsole2.exe` is a standalone program that captures all output from the game console into a separate buffer.  
 Unlike the Source 1 console, `vconsole2.exe` is far more powerful: it not only lets you search through messages, but also start processes, monitor engine events (via plugins), and more.
 
@@ -18,10 +16,10 @@ Unlike the Source 1 console, `vconsole2.exe` is far more powerful: it not only l
 In multiplayer Source 2 games, if VConsole is started without `-tools` mode it will not connect to the game.
 :::
 
-# VConsole Interface  
+## VConsole Interface  
 ![vc1](./vc1.png "vc1")
 
-## 1- Toolbar  
+### 1- Toolbar  
 This is the dock that holds all the console plugins. Left-click on an icon to open the corresponding plugin.
 
 :::info
@@ -32,38 +30,38 @@ Example: the `NetGraph` plugin opened from the toolbar.
 ![vc1_bar](./vc1_bar.png "vc1_bar")  
 ![vc1_pl](./vc1_plugin.png "vc1_pl")
 
-## 2- Console output
+### 2- Console output
 Displays the runtime output of the game and tools.  
 ![vc_ot](./vc_ot.png "vc_ot")
 
-## 3- Plugin docking
+### 3- Plugin docking
 Certain plugins can dock into the main VConsole window.  
 For example, the `Convar Helper` is shown docked below.  
 ![vc_dock](./vc_dock.png "vc_dock")
 
-## 4- Input Bar
-### Command
+### 4- Input Bar
+#### Command
 Type a command and press Enter, equivalent to typing in the in-game console.  
 ![vc_cmm](./vc_cmm.png "vc_cmm")  
 
-### Search
+#### Search
 Lets you search the VConsole message log for a specific string.  
 ![vc_srch](./vc_srch.png "vc_srch")  
 ![vc_srch_ex](./vc_srch_ex.png "vc_srch_ex")
 
-### Filter
+#### Filter
 Lets you filter the VConsole message log for a specific string.  
 ![vc_fltr](./vc_fltr.png "vc_fltr")  
 ![vc_fltr_ex](./vc_fltr_ex.png "vc_fltr_ex")
 
-# VConsole Options
-## Customization
+## VConsole Options
+### Customization
 Open `Main -> Options` to access the customization panel.  
 ![vc_cstm_1](./vc_cstm_1.png "vc_cstm_1")  
 ![vc_cstm_2](./vc_cstm_2.png "vc_cstm_2")  
 ![vc_cstm_3](./vc_cstm_3.png "vc_cstm_3")
 
-### Channel Activity
+#### Channel Activity
 Sometimes subsystems output large amounts of information that can hide useful messages.  
 To solve this, VConsole allows you to set the verbosity level of each channel, letting you control how much output is shown.
 Open `Viewers -> Properties` to access the spew panel.  
@@ -73,6 +71,3 @@ Open `Viewers -> Properties` to access the spew panel.
 An alternative way is right click in the subsystem in the console output.
 ![vc_pp_3](./vc_pp_3.png "vc_pp_3")
 ![vc_pp_4](./vc_pp_4.png "vc_pp_4")
-
-
-<DocCardList />

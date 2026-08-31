@@ -33,7 +33,7 @@ Previous state root motion will be dropped even on the first frame of a transiti
 ### Start State
 Toggles whether this state should be the current state when the graph is reset.  Each state machine should have exactly one start state.
 ### End State
-If a state is marked as an End State, and its child is \"finished\", then the state machine will tell its parent that it also is \"finished\".  State machines can have zero or more End States.
+If a state is marked as an End State, and its child is "finished", then the state machine will tell its parent that it also is "finished".  State machines can have zero or more End States.
 
 ### Passthrough
 Normally when a state becomes the current state, its exit transitions are not evaluated until the next time the graph is updated.  Setting a state as a Passthrough State will cause it to evaluate its exit transitions during the same update that it becomes the current state.  So its possible for the state become the current state, then pass control to another state in the same frame.

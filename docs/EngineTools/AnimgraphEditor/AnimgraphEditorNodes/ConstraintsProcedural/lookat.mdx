@@ -17,7 +17,7 @@ Set a float parameter to control the blend weight of the lookat
 ## LookAt Chain
 The chain of bones that will be rotated as part of the lookat.  LookAt Chains are defined in ModelDoc, and referenced by name here.
 ## Aim Attachment
-The LookAt op needs to know not just what to aim <em>at</em>, but also where to aim <em>from</em>.  This field lets you pick an attachment that defines what this node considers \"forward\", and the lookat rotation will be made based on the direction to the target relative to this attachment.
+The LookAt op needs to know not just what to aim <em>at</em>, but also where to aim <em>from</em>.  This field lets you pick an attachment that defines what this node considers "forward", and the lookat rotation will be made based on the direction to the target relative to this attachment.
 ## Rotation Limits
 ### Rotate Through Forward
 When enabled, the entity will not rotate from -180 to 180 directly but instead rotate through 0 degrees (forward for the entity).  Bad for turrets, good for humans.
@@ -35,7 +35,7 @@ Don't change the look direction if this node is blending out.
 ### Use Hysteresis
 Turns hysteresis support on and off.
 
-Using Hysteresis on the lookat makes it act \"sticky\".  Once it has turned to look in a direction it will stay there until the target direction moves more than a certain threshold.  Once it does, it will turn to look in the new direction until it is within an inner threshold.
+Using Hysteresis on the lookat makes it act "sticky".  Once it has turned to look in a direction it will stay there until the target direction moves more than a certain threshold.  Once it does, it will turn to look in the new direction until it is within an inner threshold.
 ### Inner Angle
 Once the lookat starts turning towards the target direction, it will keep turning towards the target until the target is within this angle.  For best results this should be less than <b>Outer Angle</b>
 ### Outer Angle

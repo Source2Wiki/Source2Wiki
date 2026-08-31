@@ -1,4 +1,8 @@
-# Physics Simulation in Hammer
+---
+title: Physics simulation in Hammer
+description: How to simulate physics with Hammer meshes and models.
+---
+
 This guide will teach you how to simulate physics with your Hammer meshes/models.
 
 :::info
@@ -24,7 +28,7 @@ For the physics engine inside Hammer to simulate, the object needs to have **con
 </div>
 ---   
 
-4.  Press **Space** to run stop the simulation.
+4.  Press **Space** to start or stop the simulation.
 
 ---  
 ### Fix Some Props That Cannot Run in the Physics Simulation
@@ -36,6 +40,7 @@ This can be fixed if the collision mesh is set to convex collision.
 <details>
 <summary>**Games with ModelDoc Editor**</summary>
 :::todo
+The ModelDoc workflow for physics meshes is not written up yet.
 :::
 </details>  
 
@@ -70,4 +75,4 @@ Mesh entities are not supported for physics simulation.
 </div>
 
 --- 
-4.  Press **Space** to run stop the simulation.
+4.  Press **Space** to start or stop the simulation.

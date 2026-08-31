@@ -129,7 +129,7 @@ A number (-1 to 1) that indicates how much to derive motion from physics, and ho
 
 - 1 - fully physics driven, the animation joint is deactivated and physics is set to dynamic to interact with the environment.
 
-Any value inbetween will lerp the spring to between \"Spring Frequency Min\" and \"Spring Frequency Max\" as set in this UI.
+Any value inbetween will lerp the spring to between "Spring Frequency Min" and "Spring Frequency Max" as set in this UI.
 
 ## Slope Component
 When present, the game code will calculate the normal of the ground under the entity and pass it to this component, which then uses it to set the values of several parameters.
@@ -209,16 +209,16 @@ When set the IK target will be saved relative to this bone, rather than in the r
 ### Solver Mode
 The IK solver to use:
 
-- Two-Bone: Alter the rotations on two bones (a \"shoulder\" and an \"elbow\" bone) to place a 3rd bone (the \"hand\") at the target location
+- Two-Bone: Alter the rotations on two bones (a "shoulder" and an "elbow" bone) to place a 3rd bone (the "hand") at the target location
 - Two-Bone + Translation: Same as Two-Bone IK, but if the hand still cannot reach the IK target after the IK solve then translate the shoulder until the hand is on the target.  
-- One-Bone: Alter the rotation of one bone (the \"elbow\") so that its child (eg: \"hand\") is pointing in the direction of the IK target.
+- One-Bone: Alter the rotation of one bone (the "elbow") so that its child (eg: "hand") is pointing in the direction of the IK target.
 - One-Bone + Translation: Same as One-Bone IK, but if the hand is too near or far from the IK target, translate the elbow bone to move the hand to the target
 ### IK Chain
 The IK chain to use for the two-bone solve
 ### Start Bone
-The \"Elbow\" bone in a one-bone IK rig
+The "Elbow" bone in a one-bone IK rig
 ### End Bone
-The \"hand\" bone in a one-bone IK rig.  Note that the <i>Start Bone</i> must be an ancestory of this bone, but it does not need to be the immediate parent.
+The "hand" bone in a one-bone IK rig.  Note that the <i>Start Bone</i> must be an ancestory of this bone, but it does not need to be the immediate parent.
 
 ## Paired Sequence Component
 

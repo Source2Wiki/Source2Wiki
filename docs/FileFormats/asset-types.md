@@ -1,5 +1,6 @@
 ---
 title: Asset Types
+description: Every Source 2 asset type, its source file extension, and the compiler that produces the compiled form.
 sidebar_position: 1
 ---
 
