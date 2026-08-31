@@ -47,23 +47,3 @@ The same folder names appear on both sides of the install: authored under `conte
 An [addon](./addons/index.mdx) is a mod directory of its own, using the same folder names, mounted on top of the main mod. Paths inside it are relative to the addon root, so `content/csgo_addons/my_addon/materials/wall.vmat` is referenced everywhere as `materials/wall.vmat`, exactly as if it shipped with the game. `content/csgo_addons/addon_template/` is the layout Valve ships as a starting point, and the other tools games carry the same template under their own addon directories.
 
 Which of an addon's folders the game mounts, and in what order against the base game, is on [Content mounting](../content-mounting.md). Not every folder survives publishing either: by default the workshop packer keeps only the directories the main mod's `gameinfo.gi` lists and drops the rest without a warning, though that list can be edited, see [Workshop packing](../content-mounting.md#workshop-packing).
-
-## The install
-
-```
-Counter-Strike Global Offensive/
-├── content/          source assets (only present with the tools installed)
-├── game/             the Source 2 game
-├── bin/              Source 1 leftovers
-├── csgo/             Source 1 leftovers
-├── platform/         Source 1 leftovers
-└── csgo.exe          Source 1 launcher stub
-```
-
-:::warning
-In a CS2 install the top level `csgo/`, `bin/` and `platform/` folders are Source 1 CS:GO leftovers and have nothing to do with Source 2. The Source 2 game is everything under `game/`.
-:::
-
-`content/` mirrors the mod and addon structure of `game/` but holds the source files, and it only appears once the workshop tools are installed. See [content/ and game/](./content-and-game.md).
-
-`_iconcache/` and `shadercache/` are generated caches and safe to delete.
