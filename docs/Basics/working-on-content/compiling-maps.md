@@ -53,7 +53,7 @@ The `Entities only` compile does not delete the lightmap information. So iterati
 
 These are baked from inside the game rather than by the hammer map compile. However, the map builder has a checkbox to automatically bake them as well after the whole compile is done. They can be built manually from the game: [`buildcubemaps`](../../Convars/index.mdx) in the console bakes them on the running map.
 
-The results live in the map .vpk as a single .vtex_c containing all the cubemaps in a texture array, Hammer can also bake cubemaps for lightng preview, they live in `_bakeresourcecache/`, named per entity.
+The results live in the map .vpk as a single .vtex_c containing all the cubemaps in a texture array, Hammer can also bake cubemaps for lighting preview, they live in `_bakeresourcecache/`, named per entity.
 
 ## Compiling without Hammer
 

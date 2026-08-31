@@ -8,7 +8,7 @@ A Source 2 game does not reference `pak01_dir.vpk` by name anywhere. Mounting is
 
 ## The gameinfo files
 
-`gameinfo.gi` is a mod's configuration: its name, which directories it mounts, and the engine, renderer and tool settings it runs with. Every directory that can be launched as a mod has one, and directories that are only mounted as content do not.
+`gameinfo.gi` is a game's (also known as mods internally by the engine) configuration: its name, which directories it mounts, and the engine, renderer and tool settings it runs with. Every directory that can be launched as a mod has one, and directories that are only mounted as content do not.
 
 Most games keep all of it in that one file. Counter-Strike 2 is the exception, splitting its configuration over three that layer on each other:
 
@@ -82,10 +82,16 @@ Two rules restrict what gets mounted:
 The addon's source directory under `content\csgo_addons\` is additionally mounted under the `CONTENT` path ID. That path is used for asset lookup and compiling, not by the game. What an addon contains, folder by folder, is on [Directory layout](./working-on-content/directory-layout.md).
 
 :::warning
-Tools mode mounts exactly one addon, fixed when the tools are launched. A request to mount a different addon prints a warning and registers nothing: no `GAME` path and no `CONTENT` path. A subscribed map opened in the [Workshop Tools](./installS2Sdk/index.mdx) therefore renders untextured when its content belongs to a different addon than the one the tools were launched with, because its materials and models have no search path. Repacking the addon does not change this; the loose versus packed restriction does not apply in tools mode. Official maps load fine because their files are not packed in the map vpk, but inside the base game files.
+Tools mode mounts exactly one addon, fixed when the tools are launched. 
+
+A request to mount a different addon prints a warning and registers nothing: no `GAME` path and no `CONTENT` path. A subscribed map opened in the [Workshop Tools](./installS2Sdk/index.mdx) therefore renders untextured when its content belongs to a different addon than the one the tools were launched with, because its materials and models have no search path. 
+
+Repacking the addon does not change this; the loose versus packed restriction does not apply in tools mode. Official maps load fine because their files are not packed in the map vpk, but inside the base game files.
 :::
 
 ## Workshop packing
+
+This info is currently only valid for <Game name="cs2"/>
 
 What a published workshop item contains is decided by the `AddonConfig/VpkDirectories` include and exclude list in the main mod's `gameinfo.gi`. The packer keeps only what the list names and drops the rest without a warning, which is why an asset that works locally can be missing from the published item.
 
