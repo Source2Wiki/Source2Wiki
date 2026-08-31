@@ -6,6 +6,14 @@ sidebar_position: 2
 
 A VPK (Valve Pak) is the uncompressed archive format Source and Source 2 package content in. Almost everything a game loads at runtime comes out of one.
 
+:::info
+<Tool name="s2v"/> browses and extracts VPKs. Extracting gives compiled `_c` resources, not the original source assets. Turning those back into something editable is a separate step, and not always possible.
+
+<Tool name="github" suffix="ValvePak" link="https://github.com/ValveResourceFormat/ValvePak"/> can write VPKs.
+
+<Tool name="github" suffix="VPKEdit" link="https://github.com/craftablescience/VPKEdit"/> is a standalone community editor that reads, creates and edits VPK files of both versions.
+:::
+
 A VPK appears in three places:
 
 - **the game's content archives**, `pak01_dir.vpk` plus its numbered chunks in the game directory
@@ -234,11 +242,5 @@ Writer limits:
 | Default chunk size | 200 MiB | ValvePak setting, adjustable |
 
 ValvePak also refuses to write back a package that was opened from a `_dir.vpk`.
-
-## Reading
-
-<Tool name="s2v"/> browses and extracts VPKs. Extracting gives compiled `_c` resources, not the original source assets. Turning those back into something editable is a separate step, and not always possible.
-
-<Tool name="github" suffix="VPKEdit" link="https://github.com/craftablescience/VPKEdit"/> is a standalone community editor that reads, creates and edits VPK files of both versions.
 
 [^1]: Respawn's Titanfall and Apex Legends use a version stamp of `0x00030002` and a heavily modified layout that compresses its entries. It shares the magic number and nothing else, and general Source tooling will not read it.
