@@ -1,7 +1,9 @@
 ---
 sidebar_position: 15
+title: Uploading to Steam Workshop
+description: Not yet ported from the original document.
 ---
 
-# Uploading to Steam Workshop
-
-ch 1.18
+:::todo
+Not yet ported from the original document, covered there in ch 1.18.
+:::

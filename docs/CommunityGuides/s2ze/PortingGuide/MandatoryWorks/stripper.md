@@ -1,7 +1,9 @@
 ---
 sidebar_position: 1
+title: Stripper Configs
+description: Not yet ported from the original document.
 ---
 
-# Stripper Configs
-
-ch 1.1
+:::todo
+Not yet ported from the original document, covered there in ch 1.1.
+:::

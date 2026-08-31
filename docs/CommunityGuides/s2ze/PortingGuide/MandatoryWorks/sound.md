@@ -1,7 +1,9 @@
 ---
 sidebar_position: 11
+title: Sounds
+description: Not yet ported from the original document.
 ---
 
-# Sounds
-
-ch 1.7
+:::todo
+Not yet ported from the original document, covered there in ch 1.7.
+:::

@@ -34,7 +34,7 @@ If you change the texture in **MaterialEditor**, a new **.vtex** file will be ge
    to the relative path of your **2D skybox texture**.
 
 :::info
-Your ``"m_outputFormat" "string" "compression_format"`` should always be ``BC7`` (HDR block compression) or ``BC6H`` (high‑quality RGB or RGBA block compression), since skyboxes are normally 16‑bit or 32‑bit images.
+Your ``"m_outputFormat" "string" "compression_format"`` should always be ``BC7`` (HDR block compression) or ``BC6H`` (high-quality RGB or RGBA block compression), since skyboxes are normally 16-bit or 32-bit images.
 :::
 
 ```
@@ -86,7 +86,7 @@ Your ``"m_outputFormat" "string" "compression_format"`` should always be ``BC7``
 }
 ```
 
-2. Compile your material. This is done automatically. If not, go to the **Asset Browser**, search for your texture, **right‑click**, and select **Full Recompile**.  
+2. Compile your material. This is done automatically. If not, go to the **Asset Browser**, search for your texture, **right-click**, and select **Full Recompile**.  
 ![vtexcompile](./vtexcompile.png "vtexcompile")
 
 3. Finally, copy the compiled asset name into the **env_cubemap_fog** entity in Hammer.

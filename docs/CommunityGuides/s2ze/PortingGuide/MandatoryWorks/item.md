@@ -1,7 +1,9 @@
 ---
 sidebar_position: 10
+title: Items
+description: Not yet ported from the original document.
 ---
 
-# Items
-
-ch 1.13
+:::todo
+Not yet ported from the original document, covered there in ch 1.13.
+:::

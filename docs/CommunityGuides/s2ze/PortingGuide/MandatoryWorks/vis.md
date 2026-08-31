@@ -1,7 +1,9 @@
 ---
 sidebar_position: 7
+title: VIS
+description: Not yet ported from the original document.
 ---
 
-# VIS
-
-ch 1.10
+:::todo
+Not yet ported from the original document, covered there in ch 1.10.
+:::

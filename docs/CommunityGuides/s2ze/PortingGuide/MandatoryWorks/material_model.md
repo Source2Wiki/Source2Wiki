@@ -1,7 +1,9 @@
 ---
 sidebar_position: 6
+title: Materials & Models
+description: Not yet ported from the original document.
 ---
 
-# Materials & Models
-
-ch -1, ch 1.8
+:::todo
+Not yet ported from the original document, covered there in ch -1, ch 1.8.
+:::
