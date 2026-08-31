@@ -87,7 +87,7 @@ The braces are metadata for the editor, here sorting the key to the top of the p
 
 `Targetname` is also where `Kill`, `AddOutput` and `RunScriptCode` come from, which is why nearly every entity accepts them without declaring them.
 
-### Editor Configuration
+### Editor configuration
 
 They also carry editor configuration, most visibly auto visgroup rules:
 

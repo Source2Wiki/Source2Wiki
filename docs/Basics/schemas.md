@@ -1,6 +1,6 @@
 ---
 title: Schemas
-description: Source 2' built in reflection system.
+description: Source 2's built-in reflection system.
 sidebar_position: 10
 ---
 
