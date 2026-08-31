@@ -1,0 +1,7 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-right: 0.4em;
+}
