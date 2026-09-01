@@ -38,6 +38,32 @@ export function sanitizeInputTable(input: string): string {
   return sanitizeInput(input).replaceAll("|", "\\|");
 }
 
+/**
+ * For the frontmatter description, which ends up in the meta/og:description tags where HTML
+ * never renders. Social embeds like Discord show any leftover tags as literal text, so this
+ * strips markup down to plain text instead of preserving it.
+ */
+export function sanitizeMetaDescription(input: string): string {
+  input = input.replaceAll("<original name>", "");
+  input = input.replaceAll("<Award Text>", "");
+  input = input.replaceAll("<picker>", "");
+  input = input.replaceAll("<None>", "None");
+
+  // line breaks are kept as real newlines, Discord preserves them in embed descriptions
+  // and everything else collapses them to spaces
+  input = input.replace(/<br\s*\/?>/gi, "\n");
+
+  // drop the formatting tags rather than keeping them
+  input = input.replace(/<\/?(?:b|strong)\b[^>]*>/gi, "");
+
+  // collapse whitespace, but keep line breaks with at most one blank line
+  input = input.replace(/[^\S\n]+/g, " ");
+  input = input.replace(/ *\n */g, "\n");
+  input = input.replace(/\n{3,}/g, "\n\n");
+
+  return input.trim();
+}
+
 const HtmlEscapes: Record<string, string> = {
   "<": "&lt;",
   ">": "&gt;",
