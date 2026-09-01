@@ -207,7 +207,13 @@ function propertyMdx(property: Property): string {
 }
 
 function inputOutputMdx(inputOutput: InputOutput): string {
-  return `- ${inputOutput.Name ?? ""} \\<\`${inputOutput.VariableType ?? ""}\`\\>\\\n${inputOutput.Description ?? ""}\n\n`;
+  let inputOutputString = `- ${inputOutput.Name ?? ""} \\<\`${inputOutput.VariableType ?? ""}\`\\>`;
+
+  if (inputOutput.Description) {
+    inputOutputString += `\\\n${inputOutput.Description}`;
+  }
+
+  return `${inputOutputString}\n\n`;
 }
 
 function detailsHeader(title: string): string {
