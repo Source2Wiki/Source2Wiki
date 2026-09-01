@@ -90,14 +90,12 @@ admonition.compact {
   font-size: 0.9rem !important;
 }
 
-/* for groups like keyvalues in entity page, without this the default styling is a bit over the top,
-   the hairline left border keeps a subtle visual anchor for collapsed groups */
+/* for groups like keyvalues in entity page, without this the default styling is a bit over the top */
 details {
   background: none !important;
   border: none !important;
-  border-left: 2px solid var(--ifm-color-emphasis-300) !important;
   border-radius: 0 !important;
-  padding: 0 0 0 0.75rem !important;
+  padding: 0 !important;
   margin: 0.25rem 0 !important;
   box-shadow: none !important;
 }
