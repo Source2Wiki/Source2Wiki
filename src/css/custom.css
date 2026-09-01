@@ -284,3 +284,33 @@ html[data-theme='dark'] .alert--bug {
 .navbar__items--right .discord-button {
   margin-right: -8px;
 }
+
+/* Footer credits: two columns on wide screens, centered when they no longer fit side by side */
+.footer-credits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-credits-left {
+  text-align: left;
+}
+
+.footer-credits-right {
+  text-align: right;
+}
+
+@media (max-width: 1280px) {
+  .footer-credits {
+    justify-content: center;
+  }
+
+  .footer-credits-left,
+  .footer-credits-right {
+    width: 100%;
+    text-align: center;
+  }
+}
