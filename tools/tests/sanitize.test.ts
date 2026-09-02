@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { sanitizeInput, sanitizeInputTable } from "../entity-pages/sanitize";
+import { sanitizeInput, sanitizeInputTable, sanitizeMetaDescription } from "../entity-pages/sanitize";
 
 test("keeps the tags that render, escapes the ones that do not", () => {
   assert.equal(sanitizeInput("<b>bold</b> and <strong>strong</strong>"), "<b>bold</b> and <strong>strong</strong>");
@@ -32,6 +32,21 @@ test("leaves non-ascii alone rather than encoding it numerically", () => {
   // WebUtility.HtmlEncode used to turn these into &#233; and &#128512;
   assert.equal(sanitizeInput("<i>café 😀</i>"), "&lt;i&gt;café 😀&lt;/i&gt;");
   assert.equal(sanitizeInput("café 😀"), "café 😀");
+});
+
+test("the meta variant strips markup down to plain text for social embeds", () => {
+  assert.equal(sanitizeMetaDescription("<b>Sound Types</b><br>- Combat"), "Sound Types\n- Combat");
+  assert.equal(sanitizeMetaDescription("one<br/>two<br />three"), "one\ntwo\nthree");
+  assert.equal(sanitizeMetaDescription("<strong>bold</strong> text"), "bold text");
+  assert.equal(sanitizeMetaDescription("name: <original name>"), "name:");
+  assert.equal(sanitizeMetaDescription("<None>"), "None");
+});
+
+test("the meta variant keeps line breaks but caps blank lines", () => {
+  // <br><br> is how FGDs write a paragraph break, keep it as one blank line
+  assert.equal(sanitizeMetaDescription("intro<br><br><b>List</b><br>- item"), "intro\n\nList\n- item");
+  assert.equal(sanitizeMetaDescription("a<br><br><br><br>b"), "a\n\nb");
+  assert.equal(sanitizeMetaDescription("a  <br>  b"), "a\nb");
 });
 
 test("the table variant also escapes pipes so cells do not split", () => {

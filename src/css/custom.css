@@ -90,14 +90,12 @@ admonition.compact {
   font-size: 0.9rem !important;
 }
 
-/* for groups like keyvalues in entity page, without this the default styling is a bit over the top,
-   the hairline left border keeps a subtle visual anchor for collapsed groups */
+/* for groups like keyvalues in entity page, without this the default styling is a bit over the top */
 details {
   background: none !important;
   border: none !important;
-  border-left: 2px solid var(--ifm-color-emphasis-300) !important;
   border-radius: 0 !important;
-  padding: 0 0 0 0.75rem !important;
+  padding: 0 !important;
   margin: 0.25rem 0 !important;
   box-shadow: none !important;
 }
@@ -105,11 +103,30 @@ details {
 details summary::before {
 
   border-left: 6px solid currentColor;
- 
+
 }
 
+details > summary {
+  padding-bottom: 0.25rem;
+}
+
+/* the separator stays as the content's top border so the bottom-up collapse
+   wipes it away last, but the default margin-top has to go: the height
+   animation measures scrollHeight, which excludes margins, so any margin here
+   makes the content overshoot the animated height and visibly jump */
 [class*="collapsibleContent"] {
   border-top-color: currentColor !important;
+  margin-top: 0 !important;
+  padding-top: 1rem !important;
+}
+
+/* constant open/close speed, the default duration scales with content height
+   so long keyvalue lists take ages to close (!important wins over the inline
+   transition the collapse animation sets) */
+@media not (prefers-reduced-motion: reduce) {
+  details > div {
+    transition-duration: 200ms !important;
+  }
 }
 
 /* legacy annotation */
@@ -283,4 +300,34 @@ html[data-theme='dark'] .alert--bug {
 
 .navbar__items--right .discord-button {
   margin-right: -8px;
+}
+
+/* Footer credits: two columns on wide screens, centered when they no longer fit side by side */
+.footer-credits {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.footer-credits-left {
+  text-align: left;
+}
+
+.footer-credits-right {
+  text-align: right;
+}
+
+@media (max-width: 1280px) {
+  .footer-credits {
+    justify-content: center;
+  }
+
+  .footer-credits-left,
+  .footer-credits-right {
+    width: 100%;
+    text-align: center;
+  }
 }

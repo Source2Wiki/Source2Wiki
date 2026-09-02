@@ -221,16 +221,16 @@ const config: Config = {
           items: [
             {
               html: `
-              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; flex-wrap: wrap;">
+              <div class="footer-credits">
 
-                  <div style="text-align: left; gap: 4px;">
+                  <div class="footer-credits-left">
                     <span>Created and maintained by <a href="https://angelcazacu.com">Angel</a>, <a href="https://github.com/DoctorGurke">DoctorGurke</a> and <a href="https://github.com/Source2Wiki/Source2Wiki/graphs/contributors?all=1">various contributors</a>.</span>
                   </div>
 
-                  <div style="text-align: right; gap: 4px;">
+                  <div class="footer-credits-right">
                     <span>This project is not affiliated with Valve Software.<br/>Source 2 is a trademark and/or registered trademark of Valve Corporation. </span>
                   </div>
-                 
+
               </div>
               `,
             },
