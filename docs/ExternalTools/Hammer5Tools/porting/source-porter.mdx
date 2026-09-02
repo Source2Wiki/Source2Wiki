@@ -1,0 +1,51 @@
+---
+title: SourcePorter
+description: Ports Source 1 maps and their assets to Source 2.
+image: /img/hammer5tools/icons/source_porter.png
+sidebar_position: 2
+---
+
+SourcePorter converts a Source 1 VMF or BSP map and its assets into a selected <Game name="cs2"/> addon.
+
+Open it from Utilities > SourcePorter.
+
+## Port a map
+
+1. Select VMF or BSP beside Source Map, then select the corresponding map file.
+2. Select the Target Addon.
+3. Choose the geometry, asset, and output options.
+4. Set Parallel Tool Threads.
+5. Click Start Porting.
+
+Click Stop to end the running process. Read the console before opening the converted map in Hammer.
+
+The selected Target Addon is stored by SourcePorter and can differ from the addon in
+the main <Tool name="hammer5tools"/> selector.
+
+## Geometry options
+
+Generate & use BSP for clean geometry (-usebsp) uses the BSP geometry during conversion. Don't merge instances (-usebsp_nomergeinstances) keeps instances separate. Collapse prefabs & flatten empty group wrappers reduces wrapper objects in the converted hierarchy.
+
+If the Source 1 import tool crashes while processing BSP geometry, SourcePorter can retry
+first without merging instances and then with VMF-only geometry. Read the console to see
+which fallback produced the output.
+
+## Asset options
+
+Unpack embedded BSP pakfile content extracts files stored in the BSP. Compile asset dependencies (_c files) compiles imported assets. Skip dependency importing (-nodeps) leaves referenced assets out.
+
+Use KV Filelist import mode reads a file list with `materials/` and `models/` prefixes. Auto-repair missing materials & models repeats the import when missing dependencies are found.
+
+## Output options
+
+Compile final map (.vmap_c compile) compiles the converted VMAP. Compact toolchain log output reduces console output.
+
+## Repair and asset import
+
+Click Find Missing to scan the converted content for missing assets.
+
+Open Tools > Asset Import... to import a selected asset set. Use Import Missing Assets (Repair)... to import files reported by the repair scan. Use Clean BSP Content Cache before rerunning a conversion that contains stale extracted files.
+
+:::note
+Open the converted map in Hammer and check materials, models, instances, and entity properties before editing it further.
+:::
