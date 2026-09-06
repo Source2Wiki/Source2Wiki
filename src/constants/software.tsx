@@ -16,6 +16,7 @@ export const Games: Record<string, SoftwareInfo> = {
 };
 
 export const Tools: Record<string, SoftwareInfo> = {
+  "hammer5tools": {PrettyName: "Hammer 5 Tools", IconPath: "/img/hammer5tools/logo.png", Color: "#2a3d80ff", Link: "https://hammer5tools.github.io/"},
   "s2v": {PrettyName: "Source2 Viewer", IconPath: "/img/tools/s2v.png", Color: "#1bb072ff", Link: "https://s2v.app/"},
   "radgen": {PrettyName: "RadGen", IconPath: "/img/tools/radgen.png", Color: "#91513a", Link: "https://radargenerator.github.io/"},
   "github": {PrettyName: "GitHub", IconPath: "/img/tools/github.png", Color: "#c3c3c3ff", Link: "https://github.com/"},

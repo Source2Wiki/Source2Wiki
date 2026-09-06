@@ -1,0 +1,57 @@
+---
+title: Addon Management and Export
+description: Creates, imports, exports, launches, and deletes addons.
+image: /img/hammer5tools/icons/addon_manager.svg
+sidebar_position: 4
+---
+
+The addon selector changes which <Game name="cs2"/> addon <Tool name="hammer5tools"/> reads and edits. Addon commands are in the menu beside the selector.
+
+## Addon actions
+
+Choose Create new addon to create an addon from a preset. Enter the addon name, select a preset, then click Create Addon.
+
+Choose Import addon to import a <Tool name="hammer5tools"/> ZIP archive. The ZIP filename determines
+the addon name. If that addon already exists and overwrite is confirmed, <Tool name="hammer5tools"/>
+deletes both its `content/csgo_addons/<addon>` and `game/csgo_addons/<addon>` directories
+before extracting the archive.
+
+Choose Delete addon to permanently remove both directories for the selected addon.
+Check the selected addon before confirming deletion.
+
+Use Open content folder or Open game folder to open the selected addon's files.
+The launch button says Edit map when the launch parameters contain a map asset;
+otherwise it says Launch Tools.
+
+## Launch parameters
+
+Choose Edit launch parameters to change how the <Game name="cs2"/> tools start. The dialog includes
+Custom commands, Gpu ray tracing, Open vmap, Open tools, Steam,
+Retail, No insecure, and No customer machine.
+
+Changes are saved immediately as controls are edited; closing the dialog does not cancel
+them. The preview shows the configured command, but <Tool name="hammer5tools"/> may append mandatory
+command-pipe and workshop-filtering flags when the tools actually launch.
+
+:::caution[6.0.1 launch-option defect]
+In <Tool name="hammer5tools"/> 6.0.1, No insecure emits the literal token `-noinsecru`. Do not rely
+on that checkbox to supply a particular <Game name="cs2"/> option. Inspect the preview and use
+Custom commands when an exact launch flag is required.
+:::
+
+## Export an addon
+
+Choose Export addon from the addon menu. The exporter creates an archive from the selected addon's files.
+
+Use the content options to skip non-default content folders or restrict content dependencies to selected VMAP files. Click Add VMap File... to add maps to that list.
+
+Use the compiled-file options to include maps, materials, textures, or models from the game folder. Ignore VCS files leaves `.git`, `.gitignore`, and `.diversion` data out of the archive.
+
+Review the checked files, file count, and total size, then click Export Addon. The
+archive is written to `<Archive path>/<addon>.zip`, using Settings > Archive path.
+<Tool name="hammer5tools"/> asks before overwriting an existing archive.
+
+:::warning
+Delete addon and an accepted import overwrite permanently remove existing content and
+compiled game files. Back up or commit the addon first.
+:::

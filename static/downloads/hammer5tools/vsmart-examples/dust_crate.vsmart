@@ -1,0 +1,354 @@
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	generic_data_type = "CSmartPropRoot"
+	m_nContentVersion = 0
+	editor_info = 
+	{
+		name = "Hammer 5 Tools"
+		version = "5.6.5"
+		m_nElementID = 106
+	}
+	m_Variables = 
+	[
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_322_end"
+			m_bExposeAsParameter = false
+			m_DefaultValue = false
+			m_nElementID = 63
+			m_DisplayName = "                                             "
+			m_Hammer5ToolsCategoryName = "New category"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_aua_end"
+			m_bExposeAsParameter = false
+			m_DefaultValue = false
+			m_nElementID = 65
+			m_DisplayName = "                                             "
+			m_Hammer5ToolsCategoryName = "New category"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_hg1_end"
+			m_bExposeAsParameter = false
+			m_DefaultValue = false
+			m_nElementID = 81
+			m_DisplayName = "                                             "
+			m_Hammer5ToolsCategoryName = "New category"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_dwe_end"
+			m_bExposeAsParameter = false
+			m_DefaultValue = false
+			m_nElementID = 67
+			m_DisplayName = "                                             "
+			m_Hammer5ToolsCategoryName = "New category"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_oll_start"
+			m_bExposeAsParameter = true
+			m_DefaultValue = false
+			m_nElementID = 84
+			m_DisplayName = "---------- Selector ----------"
+			m_Hammer5ToolsCategoryName = "Selector"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_ChoiceSelectionMode"
+			m_VariableName = "SelectionMode"
+			m_bExposeAsParameter = true
+			m_DefaultValue = "RANDOM"
+			m_nElementID = 72
+		},
+		
+		{
+			_class = "CSmartPropVariable_Int"
+			m_VariableName = "SpecificChildIndex"
+			m_bExposeAsParameter = true
+			m_DefaultValue = 0
+			m_nElementID = 73
+			m_DisplayName = "Model ID"
+			m_nParamaterMinValue = 0
+			m_nParamaterMaxValue = 2
+			m_sModelName = "None"
+			m_ReadOnlyExpression = "SelectionMode != 'SPECIFIC'"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_t4q_start"
+			m_bExposeAsParameter = true
+			m_DefaultValue = false
+			m_nElementID = 82
+			m_DisplayName = "---------- Transform ----------"
+			m_Hammer5ToolsCategoryName = "Transform"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "EnableRandomRotation"
+			m_bExposeAsParameter = true
+			m_DefaultValue = false
+			m_nElementID = 77
+			m_DisplayName = "Random Rotation"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "EnableRandomScale"
+			m_bExposeAsParameter = true
+			m_DefaultValue = false
+			m_nElementID = 76
+			m_DisplayName = "Random Scale"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Float"
+			m_VariableName = "RandomScaleMin"
+			m_bExposeAsParameter = true
+			m_DefaultValue = 0.8
+			m_nElementID = 78
+			m_flParamaterMinValue = 0.2
+			m_flParamaterMaxValue = 2.0
+			m_sModelName = "None"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Float"
+			m_VariableName = "RandomScaleMax"
+			m_bExposeAsParameter = true
+			m_DefaultValue = 1.2
+			m_nElementID = 79
+			m_flParamaterMinValue = 0.2
+			m_flParamaterMaxValue = 2.0
+			m_sModelName = "None"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_t4q_end"
+			m_bExposeAsParameter = false
+			m_DefaultValue = false
+			m_nElementID = 83
+			m_DisplayName = "                                             "
+			m_Hammer5ToolsCategoryName = "New category"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Vector2D"
+			m_VariableName = "RandomRotation"
+			m_bExposeAsParameter = true
+			m_DefaultValue = [-180.0, 180.0]
+			m_nElementID = 80
+			m_DisplayName = "RandomRotation (X - min, Y - max)"
+			m_sModelName = "None"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_hg1_start"
+			m_bExposeAsParameter = true
+			m_DefaultValue = false
+			m_nElementID = 80
+			m_DisplayName = "---------- Other ----------"
+			m_Hammer5ToolsCategoryName = "Other"
+			m_ReadOnlyExpression = "true"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "CastShadows"
+			m_bExposeAsParameter = true
+			m_DefaultValue = true
+			m_nElementID = 69
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "DetailObject"
+			m_bExposeAsParameter = true
+			m_DefaultValue = false
+			m_nElementID = 70
+		},
+		
+		{
+			_class = "CSmartPropVariable_MaterialGroup"
+			m_VariableName = "MaterialGroupName"
+			m_bExposeAsParameter = true
+			m_DefaultValue = ""
+			m_nElementID = 71
+			m_sModelName = "models/props/de_dust/hr_dust/dust_crates/dust_crate_style_02_32x16x32.vmdl"
+		},
+		
+		{
+			_class = "CSmartPropVariable_Bool"
+			m_VariableName = "hammer5tools_category_oll_end"
+			m_bExposeAsParameter = false
+			m_DefaultValue = false
+			m_nElementID = 85
+			m_DisplayName = "                                             "
+			m_Hammer5ToolsCategoryName = "New category"
+			m_ReadOnlyExpression = "true"
+		}
+	]
+	m_Choices = 
+	[
+
+	]
+	m_Children = 
+	[
+		
+		{
+			_class = "CSmartPropElement_PickOne"
+			m_HandleColor = [125, 230, 55]
+			m_HandleShape = "DIAMOND"
+			m_HandleSize = 24.0
+			m_Modifiers = [
+			{
+				_class = "CSmartPropOperation_RandomScale"
+				m_bEnabled = 
+				{
+					m_SourceName = "EnableRandomScale"
+				}
+				m_flRandomScaleMax = 
+				{
+					m_SourceName = "RandomScaleMax"
+				}
+				m_flRandomScaleMin = 
+				{
+					m_SourceName = "RandomScaleMin"
+				}
+				m_flSnapIncrement = 0.0
+				m_nElementID = 74
+			}, 
+			{
+				_class = "CSmartPropOperation_RandomRotation"
+				m_bEnabled = 
+				{
+					m_SourceName = "EnableRandomRotation"
+				}
+				m_nElementID = 75
+				m_vRandomRotationMax = 
+				{
+					m_Components = [0.0, 
+					{
+						m_Expression = "RandomRotation.y"
+					}, 0.0]
+				}
+				m_vRandomRotationMin = 
+				{
+					m_Components = [0.0, 
+					{
+						m_Expression = "RandomRotation.x"
+					}, 0.0]
+				}
+			}]
+			m_OutputChoiceVariableName = ""
+			m_SelectionCriteria = []
+			m_SelectionMode = 
+			{
+				m_SourceName = "SelectionMode"
+			}
+			m_SpecificChildIndex = 
+			{
+				m_SourceName = "SpecificChildIndex"
+			}
+			m_bConfigurable = true
+			m_bEnabled = true
+			m_nElementID = 65
+			m_vHandleOffset = 
+			{
+				m_Components = [0.0, -16.0, 0.0]
+			}
+			m_sLabel = "Selector"
+			m_Children = [
+			{
+				_class = "CSmartPropElement_Model"
+				m_MaterialGroupName = 
+				{
+					m_SourceName = "MaterialGroupName"
+				}
+				m_Modifiers = []
+				m_SelectionCriteria = []
+				m_bCastShadows = 
+				{
+					m_SourceName = "CastShadows"
+				}
+				m_bDetailObject = 
+				{
+					m_SourceName = "DetailObject"
+				}
+				m_bDisableDynamicDeformable = false
+				m_bEnabled = true
+				m_bRigidDeformation = false
+				m_nElementID = 66
+				m_nLodLevel = -1
+				m_sModelName = "models/props/de_dust/hr_dust/dust_crates/dust_crate_style_02_32x64x46.vmdl"
+				m_sLabel = "32x64x46"
+			}, 
+			{
+				_class = "CSmartPropElement_Model"
+				m_MaterialGroupName = 
+				{
+					m_SourceName = "MaterialGroupName"
+				}
+				m_Modifiers = []
+				m_SelectionCriteria = []
+				m_bCastShadows = 
+				{
+					m_SourceName = "CastShadows"
+				}
+				m_bDetailObject = 
+				{
+					m_SourceName = "DetailObject"
+				}
+				m_bDisableDynamicDeformable = false
+				m_bEnabled = true
+				m_bRigidDeformation = false
+				m_nElementID = 67
+				m_nLodLevel = -1
+				m_sLabel = "32x16x32"
+				m_sModelName = "models/props/de_dust/hr_dust/dust_crates/dust_crate_style_02_32x16x32.vmdl"
+			}, 
+			{
+				_class = "CSmartPropElement_Model"
+				m_MaterialGroupName = 
+				{
+					m_SourceName = "MaterialGroupName"
+				}
+				m_Modifiers = []
+				m_SelectionCriteria = []
+				m_bCastShadows = 
+				{
+					m_SourceName = "CastShadows"
+				}
+				m_bDetailObject = 
+				{
+					m_SourceName = "DetailObject"
+				}
+				m_bDisableDynamicDeformable = false
+				m_bEnabled = true
+				m_bRigidDeformation = false
+				m_nElementID = 68
+				m_nLodLevel = -1
+				m_sLabel = "32x64x46"
+				m_sModelName = "models/props/de_dust/hr_dust/dust_crates/dust_crate_style_02_32x64x46.vmdl"
+			}]
+		}
+	]
+}
