@@ -2,16 +2,22 @@
 title: FAQ and troubleshooting
 description: Solutions to common Hammer 5 Tools setup and workflow problems.
 image: /img/hammer5tools/icons/faq.svg
-sidebar_position: 7
+sidebar_position: 6
 ---
 
 ## Game installation is not found
 
 Open Settings and select the <Game name="cs2"/> installation directory. The selected directory must contain `game/bin/win64/cs2.exe`.
 
-## NetConsole features do not connect
+## Console features do not connect
 
-Start <Game name="cs2"/> with a NetConsole port such as `-netconport 2121`, and allow local connections to that port.
+<Game name="cs2"/> dropped `-netconport` in a recent update, which silently broke the features that relied on it. <Tool name="hammer5tools"/> now uses a console command pipe instead.
+
+Launching the Workshop Tools through <Tool name="hammer5tools"/> sets the pipe up automatically. When starting them from Steam, add these launch options:
+
+```
+-insecure -concommandpipe .\pipe\hammer5tools_cmd,.\pipe\hammer5tools_out -con_logfile hammer5tools_console.log
+```
 
 ## UnrealPorter cannot find Unreal Engine
 
@@ -22,4 +28,4 @@ under the standard Epic Games directories on the `C:` and `D:` drives.
 Confirm that the engine root contains `Engine/Binaries/Win64` and that the project's
 `.uproject` has a valid `EngineAssociation`. Register a custom source build with Unreal's
 version selector, then reopen UnrealPorter. If the association cannot be matched,
-<Tool name="hammer5tools"/> uses the newest engine it detects; check Editor Instance before converting.
+<Tool name="hammer5tools"/> uses the newest engine it detects. Check Editor Instance before converting.

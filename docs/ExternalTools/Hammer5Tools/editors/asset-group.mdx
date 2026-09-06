@@ -37,6 +37,38 @@ Set Output Directory when generated files belong outside the input folder. Click
 
 Click Revert Batch to delete files created by the last process. Reference templates are kept.
 
+## Batch import a mesh kit
+
+AssetGroup Maker batch-generates and synchronizes models instead of requiring manual configuration of each `.vmdl` file in Hammer.
+
+1. Launch the <Game name="cs2"/> tools through <Tool name="hammer5tools"/> so the console command pipe is connected. See [FAQ and troubleshooting](../faq.mdx#console-features-do-not-connect) when launching them from Steam instead.
+2. Place the source FBX files in the addon's content directory, such as `content/csgo_addons/<addon>/models/pipe_kit/`.
+
+   ![Addon Folder](./assets/fitonline-addon-folder.png)
+
+3. Select the FBX files in Explorer, right-click, and choose Quick create vmdl.
+4. Select the created model and click Quick AssetGroup file to generate the `.hbat` configuration.
+5. Select the `.hbat` file and click Quick process AssetGroup.
+
+   ![AssetGroup Process](./assets/fitonline-assetgroup-process.png)
+
+6. The `.vmdl` source files are now generated. Compile them in the <Game name="cs2"/> tools before use:
+
+   ![Generated VMDLs](./assets/fitonline-vmdl-generated.png)
+
+7. Right-click the `.hbat` file and choose Open Reference Asset. Review the generated models after changing collision hulls, physics, or material assignments:
+
+   ![Open Reference Asset](./assets/fitonline-open-reference-asset.png)
+
+   ![AssetGroup Sync Demo](./assets/fitonline-assetgroup-sync.webp)
+
+:::tip
+Check the generated files after changing a reference asset.
+:::
+
+The [Modular pipes with FitOnLine](../../../CommunityGuides/fitOnLine/index.mdx) guide uses this workflow to build a pipe kit.
+
+
 ## Monitoring
 
 Enable Watch the changes to watch the profile's input files. A changed input is processed again with the saved profile.

@@ -16,6 +16,10 @@ SmartProps represent Source 2's procedural placement and asset variation system.
 
 The editor provides a hierarchy, property controls, variables, choices, history, and a 3D viewport.
 
+The editor's compiler configuration applies only when <Game name="cs2"/> Hammer is launched through <Tool name="hammer5tools"/>.
+
+For the SmartProp concepts behind these controls, see the [SmartProps guide](../../../CommunityGuides/smartProps/index.mdx). The [Modular pipes with FitOnLine](../../../CommunityGuides/fitOnLine/index.mdx) guide works through a complete procedural asset.
+
 
 ## Interface layout
 
@@ -84,6 +88,15 @@ Choose Save Current Layout as Default after arranging the docks. Choose Reset La
 
 Modifiers attach to elements in the Properties panel and execute sequentially from top to bottom.
 
+Use the Create New button to add modifiers and selection criteria. Use the Paste button on the right side of the panel to paste copied modifiers. Standard shortcuts manage them:
+
+| Action | Shortcut |
+|---|---|
+| Copy | `Ctrl + C` |
+| Duplicate | `Ctrl + D` |
+| Cut | `Ctrl + X` |
+| Delete | `Del` |
+
 ### Common operators
 - Transformations: `Rotate`, `RandomRotation`, `RandomRotationSnapped`, `ResetRotation`, `RotateTowards`, `SetOrientation`, `Translate`, `RandomOffset`, `SetPosition`, `Scale`, `RandomScale`, `ResetScale`.
 - Materials & Appearance: `SetTintColor`, `MaterialOverride`, `MaterialTint`, `SetMaterialGroupChoice`.
@@ -101,9 +114,32 @@ Filters decide whether an element is evaluated or skipped:
 - VariableValue: Compares variable values (`EQUAL`, `NOT_EQUAL`, `GREATER`, `LESS`).
 
 
+## Property modes
+
+Each property field supports four input modes: Default (the class default value), Value (a direct constant), Variable (bound to a defined variable), and Expression (a formula evaluated at build time).
+
+![Property Modes](./assets/smartprop-property-modes.png)
+
+Variable mode displays a dropdown of all compatible variables and a quick button to create a new one:
+
+![Variable Dropdown](./assets/smartprop-variable-dropdown.png)
+
+Clicking the `+` button opens the variable creation dialog:
+
+![Create Variable Dialog](./assets/smartprop-create-variable-dialog.png)
+
+Newly created variables immediately appear in the Variables panel:
+
+![Variables List](./assets/smartprop-variables-list.png)
+
+
 ## Variables panel and Hammer exposure
 
 Variables created in the Variables panel are displayed as editable settings when placing the SmartProp in Hammer.
+
+Click the Eye icon (Show in editor) next to a variable to expose it in the entity's Object Properties panel in Hammer:
+
+![Expose Variable Eye Icon](./assets/smartprop-variable-exposed-eye.png)
 
 ### Supported variable types
 - `String`, `Bool`, `Int`, `Float`
@@ -124,6 +160,14 @@ In Expression filters and math operators, use built-in functions:
 - `RandomInt(min, max)` / `RandomFloat(min, max)`: Random value generator.
 - `LinearScale(val, in_min, in_max, out_min, out_max)`: Range remapping.
 - `Deg2rad(angle)` / `Rad2deg(radians)`: Angle conversion.
+
+Open the expression editor to browse all available functions:
+
+![Expression Editor](./assets/smartprop-expression-editor.png)
+
+:::note
+String property fields do not support expressions.
+:::
 
 
 ## Undo and redo

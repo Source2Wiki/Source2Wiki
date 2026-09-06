@@ -11,7 +11,7 @@ The Audio Editor displays waveforms and edits audio files from the active addon'
 
 ## Files
 
-The editor supports WAV audio and imports `.mp3`, `.flac`, `.aac`, `.m4a`, `.ogg`, and `.wma` files for editing. Saving writes WAV data; use the SoundEvent Editor to reference the saved audio in a sound event.
+The editor supports WAV audio and imports `.mp3`, `.flac`, `.aac`, `.m4a`, `.ogg`, and `.wma` files for editing. Saving writes WAV data. Use the SoundEvent Editor to reference the saved audio in a sound event.
 
 Click New to create an empty document. Click Open or drop an audio file onto the editor to load it. Use Save or Save As to write a WAV file.
 
@@ -41,4 +41,4 @@ Use Zoom In, Zoom Out, and Fit to change the waveform view. The vertical meter s
 
 Move the playback position and choose Add Marker or press `M`. Choose Clear Markers to remove all markers from the document.
 
-Markers are stored in the saved WAV file.
+Markers are stored in the saved WAV file as RIFF cue points. <Game name="cs2"/> reads the first two as the loop region — see the [CS2 Looping music](../../../CommunityGuides/loopingRadio/index.mdx) guide.

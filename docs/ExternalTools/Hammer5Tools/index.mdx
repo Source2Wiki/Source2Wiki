@@ -7,26 +7,49 @@ sidebar_position: 1
 
 import DocCardList from '@theme/DocCardList';
 
-<Tool name="hammer5tools"/> is a toolset for <Game name="cs2"/> workshop tools. 
+<Tool name="hammer5tools"/> is a toolset for <Game name="cs2"/> workshop tools.
 It includes editors for smart props, sound events, audio, detail props, hotkeys, loading screens and other utilities.
 
-<DocCardList />
+It requires 64-bit Windows 10 or 11 and an installed copy of the Workshop Tools.
+
+## Installation
+
+Download the latest release from the <Tool name="hammer5tools" label="Hammer 5 Tools website"/>, run the installer, and start <Tool name="hammer5tools"/> from the Start menu.
+
+<div style={{ position: "relative", width: "100%", paddingTop: "56.25%", overflow: "hidden", borderRadius: "8px" }}>
+  <iframe
+    src="https://www.youtube.com/embed/-xIHW65kNYA"
+    title="Custom loading screen - CS2 mapping tutorial"
+    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowFullScreen
+  />
+</div>
+
+## Main window
+
+The addon selector sets the addon used by every editor and utility. Save open files before switching addons.
+
+The launch button says Edit map when the configured command opens a map. Otherwise it
+says Launch Tools. Use the adjacent addon menu to create, import, export, delete, or
+open an addon and to edit launch parameters.
+
+The Git button opens the active addon's sync workflow. Map Builder opens the map build
+queue. The Utilities menu opens SourcePorter, UnrealPorter, NavMesh Radar,
+Video to Texture, Cleanup Content, and Cleanup _vrad3 cache.
+
+Closing the window sends it to the notification area when Minimize on Close is
+enabled. Open Settings to change that setting.
+
+## About and updates
+
+The About window shows the installed version and links to documentation, guides,
+feedback, and community support. Use Don't show on startup to hide it when
+<Tool name="hammer5tools"/> opens.
+
+The Updater shows the installed and available versions. Click ReleaseNotes to
+read the changes. Click Update to install the offered release.
 
 ## Editors and utilities
 
-- [SmartProp Editor](./editors/smart-prop-editor.mdx)
-- [SoundEvent Editor](./editors/sound-editor.mdx)
-- [Audio Editor](./editors/audio-editor.mdx)
-- [DetailProp Editor](./editors/detail-prop-editor.mdx)
-- [AssetGroup Maker](./editors/asset-group.mdx)
-- [Hotkey Editor](./editors/hotkey-editor.mdx)
-- [Loading Editor](./editors/loading-editor.mdx)
-- [Map builder](./utilities/map-builder.mdx)
-- [UnrealPorter](./porting/unreal-porter.mdx)
-- [SourcePorter](./porting/source-porter.mdx)
-- [Git](./utilities/git-sync.mdx)
-- [Addon management](./utilities/addon-manager.mdx)
-- [Cleanup addon](./utilities/cleanup.mdx)
-- [NavMesh Radar](./utilities/navmesh-radar.mdx)
-- [Explorer](./utilities/explorer.mdx)
-- [Settings](./settings.mdx)
+<DocCardList />

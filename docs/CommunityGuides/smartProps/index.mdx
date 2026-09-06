@@ -1,25 +1,26 @@
 ---
-title: Smart props guide
+title: SmartProps
 description: How to create and configure procedural SmartProps.
 image: /img/hammer5tools/icons/vsmart_examples.png
-sidebar_position: 1
 ---
 
 SmartProps are an intuitive system in Source 2 used to group objects and attach procedural logic to them, such as randomization, line placement, scattering, and dynamic parameter adjustments. Think of them as smart prefabs with custom variables and interactive viewport handles.
 
-![SmartProp Overview](./assets/smart-props/smartprop-intro-demo.gif)
+![SmartProp Overview](./assets/smartprop-intro-demo.gif)
 
 :::note
-This beginner guide explains the core SmartProp concepts needed to build procedural assets with <Tool name="hammer5tools"/>.
+This beginner guide explains the core SmartProp concepts needed to build procedural assets.
+The editor screenshots come from <Tool name="hammer5tools"/>. Its
+[SmartProp Editor](../../ExternalTools/Hammer5Tools/editors/smart-prop-editor.mdx) page
+documents the tool itself.
 :::
 
 
-<details>
-<summary>How to Use SmartProps in Hammer</summary>
+## Using SmartProps in Hammer
 
 Activate the Selection Tool (`Shift + S` or `Q`) in the Hammer viewport to display and interact with SmartProp control widgets.
 
-![Selection Tool](./assets/smart-props/smartprop-select-tool.png)
+![Selection Tool](./assets/smartprop-select-tool.png)
 
 ### Interactive viewport controls
 
@@ -28,22 +29,22 @@ SmartProps can define visual control widgets for direct manipulation inside the 
 #### PickOne handles
 Scroll the mouse wheel over circle, rectangle, or rhombus control handles to cycle through available child objects or variants.
 
-![PickOne Wheel Handle](./assets/smart-props/smartprop-pickone-wheel.gif)
+![PickOne Wheel Handle](./assets/smartprop-pickone-wheel.gif)
 
 #### Sizers (`CreateSizer` modifier)
 Drag arrow handles with the Left Mouse Button to interactively adjust sizer boundaries, bounding boxes, or lengths.
 
-![Sizer Arrows](./assets/smart-props/smartprop-sizer-arrows.gif)
+![Sizer Arrows](./assets/smartprop-sizer-arrows.gif)
 
 #### Locators (`CreateLocator` modifier)
 Locator gizmos support translation, rotation, and scaling directly in the viewport. Each transformation mode can be enabled, constrained, or disabled per SmartProp.
 
-![Locator Gizmo](./assets/smart-props/smartprop-locator-gizmo.gif)
+![Locator Gizmo](./assets/smartprop-locator-gizmo.gif)
 
 #### Rotators (`CreateRotator` modifier)
 Rotation rings allow interactive rotation with degree snapping support.
 
-![Rotator Degree Snapping](./assets/smart-props/smartprop-rotator-snapping.gif)
+![Rotator Degree Snapping](./assets/smartprop-rotator-snapping.gif)
 
 ### Resetting controls
 Press `Alt + M` while hovering over a visible viewport control to reset it to its default value.
@@ -51,18 +52,16 @@ Press `Alt + M` while hovering over a visible viewport control to reset it to it
 ### Outliner and object properties
 All active SmartProp controls are listed in the Hammer Outliner under the selected entity:
 
-![Hammer Outliner](./assets/smart-props/smartprop-outliner.png)
+![Hammer Outliner](./assets/smartprop-outliner.png)
 
 All exposed SmartProp parameters and variables appear in the Object Properties panel:
 
-![Object Properties](./assets/smart-props/smartprop-object-properties.png)
+![Object Properties](./assets/smartprop-object-properties.png)
 
 ### Collapsing SmartProps into static entities
 To bake a procedural SmartProp into standard static entities, right-click the prop in the viewport and select Selected smart props > Collapse Smart Props.
 
-![Collapse Smart Props](./assets/smart-props/smartprop-collapse-menu.png)
-
-</details>
+![Collapse Smart Props](./assets/smartprop-collapse-menu.png)
 
 
 ## File structure and architecture
@@ -77,9 +76,10 @@ A SmartProp is constructed from Elements, Modifiers, Selection Criteria, Variabl
 | Variables | Dynamic parameters exposed to Hammer users in Object Properties (e.g., float sliders, checkboxes, color pickers). | `Float`, `Bool`, `String`, `Vector2D`, `Color` |
 | Choices | Named value presets and dropdown menus for variables. | List of preset variants |
 
-SmartProp files describe procedural rules and relationships for models (`.vmdl`). These definitions are stored in `.vsmart` files formatted in KeyValues3 (KV3).
+SmartProp files describe procedural rules and relationships for models (`.vmdl`). These definitions are stored in `.vsmart` files formatted in [KeyValues3 (KV3)](../../FileFormats/kv3.md).
 
-<Tool name="hammer5tools"/> provides a visual editor for `.vsmart` files. Its compiler configuration applies only when <Game name="cs2"/> Hammer is launched through <Tool name="hammer5tools"/>.
+The [SmartProp Editor](../../ExternalTools/Hammer5Tools/editors/smart-prop-editor.mdx)
+page lists every `CSmartPropElement_*` class, operator, filter, and expression helper.
 
 ### Experimental properties
 
@@ -88,44 +88,31 @@ Community Hammer builds do not expose or run every experimental SmartProp schema
 The <Tool name="s2v" label="S2V Schema Explorer" link="https://s2v.app/SchemaExplorer/cs2/smartprops/CSmartPropElement_Model"/> provides Source 2 SmartProp schema references.
 :::
 
-<Tool name="hammer5tools"/> includes the properties from the Source 2 schema. Experimental and unverified properties are hidden by default. To show them, go to Settings > SmartProp Editor and uncheck `Hide experimental properties and elements`. Report working experimental properties on Discord so they can be marked as verified.
+Experimental and unverified schema properties are hidden by default in
+<Tool name="hammer5tools"/>. Its
+[settings](../../ExternalTools/Hammer5Tools/settings.mdx) control whether they are shown.
+Report working experimental properties on Discord so they can be marked as verified.
 
 
-## Hierarchy panel
+## Hierarchy and transforms
 
-The Hierarchy panel contains the tree of elements defining the current SmartProp.
+A SmartProp is edited as a tree of elements. Add, reorder, nest, and rename them to build the graph.
 
-- Add a new element by right-clicking in empty space or clicking the Add button in the toolbar.
-- Reorder or nest elements by dragging them with the left mouse button.
-- Double-click any element label to rename it.
-
-![Hierarchy Drag and Rename](./assets/smart-props/smartprop-hierarchy-reorder-rename.gif)
+![Hierarchy Drag and Rename](./assets/smartprop-hierarchy-reorder-rename.gif)
 
 ### Transform inheritance
 Child elements automatically inherit the local position and rotation of their parent elements.
 
-![Transform Inheritance](./assets/smart-props/smartprop-hierarchy-inheritance.png)
+![Transform Inheritance](./assets/smartprop-hierarchy-inheritance.png)
 
 
-## Property editor
+## Properties and expressions
 
-### Modifiers and selection criteria
 Modifiers are divided into two main categories:
+
 - Operators: Apply transformations to element properties (e.g., translation, rotation, scale, tint).
 - Filters: Conditionally hide the current element and all of its children based on criteria.
 
-Use the Create New button to add modifiers and selection criteria. Standard shortcuts manage them:
-
-| Action | Shortcut |
-|---|---|
-| Copy | `Ctrl + C` |
-| Duplicate | `Ctrl + D` |
-| Cut | `Ctrl + X` |
-| Delete | `Del` |
-
-Use the Paste button on the right side of the panel to paste copied modifiers.
-
-### Property modes
 Each property field supports 4 distinct input modes:
 
 1. Default: Uses the class default value.
@@ -133,50 +120,33 @@ Each property field supports 4 distinct input modes:
 3. Variable: Binds the property to a defined variable.
 4. Expression: Evaluates a formula dynamically at build/evaluation time.
 
-![Property Modes](./assets/smart-props/smartprop-property-modes.png)
-
-The Variable mode displays a dropdown list of all compatible variables and provides a quick button to create a new variable directly:
-
-![Variable Dropdown](./assets/smart-props/smartprop-variable-dropdown.png)
-
-Clicking the `+` button opens the variable creation dialog:
-
-![Create Variable Dialog](./assets/smart-props/smartprop-create-variable-dialog.png)
-
-Newly created variables immediately appear in the Variables panel:
-
-![Variables List](./assets/smart-props/smartprop-variables-list.png)
-
-### Expression engine
-The Expression field supports standard arithmetic operators (`+`, `-`, `*`, `/`), math functions (trigonometry, `min`, `max`, `abs`, `floor`, `ceil`), and ternary conditional operators (`condition ? true_val : false_val`). Open the expression editor to browse all available functions.
+Expression fields support standard arithmetic operators (`+`, `-`, `*`, `/`), math functions (trigonometry, `min`, `max`, `abs`, `floor`, `ceil`), and ternary conditional operators (`condition ? true_val : false_val`).
 
 :::note
 String property fields do not support expressions.
 :::
 
-![Expression Editor](./assets/smart-props/smartprop-expression-editor.png)
+The [SmartProp Editor](../../ExternalTools/Hammer5Tools/editors/smart-prop-editor.mdx)
+page covers the full operator and filter lists, the expression helper functions, and the
+editor shortcuts that manage modifiers.
 
 
 ## Variables and choices
 
-### Exposing variables to Hammer
-Click the Eye icon ("Show in editor") next to any variable in the Variables panel. The variable will then appear in the entity's Object Properties panel in Hammer.
+Variables are the parameters a SmartProp exposes to the mapper. Mark a variable as shown in
+the editor and it appears in the entity's Object Properties panel in Hammer. Each variable
+supports a default value, minimum and maximum values, and a display category.
 
-![Expose Variable Eye Icon](./assets/smart-props/smartprop-variable-exposed-eye.png)
-
-Each variable supports a default value, minimum and maximum values, and a display category.
-
-### Choices (presets)
 Choices provide convenient value presets for variables. Supported variable types include `bool`, `string`, `float`, and `int`.
 
-![Choices Presets](./assets/smart-props/smartprop-choices-presets.png)
+![Choices Presets](./assets/smartprop-choices-presets.png)
 
 
 ## Create a Dust 2 crate PickOne SmartProp
 
 This tutorial builds a crate selector containing multiple Dust 2 crate models. It supports manual selection through a slider, automatic randomization, optional random scaling, and horizontal spin rotation.
 
-![PickOne Crate Demo](./assets/smart-props/smartprop-crate-example-demo.gif)
+![PickOne Crate Demo](./assets/smartprop-crate-example-demo.gif)
 
  [Download dust_crate.vsmart](/downloads/hammer5tools/vsmart-examples/dust_crate.vsmart)
 
@@ -188,34 +158,34 @@ In the Hierarchy window, right-click and add a new element of type PickOne.
 Add several Model elements as children under the PickOne element.
 Toggle Dynamic Isolation in the toolbar to isolate and inspect the active model being positioned.
 
-![Dynamic Isolation](./assets/smart-props/smartprop-dynamic-isolation.png)
+![Dynamic Isolation](./assets/smartprop-dynamic-isolation.png)
 
 ### Step 3: Name the elements
 Double-click each model element in the hierarchy and give them clear, descriptive labels.
 
-![Rename Elements](./assets/smart-props/smartprop-hierarchy-renamed.png)
+![Rename Elements](./assets/smartprop-hierarchy-renamed.png)
 
 ### Step 4: Expose model properties
 Select a model element and expose useful properties as variables, such as Material Group, Cast Shadows, and Detail Object.
 Remember to specify the model path for material group variables so Hammer knows which skins are available.
 
-![Expose Model Properties](./assets/smart-props/smartprop-model-properties-exposed.png)
+![Expose Model Properties](./assets/smartprop-model-properties-exposed.png)
 
 ### Step 5: Organize with categories
 Create variable categories in the Variables panel to keep the parameters neatly grouped in Hammer's Object Properties.
 
-![Variable Categories](./assets/smart-props/smartprop-variable-categories.png)
+![Variable Categories](./assets/smartprop-variable-categories.png)
 
 ### Step 6: Configure the viewport handle
 Select the root PickOne element. In the property editor, configure the handle color, shape, and offset position. Offsetting the control handle ensures it does not overlap with Hammer's standard translation gizmo.
 
-![Control Handle Settings](./assets/smart-props/smartprop-pickone-control-settings.png)
+![Control Handle Settings](./assets/smartprop-pickone-control-settings.png)
 
-![Control Offset](./assets/smart-props/smartprop-control-offset.png)
+![Control Offset](./assets/smartprop-control-offset.png)
 
 The control handle will now appear cleanly next to the prop in the viewport:
 
-![Control Handle in Viewport](./assets/smart-props/smartprop-control-pie-menu.png)
+![Control Handle in Viewport](./assets/smartprop-control-pie-menu.png)
 
 ### Step 7: Create the selection switcher
 Add a toggle that switches between random selection and manual slider selection.
@@ -233,45 +203,45 @@ In the `SpecificChildIndex` variable settings, set the Read-only Expression to:
 SelectionMode != 'SPECIFIC'
 ```
 
-![Selection Mode Logic](./assets/smart-props/smartprop-selection-mode-logic.png)
+![Selection Mode Logic](./assets/smartprop-selection-mode-logic.png)
 
 The selection logic is configured.
 
 ### Step 10: Add randomization modifiers
 To add variation, attach Random Scale and Random Rotation modifiers to the root element.
 
-![Random Modifiers](./assets/smart-props/smartprop-random-scale-rotation-modifiers.png)
+![Random Modifiers](./assets/smartprop-random-scale-rotation-modifiers.png)
 
 ### Step 11: Add randomization toggles
 Create two boolean variables to let mappers turn randomization on or off:
 - `EnableRandomScale` (default: false)
 - `EnableRandomRotation` (default: false)
 
-![Enable Random Toggles](./assets/smart-props/smartprop-enable-random-vars.png)
+![Enable Random Toggles](./assets/smartprop-enable-random-vars.png)
 
 ### Step 12: Expose scale parameters
 Expose the Min Scale and Max Scale properties in the Random Scale modifier, and bind its Enabled property to `EnableRandomScale`.
 
-![Scale Min/Max Properties](./assets/smart-props/smartprop-random-scale-minmax.png)
+![Scale Min/Max Properties](./assets/smartprop-random-scale-minmax.png)
 
 ### Step 13: Create a Vector2D variable for rotation
 Rotation requires only the Z, or spin, axis. Create one Vector2D variable instead of separate minimum and maximum float variables:
 - `X` = Minimum spin angle
 - `Y` = Maximum spinangle
 
-![Vector2D Variable](./assets/smart-props/smartprop-vector2d-var.png)
+![Vector2D Variable](./assets/smartprop-vector2d-var.png)
 
 ### Steps 14 and 15: Split vector expressions
 In the Random Rotation modifier, switch the Z min and max rotation fields to Expression mode. Use expressions to reference the split components:
 - Min Z Rotation: `RotationRange.x`
 - Max Z Rotation: `RotationRange.y`
 
-![Vector Split Expressions](./assets/smart-props/smartprop-vector-split-expressions.png)
+![Vector Split Expressions](./assets/smartprop-vector-split-expressions.png)
 
 :::tip
 Drag horizontally with the mouse wheel over numeric input fields in Hammer Editor to adjust values smoothly.
 :::
 
-![Mouse Wheel Drag](./assets/smart-props/smartprop-mousewheel-drag-values.gif)
+![Mouse Wheel Drag](./assets/smartprop-mousewheel-drag-values.gif)
 
 Save the SmartProp and place it in a <Game name="cs2"/> map.

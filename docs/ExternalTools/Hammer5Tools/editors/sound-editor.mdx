@@ -29,11 +29,15 @@ The History panel records edits to the open file. Use it with undo and redo to r
 
 ## Live preview
 
-With <Game name="cs2"/> running on the configured NetConsole port, the editor can send `snd_sos_stop_all_soundevents` followed by `snd_sos_start_soundevent <name>` to preview the selected event.
+With <Game name="cs2"/> running and reachable over the console command pipe, the editor can send `snd_sos_stop_all_soundevents` followed by `snd_sos_start_soundevent <name>` to preview the selected event.
+
+See [FAQ and troubleshooting](../faq.mdx#console-features-do-not-connect) when the game does not respond.
 
 ## Audio files
 
 Use the [Audio Editor](./audio-editor.mdx) to edit WAV source audio, then add the relevant sound path to the event's properties.
+
+The [CS2 Looping music](../../../CommunityGuides/loopingRadio/index.mdx) guide walks through both editors to build a synchronized looping sound event.
 
 The Sound Explorer plays addon audio through the built-in player. The Play on Click setting controls whether selecting a sound starts playback.
 
