@@ -1,5 +1,5 @@
 /**
- * Building the wiki's entity pages out of \fgd_dump.
+ * Building the wiki's entity pages out of \dump\fgd.
  *
  * Every entity gets one document under \docs\Entities holding the tab strip, and one page per
  * game under \src\pages\Entities holding the page info.
@@ -140,7 +140,7 @@ export function generateMdxFromJsonDump(): void {
   const removedDocs = removeStaleMdx(wiki.toDisk(wiki.DocsFolder), generatedDocs);
   const removedPages = removeStaleMdx(wiki.toDisk(wiki.PagesFolder), generatedPages);
 
-  const entityIndexPath = wiki.toDisk(wiki.combine("static", wiki.DumpFolder, "entityIndex.json"));
+  const entityIndexPath = wiki.toDisk(wiki.combine("static", wiki.StaticDumpFolder, "entityIndex.json"));
 
   fs.mkdirSync(path.dirname(entityIndexPath), { recursive: true });
   fs.writeFileSync(entityIndexPath, JSON.stringify(entityIndex, null, 2), "utf8");

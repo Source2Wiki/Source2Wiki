@@ -1,8 +1,8 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
-import cs2_data from '@site/con_dump/condump_cs2.json'
-import hla_data from '@site/con_dump/condump_hla.json'
-import steamvr_data from '@site/con_dump/condump_steamvr.json'
-import dota2_data from '@site/con_dump/condump_dota2.json'
+import cs2_data from '@site/dump/convars/condump_cs2.json'
+import hla_data from '@site/dump/convars/condump_hla.json'
+import steamvr_data from '@site/dump/convars/condump_steamvr.json'
+import dota2_data from '@site/dump/convars/condump_dota2.json'
 import styles from './styles.module.css';
 import clsx from "clsx";
 import DateRender from "@site/src/components/DateRenderer";

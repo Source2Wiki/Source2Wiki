@@ -1,5 +1,5 @@
 /**
- * The shape of the JSON in \fgd_dump and \fgd_dump_overrides.
+ * The shape of the JSON in \dump\fgd and \dump\fgd_overrides.
  *
  * Reading is forgiving about missing keys, an override file only sets what it wants to change.
  * The few fields the wiki gives meaning to (entity type, annotation type) are checked against

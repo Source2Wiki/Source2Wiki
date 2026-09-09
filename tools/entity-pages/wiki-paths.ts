@@ -15,8 +15,12 @@ import path from "node:path";
 
 export const DocsFolder = "docs/Entities";
 export const PagesFolder = "src/pages/Entities";
-export const DumpFolder = "fgd_dump";
-export const OverridesFolder = "fgd_dump_overrides";
+export const DumpFolder = "dump/fgd";
+export const OverridesFolder = "dump/fgd_overrides";
+/** Entity icons and the entity index live under static, served from the site root as /fgd_dump. */
+export const StaticDumpFolder = "fgd_dump";
+/** Where the dumps lived before moving under dump/, so git history from before the move still counts. */
+export const LegacyDumpFolders = ["fgd_dump", "fgd_dump_overrides"];
 
 const StaticFolder = "static";
 

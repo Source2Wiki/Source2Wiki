@@ -20,7 +20,9 @@ export function loadLastUpdates(): Map<string, LastUpdate> {
 
   let log: string;
   try {
-    log = execFileSync("git", ["log", "--format=%x00%aI%x00%an", "--name-only", "--", wiki.DumpFolder, wiki.OverridesFolder], {
+    // leaving exact renames out keeps the move under dump/ from counting as an
+    // update to every entity, the legacy folders keep the history from before it
+    log = execFileSync("git", ["log", "-M100%", "--diff-filter=AMD", "--format=%x00%aI%x00%an", "--name-only", "--", wiki.DumpFolder, wiki.OverridesFolder, ...wiki.LegacyDumpFolders], {
       cwd: wiki.getWikiRoot(),
       encoding: "utf8",
       stdio: ["ignore", "pipe", "ignore"],
@@ -38,7 +40,7 @@ export function loadLastUpdates(): Map<string, LastUpdate> {
       const [, date, author] = line.split("\0");
       commit = { date, author };
     } else if (line.endsWith(".json") && commit !== null) {
-      // fgd_dump/{class}.json, fgd_dump_overrides/{class}.json or {class}-{game}.json
+      // dump/fgd/{class}.json, dump/fgd_overrides/{class}.json or {class}-{game}.json
       const entityClass = path.parse(line).name.split("-")[0];
       if (!updates.has(entityClass)) {
         updates.set(entityClass, commit);

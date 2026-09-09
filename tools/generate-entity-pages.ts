@@ -1,5 +1,5 @@
 /**
- * Generates entity documentation pages from dumps produced by WikiPageTools.exe and manual overrides in \fgd_dump_overrides. 
+ * Generates entity documentation pages from dumps produced by WikiPageTools.exe and manual overrides in \dump\fgd_overrides. 
  */
 
 import { parseArgs } from "node:util";

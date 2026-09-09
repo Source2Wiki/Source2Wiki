@@ -41,7 +41,7 @@ test("generation writes a document and a page per game", (t) => {
   assert.ok(fs.existsSync(inWiki(root, wiki.DocsFolder, "test_entity.mdx")));
   assert.ok(fs.existsSync(inWiki(root, wiki.PagesFolder, "test_entity-hla.mdx")));
   assert.equal(
-    JSON.parse(fs.readFileSync(inWiki(root, "static", wiki.DumpFolder, "entityIndex.json"), "utf8")).length,
+    JSON.parse(fs.readFileSync(inWiki(root, "static", wiki.StaticDumpFolder, "entityIndex.json"), "utf8")).length,
     1,
   );
 });

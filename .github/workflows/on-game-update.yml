@@ -88,13 +88,13 @@ jobs:
         run: |
           curl --fail --silent --location \
             https://raw.githubusercontent.com/SteamTracking/GameTracking-CS2/master/content/csgo/maps/editor/zoo/scripts/point_script.d.ts \
-            -o cs_script_dump/point_script.d.ts
+            -o dump/cs_script/point_script.d.ts
 
       - name: Did the file itself change
         id: file
         run: |
           # cheap first gate: identical input means identical output, no need to install and build
-          if git diff --quiet --ignore-cr-at-eol -- cs_script_dump/point_script.d.ts; then
+          if git diff --quiet --ignore-cr-at-eol -- dump/cs_script/point_script.d.ts; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "point_script.d.ts is unchanged, nothing to do"
           else
@@ -117,7 +117,7 @@ jobs:
       - name: Commit if the output differs
         if: steps.file.outputs.changed == 'true'
         run: |
-          git add cs_script_dump/point_script.d.ts "docs/Scripting/Counter-Strike 2/cs_script/_apiTables.mdx"
+          git add dump/cs_script/point_script.d.ts "docs/Scripting/Counter-Strike 2/cs_script/_apiTables.mdx"
 
           if git diff --cached --quiet; then
             echo "nothing differs from the repo, no commit"

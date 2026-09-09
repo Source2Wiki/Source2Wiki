@@ -4,16 +4,16 @@ import clsx from "clsx";
 import DateRender from "@site/src/components/DateRenderer";
 import MaterialAttributes from "@site/src/constants/materialAttributes";
 
-import cs2_data from '@site/tooltex_dump/tooltexdump_cs2.json'
-import hla_data from '@site/tooltex_dump/tooltexdump_hla.json'
-import steamvr_data from '@site/tooltex_dump/tooltexdump_steamvr.json'
-import dota2_data from '@site/tooltex_dump/tooltexdump_dota2.json'
+import cs2_data from '@site/dump/tooltex/tooltexdump_cs2.json'
+import hla_data from '@site/dump/tooltex/tooltexdump_hla.json'
+import steamvr_data from '@site/dump/tooltex/tooltexdump_steamvr.json'
+import dota2_data from '@site/dump/tooltex/tooltexdump_dota2.json'
 
-import global_descriptions from '@site/tooltex_dump/tooltex_description.json'
-import cs2_descriptions from '@site/tooltex_dump/tooltex_description_cs2.json'
-import hla_descriptions from '@site/tooltex_dump/tooltex_description_hla.json'
-import steamvr_descriptions from '@site/tooltex_dump/tooltex_description_steamvr.json'
-import dota2_descriptions from '@site/tooltex_dump/tooltex_description_dota2.json'
+import global_descriptions from '@site/dump/tooltex/tooltex_description.json'
+import cs2_descriptions from '@site/dump/tooltex/tooltex_description_cs2.json'
+import hla_descriptions from '@site/dump/tooltex/tooltex_description_hla.json'
+import steamvr_descriptions from '@site/dump/tooltex/tooltex_description_steamvr.json'
+import dota2_descriptions from '@site/dump/tooltex/tooltex_description_dota2.json'
 
 interface ToolTexTableProps {
   game?: string;

@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import entityData from '@site/static/fgd_dump/entityIndex.json';
-import timestampData from '@site/fgd_dump/timestamp.json';
+import timestampData from '@site/dump/fgd/timestamp.json';
 import { Games } from '@site/src/constants/software';
 import styles from './styles.module.css';
 import clsx from "clsx";

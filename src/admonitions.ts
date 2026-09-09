@@ -14,7 +14,7 @@ export const admonitions = {
 
 /**
  * Every keyword docusaurus will actually render, ours plus the ones it ships with. The entity
- * page generator checks annotations in \fgd_dump_overrides against this, so an override can
+ * page generator checks annotations in \dump\fgd_overrides against this, so an override can
  * only ask for an admonition the site knows how to draw.
  */
 export const admonitionKeywords: readonly string[] = normalizeAdmonitionOptions(admonitions).keywords;

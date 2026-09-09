@@ -1,5 +1,5 @@
 /**
- * Merging \fgd_dump_overrides on top of the dumped pages.
+ * Merging \dump\fgd_overrides on top of the dumped pages.
  *
  * The format for an override filename is 'entityClassname'-'gameFileSystemName'.json or just
  * 'entityClassname'.json. If only entityClassname is provided, we treat the override as being

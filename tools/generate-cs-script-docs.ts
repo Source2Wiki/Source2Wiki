@@ -1,5 +1,5 @@
 /**
- * Regenerates the cs_script API tables from the copy of `point_script.d.ts` in \cs_script_dump.
+ * Regenerates the cs_script API tables from the copy of `point_script.d.ts` in \dump\cs_script.
  *
  *   npm run generate-cs-script-docs
  *
@@ -18,7 +18,7 @@ import { parseArgs } from "node:util";
 
 import { parseApi, renderApi } from "./cs-script/api-docs";
 
-const DumpFolder = "cs_script_dump";
+const DumpFolder = "dump/cs_script";
 const ScriptTypes = "point_script.d.ts";
 const GamePath = String.raw`<steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo\maps\editor\zoo\scripts`;
 const Partial = ["docs", "Scripting", "Counter-Strike 2", "cs_script", "_apiTables.mdx"];
