@@ -1,0 +1,33 @@
+---
+title: NavMesh Radar
+description: Generates radar images from compiled navigation data.
+image: /img/hammer5tools/icons/navmesh-radar.png
+sidebar_position: 6
+---
+
+NavMesh Radar generates editable radar faces for the active addon map.
+
+## Before starting
+
+Set the <Game name="cs2"/> path and active addon. The tool requires the addon's compiled VPK at `game/csgo_addons/<addon>/maps/<addon>.vpk` and its main VMAP at `content/csgo_addons/<addon>/maps/<addon>.vmap`.
+
+Open it from Utilities > NavMesh Radar.
+
+## Source modes
+
+Choose one source mode:
+
+- NavMesh: Generates radar faces from the navmesh. The Remove offset option controls whether a 16-unit offset is removed.
+- Baked bomb damage: Generates radar faces from baked bomb-damage data. This mode provides Collapse faces and Collapse faces into N-gons options.
+
+## Generate
+
+1. Choose the source mode and its options.
+2. Keep Add prefab entity to main map enabled to add a reference to the generated radar map.
+3. Click Generate.
+
+The tool reports the generated map path and number of editable faces. If the main map already references the generated radar, the prefab option is disabled.
+
+Generation writes or replaces `maps/<addon>_generated_radar.vmap`. When Add prefab
+entity to main map is enabled, <Tool name="hammer5tools"/> also changes the main VMAP and creates a
+backup before adding the prefab reference.

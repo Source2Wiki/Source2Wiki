@@ -1,0 +1,71 @@
+---
+title: Git
+description: Synchronizes addon projects through Git.
+image: /img/hammer5tools/icons/git.png
+sidebar_position: 3
+---
+
+Git tracks changes in the active addon. The Git button shows local changes and commits waiting to move between the local repository and its remote.
+
+## Set up a repository
+
+Click the Git button when the addon has no repository. Enter the branch name and an optional server URL.
+
+Keep Add a .gitignore for autosaves, backups and build leftovers checked to omit generated work files. Keep Store maps, models and textures with Git LFS checked when the repository uses Git LFS.
+
+Click Create repository. Nothing is sent to the server until the first sync.
+
+## Sync changes
+
+Click the Git button to open Sync changes. Check the files to send.
+
+Use All, None, or Maps only to change the selection. Enter a message that describes the selected changes. When no local files are selected, the action changes to Pull only.
+
+Click Sync. <Tool name="hammer5tools"/> commits the selected files. When the repository has an
+`origin` remote, it then fetches and merges the server branch, resolves conflicts if
+needed, and pushes the result. Without an `origin`, Sync creates only the local commit.
+
+Unchecked tracked and untracked changes stay in the local repository, but <Tool name="hammer5tools"/>
+temporarily stashes them during synchronization and restores them afterward. If restoring
+the stash conflicts with the synchronized files, <Tool name="hammer5tools"/> keeps a backup stash and
+reports that manual recovery is required. Do not discard that stash until the unchecked
+work is restored.
+
+The dialog warns when an ordinary Git file exceeds 100 MiB and when selected changes
+exceed 500 MiB. Configure Git LFS before syncing assets that exceed the server's limits.
+
+## Status badges
+
+The yellow badge counts uncommitted local changes. The red badge counts commits waiting to be pulled or pushed. A warning badge means the addon has no Git repository.
+
+## Resolve conflicts
+
+The Resolve conflicts dialog lists files changed on both sides.
+
+- Merge both runs the VMAP merge for a supported map.
+- Keep Local keeps the local file and discards the server version.
+- Keep Server keeps the server file and discards the local version.
+- Open opens the file for inspection.
+
+Resolve every listed file, then continue the sync.
+
+## Merge behavior
+
+The VMAP merge compares map objects from the local file, server file, and common ancestor. If an object cannot be resolved, choose which side to keep.
+
+If a merged object belonged to a group that was deleted, the merge moves that object to
+the map root. Inspect the merged hierarchy before continuing work.
+
+## Command-line use
+
+The utility accepts two map paths, with optional base and output paths:
+
+```text
+python Hammer5ToolsGUI/gui/gitvmapmerge.py ours.vmap theirs.vmap --base base.vmap --output merged.vmap
+```
+
+Use `--primary ours` or `--primary theirs` when one side must win every unresolved conflict. Test a new merge configuration on copied files.
+
+## Git configuration
+
+Point Git's merge-driver command to the script in the local installation. Add `*.vmap merge=vmapmerge` to the repository's `.gitattributes` file.

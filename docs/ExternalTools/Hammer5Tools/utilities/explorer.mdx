@@ -1,0 +1,69 @@
+---
+title: Explorer
+description: Browses, converts, and manages addon assets.
+image: /img/hammer5tools/icons/explorer.svg
+sidebar_position: 1
+---
+
+Explorer shows the active addon's content files. Most file tools are in the right-click menu.
+
+## Navigation
+
+Use Favorites for frequently opened folders. Use Recent to return to files opened through <Tool name="hammer5tools"/>.
+
+Right-click a file or folder and choose Add to Favorites. Remove it from the Favorites panel when it is no longer needed.
+
+## File and folder actions
+
+Right-click an empty area to create a folder or paste a copied file. Folder menus also provide Open in Explorer, Rename Asset, Move Assets, Export Asset, and Delete Folder.
+
+File menus provide Open File, Open File Folder, Duplicate File, Copy File, Paste File, Rename Asset, Move Assets, Export Asset, and Delete File. The available commands depend on the file type.
+
+Use Copy Relative Path for a path relative to the addon. Use Copy Path for the absolute path. Audio files also provide Copy Audio Path.
+
+## Move assets
+
+Select one or more files or folders and choose Move Assets. Select the destination, then click Preview to review the affected files. Click Apply to move them.
+
+The move operation updates supported asset references that point to the moved files. Review the preview before applying it.
+
+## Asset export
+
+Select one or more supported assets and choose Export Asset. The exporter resolves referenced dependencies and can copy the selected files to a folder or ZIP archive.
+
+1. Review the dependency list and deselect files that should not be included.
+2. Choose an output folder.
+3. Preserve the addon layout or configure a third-party layout.
+4. Choose whether to create a ZIP archive, then export.
+
+Missing dependencies are reported and are not exported.
+
+## Quick create
+
+Quick Create creates a VMDL, VMAT, or HBAT file in the selected folder. Enter a name; the appropriate extension is added when omitted. The new file contains the template for the selected file type.
+
+Explorer also provides file-specific commands:
+
+- Quick create vmdl creates a model definition for a mesh file.
+- Quick AssetGroup file creates an HBAT profile from a VMDL or folder.
+- Quick VSmart creates a SmartProp file.
+- Quick Process file runs the matching asset process for a supported file.
+- Quick Process AssetGroup processes an HBAT profile.
+
+## File conversion
+
+Choose Convert MP3 to WAV or Convert WAV to MP3 from an audio file's menu. The converted file is written beside the source file.
+
+Choose Fix PBR Range for a supported image. This adjusts the image data used by the material workflow.
+
+## Asset Browser
+
+Asset fields in <Tool name="hammer5tools"/> open an Asset Browser for the requested file type. Search by resource name, then use the type and source filters to narrow the results.
+
+Use the thumbnail slider to change the grid size. Click Rescan after adding files outside <Tool name="hammer5tools"/>.
+
+Select an asset and click Accept when the browser was opened as a picker. Right-click an asset to choose Copy Resource Path or Open in <Game name="cs2"/> Tools. Model assets also provide Use as Reference Template in AssetGroup Maker.
+
+## Find and replace
+
+The SmartProp workflow can open a replacement dialog when pasting data. Enter the find and replacement text, then choose case-sensitive or whole-word matching as needed. Matches are highlighted before the replacement is accepted.
