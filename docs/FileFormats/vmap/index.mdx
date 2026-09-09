@@ -5,7 +5,9 @@ title: VMAP
 
 .vmap is the file format for uncompiled Source2 maps when they are being edited in [Hammer](../../EngineTools/HammerEditor/index.mdx).
 
-It is a [DMX](../dmx.mdx) file under binary encoding version 9, [Hammer](../../EngineTools/HammerEditor/index.mdx) can export a plain text version if you go to `File -> Save Copy As Text`
+It is a [DMX](../dmx.mdx) file under binary encoding version 9 with the format name `vmap`, [Hammer](../../EngineTools/HammerEditor/index.mdx) can export a plain text version if you go to `File -> Save Copy As Text`
+
+Compiling a vmap produces the `.vmap_c` the game loads, which is a different format, see [Compiled maps](#compiled-maps).
 
 :::info
 <Tool name="s2v"/> can decompile compiled maps (.vmap_c usually contained within a VPK) into a .vmap\
@@ -25,20 +27,105 @@ In the text encoding of DMX, when an Element is only referenced once, it will be
 
 [Vmap example](./example.vmap.mdx) (external page due to the large size)
 
+## Format versions
+
+The current format version is 40. Hammer contains an updater with one step per version, so any older file is upgraded step by step while it loads, and saving writes it back at version 40. A file only needs to be valid for the version it declares.
+
+The steps that changed the structure of the file rather than individual entity keys:
+
+| Version | Change |
+|---|---|
+| 3 | `MapClass` renamed to `MapNode` |
+| 5 | `CVisibilityMgr` with `nodes` and `hiddenFlags` |
+| 6 | `CMapSolid` and `CHammerMesh` become `CMapMesh`, `dmemesh` becomes `mesh` |
+| 7 | `CMapRootElement` and `rootSelectionSet` |
+| 8 | Vertex paint moves into `CDmePolygonMeshDataStream` streams |
+| 10 | `connections` becomes `connectionsData`, prefabs get `variableOverrideNames` and `variableOverrideValues` |
+| 23 | `variableTypes` becomes `variableTypeNames` on `CMapVariableSet` |
+| 28 | `mapUsageType` on `CMapWorld`, replacing `backgroundMap` |
+| 29 | `physicsSimplificationOverride` and `physicsSimplificationError` on `CMapMesh` |
+| 30 | Paths and cables (`CMapPath`, `CMapPathNode`, `CMapCable`) |
+| 31 | `disableShadows2` becomes `disableShadows` on meshes |
+| 39 | `prefab_has_runtime_entity_by_default` on the world |
+
+Most other steps rewrite keys inside `entity_properties` after an FGD change, such as light, sky, cubemap and scripted sequence keys.
+
+:::todo
+Which game introduced which version, and game specific vmap nodes such as the <Game name="dota2" /> tile grid, are not documented yet.
+:::
+
+## How Hammer builds the file
+
+Every object in a map is a Datamodel element, an instance of a `CDmElement` subclass inside Hammer. Saving the map is saving those elements, so the file mirrors Hammer's classes: the class name of each element is the name of the C++ class that created it, and the attributes are that class's members.
+
+An attribute reaches the file in one of three ways, which is why the naming of attributes is so inconsistent.
+
+### Bound attributes
+
+A class binds some of its members as attributes when it is constructed, base class first. These always exist on the element, from the moment it is created: `nodeID`, `children`, `meshData`, `relayPlugData`. Their names are whatever the programmer wrote, mostly camelCase.
+
+### Tool properties
+
+Everything shown in the Object Properties panel is a tool property, described by a static property table per class. The table holds the display name, the category, and optionally a serialization name that differs from the property name: the property `force hidden` is saved as `force_hidden`, `editor only` as `editorOnly`, `transform locked` as `transformLocked`, and the mesh colour `rendercolor` as `tintColor`. A few properties are marked as not serialized at all, such as a mesh's `name`, the world's `Map Type` and a cordon's `Cordon Name`, because the value is stored elsewhere or only exists in the panel.
+
+Tool properties are copied onto the element when the map is saved, after the bound attributes, and read back from it on load. The transform properties `origin`, `angles` and `scales` are the clearest case: Hammer keeps them as plain members of `CMapPoint`, and they become attributes only because `CMapNode`'s property table lists them.
+
+### Markup
+
+A few classes write extra attributes through their own save code, outside both mechanisms. The `data` array of a mesh data stream and the `nodeData` of a smart prop are written this way.
+
+### Attribute order
+
+Because of the split, a freshly saved element lists all bound attributes of its class chain first and all tool properties after them, which is the order seen in the example. A file Hammer loaded keeps the order it came with, and Hammer accepts any order, so the order carries no meaning and other tools need not reproduce it.
+
+## Class hierarchy
+
+Hammer's map classes form one chain, and each class in the file inherits the attributes of every class above it. Abstract classes never appear as a class name in a file, but their attributes do.
+
+```
+CDmElement
+└── CMapAtom                    abstract, adds nothing to the file
+    └── CMapPoint               abstract, owns origin, angles, scales
+        └── CMapNode            id, children, variables, transform, visibility
+            ├── CMapEntityIONode        abstract, entity IO
+            │   ├── CMapGameDataNode    abstract, entity key values
+            │   │   ├── CMapEntity
+            │   │   │   ├── CMapPath
+            │   │   │   │   └── CMapCable
+            │   │   │   └── CMapPathNode
+            │   │   └── CMapWorld
+            │   └── CMapInstance
+            │       ├── CMapPrefab
+            │       └── CMapProxyInstance
+            ├── CMapGroup
+            │   └── CMapSpawnGroup
+            │       └── CMapWorldLayer
+            ├── CMapMeshBase            abstract, lighting and build settings
+            │   └── CMapMesh
+            │       ├── CMapStaticOverlay
+            │       └── CMapTileMesh
+            ├── CMapBox
+            │   ├── CMapCordon
+            │   └── CMapTerrain
+            ├── CMapNavData
+            ├── CMapSmartProp
+            └── CVisibilityMgr
+```
+
+`CMapRootElement`, `CMapSelectionSet`, `CStoredCamera`, `CStoredCameras`, `CMapVariableSet` and the polygon mesh elements derive from `CDmElement` directly and are not nodes.
+
 ## Vmap file structure
 
-A list of vmap DMX nodes can be found below, this list is based on a <Game name="cs2" /> version 40 vmap.
+A list of vmap DMX nodes can be found below, this list is based on a <Game name="cs2" /> version 40 vmap. Inherited attributes are only listed on the class that introduces them.
 
-Annoyingly the [naming convention](https://en.wikipedia.org/wiki/Naming_convention_(programming)) of attributes in vmaps is all over the place, some of the cases used include:
+The [naming convention](https://en.wikipedia.org/wiki/Naming_convention_(programming)) of attributes in vmaps is all over the place, some of the cases used include:
 - flatcase
 - camelCase
 - PascalCase
 - snake_case
 - `m_` member variable notation
 
-:::todo
-Would be nice to have info on which nodes exists in what vmap version, and possibly even game specific vmap nodes.
-:::
+The reason is in [How Hammer builds the file](#how-hammer-builds-the-file).
 
 ### "$prefix_element$"
 
@@ -122,10 +209,10 @@ If the map is a prefab or not.
 The build number that you can view in `Help -> About`.
 
 - editorversion \<`int`\>\
-Unknown.
+The editor version that wrote the file. Current Hammer writes 400.
 
 - itemFile \<`string`\>\
-Unknown.
+The item file the map uses, a <Game name="dota2" /> feature. Empty otherwise.
 
 - defaultcamera \<`[CStoredCamera](#cstoredcamera)`\>\
 The default editor camera.
@@ -134,10 +221,10 @@ The default editor camera.
 A list of other editor cameras.
 
 - world \<`CMapWorld`\>\
-An Element containing Elements or referenced to Elements which make up the map like entities, meshes, etc..
+An Element containing Elements or referenced to Elements which make up the map like entities, meshes, etc.. Hammer refuses to load a file whose root has no world.
 
 - visbility \<`CVisibilityMgr`\>\
-Yes you read that right, this Element is hilariously misspelled as `visbility` instead of `visibility`. It keeps track of what is hidden in the map, from quick hide, selection sets, etc..
+Yes you read that right, this Element is hilariously misspelled as `visbility` instead of `visibility`, the misspelling is in Hammer itself so it is part of the format. It keeps track of what is hidden in the map, from quick hide, selection sets, etc..
 
 - mapVariables \<`CMapVariableSet`\>\
 Map variables, they can be set in the `Map -> MapProperties -> Map Variables` tab.
@@ -157,12 +244,40 @@ If the cordon tool is visible.
 - nodeInstanceData \<`element_array`\>\
 Per node instance data for things like hammer preview lighting
 
-### MapNode
+### CMapAtom
 
-This is not a real vmap node, but most nodes have these properties so it seems like a likely base class.
+Anything that belongs to a map document. It never appears as a class name and adds nothing to the file, it is Hammer's layer for the undo and listener hooks.
+
+### CMapPoint
+#### Inherits from [CMapAtom](#cmapatom)
+
+A map atom with a transform, relative to the parent node. It never appears as a class name, every node has these attributes.
 
 ```json
-"MapNode"
+"CMapPoint"
+{
+    "origin" "vector3" "0 0 0"
+    "angles" "qangle" "0 0 0"
+    "scales" "vector3" "1 1 1"
+}
+```
+
+- origin \<`vector3`\>\
+The origin of the node in Hammer units.
+
+- angles \<`qangle`\>\
+The angles of the node in euler angles.
+
+- scales \<`vector3`\>\
+The scales of the node.
+
+### CMapNode
+#### Inherits from [CMapPoint](#cmappoint)
+
+The base class of everything in the map tree. It never appears as a class name itself, but every node has these properties. `nodeID`, `referenceID`, `children`, `variableTargetKeys` and `variableNames` are bound attributes, the rest are tool properties from the Transform and Visibility groups of `Object Properties`.
+
+```json
+"CMapNode"
 {
     "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
     "nodeID" "int" "1"
@@ -177,35 +292,31 @@ This is not a real vmap node, but most nodes have these properties so it seems l
     "scales" "vector3" "1 1 1"
 
     "transformLocked" "bool" "0"
+    "transformPin" "DmElement"
     "force_hidden" "bool" "0"
     "editorOnly" "bool" "0"
     "customVisGroup" "string" ""
+    "randomSeed" "int" "1519914072"
 }
 ```
 - nodeID \<`int`\>\
-The ID of this node, can be seen in Hammer in the Outliner.
+The ID of this node, can be seen in Hammer in the Outliner. Selection sets and overlays refer to nodes by it.
 
 - referenceID \<`uint64`\>\
-Unknown, but seems to be some sort of pointer however Hammer will load maps just fine with this always being 0.
+A 64 bit id that stays stable across prefab and instance boundaries, which is what transform pins target. Hammer will load maps just fine with this always being 0.
 
 - children \<`element_array`\>\
 All the children of this node, they can be other nodes directly (when the node only exists once) or UUID references to other nodes 
 
 - variableTargetKeys \<`string_array`\>\
 variableNames \<`string_array`\>\
-Both seem to be related to the map variable system, possibly when a property of a node is using a map variable.
+Two parallel arrays: each entry names a property of this node and the map variable that drives it.
 
-- origin \<`vector3`\>\
-The origin of the node in Hammer units.
-
-- angles \<`qangle`\>\
-The angles of the node in euler angles.
-
-- scales \<`vector3`\>\
-The scales of the node.
-
-- transformLocked \<`bool`\>\
+- transformLocked\<`bool`\>\
 If true, stops the origin, angles or scales of this object from being changed in Hammer, the option to toggle this in the UI shows in the Transform group in `Object Properties`
+
+- transformPin \<[CMapNodeTransformPin](#cmaptransformpin)\>\
+The `Pinned To` setting, only written when the node is pinned to another node.
 
 - force_hidden \<`bool`\>\
 If true it will force this object to not be visibile to VIS, shown in the Visibility group in `Object Properties`
@@ -216,29 +327,75 @@ If true it will force this object to not be compiled into the map, useful for de
 - customVisGroup \<`string`\>\
 Will add a custom Vis group in the `Auto Vis Groups` panel, this object will show under it, useful for organisation. Shown in the Visibility group in `Object Properties`
 
-### BaseEntity
-#### Inherits from [MapNode](#mapnode)
+- randomSeed \<`int`\>\
+The seed of the node's random values, for features such as smart prop evaluation. Hammer picks one when the node is created.
 
-This is not a real vmap node, but [CMapMesh](#cmapmesh), [CMapWorld](#cmapworld) and [CMapInstance](#cmapinstance) share these properties so this seems like a likely base class.
+### CMapTransformPin
+
+The `Pinned To` setting of a node: another node this one follows, found by its `referenceID`. It is written as a plain `DmElement`.
+
+```json
+"transformPin" "DmElement"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "referenceName" "string" ""
+    "targetReferenceID" "uint64" "0x0"
+    "offsetOrigin" "vector3" "0 0 0"
+    "offsetAngles" "qangle" "0 0 0"
+    "pinAngles" "bool" "1"
+    "twoWay" "bool" "0"
+}
+```
+
+- referenceName \<`string`\>\
+The name of the target node.
+
+- targetReferenceID \<`uint64`\>\
+The `referenceID` of the target node.
+
+- offsetOrigin \<`vector3`\>\
+The position offset kept from the target.
+
+- offsetAngles \<`qangle`\>\
+The rotation offset kept from the target.
+
+- pinAngles \<`bool`\>\
+Whether the rotation follows the target as well as the position.
+
+- twoWay \<`bool`\>\
+Whether moving this node moves the target too.
+
+### CMapEntityIONode
+#### Inherits from [CMapNode](#cmapnode)
+
+An abstract class, the base of every node that takes part in entity IO: [CMapEntity](#cmapentity), [CMapWorld](#cmapworld), [CMapInstance](#cmapinstance) and [CMapPrefab](#cmapprefab). Both attributes are bound.
 
 ```json
 "relayPlugData" "DmePlugList" ""
 "connectionsData" "element_array" ""
-"entity_properties" "EditGameClassProps" ""
 ```
 
 - relayPlugData \<[DmePlugList](#dmepluglist)\>\
-Unknown.
+The relay plugs of the node, used when a prefab exposes inputs and outputs.
 
 - connectionsData \<`element_array`\>\
 IO Outputs, contains [DmeConnectionData](#dmeconnectiondata) elements.
-    
+
+### CMapGameDataNode
+#### Inherits from [CMapEntityIONode](#cmapentityionode)
+
+An abstract class, the base of [CMapEntity](#cmapentity) and [CMapWorld](#cmapworld), the two nodes that carry entity keyvalues and know the FGD.
+
+```json
+"entity_properties" "EditGameClassProps" ""
+```
+
 - entity_properties \<[EditGameClassProps](#editgameclassprops)\>\
-A string -> string dictionary of entity keyvalues. 
+A string -> string dictionary of entity keyvalues. The element is created by the class itself rather than bound, and its keys are reconciled with the FGD class definition whenever the class name changes.
 
 ### DmePlugList
 
-Unknown.
+The relay plugs of a node, as four parallel arrays. They are empty for ordinary entities, a prefab uses them to expose the inputs and outputs of the entities inside it, which the compiler turns into `prefab_relays`.
 
 ```json
 "relayPlugData" "DmePlugList"
@@ -260,16 +417,16 @@ Unknown.
 ```
 
 - names \<`string_array`\>\
-Unknown.
+The name of each plug.
 
 - dataTypes \<`int_array`\>\
-Unknown.
+The data type of each plug.
 
 - plugTypes \<`int_array`\>\
-Unknown.
+Whether each plug is an input or an output.
 
 - descriptions \<`string_array`\>\
-Unknown.
+The description of each plug.
 
 ### DmeConnectionData
 
@@ -312,11 +469,30 @@ How many times to refire the output.
 
 ### EditGameClassProps
 
-A string -> string dictionary storing entity keyvalues, seems to just be a standard kv2 element, which can act as a string dictionary. 
+A string -> string dictionary storing entity keyvalues, seems to just be a standard kv2 element, which can act as a string dictionary. Every value is stored as a string, the compiler converts each one to the type the FGD declares.
 
+### CMapEntity
+#### Inherits from [CMapGameDataNode](#cmapgamedatanode)
+
+A point or brush entity. Its only attributes of its own are two bound ones, brush entities keep their geometry as [CMapMesh](#cmapmesh) children.
+
+```json
+"CMapEntity"
+{
+    "id" "elementid" "180bd7ef-8347-4a97-b1cb-38b16877ca6b"
+    "hitNormal" "vector3" "0 0 1"
+    "isProceduralEntity" "bool" "0"
+}
+```
+
+- hitNormal \<`vector3`\>\
+The surface normal the entity was dropped onto when it was placed.
+
+- isProceduralEntity \<`bool`\>\
+Whether the entity was generated by a tool rather than placed by hand.
 
 ### CMapWorld
-#### Inherits from [BaseEntity](#baseentity) -> [MapNode](#mapnode)
+#### Inherits from [CMapGameDataNode](#cmapgamedatanode)
 
 This is the main element that contains everything in the vmap, its also the entity you edit when you change properties in `Map -> Map Properties`, it becomes the `worldspawn` entity at runtime.
 
@@ -351,13 +527,13 @@ This is the main element that contains everything in the vmap, its also the enti
 The children of CMapWorld are everything contained in the map, in the text encoding of DMX if a node is referenced only once, its inserted directly, if it is referenced more than once, it will be put into the Root element, in this case [CMapRootElement](#cmaprootelement) and it will be referenced by its UUID.
 
 - nextDecalID \<`int`\>\
-Unknown.
+The next free decal id, handed out as decals are placed.
 
 - fixupEntityNames \<`bool`\>\
-Unknown. Prefabs have this option in order to prevent name collisions, why would the main VMAP need this tho?
+Whether prefabs placed in this map fix up their entity names by default, shown as `Fixup Entity Names By Default` in the map properties.
 
 - mapUsageType \<`string`\>\
-    The type of the map.
+    The type of the map, shown as `Map Type` in the map properties and stored as the name of the enum value.
 
     - standard\
         For normal maps.
@@ -375,7 +551,7 @@ Unknown. Prefabs have this option in order to prevent name collisions, why would
         Unknown.
 
 - randomSeed \<`int`\>\
-    Unknown. Perhaps used for *something* that needs a random seed, but what, and why can you set it?
+    See [CMapNode](#cmapnode).
 
 ### CStoredCamera
 
@@ -419,13 +595,9 @@ When are multiple editor cameras stored in the vmap?
     An array of [CStoredCamera](#cstoredcamera) elements.
 
 ### CVisibilityMgr
-#### Inherits from [MapNode](#mapnode)
+#### Inherits from [CMapNode](#cmapnode)
 
-Manages hiding nodes.
-
-:::todo
-Why is this a node? can you select this in Hammer somehow? It seems to always be at 0 0 0.
-:::
+Manages hiding nodes. It is a node only because it inherits the node class, its transform is never used and stays at 0 0 0.
 
 ```json
 "visbility" "CVisibilityMgr"
@@ -530,10 +702,48 @@ A selection set.
 - faces \<`int_array`\>\
     A list of mesh faces contained in this selection set.
 
-### CMapPrefab
-#### Inherits from [MapNode](#mapnode)
+### CEdgeSelectionSetDataElement
 
-A prefab.
+The mesh edges a [CMapSelectionSet](#cmapselectionset) selects.
+
+```json
+"CEdgeSelectionSetDataElement"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "edges" "int_array"
+    "meshes" "element_array"
+}
+```
+
+- edges \<`int_array`\>\
+    Half edge indices into the meshes of `meshes`.
+
+- meshes \<`element_array`\>\
+    The [CMapMesh](#cmapmesh) nodes that own the selected edges.
+
+### CVertexSelectionSetDataElement
+
+The mesh vertices a [CMapSelectionSet](#cmapselectionset) selects.
+
+```json
+"CVertexSelectionSetDataElement"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "vertices" "int_array"
+    "meshes" "element_array"
+}
+```
+
+- vertices \<`int_array`\>\
+    Vertex indices into the meshes of `meshes`.
+
+- meshes \<`element_array`\>\
+    The [CMapMesh](#cmapmesh) nodes that own the selected vertices.
+
+### CMapPrefab
+#### Inherits from [CMapInstance](#cmapinstance)
+
+A prefab, an instance whose contents come from another map file. `variableOverrideNames` and `variableOverrideValues` are bound, the rest are tool properties.
 
 ```json
 "CMapPrefab"
@@ -570,16 +780,17 @@ A prefab.
 ```
 
 - target \<`element`\>\
-    Unknown.
+    Inherited from [CMapInstance](#cmapinstance), unused and empty since the contents come from the file.
 
 - variableOverrideNames \<`string_array`\>\
-    Unknown.
-
-- variableOverrideValues \<`string_array`\>\
-    Unknown.
+    variableOverrideValues \<`string_array`\>\
+    Two parallel arrays: the map variables of the prefab file this placement overrides, and the values it gives them.
 
 - targetMapPath \<`string`\>\
     The map to load.
+
+- targetName \<`string`\>\
+    The name given to the prefab instance, used as the entity name prefix when `useTargetNameAsPrefix` is set.
 
 - fixupEntityNames \<`bool`\>\
     If enabled, any entity target names within the prefab will have a prefix applied to ensure they are unique. This prevents any issues with entities in two different prefabs having name collisions.
@@ -591,15 +802,15 @@ A prefab.
     If enabled the prefab will be loaded when it is the child of another prefab, if disabled, this prefab will not be loaded if it is the child of another prefab.
 
 - prefabRuntimeEntity \<`bool`\>\
-    Unknown.
+    Whether the prefab compiles into a `point_prefab` entity of its own, shown as `Create Prefab Runtime Entity`.
 
 - loadAtRuntime \<`bool`\>\
     If enabled the prefab will not be baked into the parent map during map compile, but instead will be dynamically loaded in the game. This requires the target map to be compiled separately. Additionally this requires support for dynamic loading of maps by the game, which may not be supported by all games and game systems. Do not use without checking to see if this is fully supported by the game you are working on.
 
 ### CMapInstance
-#### Inherits from [MapNode](#mapnode)
+#### Inherits from [CMapEntityIONode](#cmapentityionode)
 
-An instance.
+An instance. `target` is bound, `tintColor` and `visexclude` are tool properties.
 
 ```json
 "CMapInstance"
@@ -635,9 +846,36 @@ An instance.
     If true, everything inside of the instance will be excluded from vis.
 
 ### CMapGroup
-#### Inherits from [MapNode](#mapnode)
+#### Inherits from [CMapNode](#cmapnode)
 
-A group which can contain nodes, it seems to inherit from the MapNode baseclass without any changes.
+A group which can contain nodes. It binds nothing of its own, its one tool property is the deformation mode.
+
+```json
+"CMapGroup"
+{
+    "id" "elementid" "d3c5aac9-c6b0-4ca0-a74f-1bad53097d65"
+    "deformationMode" "int" "1"
+}
+```
+
+- deformationMode \<`int`\>\
+    How the group's contents deform when the group is transformed, shown as `Deformation Mode` in the Transform group.
+
+### CMapWorldLayer
+#### Inherits from [CMapGroup](#cmapgroup)
+
+A world layer, a group that compiles into a layer of its own. `worldLayerName` is bound.
+
+```json
+"CMapWorldLayer"
+{
+    "id" "elementid" "d3c5aac9-c6b0-4ca0-a74f-1bad53097d65"
+    "worldLayerName" "string" "layer"
+}
+```
+
+- worldLayerName \<`string`\>\
+    The name of the layer.
 
 ### CMapVariableSet
 
@@ -650,8 +888,10 @@ Stores map variables.
     "variableNames" "string_array" 
     "variableValues" "string_array" 
     "variableTypeNames" "string_array" 
-    "variableTypeParameters" "string_array" 
-    "m_ChoiceGroups" "element_array" 
+    "variableTypeParameters" "string_array"
+    "variableGroupNames" "string_array"
+    "m_ChoiceGroups" "element_array"
+    "variableAndChoiceOrder" "int_array"
 }
 ```
 
@@ -667,8 +907,14 @@ Stores map variables.
 - variableTypeParameters \<`string_array`\>\
     The type paremeter of the map variable, not sure what this is.
 
+- variableGroupNames \<`string_array`\>\
+    The group each variable is shown under.
+
 - m_ChoiceGroups \<`element_array`\>\
     Not sure what this does either, but takes a [CMapVariableChoiceGroup](#cmapvariablechoicegroup) object.
+
+- variableAndChoiceOrder \<`int_array`\>\
+    The display order of the variables and choice groups.
 
 ### CMapVariableChoiceGroup
 
@@ -682,36 +928,531 @@ A map variable choice group.
     "m_ChoiceVariables" "string_array" 
     "m_Choices" "element_array" 
     "m_ActiveValue" "string" ""
+    "m_GroupName" "string" ""
 }
 ```
 
 - name \<`string`\>\
     The name of the choice group.
 
-Honestly not even gonna try to pretend like I understand these, if you do, feel free to complete this list. 
+- m_ChoiceVariables \<`string_array`\>\
+    The names of the variables the choice drives.
+
+- m_Choices \<`element_array`\>\
+    The choices, each a plain element holding the values of the choice variables.
+
+- m_ActiveValue \<`string`\>\
+    The name of the active choice, empty for none.
+
+- m_GroupName \<`string`\>\
+    The name shown for the group.
+
+### CMapPath
+#### Inherits from [CMapEntity](#cmapentity)
+
+A spline of [CMapPathNode](#cmappathnode) children, the base of cables and particle paths.
+
+```json
+"CMapPath"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "interpolationType" "int" "0"
+    "closedLoop" "bool" "0"
+    "particleSnapshotSpacing" "float" "16"
+}
+```
+
+- interpolationType \<`int`\>\
+    How the spline interpolates between its nodes.
+
+- closedLoop \<`bool`\>\
+    Whether the last node connects back to the first.
+
+- particleSnapshotSpacing \<`float`\>\
+    Distance between the points a particle snapshot samples along the path.
+
+### CMapPathNode
+#### Inherits from [CMapEntity](#cmapentity)
+
+One control point of a [CMapPath](#cmappath).
+
+```json
+"CMapPathNode"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "inTangent" "vector3" "0 0 0"
+    "outTangent" "vector3" "0 0 0"
+    "inTangentType" "int" "1"
+    "outTangentType" "int" "1"
+}
+```
+
+- inTangent \<`vector3`\>\
+    Tangent of the spline entering this node.
+
+- outTangent \<`vector3`\>\
+    Tangent of the spline leaving this node.
+
+- inTangentType \<`int`\>\
+    How `inTangent` is computed.
+
+- outTangentType \<`int`\>\
+    How `outTangent` is computed.
+
+### CMapCable
+#### Inherits from [CMapPath](#cmappath)
+
+A cable rendered as a tube swept along a [CMapPath](#cmappath).
+
+```json
+"CMapCable"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "materialName" "string" ""
+    "tintColor" "color" "255 255 255 255"
+    "lightingOriginName" "string" ""
+    "numSides" "int" "4"
+    "tessellationSpacing" "float" "16"
+    "radius" "float" "0.5"
+    "flipFaces" "bool" "0"
+    "textureOrientation" "int" "0"
+    "textureScale" "float" "0.25"
+    "textureRepeatsCircumference" "float" "1"
+    "textureOffsetAlongPath" "float" "0"
+    "textureOffsetCircumference" "float" "0"
+    "collisionEnabled" "bool" "0"
+    "physicsSimplificationError" "float" "2"
+    "visOccluder" "bool" "0"
+}
+```
+
+- materialName \<`string`\>\
+    Material of the cable.
+
+- tintColor \<`color`\>\
+    Tint applied to the cable.
+
+- lightingOriginName \<`string`\>\
+    Name of the entity the cable takes its lighting from, empty for none.
+
+- numSides \<`int`\>\
+    Number of sides of the tube.
+
+- tessellationSpacing \<`float`\>\
+    Distance between the rings of the tube along the path.
+
+- radius \<`float`\>\
+    Radius of the tube.
+
+- flipFaces \<`bool`\>\
+    Whether the tube faces inwards.
+
+- textureOrientation \<`int`\>\
+    Whether the texture runs along the path (0) or around it (1).
+
+- textureScale \<`float`\>\
+    Texture repeats per unit along the path.
+
+- textureRepeatsCircumference \<`float`\>\
+    Texture repeats around the circumference.
+
+- textureOffsetAlongPath \<`float`\>\
+    Texture offset along the path.
+
+- textureOffsetCircumference \<`float`\>\
+    Texture offset around the circumference.
+
+- collisionEnabled \<`bool`\>\
+    Whether the cable gets physics geometry.
+
+- physicsSimplificationError \<`float`\>\
+    Error the physics simplification is allowed to introduce.
+
+- visOccluder \<`bool`\>\
+    Whether the cable occludes what is behind it.
+
+### CMapCordon
+#### Inherits from [CMapNode](#cmapnode)
+
+The cordon box, named `cordon`. Its transform is the box: `origin` is its centre and `scales` its size. It adds no attributes of its own.
+
+### CMapNavData
+#### Inherits from [CMapNode](#cmapnode)
+
+Node holding the navigation mesh generation settings of the map.
+
+```json
+"CMapNavData"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "navData" "CDmeNavData"
+}
+```
+
+- navData \<[CDmeNavData](#cdmenavdata)\>\
+    The settings.
+
+### CDmeNavData
+
+Navigation mesh generation settings. Per agent hull values are parallel arrays with `settingsAgentNumHulls` entries.
+
+```json
+"navData" "CDmeNavData"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "settingsUseProjectDefaults" "bool" "1"
+    "settingsTileSize" "float" "128"
+    "settingsCellSize" "float" "1.5"
+    "settingsCellHeight" "float" "2"
+    "settingsRegionMinSize" "int" "8"
+    "settingsRegionMergeSize" "int" "20"
+    "settingsDetailSampleDist" "float" "120"
+    "settingsDetailSampleMaxError" "float" "2"
+    "settingsVertsPerPoly" "int" "4"
+    "settingsEdgeMaxLen" "int" "1200"
+    "settingsEdgeMaxError" "float" "45"
+    "settingsSmallAreaOnEdgeRemovalSize" "float" "-1"
+    "settingsAgentHullPreset" "string" ""
+    "settingsAgentHullsVDataOverride" "string" ""
+    "settingsAgentNumHulls" "int" "1"
+    "settingsAgentEnabled" "bool_array"
+    "settingsAgentRadius" "float_array"
+    "settingsAgentHeight" "float_array"
+    "settingsAgentShortHeightEnabled" "bool_array"
+    "settingsAgentShortHeight" "float_array"
+    "settingsAgentCrawlEnabled" "bool_array"
+    "settingsAgentCrawlHeight" "float_array"
+    "settingsAgentMaxClimb" "float_array"
+    "settingsAgentMaxSlope" "int_array"
+    "settingsAgentMaxJumpDownDist" "float_array"
+    "settingsAgentMaxJumpHorizDistBase" "float_array"
+    "settingsAgentMaxJumpUpDist" "float_array"
+    "settingsAgentBorderErosion" "int_array"
+}
+```
+
+- settingsUseProjectDefaults \<`bool`\>\
+    Whether the project defaults override the settings stored here.
+
+- settingsTileSize \<`float`\>\
+    Size of a navigation tile, in units.
+
+- settingsCellSize \<`float`\>\
+    Size of a voxel cell, in units.
+
+- settingsCellHeight \<`float`\>\
+    Height of a voxel cell, in units.
+
+- settingsRegionMinSize \<`int`\>\
+    Smallest region kept, in cells.
+
+- settingsRegionMergeSize \<`int`\>\
+    Regions smaller than this are merged, in cells.
+
+- settingsDetailSampleDist \<`float`\>\
+    Sampling distance of the detail mesh.
+
+- settingsDetailSampleMaxError \<`float`\>\
+    Error the detail mesh is allowed to introduce.
+
+- settingsVertsPerPoly \<`int`\>\
+    Maximum vertices per navigation polygon.
+
+- settingsEdgeMaxLen \<`int`\>\
+    Longest polygon edge, in cells.
+
+- settingsEdgeMaxError \<`float`\>\
+    Error an edge is allowed to deviate from the geometry.
+
+- settingsSmallAreaOnEdgeRemovalSize \<`float`\>\
+    Areas on edges smaller than this are removed, -1 to keep them.
+
+- settingsAgentHullPreset \<`string`\>\
+    Name of the agent hull preset, empty for none.
+
+- settingsAgentHullsVDataOverride \<`string`\>\
+    Path of the vdata overriding the agent hulls, empty for none.
+
+- settingsAgentNumHulls \<`int`\>\
+    Number of agent hulls.
+
+- settingsAgentEnabled \<`bool_array`\>\
+    Whether each hull is generated.
+
+- settingsAgentRadius \<`float_array`\>\
+    Radius of each hull.
+
+- settingsAgentHeight \<`float_array`\>\
+    Height of each hull.
+
+- settingsAgentShortHeightEnabled \<`bool_array`\>\
+    Whether each hull has a crouching height.
+
+- settingsAgentShortHeight \<`float_array`\>\
+    Crouching height of each hull.
+
+- settingsAgentCrawlEnabled \<`bool_array`\>\
+    Whether each hull has a crawling height.
+
+- settingsAgentCrawlHeight \<`float_array`\>\
+    Crawling height of each hull.
+
+- settingsAgentMaxClimb \<`float_array`\>\
+    Highest step each hull can climb.
+
+- settingsAgentMaxSlope \<`int_array`\>\
+    Steepest slope each hull can walk, in degrees.
+
+- settingsAgentMaxJumpDownDist \<`float_array`\>\
+    Furthest each hull can jump down.
+
+- settingsAgentMaxJumpHorizDistBase \<`float_array`\>\
+    Furthest each hull can jump horizontally.
+
+- settingsAgentMaxJumpUpDist \<`float_array`\>\
+    Highest each hull can jump up.
+
+- settingsAgentBorderErosion \<`int_array`\>\
+    Cells eroded from the border for each hull, -1 for the default.
+
+### CMapSmartProp
+#### Inherits from [CMapNode](#cmapnode)
+
+A smart prop placed in the map, evaluated by Hammer into the props it stands for.
+
+```json
+"CMapSmartProp"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "smartPropFilename" "string" ""
+    "tintColor" "color" "255 255 255 255"
+    "evaluationLocked" "bool" "0"
+    "constrainToPrefab" "bool" "0"
+    "shapeReferences" "element_array"
+    "alpha" "int" "255"
+    "cullDistance" "float" "0"
+    "fadeStartDistance" "float" "-1"
+    "lightingOriginName" "string" ""
+    "disableShadows" "int" "0"
+    "bakedLigthtingMode" "int" "-1"
+    "lightmapScaleBias" "int" "0"
+    "bakeLightingDoubleSided" "bool" "0"
+    "emissiveLightingEnabled" "bool" "1"
+    "emissiveLightingBoost" "float" "1"
+    "collisionMode" "int" "-1"
+    "collisionPropertyOverride" "string" ""
+    "isVisOccluder" "bool" "0"
+    "renderToCubeMaps" "bool" "1"
+    "disabledInLowQuality" "bool" "0"
+    "bakeToWorld" "bool" "0"
+    "disableMerging" "bool" "0"
+    "renderWithDynamic" "bool" "0"
+    "nodeData" "DMElement"
+}
+```
+
+- smartPropFilename \<`string`\>\
+    Path of the smart prop definition.
+
+- tintColor \<`color`\>\
+    Tint applied to the evaluated props.
+
+- evaluationLocked \<`bool`\>\
+    Whether Hammer keeps the current evaluation instead of re-evaluating on changes.
+
+- constrainToPrefab \<`bool`\>\
+    Whether the evaluation is constrained to the prefab the smart prop sits in.
+
+- shapeReferences \<`element_array`\>\
+    Nodes the smart prop shapes itself around, each wrapped in a plain element with a "value" attribute.
+
+- alpha \<`int`\>\
+    Render alpha, 0 to 255.
+
+- cullDistance \<`float`\>\
+    Distance beyond which the props are culled, 0 for never.
+
+- fadeStartDistance \<`float`\>\
+    Distance at which the props start fading out, -1 to never fade.
+
+- lightingOriginName \<`string`\>\
+    Name of the entity the props take their lighting from, empty for none.
+
+- disableShadows \<`int`\>\
+    Shadow casting mode, 0 to cast shadows.
+
+- bakedLigthtingMode \<`int`\>\
+    How the props take part in baked lighting, -1 for the default. Hammer stores this attribute with the misspelled name.
+
+- lightmapScaleBias \<`int`\>\
+    Lightmap resolution bias of the props.
+
+- bakeLightingDoubleSided \<`bool`\>\
+    Whether both sides of the props receive baked lighting.
+
+- emissiveLightingEnabled \<`bool`\>\
+    Whether emissive materials on the props light the scene when baking.
+
+- emissiveLightingBoost \<`float`\>\
+    Multiplier on the emissive light the props contribute when baking.
+
+- collisionMode \<`int`\>\
+    Collision mode of the props, -1 for the default.
+
+- collisionPropertyOverride \<`string`\>\
+    Collision property overriding the one of the props' materials, empty for none.
+
+- isVisOccluder \<`bool`\>\
+    Whether the props occlude what is behind them.
+
+- renderToCubeMaps \<`bool`\>\
+    Whether the props appear in cubemap renders.
+
+- disabledInLowQuality \<`bool`\>\
+    Whether the props are left out at low quality settings.
+
+- bakeToWorld \<`bool`\>\
+    Whether the props are baked into the world geometry.
+
+- disableMerging \<`bool`\>\
+    Whether the compiler must not merge the props with others.
+
+- renderWithDynamic \<`bool`\>\
+    Whether the props render in the dynamic pass.
+
+- nodeData \<`element`\>\
+    The evaluated state of the smart prop, a plain "DmElement" named "nodeData" holding its parameters and configuration.
+
+### CDmeNodeInstanceData
+
+Baked per vertex lighting of one node, stored in the root's `nodeInstanceData` and named after the node id.
+
+```json
+"CDmeNodeInstanceData"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "vertexLightingData" "color_array"
+    "vertexLightingPositions" "vector3_array"
+    "vertexLightingNormals" "vector3_array"
+}
+```
+
+- vertexLightingData \<`color_array`\>\
+    Baked light colour per vertex.
+
+- vertexLightingPositions \<`vector3_array`\>\
+    Position of each baked vertex.
+
+- vertexLightingNormals \<`vector3_array`\>\
+    Normal of each baked vertex.
+
+### CDmeReferencedMeshSnapshot
+
+The render geometry of a model the map references, kept so that vertex paint can be applied to it.
+
+```json
+"CDmeReferencedMeshSnapshot"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "m_MeshResourceName" "string" ""
+    "m_DrawCalls" "element_array"
+}
+```
+
+- m_MeshResourceName \<`string`\>\
+    Path of the model.
+
+- m_DrawCalls \<`element_array`\>\
+    List of [CDmeDrawCallSnapshot](#cdmedrawcallsnapshot) elements, one per draw call of the model.
+
+### CDmeDrawCallSnapshot
+
+The vertices of one draw call of a [CDmeReferencedMeshSnapshot](#cdmereferencedmeshsnapshot).
+
+```json
+"CDmeDrawCallSnapshot"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "m_Positions" "vector3_array"
+    "m_Normals" "vector3_array"
+    "m_Texcoords" "vector2_array"
+    "m_nHash" "int" "0"
+    "m_Material" "string" ""
+}
+```
+
+- m_Positions \<`vector3_array`\>\
+    Vertex positions.
+
+- m_Normals \<`vector3_array`\>\
+    Vertex normals.
+
+- m_Texcoords \<`vector2_array`\>\
+    Vertex texture coordinates.
+
+- m_nHash \<`int`\>\
+    Hash of the draw call, used to match it to the compiled model.
+
+- m_Material \<`string`\>\
+    Material of the draw call.
+
+### CDmExtraVertexData
+
+Vertex paint applied to a prop entity, stored on the entity as "extra_vertex_data".
+
+```json
+"CDmExtraVertexData"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "m_ExtraStreams" "element_array"
+}
+```
+
+- m_ExtraStreams \<`element_array`\>\
+    List of [CDmExtraVertexStream](#cdmextravertexstream) elements, one per painted draw call.
+
+### CDmExtraVertexStream
+
+Vertex paint of one draw call of a prop.
+
+```json
+"CDmExtraVertexStream"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "m_nDrawCallIndex" "int" "0"
+    "m_nMeshIndex" "int" "0"
+    "m_pVertexData" "element" ""
+}
+```
+
+- m_nDrawCallIndex \<`int`\>\
+    Index of the draw call within the mesh.
+
+- m_nMeshIndex \<`int`\>\
+    Index of the mesh within the model.
+
+- m_pVertexData \<`element`\>\
+    A "DmeVertexData" element holding the painted streams, such as "VertexPaintTintColor" and "PerVertexLighting", each with an "Indices" array.
 
 :::info
-The following mesh related nodes will only be explained in short as they are quite complex, an in-depth explanation can be found in the [Hammer meshes](#hammer-meshes) section of this page.
+The following mesh related nodes will only be explained in shortas they are quite complex, an in-depth explanation can be found in the [Hammer meshes](#hammer-meshes) section of this page.
 :::
 
-### CMapMesh
-#### Inherits from [MapNode](#mapnode) 
+### CMapMeshBase
+#### Inherits from [CMapNode](#cmapnode)
 
-A Hammer mesh. 
+An abstract class holding the lighting and build settings shared by meshes, overlays and tile meshes. It never appears as a class name. It binds nothing, every attribute is a tool property from the Lighting and Build groups of `Object Properties`.
 
-Inherited properties will be ommited below due to the large size of this node.
 ```json
-"CMapMesh"
+"CMapMeshBase"
 {
-    "id" "elementid" "581ccd67-3a41-4d2a-b6b0-8cf6fbbe493e"
-    "meshData" "CDmePolygonMesh"
     "disableShadows" "int" "0"
     "bakelighting" "bool" "1"
     "cubeMapName" "string" ""
     "emissiveLightingEnabled" "bool" "1"
     "emissiveLightingBoost" "float" "1"
     "lightingDummy" "bool" "0"
-
+    "bakeLightDoubleSided" "bool" "0"
     "visexclude" "bool" "0"
     "disablemerging" "bool" "0"
     "renderwithdynamic" "bool" "0"
@@ -719,31 +1460,27 @@ Inherited properties will be ommited below due to the large size of this node.
     "keep_vertices" "bool" "0"
     "fademindist" "float" "-1"
     "fademaxdist" "float" "0"
-
     "disableHeightDisplacement" "bool" "0"
-    "smoothingAngle" "float" "40"
-    "tintColor" "color" "255 255 255 255"
-    "renderAmt" "int" "255"
-    "physicsType" "string" "default"
-    "physicsCollisionProperty" "string" ""
-    "physicsGroup" "string" ""
-
-    "physicsInteractsAs" "string" ""
-    "physicsInteractsWith" "string" ""
-    "physicsInteractsExclude" "string" ""
-    "physicsSimplificationOverride" "bool" "0"
-    "physicsSimplificationError" "float" "0"
 }
 ```
 
-- meshData \<`CDmePolygonMesh`\>\
-    A [CDmePolygonMesh](#cdmepolygonmesh) element storing all the polygon mesh information.
+- disableShadows \<`int`\>\
+    Which shadows the mesh casts, shown as `Cast Shadows`.
 
-- disableShadows \<`bool`\>\
-    When true causes this mesh to not cast any shadows.
+    - 0\
+        Enabled.
+
+    - 1\
+        No shadows.
+
+    - 2\
+        Only realtime shadows.
+
+    - 3\
+        Only baked shadows.
 
 - bakelighting \<`bool`\>\
-    When true will stop lighting from being baked on this mesh.
+    When true the mesh receives baked lighting.
 
 - cubeMapName \<`string`\>\
     Used to manually assign a named env_cubemap, env_cubemap_box or env_combined_light_probe_volume to a mesh.
@@ -760,6 +1497,9 @@ Inherited properties will be ommited below due to the large size of this node.
 - lightingDummy \<`bool`\>\
     Causes the mesh to contribute to lighting, but not render in the final map.
 
+- bakeLightDoubleSided \<`bool`\>\
+    Whether both sides of the mesh are lit in the bake. Not present in older files.
+
 - visexclude \<`bool`\>\
     When true forces this mesh to not contribute to VIS.
 
@@ -769,8 +1509,11 @@ Inherited properties will be ommited below due to the large size of this node.
 - renderwithdynamic \<`bool`\>\
     When true causes this mesh to render in the dynamic pass, with other dynamic entities like players.
 
+- renderToCubemaps \<`bool`\>\
+    Whether the mesh appears in cubemap renders.
+
 - keep_vertices \<`bool`\>\
-    Unknown.
+    When true the compiler keeps the mesh's vertices instead of welding them, passed to the model builder as `keep_vertices`.
 
 - fademindist \<`float`\>\
     The distance at which this mesh will start to fade.
@@ -781,17 +1524,48 @@ Inherited properties will be ommited below due to the large size of this node.
 - disableHeightDisplacement \<`bool`\>\
     When true it disables displacement.
 
+### CMapMesh
+#### Inherits from [CMapMeshBase](#cmapmeshbase)
+
+A Hammer mesh.
+
+Inherited properties will be ommited below due to the large size of this node. `meshData` is bound, everything else is a tool property, the mesh name shown in the panel is not serialized.
+```json
+"CMapMesh"
+{
+    "id" "elementid" "581ccd67-3a41-4d2a-b6b0-8cf6fbbe493e"
+    "meshData" "CDmePolygonMesh"
+    "smoothingAngle" "float" "40"
+    "tintColor" "color" "255 255 255 255"
+    "renderAmt" "int" "255"
+    "physicsType" "string" "default"
+    "physicsCollisionProperty" "string" ""
+    "physicsGroup" "string" ""
+
+    "physicsInteractsAs" "string" ""
+    "physicsInteractsWith" "string" ""
+    "physicsInteractsExclude" "string" ""
+    "physicsIncludedDetailLayers" "element_array"
+    "physicsMissingDetailLayers" "element_array"
+    "physicsSimplificationOverride" "bool" "0"
+    "physicsSimplificationError" "float" "0"
+}
+```
+
+- meshData \<`CDmePolygonMesh`\>\
+    A [CDmePolygonMesh](#cdmepolygonmesh) element storing all the polygon mesh information.
+
 - smoothingAngle \<`float`\>\
     The minimum angle for an edge to automatically become smooth. 
 
-- tintColor \<`Color`\>\
-    Tints the mesh.
+- tintColor \<`color`\>\
+    Tints the mesh. The property is called `rendercolor` in Hammer and saved under this name.
 
-- renderAmt \<`float`\>\
-    The alpha transparency of the mesh.
+- renderAmt \<`int`\>\
+    The alpha transparency of the mesh, 0 to 255.
 
 - physicsType \<`string`\>\
-    The physics type of the mesh.
+    The physics type of the mesh. Hammer stores an enum and writes its name.
 
     - none\
         Not solid.
@@ -823,15 +1597,114 @@ Inherited properties will be ommited below due to the large size of this node.
 - physicsInteractsExclude \<`string`\>\
     Specifies additional interaction layers to append to the set of Interacts With layers assigned to the mesh.
 
+- physicsIncludedDetailLayers \<`element_array`\>\
+    physicsMissingDetailLayers \<`element_array`\>\
+    The detail layers the mesh's physics includes and lacks. Written by newer Hammer builds only.
+
 - physicsSimplificationOverride \<`bool`\>\
-    Unknown. Possibly forces physics simplification on/off?
+    Whether `physicsSimplificationError` overrides the default simplification.
 
 - physicsSimplificationError \<`float`\>\
     The error permitted when simplifying the geometry of this mesh into a physics mesh.
 
+### CMapStaticOverlay
+#### Inherits from [CMapMesh](#cmapmesh)
+
+A decal that uses its own Hammer mesh to project onto geometry. `projectionTargets` is bound, the rest are tool properties.
+
+```json
+"CMapStaticOverlay"
+{
+    "id" "elementid" "581ccd67-3a41-4d2a-b6b0-8cf6fbbe493e"
+    "projectionTargets" "int_array"
+    "renderOrder" "int" "0"
+    "disabledInLowQuality" "bool" "0"
+    "useBaseNormals" "bool" "0"
+    "projectionFar" "float" "128"
+    "MaterialAdjustmentParamsStruct" "DmElement"
+    "projectOnBackFaces" "bool" "0"
+    "backFacingAngle" "float" "90"
+    "projectionMode" "int" "0"
+}
+```
+
+- projectionTargets \<`int_array`\>\
+    The `nodeID`s of the nodes the overlay projects onto, used in projection mode 3.
+
+- renderOrder \<`int`\>\
+    The order among overlapping overlays.
+
+- disabledInLowQuality \<`bool`\>\
+    Whether the overlay is skipped in low quality mode.
+
+- useBaseNormals \<`bool`\>\
+    Whether the overlay is shaded with the normals of the surface it projects onto.
+
+- projectionFar \<`float`\>\
+    How far the overlay projects, in Hammer units.
+
+- MaterialAdjustmentParamsStruct \<[CMapOverlayMaterialAdjustmentParams](#cmapoverlaymaterialadjustmentparams)\>\
+    The material adjustments of the overlay, as a plain `DmElement`.
+
+- projectOnBackFaces \<`bool`\>\
+    Whether faces pointing away from the overlay receive it.
+
+- backFacingAngle \<`float`\>\
+    The maximum angle between the overlay and a face for the face to receive it, in degrees.
+
+- projectionMode \<`int`\>\
+    What the overlay projects onto: everything (0), world geometry (1), models (2) or the nodes in `projectionTargets` (3).
+
+### CMapOverlayMaterialAdjustmentParams
+
+The material adjustments of a [CMapStaticOverlay](#cmapstaticoverlay).
+
+```json
+"MaterialAdjustmentParamsStruct" "DmElement"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "ColorBrightness" "float" "0.5"
+    "ColorContrast" "float" "0.5"
+    "ColorAlpha" "float" "1"
+    "RoughnessBrightness" "float" "0.5"
+    "RoughnessContrast" "float" "0.5"
+    "ShadingAlpha" "float" "1"
+    "NormalIntensity" "float" "0.75"
+    "RoughnessMetalnessOverride" "bool" "0"
+    "NormalBlendOverride" "bool" "1"
+}
+```
+
+- ColorBrightness \<`float`\>\
+    Colour brightness adjustment, 0.5 for none.
+
+- ColorContrast \<`float`\>\
+    Colour contrast adjustment, 0.5 for none.
+
+- ColorAlpha \<`float`\>\
+    Opacity of the colour.
+
+- RoughnessBrightness \<`float`\>\
+    Roughness brightness adjustment, 0.5 for none.
+
+- RoughnessContrast \<`float`\>\
+    Roughness contrast adjustment, 0.5 for none.
+
+- ShadingAlpha \<`float`\>\
+    Opacity of the shading.
+
+- NormalIntensity \<`float`\>\
+    Strength of the decal's normal map.
+
+- RoughnessMetalnessOverride \<`bool`\>\
+    Whether the decal's roughness and metalness replace the surface's.
+
+- NormalBlendOverride \<`bool`\>\
+    Whether the decal's normals blend over the surface's.
+
 ### CDmePolygonMesh
 
-This element contains all of the half-edge polygon data of a hammer mesh.
+This element contains all of the half-edge polygon data of a hammer mesh. Every attribute is bound.
 
 ```json
 "meshData" "CDmePolygonMesh"
@@ -905,7 +1778,7 @@ This element contains all of the half-edge polygon data of a hammer mesh.
 - faceData \<`CDmePolygonMeshDataArray`\>\
     Stores face data such as texture scale, UV offset, material, lightmap bias.
 
-- subdivisionData \<`CDmePolygonMeshSubdivisionData`\>\
+- subdivisionData \<[CDmePolygonMeshSubdivisionData](#cdmepolygonmeshsubdivisiondata)\>\
     Data representing the subdivided surface of the mesh.
 
 ### CDmePolygonMeshDataArray
@@ -929,7 +1802,7 @@ An array of CDmePolygonMeshDataStream elements.
 
 ### CDmePolygonMeshDataStream
 
-A data stream.
+A data stream. Everything but `data` is bound, `data` is markup written by the stream's own save code, which is why it can be an array of any type.
 
 ```json
 "CDmePolygonMeshDataStream"
@@ -966,21 +1839,65 @@ A data stream.
     - textureAxisU
     - textureAxisV
     - textureScale
+    - VertexPaintBlendParams
+    - VertexPaintTintColor
 
 - semanticIndex \<`int`\>\
     Index of the stream.
 
 - vertexBufferLocation \<`int`\>\
-    Unknown.
+    The slot the stream occupies in the vertex buffer.
 
 - dataStateFlags \<`int`\>\
-    Unknown.
+    Flags describing how the stream is stored.
 
 - subdivisionBinding \<`element`\>\
-    Seems related to how data on subdivided meshes is handled.
+    Seems related to how data on subdivided meshes is handled, a [CDmePolygonMeshSubdivisiondataBinding](#cdmepolygonmeshsubdivisiondatabinding) when set.
 
 - data \<`int | vector2_array | vector3_array | vector4_array`\>\
     The data stored in this stream, can be an int, vector2, vector3, or vector4 array.
+
+### CDmePolygonMeshSubdivisionData
+
+Subdivision state of a [CDmePolygonMesh](#cdmepolygonmesh).
+
+```json
+"CDmePolygonMeshSubdivisionData"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "subdivisionLevels" "int_array"
+    "streams" "element_array"
+}
+```
+
+- subdivisionLevels \<`int_array`\>\
+    Subdivision level per half edge.
+
+- streams \<`element_array`\>\
+    Array of [CDmePolygonMeshDataStream](#cdmepolygonmeshdatastream).
+
+### CDmePolygonMeshSubdivisiondataBinding
+
+Binds a [CDmePolygonMeshDataStream](#cdmepolygonmeshdatastream) to the subdivision data that drives it.
+
+```json
+"subdivisionBinding" "CDmePolygonMeshSubdivisiondataBinding"
+{
+    "id" "elementid" "53f14a8f-0ac6-4fba-a836-7d85d70bf641"
+    "targetDataType" "int" "-1"
+    "targetStreamIndex" "int" "-1"
+    "streamSourceType" "int" "0"
+}
+```
+
+- targetDataType \<`int`\>\
+    Mesh component the target stream belongs to, -1 for none.
+
+- targetStreamIndex \<`int`\>\
+    Index of the target stream within its component, -1 for none.
+
+- streamSourceType \<`int`\>\
+    Where the subdivided values come from.
 
 ## Hammer meshes
 
@@ -1000,7 +1917,6 @@ An implementation of how to write hammer meshes can be found in the map decompil
 
 From this point on it will be assumed that you have at least a basic understanding of half-edge meshes.
 :::
-
 
 ### Topology limitations
 
@@ -1199,3 +2115,9 @@ Reading other data like normals and UVs is left as an exercise for the reader.
 :::info
 If you want to render these meshes, you will first need to convert the n-sided polygon faces to triangles. A good algorithm for this is [Ear Clipping](https://www.geometrictools.com/Documentation/TriangulationByEarClipping.pdf)
 :::
+
+## Compiled maps
+
+The compiler does not keep the vmap. Its world builder walks the node tree and writes the world, its world nodes and the entity lumps as separate resources, and the other builders (physics, vis, navigation, baked lighting, Steam Audio) add theirs.
+
+While doing so it adds keys to some entities that never exist in a Hammer authored map: `precomputed_vis_clusters` on lights, `precomputed_shadowmap_*` and `precomputed_depth_pyramid_*` on stationary lights, and `light_probe_atlas_x`, `light_probe_atlas_y` and `light_probe_atlas_z` on light probe volumes. A decompiler has to drop them, since Hammer recomputes all of them on the next compile.
