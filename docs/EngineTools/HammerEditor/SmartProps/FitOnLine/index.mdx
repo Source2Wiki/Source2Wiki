@@ -1,7 +1,6 @@
 ---
 title: Modular pipes with FitOnLine
 description: How to build a modular pipe SmartProp with FitOnLine.
-image: /img/hammer5tools/icons/vsmart_examples.png
 ---
 
 This guide builds a modular pipe SmartProp in <Game name="cs2"/> using `FitOnLine`, `BendDeformer`, `CreateSizer`, `CreateRotator`, and nested SmartProps.
@@ -12,7 +11,7 @@ This guide builds a modular pipe SmartProp in <Game name="cs2"/> using `FitOnLin
 📦 [Download Finished guide_fitonline.vsmart](/downloads/hammer5tools/vsmart-examples/guide_fitonline.vsmart)
 
 :::note
-This guide builds on the fundamentals in the [SmartProps guide](../smartProps/index.mdx). Start there when working with SmartProps for the first time.
+This guide builds on the fundamentals in the [SmartProps guide](../index.mdx). Start there when working with SmartProps for the first time.
 :::
 
 
@@ -42,7 +41,7 @@ This tutorial uses a custom modular pipe kit built in Blender:
 ![Blender Mesh Set](./assets/fitonline-blender-mesh-set.png)
 
 
-## Step 1: Prepare the models
+## Prepare the models
 
 Each pipe piece has to exist as a compiled `.vmdl` before a SmartProp can place it.
 
@@ -53,11 +52,11 @@ Each pipe piece has to exist as a compiled `.vmdl` before a SmartProp can place 
 :::tip
 Configuring each `.vmdl` by hand is slow for a kit this size.
 <Tool name="hammer5tools"/> batch-generates and synchronizes the whole set from one reference
-asset — see [AssetGroup Maker](../../ExternalTools/Hammer5Tools/editors/asset-group.mdx#batch-import-a-mesh-kit).
+asset — see [AssetGroup Maker](../../../../ExternalTools/Hammer5Tools/editors/asset-group.mdx#batch-import-a-mesh-kit).
 :::
 
 
-## Step 2: Set up FitOnLine
+## Set up FitOnLine
 
 `FitOnLine` places child elements sequentially along a line vector according to each child's LinearLength selection criteria.
 
@@ -142,7 +141,7 @@ What does `LinearScale()` do?
     ![Add Caps Translation](./assets/fitonline-add-caps-translation.png)
 
 
-## Step 3: Branch with nested SmartProps
+## Branch with nested SmartProps
 
 To allow pipes to branch and change direction, nest the SmartProp inside itself.
 
@@ -179,7 +178,7 @@ Preventing Infinite Recursion
    ![Corner Elements](./assets/fitonline-corner-elements.png)
 
 
-## Step 4: Create curved pipes with BendDeformer
+## Create curved pipes with BendDeformer
 
 This section introduces the BendDeformer element for smooth curved bends in Hammer.
 
