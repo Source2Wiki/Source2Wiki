@@ -87,7 +87,7 @@ jobs:
       - name: Fetch the current point_script.d.ts from GameTracking-CS2
         run: |
           curl --fail --silent --location \
-            https://raw.githubusercontent.com/SteamTracking/GameTracking-CS2/master/content/csgo/maps/editor/zoo/scripts/point_script.d.ts \
+            https://raw.githubusercontent.com/SteamTracking/GameTracking-CS2/master/content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts \
             -o dump/cs_script/point_script.d.ts
 
       - name: Did the file itself change
