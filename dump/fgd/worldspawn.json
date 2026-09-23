@@ -44,7 +44,7 @@
         {
           "FriendlyName": "Precomputed Visibility",
           "InternalName": "pvstype",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -71,9 +71,25 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Unculled Geometry Cluster Size",
+          "InternalName": "novis_min_draw_volume_size",
+          "VariableType": "Float",
+          "Description": "Smallest render cluster, in units, used for geometry the compiler could not give precomputed visibility to. That geometry is always drawn, so clustering it more finely lets info_visibility_box reject it in smaller pieces, at the cost of more draw calls. 0 clusters it the same as ordinary geometry.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Unculled Geometry Cluster Triangles",
+          "InternalName": "novis_max_triangles_per_cluster",
+          "VariableType": "Integer",
+          "Description": "Triangle budget per render cluster for geometry with no precomputed visibility. Lower values subdivide that geometry further. 0 clusters it the same as ordinary geometry.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "New Level Unit",
           "InternalName": "newunit",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Used to clear out savegame data of previous levels to keep the savegame size as small as possible. Only set it to Yes if the player cannot return to any previous levels.",
           "Options": [
             {
@@ -506,14 +522,6 @@
           "InternalName": "steamaudio_customdata_bake_materials",
           "VariableType": "Bool",
           "Description": "Bake custom materials data (top 3 nearby materials) per probe.",
-          "Options": [],
-          "Annotations": []
-        },
-        {
-          "FriendlyName": "Occlusion: Simulate Pathing",
-          "InternalName": "steamaudio_customdata_occlusion_pathing",
-          "VariableType": "Bool",
-          "Description": "Simulate pathing when computing baked occlusion.",
           "Options": [],
           "Annotations": []
         },

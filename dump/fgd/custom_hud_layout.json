@@ -18,10 +18,18 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "A panorama layout file. A limited set of panel types and attributes are supported. Run command dev_report_info_hud_layout for more details.",
+          "FriendlyName": "Layout",
           "InternalName": "layout",
           "VariableType": "Resource",
-          "Description": "",
+          "Description": "A panorama layout file. A limited set of panel types and attributes are supported.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Observable",
+          "InternalName": "observable",
+          "VariableType": "Bool",
+          "Description": "Show each player\u0027s own version of this UI to whoever is spectating them.",
           "Options": [],
           "Annotations": []
         }

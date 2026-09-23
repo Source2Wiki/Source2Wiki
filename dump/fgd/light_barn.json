@@ -12,7 +12,7 @@
         {
           "FriendlyName": "Units",
           "InternalName": "brightness_units",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Brightness Units",
           "Options": [
             {
@@ -108,7 +108,7 @@
         {
           "FriendlyName": "Indirect Light Type",
           "InternalName": "bouncelight",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "How indirect (bounce) light should be computed",
           "Options": [
             {
@@ -204,7 +204,7 @@
         {
           "FriendlyName": "Bake Specular to Cubemaps",
           "InternalName": "bakespeculartocubemaps",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Bake specular into cubemaps. Only works when Direct Lighting Type is set to Baked.",
           "Options": [
             {
@@ -252,7 +252,7 @@
         {
           "FriendlyName": "Shadow Map Resolution",
           "InternalName": "shadowmapsize",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -306,7 +306,7 @@
         {
           "FriendlyName": "Shadow Priority",
           "InternalName": "shadowpriority",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -710,6 +710,12 @@
         {
           "Name": "SetFogScale",
           "Description": "Set the fog multiplier, which defaults to 1.",
+          "VariableType": "Float",
+          "Type": "Input"
+        },
+        {
+          "Name": "SetBounceScale",
+          "Description": "Set the indirect bounce multiplier.",
           "VariableType": "Float",
           "Type": "Input"
         },

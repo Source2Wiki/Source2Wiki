@@ -1,0 +1,56 @@
+{
+  "Name": "observable_element",
+  "Pages": [
+    {
+      "Game": "cs2",
+      "EntityType": "Point",
+      "Name": "observable_element",
+      "Description": "This entity can be spectated when all teammates are no longer alive.",
+      "IconPath": "static/fgd_dump/img/cs2/custom_hud_layout.png",
+      "PageAnnotation": null,
+      "Properties": [
+        {
+          "FriendlyName": "Name",
+          "InternalName": "targetname",
+          "VariableType": "TargetSource",
+          "Description": "The name that other entities refer to this entity by.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Observable Model",
+          "InternalName": "observable_entname",
+          "VariableType": "TargetDestination",
+          "Description": "Model entity that is being spectated.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Team Filter",
+          "InternalName": "team_filter",
+          "VariableType": "Choices",
+          "Description": "Which teams can spectate this element.",
+          "Options": [
+            {
+              "Name": "Everybody",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "CT-only",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "T-only",
+              "Description": "",
+              "Key": "2"
+            }
+          ],
+          "Annotations": []
+        }
+      ],
+      "InputOutputs": []
+    }
+  ]
+}

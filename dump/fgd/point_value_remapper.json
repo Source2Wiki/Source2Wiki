@@ -44,7 +44,7 @@
         {
           "FriendlyName": "Input Position",
           "InternalName": "inputType",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -111,7 +111,7 @@
         {
           "FriendlyName": "Requires Use Key",
           "InternalName": "requiresUseKey",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -130,7 +130,7 @@
         {
           "FriendlyName": "Output Type",
           "InternalName": "outputType",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -191,7 +191,7 @@
         {
           "FriendlyName": "Haptics Type",
           "InternalName": "hapticsType",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -210,7 +210,7 @@
         {
           "FriendlyName": "Momentum Type",
           "InternalName": "momentumType",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -255,7 +255,7 @@
         {
           "FriendlyName": "Ratchet Type",
           "InternalName": "ratchetType",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -408,6 +408,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

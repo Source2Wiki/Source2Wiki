@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_proximity",
       "Description": "Measures the distance of the player within the trigger volume from a given point (and within a given radius). The NearestPlayerDistance output will be 0 when the player is at the center point, and 1 when the player is at the radius.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -325,6 +325,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

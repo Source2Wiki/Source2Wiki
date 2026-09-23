@@ -1,0 +1,136 @@
+{
+  "Name": "radar_element",
+  "Pages": [
+    {
+      "Game": "cs2",
+      "EntityType": "Point",
+      "Name": "radar_element",
+      "Description": "This entity will display on the radar and map overview.",
+      "IconPath": "static/fgd_dump/img/cs2/custom_hud_layout.png",
+      "PageAnnotation": null,
+      "Properties": [
+        {
+          "FriendlyName": "Name",
+          "InternalName": "targetname",
+          "VariableType": "TargetSource",
+          "Description": "The name that other entities refer to this entity by.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Element Type",
+          "InternalName": "element_type",
+          "VariableType": "Choices",
+          "Description": "Element icon that will be displayed on the radar.",
+          "Options": [
+            {
+              "Name": "Tower",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "C4",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "Hostage",
+              "Description": "",
+              "Key": "2"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Element Color",
+          "InternalName": "element_color",
+          "VariableType": "Choices",
+          "Description": "Element icon will be displayed on the radar in this color.",
+          "Options": [
+            {
+              "Name": "Player HUD",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Gray",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "White",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "CT Team Color",
+              "Description": "",
+              "Key": "3"
+            },
+            {
+              "Name": "T Team Color",
+              "Description": "",
+              "Key": "4"
+            },
+            {
+              "Name": "Red",
+              "Description": "",
+              "Key": "5"
+            },
+            {
+              "Name": "Green",
+              "Description": "",
+              "Key": "6"
+            }
+          ],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Team Filter",
+          "InternalName": "team_filter",
+          "VariableType": "Choices",
+          "Description": "Which teams display this element on their radar and overview map.",
+          "Options": [
+            {
+              "Name": "Everybody",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "CT-only",
+              "Description": "",
+              "Key": "1"
+            },
+            {
+              "Name": "T-only",
+              "Description": "",
+              "Key": "2"
+            },
+            {
+              "Name": "Exclude Observers",
+              "Description": "",
+              "Key": "3"
+            },
+            {
+              "Name": "Observers-only",
+              "Description": "",
+              "Key": "4"
+            },
+            {
+              "Name": "Exclude T",
+              "Description": "",
+              "Key": "5"
+            },
+            {
+              "Name": "Exclude CT",
+              "Description": "",
+              "Key": "6"
+            }
+          ],
+          "Annotations": []
+        }
+      ],
+      "InputOutputs": []
+    }
+  ]
+}

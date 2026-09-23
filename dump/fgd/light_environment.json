@@ -52,7 +52,7 @@
         {
           "FriendlyName": "Cast Shadows",
           "InternalName": "castshadows",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Whether this light casts shadow",
           "Options": [
             {
@@ -84,7 +84,7 @@
         {
           "FriendlyName": "Shadow Priority",
           "InternalName": "shadowpriority",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Priority for the lights shadowmap",
           "Options": [
             {
@@ -174,7 +174,7 @@
         {
           "FriendlyName": "Appearance",
           "InternalName": "style",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -347,7 +347,7 @@
           "FriendlyName": "Custom AO Proxy Position 0",
           "InternalName": "ambient_occlusion_proxy_position_0",
           "VariableType": "TargetDestination",
-          "Description": "Relative to origin of the light_environment.",
+          "Description": "",
           "Options": [],
           "Annotations": []
         },
@@ -355,7 +355,7 @@
           "FriendlyName": "Custom AO Proxy Position 1",
           "InternalName": "ambient_occlusion_proxy_position_1",
           "VariableType": "TargetDestination",
-          "Description": "Relative to origin of the light_environment.",
+          "Description": "",
           "Options": [],
           "Annotations": []
         },
@@ -363,7 +363,7 @@
           "FriendlyName": "Custom AO Proxy Position 2",
           "InternalName": "ambient_occlusion_proxy_position_2",
           "VariableType": "TargetDestination",
-          "Description": "Relative to origin of the light_environment.",
+          "Description": "",
           "Options": [],
           "Annotations": []
         },
@@ -371,7 +371,7 @@
           "FriendlyName": "Custom AO Proxy Position 3",
           "InternalName": "ambient_occlusion_proxy_position_3",
           "VariableType": "TargetDestination",
-          "Description": "Relative to origin of the light_environment.",
+          "Description": "",
           "Options": [],
           "Annotations": []
         },

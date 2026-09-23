@@ -90,6 +90,49 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "To Local Player",
+          "InternalName": "toLocalPlayer",
+          "VariableType": "Bool",
+          "Description": "Play the sound directly to the local player",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Re-trigger Stops Last",
+          "InternalName": "stopOnNew",
+          "VariableType": "Bool",
+          "Description": "Stop a previously playing event when a new one is started",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Save/Restore",
+          "InternalName": "saveAndRestore",
+          "VariableType": "Bool",
+          "Description": "This soundevent should be saved and restored.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Entity Index Selection",
+          "InternalName": "entityIndexSelection",
+          "VariableType": "IntChoices",
+          "Description": "",
+          "Options": [
+            {
+              "Name": "Use World Index",
+              "Description": "",
+              "Key": "0"
+            },
+            {
+              "Name": "Use Entity Index",
+              "Description": "",
+              "Key": "1"
+            }
+          ],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Path Corner Entity Name",
           "InternalName": "pathCornerEntity",
           "VariableType": "TargetDestination",
@@ -240,6 +283,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

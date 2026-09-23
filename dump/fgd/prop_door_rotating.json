@@ -12,7 +12,7 @@
         {
           "FriendlyName": "Glow State",
           "InternalName": "glowstate",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -119,9 +119,17 @@
           "Annotations": []
         },
         {
+          "FriendlyName": "Expand Render Bounds To Include Cloth",
+          "InternalName": "expand_render_bounds_to_include_cloth",
+          "VariableType": "Bool",
+          "Description": "Expands this entity\u0027s render bounds to contain its simulated cloth bones. Enable this if you see this entity being render culled even though its cloth is in view.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
           "FriendlyName": "Cast Shadows",
           "InternalName": "disableshadows",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Used to disable shadow casting from this entity.",
           "Options": [
             {
@@ -282,7 +290,7 @@
         {
           "FriendlyName": "Spawn Position",
           "InternalName": "spawnpos",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -423,7 +431,7 @@
         {
           "FriendlyName": "Lightmap Static",
           "InternalName": "lightmapstatic",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Determines if this geometry be considered static \u0026 cast shadows/bounce light when baking lightmaps?",
           "Options": [
             {
@@ -491,7 +499,7 @@
         {
           "FriendlyName": "Open Direction",
           "InternalName": "opendir",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Force the door to open only forwards or only backwards. Both directions is the standard door behavior.",
           "Options": [
             {
@@ -720,6 +728,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

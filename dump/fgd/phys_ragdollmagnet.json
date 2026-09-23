@@ -262,6 +262,18 @@
           "Type": "Input"
         },
         {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
           "Name": "OnUser1",
           "Description": "Fired in response to FireUser1 input.",
           "VariableType": "Void",

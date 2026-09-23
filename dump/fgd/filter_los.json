@@ -12,7 +12,7 @@
         {
           "FriendlyName": "Create Client-Only Entity",
           "InternalName": "clientSideEntity",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -47,7 +47,7 @@
         {
           "FriendlyName": "Filter mode",
           "InternalName": "Negated",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "If set to Allow, only entities who match the criteria will pass the filter. If set to Disallow, only entities who do NOT match the criteria will pass the filter.",
           "Options": [
             {
@@ -140,6 +140,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

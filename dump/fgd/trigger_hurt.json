@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_hurt",
       "Description": "A trigger volume that damages entities that touch it.",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -193,7 +193,7 @@
         {
           "FriendlyName": "Damage Type",
           "InternalName": "damagetype",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -257,54 +257,34 @@
               "Key": "1024"
             },
             {
+              "Name": "DISSOLVE",
+              "Description": "",
+              "Key": "8192"
+            },
+            {
               "Name": "DROWN",
               "Description": "",
               "Key": "16384"
             },
             {
-              "Name": "PARALYSE",
+              "Name": "POISON",
               "Description": "",
               "Key": "32768"
             },
             {
-              "Name": "NERVEGAS",
+              "Name": "RADIATION",
               "Description": "",
               "Key": "65536"
             },
             {
-              "Name": "POISON",
+              "Name": "DROWNRECOVER",
               "Description": "",
               "Key": "131072"
             },
             {
-              "Name": "RADIATION",
+              "Name": "ACID",
               "Description": "",
               "Key": "262144"
-            },
-            {
-              "Name": "DROWNRECOVER",
-              "Description": "",
-              "Key": "524288"
-            },
-            {
-              "Name": "CHEMICAL",
-              "Description": "",
-              "Key": "1048576"
-            },
-            {
-              "Name": "SLOWBURN",
-              "Description": "",
-              "Key": "2097152"
-            },
-            {
-              "Name": "DISSOLVE",
-              "Description": "",
-              "Key": "67108864"
-            },
-            {
-              "Name": "SPORE",
-              "Description": "",
-              "Key": "1114112"
             }
           ],
           "Annotations": []
@@ -312,7 +292,7 @@
         {
           "FriendlyName": "Damage Model",
           "InternalName": "damagemodel",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "How damage is dealt. Normal always does the specified amount of damage each half second. Doubling starts with the specified amount and doubles it each time it hurts the toucher. Forgiveness means that if the toucher gets out of the trigger the damage will reset to the specified value. Good for making triggers that are deadly over time without having to cause massive damage on each touch.",
           "Options": [
             {
@@ -503,6 +483,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

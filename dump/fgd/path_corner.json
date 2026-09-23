@@ -80,11 +80,6 @@
           "Description": "",
           "Options": [
             {
-              "Name": "Wait for retrigger",
-              "Description": "",
-              "Key": "1"
-            },
-            {
               "Name": "Teleport to THIS path_corner",
               "Description": "",
               "Key": "2"
@@ -109,18 +104,66 @@
           "Annotations": []
         },
         {
-          "FriendlyName": "New Train rot. Speed",
-          "InternalName": "yaw_speed",
-          "VariableType": "Integer",
+          "FriendlyName": "Radius",
+          "InternalName": "radius",
+          "VariableType": "Float",
           "Description": "",
           "Options": [],
           "Annotations": []
         },
         {
-          "FriendlyName": "Radius",
-          "InternalName": "radius",
+          "FriendlyName": "Trigger Locomotion Stop",
+          "InternalName": "trigger_locomotion_stop",
+          "VariableType": "Bool",
+          "Description": "Should locomotion system stop a the path corner even if the wait time is zero?",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Exact Positioning",
+          "InternalName": "exact_positioning",
+          "VariableType": "Bool",
+          "Description": "By default, the path corner logic moves the path corner to the nearest nav location. Setting this to true disables that feature.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Path End From Corner",
+          "InternalName": "path_end_distance_from_goal",
           "VariableType": "Float",
-          "Description": "",
+          "Description": "If specified, how far from the path_corner should the path be clipped?",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Arrival Direction Entity",
+          "InternalName": "arrival_direction_entity",
+          "VariableType": "TargetDestination",
+          "Description": "If specified, will attempt to face the specified entity.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Arrival Direction Vector",
+          "InternalName": "arrival_direction_vector",
+          "VariableType": "Vector",
+          "Description": "Direction to face relative to the specified entity. If no entity is specified, this is relative to the path_corner. If (0,0,0), the direction is ignored and we face the specified entity center, if specified",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Arrival Direction Tolerance Angle",
+          "InternalName": "arrival_direction_tolerance_angle",
+          "VariableType": "Float",
+          "Description": "How far from the central direction are we allowed to face? At 180 the arrival direction is ignored entirely.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Smooth Arrival",
+          "InternalName": "smooth_arrival",
+          "VariableType": "Bool",
+          "Description": "Curve the end of the approach path so the NPC arrives already facing the arrival direction, instead of turning on the spot. Ignored for corners that are passed through rather than stopped at.",
           "Options": [],
           "Annotations": []
         }
@@ -243,6 +286,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

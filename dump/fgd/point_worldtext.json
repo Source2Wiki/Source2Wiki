@@ -220,7 +220,7 @@
         {
           "FriendlyName": "Culling Behaviour",
           "InternalName": "object_culling",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Modifies culling behaviour when the object is small / distant",
           "Options": [
             {
@@ -257,7 +257,7 @@
         {
           "FriendlyName": "Lightmap Static",
           "InternalName": "lightmapstatic",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Determines if this geometry be considered static \u0026 cast shadows/bounce light when baking lightmaps?",
           "Options": [
             {
@@ -401,7 +401,7 @@
         {
           "FriendlyName": "Horizontal Justify",
           "InternalName": "justify_horizontal",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -425,7 +425,7 @@
         {
           "FriendlyName": "Vertical Justify",
           "InternalName": "justify_vertical",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -449,7 +449,7 @@
         {
           "FriendlyName": "Reorient Mode",
           "InternalName": "reorient_mode",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -604,6 +604,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

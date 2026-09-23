@@ -340,6 +340,14 @@
     ]
   },
   {
+    "Classname": "counterterrorist_rush_intro",
+    "Description": "In-map counter-terrorist rush intro.",
+    "Icon": "/fgd_dump/img/cs2/ctm_sas.png",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
     "Classname": "counterterrorist_team_intro",
     "Description": "In-map counter-terrorist team intro variant #1.",
     "Icon": "/fgd_dump/img/cs2/counterterrorist_team_intro.png",
@@ -383,6 +391,14 @@
     "Classname": "cs_minimap_boundary",
     "Description": "One of two corners needed to define the minimap boundaries (extend to support multilevel maps).",
     "Icon": "",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
+    "Classname": "cs_minimap_volume",
+    "Description": "Sets the minimap image for any player within this volume.",
+    "Icon": "/fgd_dump/img/cs2/toolstrigger.png",
     "Games": [
       "cs2"
     ]
@@ -1198,6 +1214,14 @@
     ]
   },
   {
+    "Classname": "env_shake_volume",
+    "Description": "Continuously shakes the camera of any player whose view is inside this box.",
+    "Icon": "/fgd_dump/img/cs2/env_shake.png",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
     "Classname": "env_shooter",
     "Description": "An entity that shoots models, or sprites, out of its origin.",
     "Icon": "/fgd_dump/img/steamvr/env_shooter.png",
@@ -1595,6 +1619,7 @@
     "Description": "An entity to control the fog in the map.",
     "Icon": "",
     "Games": [
+      "cs2",
       "dota2",
       "steamvr"
     ]
@@ -1802,7 +1827,7 @@
   {
     "Classname": "func_hostage_rescue",
     "Description": "Hostage Rescue Zone. When a hostage is led into this zone, it is marked as rescued.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/toolstrigger.png",
     "Games": [
       "cs2"
     ]
@@ -4051,7 +4076,6 @@
     "Description": "Keyframed Move Behavior",
     "Icon": "",
     "Games": [
-      "cs2",
       "dota2",
       "steamvr"
     ]
@@ -4760,7 +4784,7 @@
   {
     "Classname": "npc_zombie_blind",
     "Description": "Blind Zombie",
-    "Icon": "/fgd_dump/img/hla/zombie_blind.png",
+    "Icon": "",
     "Games": [
       "hla"
     ]
@@ -4779,6 +4803,14 @@
     "Icon": "",
     "Games": [
       "hla"
+    ]
+  },
+  {
+    "Classname": "observable_element",
+    "Description": "This entity can be spectated when all teammates are no longer alive.",
+    "Icon": "/fgd_dump/img/cs2/custom_hud_layout.png",
+    "Games": [
+      "cs2"
     ]
   },
   {
@@ -5213,6 +5245,14 @@
       "cs2",
       "hla",
       "dota2"
+    ]
+  },
+  {
+    "Classname": "point_deathcam_bounds",
+    "Description": "Confines the death camera. If the death camera starts within this box, the camera is kept inside it.",
+    "Icon": "",
+    "Games": [
+      "cs2"
     ]
   },
   {
@@ -5914,6 +5954,14 @@
     ]
   },
   {
+    "Classname": "radar_element",
+    "Description": "This entity will display on the radar and map overview.",
+    "Icon": "/fgd_dump/img/cs2/custom_hud_layout.png",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
     "Classname": "save_photogrammetry_anchor",
     "Description": "Anchor for creating Photogrammetry objects for Loading in to Compositor for game loads",
     "Icon": "/fgd_dump/img/hla/save_photogrammetry_anchor.png",
@@ -5978,6 +6026,22 @@
     ]
   },
   {
+    "Classname": "sky_camera_volume",
+    "Description": "While the player's view is inside this box, the area around the referenced sky_camera_volume_target is rendered as the 3D Skybox.",
+    "Icon": "",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
+    "Classname": "sky_camera_volume_target",
+    "Description": "A landmark whose surroundings are rendered as the 3D Skybox for any sky_camera_volume pointing at it.",
+    "Icon": "",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
     "Classname": "snd_event_alignedbox",
     "Description": "Plays a sound event from a point, passes along the min and max positions of its AABB. The point can be this entity or a specified entity's position.",
     "Icon": "/fgd_dump/img/steamvr/snd_event.png",
@@ -5990,9 +6054,10 @@
   },
   {
     "Classname": "snd_event_box_helper",
-    "Description": "Lightweight oriented box helper used by snd_event_oriented_boxes",
+    "Description": "Lightweight oriented box. List it on a snd_event_oriented_boxes, which emits from the closest point on it.",
     "Icon": "/fgd_dump/img/dota2/snd_event.png",
     "Games": [
+      "cs2",
       "dota2"
     ]
   },
@@ -6019,6 +6084,7 @@
     "Description": "Plays some number of soundevents (up to max) at the closest points on a collection of oriented box helpers",
     "Icon": "/fgd_dump/img/dota2/snd_event.png",
     "Games": [
+      "cs2",
       "dota2"
     ]
   },
@@ -6091,6 +6157,14 @@
     "Games": [
       "cs2",
       "dota2"
+    ]
+  },
+  {
+    "Classname": "snd_opvar_set_dome",
+    "Description": "Measures spatial openness via Fibonacci-distributed traces. Sets an opvar based on openness; fewer blocked rays = higher value. Clustering detection amplifies the effect of adjacent open directions.",
+    "Icon": "/fgd_dump/img/cs2/snd_opvar_set.png",
+    "Games": [
+      "cs2"
     ]
   },
   {
@@ -6226,6 +6300,14 @@
     ]
   },
   {
+    "Classname": "terrorist_rush_intro",
+    "Description": "In-map terrorist rush intro.",
+    "Icon": "/fgd_dump/img/cs2/tm_phoenix.png",
+    "Games": [
+      "cs2"
+    ]
+  },
+  {
     "Classname": "terrorist_team_intro",
     "Description": "In-map terrorist team intro variant #1.",
     "Icon": "/fgd_dump/img/cs2/terrorist_team_intro.png",
@@ -6315,7 +6397,7 @@
   {
     "Classname": "trigger_bomb_reset",
     "Description": "A trigger volume that resets the bomb by teleporting it back into the playable area.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/toolstrigger.png",
     "Games": [
       "cs2"
     ]
@@ -6401,7 +6483,7 @@
   {
     "Classname": "trigger_hostage_reset",
     "Description": "A trigger volume that resets the hostage by teleporting it back into the playable area.",
-    "Icon": "",
+    "Icon": "/fgd_dump/img/cs2/toolstrigger.png",
     "Games": [
       "cs2"
     ]

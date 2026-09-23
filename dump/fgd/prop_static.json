@@ -36,7 +36,7 @@
         {
           "FriendlyName": "Collision Type",
           "InternalName": "solid",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {
@@ -63,7 +63,7 @@
         {
           "FriendlyName": "Lighting Type",
           "InternalName": "bakelighting",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Selects whether to use lightmapping or lightprobes for this mesh. Note: Selecting light probes will disable mesh merging/batching, creating extra draw calls. To merge lightprobed meshes, enable the Bake to World parameter.",
           "Options": [
             {
@@ -87,7 +87,7 @@
         {
           "FriendlyName": "Cast Shadows",
           "InternalName": "disableshadows",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Selects the type of shadows that should be cast from this prop_static.",
           "Options": [
             {
@@ -132,7 +132,7 @@
         {
           "FriendlyName": "Lightmap Scale Bias",
           "InternalName": "lightmapscalebias",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Used to scale the resolution of the lightmap for this mesh.",
           "Options": [
             {

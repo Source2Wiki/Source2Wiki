@@ -6,7 +6,7 @@
       "EntityType": "Mesh",
       "Name": "trigger_look",
       "Description": "An entity used to trigger something when the player looks at something. It fires \u0027OnTrigger\u0027 when the player looks at a target entity for the given amount of time, while within the trigger volume. If the player leaves the trigger or looks away from the target entity the clock resets. If the \u0027Use Velocity instead of facing\u0027 spawnflag is checked, the trigger uses the player\u0027s velocity instead of the player\u0027s view, so it determines whenever the player is moving toward the target entity. Useful for triggering when players are driving a vehicle at something.NOTE: Only designed for single-player game. ",
-      "IconPath": "",
+      "IconPath": "static/fgd_dump/img/cs2/toolstrigger.png",
       "PageAnnotation": null,
       "Properties": [
         {
@@ -384,6 +384,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

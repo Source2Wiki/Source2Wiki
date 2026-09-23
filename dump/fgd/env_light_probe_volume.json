@@ -12,7 +12,7 @@
         {
           "FriendlyName": "Priority",
           "InternalName": "indoor_outdoor_level",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "If multiple volumes contain an object, the highest priority volume takes precedence.",
           "Options": [
             {
@@ -70,7 +70,7 @@
         {
           "FriendlyName": "Voxel Size",
           "InternalName": "voxel_size",
-          "VariableType": "Choices",
+          "VariableType": "FloatChoices",
           "Description": "",
           "Options": [
             {
@@ -131,7 +131,7 @@
         {
           "FriendlyName": "Storage",
           "InternalName": "storage",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {

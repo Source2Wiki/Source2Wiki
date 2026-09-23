@@ -1,0 +1,72 @@
+{
+  "Name": "env_shake_volume",
+  "Pages": [
+    {
+      "Game": "cs2",
+      "EntityType": "Point",
+      "Name": "env_shake_volume",
+      "Description": "Continuously shakes the camera of any player whose view is inside this box.",
+      "IconPath": "static/fgd_dump/img/cs2/env_shake.png",
+      "PageAnnotation": null,
+      "Properties": [
+        {
+          "FriendlyName": "Pitch Yaw Roll (Y Z X)",
+          "InternalName": "angles",
+          "VariableType": "Angle",
+          "Description": "This entity\u0027s orientation in the world. Pitch is rotation around the Y axis, yaw is the rotation around the Z axis, roll is the rotation around the X axis.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Box Mins",
+          "InternalName": "box_mins",
+          "VariableType": "Vector",
+          "Description": "Minimum extent of the box, in the entity\u0027s local space.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Box Maxs",
+          "InternalName": "box_maxs",
+          "VariableType": "Vector",
+          "Description": "Maximum extent of the box, in the entity\u0027s local space.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Amplitude",
+          "InternalName": "amplitude",
+          "VariableType": "Float",
+          "Description": "How far the camera is displaced, in units.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Frequency (Hz)",
+          "InternalName": "frequency",
+          "VariableType": "Float",
+          "Description": "Oscillations per second.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Falloff Distance",
+          "InternalName": "falloff_distance",
+          "VariableType": "Float",
+          "Description": "Distance outside the box to fade in the shake.",
+          "Options": [],
+          "Annotations": []
+        },
+        {
+          "FriendlyName": "Roll Scale",
+          "InternalName": "roll_scale",
+          "VariableType": "Float",
+          "Description": "How much the shake rolls the view. A multiplier of the amplitude.",
+          "Options": [],
+          "Annotations": []
+        }
+      ],
+      "InputOutputs": []
+    }
+  ]
+}

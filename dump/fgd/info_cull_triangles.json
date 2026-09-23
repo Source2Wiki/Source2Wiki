@@ -36,7 +36,7 @@
         {
           "FriendlyName": "Apply To",
           "InternalName": "geometry_type",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Spcifies the type of geometry which can be culled by the box",
           "Options": [
             {

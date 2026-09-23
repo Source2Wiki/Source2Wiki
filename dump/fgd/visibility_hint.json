@@ -28,7 +28,7 @@
         {
           "FriendlyName": "Hint Type",
           "InternalName": "hintType",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "",
           "Options": [
             {

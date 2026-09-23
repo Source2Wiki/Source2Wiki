@@ -220,7 +220,7 @@
         {
           "FriendlyName": "Culling Behaviour",
           "InternalName": "object_culling",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Modifies culling behaviour when the object is small / distant",
           "Options": [
             {
@@ -257,7 +257,7 @@
         {
           "FriendlyName": "Lightmap Static",
           "InternalName": "lightmapstatic",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Determines if this geometry be considered static \u0026 cast shadows/bounce light when baking lightmaps?",
           "Options": [
             {
@@ -337,7 +337,7 @@
         {
           "FriendlyName": "Cast Shadows",
           "InternalName": "disableshadows",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Used to disable shadow casting from this entity.",
           "Options": [
             {
@@ -482,7 +482,7 @@
         {
           "FriendlyName": "Prop Data",
           "InternalName": "propdata",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Set to the best approximation of the size and material of this entity\u0027s brushes. If set, it will override this entity\u0027s health and damage taken from various weapons. See the propdata.txt file in the scripts directory of your MOD to get a detailed list of what each entry specifies.",
           "Options": [
             {
@@ -624,7 +624,7 @@
         {
           "FriendlyName": "Material Type",
           "InternalName": "material",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Set to the material type of the brush. Used to decide what sounds to make when damaged, and what gibs to produce when broken.",
           "Options": [
             {
@@ -683,7 +683,7 @@
         {
           "FriendlyName": "Gibs Direction",
           "InternalName": "explosion",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Used to decide which direction to throw gibs when broken.",
           "Options": [
             {
@@ -715,7 +715,7 @@
         {
           "FriendlyName": "Spawn On Break",
           "InternalName": "spawnobject",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "When broken, an entity of the selected type will be created.",
           "Options": [
             {
@@ -891,7 +891,7 @@
         {
           "FriendlyName": "Block LOS override",
           "InternalName": "overrideBlockLOS",
-          "VariableType": "Choices",
+          "VariableType": "IntChoices",
           "Description": "Should this entity block or not-block LOS",
           "Options": [
             {
@@ -1077,6 +1077,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },

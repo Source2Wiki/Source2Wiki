@@ -44,8 +44,8 @@
         {
           "FriendlyName": "Mode",
           "InternalName": "cull_mode",
-          "VariableType": "Choices",
-          "Description": "Should the box hide objects inside or outside of its bounds. If inside is selected, any objects fully inside the box will be hidden. If outside is selected, all active visibility boxes are considered, and objects not intersecting any visibility boxes will be hidden.",
+          "VariableType": "IntChoices",
+          "Description": "Should the box hide objects inside or outside of its bounds. If inside is selected, any objects fully inside the box will be hidden. If outside is selected, all active visibility boxes are considered, and objects not intersecting any visibility boxes will be hidden. The camera-inside variant only applies while the camera is within the box.",
           "Options": [
             {
               "Name": "Hide objects inside",
@@ -56,6 +56,11 @@
               "Name": "Hide objects outside",
               "Description": "",
               "Key": "1"
+            },
+            {
+              "Name": "Hide objects outside (only when camera is inside)",
+              "Description": "",
+              "Key": "2"
             }
           ],
           "Annotations": []
@@ -149,6 +154,18 @@
         {
           "Name": "FireUser4",
           "Description": "Causes this entity\u0027s OnUser4 output to be fired.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "EnableAutoSleeping",
+          "Description": "Enable automatic sleeping on this entity\u0027s physics bodies. When enabled, physics bodies go to sleep when at rest.",
+          "VariableType": "Void",
+          "Type": "Input"
+        },
+        {
+          "Name": "DisableAutoSleeping",
+          "Description": "Disable automatic sleeping on this entity\u0027s physics bodies. Bodies remain awake until explicitly put to sleep.",
           "VariableType": "Void",
           "Type": "Input"
         },
