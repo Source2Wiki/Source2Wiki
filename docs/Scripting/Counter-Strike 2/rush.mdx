@@ -1,0 +1,436 @@
+---
+title: Rush game mode
+description: The 3v3 Rush game mode, how its official map is built, and how to make custom Rush maps.
+---
+
+Rush is a fast 3v3 game mode for <Game name="cs2"/> in which two teams fight over a tower in a line of small rooms, pushing the fight towards the enemy's end of the map with every round won.
+
+Currently it ships with a single official map, `Complex`, named in game files as `rush_001`.
+
+The mode was released on September 22, 2026, in the <Game name="cs2" label="Rush Hour" link="https://steamcommunity.com/games/CSGO/announcements/detail/711161056325533827"/> update.
+
+<video width="100%" controls autoPlay muted loop playsInline>
+  <source src="https://clan.fastly.steamstatic.com/images/3381077/c3484d6cdc68181fdc58a543cc746baea975c2de.mp4" type="video/mp4" />
+</video>
+
+:::info
+Unlike other official modes, the Rush rules are not built into the game code. They live in a [cs_script](./cs_script/1-introduction.mdx) attached to the map, `maps/scripts/rush_001.vjs`.
+The engine only supplies the game mode entry, its config, a Rush team intro, a bot behaviour tree and the generic entities the script controls.
+:::
+
+This page covers how the mode plays, how `rush_001` is set up and how to build a custom Rush map. The cs_script API itself is documented in [Intro to cs_script](./cs_script/1-introduction.mdx).
+How the script replaces the engine's round logic is covered in [How the script runs the mode](#how-the-script-runs-the-mode).
+
+## Gameplay
+
+A Rush match is played on a line of 7 rooms. Each room is owned by either Ts or CTs.
+
+Each room contains a deployable antenna, called the tower, with a button on it. Pressing the button with `+use` captures the tower for the player's team.
+When the round timer runs out, the team that owns the tower wins the round.
+
+The round winner moves the fight one room towards the enemy's end of the line. Each end of the line is a castle, and winning a round inside the enemy's castle wins the match.
+
+### Rooms
+
+The line always has the same shape. The castles sit at both ends, a start room sits in the middle, and the remaining four slots are filled with mid rooms:
+
+| Index | 0 | 1 | 2 | 3 | 4 | 5 | 6 |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Room | T Castle | Mid | Mid | Start | Mid | Mid | CT Castle |
+| IDs | `401` | `201`-`212` | `201`-`212` | `101`-`104` | `201`-`212` | `201`-`212` | `301` |
+| Starting owner | T | T | T | CT | CT | CT | CT |
+
+At the start of every match the start room is picked randomly from `101`-`104`, and the four mid slots get four different random rooms from `201`-`212`.
+Play begins in the start room, which CTs owns, so Ts attacks first.
+
+A T round win moves play one index towards the CT Castle, a CT round win moves it one index towards the T Castle, and a draw replays the same room.
+When both teams reach 7 round wins, the next room is replaced by the decider room, Convoy.
+
+| ID | Name | Pool |
+| --- | --- | --- |
+| `101` | Spire | start |
+| `102` | Wallbang | start |
+| `103` | Big Box | start |
+| `104` | Madhouse | start |
+| `201` | Sewer | mid |
+| `202` | Dogleg | mid |
+| `203` | Trainyard | mid |
+| `204` | Crane | mid |
+| `205` | Bloc | mid |
+| `206` | Hydro | mid |
+| `207` | Atomic | mid |
+| `208` | Medusa | mid |
+| `209` | Bear | mid |
+| `210` | Steel | mid |
+| `211` | Container | mid |
+| `212` | Drop | mid |
+| `301` | CT Castle | CT end |
+| `401` | T Castle | T end |
+| `convoy` | Convoy | decider |
+
+### Rounds
+
+During freeze time a progression bar slides onto the HUD, showing all 7 rooms, their owners and the room about to be played. It shrinks after 5 seconds and disappears when freeze time ends.
+The tower glows in its owner's color until the round goes live.
+
+Rounds last 40 seconds in start and mid rooms, and 60 seconds in the castles and in Convoy. In the last 10 seconds a warning plays, followed by beeps from the tower that speed up as time runs out.
+
+Capturing the tower changes its lights, antenna skin and radar icon to the new owner's color, and plays a sound to both teams. Pressing a tower the team already owns only plays an error beep.
+
+### Round end
+
+The owner of the tower wins the round in every case except one:
+
+- Time runs out: the owner wins.
+- All attackers die: the owner wins immediately.
+- Both teams die: the owner wins.
+- All owners die: the round timer drops to at most 7 seconds and the HUD tells the survivors to capture the tower.
+  If they capture it in time they win immediately, otherwise the owner still wins on time.
+
+The winning team receives $2500, and the losing team receives the normal loss bonus.
+
+### Winning the match
+
+Winning a round inside the enemy's castle ends the match straight away. Otherwise the match follows the normal round limit of 15, where 8 round wins clinches it.
+
+When a castle round starts while neither team has 7 wins, the match point music plays.
+
+## Starting a Rush game
+
+Rush is registered in `gamemodes.txt` as game type `0` (classic), game mode `6`, with a limit of 6 players:
+
+```
+"rush"
+{
+    "value"         "6"
+    "nameID"        "#SFUI_GameModeRush"
+    "maxplayers"    "6"
+    "exec"
+    {
+        "exec"          "gamemode_rush.cfg"
+        "exec_offline"  "gamemode_rush_offline.cfg"
+    }
+    "mapgroupsSP"   { "mg_rush_001" "" }
+    "mapgroupsMP"   { "mg_rush_001" "" }
+}
+```
+
+A dedicated server uses the same values as launch options: `+game_type 0 +game_mode 6 +map <map_name>`.
+
+### Game mode config
+
+Starting the mode executes `cfg/gamemode_rush.cfg`, and offline games additionally run `gamemode_rush_offline.cfg`, which raises `bot_quota` to 6. The settings that matter most for Rush:
+
+| Convar | Value |
+| --- | --- |
+| `mp_maxrounds` | `15` |
+| `mp_roundtime` | `0.67`, overridden by the script per room |
+| `mp_freezetime` | `13` |
+| `mp_buytime` | `15` |
+| `mp_startmoney` | `800` |
+| `mp_maxmoney` | `10000` |
+| `cash_team_loser_bonus` | `2100` |
+| `cash_team_loser_bonus_consecutive_rounds` | `750` |
+| `mp_halftime` | `0` |
+| `mp_team_intro_type` | `rush` |
+| `mp_team_intro_time` | `9` |
+| `mp_bot_ai_bt` | `scripts/ai/rush/bt_default.kv3` |
+| `ammo_grenade_limit_total` | `1` |
+| `bot_quota` | `2`, with `bot_quota_mode fill` |
+
+The config also sets `mp_default_team_winner_no_objective -1` with the comment `// 2 == CTs, 3 == Ts`. That comment is wrong, the engine treats `3` as a CT win and `2` as a T win.
+
+Rush also has its own music volume settings, `snd_menumusic_volume_rush`, `snd_roundstart_volume_rush` and six more `snd_*_volume_rush` convars, like Casual, Arms Race and Deathmatch do.
+
+## The stock map
+
+`rush_001` is a single map holding 19 separate arenas, one for every room ID including Convoy, and a small hub room that holds the logic entities. Only the spawn points and the tower ever move.
+At the end of every round the script teleports them into the room that is played next.
+
+Most gameplay entities in `rush_001` come from one prefab.
+That is why their names have a `[PR#]` prefix in the compiled entity lump, and why the script falls back to searching for `*name` when an exact name lookup fails.
+
+The decompiled map and script can be inspected with <Tool name="s2v"/>, see [Decompiling assets](../../Basics/working-on-content/decompiling-assets.md).
+The map is in `game/csgo/maps/rush_001.vpk` and the script in `pak01_dir.vpk`.
+
+### Logic entities
+
+These entities exist once in the map. Every name is case sensitive.
+
+| Name | Class |
+| --- | --- |
+| `rush_gamemode` | [point_script](../../Entities/point_script.mdx) |
+| `map_params` | [info_map_parameters](../../Entities/info_map_parameters.mdx) |
+| `rush_ui` | [custom_hud_layout](../../Entities/custom_hud_layout.mdx) |
+| `fog` | [env_gradient_fog](../../Entities/env_gradient_fog.mdx) |
+| `tspawn1`, `tspawn2`, `tspawn3` | [info_player_terrorist](../../Entities/info_player_terrorist.mdx) |
+| `ctspawn1`, `ctspawn2`, `ctspawn3` | `info_player_counterterrorist` |
+
+The `point_script` runs `maps/scripts/rush_001.vjs`. Rounds are ended by firing `FireWinCondition` at `map_params`. `rush_ui` loads the HUD layout `panorama/layout/hud/hudrush_001.xml`.
+
+The fog entity is optional. When it exists, it receives a fog preset for every room: interior, exterior, tunnel or base.
+
+The whole map has only 3 spawn points per team. The script moves them to the markers of the next room before players respawn.
+
+### Room markers
+
+Every room has its own set of markers.
+`rush_001` uses [point_teleport](../../Entities/point_teleport.mdx) entities for them, but the script only reads their position and angles, so any point entity works.
+`<id>` stands for the room ID, such as `101` or `convoy`.
+
+| Name | Marks |
+| --- | --- |
+| `t1room.<id>`, `t2room.<id>`, `t3room.<id>` | T spawn positions |
+| `ct1room.<id>`, `ct2room.<id>`, `ct3room.<id>` | CT spawn positions |
+| `ant.base.<id>` | Tower base |
+| `ant.top.<id>` | Tower top |
+| `ant.side.light.<id>.a`, `ant.side.light.<id>.b` | Optional tower lights |
+
+The optional lights are `light_omni2` entities. Only the lights of the active room are switched on, strobing in the owner's color.
+
+Every room also has its own [func_buyzone](../../Entities/func_buyzone.mdx) for both teams, and a `cs_minimap_volume` for the radar.
+
+### Tower
+
+The tower is made of four visual and gameplay entities, plus two entities that show it on the radar and to spectators:
+
+| Name | Class |
+| --- | --- |
+| `ant.base.main` | [prop_dynamic](../../Entities/prop_dynamic.mdx) |
+| `ant.top.main` | `prop_dynamic` |
+| `ant.top.short` | `prop_dynamic` |
+| `ant.button` | [func_button](../../Entities/func_button.mdx) |
+| `ant.base.radar` | `radar_element` |
+| `ant.base.observable` | `observable_element` |
+
+The models are in `models/rush/antenna_deployable_01/`. The base uses skin 0 when neutral, 1 for T and 2 for CT.
+
+Rooms `101`, `102`, `103` and `301` have low ceilings and use the short top, every other room uses the tall one. The unused top is disabled along with its collision.
+
+The button is parented to the base and shows the prompt `#rush_use_prompt_tower`. Bots find the objective by walking to the entity named `ant.button`.
+
+The `radar_element` puts a tower icon on the radar and the map overview.
+It supports three icons (tower, C4 and hostage), a color (player HUD, gray, white, CT, T, red or green) and a team filter that limits who sees it.
+The script sets the color to the owner's team color, or gray when nobody owns the tower, through `CSRadarPoint.SetColor`.
+
+The `observable_element` lets dead players spectate the tower once their whole team is dead.
+It holds exactly two model entities, which is why `CSObservablePoint.SetObservableModelEntity` takes an index of 0 or 1. The script puts the base in slot 0 and the active top in slot 1.
+
+### Sounds
+
+All sounds are [snd_event_point](../../Entities/snd_event_point.mdx) entities with start on spawn disabled. The script skips any that are missing.
+
+| Entity | Sound event | Plays |
+| --- | --- | --- |
+| `beacon.idle` | `rush.beacon.idle` | Hum at the button |
+| `beacon.press` | `rush.flag.pressOn` | Tower captured |
+| `beacon.error` | `rush.flag.pressError` | Invalid button press |
+| `beacon.timer.beep` | `rush.beacon.timer.beep` | Countdown beeps |
+| `beacon.timer.end` | `rush.beacon.timer.end` | Timer reaches zero |
+| `ten.second.warning` | `rush.10sec` | 10 seconds left |
+| `poss.gained` | `rush.captured.team` | Capturing team only |
+| `poss.lost` | `rush.captured.enemy` | Other team only |
+| `match.point` | `Music.Match.MatchPoint` | Castle round |
+| `ui.slidein.forward` | `ui.rush.slidein.attack` | HUD opens, last round's winner |
+| `ui.slidein.backward` | `ui.rush.slidein.defend` | HUD opens, last round's loser |
+| `ui.slideout` | `ui.rush.slideout` | HUD closes |
+
+### HUD
+
+`rush_ui` loads `panorama/layout/hud/hudrush_001.xml`, styled by `hudrush.vcss`. The script drives it only through panel IDs, classes and dialog variables:
+
+| Panel | Classes and variables |
+| --- | --- |
+| `rush_matchstate` | `hidden`, `minimized`, `reverse-direction`, `view-t`, `view-ct` |
+| `rush_room_0` to `rush_room_6` | `{s:room_name}`, `ct`, `t`, `current`, `arrow-ct`, `arrow-t`, `room_<id>` |
+| `rush_attack_defend` | `{s:attack_defend}`, `ct`, `t`, `attack`, `defend` |
+| `rush_countdown` | `visible`, `{s:countdown_time}`, `{s:countdown_message}` |
+
+CT players get `reverse-direction`, so each team sees its own castle on the left. The `room_<id>` class picks the room screenshot, and these are hard coded in `hudrush.css` for the 19 stock IDs:
+
+```css
+.room_101.rush-room-panel .rush-room__map-image
+{
+	background-image:url("s2r://panorama/images/map_icons/screenshots/rush_hud/101_room_png.vtex");
+}
+```
+
+### Radar
+
+`resource/overviews/rush_001.txt` uses the multi-volume overview format.
+It has one entry per room (`room101` to `room301`, `roomparty` and `convoy`), each matching a `cs_minimap_volume` with the same minimap name.
+
+### Bots
+
+Rush bots use `scripts/ai/rush/bt_default.kv3`.
+It is the classic behaviour tree with one extra branch, between investigating noises and hunting, that walks to the entity named `ant.button`, looks at it and presses use:
+
+```
+decorator_try_lock 'PressAntennaButton'
+  sequencer
+    action_move_to    destination = "ant.button"
+    action_look_at    input_location = "ant.button"
+    action_wait       0.25s
+    action_use
+```
+
+Bots only need a nav mesh and that entity to play the objective. They do not check who owns the tower, so they also press a tower their team already owns.
+
+### Team intro
+
+The first live round after warmup opens with the Rush team intro, which shows the three players of each team posing with a weapon.
+It is placed in Hammer with the point entities `terrorist_rush_intro` and `counterterrorist_rush_intro`,
+which spawn `maps/prefabs/misc/terrorist_rush_intro.vpk` and `counterterrorist_rush_intro.vpk` at runtime.
+
+Each prefab holds three character positions and a camera:
+
+| Position | T weapon | CT weapon |
+| --- | --- | --- |
+| 1 | `weapon_deagle` | `weapon_deagle` |
+| 2 | `weapon_galilar` | `weapon_mp9` |
+| 3 | `weapon_ak47` | `weapon_m4a1` |
+
+All three characters stand on the prefab origin, and their Rush intro animations move them into place.
+The camera is a static 5 second shot from 100 units in front of the origin and 50 units up, looking back at it. The T camera uses a field of view of 35, the CT camera 60.
+
+In `rush_001` each prefab sits in a small lit set with a soundscape playing `rush.teamintro.t.bg` or `rush.teamintro.ct.bg`.
+
+Which intro plays is decided by `mp_team_intro_type`, which defaults to `auto`:
+
+| Value | Intro |
+| --- | --- |
+| `none` | No intro |
+| `normal` | Regular 5v5 team intro |
+| `wingman` | Wingman intro |
+| `rush` | Rush intro |
+| `auto` | `normal` if `mp_halftime` is set, otherwise none |
+
+The intro only runs when `mp_team_intro_time` is above zero. Every intro position entity has a `variant`, an `ordinal` and a `weapon` key.
+For each team the server picks one of the `variant` values found on that team's positions at random,
+or uses `sv_force_team_intro_variant` when it is set, then places players on the positions of that variant in `ordinal` order.
+
+## How the script runs the mode
+
+The Rush script replaces the engine's round logic. Understanding it matters when writing a modified copy, and explains some of the convar values seen in game.
+
+### Round control
+
+At every live round start the script sets `mp_ignore_round_win_conditions 1`.
+That makes the engine skip both its round-time-expired check and its elimination and objective checks, so a round only ends when something ends it explicitly.
+During warmup the script sets it back to `0`.
+
+`mp_default_team_winner_no_objective` is only read by that round-time-expired check. A value of `3` means a CT win, `2` a T win, `-1` falls back to the map's objective and anything else is a draw.
+The script writes the tower owner into it every round, but because the check is skipped, the value only matters as a fallback.
+
+The script ends rounds from its think function, which runs every 0.1 seconds. When `GetRoundRemainingTime()` reaches zero, it fires `FireWinCondition` at `map_params`.
+The input passes its value straight to the engine as the round end reason, and reasons `8` (CT win) and `9` (T win) also add to that team's score.
+
+### Round lifecycle
+
+The script keeps the room ID and owner of each of the 7 indices, the index being played, and each team's round wins.
+It detects a match restart when `Instance.GetRoundsPlayed()` goes down, and rerolls the rooms.
+
+On round start it applies the room fog, moves and recolors the tower, turns on the glow and reconnects the button's `OnPressed` output.
+On every kill it checks for an eliminated team, and shortens the timer with `SetRoundRemainingTime` when the owners are wiped.
+
+On round end it counts the win and calls `AddTeamMoney` with $2500.
+The reason is `ELIMINATION_HOSTAGE_MAP_T` or `ELIMINATION_HOSTAGE_MAP_CT` when the other team is dead, and `WIN_BY_TIME_RUNNING_OUT_HOSTAGE` otherwise.
+It then picks the next room, swaps in Convoy if needed, teleports the spawns and sets `mp_roundtime`. To end the match early it sets `mp_maxrounds` to the number of rounds played.
+
+The constant `END_ROUND_ON_TEAM_ELIMINATION` is `false` in the shipped script. When set to `true`, eliminating the other team always wins the round, like in classic modes.
+
+## Making a custom Rush map
+
+This section builds a Rush map that runs on the official Rush script, HUD and bot tree.
+It assumes a working addon in the CS2 Workshop Tools and basic knowledge of placing and naming entities in Hammer.
+
+### Placing the entities
+
+1. Build every room as a separate, sealed arena, and place these markers in each one as [point_teleport](../../Entities/point_teleport.mdx) entities.
+   The script only reads their position and angles, so any point entity would work, but `rush_001` uses `point_teleport`.
+
+   - `t1room.<id>`, `t2room.<id>`, `t3room.<id>`: the T spawn positions
+   - `ct1room.<id>`, `ct2room.<id>`, `ct3room.<id>`: the CT spawn positions
+   - `ant.base.<id>`: where the tower stands
+   - `ant.top.<id>`: where the tower top sits on the base
+
+2. Add a `func_buyzone` to every room, covering both spawn areas.
+
+3. Place the six spawn points anywhere in the map. The script moves them into the active room every round.
+
+   - `tspawn1`, `tspawn2`, `tspawn3`: `info_player_terrorist`
+   - `ctspawn1`, `ctspawn2`, `ctspawn3`: `info_player_counterterrorist`
+
+4. Build the tower out of these entities, using the models in `models/rush/antenna_deployable_01/`:
+
+   - `ant.base.main`: `prop_dynamic` with `antenna_deployable_base.vmdl`
+   - `ant.top.main`: `prop_dynamic` with `antenna_deployable_top.vmdl`
+   - `ant.top.short`: `prop_dynamic` with `antenna_deployable_top_short.vmdl`
+   - `ant.button`: `func_button`, parented to `ant.base.main`
+   - `ant.base.radar`: `radar_element` with element type Tower
+   - `ant.base.observable`: `observable_element`
+
+5. Place the logic entities:
+
+   - `map_params`: `info_map_parameters`
+   - `rush_ui`: `custom_hud_layout` with the layout `panorama/layout/hud/hudrush_001.xml`
+   - `fog`: `env_gradient_fog`, optional
+
+6. Place the `snd_event_point` entities from the [sounds table](#sounds) with their stock sound events.
+
+7. Place `terrorist_rush_intro` and `counterterrorist_rush_intro` in a small lit area.
+
+8. Add a `point_script` with the cs_script `maps/scripts/rush_001.vjs`.
+
+9. Generate a nav mesh so bots can reach `ant.button`, then [compile the map](../../Basics/working-on-content/compiling-maps.md).
+
+### Room IDs
+
+The stock script picks rooms from its own list of IDs and never checks whether the map actually contains them.
+When a room's markers are missing, the teleport is skipped and players spawn wherever the spawn points were last.
+
+A map using the stock script therefore needs markers for all 19 room IDs: `101`-`104`, `201`-`212`, `301`, `401` and `convoy`. `401` is always the T end and `301` always the CT end.
+
+### Custom script
+
+A map with a different set of rooms needs its own copy of the script:
+
+1. Copy the decompiled `rush_001.js` to `content/csgo_addons/<addon>/maps/scripts/<name>.js`, and point the `point_script` at it.
+
+2. Edit `ROOM_IDS` to list the candidate room IDs for each index of the line.
+
+3. When changing the length of the line, also update:
+
+   - `START_ROOM`, `T_FINAL_ROOM` and `CT_FINAL_ROOM`
+   - the starting owner of each index, set in `ResetGameState()`
+
+4. Add every room ID to `ROOM_NAMES`. It provides the names shown on the HUD, and the tower light code loops over it.
+
+5. Update the per room tables to match the new rooms:
+
+   - `ROOM_FOG`: fog preset per room
+   - `ANTENNA_SHORT_TOP_ROOM_IDS`: rooms that use the short tower top
+   - `DECIDER_ROOM_ID`: the room used as the decider
+
+6. Tune the rules as needed:
+
+   - `ROUNDS_TO_WIN`
+   - `ROUND_SECONDS_BASE_ROOM` and `ROUND_SECONDS_MID_ROOM`
+   - `WIN_MONEY`
+   - `COUNTDOWN_TIME_SECONDS`
+   - `END_ROUND_ON_TEAM_ELIMINATION`
+
+New room IDs also need a custom HUD layout and CSS. `hudrush.css` only has screenshots for the stock IDs, and `hudrush_001.xml` has exactly 7 room panels.
+
+### Testing
+
+Start the map with `game_type 0; game_mode 6; map <map_name>` to get the Rush config, intro and bots.
+The script only relies on `mp_ignore_round_win_conditions`, `mp_default_team_winner_no_objective` and `mp_roundtime`,
+and sets all three itself, so it also runs in other modes, just with that mode's economy, intro and bots.
+
+With `sv_cheats 1` the script adds two debug commands:
+
+| Command | Effect |
+| --- | --- |
+| `rush_force_decider` | The next room change uses Convoy |
+| `move_antenna` | Moves the tower to the nearest room marker and makes it glow |
