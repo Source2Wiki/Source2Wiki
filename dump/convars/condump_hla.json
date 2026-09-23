@@ -15331,7 +15331,7 @@
     },
     {
       "Name": "hostname",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "Hostname for server.",
       "flags": [
         "release"
@@ -19136,7 +19136,7 @@
     },
     {
       "Name": "name",
-      "DefaultValue": "Angel",
+      "DefaultValue": "",
       "Description": "",
       "flags": [
         "per-user"
@@ -27446,7 +27446,7 @@
     },
     {
       "Name": "rcon_address",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "Address of remote server if sending unconnected rcon commands (format x.x.x.x:p)",
       "flags": [
         "norecord",
@@ -27455,7 +27455,7 @@
     },
     {
       "Name": "rcon_password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "remote console password.",
       "flags": [
         "norecord",
@@ -35194,7 +35194,7 @@
     },
     {
       "Name": "sv_password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "Server password for entry into multiplayer games",
       "flags": [
         "prot",
@@ -36769,7 +36769,7 @@
     },
     {
       "Name": "tv_password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "SourceTV password for all clients",
       "flags": [
         "prot",
@@ -36827,7 +36827,7 @@
     },
     {
       "Name": "tv_relay_secret_code",
-      "DefaultValue": "1",
+      "DefaultValue": "",
       "Description": "When enabled, this will use a uniquely generated server code to authenticate relay to relay connections. This code is coordinated via the GC or some external means rather than by clients directly",
       "flags": [
         "prot"
@@ -36835,7 +36835,7 @@
     },
     {
       "Name": "tv_relaypassword",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "SourceTV password for relay proxies",
       "flags": [
         "prot",
@@ -36861,7 +36861,7 @@
     },
     {
       "Name": "tv_secret_code",
-      "DefaultValue": "1",
+      "DefaultValue": "",
       "Description": "When enabled, this will use a uniquely generated server code to authenticate relay connections. This code is coordinated via the GC or some external means rather than by clients directly",
       "flags": [
         "prot"

@@ -29394,7 +29394,7 @@
     },
     {
       "Name": "hostname",
-      "DefaultValue": "Angel",
+      "DefaultValue": "",
       "Description": "Hostname for server.",
       "flags": [
         "release"
@@ -32556,7 +32556,7 @@
     },
     {
       "Name": "name",
-      "DefaultValue": "Angel",
+      "DefaultValue": "",
       "Description": "",
       "flags": [
         "a",
@@ -36664,7 +36664,7 @@
     },
     {
       "Name": "password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "Current server access password",
       "flags": [
         "a",
@@ -37392,7 +37392,7 @@
     },
     {
       "Name": "practice_password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "Password used to filter private practice lobbies.",
       "flags": [
         "cl"
@@ -40869,7 +40869,7 @@
     },
     {
       "Name": "rcon_address",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "Address of remote server if sending unconnected rcon commands (format x.x.x.x:p)",
       "flags": [
         "norecord",
@@ -40890,7 +40890,7 @@
     },
     {
       "Name": "rcon_password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "remote console password.",
       "flags": [
         "norecord",
@@ -45818,7 +45818,7 @@
     },
     {
       "Name": "soundsystem_device_used",
-      "DefaultValue": "Headphones (3- High Definition Audio Device)",
+      "DefaultValue": "",
       "Description": "Sound device in use (changing this does not change the soundsystem).",
       "flags": [
         ""
@@ -47671,7 +47671,7 @@
     },
     {
       "Name": "sv_password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "Server password for entry into multiplayer games",
       "flags": [
         "prot",
@@ -49602,7 +49602,7 @@
     },
     {
       "Name": "tv_password",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "SourceTV password for all clients of CSTV[0]",
       "flags": [
         "prot",
@@ -49614,7 +49614,7 @@
     },
     {
       "Name": "tv_password1",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "SourceTV password for all clients of CSTV[1]. If empty, tv_password is used",
       "flags": [
         "prot",
@@ -49752,7 +49752,7 @@
     },
     {
       "Name": "tv_relaypassword",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "SourceTV password for relay proxies",
       "flags": [
         "prot",
@@ -50040,7 +50040,7 @@
     },
     {
       "Name": "vconsole_rcon_server_details",
-      "DefaultValue": "0",
+      "DefaultValue": "",
       "Description": "when non-empty allows for easy vconsole connection to the dedicated server.",
       "flags": [
         "norecord",
