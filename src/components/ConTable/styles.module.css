@@ -54,3 +54,16 @@
   flex-wrap: wrap;
   background-color: var(--ifm-background-color);
 }
+
+/* row picked by a /Convars?game=...#name link */
+.linkedRow {
+  background-color: var(--ifm-color-emphasis-200);
+  box-shadow: inset 3px 0 0 var(--ifm-color-primary);
+}
+
+/* the name links to its own row, keep it looking like plain code */
+.anchor,
+.anchor:hover {
+  color: inherit;
+  text-decoration: none;
+}

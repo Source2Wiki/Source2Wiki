@@ -120,28 +120,28 @@ A dedicated server uses the same values as launch options: `+game_type 0 +game_m
 
 ### Game mode config
 
-Starting the mode executes `cfg/gamemode_rush.cfg`, and offline games additionally run `gamemode_rush_offline.cfg`, which raises `bot_quota` to 6. The settings that matter most for Rush, described in full in the [console variable list](../../Convars/index.mdx):
+Starting the mode executes `cfg/gamemode_rush.cfg`, and offline games additionally run `gamemode_rush_offline.cfg`, which raises <Convar name="bot_quota"/> to 6. The settings that matter most for Rush:
 
 | Convar | Value |
 | --- | --- |
-| `mp_maxrounds` | `15` |
-| `mp_roundtime` | `0.67`, overridden by the script per room |
-| `mp_freezetime` | `13` |
-| `mp_buytime` | `15` |
-| `mp_startmoney` | `800` |
-| `mp_maxmoney` | `10000` |
-| `cash_team_loser_bonus` | `2100` |
-| `cash_team_loser_bonus_consecutive_rounds` | `750` |
-| `mp_halftime` | `0` |
-| `mp_team_intro_type` | `rush` |
-| `mp_team_intro_time` | `9` |
-| `mp_bot_ai_bt` | `scripts/ai/rush/bt_default.kv3` |
-| `ammo_grenade_limit_total` | `1` |
-| `bot_quota` | `2`, with `bot_quota_mode fill` |
+| <Convar name="mp_maxrounds"/> | `15` |
+| <Convar name="mp_roundtime"/> | `0.67`, overridden by the script per room |
+| <Convar name="mp_freezetime"/> | `13` |
+| <Convar name="mp_buytime"/> | `15` |
+| <Convar name="mp_startmoney"/> | `800` |
+| <Convar name="mp_maxmoney"/> | `10000` |
+| <Convar name="cash_team_loser_bonus"/> | `2100` |
+| <Convar name="cash_team_loser_bonus_consecutive_rounds"/> | `750` |
+| <Convar name="mp_halftime"/> | `0` |
+| <Convar name="mp_team_intro_type"/> | `rush` |
+| <Convar name="mp_team_intro_time"/> | `9` |
+| <Convar name="mp_bot_ai_bt"/> | `scripts/ai/rush/bt_default.kv3` |
+| <Convar name="ammo_grenade_limit_total"/> | `1` |
+| <Convar name="bot_quota"/> | `2`, with <Convar name="bot_quota_mode"/> set to `fill` |
 
-The config also sets `mp_default_team_winner_no_objective -1` with the comment `// 2 == CTs, 3 == Ts`. That comment is wrong, the engine treats `3` as a CT win and `2` as a T win.
+The config also sets <Convar name="mp_default_team_winner_no_objective"/> to `-1` with the comment `// 2 == CTs, 3 == Ts`. That comment is wrong, the engine treats `3` as a CT win and `2` as a T win.
 
-Rush also has its own music volume settings, `snd_menumusic_volume_rush`, `snd_roundstart_volume_rush` and six more `snd_*_volume_rush` convars, like Casual, Arms Race and Deathmatch do.
+Rush also has its own music volume settings, <Convar name="snd_menumusic_volume_rush"/>, <Convar name="snd_roundstart_volume_rush"/> and six more `snd_*_volume_rush` convars, like Casual, Arms Race and Deathmatch do.
 
 ## The stock map
 
@@ -316,7 +316,7 @@ The Rush script replaces the engine's round logic. Understanding it matters when
 
 ### Round control
 
-At every live round start the script sets `mp_ignore_round_win_conditions 1`.
+At every live round start the script sets <Convar name="mp_ignore_round_win_conditions"/> to `1`.
 That makes the engine skip both its round-time-expired check and its elimination and objective checks, so a round only ends when something ends it explicitly.
 During warmup the script sets it back to `0`.
 
