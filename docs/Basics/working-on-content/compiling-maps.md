@@ -27,7 +27,7 @@ A map compile is not one operation but a list of stages, each writing its own fi
 
 Lighting and visibility will usually take the longest to compute when compiling a map, visibility on the CPU, lighting path traced on the GPU or CPU in older titles. Building the geometry itself is quick by comparison.
 
-The compiler prints no per stage timings by default. Setting `resourcecompiler_log_compile_stats` makes it report `Compile stats:` and a total at the end of a build, which is the way to find out where your map actually spends its time.
+The compiler prints no per stage timings by default. Setting <Convar name="resourcecompiler_log_compile_stats"/> makes it report `Compile stats:` and a total at the end of a build, which is the way to find out where your map actually spends its time.
 
 ## What survives between builds
 
@@ -51,7 +51,7 @@ The `Entities only` compile does not delete the lightmap information. So iterati
 
 ## Cubemaps and light probes
 
-These are baked from inside the game rather than by the hammer map compile. However, the map builder has a checkbox to automatically bake them as well after the whole compile is done. They can be built manually from the game: [`buildcubemaps`](../../Convars/index.mdx) in the console bakes them on the running map.
+These are baked from inside the game rather than by the hammer map compile. However, the map builder has a checkbox to automatically bake them as well after the whole compile is done. They can be built manually from the game: <Convar name="buildcubemaps"/> in the console bakes them on the running map.
 
 The results live in the map .vpk as a single .vtex_c containing all the cubemaps in a texture array, Hammer can also bake cubemaps for lighting preview, they live in `_bakeresourcecache/`, named per entity.
 

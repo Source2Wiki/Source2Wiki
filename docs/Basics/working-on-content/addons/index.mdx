@@ -112,7 +112,7 @@ Valve ships the schema for this file as [FGD](../../fgd.md) files that the addon
 
 | Key | Type | Default | Meaning |
 | --- | --- | --- | --- |
-| `maps` | array of strings | | Maps the addon offers the player, named as the `map` command takes them, so `my_map` for `maps/my_map.vmap`. The engine reads this one, and falls back to scanning the addon's `maps/` directory if it is missing |
+| `maps` | array of strings | | Maps the addon offers the player, named as the <Convar name="map"/> command takes them, so `my_map` for `maps/my_map.vmap`. The engine reads this one, and falls back to scanning the addon's `maps/` directory if it is missing |
 | `IsPlayable` | bool | `1` | Whether the addon shows up as playable |
 | `IsTemplate` | bool | `0` | Marks the addon as a template rather than content |
 | `HideInTools` | bool | `0` | Hides the addon from the launcher's list |

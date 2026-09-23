@@ -62,7 +62,7 @@ spawn_group_load my_prefab
 The thing being loaded is a **fully compiled map**, packed as a [VPK inside the addon](../../../FileFormats/vpk.md#maps-and-nesting)! 
 :::
 
-`spawn_group_load` streams it into the running level as an additional spawn group, and its entities spawn. The name is the map's relative path under `maps/`, so where the map sits is a naming choice and nothing more.
+<Convar name="spawn_group_load"/> streams it into the running level as an additional spawn group, and its entities spawn. The name is the map's relative path under `maps/`, so where the map sits is a naming choice and nothing more.
 
 That map is usually small. It exists to carry entities and NOT geometry: It can contain a [point_script](../../../Entities/point_script.mdx) to execute code and of course the gamemode's models, sounds, particles and scripts. Naturally, anything used in the script must be packed like ordinary addon files. The [Publishing](./index.mdx#publishing) section covers this.
 
@@ -76,12 +76,12 @@ map de_nuke customgamemode=3777436663
 
 As an example for how this works, you can inspect this workshop item using <Tool name="s2v"/>: [Shoot With Nades by Lion Doge](https://steamcommunity.com/sharedfiles/filedetails/?id=3777436663). The concept is explained in detail below.
 
-`customgamemode` names the addon to mount, not a gamemode. For a workshop item that is its published file id, the number in the item's URL. For a local addon it is the addon's own name, and the addon has to be one the game can mount: launched into it in tools mode, or started with `-addon <name>`. `changelevel` and `restart` take the same option, and everything after the map name is parsed as `key=value` options.
+`customgamemode` names the addon to mount, not a gamemode. For a workshop item that is its published file id, the number in the item's URL. For a local addon it is the addon's own name, and the addon has to be one the game can mount: launched into it in tools mode, or started with `-addon <name>`. <Convar name="changelevel"/> and <Convar name="restart"/> take the same option, and everything after the map name is parsed as `key=value` options.
 
 The menu uses the same mechanism under the hood: picking a workshop item sets a map group of the form `@workshop/<id>/<map>`, which the server turns into `map <map> customgamemode=<id> nomapvalidation=true`, with `<map>` taken from the item's `maps` key.
 
 :::info
-`host_workshop_map` is a different thing: a dedicated server command that downloads a workshop item and hosts the map inside it. It cannot put an addon on top of someone else's map.
+<Convar name="host_workshop_map"/> is a different thing: a dedicated server command that downloads a workshop item and hosts the map inside it. It cannot put an addon on top of someone else's map.
 :::
 
 ## Half-Life: Alyx
