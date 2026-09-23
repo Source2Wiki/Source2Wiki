@@ -85,8 +85,6 @@ declare module "cs_script/point_script"
          * This can be useful for delaying until a clean moment when an entity isn't mid-computation and might ignore or misinterpret.
          * This can be useful for delaying until the world is in a consistent state.
          * Callbacks queued up during a post entity think callback will be invoked in the same tick.
-         * @experimental This method is experimental and may experience breaking changes.
-         * Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.
          */
         QueueAfterThinks( callback: () => void ): void;
 
@@ -103,15 +101,13 @@ declare module "cs_script/point_script"
         OnPlayerDisconnect(callback: (event: { playerSlot: number }) => void): void;
         /** Called when a player respawns, changes team, or is placed back at spawn due to a round restart */
         OnPlayerReset(callback: (event: { player: CSPlayerPawn }) => void): void
+        /** Called when a player changes team */
+        OnPlayerTeamChanged(callback: (event: { player: CSPlayerPawn, oldTeam: number }) => void): void
         /** Called when a new round begins */
         OnRoundStart(callback: () => void): void;
         /** Called when a team wins a round */
         OnRoundEnd(callback: (event: { winningTeam: number, reason: CSRoundEndReason }) => void): void;
-        /**
-         * Called at the start of cleanup for a round restart
-         * @experimental This method is experimental and may experience breaking changes.
-         * Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.
-         */
+        /** Called at the start of cleanup for a round restart */
         OnBeginRoundRestart(callback: () => void): void;
         /** Called when a player starts planting their c4 */
         OnBombPlantStart(callback: (event: { planter: CSPlayerPawn }) => void): void;
@@ -215,6 +211,8 @@ declare module "cs_script/point_script"
         IsWarmupPeriod(): boolean;
         /** Get if the game is currently in a Freeze period. */
         IsFreezePeriod(): boolean;
+        /** Get if the game is currently in a Team Intro period. */
+        IsTeamIntroPeriod(): boolean;
         /** Get the current Game Type. */
         GetGameType(): number;
         /** Get the current Game Mode. */
@@ -227,6 +225,16 @@ declare module "cs_script/point_script"
         GetRoundRemainingTime(): number;
         /** Set the time remaining in the current round in seconds. */
         SetRoundRemainingTime(time: number): void;
+
+        /**
+         * Adds the money to all player controllers on the team, following all classic rules.
+         * If players are not eligible to receive end-of-round money, then that restriction is honored.
+         * Disconnected players will get their account balance incremented, and will have correct
+         * amount of money after they reconnect to the server.
+         * If the `amount` parameter is 0 or undefined, then the amount will be determined using server convar
+         * setting corresponding to the reason parameter.
+         */
+        AddTeamMoney(team: number, reason: CSTeamMoneyReason, amount?: number): void;
 
         /** Spawns a live grenade projectile. */
         SpawnGrenadeProjectile(config: SpawnGrenadeProjectileConfig): CSGrenadeProjectileBase;
@@ -279,6 +287,14 @@ declare module "cs_script/point_script"
         CUSTOM,
     }
 
+    export enum CSObserverMode {
+        NONE,
+        FIXED,
+        IN_EYE,
+        CHASE,
+        ROAMING,
+    }
+
     export enum CSRoundEndReason {
         UNKNOWN = -1,
         IN_PROGRESS,
@@ -293,6 +309,55 @@ declare module "cs_script/point_script"
         TERRORISTS_WIN,
         CTS_SURRENDER,
         TERRORISTS_SURRENDER,
+    }
+
+    export enum CSRadarIcon {
+        TOWER = 0,
+        C4 = 1,
+        HOSTAGE = 2,
+    }
+
+    export enum CSRadarColor {
+        PLAYERHUD = 0,
+        GRAY = 1,
+        WHITE = 2,
+        CT = 3,
+        T = 4,
+        RED = 5,
+        GREEN = 6,
+    }
+
+    export enum CSTeamMoneyReason {
+        /** $0 */
+        NONE,
+        /** cash_team_terrorist_win_bomb */
+        TERRORIST_WIN_BOMB,
+        /** cash_team_elimination_hostage_map_t */
+        ELIMINATION_HOSTAGE_MAP_T,
+        /** cash_team_elimination_hostage_map_ct */
+        ELIMINATION_HOSTAGE_MAP_CT,
+        /** cash_team_elimination_bomb_map */
+        ELIMINATION_BOMB_MAP,
+        /** cash_team_win_by_time_running_out_hostage */
+        WIN_BY_TIME_RUNNING_OUT_HOSTAGE,
+        /** cash_team_win_by_time_running_out_bomb */
+        WIN_BY_TIME_RUNNING_OUT_BOMB,
+        /** cash_team_win_by_defusing_bomb */
+        WIN_BY_DEFUSING_BOMB,
+        /** cash_team_win_by_hostage_rescue */
+        WIN_BY_HOSTAGE_RESCUE,
+        /** cash_team_loser_bonus */
+        LOSER_BONUS,
+        /** cash_team_rescued_hostage */
+        RESCUED_HOSTAGE,
+        /** cash_team_hostage_alive */
+        HOSTAGE_ALIVE,
+        /** cash_team_planted_bomb_but_defused */
+        PLANTED_BOMB_BUT_DEFUSED,
+        /** cash_team_hostage_interaction */
+        HOSTAGE_INTERACTION,
+        /** cash_team_bonus_shorthanded */
+        BONUS_SHORTHANDED,
     }
 
     export enum CSWeaponType {
@@ -452,7 +517,7 @@ declare module "cs_script/point_script"
         damage?: number,
         /** The exponential damage drop off constant from traveling through air. @default .85 */
         rangeModifier?: number,
-        /** The power to maintain damage during penetration. Will default to 1 if left unspecified. @default 1 */
+        /** The power to maintain damage during penetration. Will default to 1 if left undefined. @default 1 */
         penetration?: number,
     }
 
@@ -731,6 +796,25 @@ declare module "cs_script/point_script"
         GetDefuseFinishTime(): number | undefined;
     }
 
+    /**
+     * An entity that displays an icon on radar and overview map.
+     */
+    export class CSRadarPoint extends Entity {
+        SetIcon( icon: CSRadarIcon ): void;
+        SetColor( color: CSRadarColor ): void;
+        IsVisibleToTeam( team: number ): boolean;
+        SetVisibleToTeam( team: number, visible: boolean ): void;
+    }
+
+    /**
+     * An entity that can be observed when no alive teammates remain.
+     */
+    export class CSObservablePoint extends Entity {
+        SetObservableModelEntity(entmodel: Entity | undefined, index?: number): void;
+        IsObservableForTeam( team: number ): boolean;
+        SetObservableForTeam( team: number, observable: boolean ): void;
+    }
+
     export class CSPlayerController extends Entity {
         GetPlayerSlot(): number;
         GetPlayerName(): string;
@@ -757,8 +841,12 @@ declare module "cs_script/point_script"
         GetPlayerController(): CSPlayerController | undefined;
         /** Gets the controller that this player pawn was originally spawned for. */
         GetOriginalPlayerController(): CSPlayerController;
-        GetObserverMode(): number;
-        SetObserverMode(nMode: number): void;
+        GetObserverMode(): CSObserverMode;
+        SetObserverMode(mode: CSObserverMode): void;
+        GetObserverTarget(): Entity | undefined;
+        /** @returns `false` if `target` is an invalid value. */
+        SetObserverTarget(target: Entity | undefined): boolean;
+        SetEyeAngles(angle: QAngle): void;
     }
 
     export class CSPlayerPawn extends BaseModelEntity {
@@ -772,6 +860,7 @@ declare module "cs_script/point_script"
         WasInputJustPressed(inputs: CSInputs): boolean;
         /** @returns `true` if specified inputs went from pressed to released at some point during the current tick. */
         WasInputJustReleased(inputs: CSInputs): boolean;
+        SetEyeAngles(angle: QAngle): void;
         FindWeapon(name: string): CSWeaponBase | undefined;
         FindWeaponBySlot(slot: CSGearSlot): CSWeaponBase | undefined;
         GetActiveWeapon(): CSWeaponBase | undefined;
@@ -796,8 +885,6 @@ declare module "cs_script/point_script"
         GetCustomCamera(): CustomPlayerCamera;
 
         /** @deprecated This method will be removed in a future update */
-        GetCamera(): CSPlayerCamera;
-        /** @deprecated This method will be removed in a future update */
         IsCrouching(): boolean;
         /** @deprecated This method will be removed in a future update */
         IsCrouched(): boolean;
@@ -812,8 +899,11 @@ declare module "cs_script/point_script"
      *   * <Button> with attributes id and class
      * * Styling with css is supported.
      * * The following css classes will be set on an ancestor panel when appropriate:
+     *   * `HUD_TEAMINTRO_VISIBLE`
      *   * `HUD_BUYMENU_VISIBLE`
      *   * `HUD_SCOREBOARD_VISIBLE`
+     *   * `HUD_WINPANEL_VISIBLE`
+     *   * `HUD_ENDOFMATCH_VISIBLE`
      * * Events and client side scripting are not supported.
      * 
      * To use
@@ -857,6 +947,14 @@ declare module "cs_script/point_script"
          * Get if this CustomHudLayout is capturing input for a player
          */
         IsInputCaptureEnabled(playerSlot: number): boolean;
+        /**
+         * Reset to original state for all players.
+         */
+        Reset(): void;
+        /**
+         * Reset a single player's overrides to their original state.
+         */
+        ResetForPlayer(playerSlot: number): void;
     }
 
     export class PointTemplate extends Entity {
@@ -900,16 +998,6 @@ declare module "cs_script/point_script"
         GetMode(): CustomCameraMode;
         SetMode(mode: CustomCameraMode): void;
         SetFollowConfig(followConfig: CameraFollowConfig): void;
-    }
-
-    /** @deprecated This class will be removed soon */
-    export class CSPlayerCamera extends Entity {
-        /** @deprecated This method will be removed soon */
-        IsEnabled(): boolean;
-        /** @deprecated This method will be removed soon */
-        SetEnabled(enabled: boolean): void;
-        /** @deprecated This method will be removed soon */
-        SetIsControllingAngles(controlling: boolean): void;
     }
 
     /** @deprecated This enum will be removed in a future update */
