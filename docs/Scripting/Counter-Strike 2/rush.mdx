@@ -120,7 +120,7 @@ A dedicated server uses the same values as launch options: `+game_type 0 +game_m
 
 ### Game mode config
 
-Starting the mode executes `cfg/gamemode_rush.cfg`, and offline games additionally run `gamemode_rush_offline.cfg`, which raises `bot_quota` to 6. The settings that matter most for Rush:
+Starting the mode executes `cfg/gamemode_rush.cfg`, and offline games additionally run `gamemode_rush_offline.cfg`, which raises `bot_quota` to 6. The settings that matter most for Rush, described in full in the [console variable list](../../Convars/index.mdx):
 
 | Convar | Value |
 | --- | --- |
@@ -165,7 +165,7 @@ These entities exist once in the map. Every name is case sensitive.
 | `rush_ui` | [custom_hud_layout](../../Entities/custom_hud_layout.mdx) |
 | `fog` | [env_gradient_fog](../../Entities/env_gradient_fog.mdx) |
 | `tspawn1`, `tspawn2`, `tspawn3` | [info_player_terrorist](../../Entities/info_player_terrorist.mdx) |
-| `ctspawn1`, `ctspawn2`, `ctspawn3` | `info_player_counterterrorist` |
+| `ctspawn1`, `ctspawn2`, `ctspawn3` | [info_player_counterterrorist](../../Entities/info_player_counterterrorist.mdx) |
 
 The `point_script` runs `maps/scripts/rush_001.vjs`. Rounds are ended by firing `FireWinCondition` at `map_params`. `rush_ui` loads the HUD layout `panorama/layout/hud/hudrush_001.xml`.
 
@@ -187,9 +187,9 @@ Every room has its own set of markers.
 | `ant.top.<id>` | Tower top |
 | `ant.side.light.<id>.a`, `ant.side.light.<id>.b` | Optional tower lights |
 
-The optional lights are `light_omni2` entities. Only the lights of the active room are switched on, strobing in the owner's color.
+The optional lights are [light_omni2](../../Entities/light_omni2.mdx) entities. Only the lights of the active room are switched on, strobing in the owner's color.
 
-Every room also has its own [func_buyzone](../../Entities/func_buyzone.mdx) for both teams, and a `cs_minimap_volume` for the radar.
+Every room also has its own [func_buyzone](../../Entities/func_buyzone.mdx) for both teams, and a [cs_minimap_volume](../../Entities/cs_minimap_volume.mdx) for the radar.
 
 ### Tower
 
@@ -201,8 +201,8 @@ The tower is made of four visual and gameplay entities, plus two entities that s
 | `ant.top.main` | `prop_dynamic` |
 | `ant.top.short` | `prop_dynamic` |
 | `ant.button` | [func_button](../../Entities/func_button.mdx) |
-| `ant.base.radar` | `radar_element` |
-| `ant.base.observable` | `observable_element` |
+| `ant.base.radar` | [radar_element](../../Entities/radar_element.mdx) |
+| `ant.base.observable` | [observable_element](../../Entities/observable_element.mdx) |
 
 The models are in `models/rush/antenna_deployable_01/`. The base uses skin 0 when neutral, 1 for T and 2 for CT.
 
@@ -280,7 +280,7 @@ Bots only need a nav mesh and that entity to play the objective. They do not che
 ### Team intro
 
 The first live round after warmup opens with the Rush team intro, which shows the three players of each team posing with a weapon.
-It is placed in Hammer with the point entities `terrorist_rush_intro` and `counterterrorist_rush_intro`,
+It is placed in Hammer with the point entities [terrorist_rush_intro](../../Entities/terrorist_rush_intro.mdx) and [counterterrorist_rush_intro](../../Entities/counterterrorist_rush_intro.mdx),
 which spawn `maps/prefabs/misc/terrorist_rush_intro.vpk` and `counterterrorist_rush_intro.vpk` at runtime.
 
 Each prefab holds three character positions and a camera:
