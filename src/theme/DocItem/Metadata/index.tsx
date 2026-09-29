@@ -2,6 +2,7 @@ import React from 'react';
 import { PageMetadata } from '@docusaurus/theme-common';
 import { useDoc, useSidebarBreadcrumbs } from '@docusaurus/plugin-content-docs/client';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+import DocEmbed from '@site/src/components/DiscordEmbed/DocEmbed';
 
 // makes browser tabs and link embeds read "Title | Group" (the doc's parent
 // sidebar category) instead of "Title | Source2 Wiki", embeds still show the
@@ -27,11 +28,14 @@ export default function DocItemMetadata(): React.JSX.Element
     : metadata.title;
 
   return (
-    <PageMetadata
-      title={title}
-      description={metadata.description}
-      keywords={frontMatter.keywords}
-      image={assets.image ?? frontMatter.image}
-    />
+    <>
+      <PageMetadata
+        title={title}
+        description={metadata.description}
+        keywords={frontMatter.keywords}
+        image={assets.image ?? frontMatter.image}
+      />
+      <DocEmbed/>
+    </>
   );
 }

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
 
-import { sanitizeInput, sanitizeInputTable, sanitizeMetaDescription } from "../entity-pages/sanitize";
+import { sanitizeDiscordMarkdown, sanitizeInput, sanitizeInputTable, sanitizeMetaDescription } from "../entity-pages/sanitize";
 
 test("keeps the tags that render, escapes the ones that do not", () => {
   assert.equal(sanitizeInput("<b>bold</b> and <strong>strong</strong>"), "<b>bold</b> and <strong>strong</strong>");
@@ -52,4 +52,19 @@ test("the meta variant keeps line breaks but caps blank lines", () => {
 test("the table variant also escapes pipes so cells do not split", () => {
   assert.equal(sanitizeInputTable("a | b"), "a \\| b");
   assert.equal(sanitizeInput("a | b"), "a | b");
+});
+
+test("the discord variant turns the tags into discord markdown", () => {
+  assert.equal(
+    sanitizeDiscordMarkdown("intro<br><br><b>Sound Types </b><br>- Combat"),
+    "intro\n\n**Sound Types**\n- Combat",
+  );
+  assert.equal(sanitizeDiscordMarkdown("<strong>bold</strong> text"), "**bold** text");
+  assert.equal(sanitizeDiscordMarkdown("<b></b>empty"), "empty");
+  assert.equal(sanitizeDiscordMarkdown("name: <original name>"), "name:");
+});
+
+test("the discord variant escapes what discord would read as formatting", () => {
+  assert.equal(sanitizeDiscordMarkdown("a|b *wild* ~x~ `c` d_e"), String.raw`a\|b \*wild\* \~x\~ \`c\` d\_e`);
+  assert.equal(sanitizeDiscordMarkdown("# not a heading<br>> not a quote"), String.raw`\# not a heading` + "\n" + String.raw`\> not a quote`);
 });

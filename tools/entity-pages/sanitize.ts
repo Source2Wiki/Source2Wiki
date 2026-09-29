@@ -64,6 +64,34 @@ export function sanitizeMetaDescription(input: string): string {
   return input.trim();
 }
 
+/**
+ * For the Discord link card, which renders Discord's own markdown. The tags that mean something
+ * become markdown, and the characters Discord would read as formatting are escaped so FGD text
+ * like `a|b` or `*` wildcards comes through as written.
+ */
+export function sanitizeDiscordMarkdown(input: string): string {
+  input = input.replaceAll("<original name>", "");
+  input = input.replaceAll("<Award Text>", "");
+  input = input.replaceAll("<picker>", "");
+  input = input.replaceAll("<None>", "None");
+
+  input = input.replace(/[\\*_~`|]/g, "\\$&");
+
+  // markdown bold needs the asterisks against the text, "** Sound Types **" stays literal
+  input = input.replace(/<(b|strong)\b[^>]*>\s*([\s\S]*?)\s*<\/\1\s*>/gi, (_, _tag, text) => text ? `**${text}**` : "");
+  input = input.replace(/<\/?(?:b|strong)\b[^>]*>/gi, "");
+  input = input.replace(/<br\s*\/?>/gi, "\n");
+
+  input = input.replace(/[^\S\n]+/g, " ");
+  input = input.replace(/ *\n */g, "\n");
+  input = input.replace(/\n{3,}/g, "\n\n");
+
+  // headings, subtext and quotes only start a line, "- " lists are left to render as lists
+  input = input.replace(/^(?=#|-#|>)/gm, "\\");
+
+  return input.trim();
+}
+
 const HtmlEscapes: Record<string, string> = {
   "<": "&lt;",
   ">": "&gt;",
