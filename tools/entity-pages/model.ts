@@ -82,6 +82,30 @@ export function getIconUrl(page: EntityPage): string | null {
   return wiki.exists(iconPath) ? wiki.toUrl(iconPath) : null;
 }
 
+/**
+ * Width of a page's icon in pixels, or null when it has none or it is not a png. The dump's
+ * icons are either small sprites or model renders, and only the renders are worth showing big.
+ */
+export function getIconWidth(page: EntityPage): number | null {
+  if (getIconUrl(page) === null) {
+    return null;
+  }
+
+  // a png's width is the first field of its IHDR chunk, right after the 8 byte signature
+  const header = Buffer.alloc(24);
+  const file = fs.openSync(wiki.toDisk(page.IconPath!), "r");
+
+  try {
+    fs.readSync(file, header, 0, 24, 0);
+  } finally {
+    fs.closeSync(file);
+  }
+
+  const isPng = header.readUInt32BE(0) === 0x89504e47 && header.toString("ascii", 12, 16) === "IHDR";
+
+  return isPng ? header.readUInt32BE(16) : null;
+}
+
 export function parseEntityDocumentFile(filePath: string): EntityDocument {
   return parseFile(filePath, (doc) => ({
     Name: doc.Name ?? "",

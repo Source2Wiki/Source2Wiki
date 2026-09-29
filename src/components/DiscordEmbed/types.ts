@@ -3,6 +3,8 @@
 export interface EntityEmbed {
   // already Discord markdown
   description: string;
+  // a model render rather than a sprite, shown full width instead of as a thumbnail
+  largeIcon: boolean;
   games: {
     game: string;
     type: string | null;

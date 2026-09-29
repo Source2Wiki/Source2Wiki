@@ -9,6 +9,7 @@ import {
   InputOutput,
   Property,
   getIconUrl,
+  getIconWidth,
   getPageRelativePath,
 } from "./model";
 import type { EntityEmbed } from "../../src/components/DiscordEmbed/types";
@@ -103,6 +104,7 @@ export function documentMdx(document: EntityDocument, lastUpdate: LastUpdate | n
   // used for embed description and image, can only pick from one game.
   let bestDescription = "";
   let bestIcon = "";
+  let bestIconWidth: number | null = null;
 
   for (const page of document.Pages) {
     // i shouldnt have to wonder why this needs toUpperCase() to render the page in the tab, yet here we are!
@@ -134,6 +136,7 @@ export function documentMdx(document: EntityDocument, lastUpdate: LastUpdate | n
     // any game's icon will do, they are near always the same image
     if (bestIcon.length === 0) {
       bestIcon = getIconUrl(page) ?? "";
+      bestIconWidth = getIconWidth(page);
     }
   }
 
@@ -146,7 +149,7 @@ export function documentMdx(document: EntityDocument, lastUpdate: LastUpdate | n
     `description: ${JSON.stringify(sanitizeMetaDescription(bestDescription))}`,
     bestIcon.length > 0 ? `image: ${bestIcon}` : "",
     // what the Discord link card shows, see src/components/DiscordEmbed, JSON is valid YAML
-    `entity_embed: ${JSON.stringify(entityEmbed(document, bestDescription))}`,
+    `entity_embed: ${JSON.stringify(entityEmbed(document, bestDescription, bestIconWidth))}`,
     // JSON.stringify so quotes or colons in an author name stay valid YAML
     lastUpdate !== null ? `last_update:\n  date: ${JSON.stringify(lastUpdate.date)}\n  author: ${JSON.stringify(lastUpdate.author)}` : "",
     "---",
@@ -170,9 +173,13 @@ export function documentMdx(document: EntityDocument, lastUpdate: LastUpdate | n
   ].join("\n");
 }
 
-function entityEmbed(document: EntityDocument, description: string): EntityEmbed {
+// icons this wide are model renders, the sprites are 64 or 128
+const LargeIconWidth = 256;
+
+function entityEmbed(document: EntityDocument, description: string, iconWidth: number | null): EntityEmbed {
   return {
     description: sanitizeDiscordMarkdown(description),
+    largeIcon: (iconWidth ?? 0) >= LargeIconWidth,
     games: document.Pages.map((page) => ({
       game: page.Game!,
       type: page.EntityType,

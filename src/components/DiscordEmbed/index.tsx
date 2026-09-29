@@ -30,6 +30,12 @@ export function buttons(...links: [label: string, url: string][]): Component
   return { type: 1, components: links.map(([label, url]) => ({ type: 2, style: 5, label, url })) };
 }
 
+// a full width image, where a thumbnail would be too small to make out
+export function gallery(...urls: string[]): Component
+{
+  return { type: 12, items: urls.map(url => ({ media: { url } })) };
+}
+
 // a section holds 1-3 texts with the thumbnail beside them, without one the texts go in on their own
 export function section(texts: string[], thumbnail: string | null): Component[]
 {
@@ -53,14 +59,16 @@ export function toColor(hex: string | undefined): number
 
 interface DiscordEmbedProps {
   color: number;
-  // the only part that shrinks when the card is over Discord's size limit
+  // shrinks last, once render has run out of levels
   description: string;
-  render: (description: string) => Component[];
+  // level 0 is the full card, each level up should leave out more of whatever else is long
+  render: (description: string, level: number) => Component[];
+  levels?: number;
 }
 
-export default function DiscordEmbed({ color, description, render }: DiscordEmbedProps): React.JSX.Element | null
+export default function DiscordEmbed({ color, description, render, levels = 1 }: DiscordEmbedProps): React.JSX.Element | null
 {
-  const json = fit(color, description, render);
+  const json = fit(color, description, render, levels);
 
   if (json === null)
   {
@@ -74,23 +82,35 @@ export default function DiscordEmbed({ color, description, render }: DiscordEmbe
   );
 }
 
-function fit(color: number, description: string, render: DiscordEmbedProps['render']): string | null
+function fit(color: number, description: string, render: DiscordEmbedProps['render'], levels: number): string | null
 {
-  for (let length = description.length; ; length = Math.floor(length * 0.8))
+  const toJson = (length: number, level: number): string | null =>
   {
     // < escaped so nothing in a description can close the script tag
     const json = JSON.stringify({
-      component: { type: 17, accent_color: color, components: render(shorten(description, length)) },
+      component: { type: 17, accent_color: color, components: render(shorten(description, length), level) },
     }).replaceAll('<', '\\u003c');
 
-    if (new TextEncoder().encode(json).length <= MaxBytes)
+    return new TextEncoder().encode(json).length <= MaxBytes ? json : null;
+  };
+
+  for (let level = 0; level < levels - 1; level++)
+  {
+    const json = toJson(description.length, level);
+
+    if (json !== null)
     {
       return json;
     }
+  }
 
-    if (length === 0)
+  for (let length = description.length; ; length = Math.floor(length * 0.8))
+  {
+    const json = toJson(length, levels - 1);
+
+    if (json !== null || length === 0)
     {
-      return null;
+      return json;
     }
   }
 }

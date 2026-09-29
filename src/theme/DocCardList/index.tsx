@@ -34,16 +34,10 @@ const getCategoryChildrenSummary = (children: PropSidebarItem[]): string =>
   return labels.slice(0, maxCategoryChildren).join(', ') + (labels.length > maxCategoryChildren ? ` and ${labels.length - maxCategoryChildren} more` : '');
 };
 
-function DocListItem({ item }: { item: PropSidebarItem })
+// what an item of the list shows, the Discord card of a page lists the same, see
+// src/components/DiscordEmbed/DocEmbed.tsx
+export function getListEntry(item: PropSidebarItem, docDescription: string | undefined)
 {
-  const doc = useDocById(item.type === 'link' ? item.docId : undefined);
-
-  // an image from the doc's front matter acts as the page/category icon,
-  // resolved here because hooks may not run after the early returns below
-  const rawIcon = (item as { customProps?: { icon?: unknown } }).customProps?.icon;
-  const iconImage = typeof rawIcon === 'string' ? rawIcon : undefined;
-  const iconSrc = useBaseUrl(iconImage ?? '');
-
   // raw html sidebar items carry no label/description, filterDocCardListItems
   // already drops them at runtime, this narrows the type for the accesses below
   if (item.type === 'html')
@@ -67,7 +61,29 @@ function DocListItem({ item }: { item: PropSidebarItem })
   const description = item.description
     ?? (item.type === 'category'
       ? getCategoryChildrenSummary(item.items)
-      : doc?.description);
+      : docDescription);
+
+  return { href, emoji, label, description };
+}
+
+function DocListItem({ item }: { item: PropSidebarItem })
+{
+  const doc = useDocById(item.type === 'link' ? item.docId : undefined);
+
+  // an image from the doc's front matter acts as the page/category icon,
+  // resolved here because hooks may not run after the early return below
+  const rawIcon = (item as { customProps?: { icon?: unknown } }).customProps?.icon;
+  const iconImage = typeof rawIcon === 'string' ? rawIcon : undefined;
+  const iconSrc = useBaseUrl(iconImage ?? '');
+
+  const entry = getListEntry(item, doc?.description);
+
+  if (!entry)
+  {
+    return null;
+  }
+
+  const { href, emoji, label, description } = entry;
 
   return (
     <li className={styles.item}>
