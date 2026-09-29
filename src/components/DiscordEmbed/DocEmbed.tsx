@@ -39,7 +39,6 @@ export default function DocEmbed(): React.JSX.Element
             ['Basics', absolute('/Basics')],
             ['How to edit', absolute('/category/how-to-edit')],
             ['Editor Tools', absolute('/EngineTools')],
-            ['Entity List', absolute('/EntityList')],
             ['Community Guides', absolute('/CommunityGuides')],
           ),
           buttons(['Discord', DiscordInvite], ['GitHub', GitHubRepo]),
