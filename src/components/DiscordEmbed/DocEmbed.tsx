@@ -16,18 +16,13 @@ const GitHubRepo = 'https://github.com/Source2Wiki/Source2Wiki';
 export default function DocEmbed(): React.JSX.Element
 {
   const { metadata, frontMatter, assets } = useDoc();
-  const breadcrumbs = useSidebarBreadcrumbs();
   const { siteConfig } = useDocusaurusContext();
-  const { docs } = useDocsVersion();
+  const trail = useTrail();
 
   const absolute = (path: string) => new URL(path, siteConfig.url).href;
   const image = useBaseUrl(assets.image ?? frontMatter.image ?? '', { absolute: true });
-  // pages without an image of their own still get the wiki's, so the card reads as the wiki's
-  const thumbnail = isEmbeddableImage(image) ? image : absolute('/img/social-icon.png');
   const pageUrl = absolute(metadata.permalink);
   const entity = (frontMatter as { entity_embed?: EntityEmbed }).entity_embed;
-  // "Source2 Wiki › Editor Tools › Hammer", the site name leads so every card says whose it is
-  const trail = `-# ${[siteConfig.title, ...(breadcrumbs ?? []).slice(0, -1).map(item => item.label)].join(' › ')}`;
 
   if (metadata.permalink === '/')
   {
@@ -39,12 +34,15 @@ export default function DocEmbed(): React.JSX.Element
           ...section(['## Source2 Wiki', description], null),
           // the site wide social card, what the homepage embedded before this card existed
           gallery(absolute(siteConfig.themeConfig.image as string)),
+          // Discord allows 5 buttons a row, and drops the whole card over it
           buttons(
             ['Basics', absolute('/Basics')],
+            ['How to edit', absolute('/category/how-to-edit')],
+            ['Editor Tools', absolute('/EngineTools')],
             ['Entity List', absolute('/EntityList')],
-            ['Discord', DiscordInvite],
-            ['GitHub', GitHubRepo],
+            ['Community Guides', absolute('/CommunityGuides')],
           ),
+          buttons(['Discord', DiscordInvite], ['GitHub', GitHubRepo]),
         ]}
       />
     );
@@ -69,7 +67,7 @@ export default function DocEmbed(): React.JSX.Element
             `${trail}\n-# ${games.map(entry => Games[entry.game].PrettyName).join(' · ')}`,
             `## ${metadata.title}`,
             description,
-          ], largeIcon ? null : thumbnail),
+          ], largeIcon ? null : thumbnail(image, siteConfig.url)),
           ...(largeIcon ? [gallery(image)] : []),
           separator(),
           text(sameStats
@@ -81,34 +79,80 @@ export default function DocEmbed(): React.JSX.Element
     );
   }
 
+  return (
+    <PageEmbed
+      title={metadata.title}
+      description={metadata.description}
+      permalink={metadata.permalink}
+      image={image}
+      editUrl={metadata.editUrl}
+    />
+  );
+}
+
+interface PageEmbedProps {
+  title: string;
+  description: string;
+  permalink: string;
+  // absolute, or empty for none
+  image: string;
+  editUrl?: string | null;
+}
+
+// the card of any page that is neither the homepage nor an entity, also used by the category
+// pages docusaurus generates, see src/theme/DocCategoryGeneratedIndexPage
+export function PageEmbed({ title, description, permalink, image, editUrl }: PageEmbedProps): React.JSX.Element
+{
+  const breadcrumbs = useSidebarBreadcrumbs();
+  const { siteConfig } = useDocusaurusContext();
+  const { docs } = useDocsVersion();
+  const trail = useTrail();
+
+  const absolute = (path: string) => new URL(path, siteConfig.url).href;
+
   // a category's own page lists what is inside it under "In this section", so does its card
   const category = breadcrumbs?.at(-1);
-  const entries = category?.type === 'category' && category.href === metadata.permalink
+  const entries = category?.type === 'category' && category.href === permalink
     ? filterDocCardListItems(category.items)
       .map(item => getListEntry(item, item.type === 'link' && item.docId ? docs[item.docId]?.description : undefined))
       .filter((entry): entry is ListEntry => entry !== null)
     : [];
 
-  const links: [string, string][] = [['Read on Source2 Wiki', pageUrl]];
+  const links: [string, string][] = [['Read on Source2 Wiki', absolute(permalink)]];
 
-  if (metadata.editUrl?.startsWith('https://github.com/'))
+  if (editUrl?.startsWith('https://github.com/'))
   {
-    links.push(['Edit on GitHub', metadata.editUrl]);
+    links.push(['Edit on GitHub', editUrl]);
   }
 
   return (
     <DiscordEmbed
       color={WikiColor}
-      description={metadata.description}
+      description={description}
       // the list gives way first: its descriptions, then its items from the end
       levels={entries.length + 2}
       render={(description, level) => [
-        ...section([trail, `## ${metadata.title}`, description], thumbnail),
+        ...section([trail, `## ${title}`, description], thumbnail(image, siteConfig.url)),
         ...(entries.length > 0 ? [separator(), text(sectionList(entries, level, absolute))] : []),
         buttons(...links),
       ]}
     />
   );
+}
+
+// "Source2 Wiki › Editor Tools › Hammer", the site name leads so every card says whose it is
+function useTrail(): string
+{
+  const breadcrumbs = useSidebarBreadcrumbs();
+  const { siteConfig } = useDocusaurusContext();
+
+  return `-# ${[siteConfig.title, ...(breadcrumbs ?? []).slice(0, -1).map(item => item.label)].join(' › ')}`;
+}
+
+// pages without an image of their own still get the wiki's, so the card reads as the wiki's
+function thumbnail(image: string, siteUrl: string): string
+{
+  return isEmbeddableImage(image) ? image : new URL('/img/social-icon.png', siteUrl).href;
 }
 
 function sectionList(entries: ListEntry[], level: number, absolute: (path: string) => string): string
