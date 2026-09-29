@@ -1,16 +1,15 @@
 ---
-hide_table_of_contents: true
-description: A searchable list of every console variable and command in every Source2 game.
+description: Where to find every console variable and command in Source 2 games.
 ---
-import ConTable from '@site/src/components/ConTable';
-import GameTabs from '@site/src/components/GameTabs';
+import ConvarRedirect from '@site/src/components/Convar/Redirect';
+
+<ConvarRedirect/>
 
 # Console Variable/Command List
 
-<GameTabs
-    lazy
-    cs2 = {<ConTable game="cs2" />}
-    hla = {<ConTable game="hla" />}
-    dota2 = {<ConTable game="dota2" />}
-    steamvr = {<ConTable game="steamvr" />}
-/>
+The console variables and commands of each game are listed, searchable and kept up to date, in Source2Viewer's Schema Explorer:
+
+- [Counter-Strike 2](https://s2v.app/SchemaExplorer/cs2/convars)
+- [Dota 2](https://s2v.app/SchemaExplorer/dota2/convars)
+- [Deadlock](https://s2v.app/SchemaExplorer/deadlock/convars)
+- [Half-Life: Alyx](https://s2v.app/SchemaExplorer/hlvr/convars)

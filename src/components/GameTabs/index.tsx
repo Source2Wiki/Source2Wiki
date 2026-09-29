@@ -4,11 +4,9 @@ import TabItem from '@theme/TabItem';
 import './style.css';
 import { Games } from '@site/src/constants/software';
 
-// `lazy` only mounts the selected game's tab, for tabs holding content too heavy to render four
-// times over, like the console variable tables
-const GameTabs: React.FC<Record<string, React.ReactNode> & { lazy?: boolean }> = ({ lazy, ...props }) => {
+const GameTabs: React.FC<Record<string, React.ReactNode>> = (props) => {
   const gameContent: Record<string, React.ReactNode> = {};
-
+  
   Object.entries(props).forEach(([key, value]) => {
     if (Games[key] && value && (React.isValidElement(value) || typeof value === 'object')) {
       gameContent[key] = value;
@@ -25,7 +23,7 @@ const GameTabs: React.FC<Record<string, React.ReactNode> & { lazy?: boolean }> =
   }
 
   return (
-    <Tabs queryString="game" className="game-tabs" lazy={lazy}>
+    <Tabs queryString="game" className="game-tabs">
       {entries.map(([gameKey, content]) => {
         const gameInfo = Games[gameKey];
         if (!gameInfo || !content) return null;

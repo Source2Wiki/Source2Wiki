@@ -80,8 +80,7 @@ Instead of restating what another page covers, hand off to it: "What an addon co
 
 External links go through badges, `<Tool name="github" label="..." link="..."/>`, never a naked URL. Don't link third-party file hosts for downloads, those links rot.
 
-Console variables and commands link to their row in the [console variable list](../Convars/index.mdx) with `<Convar name="mp_roundtime"/>`, which defaults to <Game name="cs2"/>, pass `game="dota2"` or another game name for the others.
-`npm run check-convar-links` warns about links to names that are not in that game's dump, it also runs before every build.
+Console variables and commands link to their entry in the [Schema Explorer](https://s2v.app/SchemaExplorer/cs2/convars) with `<Convar name="mp_roundtime"/>`, which defaults to <Game name="cs2"/>, pass `game="dota2"` or `game="hla"` for the others.
 
 ## Images
 
