@@ -224,7 +224,7 @@ const config: Config = {
               <div class="footer-credits">
 
                   <div class="footer-credits-left">
-                    <span>Created and maintained by <a href="https://angelcazacu.com">Angel</a>, <a href="https://github.com/DoctorGurke">DoctorGurke</a> and <a href="https://github.com/Source2Wiki/Source2Wiki/graphs/contributors?all=1">various contributors</a>.</span>
+                    <span>Created and maintained by <a href="https://angelcazacu.com">Angel</a>, <a href="https://github.com/DoctorGurke">DoctorGurke</a> and <a href="https://github.com/Source2Wiki/Source2Wiki/graphs/contributors?all=1">various contributors</a>.<br/>Content is available under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> unless otherwise noted, code under <a href="https://github.com/Source2Wiki/Source2Wiki/blob/master/LICENSE">MIT</a>.</span>
                   </div>
 
                   <div class="footer-credits-right">

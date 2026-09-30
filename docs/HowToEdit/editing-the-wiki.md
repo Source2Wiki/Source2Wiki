@@ -8,6 +8,8 @@ Every page on this wiki is a markdown file in the <Tool name="github" label="Sou
 
 A proposed change is called a pull request. A maintainer looks it over, merges it, and the site rebuilds itself, your edit is live a few minutes later.
 
+By contributing you agree to release your content under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) and your code under the [MIT License](https://github.com/Source2Wiki/Source2Wiki/blob/master/LICENSE). Material owned by Valve or other third parties stays with its owners and isn't covered by these licenses; only add it if you're allowed to.
+
 ## Editing an existing page
 
 1. Scroll to the bottom of the page and click **Edit this page**. It opens the page's source file on GitHub.
