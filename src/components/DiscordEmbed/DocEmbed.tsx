@@ -121,7 +121,8 @@ export function PageEmbed({ title, description, permalink, image, editUrl }: Pag
 
   if (editUrl?.startsWith('https://github.com/'))
   {
-    links.push(['Edit on GitHub', editUrl]);
+    // docusaurus leaves spaces in the path raw, and Discord drops the whole card over an invalid button url
+    links.push(['Edit on GitHub', new URL(editUrl).href]);
   }
 
   return (
