@@ -5,7 +5,7 @@
  *
  * To pick up API changes, copy the file over from CS2 first, it lives at
  *
- *   <steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo\maps\editor\zoo\scripts\point_script.d.ts
+ *   <steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo_addons\cs_script_demo\maps\scripts\point_script.d.ts
  *
  * The tables are written as a partial that the API documentation page imports, so nothing has to
  * be pasted anywhere and the page itself stays hand written. Docusaurus ignores files starting
@@ -20,7 +20,7 @@ import { parseApi, renderApi } from "./cs-script/api-docs";
 
 const DumpFolder = "dump/cs_script";
 const ScriptTypes = "point_script.d.ts";
-const GamePath = String.raw`<steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo\maps\editor\zoo\scripts`;
+const GamePath = String.raw`<steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo_addons\cs_script_demo\maps\scripts`;
 const Partial = ["docs", "Scripting", "Counter-Strike 2", "cs_script", "_apiTables.mdx"];
 
 const { values } = parseArgs({

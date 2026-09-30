@@ -38,7 +38,7 @@ This updates itself: [GameTracking](https://github.com/SteamTracking/GameTrackin
 an `app-update` event when CS2 changes, and `on-game-update.yml` fetches the new file, regenerates
 and commits if anything differs. To update by hand, copy the newer `point_script.d.ts` into
 `dump/cs_script` from
-`<steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo\maps\editor\zoo\scripts`
+`<steam>\steamapps\common\Counter-Strike Global Offensive\content\csgo_addons\cs_script_demo\maps\scripts`
 and run the command above.
 
 ## License

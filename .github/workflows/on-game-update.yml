@@ -30,7 +30,7 @@ jobs:
 
   # Decides which game this run is about, so the jobs below can each ask "is it mine".
   #
-  # As an extra safery net it also checks who sent the event so only SteamTracking repo can trigger this, just in case.
+  # As an extra safety net it also checks who sent the event so only SteamTracking repo can trigger this, just in case.
   which-game:
     runs-on: ubuntu-latest
     outputs:
@@ -76,6 +76,10 @@ jobs:
     # for CS2, or for every game when nothing named one (schedule, blank manual run)
     if: ${{ needs.which-game.outputs.ours == 'true' && (needs.which-game.outputs.repo == '' || needs.which-game.outputs.repo == 'GameTracking-CS2') }}
     runs-on: ubuntu-latest
+    env:
+      # where GameTracking-CS2 mirrors the file, used both to fetch it and to find the commit that
+      # changed it. The old content/csgo/maps/editor/zoo/scripts copy is now only a "moved" stub
+      SCRIPT_TYPES_PATH: content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts
     steps:
       - uses: actions/checkout@v4
         with:
@@ -87,7 +91,7 @@ jobs:
       - name: Fetch the current point_script.d.ts from GameTracking-CS2
         run: |
           curl --fail --silent --location \
-            https://raw.githubusercontent.com/SteamTracking/GameTracking-CS2/master/content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts \
+            "https://raw.githubusercontent.com/SteamTracking/GameTracking-CS2/master/$SCRIPT_TYPES_PATH" \
             -o dump/cs_script/point_script.d.ts
 
       - name: Did the file itself change
@@ -127,7 +131,7 @@ jobs:
           # the GameTracking commit that carried this version, so the history says which game
           # update it was. The dispatch does not include it, so ask, best effort either way
           upstream=$(curl --fail --silent \
-            "https://api.github.com/repos/SteamTracking/GameTracking-CS2/commits?path=content/csgo/maps/editor/zoo/scripts/point_script.d.ts&per_page=1" \
+            "https://api.github.com/repos/SteamTracking/GameTracking-CS2/commits?path=$SCRIPT_TYPES_PATH&per_page=1" \
             | grep -m1 -oE '"sha": *"[0-9a-f]+"' | grep -oE '[0-9a-f]{40}' || true)
 
           # Committed as the wiki maintainer rather than github-actions[bot], to match the token the
