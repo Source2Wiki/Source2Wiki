@@ -4,13 +4,14 @@ export interface SoftwareInfo
     IconPath?: string,
     Color?: string,
     Link?: string,
-    HasSchemaExplorer?: boolean
+    // the game's name in Source2Viewer's Schema Explorer (s2v.app/SchemaExplorer/<name>), when it has one
+    SchemaExplorerGame?: string
 }
 
 export const Games: Record<string, SoftwareInfo> = {
-  "cs2": {PrettyName: "Counter-Strike 2", IconPath: "/img/cs2_icon.png", Color: "#ff981aff", Link: "https://www.counter-strike.net/cs2", HasSchemaExplorer: true},
-  "hla": {PrettyName: "Half-Life: Alyx", IconPath: "/img/hla_icon.png", Color: "#0fb4a3ff", Link: "https://www.half-life.com/en/alyx"},
-  "dota2": {PrettyName: "Dota 2", IconPath: "/img/dota2_icon.png", Color: "#941818ff", Link: "https://www.dota2.com/", HasSchemaExplorer: true},
+  "cs2": {PrettyName: "Counter-Strike 2", IconPath: "/img/cs2_icon.png", Color: "#ff981aff", Link: "https://www.counter-strike.net/cs2", SchemaExplorerGame: "cs2"},
+  "hla": {PrettyName: "Half-Life: Alyx", IconPath: "/img/hla_icon.png", Color: "#0fb4a3ff", Link: "https://www.half-life.com/en/alyx", SchemaExplorerGame: "hlvr"},
+  "dota2": {PrettyName: "Dota 2", IconPath: "/img/dota2_icon.png", Color: "#941818ff", Link: "https://www.dota2.com/", SchemaExplorerGame: "dota2"},
   "steamvr": {PrettyName: "Steam VR", IconPath: "/img/steamvr_icon.png", Color: "#5735a6ff", Link: "https://store.steampowered.com/app/250820/SteamVR/"},
   "any": {PrettyName: "Any game"}
 };
