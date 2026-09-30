@@ -25,7 +25,7 @@
     "@docusaurus/core": "^3.10.2",
     "@docusaurus/faster": "^3.10.2",
     "@docusaurus/preset-classic": "^3.10.2",
-    "@easyops-cn/docusaurus-search-local": "^0.51.1",
+    "@easyops-cn/docusaurus-search-local": "^0.52.3",
     "@fontsource/cascadia-mono": "^5.3.0",
     "@fontsource/manrope": "^5.3.0",
     "@mdx-js/react": "^3.0.0",
