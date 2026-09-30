@@ -11,7 +11,7 @@ if %errorlevel% equ 0 (
     echo Node.js is already installed.
     for /f "tokens=*" %%i in ('node --version') do set NODE_VERSION=%%i
     echo Current version: !NODE_VERSION!
-    goto :start
+    goto :check_version
 )
 
 echo Node.js not found on this system.
@@ -87,7 +87,20 @@ if %errorlevel% neq 0 (
 
 echo Node.js is now available!
 for /f "tokens=*" %%i in ('node --version') do set NODE_VERSION=%%i
-echo Version: !NODE_VERSION!'
+echo Version: !NODE_VERSION!
+
+:check_version
+:: docusaurus needs node 20 or newer, keep in sync with "engines" in package.json
+for /f "tokens=1 delims=v." %%m in ("!NODE_VERSION!") do set NODE_MAJOR=%%m
+if !NODE_MAJOR! lss 20 (
+    echo.
+    echo Node.js !NODE_VERSION! is too old, this project needs version 20 or newer.
+    echo Please update it, either with 'winget upgrade OpenJS.NodeJS'
+    echo or by installing the latest LTS from: https://nodejs.org/
+    echo Then run this script again.
+    pause
+    exit /b 1
+)
 
 :start
 :: start the development server
