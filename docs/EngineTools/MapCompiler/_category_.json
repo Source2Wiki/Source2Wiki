@@ -1,4 +1,5 @@
 {
   "label": "Map Compiler",
-  "position": 14
+  "position": 14,
+  "className": "todo_item"
 }

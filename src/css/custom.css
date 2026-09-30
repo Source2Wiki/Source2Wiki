@@ -186,7 +186,9 @@ html[data-theme='dark'] .alert--todo {
   --ifm-alert-border-color: #3fd13d;
 }
 
-.todo_item a::before {
+/* only the item's own link, a stub category must not mark the pages inside it */
+.todo_item > .menu__link::before,
+.todo_item > .menu__list-item-collapsible > .menu__link::before {
   color: var(--ifm-color-emphasis-300);
   padding-right: 0.5rem;
   content: '[TODO]';

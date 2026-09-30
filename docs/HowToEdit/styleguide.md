@@ -102,6 +102,8 @@ A guide opens by stating what it achieves, which games it applies to using badge
 
 A stub or known gap carries a `:::todo` stating in a full sentence what is missing, and where to read in the meantime if anywhere. Never publish a page that is only a heading.
 
+A page that is mostly still to be written also gets `sidebar_class_name: todo_item` in its frontmatter, which marks it with `[TODO]` in the sidebar. For a folder whose only page is its `index`, put `"className": "todo_item"` in its `_category_.json` instead. Remove the marker once the page is written.
+
 ## Generated pages
 
 Everything under `docs/Entities` is generated, editing those files by hand gets overwritten. Changes go through override files instead, see [Entity page info](./entity-page-info.mdx).

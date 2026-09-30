@@ -1,4 +1,5 @@
 ---
+sidebar_class_name: todo_item
 title: Getting Started
 description: Getting started with the Hammer Editor.
 ---

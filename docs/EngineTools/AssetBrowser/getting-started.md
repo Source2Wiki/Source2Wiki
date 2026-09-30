@@ -1,4 +1,5 @@
 ---
+sidebar_class_name: todo_item
 title: Asset Browser
 description: Browse, preview, and manage Source 2 assets.
 ---
