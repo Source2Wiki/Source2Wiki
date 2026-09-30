@@ -11,7 +11,7 @@ const defaultProps = {
     title: "BUG",
 };
 
-export default function AdmonitionTypeLegacy(props: Props) {
+export default function AdmonitionTypeBug(props: Props) {
     return (
         <AdmonitionLayout
             {...defaultProps}

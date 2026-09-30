@@ -11,7 +11,7 @@ const defaultProps = {
     title: "Non FGD",
 };
 
-export default function AdmonitionTypeLegacy(props: Props) {
+export default function AdmonitionTypeNonFGD(props: Props) {
     return (
         <AdmonitionLayout
             {...defaultProps}
