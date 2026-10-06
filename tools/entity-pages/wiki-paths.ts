@@ -14,7 +14,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 export const DocsFolder = "docs/Entities";
-export const PagesFolder = "src/pages/Entities";
+export const PagesFolder = "src/entityTabs";
 export const DumpFolder = "dump/fgd";
 export const OverridesFolder = "dump/fgd_overrides";
 /** Entity icons and the entity index live under static, served from the site root as /fgd_dump. */

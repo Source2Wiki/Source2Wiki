@@ -2,7 +2,7 @@
  * Building the wiki's entity pages out of \dump\fgd.
  *
  * Every entity gets one document under \docs\Entities holding the tab strip, and one page per
- * game under \src\pages\Entities holding the page info.
+ * game under \src\entityTabs holding the page info.
  */
 
 import fs from "node:fs";

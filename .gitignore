@@ -9,12 +9,12 @@
 .cache-loader
 
 # Entity Page generator territory
-src/pages/Entities/*
+src/entityTabs/*
 docs/Entities/*
 !docs/Entities/_category_.json
 
 # README to explain
-!src/pages/Entities/Readme.txt
+!src/entityTabs/README.txt
 !docs/Entities/Readme.txt
 
 # Misc

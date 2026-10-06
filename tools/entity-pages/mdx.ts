@@ -109,7 +109,7 @@ export function documentMdx(document: EntityDocument, lastUpdate: LastUpdate | n
   for (const page of document.Pages) {
     // i shouldnt have to wonder why this needs toUpperCase() to render the page in the tab, yet here we are!
     const gameName = page.Game!;
-    tabImports += `import ${gameName.toUpperCase()}Page from '@site/src/pages/Entities/${getPageRelativePath(page)}';\n`;
+    tabImports += `import ${gameName.toUpperCase()}Page from '@site/src/entityTabs/${getPageRelativePath(page)}';\n`;
 
     tabs += `    ${gameName} = {<${gameName.toUpperCase()}Page/>}\n`;
 

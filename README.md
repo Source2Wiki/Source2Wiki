@@ -14,7 +14,7 @@ On windows you can double click `run.bat` instead, which installs node for you i
 
 ## Entity pages
 
-Everything under `docs/Entities` and `src/pages/Entities` is generated, don't edit those files by
+Everything under `docs/Entities` and `src/entityTabs` is generated, don't edit those files by
 hand. `npm start` and `npm run build` generate them from the JSON in `dump/fgd`, and `npm start`
 keeps regenerating as you edit, so to change what an entity page says you add an override file to
 `dump/fgd_overrides` and save.
