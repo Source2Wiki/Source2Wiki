@@ -1,0 +1,10 @@
+# Response headers for Cloudflare, see https://developers.cloudflare.com/workers/static-assets/headers/
+
+# docusaurus puts a content hash in every file name under /assets, a changed file gets a new
+# name, so these can be cached forever
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# the content license travels with every response, including to scrapers that skip the footer
+/*
+  Link: <https://creativecommons.org/licenses/by-sa/4.0/>; rel="license"

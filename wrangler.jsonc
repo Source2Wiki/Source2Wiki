@@ -1,0 +1,25 @@
+// Cloudflare Workers config for hosting the built site, deployed by `npm run deploy`.
+//
+// There is no worker script, only static assets, so every request is served straight from
+// Cloudflare's asset storage and never counts as a Worker invocation.
+{
+  "name": "source2wiki",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./build",
+    // docusaurus is set to trailingSlash: false and emits Foo.html next to a Foo/ folder,
+    // this serves /Foo from Foo.html and redirects /Foo/ to /Foo
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "404-page"
+  },
+  // Deploying creates the DNS records and certificates for these. www is the real address, the
+  // bare domain is attached only so it has a certificate, a redirect rule on the zone sends it
+  // to www before it reaches here
+  "routes": [
+    { "pattern": "source2.wiki", "custom_domain": true },
+    { "pattern": "www.source2.wiki", "custom_domain": true }
+  ],
+  // no second copy of the site on workers.dev
+  "workers_dev": false,
+  "preview_urls": false
+}

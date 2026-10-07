@@ -20,14 +20,9 @@ const config: Config = {
   // Set the production url of your site here
   url: 'https://www.source2.wiki',
   // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Source2Wiki', // Usually your GitHub org/user name.
-  projectName: 'source2wiki.github.io', // Usually your repo name.
-  deploymentBranch: 'main',
+  // hosted on Cloudflare Workers, see wrangler.jsonc
   trailingSlash: false,
 
   onBrokenLinks: 'throw',

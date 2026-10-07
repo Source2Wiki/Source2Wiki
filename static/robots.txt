@@ -1,4 +1,7 @@
+# Everything here is free to crawl, index, quote and train on, under CC BY-SA 4.0.
+# Please credit and link back to the page you used, https://creativecommons.org/licenses/by-sa/4.0/
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
 Allow: /
 
 Sitemap: https://www.source2.wiki/sitemap.xml
