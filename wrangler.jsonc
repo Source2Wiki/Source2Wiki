@@ -25,5 +25,8 @@
   ],
   // nothing on workers.dev, neither the site nor previews
   "workers_dev": false,
-  "preview_urls": false
+  "preview_urls": false,
+  // `wrangler preview` refuses to run without this block, even empty. Previews have no settings of
+  // their own, they use the assets and compatibility settings above
+  "previews": {}
 }
