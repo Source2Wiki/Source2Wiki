@@ -25,6 +25,9 @@ const config: Config = {
   // hosted on Cloudflare Workers, see wrangler.jsonc
   trailingSlash: false,
 
+  // pull request previews must stay out of search results, see .github/workflows/preview-build.yml
+  noIndex: process.env.PREVIEW_BUILD === 'true',
+
   onBrokenLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set

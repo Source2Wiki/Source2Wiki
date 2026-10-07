@@ -1,0 +1,44 @@
+# Deletes a pull request's preview from Cloudflare once the pull request is merged or closed.
+#
+# pull_request_target runs master's copy of this workflow with access to secrets, even for pull
+# requests from forks, so it must never check out or run anything from the pull request. It only
+# needs master's wrangler.jsonc and preview-name.sh.
+name: Preview cleanup
+
+on:
+  pull_request_target:
+    types: [closed]
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      # pull_request_target checks out master here, not the pull request
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Delete the preview
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          name=$(bash .github/scripts/preview-name.sh "$PR_NUMBER" "$BRANCH")
+
+          # nothing is built here, but wrangler.jsonc points at ./build and wrangler expects it to exist
+          mkdir -p build
+
+          # a pull request whose build never passed has no preview, that is fine
+          if ! npx --yes wrangler@4.148.0 preview delete --name "$name" --skip-confirmation; then
+            echo "::notice::no preview named $name was deleted, it may never have been published"
+          fi

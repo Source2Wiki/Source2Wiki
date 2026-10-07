@@ -1,0 +1,117 @@
+# Publishes the site preview-build.yml built for a pull request to
+# https://<number>-<branch>.preview.source2.wiki and links it on the pull request.
+# preview-cleanup.yml deletes it again once the pull request closes.
+#
+# This runs from master's copy of the workflows with the Cloudflare token, so it must never run
+# code from the pull request. It only checks out master, for wrangler.jsonc, and uploads the
+# already built files.
+#
+# workflow_run workflows only ever run from the default branch, so changes to this file do
+# nothing until they are merged.
+name: Preview deploy
+
+on:
+  workflow_run:
+    workflows: [Preview build]
+    types: [completed]
+
+permissions:
+  contents: read
+  actions: read
+  pull-requests: write
+
+concurrency:
+  group: preview-deploy-${{ github.event.workflow_run.head_repository.full_name }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    if: github.event.workflow_run.event == 'pull_request' && github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: preview
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+
+      # the number came out of the pull request's own build, so it is only trusted once github
+      # confirms that pull request really is at the commit that was built
+      - name: Check which pull request this is
+        id: pr
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          BRANCH: ${{ github.event.workflow_run.head_branch }}
+        run: |
+          number=$(head -c 16 build-pr-number | tr -d '[:space:]')
+          if ! [[ "$number" =~ ^[0-9]+$ ]]; then
+            echo "::error::build-pr-number does not hold a pull request number"
+            exit 1
+          fi
+
+          current=$(gh api "repos/$REPO/pulls/$number" --jq .head.sha)
+          if [ "$current" != "$HEAD_SHA" ]; then
+            echo "pull request #$number is now at $current, not the built $HEAD_SHA, the newer build will publish instead"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "name=$(bash .github/scripts/preview-name.sh "$number" "$BRANCH")" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/setup-node@v4
+        if: steps.pr.outputs.skip != 'true'
+        with:
+          node-version: 22
+
+      # a Preview is separate from the live deployment, the live site keeps serving whatever master
+      # last deployed. Keep the wrangler version in step with the deploy script in package.json
+      - name: Publish the preview
+        id: upload
+        if: steps.pr.outputs.skip != 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          NAME: ${{ steps.pr.outputs.name }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          # wrangler reads the commit and pull request it labels the preview with from these, which
+          # here would otherwise describe master rather than the pull request
+          GITHUB_SHA="$HEAD_SHA" GITHUB_REF="refs/pull/$PR_NUMBER/merge" \
+            npx --yes wrangler@4.148.0 preview \
+              --name "$NAME" \
+              --message "Preview of #$PR_NUMBER at ${HEAD_SHA:0:7}" \
+              --json > wrangler-output.txt
+
+          # prefers the stable url, which keeps pointing at the newest deployment of this preview
+          url=$(sed -n '/^{/,$p' wrangler-output.txt \
+            | jq -r '[.preview.urls[]?, .deployment.urls[]?] | map(select(test("\\.preview\\.source2\\.wiki/?$"))) | first // empty')
+          if [ -z "$url" ]; then
+            cat wrangler-output.txt
+            echo "::error::wrangler did not return a preview.source2.wiki url"
+            exit 1
+          fi
+          echo "url=$url" >> "$GITHUB_OUTPUT"
+
+      - name: Link the preview on the pull request
+        if: steps.pr.outputs.skip != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.pr.outputs.number }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+          URL: ${{ steps.upload.outputs.url }}
+        run: |
+          body="**Preview:** $URL
+
+          Built from $HEAD_SHA, updates on every push."
+
+          # edits the bot's earlier comment rather than adding one per push
+          gh pr comment "$PR_NUMBER" --repo "$REPO" --body "$body" --edit-last --create-if-none

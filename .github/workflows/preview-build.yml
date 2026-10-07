@@ -1,0 +1,63 @@
+# Checks and builds every pull request, and hands the build to preview-deploy.yml.
+#
+# Pull requests from forks run code nobody has reviewed yet, so this half gets no secrets and a
+# read-only token. Publishing the preview needs the Cloudflare token, and that happens in
+# preview-deploy.yml, which never runs any code from the pull request, it only uploads the files.
+name: Preview build
+
+on:
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-build-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  # keeps the old job name so any required status check pointing at it keeps working
+  test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # full history, the last updated dates on pages come from git
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Test
+        run: npm test
+
+      - name: Build website
+        env:
+          PREVIEW_BUILD: 'true'
+        run: npm run build
+
+      # preview-deploy.yml can not read the pull request number from its own event for pull
+      # requests from forks, so it travels with the build. It checks it against the commit before
+      # trusting it, as anything in this artifact is written by pull request code
+      - name: Record the pull request number
+        env:
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: echo "$PR_NUMBER" > build-pr-number
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: preview
+          path: |
+            build
+            build-pr-number
+          retention-days: 3
+          if-no-files-found: error

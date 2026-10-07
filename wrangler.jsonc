@@ -17,9 +17,13 @@
   // to www before it reaches here
   "routes": [
     { "pattern": "source2.wiki", "custom_domain": true },
-    { "pattern": "www.source2.wiki", "custom_domain": true }
+    { "pattern": "www.source2.wiki", "custom_domain": true },
+    // never serves the live site, only pull request previews from preview-deploy.yml, each at
+    // <number>-<branch>.preview.source2.wiki. Cloudflare adds the wildcard dns record and
+    // certificate for it, the first preview can take a few minutes while that certificate issues
+    { "pattern": "preview.source2.wiki", "custom_domain": true, "enabled": false, "previews_enabled": true }
   ],
-  // no second copy of the site on workers.dev
+  // nothing on workers.dev, neither the site nor previews
   "workers_dev": false,
   "preview_urls": false
 }

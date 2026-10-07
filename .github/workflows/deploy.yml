@@ -1,8 +1,7 @@
 name: Deploy to Cloudflare
 
+# pull requests are checked and previewed by preview-build.yml and preview-deploy.yml
 on:
-  pull_request:
-    branches: [master]
   push:
     branches: [master]
 
@@ -10,37 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  test-deploy:
-    if: github.event_name != 'push'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-
-      - name: Update GitHub SSH Host Key
-        run: |
-          mkdir -p ~/.ssh
-          ssh-keygen -R github.com 2>/dev/null || true
-          curl -L https://api.github.com/meta | jq -r '.ssh_keys | .[]' | sed -e 's/^/github.com /' >> ~/.ssh/known_hosts
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Typecheck
-        run: npm run typecheck
-
-      - name: Test
-        run: npm test
-
-      - name: Test build website
-        run: npm run build
   deploy:
-    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     concurrency:
       group: deploy
