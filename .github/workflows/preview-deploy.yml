@@ -84,11 +84,18 @@ jobs:
         run: |
           # wrangler reads the commit and pull request it labels the preview with from these, which
           # here would otherwise describe master rather than the pull request
+          # with --json wrangler writes its errors into the same output, so it is shown before failing
+          status=0
           GITHUB_SHA="$HEAD_SHA" GITHUB_REF="refs/pull/$PR_NUMBER/merge" \
             npx --yes wrangler@4.148.0 preview \
               --name "$NAME" \
               --message "Preview of #$PR_NUMBER at ${HEAD_SHA:0:7}" \
-              --json > wrangler-output.txt
+              --json > wrangler-output.txt || status=$?
+          if [ "$status" -ne 0 ]; then
+            cat wrangler-output.txt
+            echo "::error::wrangler preview failed with exit code $status"
+            exit "$status"
+          fi
 
           # prefers the stable url, which keeps pointing at the newest deployment of this preview
           url=$(sed -n '/^{/,$p' wrangler-output.txt \
