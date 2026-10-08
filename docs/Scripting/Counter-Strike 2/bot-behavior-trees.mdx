@@ -1,0 +1,383 @@
+---
+title: Bot behavior trees
+description: The KV3 behavior tree system that drives bot AI in some game modes, its file format and every node type.
+---
+
+A **bot behavior tree** is a KV3 file that describes what a <Game name="cs2"/> bot does, as a tree of small nodes the bot evaluates every tick, instead of the hardcoded classic bot AI. Deathmatch, Arms Race, Rush and the new player training use them, and any server or map can point bots at its own tree.
+
+:::info
+This page covers how a tree is chosen, the file format, how the nodes run and every node type the game accepts. Navigation meshes, which bots need to move at all, 
+and the classic bot AI are not covered here. How the Rush tree extends the default one is on the [Rush game mode](./rush.mdx#bots) page.
+:::
+
+## Choosing a tree
+
+The game picks a tree when a bot spawns. When <Convar name="mp_bot_ai_bt"/> is not empty, every bot uses that file, otherwise bots run the classic bot AI.
+
+The official modes set the cvar in their game mode configs:
+
+| Config | <Convar name="mp_bot_ai_bt"/> |
+| --- | --- |
+| `gamemode_deathmatch.cfg`, `gamemode_dm_freeforall.cfg` | `scripts/ai/deathmatch/bt_default.kv3` |
+| `gamemode_armsrace.cfg` | `scripts/ai/armsrace/bt_default.kv3` |
+| `gamemode_rush.cfg` | `scripts/ai/rush/bt_default.kv3` |
+| `gamemode_new_user_training.cfg` | `scripts/ai/practice/newplayer_dust2_01.kv3` |
+
+All of these trees, and the modules they share under `scripts/ai/modules/`, ship as plain text inside `game/csgo/pak01_dir.vpk`. <Tool name="s2v"/> can extract them, and they are the best examples of complete trees.
+
+Loaded files are cached. After editing a tree, <Convar name="mp_bot_ai_bt_clear_cache"/> clears the cache, and bots pick up the new version the next time they spawn.
+
+## Using a custom tree
+
+1. Create the tree as a `.kv3` file under `scripts/ai/`, for example `scripts/ai/mymode/bt_default.kv3`.
+2. Set <Convar name="mp_bot_ai_bt"/> to its path, in a config or from a [cs_script](./cs_script/1-introduction.mdx) with `Instance.ServerCommand`.
+3. Run <Convar name="mp_bot_ai_bt_clear_cache"/> and restart the round so the bots respawn.
+4. With <Convar name="developer"/> set to `1`, every bot prints `[AI BT]: Loaded behavior tree '<file>'` when it spawns. Problems with the file print `[AI BT]` warnings regardless of `developer`.
+
+Tree files load through the game's `GAME` search path, the same one other game files use, so a workshop addon can ship its trees in its own `scripts/ai/` folder.
+
+## Enum values
+
+| Key | Values |
+| --- | --- |
+| `entity_type_filter` | `ALL`, `PLAYERS`, `HUMAN_PLAYERS`, `NOISE`, `DAMAGE`, `AREA_DAMAGE`, `CLASSNAME`, `GRENADE` |
+| `team_filter`, `attacker_filter` | `ANY`, `CT`, `TERRORIST`, `SAME`, `OPPOSITE`, `ENEMY` |
+| `team` | `ANY`, `CT`, `TERRORIST`, `OPPOSITE` |
+| `team_restriction` | `ANY`, `CT`, `T` |
+| `shape` type | `sensor_shape_fov`, `sensor_shape_sphere` (with `radius`) |
+| `movement_type` | `BT_ACTION_MOVETO_WALK`, `BT_ACTION_MOVETO_RUN` |
+| `route_type` | `BT_ACTION_MOVETO_FASTEST_ROUTE`, `BT_ACTION_MOVETO_SAFEST_ROUTE` |
+| `slot` | `RIFLE`, `PISTOL`, `KNIFE`, `GRENADES`, `C4` |
+| `types` | `FLASH`, `FIRE`, `EXPLOSIVE`, `DECOY`, `SMOKE` |
+| `operation_type` | `BT_DECORATOR_TAG_ENTITY_SET`, `BT_DECORATOR_TAG_ENTITY_CLEAR` |
+| `check_type` | `BT_DECORATOR_TAG_THRESHOLD_AT_LEAST`, `BT_DECORATOR_TAG_THRESHOLD_AT_MOST` |
+| `weapon` | `BEST`, or a weapon classname such as `weapon_knife` |
+
+## Node reference
+
+The keys listed are all the keys each node reads.
+
+There are 36 nodes which exist but are never used in official trees, so their exact behavior is unconfirmed.
+
+A few keys in the official trees are not read by the game at all and do nothing: `acquire_only` on `action_aim`, `ratio` on `action_pull_trigger` and `distance_threshold` on `decorator_picker_blocked_by_smoke`.
+
+Key types:
+
+| Type | Meaning |
+| --- | --- |
+| `bool` | `0` or `1`. |
+| `int`, `float` | A literal number. |
+| `number` | A literal number, a cvar or a blackboard key, see [Numbers](#numbers). |
+| `position` | See [Positions and entity names](#positions-and-entity-names). |
+| `string` | A blackboard key name or a literal string, see [Strings](#strings). |
+| `enum` | One of the names listed under [Enum values](#enum-values). |
+| `node`, `node[]` | A child node, or an array of them. |
+| `[]` | Marks an array of the type before it. |
+
+### Composites
+
+| Node | Keys | In official trees |
+| --- | --- | --- |
+| `parallel` | `succeed_after_first`(bool), `children`(node[]) | Yes |
+| `selector` | `children`(node[]) | Yes |
+| `sequencer` | `children`(node[]) | Yes |
+
+### Subtree
+
+| Node | Keys | In official trees |
+| --- | --- | --- |
+| `subtree` | `file`(string), `name`(string), `params`(\{ `key`(string), `value`(int or string) \}[]) | Yes |
+
+### Decorators
+
+| Node | Keys | In official trees |
+| --- | --- | --- |
+| `decorator_bot_service` | `memory_to_expire`(\{ `key`(string), `time`(float), `distance`(float), `domain`(string) \}[]), `tagged_entities_to_expire`(string[]), `input_chatter_enemies`(string), `basic_chatter_enable`(bool), `chatter_outnumbered_threshold`(int), `child`(node) | Yes |
+| `decorator_buy_service` | `output`(string), `child`(node) | Yes |
+| `decorator_dec_global_counter` | `input_name`(string), `child`(node) | No |
+| `decorator_find_utility_strat` | `distance_threshold`(float), `input_location`(position), `output_location`(string), `output_angles`(string), `output_weapon`(string), `utilities`(\{ `x`(float), `y`(float), `z`(float), `ang_pitch`(float), `ang_yaw`(float), `ang_roll`(float), `weapon`(string) \}[]), `child`(node) | No |
+| `decorator_hiding_spot_service` | `domain`(string), `output_hiding_spot`(string), `expiration_time`(float), `distance_threshold`(float), `child`(node) | Yes |
+| `decorator_invert` | `child`(node) | No |
+| `decorator_maybe` | `chance`(float), `child`(node) | Yes |
+| `decorator_memory` | `input`(string), `output_domain`(string), `output`(string), `child`(node) | Yes |
+| `decorator_need_healing` | `health_threshold`(int), `child`(node) | Yes |
+| `decorator_picker_blocked_by_smoke` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_dedup` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `against`(string), `distance_threshold`(float), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_grenade_type` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `types`(enum[]), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_max_score` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_nearby` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `cutoff_distance`(float), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_random_by_distance` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `distance_min`(float), `distance_max`(float), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_reaction_time` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_visible` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `check_fov`(bool), `negated`(bool), `child`(node) | Yes |
+| `decorator_picker_weight_as_distance` | `input`(string), `input_domain`(string), `output`(string), `output_domain`(string), `negated`(bool), `child`(node) | Yes |
+| `decorator_random_approach_point` | `output`(string), `child`(node) | Yes |
+| `decorator_random_int` | `min`(int), `max`(int), `output`(string), `child`(node) | Yes |
+| `decorator_ranker_dist` | `input`(string), `child`(node) | Yes |
+| `decorator_remove` | `input_domain`(string), `input`(string), `remove`(string), `child`(node) | Yes |
+| `decorator_remove_key` | `input`(string), `child`(node) | Yes |
+| `decorator_repeat` | `amount`(int), `child`(node) | Yes |
+| `decorator_route_service` | `config`(\{ `routes`(waypoint[][]), `strategies`(int[][]) \}), `output_waypoint`(string), `output_waypoint_name`(string), `output_domain`(string), `child`(node) | No |
+| `decorator_run_once` | `domain`(string), `max_attempts`(int), `child`(node) | Yes |
+| `decorator_sensor` | `output`(string), `class_name`(string), `priority`(int), `orphan_only`(bool), `append_items`(bool), `entity_type_filter`(enum), `team_filter`(enum), `attacker_filter`(enum), `shape`(\{ `type`(enum), `radius`(float) \}), `child`(node) | Yes |
+| `decorator_set_barrier` | `input_domain`(string), `input_name`(string), `input_location`(string), `child`(node) | No |
+| `decorator_set_reaction_time` | `input`(string), `child`(node) | Yes |
+| `decorator_succeed` | `negated`(bool), `child`(node) | Yes |
+| `decorator_tag_entity` | `input`(string), `output`(string), `expiration_time`(float), `operation_type`(enum), `child`(node) | Yes |
+| `decorator_tag_threshold` | `entity_input`(string), `tagged_entities_input`(string), `amount`(int), `check_type`(enum), `child`(node) | Yes |
+| `decorator_token_service` | `config`(\{ `tokens`(string[]), `assignments`(int[][]), `team_restriction`(enum[]) \}), `output_token_name`(string), `output_token_domain`(string), `domain`(string), `child`(node) | Yes |
+| `decorator_try_lock` | `domain`(string), `child`(node) | Yes |
+| `decorator_wait_success` | `timeout`(float), `child`(node) | No |
+
+### Conditions
+
+| Node | Keys | In official trees |
+| --- | --- | --- |
+| `condition_barrier` | `input_domain`(string), `input_name`(string), `radius`(float), `negated`(bool), `child`(node) | No |
+| `condition_distance_less` | `input`(string), `distance_threshold_min`(float), `distance_threshold_max`(float), `negated`(bool), `child`(node) | No |
+| `condition_has_parachute` | `negated`(bool), `child`(node) | No |
+| `condition_inactive` | `input`(\{ `domain`(string), `key`(string) \}[]), `round_start_threshold_seconds`(float), `sensor_inactivity_threshold_seconds`(float), `negated`(bool), `child`(node) | No |
+| `condition_is_airborne` | `negated`(bool), `child`(node) | No |
+| `condition_is_at_bomb_site` | `negated`(bool), `child`(node) | Yes |
+| `condition_is_empty` | `input`(string), `global`(bool), `negated`(bool), `child`(node) | Yes |
+| `condition_is_equal` | `source`(string), `destination`(int or string), `negated`(bool), `child`(node) | Yes |
+| `condition_is_greater` | `source`(string), `destination`(int or string), `negated`(bool), `child`(node) | No |
+| `condition_is_greater_equal` | `source`(string), `destination`(int or string), `negated`(bool), `child`(node) | Yes |
+| `condition_is_inv_slot_empty` | `slot`(enum), `negated`(bool), `child`(node) | Yes |
+| `condition_is_less` | `source`(string), `destination`(int or string), `negated`(bool), `child`(node) | No |
+| `condition_is_less_equal` | `source`(string), `destination`(int or string), `negated`(bool), `child`(node) | Yes |
+| `condition_is_reloading` | `negated`(bool), `child`(node) | No |
+| `condition_is_weapon_equipped` | `weapon`(string), `negated`(bool), `child`(node) | Yes |
+| `condition_is_weapon_suitable` | `input`(string), `weapon`(string), `negated`(bool), `child`(node) | No |
+| `condition_out_of_ammo` | `negated`(bool), `child`(node) | Yes |
+| `condition_owns_item` | `item`(string), `items_one_of`(string[]), `negated`(bool), `child`(node) | Yes |
+
+### Actions
+
+| Node | Keys | In official trees |
+| --- | --- | --- |
+| `action_acquire_items` | `items`(string[]), `remove_all_items`(bool) | Yes |
+| `action_aim` | `input`(position), `ready`(string) | Yes |
+| `action_aim_projectile` | `input`(position), `output`(string) | No |
+| `action_attack` | `input`(string), `ready`(string), `output`(string) | Yes |
+| `action_buy` | - | Yes |
+| `action_choose_bomb_site_area` | `input`(number), `output`(string) | Yes |
+| `action_choose_random_waypoint` | `input`(string), `output`(string) | Yes |
+| `action_choose_random_waypoint_within_radius` | `origin`(position), `radius`(number), `output`(string) | No |
+| `action_choose_team_spawn_area` | `output`(string), `team`(enum) | Yes |
+| `action_combat_positioning` | `input`(string), `is_attacking`(string) | Yes |
+| `action_commit_suicide` | - | No |
+| `action_compare_global_counter` | `input_name`(string), `input_value`(int) | No |
+| `action_coordinated_buy` | `id_no_purchase`(string), `purchases`(\{ `items`(string[]), `id`(string) \}[]), `team_filter`(enum), `save_threshold`(int) | No |
+| `action_crouch` | - | No |
+| `action_custom_buy` | `item_aliases`(string[]) | No |
+| `action_drop_active_weapon` | - | No |
+| `action_equip_item` | `item`(string), `items_one_of`(string[]) | Yes |
+| `action_equip_weapon` | `weapon`(string) | Yes |
+| `action_flee_area_damage` | `input`(string), `output`(string), `max_search_range`(float), `threat_min_keep_distance`(float) | Yes |
+| `action_hide` | `output`(string), `max_range`(float) | No |
+| `action_inspect_current_weapon` | - | No |
+| `action_jump` | - | No |
+| `action_look_at` | `input_angles`(string), `input_location`(string) | Yes |
+| `action_move_to` | `destination`(position), `hiding_spot`(number), `threat`(string), `auto_look_adjust`(bool), `damaging_areas_penalty_cost`(float), `arrival_epsilon`(float), `additional_arrival_epsilon_2d`(float), `hiding_spot_check_distance_threshold`(float), `nearest_area_distance_threshold`(float), `movement_type`(enum), `route_type`(enum) | Yes |
+| `action_parachute_positioning` | - | No |
+| `action_pull_trigger` | - | Yes |
+| `action_reload` | - | No |
+| `action_say` | `phrase`(string), `high_priority`(bool) | No |
+| `action_secondary_attack` | - | No |
+| `action_select_areas_within_radius` | `input`(position), `radius`(number), `output`(string) | No |
+| `action_set_global_counter` | `input_name`(string), `input_value`(int) | No |
+| `action_set_global_flag` | `name`(string), `expiration_time_min`(float), `expiration_time_max`(float) | Yes |
+| `action_set_value_float` | `key`(string), `value`(number) | No |
+| `action_set_value_vector` | `key`(string), `value`(position) | No |
+| `action_standup` | - | No |
+| `action_teleport` | `destination`(position) | No |
+| `action_use` | - | Yes |
+| `action_wait` | `wait_time_min`(number), `wait_time_max`(number), `wait_modulo_tick_mod`(number), `wait_modulo_tick_add`(number) | Yes |
+
+## Tree files
+
+A tree file holds the path of a config file and the root node:
+
+```
+<!-- kv3 encoding:text:version{e21c7f3c-8a33-41c5-9977-a76d3a32aa0d} format:generic:version{7412167c-06e9-4698-aff2-e63eb59037e7} -->
+{
+	config = "scripts/ai/deathmatch/bt_config.kv3"
+	root =
+	{
+		type = "decorator_repeat"
+		child =
+		{
+			type = "sequencer"
+			children =
+			[
+				{
+					type = "action_move_to"
+					destination = "bot_target"
+					movement_type = "BT_ACTION_MOVETO_RUN"
+					route_type = "BT_ACTION_MOVETO_FASTEST_ROUTE"
+				},
+				{
+					type = "action_look_at"
+					input_location = "bot_target"
+				},
+				{
+					type = "action_wait"
+					wait_time_min = 2
+					wait_time_max = 3
+				}
+			]
+		}
+	}
+}
+```
+
+This tree makes every bot run to the entity named `bot_target`, look at it and wait, over and over. Both `config` and `root` are required.
+
+Every node is a table with a `type`. Decorators and conditions wrap a single `child`, composites hold a `children` array. Key names are case-insensitive, and `//` comments are allowed.
+
+### Config file
+
+The config file tunes how well bots aim and react: aim acquisition and tracking speed, look-around behavior, reaction time, crouch and dodge chances, and burst timings per weapon type in an `attack` array.
+
+It has a required `default` block and one block per skill level, `low`, `fair`, `normal`, `tough`, `hard`, `very_hard`, `expert` and `elite`. A level missing a key falls back to `default`. The four official copies are identical.
+
+Each `attack` row holds 5 numbers: burst duration, its deviation, cadence, cooldown and cooldown deviation. The game requires exactly one row per weapon type, 13 in the current build, in the order of the comments in the official files: knife, pistol, submachine gun, rifle, shotgun, sniper rifle, machine gun, C4, taser, grenade, equipment, stackable item and unknown. A block with a different number of rows is rejected with `[AI BT]: Config node 'attack' must contain 13 entries`, and the whole tree fails to load.
+
+### Subtree files
+
+A `subtree` node runs another file, so common behavior can live in one place. Both `file` and `name` are required:
+
+```
+{
+	type = "subtree"
+	file = "scripts/ai/modules/bt_attack.kv3"
+	name = "Attack"
+}
+```
+
+A subtree file holds a single node as its top level table, without the `config` and `root` wrapper.
+
+## How a tree runs
+
+Each node reports one of three results: **success**, **failure** or **running**, the last meaning it needs more ticks to finish.
+
+### Two passes per tick
+
+Every tick the tree is walked twice. The first pass **checks** the tree from the root down, deciding which branches can run. If the root fails this check, nothing runs that tick. Otherwise a second pass **runs** the chosen branches, which is where actions move, aim and shoot.
+
+Because the check pass repeats every tick, conditions are re-checked while their branch is running, and a selector can switch to a more important branch at any time.
+
+### The example tree over time
+
+A tree is not a script that runs once. The game evaluates it every tick, about 64 times a second, and each node remembers where it left off. The [example tree](#tree-files) plays out like this:
+
+1. On the first tick, the `sequencer` starts `action_move_to`, which looks up `bot_target` and moves the bot one tick toward it. It reports running, and so do the nodes above it.
+2. Every following tick, the game goes straight back to `action_move_to`, which moves the bot another tick. This is one continuous move, like a player holding a key, not a new decision every tick.
+3. Once the bot arrives, `action_move_to` succeeds and the sequencer moves on to `action_look_at`, which turns the bot toward the target and succeeds.
+4. `action_wait` picks an end time 2 to 3 seconds ahead when it starts, then reports running every tick until that time has passed.
+5. With all three children done, the sequencer succeeds, and `decorator_repeat` starts it again from the top.
+
+Nodes do not move the bot themselves, they drive the regular bot code underneath. Button actions such as `action_use` or `action_reload` press that button for the tick, while `action_move_to`, `action_aim` and `action_attack` steer the bot's own pathfinding, aiming and shooting until they finish.
+
+### Sequencer
+
+A `sequencer` runs its children in order. It fails as soon as one fails, reports running while it moves on to the next child, and succeeds once all of them have succeeded.
+
+The check pass only looks at the child the sequencer is currently on, so a condition earlier in the sequence is not checked again once it has passed.
+
+### Selector
+
+A `selector` picks the first child, in order, that passes the check, and runs it. It reports whatever that child reports.
+
+The check repeats from the first child every tick. When an earlier child starts passing, the selector stops the running child and switches. This makes a selector of guarded branches the tree's priority list, and the official trees use one to pick between buying, reacting to damage, attacking, investigating and hunting.
+
+### Parallel
+
+A `parallel` runs all its children every tick. If any child fails, it stops the others and fails. It succeeds once every child has succeeded, or, with `succeed_after_first = 1`, as soon as the first one does.
+
+The official trees run perception (sensors and memory) in one branch of a parallel and decision making in another, so bots keep noticing things while they act.
+
+### Repeat
+
+A `decorator_repeat` restarts its child every time it finishes and keeps reporting running, forever. With `amount = N` it stops after N runs and reports the result of the last one.
+
+### Succeed and invert
+
+A `decorator_succeed` always passes the check pass, so it never blocks its parent. Its child only runs if the child passes its own check, and once the child finishes, the decorator succeeds whatever the child returned. With `negated = 1` it fails instead. The official trees wrap optional steps in it.
+
+A `decorator_invert` flips its child's check result: a child that fails the check makes the invert pass, and a child that passes makes it fail. While running, the child's results pass through unchanged, so invert is meant for wrapping conditions.
+
+### Condition checks
+
+A `condition_*` node is checked in every check pass. While the check holds, the node runs its child, or simply succeeds when it has none. When the check fails, the node fails, which stops its branch.
+
+Every condition accepts `negated = 1`, which flips the check.
+
+## Values
+
+Most values in a tree name a **blackboard** key, the bot's own storage that nodes read from and write to. For example, a sensor writes the enemies it sees to `output = "Enemy"`, and an attack action reads them back with `input = "Enemy"`.
+
+How a value is read depends on what the node expects.
+
+### Strings
+
+A string value in single quotes, like `'CT'`, is a literal, and the quotes are dropped. Any other string value names a blackboard key that must hold a string. The official trees use quoted literals to compare team names and token names.
+
+### Numbers
+
+A number value can be a literal number, a cvar written as `@mp_plant_c4_anywhere`, or a blackboard key. When that key holds a string instead of a number, the string is resolved once more, but only one level deep.
+
+### Positions and entity names
+
+Keys that expect a position, such as `destination` on `action_move_to` and `input_location` on `action_look_at`, accept:
+
+- A literal position, `"-1450 2230 2"`.
+- A blackboard key holding a position, a position string or sensed entities, using the first one.
+- The targetname of a map entity, when no blackboard key has that name. The entity's origin is used.
+
+Entity names make it easy to steer bots from a map. Rush bots walk to its tower button by name, and a script can move a target entity to send bots somewhere else.
+
+## Blackboard
+
+### Domains
+
+Several nodes take a **domain**, through `domain`, `input_domain`, `output_domain` or `output_token_domain`. Domains are how the official trees share state between bots: memories under `AllBots`, locks such as `'PressAntennaButton'` and strategy tokens under `'StratTokens'`.
+
+How a domain is read differs from node to node, so the official trees are the best reference for each one.
+
+### Sensors and memory
+
+A `decorator_sensor` fills its `output` key with a list of sensed entities, picked by `entity_type_filter`, `team_filter`, `attacker_filter`, `class_name` and an optional `shape`.
+
+`decorator_picker_*` nodes narrow such a list down, for example to nearby, visible or highest scoring entries, and `decorator_ranker_dist` scores entries by distance. A `decorator_memory` copies entries into a memory key.
+
+A `decorator_bot_service` at the root expires memories again: each `memory_to_expire` entry names a memory `key` with a `time` and a `distance`. Its `tagged_entities_to_expire` is a plain list of key names.
+
+### Global flags and counters
+
+`action_set_global_flag` sets a named flag for a random time between `expiration_time_min` and `expiration_time_max`, and the official trees check it with `condition_is_empty` and `global = 1`. `action_set_global_counter`, `decorator_dec_global_counter` and `action_compare_global_counter` handle named counters.
+
+### Subtree parameters
+
+A `subtree` node can write values into the blackboard before the subtree starts, so one module can serve several purposes:
+
+```
+{
+	type = "subtree"
+	file = "scripts/ai/mymode/bt_goto.kv3"
+	name = "GotoA"
+	params =
+	[
+		{ key = "Target" value = "site_a_target" },
+		{ key = "WaitTime" value = 3 }
+	]
+}
+```
+
+Values must be integers or strings. Decimals and booleans are rejected with `[AI BT]: unsupported type for subtree parameter.`
+
+## Debugging
+
+Errors in a tree print `[AI BT]` warnings to the console, naming the missing key or the blackboard entry that could not be found, such as `Blackboard entry 'bot_target' does not exist nor it is a valid entity name`.
+
+`cv_bot_ai_bt_debug_target` takes a bot's index and draws its tree as it runs. `cv_bot_ai_bt_hiding_spot_show` and `cv_bot_ai_bt_moveto_show_next_hiding_spot` draw the hiding spots bots consider. All three are cheat cvars without the release flag, so they may not be usable in the released game.
