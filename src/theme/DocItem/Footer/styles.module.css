@@ -68,6 +68,14 @@
   text-transform: uppercase;
 }
 
+/* a line about the list under its title, the wiki's contributors have one */
+.contributorsDescription {
+  /* closer to the title above than to the chips below */
+  margin: -0.2rem 0 0.75rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.8rem;
+}
+
 .chips {
   display: flex;
   flex-wrap: wrap;
@@ -246,7 +254,7 @@ a.chip:hover {
   }
 
   /* the chips run under the edit link, they need to clear it */
-  .pageMetaCentered .contributorsTitle {
+  .pageMetaCentered .contributorsDescription {
     margin-bottom: 0.9rem;
   }
 }

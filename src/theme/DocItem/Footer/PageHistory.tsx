@@ -92,6 +92,11 @@ export function Contributors({history, wikiContributors}: {history: PageEdit[]; 
   return (
     <div className={styles.contributors}>
       <div className={styles.contributorsTitle}>{wikiContributors !== undefined ? 'Wiki contributors' : 'Contributors'}</div>
+      {wikiContributors !== undefined && (
+        <p className={styles.contributorsDescription}>
+          The Source 2 Wiki is a free and community-driven open-source project, any contributions no matter how small are welcome.
+        </p>
+      )}
       <ul className={styles.chips}>
         {contributors.map(({person, title}) => {
           const content = (
