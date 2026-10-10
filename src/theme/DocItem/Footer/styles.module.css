@@ -1,0 +1,261 @@
+/* a contributor's picture, sized by the text it sits in */
+.avatar {
+  flex: none;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: var(--ifm-color-emphasis-200);
+}
+
+.avatarInitial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--ifm-color-emphasis-800);
+  font-size: 0.8em;
+  font-style: normal;
+  font-weight: var(--ifm-font-weight-bold);
+  /* the font size above shrinks the em the picture is sized in */
+  width: 1.875em;
+  height: 1.875em;
+}
+
+/* a picture with the name next to it */
+.person {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  vertical-align: middle;
+}
+
+/* everything about who worked on the doc, set apart from it by a line */
+.pageMeta {
+  padding-top: 1rem;
+  border-top: 1px solid var(--ifm-color-emphasis-300);
+}
+
+/* under the doc's tags */
+.pageMeta:not(:first-child) {
+  margin-top: 1rem;
+}
+
+/* contributors on the left, the edit link on the right, which drops under them when it runs out of room */
+.pageMetaTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+}
+
+.editLink {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+/* takes the room next to the edit link so a long list wraps beside it, not above it */
+.contributors {
+  flex: 1 1 12rem;
+  min-width: 0;
+}
+
+.contributorsTitle {
+  margin-bottom: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.75rem;
+  font-weight: var(--ifm-font-weight-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem 0.3rem 0.4rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.5rem;
+  background: var(--ifm-color-emphasis-100);
+  color: var(--ifm-font-color-base);
+  font-size: 0.85rem;
+  font-weight: var(--ifm-font-weight-semibold);
+  line-height: 1.5;
+}
+
+.chip .avatar {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.chip .avatarInitial {
+  font-size: 0.75rem;
+}
+
+a.chip:hover {
+  border-color: var(--ifm-color-primary);
+  color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.history {
+  /* custom.css gives every details element a margin for the groups on entity pages, the
+     spacing here is the summary's padding instead, which also makes it easier to hit */
+  margin: 0 !important;
+  font-size: smaller;
+}
+
+.summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.5em;
+  width: fit-content;
+  /* the same distance to the contributors above as to the history below */
+  padding: 0.75rem 0;
+  cursor: pointer;
+  color: var(--ifm-color-emphasis-700);
+  /* the toggle draws its own arrow */
+  list-style: none;
+}
+
+.summary::-webkit-details-marker {
+  display: none;
+}
+
+/* a flex row so the picture lines up with the words, the gap stands in for the spaces between them */
+.lastUpdated {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.15rem 0.35em;
+}
+
+.lastPerson {
+  color: var(--ifm-font-color-base);
+  font-weight: var(--ifm-font-weight-bold);
+}
+
+.historyToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  color: var(--ifm-color-primary);
+}
+
+.summary:hover .historyToggle {
+  text-decoration: underline;
+}
+
+/* points down, and up while the history is open */
+.historyToggle::after {
+  content: '';
+  width: 0.45em;
+  height: 0.45em;
+  margin-top: -0.25em;
+  border: solid currentColor;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(45deg);
+}
+
+.history[open] .historyToggle::after {
+  margin-top: 0.25em;
+  transform: rotate(225deg);
+}
+
+.edits {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.edit {
+  display: grid;
+  grid-template-columns: 7.5rem 12rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0.35rem 0.25rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.date {
+  color: var(--ifm-color-emphasis-700);
+  font-variant-numeric: tabular-nums;
+}
+
+.author {
+  min-width: 0;
+  font-weight: var(--ifm-font-weight-bold);
+  overflow-wrap: anywhere;
+}
+
+.message {
+  overflow-wrap: anywhere;
+}
+
+/* date and author share a line, the message goes under them */
+@media (max-width: 600px) {
+  .edit {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.15rem 0.75rem;
+  }
+
+  .message {
+    grid-column: 1 / -1;
+  }
+}
+
+/* the wiki's contributors on the home page: the list and the line under it sit in the middle */
+.pageMetaCentered .pageMetaTop {
+  position: relative;
+  justify-content: center;
+}
+
+.pageMetaCentered .contributors {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.pageMetaCentered .chips,
+.pageMetaCentered .summary {
+  justify-content: center;
+}
+
+.pageMetaCentered .summary,
+.pageMetaCentered .editLink {
+  margin: 0 auto;
+}
+
+/* out of the flow so it doesn't push the list off center, where there's room next to the title */
+@media (min-width: 997px) {
+  .pageMetaCentered .editLink {
+    position: absolute;
+    /* taller than the title it shares a line with, this puts as much room above it as below */
+    top: -0.25rem;
+    right: 0;
+  }
+
+  /* the chips run under the edit link, they need to clear it */
+  .pageMetaCentered .contributorsTitle {
+    margin-bottom: 0.9rem;
+  }
+}
+
+@media print {
+  .editLink,
+  .separator,
+  .historyToggle,
+  .edits {
+    display: none;
+  }
+}

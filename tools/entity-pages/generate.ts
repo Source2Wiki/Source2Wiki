@@ -8,7 +8,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-import { loadLastUpdates } from "./last-update";
+import { loadEntityHistories } from "./last-update";
 import { bannerTitle, LogVerbose } from "./logging";
 import { documentMdx, pageMdx } from "./mdx";
 import { EntityDocument, getIconUrl, getPageRelativePath, parseEntityDocumentFile } from "./model";
@@ -40,9 +40,9 @@ export function generateMdxFromJsonDump(): void {
   console.log(`Found '${overrides.length}' page override(s)`);
 
   console.log();
-  console.log(bannerTitle("Reading last update info from git!"));
-  const lastUpdates = loadLastUpdates();
-  console.log(`Found history for '${lastUpdates.size}' entity(s)`);
+  console.log(bannerTitle("Reading page history from git!"));
+  const histories = loadEntityHistories();
+  console.log(`Found history for '${histories.size}' entity(s)`);
 
   console.log();
   console.log(bannerTitle("Deserialising JSON docs into page docs!"));
@@ -86,7 +86,7 @@ export function generateMdxFromJsonDump(): void {
     const docPath = path.join(wiki.toDisk(wiki.DocsFolder), `${doc.Name}.mdx`);
     generatedDocs.add(docPath);
 
-    if (writeFileIfContentsChanged(docPath, documentMdx(doc, lastUpdates.get(docName) ?? null))) {
+    if (writeFileIfContentsChanged(docPath, documentMdx(doc, histories.get(docName)))) {
       wroteDocs++;
       console.log(`Wrote document '${docPath}'`);
     } else {

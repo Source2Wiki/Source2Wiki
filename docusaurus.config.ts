@@ -3,6 +3,7 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { PluginOptions } from '@easyops-cn/docusaurus-search-local';
 import { admonitions } from './src/admonitions';
+import { addPageHistory } from './tools/page-history';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -141,6 +142,13 @@ const config: Config = {
     },
   ],
   markdown: {
+    // gives every doc the commits that touched it and who made them, shown under the doc by
+    // src/theme/DocItem/Footer
+    parseFrontMatter: async (params) => {
+      const result = await params.defaultParseFrontMatter(params);
+      await addPageHistory(params.filePath, params.fileContent, result.frontMatter);
+      return result;
+    },
     hooks: {
       onBrokenMarkdownLinks: 'throw',
       onBrokenMarkdownImages: 'throw',
