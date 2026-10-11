@@ -1,0 +1,283 @@
+---
+title: Game modes
+description: How game_type, game_mode and other similar commands select a game mode in CS2 and the logic behind it.
+---
+
+A <Game name="cs2"/> game mode is mostly selected by these two console variables: <Convar name="game_type"/> and <Convar name="game_mode"/>. 
+
+The pair points at one entry in `gamemodes.txt`, and that entry decides which config files run when a map loads and how many player slots the mode has,
+some rules are also switched in game code by the raw values, for example the Deathmatch and Arms Race rule sets.
+
+Two more convars change the selected mode further: 
+
+- <Convar name="sv_game_mode_flags"/> picks a variation such as Free For All Deathmatch
+
+- <Convar name="sv_skirmish_id"/> selects a War Games mode.
+
+All of this is applied when a map loads. Changing the convars in the middle of a match doesn't re-run any configs.
+
+:::info
+It's not recommended to change these while a map is running, some hardcoded game checks can still alter behavior leaving the level in a weird in-between state, 
+so set them before loading the map
+:::
+
+## Mode list
+
+`gamemodes.txt` sits in `game/csgo/pak01_dir.vpk` and lists every game type, with its game modes nested inside. The numbers are each entry's `value` key.
+
+| Mode | `game_type` | `game_mode` | Internal name | Slots | Configs, in order |
+| --- | --- | --- | --- | --- | --- |
+| Casual | 0 | 0 | `casual` | 20 | `gamemode_casual.cfg`, `gamemode_casual_server.cfg` |
+| Competitive | 0 | 1 | `competitive` | 10 | `gamemode_competitive.cfg`, `gamemode_competitive_offline.cfg`&nbsp;(offline), `gamemode_competitive_server.cfg` |
+| Wingman | 0 | 2 | `scrimcomp2v2` | 4 | `gamemode_competitive2v2.cfg`, `gamemode_competitive2v2_offline.cfg`&nbsp;(offline), `gamemode_competitive2v2_server.cfg` |
+| Weapons Expert | 0 | 3 | `scrimcomp5v5` | 10 | `gamemode_competitive.cfg`, `gamemode_competitive_offline.cfg`&nbsp;(offline), `op08_weapons_expert.cfg`&nbsp;(missing), `gamemode_competitive_server.cfg` |
+| New user training | 0 | 4 | `new_user_training` | 10 | `gamemode_new_user_training.cfg` |
+| Retakes | 0 | 5 | `retakes` | 7 | `gamemode_casual.cfg`, `gamemode_casual_server.cfg`, `gamemode_retakecasual.cfg` |
+| [Rush](./rush.mdx) | 0 | 6 | `rush` | 6 | `gamemode_rush.cfg`, `gamemode_rush_offline.cfg`&nbsp;(offline) |
+| Arms Race | 1 | 0 | `gungameprogressive` | 16 | `gamemode_armsrace.cfg`, `gamemode_armsrace_server.cfg` |
+| Demolition | 1 | 1 | `gungametrbomb` | 16 | `gamemode_demolition.cfg`, `gamemode_demolition_server.cfg` |
+| Deathmatch | 1 | 2 | `deathmatch` | 16 | `gamemode_deathmatch.cfg`, `gamemode_deathmatch_server.cfg` |
+| Training | 2 | 0 | `training` | 1 | `gamemode_training.cfg`&nbsp;(missing), `gamemode_training_server.cfg` |
+| Custom | 3 | 0 | `custom` | 100 | `gamemode_custom.cfg`, `gamemode_custom_server.cfg` |
+| Guardian | 4 | 0 | `cooperative` | 20 | `gamemode_competitive.cfg`, `gamemode_cooperative.cfg`, `gamemode_cooperative_server.cfg` |
+| Co-op Strike | 4 | 1 | `coopmission` | 10 | `gamemode_competitive.cfg`, `gamemode_coopmission.cfg`, `gamemode_coopmission_server.cfg` |
+| War Games | 5 | 0 | `skirmish` | 16 | none |
+| Danger Zone | 6 | 0 | `survival` | 16 | `gamemode_survival.cfg`&nbsp;(missing), `gamemode_survival_server.cfg` |
+| Workshop | 7 | 0 | `workshop` | 1 | `gamemode_workshop.cfg`, `gamemode_workshop_server.cfg` |
+
+:::info
+Observarions: 
+
+- The game types' internal names are `classic` (0), `gungame` (1), `training` (2), `custom` (3), `cooperative` (4), `skirmish` (5), `freeforall` (6) and `workshop` (7).
+- Configs live in `game/csgo/cfg/`. **(offline)** entries only run in an [offline game](#what-happens-when-a-map-loads). **(missing)** files are named in `gamemodes.txt` but don't ship with the game.
+- No `*_server.cfg` file ships. They are there for server owners to create, and the `couldn't exec ... unable to read file` line for them in the console is harmless.
+- `gamemode_new_user_training.cfg` executes `gamemode_competitive.cfg` itself before its own settings. The mode also uses Competitive's display name in the menu.
+- Slots is the mode's `maxplayers` key. The server reports it as the match's slot count; a dedicated server's own player limit is a separate setting.
+- The Workshop type isn't in `gamemodes.txt`. It comes from `gamemodes_tools.txt` and is only merged in under the same condition as the `workshop` alias.
+- Training, Guardian, Co-op Strike and Danger Zone are still defined but they are legacy from CS:GO, their maps don't ship with <Game name="cs2"/>.
+:::
+
+### Values the game code checks
+
+Most of a mode is plain config, but the server also checks the raw numbers:
+
+- `game_type 1` with `game_mode 2` creates the Deathmatch rules object when the map loads, and `game_type 1` with `game_mode 0` creates the Arms Race one.
+- `game_type 0` with `game_mode` 1 to 4 or 6 is treated as one group in several checks, which covers Competitive, Wingman, Weapons Expert, New user training and Rush.
+- `game_type 7` (Workshop) is checked on its own in several places.
+- `game_type 3` (Custom) with <Convar name="sv_autoexec_mapname_cfg"/> enabled executes `cfg/maps/<map name>.cfg` after the map's configs, if that file exists.
+- `game_type 4` (Guardian and Co-op Strike) forces <Convar name="game_online"/> on when the match settings are applied.
+- `game_type 0` with `game_mode 5` turns on the Retakes rules. Both `server.dll` and `client.dll` check for that pair, with a matching [`sv_skirmish_id`](#skirmish-ids-war-games) as an alternative.
+- Rush has no checks of its own, `game_mode 6` only shows up in the group above. The rest of its behaviour comes from its config and a [cs_script](./rush.mdx).
+
+<Convar name="game_type"/> and <Convar name="game_mode"/> are replicated, so clients always know the current values. `game_type` defaults to `0` and `game_mode` to `1`, which is Competitive. Aliases and the `gamemode` option never set a `game_type` above 7. Values set by hand are only checked when the map loads: a pair with no entry, such as `game_type 0; game_mode 9`, fails with `GamesTypes: game_mode is set to an invalid value (9). Range [0,6].` and no game mode config runs at all, including the flag and skirmish configs.
+
+## Switching game mode
+
+Theres a surprisingly large amount of ways to load a gamemode:
+
+| Goal | Command |
+| --- | --- |
+| Load a map in a mode | `map de_dust2 gamemode=deathmatch` |
+| The same as a launch option | `+map de_dust2 gamemode deathmatch` |
+| Set the mode for the next map | `game_alias deathmatch`, then `map de_dust2` |
+| Set the values directly | `game_type 1; game_mode 2; map de_dust2` |
+| Use the map's own default mode | `map de_dust2 gamemode auto` |
+
+Everything after the map name is read as a list of key/value options, and the mode goes under the `gamemode` key. Typed in the console, `key=value` and `key value` both work. 
+In a launch option use the space form.
+
+### game_alias
+
+<Convar name="game_alias"/> sets both convars from one of the aliases below. Run without an argument it prints its usage and the current `game_type` and `game_mode`.
+
+It only knows the alias list. Anything else, including internal names like `scrimcomp5v5` or `rush`, prints `Game alias "…" is unknown, setting default game type=0 mode=1` and resets both convars to their defaults, 
+which is Competitive.
+
+### The gamemode option
+
+The `gamemode` map option is resolved in three steps:
+
+1. The alias list below.
+2. `default` or `auto`, which load the map in its own default mode. See [Default mode of a map](#default-mode-of-a-map).
+3. Any internal mode name from the [mode table](#mode-list), searched across all game types. This is how `scrimcomp5v5`, `gungametrbomb`, `rush` or `survival` work even though they have no alias.
+
+If none of them match, the mode stays whatever `game_type` and `game_mode` already were.
+
+### Aliases
+
+| Alias | `game_type` | `game_mode` | Mode |
+| --- | --- | --- | --- |
+| `casual`, `cas` | 0 | 0 | Casual |
+| `competitive`, `comp` | 0 | 1 | Competitive |
+| `wingman`, `competitive2v2`, `comp2v2` | 0 | 2 | Wingman |
+| `new_user_training` | 0 | 4 | New user training |
+| `retakes` | 0 | 5 | Retakes |
+| `armsrace`, `ar` | 1 | 0 | Arms Race |
+| `deathmatch`, `dm` | 1 | 2 | Deathmatch |
+| `training` | 2 | 0 | Training |
+| `custom` | 3 | 0 | Custom |
+| `guardian`, `guard`, `cooperative` | 4 | 0 | Guardian |
+| `coop`, `coopstrike`, `coopmission` | 4 | 1 | Co-op Strike |
+| `workshop`, `preview` | 7 | 0 | Workshop, only when `gamemodes_tools.txt` is loaded |
+
+Aliases, `default`, `auto` and internal names are all case-sensitive, so type them in lowercase. `game_alias Casual` or `game_alias DEATHMATCH` count as unknown.
+
+## What happens when a map loads
+
+This is the order a dedicated server goes through, taken from its console with <Convar name="developer"/> `1`:
+
+1. **Reset game convars** to their defaults. `game_type`, `game_mode`, `sv_game_mode_flags` and `sv_skirmish_id` keep their values.
+2. **Pick the mode.** A `gamemode` map option is resolved [as above](#the-gamemode-option) and written to `game_type` and `game_mode`. Without one, the current values are kept.
+3. **Run the server configs**, `server_default.cfg` and then `server.cfg`.
+4. **Run the mode's `exec` list.** Entries named `exec` always run, in file order. Entries named `exec_offline` only run when the game isn't online. A dedicated server always counts as online, so it never runs them. Otherwise it comes down to the hidden <Convar name="game_online"/> convar.
+5. **Stop here for Custom.** With `game_type 3` the rest of the sequence is skipped, so game mode flags and skirmish IDs do nothing in Custom.
+6. **Apply bot difficulty, offline only.** The `botDifficulty` entry selected by <Convar name="custom_bot_difficulty"/> sets its convars, for example `bot_difficulty` and `bot_dont_shoot`.
+7. **Create mode rule objects** for Deathmatch and Arms Race.
+8. **Run the [game mode flag](#game-mode-flags) configs.**
+9. **Run the [skirmish](#skirmish-ids-war-games) config**, if <Convar name="sv_skirmish_id"/> isn't `0`.
+
+The configs are queued while this runs, so in the console the `GameTypes` lines show up before any `execing` line. A Deathmatch load with `developer 1` looks like this:
+
+```
+GameTypes: setting game type to 1.
+GameTypes: setting game mode to 2.
+GameTypes: set convars for game type/mode (gungame:1/deathmatch:2):
+  exec {
+    exec gamemode_deathmatch.cfg
+    exec gamemode_deathmatch_server.cfg
+  }
+execing server_default.cfg
+execing server.cfg
+execing gamemode_deathmatch.cfg
+exec: couldn't exec '{*}cfg/gamemode_deathmatch_server.cfg', unable to read file
+```
+
+<Convar name="sv_game_mode_convars"/> is meant to print the current mode's `exec` list and the convars of the current bot difficulty without loading a map, but on a dedicated server it prints nothing.
+
+## Game mode flags
+
+<Convar name="sv_game_mode_flags"/> is a bit field. After the mode's own configs, the server checks two bits and runs a config built from the mode's internal name:
+
+| Bit | Config |
+| --- | --- |
+| `32` | `gamemode_<internal name>_short.cfg` |
+| `4` | `gamemode_<internal name>_tmm.cfg` |
+
+Both bits can be set at once, `36`, and then the `_short` config runs first. Only the internal name is used, so on `game_type 1; game_mode 2` the server looks for `gamemode_deathmatch_short.cfg`. No other bit does anything on the server, and as covered above, Custom ignores the flags entirely.
+
+These flag configs ship:
+
+| File | What it does |
+| --- | --- |
+| `gamemode_deathmatch_short.cfg` | Turns on <Convar name="mp_teammates_are_enemies"/>, which makes Deathmatch Free For All. |
+| `gamemode_deathmatch_tmm.cfg` | Sets <Convar name="mp_dm_teammode"/> to `2` with its kill and bonus scores, a frag limit of 100 and a 65 second warmup. |
+| `gamemode_competitive_tmm.cfg` | Competitive with overtime, team timeouts and a 20 second freeze time. |
+| `gamemode_competitive_short.cfg` | Contains only a comment, so it changes nothing. |
+
+The play menu offers the flags through `panorama/scripts/util_gamemodeflags.vts`: Deathmatch gets `32` with a visible Free For All option, and Competitive has `16` registered but hidden from users. The server doesn't react to bit `16`.
+
+To play Free For All Deathmatch:
+
+```
+sv_game_mode_flags 32
+map de_dust2 gamemode=deathmatch
+```
+
+The flags stay set across map changes, so set them back to `0` before loading a mode that shouldn't use them.
+
+## Skirmish IDs (War Games)
+
+War Games are defined under `skirmish_modes` in `scripts/items/items_game.txt`. Each one has an ID, a base game mode it is meant to be played on, and a `server_exec` command:
+
+| `sv_skirmish_id` | Name | Internal name | Base mode | `server_exec` |
+| --- | --- | --- | --- | --- |
+| 0 | none (default) | | | |
+| 1 | Stab Stab Zap | `stabstabzap` | `casual` | `execwithwhitelist op08_stab_stab_zap.cfg` |
+| 2 | Free For All | `dm_freeforall` | `deathmatch` | `execwithwhitelist gamemode_dm_freeforall.cfg` |
+| 3 | Flying Scoutsman | `flyingscoutsman` | `casual` | `execwithwhitelist op08_flying_scoutsman.cfg` |
+| 4 | Trigger Discipline | `triggerdiscipline` | `casual` | `execwithwhitelist op08_trigger_discipline.cfg` |
+| 6 | Boom! Headshot! | `headshots` | `deathmatch` | `execwithwhitelist op08_headshots.cfg` |
+| 7 | Hunter-Gatherers | `huntergatherers` | `deathmatch` | `execwithwhitelist op08_hunter_gatherers.cfg` |
+| 8 | Heavy Assault Suit | `heavyassaultsuit` | `casual` | `execwithwhitelist op08_heavy_assault_suit.cfg` |
+| 10 | Arms Race | `armsrace` | `gungameprogressive` | none |
+| 11 | Demolition | `demolition` | `gungametrbomb` | none |
+| 12 | Retakes | `retakes` | `casual` | `execwithwhitelist gamemode_retakecasual.cfg` |
+
+The skirmish ID doesn't change `game_type` or `game_mode`, so the base mode has to be loaded separately.
+
+:::warning
+<Game name="cs2"/> has no `execwithwhitelist` command. With a skirmish ID set, the console prints `Unknown command 'execwithwhitelist'!` on map load and no skirmish config runs. Most of the `op08_*` configs don't ship either. `gamemode_dm_freeforall.cfg` and `gamemode_retakecasual.cfg` do, and can be run with a plain `exec`.
+:::
+
+What <Convar name="sv_skirmish_id"/> still affects:
+
+- **Retakes.** The game runs the Retakes rules when the mode is Retakes (`game_type 0`, `game_mode 5`) or when `sv_skirmish_id` equals the ID of the skirmish named `retakes`, which is 12. Either one is enough, so `map de_dust2 gamemode=retakes` needs no skirmish ID. The ID is only needed to get the Retakes rules on top of a different mode.
+- **Slots.** With a skirmish ID set, the slot count comes from the War Games entry, 16, instead of the current mode's. ID 12 is the exception, its slot count is <Convar name="mp_retake_t_count"/> plus <Convar name="mp_retake_ct_count"/>, which is 3 + 4 by default. That matches the 7 slots of the Retakes mode itself.
+- **Match info.** The ID is reported to the match as `c_skirmishid`.
+
+`sv_skirmish_id` persists across map changes, so set it back to `0` to leave a War Game.
+
+## Default mode of a map
+
+`map <name> gamemode default` and `map <name> gamemode auto` load the map in its default mode. The default is read from the map's entry in the `maps` section of `gamemodes.txt`, from `default_game_type` and `default_game_mode`. The official maps all have entries, for example `ar_shoots` defaults to Arms Race and `de_dust2` to Casual.
+
+A map with no entry, such as a workshop map, can provide its own in `maps/<map name>.kv`, which is only read for maps missing from `gamemodes.txt`. The file holds a single map entry, and its root key is the map name:
+
+```
+"de_mymap"
+{
+	"default_game_type"	"1"
+	"default_game_mode"	"2"
+}
+```
+
+It accepts the other keys of a `gamemodes.txt` map entry as well, such as `nameID`, `t_models`, `ct_models`, `t_arms` and `ct_arms`. Leaving out `t_models` and `ct_models` logs `GameTypes: missing t_models entry for map de_mymap.` and the same line for `ct_models`, which can be ignored.
+
+## Customising modes with gamemodes_server.txt
+
+After `gamemodes.txt`, the game merges `gamemodes_server.txt` over it. The file doesn't ship, so the developer message `Failed to load gamemodes_server.txt` at startup is normal. The launch option `-gamemodes_serverfile <file>` loads a different file instead.
+
+The file uses the same structure as `gamemodes.txt` and only needs the keys it changes. Plain values replace the original ones. Entries in an `exec` block are added after the stock entries, not instead of them:
+
+```
+"GameModes_Server.txt"
+{
+	"gameTypes"
+	{
+		"gungame"
+		{
+			"gameModes"
+			{
+				"deathmatch"
+				{
+					"maxplayers"	"24"
+					"exec"
+					{
+						"exec"	"my_deathmatch.cfg"
+					}
+				}
+			}
+		}
+	}
+}
+```
+
+With this file Deathmatch reports 24 slots and runs `gamemode_deathmatch.cfg`, `gamemode_deathmatch_server.cfg` and then `my_deathmatch.cfg`.
+
+## Reading the mode at runtime
+
+cs_script scripts can read the current values with `Instance.GetGameType()` and `Instance.GetGameMode()`, see the [function list](./cs_script/2-functionList.mdx). Both return the numbers from the tables above.
+
+## Commands and convars
+
+| Name | Description |
+| --- | --- |
+| <Convar name="game_type"/> | The current game type. Replicated, defaults to `0`. |
+| <Convar name="game_mode"/> | The current game mode within the game type. Replicated, defaults to `1`. |
+| <Convar name="game_alias"/> | Sets `game_type` and `game_mode` from an [alias](#aliases). |
+| <Convar name="sv_game_mode_flags"/> | Mode variations, see [Game mode flags](#game-mode-flags). |
+| <Convar name="sv_skirmish_id"/> | The War Game to run, see [Skirmish IDs](#skirmish-ids-war-games). |
+| <Convar name="sv_game_mode_convars"/> | Meant to print the current mode's `exec` list and bot difficulty convars. Prints nothing on a dedicated server. |
+| <Convar name="custom_bot_difficulty"/> | Selects the `botDifficulty` entry applied in offline games. |
+| <Convar name="game_online"/> | Hidden convar, whether the current game is online. Decides whether `exec_offline` configs run on a listen server. |
+| `-gamemodes_serverfile <file>` | Launch option that replaces `gamemodes_server.txt`. |
