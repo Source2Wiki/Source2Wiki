@@ -1,0 +1,5 @@
+# Who can sign an update, referenced by key in a post's `authors` front matter.
+angel:
+  name: Angel
+  url: https://github.com/Angel-foxxo
+  image_url: https://github.com/Angel-foxxo.png

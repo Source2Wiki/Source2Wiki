@@ -285,6 +285,7 @@ html[data-theme='dark'] .alert--bug {
 
 /* Separators */
 .navbar__items--right .github-button::after,
+.navbar__items--right .whats-new-link::after,
 .navbar__items--right .custom-schema-explorer-link::after {
   content: '';
   display: inline-block;
@@ -295,6 +296,7 @@ html[data-theme='dark'] .alert--bug {
   vertical-align: middle;
 }
 
+.navbar__items--right .whats-new-link,
 .navbar__items--right .custom-schema-explorer-link {
   margin-right: 0;
   padding-right: 6px;
