@@ -465,6 +465,7 @@ kbd[class*="searchHint"] {
 
 /* Separators */
 .navbar__items--right .github-button::after,
+.navbar__items--right .whats-new-link::after,
 .navbar__items--right .custom-schema-explorer-link::after {
   content: '';
   display: inline-block;
@@ -475,6 +476,7 @@ kbd[class*="searchHint"] {
   vertical-align: middle;
 }
 
+.navbar__items--right .whats-new-link,
 .navbar__items--right .custom-schema-explorer-link {
   margin-right: 0;
   padding-right: 6px;
