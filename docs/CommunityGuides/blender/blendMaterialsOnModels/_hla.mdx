@@ -1,16 +1,16 @@
 ## Step 1. Creating a Color Attribute
 
-1. In Blender, switch to **Vertex Paint** mode.
-2. Click the Attribute dropdown in the top header.
-3. Click the plus button on the right.
-4. Set the following parameters in the pop-up window:
+- In Blender, switch to **Vertex Paint** mode.
+- Click the Attribute dropdown in the top header.
+- Click the plus button on the right.
+- Set the following parameters in the pop-up window:
     - **Name:** `VertexPaintBlendParams`
     - **Domain:** Face Corner
     - **Data Type:** Byte Color
     :::info
     Although the <Game name="hla"/>  model compiler ignores custom attribute names, you can specify this specific name to ensure compatibility with other Source 2 games.
     :::
-5. Click Add.
+- Click Add.
 
 ![Creating a new color attribute for vertex painting in Blender](./attribute-creation.png)
 
@@ -18,7 +18,7 @@
 
 ## Step 2. Vertex Painting
 
-In Blender, switch to **Vertex Paint** mode and paint your model according to the <Game name="hla"/> shaders requirements below.
+In Blender, switch to **Vertex Paint** mode and paint your model according to the <Game name="hla"/> shader requirements below.
 
 ### Vr Simple 2way Blend
 
@@ -35,10 +35,10 @@ In Blender, switch to **Vertex Paint** mode and paint your model according to th
 
 Since the <Game name="hla"/> model compiler ignores custom FBX attribute names, you must rename the data stream for correct blending.
 
-1. Open your model via ModelDoc.
-2. Right-click on the render mesh.
-3. Find and select **Add RenameStream**.
-4. Click on **RenameStream** under the desired mesh and fill in the nodes as shown below:
+- Open your model via ModelDoc.
+- Right-click on the render mesh.
+- Find and select **Add RenameStream**.
+- Click on **RenameStream** under the desired mesh and fill in the nodes as shown below:
     - **From Name:** `color$0`
     - **To Name:** `VertexPaintBlendParams$`
     :::info
