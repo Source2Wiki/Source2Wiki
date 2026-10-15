@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1786889517,
+  "Timestamp": 1792089725,
   "ToolMaterials": [
     {
       "Name": "materials/tools_postprocess_volume.vmat",
@@ -152,6 +152,21 @@
         },
         {
           "Name": "mapbuilder.infectedladder",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/dota_nav_walkable.vmat",
+      "TexturePath": "static/tooltex_dump/img/dota2/nav_walkable_color_tga_1772a760.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "dota.nav.walkable",
+          "Value": 1
+        },
+        {
+          "Name": "tools.reference_notrace",
           "Value": 1
         }
       ]
@@ -351,13 +366,13 @@
     },
     {
       "Name": "materials/tools/static_overlay_helper.vmat",
-      "TexturePath": "static/tooltex_dump/img/dota2/static_overlay_trans_psd_df5daaf8.png",
+      "TexturePath": "static/tooltex_dump/img/dota2/static_overlay_trans_psd_3f7bfa44.png",
       "Description": "",
       "Attributes": []
     },
     {
       "Name": "materials/tools/static_overlay_helper.vmat",
-      "TexturePath": "static/tooltex_dump/img/dota2/static_overlay_trans_psd_3f7bfa44.png",
+      "TexturePath": "static/tooltex_dump/img/dota2/static_overlay_trans_psd_df5daaf8.png",
       "Description": "",
       "Attributes": []
     },
@@ -1149,7 +1164,7 @@
     },
     {
       "Name": "materials/tools/toolsnpcclip.vmat",
-      "TexturePath": "static/tooltex_dump/img/dota2/toolsnpcclip_color_tga_a6017547.png",
+      "TexturePath": "static/tooltex_dump/img/dota2/toolsnpcclip_color_tga_5bd18b4b.png",
       "Description": "",
       "Attributes": [
         {
@@ -1164,7 +1179,7 @@
     },
     {
       "Name": "materials/tools/toolsnpcclip.vmat",
-      "TexturePath": "static/tooltex_dump/img/dota2/toolsnpcclip_color_tga_5bd18b4b.png",
+      "TexturePath": "static/tooltex_dump/img/dota2/toolsnpcclip_color_tga_a6017547.png",
       "Description": "",
       "Attributes": [
         {
@@ -1386,6 +1401,44 @@
       ]
     },
     {
+      "Name": "materials/tools/toolssteamaudiofullabsorption.vmat",
+      "TexturePath": "static/tooltex_dump/img/dota2/steamaudio_color_psd_e6d24263.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "tools.steamaudiogeometry",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolssteamaudiofulldiffuse.vmat",
+      "TexturePath": "static/tooltex_dump/img/dota2/steamaudio_color_psd_e6d24263.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "tools.steamaudiogeometry",
+          "Value": 1
+        }
+      ]
+    },
+    {
       "Name": "materials/tools/toolsteleportclip.vmat",
       "TexturePath": "static/tooltex_dump/img/dota2/toolsteleportclip_color_tga_f3f3a4d8.png",
       "Description": "",
@@ -1502,21 +1555,6 @@
     },
     {
       "Name": "materials/tools/visblocker.vmat",
-      "TexturePath": "static/tooltex_dump/img/dota2/visblocker_color_tga_a774ccdc.png",
-      "Description": "",
-      "Attributes": [
-        {
-          "Name": "mapbuilder.visblocker",
-          "Value": 1
-        },
-        {
-          "Name": "mapbuilder.nodraw",
-          "Value": 1
-        }
-      ]
-    },
-    {
-      "Name": "materials/tools/visblocker.vmat",
       "TexturePath": "static/tooltex_dump/img/dota2/visblocker_color_tga_a54e9912.png",
       "Description": "",
       "Attributes": [
@@ -1530,6 +1568,21 @@
         },
         {
           "Name": "mapbuilder.visblocker",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/visblocker.vmat",
+      "TexturePath": "static/tooltex_dump/img/dota2/visblocker_color_tga_a774ccdc.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.visblocker",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nodraw",
           "Value": 1
         }
       ]

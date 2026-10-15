@@ -1,5 +1,5 @@
 {
-  "Timestamp": 1786889497,
+  "Timestamp": 1792089717,
   "ToolMaterials": [
     {
       "Name": "materials/effects/metalfence007a.vmat",
@@ -859,6 +859,25 @@
       ]
     },
     {
+      "Name": "materials/tools/toolsskybox_occluder.vmat",
+      "TexturePath": "static/tooltex_dump/img/cs2/toolsskybox_occluder_color_tga_f2c37d52.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "DoNotCastShadows",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.visblocker",
+          "Value": 1
+        }
+      ]
+    },
+    {
       "Name": "materials/tools/toolsskybox.vmat",
       "TexturePath": "static/tooltex_dump/img/cs2/toolsskybox_color_tga_e746091d.png",
       "Description": "",
@@ -880,6 +899,44 @@
       "Attributes": [
         {
           "Name": "mapbuilder.blocklight",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolssteamaudiofullabsorption.vmat",
+      "TexturePath": "static/tooltex_dump/img/cs2/steamaudio_color_psd_e6d24263.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "tools.steamaudiogeometry",
+          "Value": 1
+        }
+      ]
+    },
+    {
+      "Name": "materials/tools/toolssteamaudiofulldiffuse.vmat",
+      "TexturePath": "static/tooltex_dump/img/cs2/steamaudio_color_psd_e6d24263.png",
+      "Description": "",
+      "Attributes": [
+        {
+          "Name": "mapbuilder.nodraw",
+          "Value": 1
+        },
+        {
+          "Name": "mapbuilder.nonsolid",
+          "Value": 1
+        },
+        {
+          "Name": "tools.steamaudiogeometry",
           "Value": 1
         }
       ]
