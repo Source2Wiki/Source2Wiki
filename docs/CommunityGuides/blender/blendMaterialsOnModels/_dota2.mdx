@@ -1,0 +1,39 @@
+## Step 1. Creating a Color Attribute
+
+1. In Blender, switch to **Vertex Paint** mode.
+2. Click the Attribute dropdown in the top header.
+3. Click the plus button on the right.
+4. Set the following parameters in the pop-up window:
+    - **Name:** `VertexPaintBlendParams`
+    - **Domain:** Face Corner
+    - **Data Type:** Byte Color
+5. Click Add.
+
+![Creating a new color attribute for vertex painting in Blender](./attribute-creation.png)
+
+![What should happen after creating a color attribute](./attribute-creation-result.png)
+
+## Step 2. Vertex Painting
+
+In Blender, switch to **Vertex Paint** mode and paint your model according to the <Game name="dota2"/> shaders requirements below.
+
+### Multiblend
+
+| Vertex Сolor | HEX | Layer in shader |
+| ------------ | --- | --------------- |
+| Black   | `#000000` | Layer 0
+| Red     | `#FF0000` | Layer 1
+| Green   | `#00FF00` | Layer 2
+| Blue    | `#0000FF` | Layer 3
+
+:::warning
+For correct vertex blending behavior, make sure to check the "No Vertex Color" checkbox in the shader options.
+:::
+
+![Screenshot showing vertex colors applied to the model](./dota2-vertex-painting-result.png)
+
+![Example of a material in the Material Editor](./dota2-blend-material-example.png)
+
+## Step 3. Result
+
+![Result](./dota2-result.webp)
