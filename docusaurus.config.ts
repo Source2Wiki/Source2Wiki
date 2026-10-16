@@ -51,7 +51,7 @@ const config: Config = {
 
         // What to index
         indexDocs: true,
-        indexBlog: false, // You have blog disabled, so this should be false
+        indexBlog: false, // the blog is the "What's new" page, keep it out of the docs search
         indexPages: false, // Set to true if you want to index standalone pages
 
         docsRouteBasePath: '/',
@@ -107,7 +107,24 @@ const config: Config = {
           },
           admonitions,
         },
-        blog: false,
+        // the "What's new" page, every update is a hand written file in /updates
+        blog: {
+          path: 'updates',
+          routeBasePath: 'updates',
+          blogTitle: "What's new",
+          blogDescription: 'New pages and other changes to the Source2 Wiki.',
+          blogSidebarTitle: 'All updates',
+          blogSidebarCount: 'ALL',
+          postsPerPage: 10,
+          showReadingTime: false,
+          // updates are short, the list shows each one in full
+          onUntruncatedBlogPosts: 'ignore',
+          feedOptions: {
+            type: ['rss', 'atom'],
+            title: 'Source2 Wiki updates',
+            description: 'New pages and other changes to the Source2 Wiki.',
+          },
+        },
         sitemap: {
           // Uses git dates, requires `docs.showLastUpdateTime: true` and full git history at build time.
           lastmod: 'date',
@@ -170,6 +187,12 @@ const config: Config = {
         src: 'img/logo.svg',
       },
       items: [
+        {
+          to: '/updates',
+          label: "What's new",
+          position: 'right',
+          className: 'whats-new-link',
+        },
         {
           type: 'custom-schema-explorer-link',
           position: 'right',
