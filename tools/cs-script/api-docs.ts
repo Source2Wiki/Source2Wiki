@@ -75,6 +75,12 @@ export function parseApi(fileName: string, source: string): Api {
       return;
     }
 
+    // an interface with methods is an API like `Instance`, not a shape of data passed around
+    if (ts.isInterfaceDeclaration(node) && node.members.some(ts.isMethodSignature)) {
+      api.containers.push(toContainer(node.name.text, node.members, node));
+      return;
+    }
+
     if (ts.isInterfaceDeclaration(node)) {
       api.interfaces.push({
         name: node.name.text,
@@ -112,7 +118,7 @@ export function parseApi(fileName: string, source: string): Api {
   return api;
 }
 
-function toContainer(name: string, members: ts.NodeArray<ts.ClassElement>, node: ts.Node): Container {
+function toContainer(name: string, members: ts.NodeArray<ts.ClassElement | ts.TypeElement>, node: ts.Node): Container {
   const container: Container = { name, description: describe(node), functions: [], events: [] };
 
   for (const member of members) {

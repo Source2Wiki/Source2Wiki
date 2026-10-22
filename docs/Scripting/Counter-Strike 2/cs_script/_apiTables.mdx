@@ -1,3 +1,158 @@
+### IPointScript
+The API provided to scripts attached to a point_script entity.
+
+Access these functions by importing Instance from "cs_script/point_script".
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|DebugScreenText|DebugScreenText(config: \{ text: any, x: number, y: number, duration?: number, color?: [ColorArg](#colorarg) \}): void|Print some text to the game window. Only works in dev environments.|
+|DebugLine|DebugLine(config: \{ start: [Vector](#vector), end: [Vector](#vector), duration?: number, color?: [ColorArg](#colorarg) \}): void|Draw a line in the world. Only works in dev environments.|
+|DebugSphere|DebugSphere(config: \{ center: [Vector](#vector), radius: number, duration?: number, color?: [ColorArg](#colorarg) \}): void|Draw a wire sphere in the world. Only works in dev environments.|
+|DebugBox|DebugBox(config: \{ mins: [Vector](#vector), maxs: [Vector](#vector), duration?: number, color?: [ColorArg](#colorarg) \}): void|Draw an axis aligned box in the world. Only works in dev environments.|
+|SetSaveData|SetSaveData(data: string): void|Writes save data associated with this workshop addon.<br /><br />Will synchronously write to disk every time this is called.|
+|GetSaveData|GetSaveData(): string|Retrieves the save data associated with this workshop addon.<br /><br />Will synchronously read from disk the first time this is called.|
+|SetNextThink|SetNextThink(time: number): void|Set when the OnThink callback should next be run. The exact time will be on the tick nearest to the specified time, which may be earlier or later.|
+|Delay|Delay(delay: number): Promise\<void\>|Returns a promise that resolves after `delay` number of seconds. The exact time will be on the tick nearest to the specified delay, which may be earlier or later.|
+|EntFireAtName|EntFireAtName(config: \{ name: string, input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on all targets matching the specified names.|
+|EntFireAtTarget|EntFireAtTarget(config: \{ target: [Entity](#entity), input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on the specified target.|
+|DisconnectOutput|DisconnectOutput(connectionId: number): void|Find entities by name.|
+|FindEntityByName|FindEntityByName(name: string): [Entity](#entity) \| undefined|Find the first entity matching the specified name.|
+|FindEntitiesByName|FindEntitiesByName(name: string): [Entity](#entity)[]|Find entities matching the specified name.|
+|FindEntityByClass|FindEntityByClass(className: string): [Entity](#entity) \| undefined|Find the first entity of the specified class name.|
+|FindEntitiesByClass|FindEntitiesByClass(className: string): [Entity](#entity)[]|Find entities of the specified class name.|
+|GetPlayerController|GetPlayerController(playerSlot: number): [CSPlayerController](#csplayercontroller) \| undefined|Get the player controller in the given slot.|
+|GetAllPlayerControllers|GetAllPlayerControllers(): [CSPlayerController](#csplayercontroller)[]|Get all the player controllers. Includes disconnected players.|
+|TraceLine|TraceLine(trace: [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace a point along a line and detect collisions|
+|TraceSphere|TraceSphere(trace: \{ radius: number \} \& [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace a sphere along a line and detect collisions|
+|TraceBox|TraceBox(trace: \{ mins: [Vector](#vector), maxs: [Vector](#vector) \} \& [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace an axis aligned bounding box along a line and detect collisions|
+|TracePlayer|TracePlayer(trace: [PlayerTrace](#playertrace)): [PlayerTraceResult](#playertraceresult)|Trace as a player would collide|
+|TraceBullet|TraceBullet(trace: [BulletTrace](#bullettrace)): [BulletTraceResult](#bullettraceresult)[]|Trace as a bullet and detect hits and damage|
+|IsDedicatedServer|IsDedicatedServer(): boolean|Get if the server is a dedicated server.|
+|GetGameTime|GetGameTime(): number|Get the game time in seconds.|
+|GetGameType|GetGameType(): number|Get the current Game Type.|
+|GetGameMode|GetGameMode(): number|Get the current Game Mode.|
+|GetMapName|GetMapName(): string|Get the name of the current map.|
+|SpawnGrenadeProjectile|SpawnGrenadeProjectile(config: [SpawnGrenadeProjectileConfig](#spawngrenadeprojectileconfig)): [CSGrenadeProjectileBase](#csgrenadeprojectilebase)|Spawns a live grenade projectile.|
+|Precache|Precache(config: \{ resources: string[] \}): [CSPrecache](#csprecache) \| undefined|Loads resources on the server and clients to avoid hitches when later referenced.<br /><br />Supports .vmdl, .vpcf, .vmat, and .vsnd resources.<br /><br />@experimental This feature is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
+|DebugScreenText|DebugScreenText(text: any, x: number, y: number, duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
+|DebugLine|DebugLine(start: [Vector](#vector), end: [Vector](#vector), duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
+|DebugBox|DebugBox(mins: [Vector](#vector), maxs: [Vector](#vector), duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
+|DebugSphere|DebugSphere(center: [Vector](#vector), radius: number, duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
+|EntFireAtName|EntFireAtName(name: string, input: string, inputData?: [InputValue](#inputvalue) \| \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}, delay?: number): void|@deprecated This overload will be removed in a future update|
+|EntFireAtTarget|EntFireAtTarget(target: [Entity](#entity), input: string, inputData?: [InputValue](#inputvalue) \| \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}, delay?: number): void|@deprecated This overload will be removed in a future update|
+|Msg|Msg(text: any): void|@deprecated This method will be removed in a future update|
+|ClientCommand|ClientCommand(playerSlot: number, command: string): void|@deprecated This method will be removed in a future update|
+|ServerCommand|ServerCommand(command: string): void|@deprecated This method will be removed in a future update|
+|IsWarmupPeriod|IsWarmupPeriod(): boolean|@deprecated This method will be removed in a future update|
+|IsFreezePeriod|IsFreezePeriod(): boolean|@deprecated This method will be removed in a future update|
+|IsTeamIntroPeriod|IsTeamIntroPeriod(): boolean|@deprecated This method will be removed in a future update|
+|GetRoundsPlayed|GetRoundsPlayed(): number|@deprecated This method will be removed in a future update|
+|GetRoundRemainingTime|GetRoundRemainingTime(): number|@deprecated This method will be removed in a future update|
+|SetRoundRemainingTime|SetRoundRemainingTime(time: number): void|@deprecated This method will be removed in a future update|
+|AddTeamMoney|AddTeamMoney(team: number, reason: [CSTeamMoneyReason](#csteammoneyreason), amount?: number): void|@deprecated This method will be removed in a future update|
+
+#### Events
+
+|Name|Signature|Description|
+|---|---|---|
+|OnScriptReload|OnScriptReload\<T\>(config: \{ before?: () =\> T, after?: (memory: T) =\> void \}): void|Called in Tools mode when the script is reloaded due to changes.<br /><br />The before callback will be invoked before pre-load teardown.<br /><br />The after callback will be invoked after the new script is evaluated and will be passed the return value of the before callback.|
+|SetThink|SetThink(callback: () =\> void): void|Called at a specified time. Control when this is run using SetNextThink.|
+|QueueAfterThinks|QueueAfterThinks( callback: () =\> void ): void|Queue up a callback to be invoked once, after all entities have executed their think functions this tick (eg. player input has been handled, projectiles have moved).<br /><br />This can be useful for delaying until a clean moment when an entity isn't mid-computation and might ignore or misinterpret.<br /><br />This can be useful for delaying until the world is in a consistent state.<br /><br />Callbacks queued up during a post entity think callback will be invoked in the same tick.|
+|OnActivate|OnActivate(callback: () =\> void): void|Called when the point_script entity is activated|
+|OnScriptInput|OnScriptInput(name: string, callback: (inputData: \{ caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> void): void|Called when input RunScriptInput is triggered on the point_script entity with a parameter value that matches name.|
+|OnPlayerConnect|OnPlayerConnect(callback: (event: \{ player: [CSPlayerController](#csplayercontroller) \}) =\> void): void|Called when a client finishes the initial connection handshake with the server.|
+|OnPlayerActivate|OnPlayerActivate(callback: (event: \{ player: [CSPlayerController](#csplayercontroller) \}) =\> void): void|Called when a client finishes loading and is ready to spawn.|
+|OnPlayerDisconnect|OnPlayerDisconnect(callback: (event: \{ playerSlot: number \}) =\> void): void|Called when a client disconnects from the server.|
+|OnPlayerReset|OnPlayerReset(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player respawns, changes team, or is placed back at spawn due to a round restart|
+|OnPlayerTeamChanged|OnPlayerTeamChanged(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn), oldTeam: number \}) =\> void): void|Called when a player changes team|
+|OnRoundStart|OnRoundStart(callback: () =\> void): void|Called when a new round begins|
+|OnRoundEnd|OnRoundEnd(callback: (event: \{ winningTeam: number, reason: [CSRoundEndReason](#csroundendreason) \}) =\> void): void|Called when a team wins a round|
+|OnBeginRoundRestart|OnBeginRoundRestart(callback: () =\> void): void|Called at the start of cleanup for a round restart|
+|OnBombPlantStart|OnBombPlantStart(callback: (event: \{ planter: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player starts planting their c4|
+|OnBombPlantAbort|OnBombPlantAbort(callback: (event: \{ planter: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player aborts planting their c4|
+|OnBombPlant|OnBombPlant(callback: (event: [BombPlantEvent](#bombplantevent)) =\> void): void|Called when a player plants their c4|
+|OnBombDefuseStart|OnBombDefuseStart(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4) \}) =\> void): void|Called when a player starts defusing a c4|
+|OnBombDefuseAbort|OnBombDefuseAbort(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4) \}) =\> void): void|Called when a player aborts defusing a c4|
+|OnBombDefuse|OnBombDefuse(callback: (event: [BombDefuseEvent](#bombdefuseevent)) =\> void): void|Called when a player defuses a c4|
+|OnBombExplode|OnBombExplode(callback: (event: \{ plantedC4: [CSPlantedC4](#csplantedc4) \}) =\> void): void|Called when a c4 explodes|
+|OnHostagePickUpStart|OnHostagePickUpStart(callback: (event: \{ hostage: [CSHostage](#cshostage) \}) =\> void): void|Called when a player starts picking up a hostage|
+|OnHostagePickUpAbort|OnHostagePickUpAbort(callback: (event: \{ hostage: [CSHostage](#cshostage), player: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player aborts picking up a hostage|
+|OnHostagePickUp|OnHostagePickUp(callback: (event: \{ hostage: [CSHostage](#cshostage) \}) =\> void): void|Called when a player finishes picking up a hostage|
+|OnHostageDrop|OnHostageDrop(callback: (event: \{ hostage: [CSHostage](#cshostage), dropper: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a carried hostage is dropped without being rescued|
+|OnHostageRescue|OnHostageRescue(callback: (event: \{ hostage: [CSHostage](#cshostage) \}) =\> void): void|Called when a hostage reaches a rescue zone|
+|OnHostageKill|OnHostageKill(callback: (event: \{ hostage: [CSHostage](#cshostage), attacker?: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a hostage is killed|
+|OnModifyPlayerDamage|OnModifyPlayerDamage(callback: (event: [ModifyPlayerDamageEvent](#modifyplayerdamageevent)) =\> [ModfiyPlayerDamageResult](#modfiyplayerdamageresult) \| void): void|Called immediately before a [CSPlayerPawn](#csplayerpawn) takes damage to armor and health.<br /><br />Called after hitgroup modifications are applied such as headshot multiplier.<br /><br />This won't be called if the player would take no damage. Such as if they're frozen or invulnerable or if friendly fire would disable the damage.<br /><br />Return `{ damage: N }` to modify the amount of damage.<br /><br />Return `{ damageFlags: event.damageFlags \| [CSDamageFlags](#csdamageflags).IGNORE_ARMOR }` to have the damage pierce armor.<br /><br />Return `{ abort: true }` to cancel the damage event.|
+|OnPlayerDamage|OnPlayerDamage(callback: (event: [PlayerDamageEvent](#playerdamageevent)) =\> void): void|Called when a player has taken damage.|
+|OnPlayerKill|OnPlayerKill(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn), inflictor?: [Entity](#entity), attacker?: [Entity](#entity), weapon?: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a player dies. `inflictor`, `attacker` and `weapon` will match the damage event that caused the kill.|
+|OnPlayerJump|OnPlayerJump(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player jumps off the ground.|
+|OnPlayerLand|OnPlayerLand(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player hits the ground while falling.|
+|OnPlayerChat|OnPlayerChat(callback: (event: \{ player?: [CSPlayerController](#csplayercontroller), text: string, team: number \}) =\> void): void|Called when a player sends a chat message. `team` will match they player's team if the message was sent to team chat.|
+|OnPlayerPing|OnPlayerPing(callback: (event: \{ player: [CSPlayerController](#csplayercontroller), position: [Vector](#vector) \}) =\> void): void|Called when a player pings a location.|
+|OnGunReload|OnGunReload(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun is reloaded.|
+|OnGunFire|OnGunFire(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a gun emits bullets. A shotgun will only trigger this once when emitting multiple bullets at once.|
+|OnBulletImpact|OnBulletImpact(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), position: [Vector](#vector), hitEntity?: [Entity](#entity) \}) =\> void): void|Called when a bullet hits a surface.<br /><br />Penetrations can cause a single bullet to trigger multiple impacts.<br /><br />This will be called for all impacts of a bullet before any player damage events are called.|
+|OnWeaponDrop|OnWeaponDrop(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), dropper: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a weapon is dropped.|
+|OnWeaponPickup|OnWeaponPickup(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase) \}) =\> void): void|Called when a weapon is picked up.|
+|OnGrenadeThrow|OnGrenadeThrow(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), projectile: [CSGrenadeProjectileBase](#csgrenadeprojectilebase) \}) =\> void): void|Called when a grenade is thrown. `projectile` is the newly created grenade projectile.|
+|OnGrenadeBounce|OnGrenadeBounce(callback: (event: [GrenadeBounceEvent](#grenadebounceevent)) =\> void): void|Called when a grenade bounces.|
+|OnKnifeAttack|OnKnifeAttack(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), attackType: [CSWeaponAttackType](#csweaponattacktype) \}) =\> void): void|Called when a knife attacks, even if it misses.|
+|OnCustomHudClicked|OnCustomHudClicked( callback: (event: \{player: [CSPlayerController](#csplayercontroller), layout: [CustomHudLayout](#customhudlayout), buttonId: string\}) =\> void ): void|Called when a button in a [CustomHudLayout](#customhudlayout) is clicked.|
+|ConnectOutput|ConnectOutput(target: [Entity](#entity), output: string, callback: (inputData: \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> any): number \| undefined|Connect the output of an entity to a callback. The return value is a connection id that can be used in `DisconnectOutput`|
+|OnBeforePlayerDamage|OnBeforePlayerDamage(callback: () =\> any): void|@deprecated This method will be removed in a future update|
+|OnBeforeReload|OnBeforeReload(callback: () =\> any): void|@deprecated This method will be removed in a future update|
+|OnReload|OnReload(callback: (memory: any) =\> void): void|@deprecated This method will be removed in a future update|
+|RegisterCheatCommand|RegisterCheatCommand(name: string, callback: (args: string) =\> void): void|@deprecated This method will be removed in a future update|
+
+### IConsole
+An API provided to scripts for the console: logging, ConVars, and ConCommands.
+
+Access these functions by importing Console from "cs_script/point_script".
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|Log|Log(text: any): void|Log a message to the console.|
+|GetConvarBoolean|GetConvarBoolean(name: string): boolean \| undefined|Get the value of a boolean convar.|
+|GetConvarNumber|GetConvarNumber(name: string): number \| undefined|Get the value of a numeric convar.|
+|GetConvarString|GetConvarString(name: string): string \| undefined|Get the value of any convar, converted to a string.|
+|GetConvarVector|GetConvarVector(name: string): [Vector](#vector) \| undefined|Get the value of a [Vector](#vector) convar.|
+|GetConvarQAngle|GetConvarQAngle(name: string): [QAngle](#qangle) \| undefined|Get the value of a [QAngle](#qangle) convar.|
+|GetConvarColor|GetConvarColor(name: string): [Color](#color) \| undefined|Get the value of a [Color](#color) convar.|
+|SetConvar|SetConvar(name: string, value: boolean \| number \| string \| [Vector](#vector) \| [QAngle](#qangle) \| [ColorArg](#colorarg)): void|Set the value of a convar.|
+|ClientCommand|ClientCommand(playerSlot: number, command: string): void|Issue the specified command to the specified client.|
+|ServerCommand|ServerCommand(command: string): void|Issue a command.|
+
+#### Events
+
+|Name|Signature|Description|
+|---|---|---|
+|RegisterCheatCommand|RegisterCheatCommand(name: string, callback: (args: string) =\> void): void|Creates a console command that will run the specified callback. The command will only work when sv_cheats is true.|
+
+### IGameRules
+An API provided to scripts for the state of the match: warmup, rounds, and team money.
+
+Access these functions by importing GameRules from "cs_script/point_script".
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|IsWarmupPeriod|IsWarmupPeriod(): boolean|Get if the game is currently in a Warmup period.|
+|StartWarmup|StartWarmup(): void|Start the warmup period, restarting the round.|
+|EndWarmup|EndWarmup(): void|End the warmup period as if its timer had run out. The game mode then ends it the usual way, starting on the next tick.|
+|IsFreezePeriod|IsFreezePeriod(): boolean|Get if the game is currently in a Freeze period.|
+|IsTeamIntroPeriod|IsTeamIntroPeriod(): boolean|Get if the game is currently in a Team Intro period.|
+|GetRoundsPlayed|GetRoundsPlayed(): number|Get the number of rounds played in the current game.|
+|GetRoundRemainingTime|GetRoundRemainingTime(): number|Get the time remaining in the current round in seconds.|
+|SetRoundRemainingTime|SetRoundRemainingTime(time: number): void|Set the time remaining in the current round in seconds.|
+|GetTeamScore|GetTeamScore(team: number): number|Get the team's score.|
+|AddTeamScore|AddTeamScore(team: number, score: number): void|Add to the team's score. Call before TerminateRound so the round end sees the new score.|
+|TerminateRound|TerminateRound(reason: [CSRoundEndReason](#csroundendreason), delay?: number): void|Terminate the current round. Counts as a round played unless it is a draw. Will not add to team scores. Does nothing if the round has already ended.|
+|AddTeamMoney|AddTeamMoney(team: number, reason: [CSTeamMoneyReason](#csteammoneyreason), amount?: number): void|Adds the money to all player controllers on the team, following all classic rules.<br /><br />If players are not eligible to receive end-of-round money, then that restriction is honored.<br /><br />Disconnected players will get their account balance incremented, and will have correct<br /><br />amount of money after they reconnect to the server.<br /><br />If the `amount` parameter is 0 or undefined, then the amount will be determined using server convar<br /><br />setting corresponding to the reason parameter.|
+
 ### CSPrecache
 
 #### Functions
@@ -385,325 +540,6 @@ type SpawnGrenadeProjectileConfig = SpawnGrenadeProjectileConfigWithOwner | Spaw
 ```
 
 ## Interfaces
-
-### IPointScript
-The API provided to scripts attached to a point_script entity.
-
-Access these functions by importing Instance from "cs_script/point_script".
-
-```ts
-interface IPointScript {
-    /** Print some text to the game window. Only works in dev environments. */
-    DebugScreenText(config: { text: any, x: number, y: number, duration?: number, color?: ColorArg }): void;
-    /** Draw a line in the world. Only works in dev environments. */
-    DebugLine(config: { start: Vector, end: Vector, duration?: number, color?: ColorArg }): void;
-    /** Draw a wire sphere in the world. Only works in dev environments. */
-    DebugSphere(config: { center: Vector, radius: number, duration?: number, color?: ColorArg }): void;
-    /** Draw an axis aligned box in the world. Only works in dev environments. */
-    DebugBox(config: { mins: Vector, maxs: Vector, duration?: number, color?: ColorArg }): void;
-    
-    /**
-    * Called in Tools mode when the script is reloaded due to changes.
-    * The before callback will be invoked before pre-load teardown.
-    * The after callback will be invoked after the new script is evaluated and will be passed the return value of the before callback.
-    */
-    OnScriptReload<T>(config: { before?: () => T, after?: (memory: T) => void }): void;
-    
-    /**
-    * Writes save data associated with this workshop addon.
-    * Will synchronously write to disk every time this is called.
-    */
-    SetSaveData(data: string): void;
-    /**
-    * Retrieves the save data associated with this workshop addon.
-    * Will synchronously read from disk the first time this is called.
-    */
-    GetSaveData(): string;
-    
-    /** Called at a specified time. Control when this is run using SetNextThink. */
-    SetThink(callback: () => void): void;
-    /** Set when the OnThink callback should next be run. The exact time will be on the tick nearest to the specified time, which may be earlier or later. */
-    SetNextThink(time: number): void;
-    /** Returns a promise that resolves after `delay` number of seconds. The exact time will be on the tick nearest to the specified delay, which may be earlier or later. */
-    Delay(delay: number): Promise<void>;
-    
-    /**
-    * Queue up a callback to be invoked once, after all entities have executed their think functions this tick (eg. player input has been handled, projectiles have moved).
-    * This can be useful for delaying until a clean moment when an entity isn't mid-computation and might ignore or misinterpret.
-    * This can be useful for delaying until the world is in a consistent state.
-    * Callbacks queued up during a post entity think callback will be invoked in the same tick.
-    */
-    QueueAfterThinks( callback: () => void ): void;
-    
-    /** Called when the point_script entity is activated */
-    OnActivate(callback: () => void): void;
-    /** Called when input RunScriptInput is triggered on the point_script entity with a parameter value that matches name. */
-    OnScriptInput(name: string, callback: (inputData: { caller?: Entity, activator?: Entity }) => void): void;
-    
-    /** Called when a client finishes the initial connection handshake with the server. */
-    OnPlayerConnect(callback: (event: { player: CSPlayerController }) => void): void;
-    /** Called when a client finishes loading and is ready to spawn. */
-    OnPlayerActivate(callback: (event: { player: CSPlayerController }) => void): void;
-    /** Called when a client disconnects from the server. */
-    OnPlayerDisconnect(callback: (event: { playerSlot: number }) => void): void;
-    /** Called when a player respawns, changes team, or is placed back at spawn due to a round restart */
-    OnPlayerReset(callback: (event: { player: CSPlayerPawn }) => void): void
-    /** Called when a player changes team */
-    OnPlayerTeamChanged(callback: (event: { player: CSPlayerPawn, oldTeam: number }) => void): void
-    /** Called when a new round begins */
-    OnRoundStart(callback: () => void): void;
-    /** Called when a team wins a round */
-    OnRoundEnd(callback: (event: { winningTeam: number, reason: CSRoundEndReason }) => void): void;
-    /** Called at the start of cleanup for a round restart */
-    OnBeginRoundRestart(callback: () => void): void;
-    /** Called when a player starts planting their c4 */
-    OnBombPlantStart(callback: (event: { planter: CSPlayerPawn }) => void): void;
-    /** Called when a player aborts planting their c4 */
-    OnBombPlantAbort(callback: (event: { planter: CSPlayerPawn }) => void): void;
-    /** Called when a player plants their c4 */
-    OnBombPlant(callback: (event: BombPlantEvent) => void): void;
-    /** Called when a player starts defusing a c4 */
-    OnBombDefuseStart(callback: (event: { plantedC4: CSPlantedC4 }) => void): void;
-    /** Called when a player aborts defusing a c4 */
-    OnBombDefuseAbort(callback: (event: { plantedC4: CSPlantedC4 }) => void): void;
-    /** Called when a player defuses a c4 */
-    OnBombDefuse(callback: (event: BombDefuseEvent) => void): void;
-    /** Called when a c4 explodes */
-    OnBombExplode(callback: (event: { plantedC4: CSPlantedC4 }) => void): void;
-    /** Called when a player starts picking up a hostage */
-    OnHostagePickUpStart(callback: (event: { hostage: CSHostage }) => void): void;
-    /** Called when a player aborts picking up a hostage */
-    OnHostagePickUpAbort(callback: (event: { hostage: CSHostage, player: CSPlayerPawn }) => void): void;
-    /** Called when a player finishes picking up a hostage */
-    OnHostagePickUp(callback: (event: { hostage: CSHostage }) => void): void;
-    /** Called when a carried hostage is dropped without being rescued */
-    OnHostageDrop(callback: (event: { hostage: CSHostage, dropper: CSPlayerPawn }) => void): void;
-    /** Called when a hostage reaches a rescue zone */
-    OnHostageRescue(callback: (event: { hostage: CSHostage }) => void): void;
-    /** Called when a hostage is killed */
-    OnHostageKill(callback: (event: { hostage: CSHostage, attacker?: CSPlayerPawn }) => void): void;
-    /**
-    * Called immediately before a CSPlayerPawn takes damage to armor and health.
-    * Called after hitgroup modifications are applied such as headshot multiplier.
-    * This won't be called if the player would take no damage. Such as if they're frozen or invulnerable or if friendly fire would disable the damage.
-    * @param callback
-    * Return `{ damage: N }` to modify the amount of damage.
-    * Return `{ damageFlags: event.damageFlags | CSDamageFlags.IGNORE_ARMOR }` to have the damage pierce armor.
-    * Return `{ abort: true }` to cancel the damage event.
-    */
-    OnModifyPlayerDamage(callback: (event: ModifyPlayerDamageEvent) => ModfiyPlayerDamageResult | void): void;
-    /**
-    * Called when a player has taken damage.
-    */
-    OnPlayerDamage(callback: (event: PlayerDamageEvent) => void): void;
-    /** Called when a player dies. `inflictor`, `attacker` and `weapon` will match the damage event that caused the kill. */
-    OnPlayerKill(callback: (event: { player: CSPlayerPawn, inflictor?: Entity, attacker?: Entity, weapon?: CSWeaponBase }) => void): void;
-    /** Called when a player jumps off the ground. */
-    OnPlayerJump(callback: (event: { player: CSPlayerPawn }) => void): void;
-    /** Called when a player hits the ground while falling. */
-    OnPlayerLand(callback: (event: { player: CSPlayerPawn }) => void): void;
-    /** Called when a player sends a chat message. `team` will match they player's team if the message was sent to team chat. */
-    OnPlayerChat(callback: (event: { player?: CSPlayerController, text: string, team: number }) => void): void;
-    /** Called when a player pings a location. */
-    OnPlayerPing(callback: (event: { player: CSPlayerController, position: Vector }) => void): void;
-    /** Called when a gun is reloaded. */
-    OnGunReload(callback: (event: { weapon: CSWeaponBase }) => void): void;
-    /** Called when a gun emits bullets. A shotgun will only trigger this once when emitting multiple bullets at once. */
-    OnGunFire(callback: (event: { weapon: CSWeaponBase }) => void): void;
-    /**
-    * Called when a bullet hits a surface.
-    * Penetrations can cause a single bullet to trigger multiple impacts.
-    * This will be called for all impacts of a bullet before any player damage events are called.
-    */
-    OnBulletImpact(callback: (event: { weapon: CSWeaponBase, position: Vector, hitEntity?: Entity }) => void): void;
-    /** Called when a weapon is dropped. */
-    OnWeaponDrop(callback: (event: { weapon: CSWeaponBase, dropper: CSPlayerPawn }) => void): void;
-    /** Called when a weapon is picked up. */
-    OnWeaponPickup(callback: (event: { weapon: CSWeaponBase }) => void): void;
-    /** Called when a grenade is thrown. `projectile` is the newly created grenade projectile. */
-    OnGrenadeThrow(callback: (event: { weapon: CSWeaponBase, projectile: CSGrenadeProjectileBase }) => void): void;
-    /** Called when a grenade bounces. */
-    OnGrenadeBounce(callback: (event: GrenadeBounceEvent) => void): void;
-    /** Called when a knife attacks, even if it misses. */
-    OnKnifeAttack(callback: (event: { weapon: CSWeaponBase, attackType: CSWeaponAttackType }) => void): void;
-    /** Called when a button in a CustomHudLayout is clicked. */
-    OnCustomHudClicked( callback: (event: {player: CSPlayerController, layout: CustomHudLayout, buttonId: string}) => void ): void;
-    
-    /** Fire the input on all targets matching the specified names. */
-    EntFireAtName(config: { name: string, input: string, value?: InputValue, caller?: Entity, activator?: Entity, delay?: number }): void;
-    /** Fire the input on the specified target. */
-    EntFireAtTarget(config: { target: Entity, input: string, value?: InputValue, caller?: Entity, activator?: Entity, delay?: number }): void;
-    /** Connect the output of an entity to a callback. The return value is a connection id that can be used in `DisconnectOutput` */
-    ConnectOutput(target: Entity, output: string, callback: (inputData: { value?: InputValue, caller?: Entity, activator?: Entity }) => any): number | undefined;
-    /** Find entities by name. */
-    DisconnectOutput(connectionId: number): void;
-    
-    /** Find the first entity matching the specified name. */
-    FindEntityByName(name: string): Entity | undefined;
-    /** Find entities matching the specified name. */
-    FindEntitiesByName(name: string): Entity[];
-    /** Find the first entity of the specified class name. */
-    FindEntityByClass(className: string): Entity | undefined;
-    /** Find entities of the specified class name. */
-    FindEntitiesByClass(className: string): Entity[];
-    /** Get the player controller in the given slot. */
-    GetPlayerController(playerSlot: number): CSPlayerController | undefined;
-    /** Get all the player controllers. Includes disconnected players. */
-    GetAllPlayerControllers(): CSPlayerController[];
-    
-    /** Trace a point along a line and detect collisions */
-    TraceLine(trace: BaseTraceConfig): TraceResult;
-    /** Trace a sphere along a line and detect collisions */
-    TraceSphere(trace: { radius: number } & BaseTraceConfig): TraceResult;
-    /** Trace an axis aligned bounding box along a line and detect collisions */
-    TraceBox(trace: { mins: Vector, maxs: Vector } & BaseTraceConfig): TraceResult;
-    /** Trace as a player would collide */
-    TracePlayer(trace: PlayerTrace): PlayerTraceResult;
-    /** Trace as a bullet and detect hits and damage */
-    TraceBullet(trace: BulletTrace): BulletTraceResult[];
-    
-    /** Get if the server is a dedicated server. */
-    IsDedicatedServer(): boolean;
-    /** Get the game time in seconds. */
-    GetGameTime(): number;
-    /** Get the current Game Type. */
-    GetGameType(): number;
-    /** Get the current Game Mode. */
-    GetGameMode(): number;
-    /** Get the name of the current map. */
-    GetMapName(): string;
-    
-    /** Spawns a live grenade projectile. */
-    SpawnGrenadeProjectile(config: SpawnGrenadeProjectileConfig): CSGrenadeProjectileBase;
-    
-    /**
-    * Loads resources on the server and clients to avoid hitches when later referenced.
-    * Supports .vmdl, .vpcf, .vmat, and .vsnd resources.
-    * @experimental This feature is experimental and may experience breaking changes.
-    * Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.
-    */
-    Precache(config: { resources: string[] }): CSPrecache | undefined;
-    
-    /** @deprecated This method will be removed in a future update */
-    OnBeforePlayerDamage(callback: () => any): void;
-    /** @deprecated This method will be removed in a future update */
-    OnBeforeReload(callback: () => any): void;
-    /** @deprecated This method will be removed in a future update */
-    OnReload(callback: (memory: any) => void): void;
-    /** @deprecated This overload will be removed in a future update */
-    DebugScreenText(text: any, x: number, y: number, duration: number, color: ColorArg): void;
-    /** @deprecated This overload will be removed in a future update */
-    DebugLine(start: Vector, end: Vector, duration: number, color: ColorArg): void;
-    /** @deprecated This overload will be removed in a future update */
-    DebugBox(mins: Vector, maxs: Vector, duration: number, color: ColorArg): void;
-    /** @deprecated This overload will be removed in a future update */
-    DebugSphere(center: Vector, radius: number, duration: number, color: ColorArg): void;
-    /** @deprecated This overload will be removed in a future update */
-    EntFireAtName(name: string, input: string, inputData?: InputValue | { value?: InputValue, caller?: Entity, activator?: Entity }, delay?: number): void;
-    /** @deprecated This overload will be removed in a future update */
-    EntFireAtTarget(target: Entity, input: string, inputData?: InputValue | { value?: InputValue, caller?: Entity, activator?: Entity }, delay?: number): void;
-    /** @deprecated This method will be removed in a future update */
-    Msg(text: any): void;
-    /** @deprecated This method will be removed in a future update */
-    ClientCommand(playerSlot: number, command: string): void;
-    /** @deprecated This method will be removed in a future update */
-    ServerCommand(command: string): void;
-    /** @deprecated This method will be removed in a future update */
-    RegisterCheatCommand(name: string, callback: (args: string) => void): void;
-    /** @deprecated This method will be removed in a future update */
-    IsWarmupPeriod(): boolean;
-    /** @deprecated This method will be removed in a future update */
-    IsFreezePeriod(): boolean;
-    /** @deprecated This method will be removed in a future update */
-    IsTeamIntroPeriod(): boolean;
-    /** @deprecated This method will be removed in a future update */
-    GetRoundsPlayed(): number;
-    /** @deprecated This method will be removed in a future update */
-    GetRoundRemainingTime(): number;
-    /** @deprecated This method will be removed in a future update */
-    SetRoundRemainingTime(time: number): void;
-    /** @deprecated This method will be removed in a future update */
-    AddTeamMoney(team: number, reason: CSTeamMoneyReason, amount?: number): void;
-}
-```
-
-### IConsole
-An API provided to scripts for the console: logging, ConVars, and ConCommands.
-
-Access these functions by importing Console from "cs_script/point_script".
-
-```ts
-interface IConsole {
-    /** Log a message to the console. */
-    Log(text: any): void;
-    
-    /** Get the value of a boolean convar. */
-    GetConvarBoolean(name: string): boolean | undefined;
-    /** Get the value of a numeric convar. */
-    GetConvarNumber(name: string): number | undefined;
-    /** Get the value of any convar, converted to a string. */
-    GetConvarString(name: string): string | undefined;
-    /** Get the value of a Vector convar. */
-    GetConvarVector(name: string): Vector | undefined;
-    /** Get the value of a QAngle convar. */
-    GetConvarQAngle(name: string): QAngle | undefined;
-    /** Get the value of a Color convar. */
-    GetConvarColor(name: string): Color | undefined;
-    /** Set the value of a convar. */
-    SetConvar(name: string, value: boolean | number | string | Vector | QAngle | ColorArg): void;
-    
-    /** Issue the specified command to the specified client. */
-    ClientCommand(playerSlot: number, command: string): void;
-    /** Issue a command. */
-    ServerCommand(command: string): void;
-    /** Creates a console command that will run the specified callback. The command will only work when sv_cheats is true. */
-    RegisterCheatCommand(name: string, callback: (args: string) => void): void;
-}
-```
-
-### IGameRules
-An API provided to scripts for the state of the match: warmup, rounds, and team money.
-
-Access these functions by importing GameRules from "cs_script/point_script".
-
-```ts
-interface IGameRules {
-    /** Get if the game is currently in a Warmup period. */
-    IsWarmupPeriod(): boolean;
-    /** Start the warmup period, restarting the round. */
-    StartWarmup(): void;
-    /** End the warmup period as if its timer had run out. The game mode then ends it the usual way, starting on the next tick. */
-    EndWarmup(): void;
-    
-    /** Get if the game is currently in a Freeze period. */
-    IsFreezePeriod(): boolean;
-    /** Get if the game is currently in a Team Intro period. */
-    IsTeamIntroPeriod(): boolean;
-    /** Get the number of rounds played in the current game. */
-    
-    GetRoundsPlayed(): number;
-    /** Get the time remaining in the current round in seconds. */
-    GetRoundRemainingTime(): number;
-    /** Set the time remaining in the current round in seconds. */
-    SetRoundRemainingTime(time: number): void;
-    /** Get the team's score. */
-    GetTeamScore(team: number): number;
-    /** Add to the team's score. Call before TerminateRound so the round end sees the new score. */
-    AddTeamScore(team: number, score: number): void;
-    /** Terminate the current round. Counts as a round played unless it is a draw. Will not add to team scores. Does nothing if the round has already ended. */
-    TerminateRound(reason: CSRoundEndReason, delay?: number): void;
-    
-    /**
-    * Adds the money to all player controllers on the team, following all classic rules.
-    * If players are not eligible to receive end-of-round money, then that restriction is honored.
-    * Disconnected players will get their account balance incremented, and will have correct
-    * amount of money after they reconnect to the server.
-    * If the `amount` parameter is 0 or undefined, then the amount will be determined using server convar
-    * setting corresponding to the reason parameter.
-    */
-    AddTeamMoney(team: number, reason: CSTeamMoneyReason, amount?: number): void;
-}
-```
 
 ### BaseTraceConfig
 ```ts
