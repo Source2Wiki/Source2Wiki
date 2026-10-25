@@ -1,5 +1,5 @@
 ---
-description: Explore the Hammer Editor.
+description: "The level editor for all Source 2 games; how to open it, how a map is built from meshes and entities, and where to go next."
 title: Hammer Level Editor
 image: /img/app_icons/hammer.png
 ---
@@ -8,6 +8,82 @@ import DocCardList from '@theme/DocCardList';
 
 <img src={require('@site/static/img/app_icons/hammer.png').default} alt="Tool Icon" vertical-align="middle" width="128" height="128" />
 
-Explore the Hammer Editor.
+Hammer is the level editor for Source 2 games. Maps are built in it, from the world geometry to the entities and lighting.
+
+It comes with the [Workshop Tools](../../Basics/installS2Sdk/index.mdx). It is a different editor from Source 1 Hammer, geometry is made of meshes instead of brushes and maps are saved as [`.vmap`](../../FileFormats/vmap/index.mdx) instead of `.vmf`.
+
+This page gives an overview of the editor. Building a first map step by step is covered in [Getting started](./getting-started.md).
+
+![Source2 Hammer level editor](./img/hammer.png "Hammer")
+
+:::info
+The Source 2 version of Hammer is 5.x, compared to source 1's 4.x, the UI has been entirely redesigned in Qt and almost all workflows differ, but it is still surprisingly 
+easy to pick up if you had prior experience with Source 1!
+
+New to Source 2 is Hammer's ability to act as a complete modeling package, akin to Blender or Maya, giving the user fine grained control over map geometry and texturing all without
+having to leave the editor.
+:::
+
+:::warning
+Maps can still leak, see [Leaks](./visibility.md#leaks).
+
+A common misconception is that in Source 2 you don't need to seal maps anymore. This is wrong and will still cause your levels to be broken, but in different ways than Source 1.
+:::
+
+## Supported games
+
+Every game with public Workshop Tools includes Hammer:
+
+- <Game name="cs2"/>
+- <Game name="hla"/>
+- <Game name="dota2"/>
+- <Game name="steamvr"/>
+
+Each game ships its own version of Hammer, with its own entities (game specific FGD files), materials and compile options. A feature in one game may be missing or work differently in another.
+
+## Opening Hammer
+
+Hammer runs inside the game. Starting a game in tools mode loads the editors on top of the running engine, see [What is Source 2](../../Basics/what-is-source-2.md#editors).
+
+Tools mode always runs with an [addon](../../Basics/working-on-content/addons/index.mdx) loaded, which holds the maps and assets being worked on. The Addon Launcher is used to create or pick an addon and start the tools.
+
+## Building blocks of a map
+
+A map is a `.vmap` file in the addon's `content/` folder. It is made of multiple types of objects.
+
+### Meshes
+
+Meshes are the world geometry, such as walls, floors, terrain and buildings. Source2 Hammer has full polygon modeling capabilities so meshes can be edited down to 
+single vertices, edges, faces, and materials.
+
+### Tool textures
+
+Tool textures are materials that do a job instead of being seen, like player clips, triggers and faces that are never drawn. Every game's set is listed on the [tool texture list](../../ToolTextures/index.mdx).
+
+### Entities
+
+Entities are anything with behavior, such as spawn points, lights, doors, triggers and game logic. Their keyvalues, inputs and outputs come from FGD files and are documented for each game on the [entity list](../../EntityList/index.mdx).
+
+### Models and SmartProps
+
+Models are placed into the map as props. [SmartProps](./SmartProps/index.mdx) are props built from rules, so their shape and variations can be changed in the viewport.
+
+## Compiling the map
+
+The game does not load the `.vmap` directly. Hammer compiles it in stages, for example world geometry, visibility, physics and baked lighting, and packs the output into a `.vpk` in the addon's `game/` folder.
+
+The stages are picked in Hammer's [Build Map dialog](../MapCompiler/index.mdx). What each stage produces, and what is reused from the previous build, is covered in [Compiling maps](../../Basics/working-on-content/compiling-maps.md).
+
+## Differences from Source 1
+
+| | Source 1 Hammer | Source 2 Hammer |
+| --- | --- | --- |
+| Geometry | Convex brushes | Meshes |
+| Map file | `.vmf`, KeyValues text | `.vmap`, [DMX](../../FileFormats/dmx.mdx) |
+| Compiling | VBSP, VVIS and VRAD | One build with stages, run by the [Resource Compiler](../ResourceCompiler/index.mdx) |
+| Light baking | VRAD on the CPU | VRAD3, Path traced on the GPU, or the CPU in older games |
+| Compiled map | `.bsp` | `.vpk` |
+
+## In this section
 
 <DocCardList />
