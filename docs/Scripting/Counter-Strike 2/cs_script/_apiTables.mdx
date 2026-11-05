@@ -15,13 +15,6 @@ Access these functions by importing Instance from "cs_script/point_script".
 |GetSaveData|GetSaveData(): string|Retrieves the save data associated with this workshop addon.<br /><br />Will synchronously read from disk the first time this is called.|
 |SetNextThink|SetNextThink(time: number): void|Set when the OnThink callback should next be run. The exact time will be on the tick nearest to the specified time, which may be earlier or later.|
 |Delay|Delay(delay: number): Promise\<void\>|Returns a promise that resolves after `delay` number of seconds. The exact time will be on the tick nearest to the specified delay, which may be earlier or later.|
-|EntFireAtName|EntFireAtName(config: \{ name: string, input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on all targets matching the specified names.|
-|EntFireAtTarget|EntFireAtTarget(config: \{ target: [Entity](#entity), input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on the specified target.|
-|DisconnectOutput|DisconnectOutput(connectionId: number): void|Find entities by name.|
-|FindEntityByName|FindEntityByName(name: string): [Entity](#entity) \| undefined|Find the first entity matching the specified name.|
-|FindEntitiesByName|FindEntitiesByName(name: string): [Entity](#entity)[]|Find entities matching the specified name.|
-|FindEntityByClass|FindEntityByClass(className: string): [Entity](#entity) \| undefined|Find the first entity of the specified class name.|
-|FindEntitiesByClass|FindEntitiesByClass(className: string): [Entity](#entity)[]|Find entities of the specified class name.|
 |GetPlayerController|GetPlayerController(playerSlot: number): [CSPlayerController](#csplayercontroller) \| undefined|Get the player controller in the given slot.|
 |GetAllPlayerControllers|GetAllPlayerControllers(): [CSPlayerController](#csplayercontroller)[]|Get all the player controllers. Includes disconnected players.|
 |TraceLine|TraceLine(trace: [BaseTraceConfig](#basetraceconfig)): [TraceResult](#traceresult)|Trace a point along a line and detect collisions|
@@ -35,13 +28,15 @@ Access these functions by importing Instance from "cs_script/point_script".
 |GetGameMode|GetGameMode(): number|Get the current Game Mode.|
 |GetMapName|GetMapName(): string|Get the name of the current map.|
 |SpawnGrenadeProjectile|SpawnGrenadeProjectile(config: [SpawnGrenadeProjectileConfig](#spawngrenadeprojectileconfig)): [CSGrenadeProjectileBase](#csgrenadeprojectilebase)|Spawns a live grenade projectile.|
-|Precache|Precache(config: \{ resources: string[] \}): [CSPrecache](#csprecache) \| undefined|Loads resources on the server and clients to avoid hitches when later referenced.<br /><br />Supports .vmdl, .vpcf, .vmat, and .vsnd resources.<br /><br />@experimental This feature is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
+|Precache|Precache(config: \{ resources?: string[], entities?: string[] \}): [CSPrecache](#csprecache) \| undefined|Loads resources on the server and clients to avoid hitches when later referenced.<br /><br />`resources` supports .vmdl, .vpcf, .vmat, and .vsnd resources.<br /><br />`entities` takes entity class names or subclass names.<br /><br />@experimental This feature is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
 |DebugScreenText|DebugScreenText(text: any, x: number, y: number, duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
 |DebugLine|DebugLine(start: [Vector](#vector), end: [Vector](#vector), duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
 |DebugBox|DebugBox(mins: [Vector](#vector), maxs: [Vector](#vector), duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
 |DebugSphere|DebugSphere(center: [Vector](#vector), radius: number, duration: number, color: [ColorArg](#colorarg)): void|@deprecated This overload will be removed in a future update|
-|EntFireAtName|EntFireAtName(name: string, input: string, inputData?: [InputValue](#inputvalue) \| \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}, delay?: number): void|@deprecated This overload will be removed in a future update|
-|EntFireAtTarget|EntFireAtTarget(target: [Entity](#entity), input: string, inputData?: [InputValue](#inputvalue) \| \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}, delay?: number): void|@deprecated This overload will be removed in a future update|
+|EntFireAtName|EntFireAtName(config: \{ name: string, input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|@deprecated This method will be removed in a future update|
+|EntFireAtName|EntFireAtName(name: string, input: string, inputData?: [InputValue](#inputvalue) \| \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}, delay?: number): void|@deprecated This method will be removed in a future update|
+|EntFireAtTarget|EntFireAtTarget(config: \{ target: [Entity](#entity), input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|@deprecated This method will be removed in a future update|
+|EntFireAtTarget|EntFireAtTarget(target: [Entity](#entity), input: string, inputData?: [InputValue](#inputvalue) \| \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}, delay?: number): void|@deprecated This method will be removed in a future update|
 |Msg|Msg(text: any): void|@deprecated This method will be removed in a future update|
 |ClientCommand|ClientCommand(playerSlot: number, command: string): void|@deprecated This method will be removed in a future update|
 |ServerCommand|ServerCommand(command: string): void|@deprecated This method will be removed in a future update|
@@ -52,6 +47,11 @@ Access these functions by importing Instance from "cs_script/point_script".
 |GetRoundRemainingTime|GetRoundRemainingTime(): number|@deprecated This method will be removed in a future update|
 |SetRoundRemainingTime|SetRoundRemainingTime(time: number): void|@deprecated This method will be removed in a future update|
 |AddTeamMoney|AddTeamMoney(team: number, reason: [CSTeamMoneyReason](#csteammoneyreason), amount?: number): void|@deprecated This method will be removed in a future update|
+|FindEntityByName|FindEntityByName(name: string): [Entity](#entity) \| undefined|@deprecated This method will be removed in a future update|
+|FindEntitiesByName|FindEntitiesByName(name: string): [Entity](#entity)[]|@deprecated This method will be removed in a future update|
+|FindEntityByClass|FindEntityByClass(className: string): [Entity](#entity) \| undefined|@deprecated This method will be removed in a future update|
+|FindEntitiesByClass|FindEntitiesByClass(className: string): [Entity](#entity)[]|@deprecated This method will be removed in a future update|
+|DisconnectOutput|DisconnectOutput(connectionId: number): void|@deprecated This method will be removed in a future update|
 
 #### Events
 
@@ -66,6 +66,7 @@ Access these functions by importing Instance from "cs_script/point_script".
 |OnPlayerActivate|OnPlayerActivate(callback: (event: \{ player: [CSPlayerController](#csplayercontroller) \}) =\> void): void|Called when a client finishes loading and is ready to spawn.|
 |OnPlayerDisconnect|OnPlayerDisconnect(callback: (event: \{ playerSlot: number \}) =\> void): void|Called when a client disconnects from the server.|
 |OnPlayerReset|OnPlayerReset(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn) \}) =\> void): void|Called when a player respawns, changes team, or is placed back at spawn due to a round restart|
+|OnBotControl|OnBotControl(callback: (event: \{ controller: [CSPlayerController](#csplayercontroller) \}) =\> void): void|Called when a player takes or releases control of a bot.|
 |OnPlayerTeamChanged|OnPlayerTeamChanged(callback: (event: \{ player: [CSPlayerPawn](#csplayerpawn), oldTeam: number \}) =\> void): void|Called when a player changes team|
 |OnRoundStart|OnRoundStart(callback: () =\> void): void|Called when a new round begins|
 |OnRoundEnd|OnRoundEnd(callback: (event: \{ winningTeam: number, reason: [CSRoundEndReason](#csroundendreason) \}) =\> void): void|Called when a team wins a round|
@@ -99,11 +100,11 @@ Access these functions by importing Instance from "cs_script/point_script".
 |OnGrenadeBounce|OnGrenadeBounce(callback: (event: [GrenadeBounceEvent](#grenadebounceevent)) =\> void): void|Called when a grenade bounces.|
 |OnKnifeAttack|OnKnifeAttack(callback: (event: \{ weapon: [CSWeaponBase](#csweaponbase), attackType: [CSWeaponAttackType](#csweaponattacktype) \}) =\> void): void|Called when a knife attacks, even if it misses.|
 |OnCustomHudClicked|OnCustomHudClicked( callback: (event: \{player: [CSPlayerController](#csplayercontroller), layout: [CustomHudLayout](#customhudlayout), buttonId: string\}) =\> void ): void|Called when a button in a [CustomHudLayout](#customhudlayout) is clicked.|
-|ConnectOutput|ConnectOutput(target: [Entity](#entity), output: string, callback: (inputData: \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> any): number \| undefined|Connect the output of an entity to a callback. The return value is a connection id that can be used in `DisconnectOutput`|
 |OnBeforePlayerDamage|OnBeforePlayerDamage(callback: () =\> any): void|@deprecated This method will be removed in a future update|
 |OnBeforeReload|OnBeforeReload(callback: () =\> any): void|@deprecated This method will be removed in a future update|
 |OnReload|OnReload(callback: (memory: any) =\> void): void|@deprecated This method will be removed in a future update|
 |RegisterCheatCommand|RegisterCheatCommand(name: string, callback: (args: string) =\> void): void|@deprecated This method will be removed in a future update|
+|ConnectOutput|ConnectOutput(target: [Entity](#entity), output: string, callback: (inputData: \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> any): number \| undefined|@deprecated This method will be removed in a future update|
 
 ### IConsole
 An API provided to scripts for the console: logging, ConVars, and ConCommands.
@@ -152,6 +153,27 @@ Access these functions by importing GameRules from "cs_script/point_script".
 |AddTeamScore|AddTeamScore(team: number, score: number): void|Add to the team's score. Call before TerminateRound so the round end sees the new score.|
 |TerminateRound|TerminateRound(reason: [CSRoundEndReason](#csroundendreason), delay?: number): void|Terminate the current round. Counts as a round played unless it is a draw. Will not add to team scores. Does nothing if the round has already ended.|
 |AddTeamMoney|AddTeamMoney(team: number, reason: [CSTeamMoneyReason](#csteammoneyreason), amount?: number): void|Adds the money to all player controllers on the team, following all classic rules.<br /><br />If players are not eligible to receive end-of-round money, then that restriction is honored.<br /><br />Disconnected players will get their account balance incremented, and will have correct<br /><br />amount of money after they reconnect to the server.<br /><br />If the `amount` parameter is 0 or undefined, then the amount will be determined using server convar<br /><br />setting corresponding to the reason parameter.|
+
+### IEntities
+An API provided to scripts for general entity interaction.
+
+Access these functions by importing Entities from "cs_script/point_script".
+
+#### Functions
+
+|Name|Signature|Description|
+|---|---|---|
+|Spawn|Spawn(entities: (\{ classname: string, origin?: [Vector](#vector), angles?: [QAngle](#qangle) \} \& \{ [key: string]: [EntityKeyValue](#entitykeyvalue) \})[]): [Entity](#entity)[]|Spawns a set of entities.<br /><br />@experimental This feature is experimental and may experience breaking changes.<br /><br />Please send feedback to CSGOTeamFeedback@valvesoftware.com with "cs_script Feedback" in the subject line.|
+|FindByName|FindByName(name: string): [Entity](#entity)[]|Find all entities with the specified name.|
+|FindByClass|FindByClass(className: string): [Entity](#entity)[]|Find all entities of the specified class name.|
+|FireInput|FireInput(config: \{ name: string, input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on all entities with the specified name.|
+|DisconnectOutput|DisconnectOutput(connectionId: number): void|Disconnect an output connection made by `ConnectOutput`.|
+
+#### Events
+
+|Name|Signature|Description|
+|---|---|---|
+|ConnectOutput|ConnectOutput(config: \{ target: [Entity](#entity), output: string, callback: (inputData: \{ value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity) \}) =\> any \}): number \| undefined|Connect the output of an entity to a callback. The return value is a connection id that can be used in `DisconnectOutput`|
 
 ### CSPrecache
 
@@ -206,6 +228,7 @@ The base class for all entities
 |TakeDamage|TakeDamage(takeDamage: [EntityDamage](#entitydamage)): number|Apply damage to this entity. Damage value will be modified by armor and hitgroup.|
 |Kill|Kill(): void||
 |Remove|Remove(): void||
+|FireInput|FireInput(config: \{ input: string, value?: [InputValue](#inputvalue), caller?: [Entity](#entity), activator?: [Entity](#entity), delay?: number \}): void|Fire the input on this entity.|
 |Teleport|Teleport(newPosition: [Vector](#vector) \| null, newAngles: [QAngle](#qangle) \| null, newVelocity: [Vector](#vector) \| null): void|@deprecated This overload will be removed in a future update|
 |GetLocalVelcoity|GetLocalVelcoity(): [Vector](#vector)|@deprecated This method will be removed in a future update|
 
@@ -341,6 +364,8 @@ An entity that can be observed when no alive teammates remain.
 |GetPlayerName|GetPlayerName(): string||
 |GetPlayerPawn|GetPlayerPawn(): [CSPlayerPawn](#csplayerpawn) \| undefined||
 |GetObserverPawn|GetObserverPawn(): [CSObserverPawn](#csobserverpawn) \| undefined||
+|IsControllingBot|IsControllingBot(): boolean||
+|GetControlledBotPawn|GetControlledBotPawn(): [CSPlayerPawn](#csplayerpawn) \| undefined||
 |GetScore|GetScore(): number||
 |AddScore|AddScore(points: number): void|Add to the player's score. Negative values are allowed but the score will not go below zero.|
 |GetWeaponDataForLoadoutSlot|GetWeaponDataForLoadoutSlot(slot: [CSLoadoutSlot](#csloadoutslot), team?: number): [CSWeaponData](#csweapondata) \| undefined|Leave team as the default to use the player's current team.|
@@ -375,6 +400,7 @@ An entity that can be observed when no alive teammates remain.
 |---|---|---|
 |GetPlayerController|GetPlayerController(): [CSPlayerController](#csplayercontroller) \| undefined|Gets the controller currently controlling this player pawn.|
 |GetOriginalPlayerController|GetOriginalPlayerController(): [CSPlayerController](#csplayercontroller)|Gets the controller that this player pawn was originally spawned for.|
+|Reset|Reset(): void|Reset the player to full health and ammo. If dead they will be alive with the default weapon loadout. Cancels any bot takeover.|
 |IsInputPressed|IsInputPressed(inputs: [CSInputs](#csinputs)): boolean|@returns `true` if specified inputs are pressed at the end of the current tick.|
 |WasInputJustPressed|WasInputJustPressed(inputs: [CSInputs](#csinputs)): boolean|@returns `true` if specified inputs went from released to pressed at some point during the current tick.|
 |WasInputJustReleased|WasInputJustReleased(inputs: [CSInputs](#csinputs)): boolean|@returns `true` if specified inputs went from pressed to released at some point during the current tick.|
@@ -531,6 +557,12 @@ type Color = { r: number, g: number, b: number, a: number };
 
 ```ts
 type InputValue = boolean | number | string | Vector | Color | undefined;
+```
+
+### EntityKeyValue
+
+```ts
+type EntityKeyValue = boolean | number | string | Vector | QAngle;
 ```
 
 ### SpawnGrenadeProjectileConfig
