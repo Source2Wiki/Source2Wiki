@@ -5,7 +5,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import DocEmbed from '@site/src/components/DiscordEmbed/DocEmbed';
 
 // makes browser tabs and link embeds read "Title | Group" (the doc's parent
-// sidebar category) instead of "Title | Source2 Wiki", embeds still show the
+// sidebar category) instead of "Title | Source 2 Wiki", embeds still show the
 // site name separately through og:site_name
 export default function DocItemMetadata(): React.JSX.Element
 {
@@ -21,7 +21,7 @@ export default function DocItemMetadata(): React.JSX.Element
     .find(item => item.label !== metadata.title)
     ?.label;
 
-  // docs without a parent category keep the default "Title | Source2 Wiki",
+  // docs without a parent category keep the default "Title | Source 2 Wiki",
   // see src/theme/ThemeProvider/TitleFormatter for how the site name is skipped
   const title = group
     ? `${metadata.title} ${siteConfig.titleDelimiter} ${group}`

@@ -46,7 +46,7 @@ and run the command above.
 - **Code** is under the [MIT License](LICENSE).
 - **Wiki content** (text, images, media and anything else contributed to the wiki) is under
   [Creative Commons Attribution-ShareAlike 4.0](LICENSE-CONTENT), the same license Wikipedia uses,
-  unless otherwise noted. If you reuse it, credit Source2Wiki and share your changes under the same
+  unless otherwise noted. If you reuse it, credit Source 2 Wiki and share your changes under the same
   license. By contributing you agree to license your contribution under these terms.
 - **Valve and other third-party material** is not covered by either license and belongs to its
   respective owners. Source 2 is a trademark of Valve Corporation, and this project is not

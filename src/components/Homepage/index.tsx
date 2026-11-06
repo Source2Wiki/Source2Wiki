@@ -25,7 +25,7 @@ export function Hero(): React.JSX.Element {
     <header className={styles.hero}>
       <img className={`${styles.logo} no-zoom`} src={useBaseUrl('/img/logo.svg')} alt="" width={96} height={96} />
       <div>
-        <h1 className={styles.title}>Source2 Wiki</h1>
+        <h1 className={styles.title}>Source 2 Wiki</h1>
         <p className={styles.subtitle}>Community driven documentation for everything Source 2.</p>
       </div>
     </header>

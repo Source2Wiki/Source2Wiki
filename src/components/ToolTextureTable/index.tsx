@@ -118,7 +118,7 @@ const ToolTexTable: React.FC<ToolTexTableProps> = ({ game }) =>{
   return (
     <div className={styles.table}>
       <div>
-        A searchable list of every tool texture in every Source2 game.
+        A searchable list of every tool texture in every Source 2 game.
       </div>
       <div>
         All tool textures contain the <code className={styles.code}>tools.toolsmaterial</code> material attribute, as such it has been omitted from the attribute list.
