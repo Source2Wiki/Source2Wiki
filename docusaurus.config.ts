@@ -119,7 +119,7 @@ const config: Config = {
           path: 'updates',
           routeBasePath: 'updates',
           blogTitle: "What's new",
-          blogDescription: 'New pages and other changes to the Source2 Wiki.',
+          blogDescription: 'New pages and other changes to the Source 2 Wiki.',
           blogSidebarTitle: 'All updates',
           blogSidebarCount: 'ALL',
           postsPerPage: 10,
@@ -128,8 +128,8 @@ const config: Config = {
           onUntruncatedBlogPosts: 'ignore',
           feedOptions: {
             type: ['rss', 'atom'],
-            title: 'Source2 Wiki updates',
-            description: 'New pages and other changes to the Source2 Wiki.',
+            title: 'Source 2 Wiki updates',
+            description: 'New pages and other changes to the Source 2 Wiki.',
           },
         },
         sitemap: {
