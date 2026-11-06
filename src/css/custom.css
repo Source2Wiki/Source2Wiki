@@ -200,6 +200,117 @@ main:not(.container),
   text-align: center;
 }
 
+/* The "What's new" blog: laid out like a docs page, a full height sidebar panel on the left
+   and the glow behind the content. The blog puts its table of contents next to main instead
+   of inside it, so the glow is drawn on the row and starts where the sidebar ends.
+   Without the sidebar (phones) main is a narrow column, so the glow goes on the whole wrapper. */
+html.blog-wrapper .main-wrapper {
+  background: radial-gradient(60rem 22rem at 0% 0%, color-mix(in srgb, var(--wiki-accent) 9%, transparent), transparent 70%);
+}
+
+html.blog-wrapper .main-wrapper main {
+  background: none;
+}
+
+@media (min-width: 997px) {
+  html.blog-wrapper .main-wrapper {
+    display: flex;
+    flex-direction: column;
+    background: none;
+  }
+
+  html.blog-wrapper .main-wrapper > .container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+    padding: 0;
+  }
+
+  /* the container's margin-vert--lg is an !important utility that can't be overridden here,
+     so the row pulls itself back over it */
+  html.blog-wrapper .main-wrapper > .container > .row {
+    flex: 1;
+    flex-wrap: nowrap;
+    margin: -2rem 0;
+    background: radial-gradient(60rem 22rem at var(--doc-sidebar-width, 300px) 0%, color-mix(in srgb, var(--wiki-accent) 9%, transparent), transparent 70%);
+  }
+
+  html.blog-wrapper .main-wrapper > .container > .row > aside.col--3 {
+    flex: 0 0 var(--doc-sidebar-width, 300px);
+    max-width: var(--doc-sidebar-width, 300px);
+    padding: 0;
+    background: var(--wiki-panel);
+  }
+
+  html.blog-wrapper .main-wrapper > .container > .row > main {
+    flex: 1;
+    max-width: none;
+    /* the same inset as a doc page's 95% wide container */
+    padding: 1rem calc(2.5% + var(--ifm-spacing-horizontal)) 2rem;
+  }
+
+  html.blog-wrapper .main-wrapper > .container > .row > main ~ .col {
+    padding-top: 1rem;
+  }
+
+  html.blog-wrapper aside nav {
+    top: var(--ifm-navbar-height);
+    max-height: calc(100vh - var(--ifm-navbar-height));
+    padding: 0.5rem;
+  }
+}
+
+html.blog-wrapper aside [class*='sidebarItemTitle'] {
+  margin: 0.5rem 0.75rem 0.25rem !important;
+  font-family: var(--ifm-heading-font-family);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+html.blog-wrapper aside [class*='yearGroupHeading'] {
+  margin: 0.75rem 0.75rem 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--wiki-muted);
+}
+
+html.blog-wrapper aside [class*='sidebarItemList'] {
+  font-size: 0.9rem;
+}
+
+html.blog-wrapper aside [class*='sidebarItem_'] {
+  margin: 0;
+}
+
+html.blog-wrapper aside [class*='sidebarItemLink'] {
+  display: block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  color: var(--wiki-text);
+  line-height: 1.25;
+}
+
+html.blog-wrapper aside [class*='sidebarItemLink']:hover {
+  background: var(--wiki-raised);
+  text-decoration: none;
+}
+
+html.blog-wrapper aside [class*='sidebarItemLinkActive'] {
+  background: var(--wiki-accent-tint);
+  color: var(--wiki-accent) !important;
+}
+
+/* post titles in the list are links, keep them the heading colour like doc titles */
+html.blog-wrapper article header h2 a {
+  color: inherit;
+}
+
+html.blog-wrapper article header h2 a:hover {
+  color: var(--wiki-accent);
+  text-decoration: none;
+}
+
 /* Infima sizes only direct children of .markdown, so h2 nested in tabs would
    otherwise fall back to the smaller root size */
 .markdown h2 {
@@ -465,6 +576,7 @@ kbd[class*="searchHint"] {
 
 /* Separators */
 .navbar__items--right .github-button::after,
+.navbar__items--right .whats-new-link::after,
 .navbar__items--right .custom-schema-explorer-link::after {
   content: '';
   display: inline-block;
@@ -475,6 +587,7 @@ kbd[class*="searchHint"] {
   vertical-align: middle;
 }
 
+.navbar__items--right .whats-new-link,
 .navbar__items--right .custom-schema-explorer-link {
   margin-right: 0;
   padding-right: 6px;

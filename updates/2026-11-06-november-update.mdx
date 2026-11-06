@@ -1,0 +1,35 @@
+---
+title: New and updated CS2 pages, a Blender section and a new look
+authors: angel
+---
+
+New and updated Counter-Strike 2 pages, a Blender material blending guide plus a Blender section and a new look for the wiki itself.
+
+## New pages
+
+- [Game modes](/Scripting/Counter-Strike%202/game-modes) - how `game_type`, `game_mode` and similar convars select a game mode.
+- [Bot behavior trees](/Scripting/Counter-Strike%202/bot-behavior-trees) - the KV3 behavior tree system that drives bot AI, its file format and every node type.
+- [Rush game mode](/Scripting/Counter-Strike%202/rush) - the 3v3 Rush mode, how its official map is built and how to make custom Rush maps.
+- [Material blending on models](/CommunityGuides/blender/blendMaterialsOnModels) - vertex painted material blending with Blender and ModelDoc, for Counter-Strike 2, Half-Life: Alyx and Dota 2. Contributed by [redesaile](https://github.com/redesaile).
+
+## Updated pages
+
+- The [cs_script API documentation](/Scripting/Counter-Strike%202/cs_script/functionList) has been updated to cover the latest Counter-Strike 2 updates:
+  - The API was split into `Console`, `GameRules` and `Entities` alongside `Instance`. Most of the old `Instance` functions are deprecated in favor of these:
+  - `Instance.Precache` and `Entities.Spawn` load resources and spawn entities at runtime.
+  - `GameRules` can start and end warmup, read and add to team scores and end the round with `TerminateRound`.
+  - `Console` can read and set convars of any type.
+  - Hostages have their own `CSHostage` class and a full set of pick up, drop, rescue and kill events.
+  - Bot takeover is exposed through `OnBotControl`, `CSPlayerController.IsControllingBot` and `GetControlledBotPawn`, and `CSPlayerPawn.Reset` restores a player to full health and ammo.
+- The Blender guides now have their own [Blender](/CommunityGuides/blender) section, the [export guide](/CommunityGuides/blender/blenderToS2Hammer) moved there.
+- The [tool texture list](/ToolTextures) has the new Steam Audio full absorption and full diffuse textures in Counter-Strike 2 and Dota 2, `toolsskybox_occluder` in Counter-Strike 2 and `dota_nav_walkable` in Dota 2.
+
+## Wiki changes
+
+- The wiki has a new improved look, with per game theme colors. Thanks to [xPaw](https://github.com/xPaw) for this and the next two changes.
+- The navbar game selector was reworked, and the [Entity List](/EntityList) now only shows entities from the game picked there.
+- Game tabs are more compact and show each game's icon. Content for a single game is marked as such instead of getting a lone tab, and pages note when content is not available for the game picked in the navbar.
+- Every page now lists its contributors and edit history at the bottom.
+- Stub pages are marked as todo in the sidebar.
+- Convars can be linked to directly from any page.
+- Pull requests now get a preview build of the site.
