@@ -1,32 +1,34 @@
 .game-selector {
   position: relative;
   margin-left: 1rem;
+}
+
+.game-selector-toggle {
   display: flex;
   align-items: center;
-  padding: 0.375rem 0.75rem;
-  color: var(--ifm-color-emphasis-600);
-  background-color: var(--ifm-color-emphasis-200);
-  border: 0px;
+  height: var(--wiki-control-height);
+  padding: 0 0.625rem;
+  color: var(--wiki-muted);
+  background-color: var(--wiki-raised);
+  border: 0;
+  font-family: var(--ifm-font-family-base);
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: var(--wiki-control-font-size);
   line-height: 1.5;
-  border-radius: 1.5rem;
+  border-radius: var(--wiki-control-radius);
   cursor: pointer;
-  transition: all 0.2s ease;
-  min-width: 180px;
+  white-space: nowrap;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
-  height: 2rem;
 
-  /* search icon */
+  /* gamepad icon shown while no game is selected */
   &::before {
     content: '';
     display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 0.5rem;
+    width: 16px;
+    height: 16px;
+    margin-right: 0.625rem;
+    filter: var(--wiki-icon-filter);
     background-image: url("data: image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='800px' height='800px' viewBox='0 0 512 512' %3E%3Ctitle%3Eionicons-v5-g%3C/title%3E%3Cpath d='M467.51,248.83c-18.4-83.18-45.69-136.24-89.43-149.17A91.5,91.5,0,0,0,352,96c-26.89,0-48.11,16-96,16s-69.15-16-96-16a99.09,99.09,0,0,0-27.2,3.66C89,112.59,61.94,165.7,43.33,248.83c-19,84.91-15.56,152,21.58,164.88,26,9,49.25-9.61,71.27-37,25-31.2,55.79-40.8,119.82-40.8s93.62,9.6,118.66,40.8c22,27.41,46.11,45.79,71.42,37.16C487.1,399.86,486.52,334.74,467.51,248.83Z' style='fill:none;stroke:%23000000;stroke-miterlimit:10;stroke-width:32px' /%3E%3Ccircle cx='292' cy='224' r='20' /%3E%3Cpath d='M336,288a20,20,0,1,1,20-19.95A20,20,0,0,1,336,288Z' /%3E%3Ccircle cx='336' cy='180' r='20' /%3E%3Ccircle cx='380' cy='224' r='20' /%3E%3Cline x1='160' y1='176' x2='160' y2='272' style='fill:none;stroke:%23000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' /%3E%3Cline x1='208' y1='224' x2='112' y2='224' style='fill:none;stroke:%23000000;stroke-linecap:round;stroke-linejoin:round;stroke-width:32px' /%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-size: 100% 100%;
@@ -34,71 +36,49 @@
     flex-shrink: 0;
   }
 
+  &.has-game {
+    color: var(--wiki-text);
+
+    &::before {
+      display: none;
+    }
+  }
+
   &:hover {
-    background-color: var(--ifm-color-emphasis-200);
-    border-color: var(--ifm-color-emphasis-300);
+    background-color: var(--wiki-raised-hover);
   }
 
-  &:focus {
-    border-color: var(--ifm-color-primary);
-    box-shadow: 0 0 0 2px var(--ifm-color-primary);
-    outline: none;
-    transition: none;
+  /* the sidebar's arrow, which points up until rotated */
+  &::after {
+    content: '';
+    width: 0.75rem;
+    height: 0.75rem;
+    margin-left: 0.375rem;
+    background: var(--ifm-menu-link-sublist-icon) 50% / 1.2rem 1.2rem;
+    filter: var(--ifm-menu-link-sublist-icon-filter);
+    transform: rotate(180deg);
+    flex-shrink: 0;
   }
 
-  button {
-    background: none;
-    border: none;
-    color: inherit;
-    font: inherit;
-    cursor: pointer;
-    padding: 0;
-    flex: 1;
-    text-align: left;
-    min-width: 0;
-
-    &:hover {
-      color: inherit;
-      background-color: transparent;
-    }
+  &[aria-expanded='true']::after {
+    transform: none;
   }
-}
-
-
-@media screen and (max-width: 996px) {
-    .game-selector{
-        min-width: 80px;
-        max-width: 6rem;
-        transition:none;
-    }
-
-    .dropdown{
-        min-width: 180px;
-        left: -50%;
-    }
-
-    /* hack to prevent the current game label from showing on mobile */
-    .current-game-label {
-      display:none;
-    }
-}
-
-.game-selector-label {
-    margin-right: 8px;
-    font-weight: bold;
 }
 
 .game-selector-game-icon {
-  width: 32px;
-  height: 32px;
+  width: 20px;
+  height: 20px;
   margin-right: 8px;
   vertical-align: middle;
-  line-height: 1;
-  font-size: 0; /* hide alt text */
-  
-  &.small{
-    width: 20px;
-    height: 20px;
-    border-radius: 25px;
+}
+
+@media screen and (max-width: 996px) {
+  .game-selector-toggle::before,
+  .game-selector-game-icon {
+    margin-right: 0;
+  }
+
+  .current-game-label {
+    display: none;
   }
 }

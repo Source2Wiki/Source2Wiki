@@ -1,31 +1,54 @@
-.dropdown {
+.game-dropdown {
     display: flex;
     flex-direction: column;
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
-    right: 0;
-    border: 1px solid var(--ifm-color-emphasis-300);
-    background: var(--ifm-background-surface-color);
+    min-width: 180px;
+    background: var(--wiki-raised);
     padding: 0.25rem 0;
     color: var(--ifm-color-content);
     text-align: left;
-    border-radius: 0.3rem;
-    box-shadow: var(--ifm-global-shadow-md);
+    border-radius: var(--wiki-control-radius);
+    box-shadow: var(--wiki-popup-shadow);
     z-index: 1000;
     max-height: 300px;
     overflow-y: auto;
   }
 
-  .dropdown > p {
+  .game-dropdown > button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 36px;
+    flex-shrink: 0;
     margin: 0;
-    padding: 0.5rem 0.75rem;
-    min-width: auto;
+    padding: 0 0.75rem;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    white-space: nowrap;
     cursor: pointer;
-    transition: background-color 0.15s ease;
 
     &:hover {
-      color: var(--ifm-color-content);
-      background-color: var(--ifm-color-primary);
+      background-color: var(--wiki-raised-hover);
+    }
+
+    &:focus-visible {
+      outline-offset: -2px;
     }
   }
+
+.game-dropdown-icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
+}

@@ -1,9 +1,9 @@
+import clsx from 'clsx';
 import GameDropDown from '@site/src/components/GameDropDown';
 import { Games } from '@site/src/constants/software';
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useGameParam } from '@site/src/contexts/GameParamContext';
 import { useHistory, useLocation } from '@docusaurus/router';
-import useIsMobile from '@site/src/hooks/UseIsMobile';
 import './style.css';
 
 interface Props {
@@ -12,20 +12,22 @@ interface Props {
 
 export default function GameSelectorNavbarItem(props: Props): React.JSX.Element {
 
-    const { gameParam, setGameParam } = useGameParam();
+    const { selectedGame, setGameParam } = useGameParam();
     const history = useHistory();
     const location = useLocation();
-    const isMobile = useIsMobile();
 
     const [showDropDown, setShowDropDown] = useState<boolean>(false);
 
-    const toggleDropDown = useCallback(() => {
-        setShowDropDown(state => !state);
-    }, []);
-
-    const dismissHandler = (event: React.FocusEvent<HTMLButtonElement>): void => {
-        if (event.currentTarget === event.target) {
+    const handleBlur = (event: React.FocusEvent<HTMLDivElement>): void => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
             setShowDropDown(false);
+        }
+    };
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>): void => {
+        if (event.key === 'Escape' && showDropDown) {
+            setShowDropDown(false);
+            event.currentTarget.querySelector('button')?.focus();
         }
     };
 
@@ -38,44 +40,28 @@ export default function GameSelectorNavbarItem(props: Props): React.JSX.Element 
             search: params.toString(),
         });
         setGameParam(game);
+        setShowDropDown(false);
     }, [location, history, setGameParam]);
 
-    // change label based on mobile state and selected game
-    const buttonLabel = useMemo(() => {
-        if (isMobile === undefined) {
-            // avoid showing anything to prevent label flicker
-            return null;
-        }
-        if (isMobile) {
-            return gameParam != "any"
-                ? <img src={Games[gameParam].IconPath} alt={Games[gameParam].PrettyName} className="game-selector-game-icon small" />
-                : <div className="game-selector-label">Any</div>;
-        }
-        return <div className='current-game-label'>{gameParam != "any" && gameParam in Games ? `Game: ${Games[gameParam].PrettyName}` : `Select Game...`}</div>;
-    }, [isMobile, gameParam]);
+    const currentGame = selectedGame ?? Games.any;
 
     return (
-        <>
+        <div className="game-selector" onBlur={handleBlur} onKeyDown={handleKeyDown}>
             <button
-                className={showDropDown ? "game-selector active" : "game-selector"}
-                onClick={(): void => toggleDropDown()}
-                onBlur={(e: React.FocusEvent<HTMLButtonElement>): void =>
-                    dismissHandler(e)
-                }
+                type="button"
+                className={clsx("game-selector-toggle", { "has-game": selectedGame })}
+                aria-label={`Game: ${currentGame.PrettyName}`}
+                aria-expanded={showDropDown}
+                aria-haspopup="true"
+                onClick={(): void => setShowDropDown(state => !state)}
             >
-                {buttonLabel}
-
-                {/* Dropdown */}
-                {showDropDown && (
-                    <GameDropDown
-                        games={Games}
-                        showDropDown={false}
-                        toggleDropDown={(): void => toggleDropDown()}
-                        gameSelection={setGame}
-                    />
-                )}
-
+                {selectedGame && <img src={selectedGame.IconPath} alt="" className="game-selector-game-icon" />}
+                <span className="current-game-label">{currentGame.PrettyName}</span>
             </button>
-        </>
+
+            {showDropDown && (
+                <GameDropDown games={Games} gameSelection={setGame} />
+            )}
+        </div>
     );
 }
