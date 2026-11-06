@@ -62,7 +62,7 @@ jobs:
           fi
 
           case "$REPO" in
-            # the games this wiki documents, see src/constants/software.tsx
+            # the games this wiki documents, see src/constants/software.ts
             GameTracking-CS2|GameTracking-HalfLifeAlyx|GameTracking-Dota2|GameTracking-SteamVR)
                  echo "ours=true" >> "$GITHUB_OUTPUT"; echo "$REPO is a game we document" ;;
             "")  echo "ours=true" >> "$GITHUB_OUTPUT"; echo "no game named, running everything" ;;

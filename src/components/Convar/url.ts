@@ -1,6 +1,6 @@
 import { Games } from '@site/src/constants/software';
 
-// console variables and commands live in Source2Viewer's Schema Explorer, keyed by its own game names
+// console variables and commands live in Source 2 Viewer's Schema Explorer, keyed by its own game names
 export const CONVAR_EXPLORER_GAMES: Record<string, string> = Object.fromEntries(
   Object.entries(Games)
     .filter(([, game]) => game.SchemaExplorerGame)

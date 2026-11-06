@@ -1,29 +1,85 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
-
 @import '@fontsource/manrope/500.css';
 @import '@fontsource/manrope/600.css';
 @import '@fontsource/manrope/700.css';
 @import '@fontsource/cascadia-mono/400.css';
 @import '@fontsource/cascadia-mono/600.css';
 
-/*
-  You can override the default Infima variables here.
-  Go to https://docusaurus.io/docs/styling-layout for a nice interactive editor
-*/
 :root {
-  --ifm-color-primary: #f57807;
-  --ifm-color-primary-dark: #dd6c06;
-  --ifm-color-primary-darker: #d06606;
-  --ifm-color-primary-darkest: #ac5405;
-  --ifm-color-primary-light: #f9851d;
-  --ifm-color-primary-lighter: #f98c29;
-  --ifm-color-primary-lightest: #fa9f4e;
+  /* the selected game replaces this colour; the palette keeps only its hue */
+  --wiki-theme: #f7901e;
+  --wiki-bg: lch(from var(--wiki-theme) 98 1.5 h);
+  --wiki-panel: lch(from var(--wiki-theme) 95 2.5 h);
+  --wiki-raised: lch(from var(--wiki-theme) 90 4 h);
+  --wiki-raised-hover: lch(from var(--wiki-theme) 87 5 h);
+  --wiki-line: lch(from var(--wiki-theme) 84 5 h);
+  --wiki-text: lch(from var(--wiki-theme) 12 3 h);
+  --wiki-muted: lch(from var(--wiki-theme) 39 7 h);
+  --wiki-accent: lch(from var(--wiki-theme) 45 min(c, 62) h);
+  --wiki-accent-hover: lch(from var(--wiki-theme) 52 min(c, 68) h);
+  --wiki-accent-tint: lch(from var(--wiki-accent) l c h / 0.1);
+  --wiki-control-height: 2rem;
+  --wiki-control-radius: 6px;
+  --wiki-control-font-size: 0.875rem;
+  --wiki-info: #1f7fa8;
+  --wiki-tip: #2d6e2d;
+  --wiki-warning: #8f5400;
+  --wiki-danger: #b3342a;
+  --wiki-note: #7a7265;
+  --wiki-non-fgd: #8a4fa8;
+  --wiki-icon-filter: none;
+  --wiki-popup-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  --wiki-code-background: var(--wiki-panel);
+  --wiki-code-text: var(--wiki-text);
+  --wiki-code-keyword: var(--wiki-accent);
+  --wiki-code-string: #4f7a28;
+  --wiki-code-function: #1f6f8a;
+  --wiki-code-number: #8a3f8a;
+  --wiki-code-comment: #80786a;
+
+  --ifm-background-color: var(--wiki-bg);
+  --ifm-background-surface-color: var(--wiki-panel);
+  --ifm-font-color-base: var(--wiki-text);
+  --ifm-heading-color: var(--wiki-text);
+  --ifm-color-primary: var(--wiki-accent);
+  --ifm-color-primary-dark: var(--wiki-accent-hover);
+  --ifm-color-primary-darker: var(--wiki-accent-hover);
+  --ifm-color-primary-darkest: var(--wiki-accent-hover);
+  --ifm-color-primary-light: var(--wiki-accent);
+  --ifm-color-primary-lighter: var(--wiki-accent);
+  --ifm-color-primary-lightest: var(--wiki-accent);
+  --ifm-link-color: var(--wiki-accent);
+  --ifm-link-hover-color: var(--wiki-accent-hover);
+  --ifm-color-emphasis-100: var(--wiki-panel);
+  --ifm-color-emphasis-200: var(--wiki-raised);
+  --ifm-color-emphasis-300: var(--wiki-line);
+  --ifm-color-emphasis-600: var(--wiki-muted);
+  --ifm-color-emphasis-700: var(--wiki-muted);
+  --ifm-color-emphasis-800: var(--wiki-text);
+  --ifm-toc-border-color: transparent;
+  --ifm-hr-background-color: var(--wiki-line);
+  --ifm-table-border-color: var(--wiki-line);
+  --ifm-table-stripe-background: transparent;
+  --ifm-table-head-background: var(--wiki-panel);
+  --ifm-navbar-background-color: color-mix(in srgb, var(--wiki-accent) 5%, var(--wiki-panel));
+  --ifm-navbar-shadow: none;
+  --ifm-scrollbar-track-background-color: transparent;
+  --ifm-scrollbar-thumb-background-color: var(--wiki-line);
+  --ifm-scrollbar-thumb-hover-background-color: var(--wiki-muted);
+  --ifm-footer-background-color: var(--wiki-panel);
+  --ifm-footer-color: var(--wiki-muted);
+  --ifm-footer-link-color: var(--wiki-muted);
+  --ifm-footer-link-hover-color: var(--wiki-accent);
+  --ifm-footer-title-color: var(--wiki-text);
+  --ifm-menu-color: var(--wiki-text);
+  --ifm-menu-color-active: var(--wiki-accent);
+  --ifm-menu-color-background-active: var(--wiki-accent-tint);
+  --ifm-menu-color-background-hover: var(--wiki-raised);
+  --ifm-code-background: var(--wiki-raised);
+  --ifm-global-shadow-lw: none;
+  --ifm-global-shadow-md: none;
+  --ifm-global-shadow-tl: none;
   --ifm-code-font-size: 90%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-highlighted-code-line-bg: var(--wiki-accent-tint);
   --ifm-heading-font-family: 'Manrope', var(--ifm-font-family-base);
   --ifm-heading-font-weight: 600;
   --ifm-font-family-monospace: 'Cascadia Mono', Consolas, SFMono-Regular, 'Liberation Mono', monospace;
@@ -33,16 +89,160 @@
   font-family: var(--ifm-heading-font-family);
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #f9a82f;
-  --ifm-color-primary-dark: #f89c12;
-  --ifm-color-primary-darker: #f59507;
-  --ifm-color-primary-darkest: #c97b06;
-  --ifm-color-primary-light: #fab44c;
-  --ifm-color-primary-lighter: #faba5a;
-  --ifm-color-primary-lightest: #fbcc85;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  --wiki-bg: lch(from var(--wiki-theme) 9 1 h);
+  --wiki-panel: lch(from var(--wiki-theme) 12 1.5 h);
+  --wiki-raised: lch(from var(--wiki-theme) 17 2.5 h);
+  --wiki-raised-hover: lch(from var(--wiki-theme) 21 3 h);
+  --wiki-line: lch(from var(--wiki-theme) 23 3 h);
+  --wiki-text: lch(from var(--wiki-theme) 92 3 h);
+  --wiki-muted: lch(from var(--wiki-theme) 66 6 h);
+  --wiki-accent: lch(from var(--wiki-theme) 71 min(c, 72) h);
+  --wiki-accent-hover: lch(from var(--wiki-theme) 78 min(c, 50) h);
+  --wiki-accent-tint: lch(from var(--wiki-accent) l c h / 0.13);
+  --wiki-info: #4fb3dc;
+  --wiki-tip: #7fc46a;
+  --wiki-warning: #f7b02e;
+  --wiki-danger: #ef6a55;
+  --wiki-note: #a8a196;
+  --wiki-non-fgd: #c08fe0;
+  --wiki-icon-filter: invert(0.75);
+  --wiki-popup-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --wiki-code-background: lch(from var(--wiki-theme) 6 1 h);
+  --wiki-code-string: #b5c76a;
+  --wiki-code-function: #6fc3df;
+  --wiki-code-number: #d6a2e0;
+  --wiki-code-comment: #857c6e;
+
+  --ifm-navbar-search-input-icon: url('data:image/svg+xml;utf8,<svg fill="%23a8a196" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" height="16px" width="16px"><path d="M6.02945,10.20327a4.17382,4.17382,0,1,1,4.17382-4.17382A4.15609,4.15609,0,0,1,6.02945,10.20327Zm9.69195,4.2199L10.8989,9.59979A5.88021,5.88021,0,0,0,12.058,6.02856,6.00467,6.00467,0,1,0,9.59979,10.8989l4.82338,4.82338a.89729.89729,0,0,0,1.29912,0,.89749.89749,0,0,0-.00087-1.29909Z" /></svg>');
+}
+
+/* the theme transitions every property on these */
+button.theme-back-to-top-button {
+  transition-property: opacity, transform, visibility;
+}
+
+.theme-code-block button svg {
+  transition-property: opacity, transform;
+}
+
+:focus-visible {
+  outline: 2px solid var(--wiki-accent);
+  outline-offset: 1px;
+}
+
+/* the navbar is tinted, so its controls need a stronger step to stand out from it */
+.navbar {
+  --wiki-raised: lch(from var(--wiki-theme) 85 6 h);
+  --wiki-raised-hover: lch(from var(--wiki-theme) 81 7 h);
+}
+
+[data-theme='dark'] .navbar {
+  --wiki-raised: lch(from var(--wiki-theme) 25 4 h);
+  --wiki-raised-hover: lch(from var(--wiki-theme) 30 5 h);
+}
+
+/* matches the game selector, the table search boxes reuse this class outside the navbar */
+input.navbar__search-input {
+  height: var(--wiki-control-height);
+  padding-left: 2.25rem;
+  border: 0;
+  border-radius: var(--wiki-control-radius);
+  background-color: var(--wiki-raised);
+  background-position: 0.625rem center;
+  font-family: var(--ifm-font-family-base);
+  font-size: var(--wiki-control-font-size);
+  color: var(--wiki-text);
+  box-shadow: none;
+}
+
+input.navbar__search-input:hover {
+  background-color: var(--wiki-raised-hover);
+}
+
+input.navbar__search-input::placeholder {
+  color: var(--wiki-muted);
+  opacity: 1;
+}
+
+/* the navbar search class collapses to an icon on small screens, the table search boxes keep their full width */
+@media (max-width: 996px) {
+  main input.navbar__search-input,
+  main input.navbar__search-input:not(:focus) {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.navbar__search kbd {
+  border: 0;
+  background: var(--wiki-raised-hover);
+  box-shadow: none;
+  color: var(--wiki-muted);
+}
+
+aside.theme-doc-sidebar-container {
+  background: var(--wiki-panel);
+}
+
+/* browsers with scrollbar-color ignore the theme's ::-webkit-scrollbar rules */
+.thin-scrollbar {
+  scrollbar-color: var(--ifm-scrollbar-thumb-background-color) var(--ifm-scrollbar-track-background-color);
+}
+
+/* the 404 page's main is a short box, so its glow is drawn on the full-width wrapper instead */
+main:not(.container),
+.main-wrapper:has(> main.container) {
+  background: radial-gradient(60rem 22rem at 0% 0%, color-mix(in srgb, var(--wiki-accent) 9%, transparent), transparent 70%);
+}
+
+.main-wrapper > main.container {
+  text-align: center;
+}
+
+/* Infima sizes only direct children of .markdown, so h2 nested in tabs would
+   otherwise fall back to the smaller root size */
+.markdown h2 {
+  --ifm-h2-font-size: 2rem;
+}
+
+@media screen and (max-width: 996px) {
+  .markdown h2 {
+    --ifm-h2-font-size: 1.5rem;
+  }
+}
+
+.table-of-contents__link {
+  color: var(--wiki-muted);
+}
+
+.table-of-contents__link--active {
+  color: var(--wiki-accent);
+  font-weight: 600;
+}
+
+.breadcrumbs .breadcrumbs__link {
+  background: none;
+  color: var(--wiki-muted);
+}
+
+.breadcrumbs .breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--wiki-accent);
+}
+
+.pagination-nav__link {
+  border: 0;
+  background: var(--wiki-panel);
+}
+
+.pagination-nav__link:hover {
+  background: var(--wiki-raised);
+}
+
+/* code in a table's first column is a key or name, shown in the accent colour without the code background */
+table td:first-child > code {
+  background: none;
+  color: var(--wiki-accent);
 }
 
 /* make pages take up more of the screen */
@@ -65,29 +265,24 @@
   font-weight: 600;
 }
 
+table {
+  font-variant-numeric: tabular-nums;
+}
+
+table th {
+  text-align: left;
+}
+
+table tbody tr:hover {
+  background: var(--wiki-panel);
+}
+
 .menu {
   font-size: 0.9rem;
 }
 
 .theme-doc-sidebar-item-category-level-1:not(:first-child) {
   margin-top: 0.375rem;
-}
-
-/* separate entities docs from the rest, the class definition for this in in docs/entities/_category_.json */ 
-/* currently set to hide, as we have the new entity search page */
-.entities-category-separator {
-  /* border-top: 1px solid var(--ifm-color-emphasis-300); */
-  display:none !important;
-}
-
-admonition.compact {
-  margin: 0.25rem 0 !important;
-  padding: 0.25rem 0.75rem !important;
-}
-
-.admonition.compact .admonition-heading {
-  margin-bottom: 0.125rem !important;
-  font-size: 0.9rem !important;
 }
 
 /* for groups like keyvalues in entity page, without this the default styling is a bit over the top */
@@ -115,7 +310,7 @@ details > summary {
    animation measures scrollHeight, which excludes margins, so any margin here
    makes the content overshoot the animated height and visibly jump */
 [class*="collapsibleContent"] {
-  border-top-color: currentColor !important;
+  border-top-color: var(--wiki-line) !important;
   margin-top: 0 !important;
   padding-top: 1rem !important;
 }
@@ -129,90 +324,71 @@ details > summary {
   }
 }
 
-/* legacy annotation */
-.alert--legacy {
-  --ifm-alert-background-color: rgba(212, 52, 28, 0.156);
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(66, 69, 73);
-  --ifm-alert-border-color: #d4351c;
+/* callouts: one coloured bar and a tint of the same hue */
+.theme-admonition.alert {
+  --wiki-alert: var(--wiki-note);
+  --ifm-alert-background-color: color-mix(in srgb, var(--wiki-alert) 12%, transparent);
+  --ifm-alert-background-color-highlight: color-mix(in srgb, var(--wiki-alert) 18%, transparent);
+  --ifm-alert-border-color: var(--wiki-alert);
+  --ifm-alert-foreground-color: var(--wiki-text);
+  box-shadow: none;
 }
 
-html[data-theme='dark'] .alert--legacy {
-  --ifm-alert-background-color: rgba(212, 52, 28, 0.18);
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(255, 255, 255);
-  --ifm-alert-border-color: #d4351c;
+.theme-admonition.alert--info {
+  --wiki-alert: var(--wiki-info);
+}
+
+.theme-admonition.alert--success,
+.theme-admonition.alert--todo {
+  --wiki-alert: var(--wiki-tip);
+}
+
+.theme-admonition.alert--warning {
+  --wiki-alert: var(--wiki-warning);
+}
+
+.theme-admonition.alert--danger,
+.theme-admonition.alert--bug,
+.theme-admonition.alert--legacy {
+  --wiki-alert: var(--wiki-danger);
+}
+
+.theme-admonition.alert--nonFGD {
+  --wiki-alert: var(--wiki-non-fgd);
+}
+
+.theme-admonition [class*='admonitionHeading'] {
+  font-size: 0.95rem;
+  text-transform: capitalize;
+  color: var(--wiki-alert);
+}
+
+.theme-admonition [class*='admonitionIcon'] svg {
+  fill: var(--wiki-alert);
+}
+
+details.alert {
+  --ifm-code-background: var(--wiki-raised);
 }
 
 .legacy_item a::before {
-  color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-600);
   padding-right: 0.5rem;
   content: '[LEGACY]';
 }
 
-/* non fgd annotation */
-.alert--nonFGD {
-  --ifm-alert-background-color: #bea1dc88;
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(66, 69, 73);
-  --ifm-alert-border-color: #ac5dc7;
-}
-
-html[data-theme='dark'] .alert--nonFGD {
-  --ifm-alert-background-color: rgba(172, 93, 199, 0.18);
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(255, 255, 255);
-  --ifm-alert-border-color: rgb(181, 121, 202);
-}
-
 .nonFGD_item a::before {
-  color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-600);
   padding-right: 0.5rem;
   content: '[NON-FGD]';
-}
-
-/* todo annotation */
-.alert--todo {
-  --ifm-alert-background-color: #55e95238;
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(66, 69, 73);
-  --ifm-alert-border-color: #3fd13d;
-}
-
-html[data-theme='dark'] .alert--todo {
-  --ifm-alert-background-color: rgba(63, 209, 61, 0.14);
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(255, 255, 255);
-  --ifm-alert-border-color: #3fd13d;
 }
 
 /* only the item's own link, a stub category must not mark the pages inside it */
 .todo_item > .menu__link::before,
 .todo_item > .menu__list-item-collapsible > .menu__link::before {
-  color: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-emphasis-600);
   padding-right: 0.5rem;
   content: '[TODO]';
-}
-
-/* bug annotation */
-.alert--bug {
-  --ifm-alert-background-color: #ff020238;
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(66, 69, 73);
-  --ifm-alert-border-color: #d13d3d;
-}
-
-html[data-theme='dark'] .alert--bug {
-  --ifm-alert-background-color: rgba(209, 61, 61, 0.16);
-  --ifm-alert-background-color-highlight: rgba(212, 53, 28, 0.15);
-  --ifm-alert-foreground-color: rgb(255, 255, 255);
-  --ifm-alert-border-color: #d13d3d;
-}
-
-.bug_item a::before {
-  color: var(--ifm-color-emphasis-300);
-  padding-right: 0.5rem;
-  content: '[BUG]';
 }
 
 @media screen and (max-width: 576px){
@@ -235,9 +411,13 @@ html[data-theme='dark'] .alert--bug {
   }
 }
 
+kbd[class*="searchHint"] {
+  text-transform: capitalize;
+}
+
 @media screen and (max-width: 996px){
-  .searchHintContainer_Pkmr {
-    display: none !important;
+  .navbar [class*="searchHintContainer"] {
+    display: none;
   }
 }
 
@@ -320,6 +500,17 @@ html[data-theme='dark'] .alert--bug {
 
 .footer-credits-right {
   text-align: right;
+}
+
+/* Infima spaces stacked footer columns apart, which leaves a gap under the last one */
+@media (max-width: 996px) {
+  .footer__col:last-child {
+    margin-bottom: 0;
+  }
+
+  .footer__links {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 1280px) {

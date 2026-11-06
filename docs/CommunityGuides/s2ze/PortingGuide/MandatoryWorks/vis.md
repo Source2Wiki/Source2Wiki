@@ -4,7 +4,7 @@ title: VIS
 description: Dealing with visibility.
 ---
 
-Visibility in source 2 is not fully isolated, meaning areas from other levels can be drawn when they should not be. This is more evident on maps that heavily depend on skyboxes or those with many open areas.
+Visibility in Source 2 is not fully isolated, meaning areas from other levels can be drawn when they should not be. This is more evident on maps that heavily depend on skyboxes or those with many open areas.
 
 If the object that is drawn through different areas is small (i.e. a single mesh or similar), go to the object's properties window and disable **Mesh Merging**. As implied by the name, this encourages the compiler to skip mesh merging and not merge the object in question with meshes from different areas.
 

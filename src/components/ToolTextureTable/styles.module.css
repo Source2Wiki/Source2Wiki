@@ -14,7 +14,7 @@
   max-width: 0;
 }
 
-/* need to set specific widths for each column otherwise its shit */
+/* fixed table layout: each column gets a share of the width and a minimum */
 .table th:nth-child(1), /* texture */
 .table td:nth-child(1) {
   width: 5%;
@@ -42,7 +42,7 @@
 .resultsCount {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--wiki-muted);
 }
 
 .searchBox {
@@ -56,5 +56,5 @@
 }
 
 .attributeList {
-  padding-left: 1rem !important; /* Force remove any inherited padding */
+  padding-left: 1rem; /* narrower indent than the default list padding */
 }

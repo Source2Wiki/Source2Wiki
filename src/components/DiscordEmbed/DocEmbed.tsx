@@ -31,7 +31,7 @@ export default function DocEmbed(): React.JSX.Element
         color={WikiColor}
         description={metadata.description}
         render={description => [
-          ...section(['## Source2 Wiki', description], null),
+          ...section(['## Source 2 Wiki', description], null),
           // the site wide social card, what the homepage embedded before this card existed
           gallery(absolute(siteConfig.themeConfig.image as string)),
           // Discord allows 5 buttons a row, and drops the whole card over it
@@ -72,7 +72,7 @@ export default function DocEmbed(): React.JSX.Element
           text(sameStats
             ? statLines[0]
             : games.map((entry, i) => `**${Games[entry.game].PrettyName}**: ${statLines[i]}`).join('\n')),
-          buttons(['Read on Source2 Wiki', pageUrl]),
+          buttons(['Read on Source 2 Wiki', pageUrl]),
         ]}
       />
     );
@@ -117,7 +117,7 @@ export function PageEmbed({ title, description, permalink, image, editUrl }: Pag
       .filter((entry): entry is ListEntry => entry !== null)
     : [];
 
-  const links: [string, string][] = [['Read on Source2 Wiki', absolute(permalink)]];
+  const links: [string, string][] = [['Read on Source 2 Wiki', absolute(permalink)]];
 
   if (editUrl?.startsWith('https://github.com/'))
   {
@@ -140,7 +140,7 @@ export function PageEmbed({ title, description, permalink, image, editUrl }: Pag
   );
 }
 
-// "Source2 Wiki › Editor Tools › Hammer", the site name leads so every card says whose it is
+// "Source 2 Wiki › Editor Tools › Hammer", the site name leads so every card says whose it is
 function useTrail(): string
 {
   const breadcrumbs = useSidebarBreadcrumbs();

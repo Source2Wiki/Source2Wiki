@@ -9,7 +9,7 @@ This guide explains how lightmap player space volumes help improve the lighting 
 The lightmap is a single big texture which contains pre-calculated lighting for all the static surfaces in the level.
 :::
 
-Placing lightmap player space volumes is a very important lighting optimisation step in Source2 branches which mainly rely on lightmapping for level lighting, such as <Game name="cs2"/> and <Game name="hla"/>
+Placing lightmap player space volumes is a very important lighting optimisation step in Source 2 branches which mainly rely on lightmapping for level lighting, such as <Game name="cs2"/> and <Game name="hla"/>
 
 Correct placement of these volumes will cause the lightmapper to automatically assign the highest light resolution to surfaces that the player will actually see up close, and less resolution to distant scenery outside of the map,
  your map will still compile without these, but lighting will be sub-optimal as indicated by this compile warning:

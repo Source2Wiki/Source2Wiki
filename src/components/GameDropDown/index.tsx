@@ -1,41 +1,32 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { SoftwareInfo } from '@site/src/constants/software';
 import './style.css';
 
 type DropDownProps = {
     games: Record<string, SoftwareInfo>;
-    showDropDown: boolean;
-    toggleDropDown: Function;
-    gameSelection: Function;
+    gameSelection: (game: string) => void;
 };
 
 const GameDropDown: React.FC<DropDownProps> = ({ games, gameSelection }: DropDownProps): React.JSX.Element => {
-
-    const [showDropDown, setShowDropDown] = useState<boolean>(false);
-
-    const onClickHandler = (game: string): void => {
-        gameSelection(game);
-    };
-
-    useEffect(() => {
-        setShowDropDown(showDropDown);
-    }, [showDropDown]);
-
     const gameUrlNames = Object.keys(games);
+
     return (
-        <div className={showDropDown ? 'dropdown' : 'dropdown active'}>
+        <div className="game-dropdown">
             {gameUrlNames.map(
-                (game: string, index: number): React.JSX.Element => {
+                (game: string): React.JSX.Element => {
+                    const iconPath = games[game].IconPath;
+
                     return (
-                        <p
-                            key={index}
-                            onClick={(): void => {
-                                onClickHandler(game);
-                            }}
+                        <button
+                            key={game}
+                            type="button"
+                            onClick={(): void => gameSelection(game)}
                         >
-                            {games[game].IconPath === undefined ? '' : <img src={games[game].IconPath} alt={game} className="game-selector-game-icon" />}
+                            <span className="game-dropdown-icon">
+                                {iconPath && <img src={iconPath} alt="" />}
+                            </span>
                             {games[game].PrettyName}
-                        </p>
+                        </button>
                     );
                 }
             )}

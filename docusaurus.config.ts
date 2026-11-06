@@ -1,15 +1,22 @@
-import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { PluginOptions } from '@easyops-cn/docusaurus-search-local';
 import { admonitions } from './src/admonitions';
+import { Games } from './src/constants/software';
 import { addPageHistory } from './tools/page-history';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const gameColors: Record<string, string> = {};
+for (const [game, info] of Object.entries(Games)) {
+  if (info.Color) {
+    gameColors[game] = info.Color;
+  }
+}
+
 const config: Config = {
-  title: 'Source2 Wiki',
-  tagline: 'Community driven documentation for the Source2 engine.',
+  title: 'Source 2 Wiki',
+  tagline: 'Community driven documentation for the Source 2 engine.',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -120,6 +127,12 @@ const config: Config = {
     ],
   ],
   headTags: [
+    // Applies the game's theme colour before first paint, React only takes over after hydration
+    {
+      tagName: 'script',
+      attributes: {},
+      innerHTML: `var color=${JSON.stringify(gameColors)}[new URLSearchParams(location.search).get('game')];if(color)document.documentElement.style.setProperty('--wiki-theme',color);`,
+    },
     // Declare some json-ld structured data
     {
       tagName: 'script',
@@ -129,10 +142,10 @@ const config: Config = {
       innerHTML: JSON.stringify({
         '@context': 'https://schema.org/',
         '@type': 'WebSite',
-        name: 'Source2 Wiki',
+        name: 'Source 2 Wiki',
         alternateName: ['Source 2 Wiki', 'S2 Wiki', 'Source2Wiki', 'S2Wiki'],
         url: 'https://www.source2.wiki/',
-        description: 'Community driven documentation for the Source2 engine.',
+        description: 'Community driven documentation for the Source 2 engine.',
         inLanguage: 'en',
         logo: 'https://www.source2.wiki/img/logo.svg',
         isAccessibleForFree: true,
@@ -155,17 +168,16 @@ const config: Config = {
     },
   },
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     zoom: {
       selector: '.markdown :not(em) > img:not(.no-zoom), .markdown img:not(.no-zoom)',
       background: {
-        light: 'rgb(255, 255, 255)',
-        dark: 'rgb(50, 50, 50)'
+        light: 'rgb(251, 249, 247)',
+        dark: 'rgb(26, 25, 24)'
       },
     },
     navbar: {
-      title: 'Source2 Wiki',
+      title: 'Source 2 Wiki',
       logo: {
         src: 'img/logo.svg',
       },
@@ -221,7 +233,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           items: [
@@ -246,17 +258,29 @@ const config: Config = {
     },
     prism: {
       additionalLanguages: ['csharp'],
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      // Static HTML is rendered before the colour mode is known, so colours come from CSS variables
+      theme: {
+        plain: {
+          color: 'var(--wiki-code-text)',
+          backgroundColor: 'var(--wiki-code-background)',
+        },
+        styles: [
+          { types: ['keyword', 'tag', 'selector'], style: { color: 'var(--wiki-code-keyword)' } },
+          { types: ['string', 'attr-value', 'char'], style: { color: 'var(--wiki-code-string)' } },
+          { types: ['function', 'class-name', 'property', 'attr-name'], style: { color: 'var(--wiki-code-function)' } },
+          { types: ['number', 'boolean', 'constant'], style: { color: 'var(--wiki-code-number)' } },
+          { types: ['comment'], style: { color: 'var(--wiki-code-comment)' } },
+        ],
+      },
     },
     colorMode: {
       respectPrefersColorScheme: true,
     },
     metadata: [
-      { name: 'description', content: 'Community driven documentation for the Source2 engine.' },
+      { name: 'description', content: 'Community driven documentation for the Source 2 engine.' },
       { name: 'keywords', content: 'source2, source 2, s2, s2wiki, s2 wiki, source2wiki, hammer, counter strike, cs2, dota 2, half-life alyx, hla, deadlock, dl, steamvr' },
       { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'og:site_name', content: 'Source2 Wiki' },
+      { name: 'og:site_name', content: 'Source 2 Wiki' },
     ],
   } satisfies Preset.ThemeConfig,
 };

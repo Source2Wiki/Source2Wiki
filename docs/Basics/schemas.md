@@ -7,7 +7,7 @@ sidebar_position: 10
 Source 2 keeps a description of its own C++ classes at runtime: every class, every field, the field's name, type and offset in memory. That registry is the **schema system**, and a lot of the engine's file handling is built on it.
 
 :::info
-The [Schema Explorer](https://s2v.app/SchemaExplorer) publishes the class and field tables per game. Source2Viewer links directly into it from its own enums, for example [`EntityIOTargetType_t`](https://s2v.app/SchemaExplorer/cs2/entity2/EntityIOTargetType_t).
+The [Schema Explorer](https://s2v.app/SchemaExplorer) publishes the class and field tables per game. <Tool name="s2v"/> links directly into it from its own enums, for example [`EntityIOTargetType_t`](https://s2v.app/SchemaExplorer/cs2/entity2/EntityIOTargetType_t).
 :::
 
 ## Why it matters to authors

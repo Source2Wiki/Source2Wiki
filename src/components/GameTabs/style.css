@@ -1,50 +1,58 @@
+.game-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+  color: var(--wiki-muted);
+  font-size: 0.875rem;
+}
 
 .game-tabs {
   display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem;
+  overflow: visible;
+  font-weight: 400;
 }
 
-.tabs__item {
+.game-tabs::before {
+  content: 'Available for';
+  margin-right: 0.5rem;
+  color: var(--wiki-muted);
+  font-size: 0.875rem;
+}
+
+.game-tabs .tabs__item {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
+  height: var(--wiki-control-height);
+  padding: 0 0.625rem;
+  border: 0;
+  border-radius: var(--wiki-control-radius);
+  color: var(--wiki-muted);
+  font-size: var(--wiki-control-font-size);
 }
 
-/* Nudge items above horizontal scroll bar so highlight doesnt overlap */
-@media screen and (max-width: 996px) {
-  .game-tabs {
-    padding-top: 8px;
-  }
-
-  .tabs__item {
-    transform: translateY(-8px);
-  }
+.game-tabs .tabs__item:hover {
+  background-color: var(--wiki-raised-hover);
 }
 
-.tabs__item::before {
+.game-tabs .tabs__item--active {
+  background-color: var(--wiki-raised);
+  color: var(--wiki-text);
+}
+
+.game-tabs .tabs__item::before {
   content: '';
-  display: inline-block;
-  min-width: 32px;
-  min-height: 32px;
-  width: 32px;
-  height: 32px;
-  margin-right: 8px;
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  margin-right: 0.375rem;
+  background-image: var(--game-icon);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  vertical-align: middle;
-}
-
-.game-tabs .steamvr::before {
-  background-image: url('@site/static/img/steamvr_icon.png');
-}
-
-
-.game-tabs .hla::before {
-  background-image: url('@site/static/img/hla_icon.png');
-}
-
-.game-tabs .dota2::before {
-  background-image: url('@site/static/img/dota2_icon.png');
-}
-
-.game-tabs .cs2::before {
-  background-image: url('@site/static/img/cs2_icon.png');
 }

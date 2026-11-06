@@ -52,22 +52,20 @@ const GetSoftwareHtml = (softwareInfo: SoftwareInfo, {size, link, iconOnly, labe
   const content = (
     <span
       className={styles.badge}
-      style={{ backgroundColor: softwareInfo.Color }}
+      style={{ '--badge-color': softwareInfo.Color } as React.CSSProperties}
       title={iconOnly ? softwareInfo.PrettyName : undefined}
     >
-      <span className={styles.inner}>
-        {softwareInfo.IconPath && (
-          <img
-            src={softwareInfo.IconPath}
-            alt={`${softwareInfo.PrettyName} icon`}
-            className={styles.icon}
-            style={{ width: iconSize, height: iconSize }}
-          />
-        )}
-        {/* a zero-width space keeps text-less badges at the same height as labeled ones */}
-        <span className={showText && softwareInfo.IconPath ? styles.labelWithIcon : undefined}>
-          {showText ? label ?? softwareInfo.PrettyName : '\u200B'}
-        </span>
+      {softwareInfo.IconPath && (
+        <img
+          src={softwareInfo.IconPath}
+          alt={`${softwareInfo.PrettyName} icon`}
+          className={styles.icon}
+          style={{ width: iconSize, height: iconSize }}
+        />
+      )}
+      {/* a zero-width space keeps text-less badges at the same height as labeled ones */}
+      <span className={showText && softwareInfo.IconPath ? styles.labelWithIcon : undefined}>
+        {showText ? label ?? softwareInfo.PrettyName : '\u200B'}
       </span>
     </span>
   );

@@ -15,13 +15,13 @@ cs_script is a <Tool name="js"/> based scripting system for <Game name="cs2"/> m
 
 cs_script is a <Tool name="js"/> based scripting system for <Game name="cs2"/> maps.
 
-The components are available in every page without imports. Registered names live in `src/constants/software.tsx`, add new entries there.
+The components are available in every page without imports. Registered names live in `src/constants/software.ts`, add new entries there.
 
 ## Games
 
 <table>
   <thead>
-    <tr><th>name</th><th>Result</th></tr>
+    <tr><th>Name</th><th>Result</th></tr>
   </thead>
   <tbody>
     {Object.keys(Games).map(name => (
@@ -37,7 +37,7 @@ The components are available in every page without imports. Registered names liv
 
 <table>
   <thead>
-    <tr><th>name</th><th>Result</th></tr>
+    <tr><th>Name</th><th>Result</th></tr>
   </thead>
   <tbody>
     {Object.keys(Tools).map(name => (
@@ -53,7 +53,7 @@ The components are available in every page without imports. Registered names liv
 
 <table>
   <thead>
-    <tr><th>name</th><th>Result</th></tr>
+    <tr><th>Name</th><th>Result</th></tr>
   </thead>
   <tbody>
     {Object.keys(Socials).map(name => (
@@ -71,7 +71,7 @@ All three components accept the same optional attributes:
 
 | Attribute  | Description                                                                                     |
 | ---------- | ----------------------------------------------------------------------------------------------- |
-| `link`     | Makes the badge a link, overrides the default link if the entry has one (e.g. Source2 Viewer).  |
+| `link`     | Makes the badge a link, overrides the default link if the entry has one (e.g. Source 2 Viewer).  |
 | `label`    | Replaces the name entirely, useful for naming a specific thing hosted on the software, e.g. a repo on a github badge. |
 | `iconOnly` | Hides the name, only the icon is shown.                                                          |
 | `size`     | Icon size, a number in pixels or any CSS size, defaults to matching the surrounding text size.   |
