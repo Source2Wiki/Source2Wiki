@@ -1,23 +1,21 @@
-/* a contributor's picture, sized by the text it sits in */
+/* a contributor's picture */
 .avatar {
   flex: none;
-  width: 1.5em;
-  height: 1.5em;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
-  background: var(--ifm-color-emphasis-200);
+  background: var(--wiki-raised);
 }
 
+/* the contributor's initial, shown in place of a picture */
 .avatarInitial {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--ifm-color-emphasis-800);
-  font-size: 0.8em;
+  color: var(--wiki-text);
+  font-size: 0.75rem;
   font-style: normal;
   font-weight: var(--ifm-font-weight-bold);
-  /* the font size above shrinks the em the picture is sized in */
-  width: 1.875em;
-  height: 1.875em;
 }
 
 /* a picture with the name next to it */
@@ -28,10 +26,9 @@
   vertical-align: middle;
 }
 
-/* everything about who worked on the doc, set apart from it by a line */
+/* everything about who worked on the doc */
 .pageMeta {
-  padding-top: 1rem;
-  border-top: 1px solid var(--ifm-color-emphasis-300);
+  padding-top: 1.5rem;
 }
 
 /* under the doc's tags */
@@ -50,6 +47,7 @@
 
 .editLink {
   margin-left: auto;
+  font-size: 0.875rem;
   white-space: nowrap;
 }
 
@@ -61,19 +59,17 @@
 
 .contributorsTitle {
   margin-bottom: 0.5rem;
-  color: var(--ifm-color-emphasis-700);
-  font-size: 0.75rem;
-  font-weight: var(--ifm-font-weight-bold);
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: var(--ifm-heading-font-family);
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 /* a line about the list under its title, the wiki's contributors have one */
 .contributorsDescription {
   /* closer to the title above than to the chips below */
   margin: -0.2rem 0 0.75rem;
-  color: var(--ifm-color-emphasis-700);
-  font-size: 0.8rem;
+  color: var(--wiki-muted);
+  font-size: 0.875rem;
 }
 
 .chips {
@@ -89,28 +85,18 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.3rem 0.75rem 0.3rem 0.4rem;
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 0.5rem;
-  background: var(--ifm-color-emphasis-100);
+  min-height: var(--wiki-control-height);
+  padding: 0.25rem 0.75rem 0.25rem 0.375rem;
+  border-radius: var(--wiki-control-radius);
+  background: var(--wiki-raised);
   color: var(--ifm-font-color-base);
-  font-size: 0.85rem;
-  font-weight: var(--ifm-font-weight-semibold);
+  font-size: var(--wiki-control-font-size);
   line-height: 1.5;
 }
 
-.chip .avatar {
-  width: 1.5rem;
-  height: 1.5rem;
-}
-
-.chip .avatarInitial {
-  font-size: 0.75rem;
-}
-
 a.chip:hover {
-  border-color: var(--ifm-color-primary);
-  color: var(--ifm-color-primary);
+  background: var(--wiki-raised-hover);
+  color: var(--ifm-font-color-base);
   text-decoration: none;
 }
 
@@ -118,7 +104,7 @@ a.chip:hover {
   /* custom.css gives every details element a margin for the groups on entity pages, the
      spacing here is the summary's padding instead, which also makes it easier to hit */
   margin: 0 !important;
-  font-size: smaller;
+  font-size: 0.875rem;
 }
 
 .summary {
@@ -130,7 +116,7 @@ a.chip:hover {
   /* the same distance to the contributors above as to the history below */
   padding: 0.75rem 0;
   cursor: pointer;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--wiki-muted);
   /* the toggle draws its own arrow */
   list-style: none;
 }
@@ -147,9 +133,14 @@ a.chip:hover {
   gap: 0.15rem 0.35em;
 }
 
+/* the dot between the last update and the history toggle */
+.separator {
+  color: var(--wiki-muted);
+}
+
 .lastPerson {
   color: var(--ifm-font-color-base);
-  font-weight: var(--ifm-font-weight-bold);
+  font-weight: 600;
 }
 
 .historyToggle {
@@ -183,7 +174,6 @@ a.chip:hover {
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid var(--ifm-color-emphasis-200);
 }
 
 .edit {
@@ -192,18 +182,22 @@ a.chip:hover {
   align-items: center;
   gap: 0.75rem;
   margin: 0;
-  padding: 0.35rem 0.25rem;
-  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--wiki-control-radius);
+}
+
+.edit:nth-child(odd) {
+  background: var(--wiki-panel);
 }
 
 .date {
-  color: var(--ifm-color-emphasis-700);
+  color: var(--wiki-muted);
   font-variant-numeric: tabular-nums;
 }
 
 .author {
   min-width: 0;
-  font-weight: var(--ifm-font-weight-bold);
+  font-weight: 600;
   overflow-wrap: anywhere;
 }
 
@@ -220,42 +214,6 @@ a.chip:hover {
 
   .message {
     grid-column: 1 / -1;
-  }
-}
-
-/* the wiki's contributors on the home page: the list and the line under it sit in the middle */
-.pageMetaCentered .pageMetaTop {
-  position: relative;
-  justify-content: center;
-}
-
-.pageMetaCentered .contributors {
-  flex-basis: 100%;
-  text-align: center;
-}
-
-.pageMetaCentered .chips,
-.pageMetaCentered .summary {
-  justify-content: center;
-}
-
-.pageMetaCentered .summary,
-.pageMetaCentered .editLink {
-  margin: 0 auto;
-}
-
-/* out of the flow so it doesn't push the list off center, where there's room next to the title */
-@media (min-width: 997px) {
-  .pageMetaCentered .editLink {
-    position: absolute;
-    /* taller than the title it shares a line with, this puts as much room above it as below */
-    top: -0.25rem;
-    right: 0;
-  }
-
-  /* the chips run under the edit link, they need to clear it */
-  .pageMetaCentered .contributorsDescription {
-    margin-bottom: 0.9rem;
   }
 }
 

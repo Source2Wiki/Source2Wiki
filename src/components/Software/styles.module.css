@@ -1,46 +1,25 @@
 .badge {
-  border-radius: 6px;
   display: inline-flex;
+  align-items: center;
+  padding: 0 0.3em;
+  border-radius: 4px;
+  background-color: color-mix(in srgb, var(--badge-color, var(--ifm-code-background)) 22%, var(--ifm-code-background));
   /* explicit text color so the badge stays readable inside admonitions,
      whose foreground colors otherwise leak into it */
-  color: #1c1e21;
+  color: var(--ifm-font-color-base);
+  white-space: nowrap;
   /* the flex baseline comes from the icon's bottom edge, not the label text;
      this offset drops the badge so its text baseline matches the surrounding text */
   vertical-align: -0.14em;
 }
 
-/* lighten the entry color in light mode */
-.inner {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 6px;
-  padding: 0 0.3em;
-  display: inline-flex;
-  align-items: center;
-  white-space: 'nowrap';
-  transition: background-color 0.15s;
-}
-
-/* slightly darken it in dark mode */
-[data-theme='dark'] .badge {
-  color: #e3e3e3;
-}
-
-[data-theme='dark'] .inner {
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-/* linked badges pop towards the entry's full color on hover */
 .link {
   text-decoration: none;
   color: inherit;
 }
 
-.link:hover .inner {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-[data-theme='dark'] .link:hover .inner {
-  background-color: rgba(0, 0, 0, 0.15);
+.link:hover .badge {
+  background-color: color-mix(in srgb, var(--badge-color, var(--ifm-code-background)) 38%, var(--ifm-code-background));
 }
 
 .icon {

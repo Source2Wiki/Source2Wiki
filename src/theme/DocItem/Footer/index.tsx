@@ -5,9 +5,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-// ejected from @docusaurus/theme-classic to show who worked on the doc out of its page history
-// (edit_history front matter, see tools/page-history.ts): everyone who contributed, who updated
-// it last, and the list of edits
+// Renders the doc footer: tags, the contributors, who updated the doc last and the list of
+// edits from the edit_history front matter, with the edit link. Docs without a history get
+// the default edit meta row.
 
 import React from 'react';
 import clsx from 'clsx';
@@ -59,8 +59,6 @@ export default function DocItemFooter(): React.JSX.Element | null {
         <div
           className={clsx(
             styles.pageMeta,
-            // the list of everyone is the page's closing credits rather than a note about the doc
-            wikiContributors !== undefined && styles.pageMetaCentered,
             ThemeClassNames.docs.docFooterEditMetaRow,
           )}>
           <div className={styles.pageMetaTop}>

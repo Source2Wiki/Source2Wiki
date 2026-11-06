@@ -1,4 +1,3 @@
-import { themes as prismThemes } from 'prism-react-renderer';
 import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { PluginOptions } from '@easyops-cn/docusaurus-search-local';
@@ -155,13 +154,12 @@ const config: Config = {
     },
   },
   themeConfig: {
-    // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     zoom: {
       selector: '.markdown :not(em) > img:not(.no-zoom), .markdown img:not(.no-zoom)',
       background: {
-        light: 'rgb(255, 255, 255)',
-        dark: 'rgb(50, 50, 50)'
+        light: 'rgb(251, 249, 247)',
+        dark: 'rgb(26, 25, 24)'
       },
     },
     navbar: {
@@ -221,7 +219,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
         {
           items: [
@@ -246,8 +244,20 @@ const config: Config = {
     },
     prism: {
       additionalLanguages: ['csharp'],
-      theme: prismThemes.github,
-      darkTheme: prismThemes.dracula,
+      // Static HTML is rendered before the colour mode is known, so colours come from CSS variables
+      theme: {
+        plain: {
+          color: 'var(--wiki-code-text)',
+          backgroundColor: 'var(--wiki-code-background)',
+        },
+        styles: [
+          { types: ['keyword', 'tag', 'selector'], style: { color: 'var(--wiki-code-keyword)' } },
+          { types: ['string', 'attr-value', 'char'], style: { color: 'var(--wiki-code-string)' } },
+          { types: ['function', 'class-name', 'property', 'attr-name'], style: { color: 'var(--wiki-code-function)' } },
+          { types: ['number', 'boolean', 'constant'], style: { color: 'var(--wiki-code-number)' } },
+          { types: ['comment'], style: { color: 'var(--wiki-code-comment)' } },
+        ],
+      },
     },
     colorMode: {
       respectPrefersColorScheme: true,

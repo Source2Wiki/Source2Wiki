@@ -3,9 +3,7 @@
   align-items: center;
   gap: 1.25rem;
   margin: 0.5rem 0 2rem;
-  padding: 1.5rem 1.5rem 1.5rem 0.5rem;
-  border-radius: 0.75rem;
-  background: radial-gradient(50rem 16rem at 0% 0%, rgba(245, 120, 7, 0.09), transparent 70%);
+  padding: 1.5rem 0;
 }
 
 .logo {
@@ -23,7 +21,7 @@
 .subtitle {
   margin: 0.35rem 0 0;
   font-size: 1.25rem;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--wiki-muted);
 }
 
 .games {
@@ -34,23 +32,23 @@
   margin-bottom: 2.5rem;
 }
 
-.game {
-  display: block;
+.game,
+.tile {
   border-radius: 0.5rem;
-  overflow: hidden;
-  border: 1px solid var(--ifm-color-emphasis-200);
   background: var(--ifm-background-surface-color);
   color: var(--ifm-font-color-base);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.game:hover {
+.game:hover,
+.tile:hover {
   color: var(--ifm-font-color-base);
   text-decoration: none;
-  transform: translateY(-2px);
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  background: var(--wiki-raised);
+}
+
+.game {
+  display: block;
+  overflow: hidden;
 }
 
 .game > img {
@@ -81,19 +79,6 @@
   flex-direction: column;
   gap: 0.35rem;
   padding: 1rem 1.1rem;
-  border-radius: 0.5rem;
-  border: 1px solid var(--ifm-color-emphasis-200);
-  background: var(--ifm-background-surface-color);
-  color: var(--ifm-font-color-base);
-  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
-}
-
-.tile:hover {
-  color: var(--ifm-font-color-base);
-  text-decoration: none;
-  transform: translateY(-2px);
-  border-color: var(--ifm-color-primary);
-  box-shadow: var(--ifm-global-shadow-md);
 }
 
 .tile strong {
@@ -103,5 +88,12 @@
 
 .tile span {
   font-size: 0.9rem;
-  color: var(--ifm-color-emphasis-700);
+  color: var(--wiki-muted);
+}
+
+@media (max-width: 480px) {
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

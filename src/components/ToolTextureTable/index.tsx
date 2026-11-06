@@ -1,6 +1,5 @@
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import styles from './styles.module.css';
-import clsx from "clsx";
 import DateRender from "@site/src/components/DateRenderer";
 import MaterialAttributes from "@site/src/constants/materialAttributes";
 
@@ -121,11 +120,11 @@ const ToolTexTable: React.FC<ToolTexTableProps> = ({ game }) =>{
         A searchable list of every tool texture in every Source 2 game.
       </div>
       <div>
-        All tool textures contain the <code className={styles.code}>tools.toolsmaterial</code> material attribute, as such it has been omitted from the attribute list.
+        All tool textures contain the <code>tools.toolsmaterial</code> material attribute, as such it has been omitted from the attribute list.
       </div>
       <div className={styles.searchBox}>
         <input 
-          className={clsx("navbar__search-input", styles.input)} 
+          className="navbar__search-input" 
           placeholder="Search"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -161,7 +160,7 @@ const ToolTexTable: React.FC<ToolTexTableProps> = ({ game }) =>{
                 const description = getDescriptionForTexture(toolTexture.Name, toolTexture.Description);
                 
                 return (
-                  <tr key={index} className={styles.clickableRow}>
+                  <tr key={index}>
                     
                     <td>
                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -176,7 +175,7 @@ const ToolTexTable: React.FC<ToolTexTableProps> = ({ game }) =>{
                     </td>
 
                     <td>
-                       <code className={styles.code} dangerouslySetInnerHTML={{ __html: toolTexture.Name }}/>
+                       <code dangerouslySetInnerHTML={{ __html: toolTexture.Name }}/>
                     </td>
 
                     <td dangerouslySetInnerHTML={{ __html: description }} />
@@ -192,11 +191,11 @@ const ToolTexTable: React.FC<ToolTexTableProps> = ({ game }) =>{
                               <li key={index}>
                                 {hasPretty ? (
                                   <>
-                                    {prettyName} (<code className={styles.code}>{attr.Name.trim()}</code>) 
-                                    {attr.Value > 1 ? <> = <code className={styles.code}>{attr.Value}</code></> : ""} 
+                                    {prettyName} (<code>{attr.Name.trim()}</code>) 
+                                    {attr.Value > 1 ? <> = <code>{attr.Value}</code></> : ""} 
                                   </>
                                 ) : (
-                                  <code className={styles.code}>{attr.Name.trim()}</code>
+                                  <code>{attr.Name.trim()}</code>
                                 )}
                               </li>
                             );
