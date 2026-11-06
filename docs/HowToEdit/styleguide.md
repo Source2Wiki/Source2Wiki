@@ -90,7 +90,7 @@ Alt text describes what the reader should look for, like `![Cs2 settings menu bu
 
 ## Per-game content
 
-Procedures that differ per game use `<GameTabs>` with one underscore-prefixed partial per game, in the order cs2, hla, dota2, steamvr. Partials carry no frontmatter and no headings, they slot under the parent page's section.
+Procedures that differ per game use `<GameTabs>` with one underscore-prefixed partial per game, in the order cs2, hla, dota2, steamvr. Partials carry no frontmatter and no headings, they slot under the parent page's section. With a single partial it shows a "game only" label instead of tabs.
 
 When only one or two games differ, a bullet or table row keyed by a game badge reads better than tabs.
 
