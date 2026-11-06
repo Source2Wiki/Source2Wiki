@@ -2,9 +2,17 @@ import type { Config } from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { PluginOptions } from '@easyops-cn/docusaurus-search-local';
 import { admonitions } from './src/admonitions';
+import { Games } from './src/constants/software';
 import { addPageHistory } from './tools/page-history';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+const gameColors: Record<string, string> = {};
+for (const [game, info] of Object.entries(Games)) {
+  if (info.Color) {
+    gameColors[game] = info.Color;
+  }
+}
 
 const config: Config = {
   title: 'Source 2 Wiki',
@@ -119,6 +127,12 @@ const config: Config = {
     ],
   ],
   headTags: [
+    // Applies the game's theme colour before first paint, React only takes over after hydration
+    {
+      tagName: 'script',
+      attributes: {},
+      innerHTML: `var color=${JSON.stringify(gameColors)}[new URLSearchParams(location.search).get('game')];if(color)document.documentElement.style.setProperty('--wiki-theme',color);`,
+    },
     // Declare some json-ld structured data
     {
       tagName: 'script',
