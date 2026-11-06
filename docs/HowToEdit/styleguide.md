@@ -34,6 +34,10 @@ Imperatives only belong in the numbered steps of a setup walkthrough. Never writ
 
 Write in simple, direct sentences that someone new to Source 2 can follow. Don't overuse punctuation, don't inject personal anecdotes, and don't go on tangents unrelated to the page's topic. If a side topic is worth covering, cover it on its own page and link to it.
 
+## Write Source 2 with a space and correct capitalisation
+
+In prose the engine is always written as "Source 2" and the wiki as "Source 2 Wiki", never "Source2" or "source2" or "Source2wiki" or you get the point.
+
 ## Headings
 
 Headings are sentence case, with no punctuation, links or bold inside them. Every heading needs body text under it, a run of empty headings is a table of contents pretending to be content.
